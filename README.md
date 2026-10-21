@@ -18,7 +18,7 @@
 | SAVA | [目录](local-SAVA) | [建议](local-SAVA/repair_plan.md) |
 | SAVE / PBMC IFN-beta | [目录](local-SAVE) | [建议](local-SAVE/repair_plan.md) |
 
-[修改建议索引](REPAIR_INDEX.md) · [全部九题逐项结论](review_matrix.json) · [CSV](review_matrix.csv)
+[历史验收核对](HISTORICAL_INVENTORY.md) · [修改建议索引](REPAIR_INDEX.md) · [全部九题逐项结论](review_matrix.json) · [CSV](review_matrix.csv)
 
 ## 原仓库两题
 
