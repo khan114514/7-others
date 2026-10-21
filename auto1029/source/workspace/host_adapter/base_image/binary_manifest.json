@@ -1,0 +1,37 @@
+{
+  "phase": "EXACT_BINARY_OPERATOR_PROVISIONING_AND_ACTUAL_QUARANTINE_BUILD_PASS_EXTERNAL_VENDOR_ASSETS_REQUIRED",
+  "base_image_tag": "heima-agent-base:20261005",
+  "tested_image_id": "sha256:a25561cb00697b13692b63f8f553e820ec1af58fad5833a7712b9701afba7c0f",
+  "tested_controller_architecture": "arm64",
+  "codex_version": "0.160.0",
+  "dockerfile_sha256": "e65aa7a161e4629e99d4b198b39df98a8bf0a207a7b7505ffe7db75fa542a615",
+  "external_binaries": [
+    {
+      "name": "codex",
+      "bytes": 248966648,
+      "sha256": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+      "architecture": "Linux ARM64",
+      "redistributed_in_this_bundle": false
+    },
+    {
+      "name": "codex-code-mode-host",
+      "bytes": 66921472,
+      "sha256": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+      "architecture": "Linux ARM64",
+      "redistributed_in_this_bundle": false
+    },
+    {
+      "name": "rg",
+      "bytes": 4506992,
+      "sha256": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+      "architecture": "Linux ARM64",
+      "redistributed_in_this_bundle": false
+    }
+  ],
+  "host_binding_change_does_not_rebuild_cli_binaries": true,
+  "new_machine_or_rebuilt_base_claim": false,
+  "model_research_seconds": 0,
+  "operator_provisioner": "provision.py",
+  "actual_base_provisioning_evidence": "expert_evidence/portability/base-provisioning-proof-summary.json",
+  "external_binaries_redistributed": false
+}

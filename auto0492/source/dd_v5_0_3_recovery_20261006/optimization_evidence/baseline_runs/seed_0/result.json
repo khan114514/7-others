@@ -1,0 +1,72 @@
+{
+  "schema_version": "dd-run-index-1.0",
+  "status": "SUCCESS",
+  "role": "baseline",
+  "seed": 0,
+  "seed_namespace": "public_evaluation_seed",
+  "task_type": "training",
+  "scope": "PUBLIC_DEV_EVIDENCE; NOT_PRIVATE_FORMAL_ACCEPTANCE",
+  "run_id": "run-6103fc4495c64392aeb05229602fe9a7",
+  "method": {
+    "source": "workspace/harbor_task/environment/starter/method.py",
+    "sha256": "bc4ac6b53af961775c669bca498d0f03d5ea26e484a1c6aa3e4b32a42a3c8fca"
+  },
+  "protocol": {
+    "id": "dd-selfproto-v1.3",
+    "evaluation_seed": 0,
+    "sample_count": 50000,
+    "batch_size": 8,
+    "direction": "minimize",
+    "metric": "FID",
+    "actual_frozen_manifest_sha256": "d69fa87bc503cf12a33f32a718c313557a88e579d2fa8678f2f50bdaeb99b7a4",
+    "baseline_and_reference_manifest_identities_not_relabelled": true,
+    "current_formal_pair_required": true,
+    "teacher_and_training_budget_seconds": 14400,
+    "resources": "same author-owned A100-40GB; public same evaluation stream"
+  },
+  "training": {
+    "adaptation": false,
+    "initialization_checkpoint_sha256": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+    "teacher_seed": null,
+    "training_seed": null,
+    "teacher_and_training_seconds": 0,
+    "teacher_pair_count": 0,
+    "student_updates": 0,
+    "baseline_training_note": "Published completed DD EMA is the legal fixed Starter; no additional adaptation",
+    "reimplementation_not_official_training_code": false
+  },
+  "execution": {
+    "command": null,
+    "unavailable_command_reason": "Terminal native receipt stores stage/process records but does not contain the original complete launch argv; not reconstructed as an observed command",
+    "started_unix": 1791143796.208029,
+    "finished_unix": 1791146426.8623776,
+    "elapsed_seconds": 2630.6543486118317,
+    "exit_code": null,
+    "exit_code_evidence_note": "Native SUCCESS observed; explicit original returncode absent from this receipt; not invented",
+    "source_native_receipt": "optimization_evidence/terminal_records/run-6103fc4495c64392aeb05229602fe9a7/result.json",
+    "source_native_receipt_sha256": "8175bc77514b429d9fb090eda24241b9a43a32e393e3cf0c08a6f84f3dfe3759"
+  },
+  "metrics": {
+    "fid_50k": 9.663262058820692,
+    "public_normalized_score": 0.0,
+    "primary": {
+      "name": "FID",
+      "direction": "minimize",
+      "value": 9.663262058820692
+    }
+  },
+  "quality_gate": {
+    "full_finite_metric_observed": true,
+    "user_scoped_public_reference_interval_pass": null,
+    "default_public_reference_interval_pass": null,
+    "release_qa_pass_claimed": false
+  },
+  "artifacts": {
+    "model_index": "optimization_evidence/baseline_runs/seed_0/model/artifact.json",
+    "original_checkpoint_sha256": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+    "sample_manifest": "optimization_evidence/terminal_records/run-6103fc4495c64392aeb05229602fe9a7/evaluation/sample_manifest.jsonl",
+    "sample_manifest_sha256": "4cd6c9dc6f3521b27d8635b1f5acf4e57932b74584b1bf72bb665d0aa243f070",
+    "terminal_record_directory": "optimization_evidence/terminal_records/run-6103fc4495c64392aeb05229602fe9a7",
+    "run_log": "optimization_evidence/baseline_runs/seed_0/run.log"
+  }
+}

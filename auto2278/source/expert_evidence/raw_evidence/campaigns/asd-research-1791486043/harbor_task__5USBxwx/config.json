@@ -1,0 +1,20 @@
+{
+    "task": {
+        "path": "<TASK_ROOT>/submission/workspace/harbor_task"
+    },
+    "trial_name": "harbor_task__5USBxwx",
+    "trials_dir": "<TASK_ROOT>/campaigns/asd-research-1791486043",
+    "agent": {
+        "import_path": "tools.memory_codex_agent:MemoryCodexAgent",
+        "model_name": "doubao/doubao-seed-2-1-turbo-260628",
+        "override_timeout_sec": 54000.0,
+        "kwargs": {
+            "target_seconds": 36000,
+            "required_auditable_seconds": 36000,
+            "wall_limit_seconds": 50400,
+            "turn_timeout_seconds": 7200,
+            "resume_from": "<TASK_ROOT>/campaigns/asd-research-1791425440/harbor_task__2XajarE/agent"
+        }
+    },
+    "job_id": "2c373757-7b04-48c1-906e-11955916cb23"
+}

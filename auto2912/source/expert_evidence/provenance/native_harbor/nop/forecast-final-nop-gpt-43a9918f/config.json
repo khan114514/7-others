@@ -1,0 +1,21 @@
+{
+    "task": {
+        "path": "<TASK_SOURCE_ROOT>/workspace/harbor_task"
+    },
+    "trial_name": "forecast-final-nop-gpt-43a9918f",
+    "trials_dir": "<TASK_SOURCE_ROOT>/private/post-selection-native/nop-gpt-41d2b0636f9f4e679a1d24fa3818a0e4",
+    "agent": {
+        "name": "nop"
+    },
+    "environment": {
+        "import_path": "post_selection_harbor:FrozenEvaluationEnvironment",
+        "force_build": true,
+        "kwargs": {
+            "role": "gpt",
+            "hidden_evaluation": false
+        }
+    },
+    "verifier": {
+        "override_timeout_sec": 1800.0
+    }
+}

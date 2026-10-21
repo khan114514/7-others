@@ -1,0 +1,224 @@
+{
+  "Id": "7434491d94848b65e281510115fdffb11cd4b832ec2e46cecd520b4d82d43432",
+  "Created": "2026-10-06T18:22:10.321277796Z",
+  "Path": "python",
+  "Args": [
+    "-I",
+    "/opt/forecast-engine/start_task.py",
+    "sh",
+    "-c",
+    "sleep infinity"
+  ],
+  "State": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 93627,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-06T18:22:10.668370629Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "Image": "sha256:7e913d8bad09eb73bf391ebd3d7427151d1bc963d71bfa01b4d7d6b6682a3951",
+  "ResolvConfPath": "/var/lib/docker/containers/7434491d94848b65e281510115fdffb11cd4b832ec2e46cecd520b4d82d43432/resolv.conf",
+  "HostnamePath": "/var/lib/docker/containers/7434491d94848b65e281510115fdffb11cd4b832ec2e46cecd520b4d82d43432/hostname",
+  "HostsPath": "/var/lib/docker/containers/7434491d94848b65e281510115fdffb11cd4b832ec2e46cecd520b4d82d43432/hosts",
+  "LogPath": "/var/lib/docker/containers/7434491d94848b65e281510115fdffb11cd4b832ec2e46cecd520b4d82d43432/7434491d94848b65e281510115fdffb11cd4b832ec2e46cecd520b4d82d43432-json.log",
+  "Name": "/forecast-research-seed-c6112f5b__env-main-1",
+  "RestartCount": 0,
+  "Driver": "overlayfs",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": null,
+  "HostConfig": {
+    "Binds": [
+      "forecast-queue-28f0ed12654f444eb622522f164fa211:/run/forecastcli/queue:rw"
+    ],
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    },
+    "NetworkMode": "none",
+    "PortBindings": {},
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": [
+      "CAP_CHOWN",
+      "CAP_SETGID",
+      "CAP_SETUID"
+    ],
+    "CapDrop": [
+      "ALL"
+    ],
+    "CgroupnsMode": "private",
+    "Dns": null,
+    "DnsOptions": null,
+    "DnsSearch": null,
+    "ExtraHosts": [],
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": [
+      "no-new-privileges=true",
+      "seccomp=unconfined"
+    ],
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 4294967296,
+    "NanoCpus": 2000000000,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": null,
+    "BlkioDeviceReadBps": null,
+    "BlkioDeviceWriteBps": null,
+    "BlkioDeviceReadIOps": null,
+    "BlkioDeviceWriteIOps": null,
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": null,
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 8589934592,
+    "MemorySwappiness": null,
+    "OomKillDisable": null,
+    "PidsLimit": null,
+    "Ulimits": null,
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "MaskedPaths": [],
+    "ReadonlyPaths": []
+  },
+  "Storage": {
+    "RootFS": {
+      "Snapshot": {
+        "Name": "overlayfs"
+      }
+    }
+  },
+  "Mounts": [
+    {
+      "Type": "volume",
+      "Name": "forecast-queue-28f0ed12654f444eb622522f164fa211",
+      "Source": "/var/lib/docker/volumes/forecast-queue-28f0ed12654f444eb622522f164fa211/_data",
+      "Destination": "/run/forecastcli/queue",
+      "Driver": "local",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": ""
+    }
+  ],
+  "Config": {
+    "Hostname": "7434491d9484",
+    "Domainname": "",
+    "User": "root",
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "AttachStderr": true,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "FORECAST_LANE=seed",
+      "PATH=/usr/local/bin:/usr/bin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.12.15",
+      "PYTHON_SHA256=c2c4321961fab0fb999d66e0cecf521c2ab3994c7992873ea99e306c1094fd5a",
+      "HOME=/home/candidate",
+      "PYTHONPATH=/opt/forecastcli",
+      "OMP_NUM_THREADS=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1"
+    ],
+    "Cmd": [
+      "sh",
+      "-c",
+      "sleep infinity"
+    ],
+    "Image": "forecast-research-seed-c6112f5b__env-main",
+    "Volumes": null,
+    "WorkingDir": "/workspace/solution",
+    "Entrypoint": [
+      "python",
+      "-I",
+      "/opt/forecast-engine/start_task.py"
+    ],
+    "Labels": {
+      "com.docker.compose.config-hash": "8d63b1717f4c551af316cadeedc554ce7dcc1acdae63c471aef3dbc16afa1659",
+      "com.docker.compose.container-number": "1",
+      "com.docker.compose.depends_on": "",
+      "com.docker.compose.image": "sha256:4a5857f59c8d4a0b4c4b12fbaad3c5af9d01e220942d5ffa366ba691b7618a0f",
+      "com.docker.compose.oneoff": "False",
+      "com.docker.compose.project": "forecast-research-seed-c6112f5b__env",
+      "com.docker.compose.project.config_files": "/private/var/folders/9r/6rs1rzr14rq5bnkvppg0rg5m0000gn/T/tmpci7aodck/forecast-research-seed-c6112f5b__env-docker-compose-resources.json,<AUTHOR_HOME>/Documents/ChatGPT/New project/heima_20261005/private/harbor-venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml,<TASK_SOURCE_ROOT>/workspace/harbor_task/environment/docker-compose.yaml,<TASK_SOURCE_ROOT>/private/harbor-runtime/forecast-research-seed-c6112f5b__env/lane-compose.yaml,/private/var/folders/9r/6rs1rzr14rq5bnkvppg0rg5m0000gn/T/tmp2_v766xn/docker-compose-environment.json",
+      "com.docker.compose.project.working_dir": "<TASK_SOURCE_ROOT>/workspace/harbor_task/environment",
+      "com.docker.compose.service": "main",
+      "com.docker.compose.version": "5.5.1"
+    }
+  },
+  "NetworkSettings": {
+    "SandboxID": "feacdd52b459bbbe31c83397dfd76351137997c0fecd816fbe16ca81cceca72d",
+    "SandboxKey": "/var/run/docker/netns/feacdd52b459",
+    "Ports": {},
+    "Networks": {
+      "none": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "9c3ec2a81584293716e94f9b7b6db3418a3f667ec643cef1242a1fc59a149082",
+        "EndpointID": "f4beb5a8fea887b8ba74cf7e5f0ed4ef6e8ea4a1aaedca8f0b52ef8f02ffd088",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  },
+  "ImageManifestDescriptor": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:4a5857f59c8d4a0b4c4b12fbaad3c5af9d01e220942d5ffa366ba691b7618a0f",
+    "size": 3528,
+    "platform": {
+      "architecture": "arm64",
+      "os": "linux"
+    }
+  }
+}

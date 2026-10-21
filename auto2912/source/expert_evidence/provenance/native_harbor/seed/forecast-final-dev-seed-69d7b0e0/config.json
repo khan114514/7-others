@@ -1,0 +1,24 @@
+{
+    "task": {
+        "path": "<TASK_SOURCE_ROOT>/workspace/harbor_task"
+    },
+    "trial_name": "forecast-final-dev-seed-69d7b0e0",
+    "trials_dir": "<TASK_SOURCE_ROOT>/private/post-selection-native/dev-seed-801e6d1014ce491d8b04bcdadd529178",
+    "agent": {
+        "import_path": "post_selection_harbor:FrozenCandidateAgent",
+        "kwargs": {
+            "role": "seed"
+        }
+    },
+    "environment": {
+        "import_path": "post_selection_harbor:FrozenEvaluationEnvironment",
+        "force_build": true,
+        "kwargs": {
+            "role": "seed",
+            "hidden_evaluation": false
+        }
+    },
+    "verifier": {
+        "override_timeout_sec": 1800.0
+    }
+}

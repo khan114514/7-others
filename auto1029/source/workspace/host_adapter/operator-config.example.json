@@ -1,0 +1,28 @@
+{
+  "private_root": "/absolute/trusted/operator-evidence",
+  "docker_executable": "/absolute/trusted/docker",
+  "gpu_ssh_host": "trusted-gpu-alias",
+  "gpu_service_argv": [
+    "/usr/bin/env",
+    "HEIMA_DEPLOYMENT_CONFIG=/absolute/trusted/gpu-deployment.json",
+    "/absolute/trusted/gpu-python3.12",
+    "-S",
+    "/absolute/trusted/gpu-project/private/gpu_evaluator_service.py"
+  ],
+  "credential_environment_names": {
+    "gpt": "HEIMA_REPRO_DISABLED_GPT_KEY",
+    "seed": "HEIMA_REPRO_DISABLED_SEED_KEY"
+  },
+  "credential_commands": {
+    "gpt": [],
+    "seed": []
+  },
+  "http_proxy": null,
+  "verifier_gpu_service_argv": [
+    "/usr/bin/env",
+    "HEIMA_DEPLOYMENT_CONFIG=/absolute/trusted/gpu-deployment.json",
+    "/absolute/trusted/gpu-python3.12",
+    "-S",
+    "/absolute/trusted/gpu-project/private/private_verifier_service.py"
+  ]
+}

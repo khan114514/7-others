@@ -1,0 +1,164 @@
+{
+  "id": "dfef246a-67c6-4732-bd94-7aac8c8d50df",
+  "task_name": "local-research/bifrost-patch-latent-decoder",
+  "trial_name": "release-selected-f16d5c4466ca",
+  "trial_uri": "file://<author-home>/Documents/ChatGPT/New%20project/bifrost1_20261005/private/tool-policy-home-template-source-repair/1792023397043232000/runtime-state-validation/native-validations/f16d5c4466ca4409a4eea15d8ffe7338/release-selected-f16d5c4466ca",
+  "task_id": {
+    "path": "Task"
+  },
+  "source": null,
+  "task_checksum": "4d61e360b333277676e36d5e083039feae39cac42325fd8dbec63962936d78a8",
+  "config": {
+    "task": {
+      "path": "Task",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "release-selected-f16d5c4466ca",
+    "trials_dir": "<trusted-runtime-state>/native-validations/f16d5c4466ca4409a4eea15d8ffe7338",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": null,
+      "import_path": "frozen_artifact_agent:FrozenArtifactAgent",
+      "model_name": null,
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {
+        "lane": "gpt",
+        "source_snapshot": "./Trajectories/GPT/selected-method",
+        "expected_files": {
+          "method.py": "28c4f480b01e84eeb992e56285eb419199182281f756174bf4129e87e6a63bf7",
+          "program.json": "aa97efaefa4bc23e6df5eba3f7051a0131463b1710c6855c8c8692c84ae15f85"
+        },
+        "expected_artifact": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+        "frozen_binding": {
+          "task_source_manifest_sha256": "2abb0bb70731458dbf320b26be53b0f219a1f3807838d73201219e83333f386e",
+          "runtime_sources": {
+            "Runtime/bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+            "Runtime/frozen_artifact_agent.py": "6c67b6716ddec42ccf1f1a3fcbf4b147c0de01e6a0ab25d25d0d02dc85d0ebc0",
+            "Runtime/hybrid_harbor_environment.py": "f5242e4eb6ceac0b9d62d8c12b1f4e4106bc0798aae42a57b412138ad25a43fc",
+            "Runtime/hybrid_relay.py": "e4e8da56448d30b4b237b3c8bffa6745f2bba5142d329dfd5af4da3e272aeeca",
+            "Runtime/numerical_controller.py": "9aa3f72a9f2e8090d19dd2d3ecb22a851968e9193e1ab5ed3619e16c9998d8ae",
+            "Runtime/numerical_controller_config.py": "6bf096aa69d74b37a881b212751af46865a74eda4e72c44b0253629c79033da0",
+            "Runtime/oracle_exec_environment.py": "2ab495d88f2d60df5d38b989890247d0c2de036084d8eec4b729b41a7740e64d",
+            "Runtime/release_source_binding.py": "7cdff4eafa6661e7dda8edd14114884a974ae005f8c2ccd6c2ae9229e88b4109",
+            "Runtime/requirements.txt": "0bdf87b86e4cb06e0e47ca6d5e38d59d4155a3d43e595d5b983a8dfe4bc23d72",
+            "Runtime/run_isolation.py": "88ed451c2a4d736dbd88f7a9be111b6c63827c84e4df87ebaa32efa11958ae18",
+            "Runtime/run_native_validation.py": "2aa6f644d388b8717d8bfb580ad8728916c31040fa7f135e63174f2a49599516",
+            "Runtime/runtime-build/queue_broker.py": "38b4e68cfa0653924881555b072ca74c273042846ba708e5f0956ac76ce9903f",
+            "dependencies/checkpoint/materialize_checkpoint_assets.py": "9ea26ea8091166d0537d27f5def4082b3b05f6514b7e60aa107622ca9cb1e8c8",
+            "dependencies/checkpoint/public-checkpoint-assets.json": "e68e28e43ce28489a3e6d62ef157eb198f9ff515e3f9c8c0fe2429acbba7f7e8",
+            "dependencies/checkpoint/public-tensor-manifest.json": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+            "dependencies/checkpoint/public_tensor_server.py": "67459998e191d8a8d8a5758edbf555d7e3a0a5f4401e513f19cfcbaa6e286ae3",
+            "dependencies/checkpoint/requirements-worker.txt": "6796ff1b0b390ab26fc92f8930f5de8d8108bed23f72f7f2015a177dcf6d9517",
+            "dependencies/cli/materialize_cli_assets.py": "4bd8f5226f9041252c0154ab364d50069616d2c7accb940cb86250febda9ed6a",
+            "dependencies/cli/public-cli-assets.json": "9b1108cef8ea7418876de762ac500f638b4397d2e7dfa9aa64d54baf3196039e",
+            "dependencies/hidden-input/hidden-input-chunks.json": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+            "dependencies/hidden-input/materialize_hidden_asset.py": "4bd81af76d1810a356362f841b721614712f0204971fc643e2ceed5df26e69c7",
+            "dependencies/numerical/materialize_numerical_runtime.py": "76e6e1e042fa8b5c04eb860f7f1f4bc90158291bb3cc1e82eb7af38240988aaa",
+            "dependencies/numerical/runtime-files.json": "3cb2b03642c02d0c0076e858aa2bd44c3d62290b5bf29b401f7f3147cb2cf358",
+            "dependencies/task/materialize_task.py": "42db8f5bc3b1ce59798ef547976a9fc0e76ce3c5fcc5d756aff122021494788d",
+            "dependencies/task/task-files.json": "150dd4da6e9d0d5813efea008690541fa6afcd2bd03e16328e28214f81cae6e3",
+            "selected-method-identities.json": "683e60048c60bea83fb1f68adbe4c50738a44448052ddd0826072daeeb466c06",
+            "Trajectories/GPT/selected-method/method.py": "28c4f480b01e84eeb992e56285eb419199182281f756174bf4129e87e6a63bf7",
+            "Trajectories/GPT/selected-method/program.json": "aa97efaefa4bc23e6df5eba3f7051a0131463b1710c6855c8c8692c84ae15f85",
+            "Trajectories/Seed/selected-method/method.py": "0da5c4cb0fd76c3dd01b58aa2e1341888c68216091893476cf76c335dc74d012",
+            "Trajectories/Seed/selected-method/program.json": "20ce4ff0464588ae073753476c3a851e501972e62a6b8d3adf174989e8fabd16"
+          }
+        },
+        "evidence_root": "<trusted-runtime-state>/native-validations/f16d5c4466ca4409a4eea15d8ffe7338/copy-evidence",
+        "task_path": "Task"
+      },
+      "mcp_servers": []
+    },
+    "user_agent": null,
+    "environment": {
+      "type": null,
+      "import_path": "hybrid_harbor_environment:HybridDockerEnvironment",
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {
+        "lane": "gpt",
+        "numerical_status": "<private-evidence-root>/tool-policy-current-compute-recovery/1791995473439438000/numerical-controller-state/numerical-controller-latest.json",
+        "runtime_root": "<trusted-runtime-state>"
+      },
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "extra_instructions": [],
+    "job_id": null,
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "frozen-native-selected-method-copy",
+    "version": "1.0.0",
+    "model_info": null
+  },
+  "agent_result": {
+    "n_input_tokens": null,
+    "n_cache_tokens": null,
+    "n_output_tokens": null,
+    "cost_usd": null,
+    "model_usage": null,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.7527044203660095
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-10-15T02:01:51.519610Z",
+  "finished_at": "2026-10-15T02:25:57.517095Z",
+  "environment_setup": {
+    "started_at": "2026-10-15T02:01:51.621590Z",
+    "finished_at": "2026-10-15T02:01:53.750403Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-10-15T02:01:53.750501Z",
+    "finished_at": "2026-10-15T02:01:54.089045Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-10-15T02:01:54.089202Z",
+    "finished_at": "2026-10-15T02:01:54.144535Z"
+  },
+  "verifier": {
+    "started_at": "2026-10-15T02:01:58.419972Z",
+    "finished_at": "2026-10-15T02:25:57.516828Z"
+  },
+  "step_results": null
+}

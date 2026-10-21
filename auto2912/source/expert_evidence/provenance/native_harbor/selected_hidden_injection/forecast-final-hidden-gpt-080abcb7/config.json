@@ -1,0 +1,24 @@
+{
+    "task": {
+        "path": "<TASK_SOURCE_ROOT>/workspace/harbor_task"
+    },
+    "trial_name": "forecast-final-hidden-gpt-080abcb7",
+    "trials_dir": "<TASK_SOURCE_ROOT>/private/post-selection-native/hidden-gpt-5d91c237599f4d85bc4e937d36411a1c",
+    "agent": {
+        "import_path": "post_selection_harbor:FrozenCandidateAgent",
+        "kwargs": {
+            "role": "gpt"
+        }
+    },
+    "environment": {
+        "import_path": "post_selection_harbor:FrozenEvaluationEnvironment",
+        "force_build": true,
+        "kwargs": {
+            "role": "gpt",
+            "hidden_evaluation": true
+        }
+    },
+    "verifier": {
+        "override_timeout_sec": 1800.0
+    }
+}

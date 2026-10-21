@@ -1,0 +1,17 @@
+[
+  {
+    "role": "seed",
+    "verifier": true,
+    "argv": [
+      "ssh",
+      "-F",
+      "${OPERATOR_HOME}/.ssh/heima-secondary-migration-8a45e4d7.conf",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ClearAllForwardings=yes",
+      "${SECONDARY_GPU_HOST}",
+      "/usr/bin/env HEIMA_DEPLOYMENT_CONFIG=${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment.json /opt/conda/bin/python3.12 -S ${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py --role seed"
+    ]
+  }
+]

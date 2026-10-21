@@ -1,0 +1,31 @@
+{
+  "hypothesis": "Separate V removes unrotated V from compiled QK boundary, allowing different producer/rotary lowering. Benefits unknown; adds one GEMM.",
+  "symbolic_output_coefficients_and_biases_checked": 4608,
+  "ordered_reduction_features": 3584,
+  "qk_head_coordinates_checked": 4096,
+  "input_norm_and_rotary_rounding_nodes": "unchanged",
+  "region": {
+    "id": "image_qk_projection_rotary_compiled",
+    "inputs": [
+      "image_input_norm",
+      "vision_qk_weight",
+      "vision_qk_bias",
+      "image_cos",
+      "image_signed_sin"
+    ],
+    "outputs": [
+      "image_query",
+      "image_key"
+    ],
+    "prefix": false
+  },
+  "real_equivalence": "all checkpoint coefficients/biases and rotary indices preserved",
+  "numerical_limit": "Changed GEMM output width/strides and compiler may alter BF16; no numerical guarantee from symbolic audit",
+  "old_58_boundary": [
+    "image_v",
+    "image_query",
+    "image_key"
+  ],
+  "all_other_regions": "selected97 frequency prefix and atomic MLP",
+  "canonical_sha256": "2da4ecea7b2ca82dd7c672bca484f08c86badc5af150f56b5161a983ad655524"
+}

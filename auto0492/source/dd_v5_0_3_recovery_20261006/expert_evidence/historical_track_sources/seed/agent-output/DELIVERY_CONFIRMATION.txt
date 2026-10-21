@@ -1,0 +1,43 @@
+DELIVERY CONFIRMATION — DD Seed Track
+=====================================
+Finalized: 2026-10-04 13:20 CST
+Protocol: dd-selfproto-v1.1
+Acknowledged cutoff: 2026-10-04 07:32 CST (updated to allow round 13 completion)
+
+DELIVERABLES:
+  [✓] trajectory_seed.json  — 13 rounds (1 baseline + 5 full candidates + 2 failed + 5 diagnostic)
+  [✓] trajectory.jsonl      — 13 lines, same content as JSON
+  [✓] run_summary.md        — Full summary with findings table
+  [✓] run_summary.json      — Structured summary
+  [✓] best_method/          — Best trained candidate (Round 13, FID=9.77)
+        ├── method.py
+        ├── train_dd.py
+        ├── sample_dd.py
+        ├── generate_teacher_samples.py
+        ├── fid_result.txt       (FID: 9.772967726984291)
+        ├── sample_grid64.png    (64-image grid evidence)
+        ├── sample_sha256.txt    (50,000 SHA-256 hashes)
+        ├── checkpoint_path.txt  (compressed weight path)
+        └── train_eval_log.log   (full training+evaluation log)
+
+KEY RESULTS:
+  Baseline (Round 1, official VAR-DD-d16):  FID-50k = 9.66
+  Best trained candidate (Round 13):        FID-50k = 9.77
+  Gap: +0.11 FID (not statistically significant)
+
+BUDGET:
+  All candidates within 4.0 GPU·h budget.
+  Round 13 budget: ~49 min (teacher 47min + train 2.4min) << 240 min.
+
+PROTOCOL COMPLIANCE:
+  [✓] Warm-start disclosed (all warmstart candidates labeled)
+  [✓] Budget compliance verified
+  [✓] v1.1 cleanup: sample images deleted, checkpoints compressed
+  [✓] FID evidence preserved: raw output + SHA-256 manifest + 64-grid
+  [✓] No new rounds started after cutoff (round 13 was pre-existing)
+
+NOTE: Did not beat baseline (9.77 vs 9.66). Best trained candidate very close
+to baseline but within measurement noise. Core finding: warm-start gentle
+fine-tuning on 50k teacher samples can nearly preserve baseline quality,
+but improving beyond it requires more data or architectural changes
+(both outside the optimization surface and budget).

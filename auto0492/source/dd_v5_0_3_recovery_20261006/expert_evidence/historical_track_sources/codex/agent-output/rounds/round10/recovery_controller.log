@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "historical-codex-workspace/recover_round05_score.py", line 106, in <module>
+    main()
+  File "historical-codex-workspace/recover_round05_score.py", line 61, in main
+    run_stage([PY, '-B', '-u', str(entry), '--images', str(large / 'evaluation/images'),
+  File "historical-codex-workspace/candidate_runner.py", line 192, in run_stage
+    raise RuntimeError(f'{stage} failed: exit={code}, termination={termination}')
+RuntimeError: fid_recovery failed: exit=-11, termination=None

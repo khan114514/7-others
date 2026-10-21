@@ -1,0 +1,37 @@
+{
+  "schema_version": "privacy-representation-migration.v1",
+  "occurred_at": "2026-10-09T13:47:24.871220+00:00",
+  "changed_paths": [
+    {
+      "path": "environment/public_eval/evaluator.py",
+      "change": "Rename local random READY/DONE handshake variable; no credential or evaluation semantic change",
+      "original_sha256": "2f920ad226974e837a7df3c331465399e919fc3abeafdbcda66fcbf574cfff78",
+      "published_sha256": "a804d0e222087cc7e599f92ba7b5e7b7c8efb363be558a5a3851eef2de41eb1b"
+    },
+    {
+      "path": "tests/evaluator.py",
+      "change": "Rename local random READY/DONE handshake variable; no credential or evaluation semantic change",
+      "original_sha256": "2f920ad226974e837a7df3c331465399e919fc3abeafdbcda66fcbf574cfff78",
+      "published_sha256": "a804d0e222087cc7e599f92ba7b5e7b7c8efb363be558a5a3851eef2de41eb1b"
+    },
+    {
+      "path": "environment/public_eval/targets/seed_404_gaussian_016.npy",
+      "change": "Big-endian f64 serialization only; exact same numerical array",
+      "original_sha256": "50be9077135fa094bbf98b6b5828340a1483691a0de310b679a29caf4dc71699",
+      "published_sha256": "051c28dc4d1cb1299d7981984c350d45d78a73d45c8d6d538ee1a0cb69225d06",
+      "numeric_sha256": "d82b3e098d8b97268b22d5963518fb8d0a538fe39e2206d57b6b5e56c8db06c9",
+      "exact_values_mean_std_identical": true
+    },
+    {
+      "path": "environment/public_eval/targets/seed_404_uniform_labels.npy",
+      "change": "Big-endian f64 serialization only; exact same numerical array",
+      "original_sha256": "bd74a844d9cf72cda7ac5284308d7ea6927ee698ed8688fc9f372440289da496",
+      "published_sha256": "85c03e7e1c6f30c22cdf861900036db7b1dcaf163f50453925cf7dd26f8be3fd",
+      "numeric_sha256": "411bed19475862b1e42cc2b7aa59d5b5cbcb77c8d1e2dd22b77f9a23a51a1c2f",
+      "exact_values_mean_std_identical": true
+    }
+  ],
+  "quality_gates_seeds_input_arrays_method_and_score_anchors_changed": false,
+  "baseline_reference_comparison_invalidated": false,
+  "explanation": "Numeric golden values, all gate arithmetic, input data and method math stay identical. Only byte order and a local variable spelling change. Current-version image/stability/NOP binding must be renewed; old evidence retained."
+}

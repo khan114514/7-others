@@ -1,0 +1,52 @@
+{
+  "binding_correction": true,
+  "correction_time_utc": "2026-10-06T05:46:19.918066+00:00",
+  "issue": "best_method/method.py previously contained round-01 method source (68aa9fc...) despite both round analyses concluding the published no-training baseline (FID 9.663) is the current best. This was a source-binding error, not a scoring error.",
+  "previously_bound": {
+    "method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c",
+    "source": "agent-output/round-01/method.py (max_disagree_early_scale, num_samples=256)",
+    "own_evaluation_fid": 10.126636628087738,
+    "note": "Round-01 own evaluation result. Worse than baseline by +0.463 FID."
+  },
+  "now_bound": {
+    "method_sha256": "bc4ac6b53af961775c669bca498d0f03d5ea26e484a1c6aa3e4b32a42a3c8fca",
+    "source": "environment/starter/method.py (published_dd baseline, num_samples=0)",
+    "checkpoint_sha256_from_anchors": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+    "receipt_sha256_from_anchors": "8175bc77514b429d9fb090eda24241b9a43a32e393e3cf0c08a6f84f3dfe3759",
+    "published_fid": 9.663262058820692,
+    "published_protocol": "dd-selfproto-v1.3",
+    "published_evaluation_seed": 0,
+    "published_sample_count": 50000,
+    "score_source": "environment/anchors.json (public frozen calibration anchor, not re-run by self this round)",
+    "note": "Public baseline anchor. Same protocol and evaluation_seed=0 as both of my own evaluations. Score is the published anchor value, not a re-run I performed."
+  },
+  "own_method_round_scores": {
+    "round_01": {
+      "method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c",
+      "fid": 10.126636628087738,
+      "delta_vs_baseline": 0.4633745692670459,
+      "training_samples": 256,
+      "status": "worse than baseline"
+    },
+    "round_02": {
+      "method_sha256": "6e770e3ad3b38700f56b337ade61a6be69350879d4c47f26f31d9d3a1bdef208",
+      "fid": 9.784449511236346,
+      "delta_vs_baseline": 0.12118745243565374,
+      "training_samples": 256,
+      "status": "worse than baseline"
+    }
+  },
+  "best_method_status": "published baseline (no adaptation, num_samples=0)",
+  "best_fid": 9.663262058820692,
+  "best_fid_source": "public anchor (environment/anchors.json)",
+  "is_own_re_run": false,
+  "qa_pass_claimed": false,
+  "backup_of_incorrect_binding": "agent-output/best_method_before_binding_correction/method.py",
+  "preservation_note": [
+    "All method round source files (round-01/method.py, round-02/method.py) unchanged.",
+    "All evaluation results, plans, trajectories, and original analysis files unchanged.",
+    "solution/method.py NOT modified.",
+    "No new GPU jobs or method rounds added.",
+    "No QA PASS claimed."
+  ]
+}

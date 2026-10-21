@@ -1,0 +1,63 @@
+{
+  "observed_epoch": 1791730193.2051,
+  "cause": "Trusted shutdown killed UID1000 sleep infinity child of PID1; PID1 shell exited137, so bounded code upload failed. Isolated same-command Docker regression reproduced legacy failure and verified scoped proxy shutdown preserves keepalive.",
+  "classification": "CONTROLLER_SHUTDOWN_IMPLEMENTATION_FAILURE_AFTER_12H_OBSERVATION",
+  "old_container_id": "bc38873a7e5b219ab22a6195c1984b1ed394f9f18f4c47fe21402e4c6250f7f5",
+  "old_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 137,
+    "Error": "",
+    "StartedAt": "2026-10-11T02:36:09.320953423Z",
+    "FinishedAt": "2026-10-11T14:36:54.19084538Z"
+  },
+  "old_restart_count": 0,
+  "healthy_12h_proof_seconds": 43213.8560234278,
+  "research_hours_preserved": 10.031581138239966,
+  "original_failure_preserved": true,
+  "provider_billing_related": false,
+  "events": [
+    {
+      "action": "exec_create: bash -c /opt/runtime/bin/python -I -c 'import os,signal\nfrom pathlib import Path\nskip={1};current=os.getpid()\nwhile current and current not in skip:\n skip.add(current)\n try:current=int(next(x.split()[1] for x in (Path('\"'\"'/proc'\"'\"')/str(current)/'\"'\"'status'\"'\"').read_text().splitlines() if x.startswith('\"'\"'PPid:'\"'\"')))\n except (FileNotFoundError,StopIteration):break\nfor p in Path('\"'\"'/proc'\"'\"').glob('\"'\"'[0-9]*'\"'\"'):\n try:\n  pid=int(p.name)\n  if pid in skip:continue\n  uid=next(x.split()[1] for x in (p/'\"'\"'status'\"'\"').read_text().splitlines() if x.startswith('\"'\"'Uid:'\"'\"'))\n  if uid=='\"'\"'1000'\"'\"':os.kill(pid,signal.SIGKILL)\n except (FileNotFoundError,ProcessLookupError,PermissionError):pass\n'",
+      "timeNano": 1791729413554293588,
+      "execID": "b2b0cb2555d25295678e3eef422b3bf54fb9c79c9b44162c56e82ca4e6e345e5",
+      "exitCode": null
+    },
+    {
+      "action": "exec_start: bash -c /opt/runtime/bin/python -I -c 'import os,signal\nfrom pathlib import Path\nskip={1};current=os.getpid()\nwhile current and current not in skip:\n skip.add(current)\n try:current=int(next(x.split()[1] for x in (Path('\"'\"'/proc'\"'\"')/str(current)/'\"'\"'status'\"'\"').read_text().splitlines() if x.startswith('\"'\"'PPid:'\"'\"')))\n except (FileNotFoundError,StopIteration):break\nfor p in Path('\"'\"'/proc'\"'\"').glob('\"'\"'[0-9]*'\"'\"'):\n try:\n  pid=int(p.name)\n  if pid in skip:continue\n  uid=next(x.split()[1] for x in (p/'\"'\"'status'\"'\"').read_text().splitlines() if x.startswith('\"'\"'Uid:'\"'\"'))\n  if uid=='\"'\"'1000'\"'\"':os.kill(pid,signal.SIGKILL)\n except (FileNotFoundError,ProcessLookupError,PermissionError):pass\n'",
+      "timeNano": 1791729413558781296,
+      "execID": "b2b0cb2555d25295678e3eef422b3bf54fb9c79c9b44162c56e82ca4e6e345e5",
+      "exitCode": null
+    },
+    {
+      "action": "exec_die",
+      "timeNano": 1791729413960319088,
+      "execID": "b2b0cb2555d25295678e3eef422b3bf54fb9c79c9b44162c56e82ca4e6e345e5",
+      "exitCode": "0"
+    },
+    {
+      "action": "exec_create: python -I -c import os,stat,sys,json,base64,hashlib,uuid\nm=json.load(sys.stdin);p=sys.argv[1];data=base64.b64decode(m['data'],validate=True)\nif len(data)>524288 or len(data)!=m['bytes'] or hashlib.sha256(data).hexdigest()!=m['sha256']:raise ValueError('Artifact transport binding mismatch')\nparent=os.path.dirname(p)\nif not stat.S_ISDIR(os.lstat(parent).st_mode):raise ValueError('Artifact parent is not a real directory')\npending=p+'.transfer-'+uuid.uuid4().hex\nfd=os.open(pending,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o644)\ntry:\n offset=0\n while offset<len(data):offset+=os.write(fd,data[offset:])\n os.fsync(fd)\nfinally:os.close(fd)\nos.replace(pending,p)\nprint(json.dumps({'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}))\n /workspace/solution/method.py",
+      "timeNano": 1791729414002596630,
+      "execID": "c88563c2fed7a303fb196930f2d09da43250460e2c8962c97165b5da8ab11450",
+      "exitCode": null
+    },
+    {
+      "action": "exec_start: python -I -c import os,stat,sys,json,base64,hashlib,uuid\nm=json.load(sys.stdin);p=sys.argv[1];data=base64.b64decode(m['data'],validate=True)\nif len(data)>524288 or len(data)!=m['bytes'] or hashlib.sha256(data).hexdigest()!=m['sha256']:raise ValueError('Artifact transport binding mismatch')\nparent=os.path.dirname(p)\nif not stat.S_ISDIR(os.lstat(parent).st_mode):raise ValueError('Artifact parent is not a real directory')\npending=p+'.transfer-'+uuid.uuid4().hex\nfd=os.open(pending,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o644)\ntry:\n offset=0\n while offset<len(data):offset+=os.write(fd,data[offset:])\n os.fsync(fd)\nfinally:os.close(fd)\nos.replace(pending,p)\nprint(json.dumps({'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}))\n /workspace/solution/method.py",
+      "timeNano": 1791729414004471672,
+      "execID": "c88563c2fed7a303fb196930f2d09da43250460e2c8962c97165b5da8ab11450",
+      "exitCode": null
+    },
+    {
+      "action": "die",
+      "timeNano": 1791729415038863214,
+      "execID": null,
+      "exitCode": "137"
+    }
+  ],
+  "regression_evidence": "<TASK_ROOT>/private/native-shutdown-regression.json"
+}

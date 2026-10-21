@@ -1,0 +1,23 @@
+{
+    "job_name": "asd-research-1791424092",
+    "jobs_dir": "<TASK_ROOT>/campaigns",
+    "n_concurrent_trials": 2,
+    "agents": [
+        {
+            "import_path": "tools.memory_codex_agent:MemoryCodexAgent",
+            "model_name": "modcon/gpt-6.1-sol",
+            "override_timeout_sec": 54000.0,
+            "kwargs": {
+                "target_seconds": 36000,
+                "wall_limit_seconds": 50400,
+                "turn_timeout_seconds": 7200,
+                "resume_from": "<TASK_ROOT>/campaigns/asd-research-1791382557/harbor_task__dGakBiV/agent"
+            }
+        }
+    ],
+    "tasks": [
+        {
+            "path": "<TASK_ROOT>/submission/workspace/harbor_task"
+        }
+    ]
+}

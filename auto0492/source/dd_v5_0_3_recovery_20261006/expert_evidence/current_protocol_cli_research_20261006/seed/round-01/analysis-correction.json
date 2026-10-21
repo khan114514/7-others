@@ -1,0 +1,173 @@
+{
+  "correction_of": "agent-output/round-01/analysis.json",
+  "original_analysis_sha256": "597fad890dad7bdb0f9c60bcc1a69f7d3b6969a04f7555dd58110d20ba1e4c6e",
+  "original_method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c",
+  "recovery_result_sha256": "31927cb36e4f5854ffb3f221629edf27c70272f87461ff8c0a7beed086b0b611",
+  "correction_date_shanghai": "2026-10-06T11:09:25.701656+08:00",
+  "correction_toolchain": "python3 with tzdata-2026.5, ZoneInfo('Asia/Shanghai')",
+  "corrections": {
+    "causal_attribution": {
+      "original_claim": "Both sub-hypotheses are rejected (causal_hypothesis_holds=false, both hypothesis_breakdown entries set holds=false)",
+      "corrected_conclusion": "Only the JOINT strategy of max-LPIPS proposal selection AND early-scale-biased time sampling is observed to underperform baseline (FID 10.127 vs 9.663) in this single fixed-run comparison. Because both design factors were changed simultaneously relative to baseline, there is no isolation evidence to reject either sub-hypothesis individually. The degradation could come from either factor alone or their interaction. Both sub-hypotheses remain plausible but untested in isolation.",
+      "single_trial_limitations": [
+        "One joint comparison cannot decompose two simultaneous factor changes into individual causal contributions.",
+        "No statistical replication — the FID difference is a single 50k-sample evaluation, not a distribution of runs.",
+        "The baseline is a published reference, not re-run under identical evaluation conditions in this round.",
+        "Cannot conclude by flipping both factors in round-02 whether the improvement (if any) came from selection direction, time distribution, or their interaction."
+      ],
+      "retained_guesses": {
+        "max_lpips_may_be_harmful": "Plausible but unisolated: hard-example selection at 256 samples may select noisy outliers.",
+        "early_bias_may_be_harmful": "Plausible but unisolated: early-scale concentration may starve later scales at low sample count."
+      },
+      "original_next_round_still_applicable": true,
+      "next_round_caveat": "The planned round-02 (min-LPIPS + uniform time) is still a reasonable diagnostic step, but its result will only answer whether the opposite joint configuration is better — it will not by itself isolate which single factor was responsible. Two further single-factor-perturbation runs would be needed for full isolation, which may not be worth the budget."
+    },
+    "time_distribution_probabilities": {
+      "original_claim_analysis": "~61.5% mass in scale 0-1",
+      "original_claim_method_py": "power=2.5 puts ~50% of mass on scales 0-2",
+      "distribution": "t = U^(2.5) where U ~ Uniform(0,1)",
+      "scale_mapping": "scale = floor(10 * t); 10 scales indexed 0-9; scale s corresponds to t in [s/10, (s+1)/10)",
+      "computed_probabilities": {
+        "P_t_less_0_2": {
+          "value": 0.525306,
+          "pct": 52.5306,
+          "note": "Equals P(scale 0-1); i.e. mass in scales 0 and 1 combined"
+        },
+        "P_t_less_0_3": {
+          "value": 0.617801,
+          "pct": 61.7801,
+          "note": "Equals P(scale 0-2); i.e. mass in scales 0, 1, and 2 combined"
+        },
+        "per_scale": [
+          {
+            "scale": 0,
+            "t_range": "[0.0, 0.1)",
+            "probability": 0.39810717055349726,
+            "probability_pct": 39.8107
+          },
+          {
+            "scale": 1,
+            "t_range": "[0.1, 0.2)",
+            "probability": 0.12719839032725616,
+            "probability_pct": 12.7198
+          },
+          {
+            "scale": 2,
+            "t_range": "[0.2, 0.3)",
+            "probability": 0.09249528968665843,
+            "probability_pct": 9.2495
+          },
+          {
+            "scale": 3,
+            "t_range": "[0.3, 0.4)",
+            "probability": 0.0753439925877345,
+            "probability_pct": 7.5344
+          },
+          {
+            "scale": 4,
+            "t_range": "[0.4, 0.5)",
+            "probability": 0.06471344010005264,
+            "probability_pct": 6.4713
+          },
+          {
+            "scale": 5,
+            "t_range": "[0.5, 0.6)",
+            "probability": 0.05733482635072373,
+            "probability_pct": 5.7335
+          },
+          {
+            "scale": 6,
+            "t_range": "[0.6, 0.7)",
+            "probability": 0.051847054775200685,
+            "probability_pct": 5.1847
+          },
+          {
+            "scale": 7,
+            "t_range": "[0.7, 0.8)",
+            "probability": 0.04756993947352928,
+            "probability_pct": 4.757
+          },
+          {
+            "scale": 8,
+            "t_range": "[0.8, 0.9)",
+            "probability": 0.044121411659529985,
+            "probability_pct": 4.4121
+          },
+          {
+            "scale": 9,
+            "t_range": "[0.9, 1.0)",
+            "probability": 0.041268484485817325,
+            "probability_pct": 4.1268
+          }
+        ]
+      },
+      "corrected_summary": "P(scale 0-1) = P(t < 0.2) = 52.53%, not ~61.5%. The 61.78% figure corresponds to P(scale 0-2) = P(t < 0.3). The method.py comment '~50% of mass on scales 0-2' is directionally right but numerically low; actual is ~61.8%.",
+      "does_not_change_method": true,
+      "note": "This is a documentation/description correction only. The actual sampler code in method.py is unchanged and correctly implements t = U^2.5."
+    },
+    "timestamp_timezone": {
+      "original_claim": "finished_asia_shanghai: '2026-10-06 03:09:25'",
+      "corrected": {
+        "finished_unix": 1791256165.7016556,
+        "utc_clock_face": "2026-10-06 03:09:25",
+        "utc_iso": "2026-10-06T03:09:25.701656+00:00",
+        "asia_shanghai_clock_face": "2026-10-06 11:09:25",
+        "asia_shanghai_iso": "2026-10-06T11:09:25.701656+08:00",
+        "timezone_abbr": "CST",
+        "utc_offset": "+08:00"
+      },
+      "finding": "The original 'finished_asia_shanghai' value '2026-10-06 03:09:25' is actually the UTC clock face of the timestamp, not the Shanghai local time. The correct Shanghai local time is '2026-10-06 11:09:25' (UTC+8).",
+      "verified_via": "datetime.fromtimestamp(finished_unix, tz=timezone.utc).astimezone(ZoneInfo('Asia/Shanghai'))"
+    }
+  },
+  "next_step_confirmed": {
+    "round": 2,
+    "policy_name": "min_disagree_uniform_time",
+    "changes": [
+      "selection_strategy: max_lpips_disagreement -> min_lpips_disagreement",
+      "time_sampler: power_law_alpha_2.5 -> uniform"
+    ],
+    "kept_constant": [
+      "num_samples: 256",
+      "proposal_multiplier: 4",
+      "weighting: uniform",
+      "filter_rule: student_agreement_per_label"
+    ],
+    "what_round02_answer": "Whether the opposite joint configuration (min-LPIPS + uniform) outperforms the round-01 joint configuration. Does NOT isolate which single factor drives any difference.",
+    "method_source_unchanged_this_round": true,
+    "round01_method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c"
+  },
+  "trajectory_update": {
+    "backup_file": "agent-output/trajectory_current.before-analysis-correction-20261006.json",
+    "backup_sha256": "8a3e63dd300b8bb8d1471f166417231079318439c31f87934e5fd8c48ed86b03",
+    "backup_created": "before any trajectory modification",
+    "updated_file": "agent-output/trajectory_current.json",
+    "updated_sha256": "50d2a04edbc4a538e86db5cc81944a505fc5e231893dec4ec0767931b956ecd3",
+    "changes_made": [
+      {
+        "field": "round",
+        "from": "round-01",
+        "to": 1,
+        "reason": "Changed string label to integer round index as specified"
+      },
+      {
+        "field": "time",
+        "from": "2026-10-06 03:09:25",
+        "to": "2026-10-06T11:09:25.701656+08:00",
+        "reason": "Original value was UTC clock face mislabeled as Shanghai time; corrected to actual Asia/Shanghai time via ZoneInfo"
+      }
+    ],
+    "fields_unchanged": [
+      "policy_name",
+      "method_summary",
+      "status",
+      "score",
+      "failure_reason",
+      "retained_best"
+    ],
+    "field_count_before": 8,
+    "field_count_after": 8,
+    "no_new_rounds_added": true,
+    "rounds_count": 1
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "role": "seed",
+  "runtime": "actual native Harbor0.23.0 + Linux Codex0.160.0",
+  "model_requested": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "formal_trajectory_started": true,
+  "formal_scored_round": true,
+  "score": 0.6771049225264887,
+  "model_turn_completed": false,
+  "cli_exit_code": 143,
+  "provider_response_identity_verified": true,
+  "same_prompt_sha256": "9b01a2c25ee35827952d1fb18b3347e727351197c2c6d7832954f5c18f1f5ef4",
+  "same_instruction_sha256": "687fa50c36287eb4aa48971c73e0944f57b858b583b2096945fbc0c64a6d5530",
+  "trusted_runtime_source_manifest": {
+    "heima_harbor_environment.py": "91138b261a85272d38650c1eb177ae1ee24d1ef3933fc3f24f902f949982cd32",
+    "cli_provider_relay.py": "1fc5a67e02e154c0f77e3d7e5fa3e4e65fdd41c1aa34f692b894119f7488dddd",
+    "native_codex_agent.py": "1633a932c88082e1ed5bc1de27e43f63b09aae09f3aa58cdf1ca9ff1146cad4e",
+    "evaluator_bridge.py": "9c6e2ad5bde3cc54484818df5ce2d25e618f403fb5a3bcb3081d6e7ddec323e5",
+    "run_formal_cli_turn.py": "f0716e3487de4156131fb823dd58c4ffc2fd6c4dbdc20fd5fe4c2a0e6cd8a6cb",
+    "native_round_activity_guard.py": "e6b9a66d9d4541a59439e24c53d389731ed1d350ea8bac3a5a12108a36dfda2a"
+  },
+  "trusted_runtime_unchanged": true,
+  "exported_method_matches_verified_handoff": true,
+  "served_model_identifiers": [
+    "doubao-seed-2-1-turbo-260628"
+  ],
+  "effective_research_seconds": 4121.505862951279,
+  "time_accounting": {
+    "included_intervals": [
+      [
+        1791269531.284271,
+        1791269556.901698
+      ],
+      [
+        1791269681.143817,
+        1791269698.837344
+      ],
+      [
+        1791269707.8970292,
+        1791269755.772566
+      ],
+      [
+        1791269759.0223098,
+        1791269901.242872
+      ],
+      [
+        1791269906.837603,
+        1791269986.1859431
+      ],
+      [
+        1791269989.4175518,
+        1791270095.585168
+      ],
+      [
+        1791270099.1218061,
+        1791270168.815677
+      ],
+      [
+        1791270172.094375,
+        1791271330.3954592
+      ],
+      [
+        1791270520.3523974,
+        1791270910.7483797
+      ],
+      [
+        1791272976.1541343,
+        1791273441.0651798
+      ],
+      [
+        1791273868.1886184,
+        1791275877.8654714
+      ]
+    ],
+    "gpu_jobs": [
+      {
+        "job_id": "3afa96761fe64f418cec59aa518d469b",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791269698.492151,
+        "clock_offset_estimate_seconds": 65.62577223777771,
+        "transport_uncertainty_seconds": 0.06841909885406494
+      },
+      {
+        "job_id": "02998dae6dd74dd182e1a7734fae5ed3",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791269865.6192682,
+        "clock_offset_estimate_seconds": 65.62462711334229,
+        "transport_uncertainty_seconds": 0.06552493572235107
+      },
+      {
+        "job_id": "e89afcd758054e4285fcb2702ed50802",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791269870.428066,
+        "clock_offset_estimate_seconds": 65.62598752975464,
+        "transport_uncertainty_seconds": 0.06536602973937988
+      },
+      {
+        "job_id": "fc65ce14708b4c0f9eebfb532990c194",
+        "phase": "FAILED",
+        "local_submit_epoch": 1791269870.88571,
+        "clock_offset_estimate_seconds": 65.61557507514954,
+        "transport_uncertainty_seconds": 0.05391192436218262
+      },
+      {
+        "job_id": "319e60a648bf4f079612efbbd9b813cc",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791270095.273195,
+        "clock_offset_estimate_seconds": 65.67924666404724,
+        "transport_uncertainty_seconds": 0.06862199306488037
+      },
+      {
+        "job_id": "82076e2170744250a02da4adf2687653",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791270961.3954382,
+        "clock_offset_estimate_seconds": 65.64680457115173,
+        "transport_uncertainty_seconds": 0.10428512096405029
+      },
+      {
+        "job_id": "fd5ca67ac0ef40afba0c5e2933496411",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791273442.995605,
+        "clock_offset_estimate_seconds": 65.71328330039978,
+        "transport_uncertainty_seconds": 0.06896448135375977
+      }
+    ],
+    "queue_intervals_excluded": [],
+    "classification": {
+      "effective_seconds": 1646.9179644584656,
+      "included_intervals": [
+        [
+          1791269531.284271,
+          1791269556.901698
+        ],
+        [
+          1791269681.143817,
+          1791269698.837344
+        ],
+        [
+          1791269707.8970292,
+          1791269755.772566
+        ],
+        [
+          1791269759.0223098,
+          1791269901.242872
+        ],
+        [
+          1791269906.837603,
+          1791269986.1859431
+        ],
+        [
+          1791269989.4175518,
+          1791270095.585168
+        ],
+        [
+          1791270099.1218061,
+          1791270168.815677
+        ],
+        [
+          1791270172.094375,
+          1791271330.3954592
+        ]
+      ],
+      "infrastructure_failure_seconds": 152.1932237148285,
+      "pending_activity_audit_seconds": 3.6875267028808594,
+      "excluded_seconds": 155.88075041770935,
+      "accounting_status": "PARTIAL_NORMAL_WORK_PRESERVED_PENDING_AUDIT",
+      "artifact_validity_used_for_time": false
+    },
+    "gpu_time_overlapping_cli_not_double_counted": true,
+    "gpu_experiment_attributed_to_genuine_cli_work": true
+  },
+  "method_sha256": "a0a4bb2d8a059009673ebfac97e2d47dc6d5a845b63db30a0155b1c0e542934c",
+  "status": "NATIVE_SCORED_RESEARCH_ROUND",
+  "native_trial_result": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/d09822ea1f944d0eaf038fd557a0d729/native-returned-result.json",
+  "failure": null
+}

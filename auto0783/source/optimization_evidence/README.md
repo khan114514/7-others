@@ -1,0 +1,7 @@
+# Fresh paired optimization evidence
+
+Baseline is the unchanged runnable Starter implementing the published eager dense dual-branch decoder. Author Reference keeps the dense shapes and caches invariant text-prefix intermediates within each rollout. The source files and their hashes are recorded in each result. These are existing methods; this packaging helper neither executes nor rewrites them. The interface also permits graph factoring, tensor partition/recombination, attention replacement and equivalent operator composition under fixed weights and quality gates, as specified in the protocol.
+
+All declared sampling seeds are included, with both cases and all three repetitions. The aggregation is the median of three repetitions for each case, the mean of both cases for each seed, then the mean across seeds. Independent CPU audit and this packaging calculation verify raw-stage sums and these aggregates. Sampling variability uses the declared Baseline sample standard deviation and 3-sigma improvement gate; the additional all-repetition check is retained separately. Actual quality diagnostics and autonomous final-latent comparisons are retained. No full FLUX renderer or image-quality reproduction is claimed.
+
+The authoritative raw files are referenced by paths relative to the submission root rather than duplicated. Native selected Agent candidates remain in expert_evidence and are not substituted for the author Reference. Historical results remain distinctly labeled elsewhere.

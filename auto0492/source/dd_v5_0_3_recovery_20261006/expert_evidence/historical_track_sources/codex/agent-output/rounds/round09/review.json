@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-10-03T23:41:48.025400+08:00",
+  "round": 9,
+  "quality_gate_passed": true,
+  "manually_inspected_grid": true,
+  "visual_review": "Formal64 grid retains diverse recognizable objects and scenes, with blur and ghosting but no all-black, identical-image or dominant repetitive-ring collapse. Full FID9.735935034553052 is0.072672975732360 above B and0.026069265929096 worse than round08 using the same256 teacher pairs and16 updates. Prefix0 upweighting did not improve this comparison. Original disk failure remains; exact seed0 replay verified all6958 retained complete PNGs before finishing50000 finite outputs. Best remains round06.",
+  "grid_sha256": "885354a570b9b16fa966b6f56e9640cc71447598b8a7eb2c2b372c3296345c39",
+  "result_sha256": "84e0d8d79a98d691fa46d7a58b875081bd86b2a6d4dbaf79a4c5f3b9755e0845",
+  "score": 9.735935034553052,
+  "fid_minus_baseline": 0.07267297573235965,
+  "training_budget_seconds": 91.1328573031351,
+  "updates": 16,
+  "row": {
+    "round": 9,
+    "policy_name": "warmstart_official_dd_reuse256_onepass_prefix0half",
+    "method_summary": "dd-selfproto-v1.1; warmstart_official_dd_ema; 256 verified teacher pairs reused with full generation charge 30.313s; one shuffled pass, 16 updates; P(prefix0)=0.5; scales1..9 equally share0.5; frozen floor(10*t) mapping; fixed full FID-50k=9.735935035, delta to B=+0.072672976. Independent training reimplementation. Visual review: Formal64 grid retains diverse recognizable objects and scenes, with blur and ghosting but no all-black, identical-image or dominant repetitive-ring collapse. Full FID9.735935034553052 is0.072672975732360 above B and0.026069265929096 worse than round08 using the same256 teacher pairs and16 updates. Prefix0 upweighting did not improve this comparison. Original disk failure remains; exact seed0 replay verified all6958 retained complete PNGs before finishing50000 finite outputs. Best remains round06.",
+    "status": "ok",
+    "score": 9.735935034553052,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-03 23:41:48"
+  }
+}

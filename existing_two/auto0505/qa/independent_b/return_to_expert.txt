@@ -1,0 +1,13 @@
+本包当前结论：NOT READY（静态核心不通过，非官方工具或平台结果）。
+
+1. 两条当前轨迹rounds为空，run_summary表示尚未开始、effective_seconds=null、best_method=null。请提交两条真实独立模型闭环与有效时间材料、唯一最终方法和干净Public复验。默认各10h；符合完整条件的非训练短迭代才可各7h。保留历史记录但不要补造秒数或把历史QA转写成新证据。
+
+2. 题面及evaluate_candidate.py允许相邻相等节点，但deployment_source/runtime-image/repo/.../flux/sampling.py:133除以相邻步长的一半。请统一严格递减域或实现明确零步长处理，补重复节点/正常节点边界复验；在模型评分前明确无效状态，不能把NaN包装成基础设施失败后当作完成。
+
+3. 两任务Dockerfile依赖本地rfsteps运行tag；部署Dockerfile COPY weights的来源不在ZIP，prepare_weights要求作者原权重目录。请提供平台可获取不可变镜像digest或19项冻结资产的精确合规入口/版本/大小/哈希，修正文档包内路径，补目标环境构建与公开/私有入口调用证据。
+
+4. 历史Public配对提升与归一化已核实达标，Baseline在现有材料内合理。full/hidden U的源文件引用不存在，仅有锚点转抄；请补原始上限逐图指标、方法与日志或明确可审计的估计依据，补comparison_summary和非训练适用性说明。无需为了换卡而自动重算已有成对结果。
+
+5. 当前Harbor版本/provider和A100-only配置的适用范围需可核查依据。包内自述授权不作为本审查收到人类授权的替代。保持历史A100设备和耗时真值；目标GPU迁移耗时/分数、NOP、官方四项指纹等按现行口径非阻断后补。
+
+验收边界：本次只静态读取ZIP；不执行提交代码、模型、Docker或训练。真实0.3.10及格式/GPU/指纹工具尚缺，不声称官方PASS。

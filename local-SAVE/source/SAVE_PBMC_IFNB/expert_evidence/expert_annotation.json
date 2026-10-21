@@ -1,0 +1,42 @@
+{
+  "task_id": null,
+  "status": "NOT_READY",
+  "optimization_surface": [
+    "model modules",
+    "condition representation",
+    "training objective and update rules",
+    "inference algorithm"
+  ],
+  "metrics": {
+    "metric": "mean-expression MSE",
+    "direction": "minimize",
+    "split": "dev",
+    "protocol": "pbmc-context-v1",
+    "baseline": {
+      "raw_value": 0.0036568199948745547,
+      "normalized_score": 0.0
+    },
+    "reference": {
+      "raw_value": 0.002632532932770982,
+      "normalized_score": 0.28010322179905667
+    },
+    "upper_bound": {
+      "raw_value": 0.0,
+      "source": "metric_ceiling"
+    }
+  },
+  "isolation": {
+    "reference_visible_to_agent": false,
+    "hidden_assets_visible_to_agent": false,
+    "runtime_verified": false
+  },
+  "formal_seed_set": [
+    17,
+    29,
+    43,
+    71,
+    97
+  ],
+  "G03_expert_evidence_passed": true,
+  "final_acceptance_verified": false
+}

@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": [
+    "entry_sha256"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "entry_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

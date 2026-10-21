@@ -1,0 +1,15 @@
+{
+  "base": "88_joint_eager_text_qk_rotary",
+  "whole_numerical_node_body_order_and_lifetimes_equal": true,
+  "original_image_regions_equal": true,
+  "sole_addition": {
+    "id": "text_qk_rotary_compiled",
+    "nodes": [
+      "text_qk_rotary"
+    ]
+  },
+  "uniform_prefix_single_output_boundary": true,
+  "no_eager_norm_softmax_or_GEMM_compilation_introduced": true,
+  "cache_budget_and_reset_semantics_unchanged": true,
+  "region_declaration_order_compared_to_prospective": "Validated execution order is sorted by node start; prospective region appended, builder region declared first."
+}

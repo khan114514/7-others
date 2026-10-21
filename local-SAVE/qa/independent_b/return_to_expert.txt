@@ -1,0 +1,19 @@
+本轮结论：NOT READY。优化面、健康Baseline与全五seed Reference提升通过现有材料静态复核；当前需修正的是环境执行方式与配置。
+
+1. provider环境源码60–62行改gpus=0并要求外置A100，120行加入extra_docker_compose，147–150行创建broker；grader22–23行经队列外发评分。
+影响：违反当前V4每sandbox单容器、直接自身GPU且正式执行不依赖额外工作环境要求；不是仅换卡耗时补证。
+证据：expert_evidence/runtime_integration/portable_runtime_v4/environment.py:60；expert_evidence/runtime_integration/portable_runtime_v4/environment.py:120；expert_evidence/runtime_integration/portable_runtime_v4/environment.py:147；workspace/harbor_task/tests/grader.py:22
+最小修改：把可信数值评分和受限候选进程迁到每个Solver/Verifier sandbox自身的单容器及分配GPU；去掉外部A100分发、额外broker容器和自定义Compose依赖。保留separate、method.py移交、最小输入和可信父侧评分；交付可按environment/、tests/直接构建的最终上下文或平台支持的显式准备链。
+验收材料：最终双context Dockerfile/依赖/入口、目标provider配置、容器和GPU归属证据、公开Dev/独立Verifier完整评分及移交/reward记录；历史科学数据保留原设备，不因仅换卡强制全部B/R重跑。
+
+2. task.toml第15/31行storage_mb，第18/34行no-network；instruction第19/24行依赖禁网。
+影响：当前内场不声明磁盘限额及禁网/网络白名单，不能以旧版本schema曾接受取代当前契约。
+证据：workspace/harbor_task/task.toml:15；workspace/harbor_task/task.toml:18；workspace/harbor_task/task.toml:31；workspace/harbor_task/task.toml:34；workspace/harbor_task/instruction.md:24
+最小修改：删除task.toml两处storage_mb和no-network声明，按当前内场真实网络/工具策略同步题面及环境；用最小输入、文件权限和受限候选执行实现安全边界，不能依赖平台禁网。
+验收材料：原生配置和题面一致的完整包、可用真实格式/GPU前检的原始输出、资源/网络/超时执行说明。
+
+非阻断后补：四项指纹/历史版本关联、换卡成绩影响、目标卡耗时、历史NOP当前版本绑定、换卡后分数/锚点重算。保留真实旧卡证据，不为这些缺口单独自动补跑。
+工具缺口：真实官方0.3.10和独立格式/GPU/指纹脚本未取得；以后补真实版本/SHA与原始输出，禁止改旧工具版本冒充。
+科学复算：B均值0.0036568199948745547，R均值0.0026325329327709819，σ_B=0.00025142367973954213，改善4.073948258σ，归一化0.280103222。无需主动削弱Baseline。
+两轨有效时间36508.691003、36639.615035秒，八字段及40/69成功公开评分核对一致；建议分别解释Seed摘要159轮、154正计时native turn、376事件/69成功评分计数，并显式写时区。此计数建议不单独否定10h时长。
+本报告为local-v4-content-review，未独立动态复跑或官方Hidden验收。

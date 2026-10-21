@@ -1,0 +1,698 @@
+{
+  "compile_regions": [
+    {
+      "id": "mlp_silu_fusion",
+      "nodes": [
+        "img_mlp_gate_silu",
+        "img_mlp_mid"
+      ]
+    }
+  ],
+  "layer_body": [
+    {
+      "dim": 1,
+      "id": "text_state",
+      "inputs": [
+        "state"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 0,
+      "stop": 300
+    },
+    {
+      "id": "text_input_norm",
+      "inputs": [
+        "text_state",
+        "w:input_layernorm.weight"
+      ],
+      "lifetime": "prefix",
+      "op": "rms_norm"
+    },
+    {
+      "dim": 0,
+      "id": "text_fused_qkv_weight",
+      "inputs": [
+        "w:self_attn.q_proj.weight",
+        "w:self_attn.k_proj.weight",
+        "w:self_attn.v_proj.weight"
+      ],
+      "lifetime": "prefix",
+      "op": "concat"
+    },
+    {
+      "dim": 0,
+      "id": "text_fused_qkv_bias",
+      "inputs": [
+        "w:self_attn.q_proj.bias",
+        "w:self_attn.k_proj.bias",
+        "w:self_attn.v_proj.bias"
+      ],
+      "lifetime": "prefix",
+      "op": "concat"
+    },
+    {
+      "id": "text_qkv",
+      "inputs": [
+        "text_input_norm",
+        "text_fused_qkv_weight",
+        "text_fused_qkv_bias"
+      ],
+      "lifetime": "prefix",
+      "op": "linear"
+    },
+    {
+      "dim": 2,
+      "id": "text_q_slice",
+      "inputs": [
+        "text_qkv"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 0,
+      "stop": 3584
+    },
+    {
+      "dim": 2,
+      "id": "text_k_slice",
+      "inputs": [
+        "text_qkv"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 3584,
+      "stop": 4096
+    },
+    {
+      "dim": 2,
+      "id": "text_v_slice",
+      "inputs": [
+        "text_qkv"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 4096,
+      "stop": 4608
+    },
+    {
+      "dim": 0,
+      "id": "fused_qkv_weight",
+      "inputs": [
+        "w:self_attn.vision_branch_q_proj.weight",
+        "w:self_attn.vision_branch_k_proj.weight",
+        "w:self_attn.vision_branch_v_proj.weight"
+      ],
+      "lifetime": "prefix",
+      "op": "concat"
+    },
+    {
+      "dim": 0,
+      "id": "fused_qkv_bias",
+      "inputs": [
+        "w:self_attn.vision_branch_q_proj.bias",
+        "w:self_attn.vision_branch_k_proj.bias",
+        "w:self_attn.vision_branch_v_proj.bias"
+      ],
+      "lifetime": "prefix",
+      "op": "concat"
+    },
+    {
+      "dim": 2,
+      "id": "text_cos",
+      "inputs": [
+        "cos"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 0,
+      "stop": 300
+    },
+    {
+      "dim": 2,
+      "id": "text_sin",
+      "inputs": [
+        "sin"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 0,
+      "stop": 300
+    },
+    {
+      "dim": 2,
+      "id": "image_cos",
+      "inputs": [
+        "cos"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 300,
+      "stop": 556
+    },
+    {
+      "dim": 2,
+      "id": "image_sin",
+      "inputs": [
+        "sin"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 300,
+      "stop": 556
+    },
+    {
+      "dim": 2,
+      "id": "text_mask_2d",
+      "inputs": [
+        "attention_mask"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 0,
+      "stop": 300
+    },
+    {
+      "dim": 3,
+      "id": "text_mask",
+      "inputs": [
+        "text_mask_2d"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 0,
+      "stop": 300
+    },
+    {
+      "id": "text_attn_eager",
+      "inputs": [
+        "text_q_slice",
+        "text_k_slice",
+        "text_v_slice",
+        "text_mask",
+        "text_cos",
+        "text_sin"
+      ],
+      "lifetime": "prefix",
+      "op": "attention_eager"
+    },
+    {
+      "id": "text_out",
+      "inputs": [
+        "text_attn_eager",
+        "w:self_attn.o_proj.weight"
+      ],
+      "lifetime": "prefix",
+      "op": "linear"
+    },
+    {
+      "id": "text_residual",
+      "inputs": [
+        "text_state",
+        "text_out"
+      ],
+      "lifetime": "prefix",
+      "op": "add"
+    },
+    {
+      "dim": 2,
+      "id": "img_mask_rows",
+      "inputs": [
+        "attention_mask"
+      ],
+      "lifetime": "prefix",
+      "op": "slice",
+      "start": 300,
+      "stop": 556
+    },
+    {
+      "id": "text_post_norm",
+      "inputs": [
+        "text_residual",
+        "w:post_attention_layernorm.weight"
+      ],
+      "lifetime": "prefix",
+      "op": "rms_norm"
+    },
+    {
+      "id": "text_mlp",
+      "inputs": [
+        "text_post_norm",
+        "w:mlp.gate_proj.weight",
+        "w:mlp.up_proj.weight",
+        "w:mlp.down_proj.weight"
+      ],
+      "lifetime": "prefix",
+      "op": "mlp"
+    },
+    {
+      "id": "text_output",
+      "inputs": [
+        "text_residual",
+        "text_mlp"
+      ],
+      "lifetime": "prefix",
+      "op": "add"
+    },
+    {
+      "dim": 1,
+      "id": "image_state",
+      "inputs": [
+        "state"
+      ],
+      "op": "slice",
+      "start": 300,
+      "stop": 556
+    },
+    {
+      "id": "image_input_norm",
+      "inputs": [
+        "image_state",
+        "w:vision_branch_input_layernorm.weight"
+      ],
+      "op": "rms_norm"
+    },
+    {
+      "id": "image_qkv_flat_in",
+      "inputs": [
+        "image_input_norm"
+      ],
+      "op": "reshape",
+      "shape": [
+        512,
+        "hidden"
+      ]
+    },
+    {
+      "id": "image_qkv_flat",
+      "inputs": [
+        "image_qkv_flat_in",
+        "fused_qkv_weight",
+        "fused_qkv_bias"
+      ],
+      "op": "linear"
+    },
+    {
+      "dim": 1,
+      "id": "image_q_flat",
+      "inputs": [
+        "image_qkv_flat"
+      ],
+      "op": "slice",
+      "start": 0,
+      "stop": 3584
+    },
+    {
+      "dim": 1,
+      "id": "image_k_flat",
+      "inputs": [
+        "image_qkv_flat"
+      ],
+      "op": "slice",
+      "start": 3584,
+      "stop": 4096
+    },
+    {
+      "dim": 1,
+      "id": "image_v_flat",
+      "inputs": [
+        "image_qkv_flat"
+      ],
+      "op": "slice",
+      "start": 4096,
+      "stop": 4608
+    },
+    {
+      "id": "image_q_reshaped",
+      "inputs": [
+        "image_q_flat"
+      ],
+      "op": "reshape",
+      "shape": [
+        "batch",
+        256,
+        "heads",
+        "head_dim"
+      ]
+    },
+    {
+      "id": "image_k_3d",
+      "inputs": [
+        "image_k_flat"
+      ],
+      "op": "reshape",
+      "shape": [
+        "batch",
+        256,
+        512
+      ]
+    },
+    {
+      "id": "image_v_3d",
+      "inputs": [
+        "image_v_flat"
+      ],
+      "op": "reshape",
+      "shape": [
+        "batch",
+        256,
+        512
+      ]
+    },
+    {
+      "dim": 1,
+      "id": "full_k",
+      "inputs": [
+        "text_k_slice",
+        "image_k_3d"
+      ],
+      "op": "concat"
+    },
+    {
+      "dim": 1,
+      "id": "full_v",
+      "inputs": [
+        "text_v_slice",
+        "image_v_3d"
+      ],
+      "op": "concat"
+    },
+    {
+      "dim0": 1,
+      "dim1": 2,
+      "id": "image_q_t",
+      "inputs": [
+        "image_q_reshaped"
+      ],
+      "op": "transpose"
+    },
+    {
+      "id": "image_q_rot",
+      "inputs": [
+        "image_q_t",
+        "image_cos",
+        "image_sin"
+      ],
+      "op": "rotary"
+    },
+    {
+      "id": "k_reshaped",
+      "inputs": [
+        "full_k"
+      ],
+      "op": "reshape",
+      "shape": [
+        "batch",
+        "sequence",
+        "kv_heads",
+        "head_dim"
+      ]
+    },
+    {
+      "dim0": 1,
+      "dim1": 2,
+      "id": "k_t",
+      "inputs": [
+        "k_reshaped"
+      ],
+      "op": "transpose"
+    },
+    {
+      "id": "k_rot",
+      "inputs": [
+        "k_t",
+        "cos",
+        "sin"
+      ],
+      "op": "rotary"
+    },
+    {
+      "count": 7,
+      "id": "k_rep",
+      "inputs": [
+        "k_rot"
+      ],
+      "op": "repeat_heads"
+    },
+    {
+      "id": "v_reshaped",
+      "inputs": [
+        "full_v"
+      ],
+      "op": "reshape",
+      "shape": [
+        "batch",
+        "sequence",
+        "kv_heads",
+        "head_dim"
+      ]
+    },
+    {
+      "dim0": 1,
+      "dim1": 2,
+      "id": "v_t",
+      "inputs": [
+        "v_reshaped"
+      ],
+      "op": "transpose"
+    },
+    {
+      "count": 7,
+      "id": "v_rep",
+      "inputs": [
+        "v_t"
+      ],
+      "op": "repeat_heads"
+    },
+    {
+      "id": "q_flat",
+      "inputs": [
+        "image_q_rot"
+      ],
+      "op": "reshape",
+      "shape": [
+        56,
+        256,
+        128
+      ]
+    },
+    {
+      "dim0": 2,
+      "dim1": 3,
+      "id": "k_rep_t",
+      "inputs": [
+        "k_rep"
+      ],
+      "op": "transpose"
+    },
+    {
+      "id": "k_flat_t",
+      "inputs": [
+        "k_rep_t"
+      ],
+      "op": "reshape",
+      "shape": [
+        56,
+        128,
+        "sequence"
+      ]
+    },
+    {
+      "id": "img_scores_flat",
+      "inputs": [
+        "q_flat",
+        "k_flat_t"
+      ],
+      "op": "matmul"
+    },
+    {
+      "id": "img_scores",
+      "inputs": [
+        "img_scores_flat"
+      ],
+      "op": "reshape",
+      "shape": [
+        "batch",
+        "heads",
+        256,
+        "sequence"
+      ]
+    },
+    {
+      "factor": 0.08838834764831843,
+      "id": "img_scaled",
+      "inputs": [
+        "img_scores"
+      ],
+      "op": "scale"
+    },
+    {
+      "id": "img_masked",
+      "inputs": [
+        "img_scaled",
+        "img_mask_rows"
+      ],
+      "op": "add"
+    },
+    {
+      "dim": -1,
+      "id": "img_softmax_fp32",
+      "inputs": [
+        "img_masked"
+      ],
+      "op": "softmax"
+    },
+    {
+      "dtype": "bf16",
+      "id": "img_softmax",
+      "inputs": [
+        "img_softmax_fp32"
+      ],
+      "op": "cast"
+    },
+    {
+      "id": "img_attn_out",
+      "inputs": [
+        "img_softmax",
+        "v_rep"
+      ],
+      "op": "matmul"
+    },
+    {
+      "dim0": 1,
+      "dim1": 2,
+      "id": "img_out_t",
+      "inputs": [
+        "img_attn_out"
+      ],
+      "op": "transpose"
+    },
+    {
+      "id": "img_attn_o_flat",
+      "inputs": [
+        "img_out_t"
+      ],
+      "op": "reshape",
+      "shape": [
+        512,
+        "hidden"
+      ]
+    },
+    {
+      "id": "image_out_flat",
+      "inputs": [
+        "img_attn_o_flat",
+        "w:self_attn.vision_branch_o_proj.weight"
+      ],
+      "op": "linear"
+    },
+    {
+      "id": "image_out",
+      "inputs": [
+        "image_out_flat"
+      ],
+      "op": "reshape",
+      "shape": [
+        "batch",
+        256,
+        "hidden"
+      ]
+    },
+    {
+      "id": "image_residual",
+      "inputs": [
+        "image_state",
+        "image_out"
+      ],
+      "op": "add"
+    },
+    {
+      "id": "image_post_norm",
+      "inputs": [
+        "image_residual",
+        "w:vision_branch_post_attention_layernorm.weight"
+      ],
+      "op": "rms_norm"
+    },
+    {
+      "id": "image_post_flat",
+      "inputs": [
+        "image_post_norm"
+      ],
+      "op": "reshape",
+      "shape": [
+        512,
+        "hidden"
+      ]
+    },
+    {
+      "id": "img_mlp_gate",
+      "inputs": [
+        "image_post_flat",
+        "w:vision_branch_mlp.gate_proj.weight"
+      ],
+      "op": "linear"
+    },
+    {
+      "id": "img_mlp_up",
+      "inputs": [
+        "image_post_flat",
+        "w:vision_branch_mlp.up_proj.weight"
+      ],
+      "op": "linear"
+    },
+    {
+      "id": "img_mlp_gate_silu",
+      "inputs": [
+        "img_mlp_gate"
+      ],
+      "op": "silu"
+    },
+    {
+      "id": "img_mlp_mid",
+      "inputs": [
+        "img_mlp_gate_silu",
+        "img_mlp_up"
+      ],
+      "op": "mul"
+    },
+    {
+      "id": "img_mlp_down",
+      "inputs": [
+        "img_mlp_mid",
+        "w:vision_branch_mlp.down_proj.weight"
+      ],
+      "op": "linear"
+    },
+    {
+      "id": "image_mlp",
+      "inputs": [
+        "img_mlp_down"
+      ],
+      "op": "reshape",
+      "shape": [
+        "batch",
+        256,
+        "hidden"
+      ]
+    },
+    {
+      "id": "image_output",
+      "inputs": [
+        "image_residual",
+        "image_mlp"
+      ],
+      "op": "add"
+    },
+    {
+      "dim": 1,
+      "id": "output",
+      "inputs": [
+        "text_output",
+        "image_output"
+      ],
+      "op": "concat"
+    }
+  ],
+  "layer_output": "output",
+  "schema": "bifrost-tensor-dag/2"
+}

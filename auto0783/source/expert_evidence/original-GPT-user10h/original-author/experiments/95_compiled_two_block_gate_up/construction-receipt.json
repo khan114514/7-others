@@ -1,0 +1,49 @@
+{
+  "base": "62_text_view_common_subexpressions",
+  "changed_existing_nodes": [
+    "image_mlp"
+  ],
+  "all_other_existing_node_objects_and_relative_order_equal": true,
+  "original_image_rotary_region_equal": true,
+  "MLP_region_members": [
+    "image_gate_first_weight",
+    "image_up_first_weight",
+    "image_first_fused_weight",
+    "image_gate_second_weight",
+    "image_up_second_weight",
+    "image_second_fused_weight",
+    "image_first_fused",
+    "image_second_fused",
+    "image_gate_first",
+    "image_up_first",
+    "image_gate_second",
+    "image_up_second",
+    "image_gate",
+    "image_up",
+    "image_gate_silu",
+    "image_gated_product",
+    "image_mlp"
+  ],
+  "all_new_MLP_nodes_stage": true,
+  "no_new_numerical_prefix_values": true,
+  "each_packed_weight_shape": [
+    18944,
+    3584
+  ],
+  "first_rows_order": [
+    "gate0:9472",
+    "up0:9472"
+  ],
+  "second_rows_order": [
+    "gate9472:18944",
+    "up9472:18944"
+  ],
+  "both_projection_shapes_equal_original_M_N_K": [
+    512,
+    18944,
+    3584
+  ],
+  "full_ordered_gate_up_and_down_K_preserved": true,
+  "packing_reconstruction_is_timed_on_every_forward": true,
+  "compiler_elimination_of_weight_copies_unmeasured": true
+}

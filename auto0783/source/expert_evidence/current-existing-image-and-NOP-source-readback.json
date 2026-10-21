@@ -1,0 +1,738 @@
+{
+  "schema_version": 1,
+  "status": "ACTUAL_EXISTING_IMAGE_COPY_BYTES_AND_SOURCE_BOUND_NOP_CHAIN_VERIFIED_NOT_A_QA_VERDICT",
+  "current_Task_source_manifest_SHA256": "2abb0bb70731458dbf320b26be53b0f219a1f3807838d73201219e83333f386e",
+  "actual_image_file_verification": {
+    "agent": {
+      "image_id": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+      "actual_image_workdir": "/workspace/solution",
+      "actual_image_user": "1000:1000",
+      "source_context": "Task/environment",
+      "current_COPY_source_to_image_target": {
+        "/opt/bifrost/public-cli/install_cli.py": {
+          "sha256": "8ffe204e2a5cd047cbd0076c756929139f6d8a4cd0566cb07ae5561060560e9e",
+          "source_member": "Task/environment/tools/install_cli.py"
+        },
+        "/opt/bifrost/public-cli/manifest.json": {
+          "sha256": "3607ccf746f3352eb7bd8e42ce2aa35c7c5a0b0544f07ceb481a3c88789c87e7",
+          "source_member": "Task/environment/tools/manifest.json"
+        },
+        "/opt/bifrost/public-cli/public-cli.part-01.bin": {
+          "sha256": "7e76501d5bf63e7f0f1bfc112337896470e6e9d74c6f6e8b4eba204fee5ae018",
+          "source_member": "Task/environment/tools/public-cli.part-01.bin"
+        },
+        "/opt/bifrost/public-cli/public-cli.part-02.bin": {
+          "sha256": "c1eab888cc8304440903b3ad5090081df8798ea072dc3bb6304bea9de7a55d2b",
+          "source_member": "Task/environment/tools/public-cli.part-02.bin"
+        },
+        "/opt/bifrost/public-cli/public-cli.part-03.bin": {
+          "sha256": "96790e72cea07a1e191e31ee0fb2c228d97a8a539c4b3918ed5eb229c9acc8f4",
+          "source_member": "Task/environment/tools/public-cli.part-03.bin"
+        },
+        "/opt/bifrost/public-cli/public-cli.part-04.bin": {
+          "sha256": "4aba080da9392e8c7249dc7f42eed624a8b1405448468c8df3a2d19456703fbf",
+          "source_member": "Task/environment/tools/public-cli.part-04.bin"
+        },
+        "/opt/bifrost/public-cli/public-cli.part-05.bin": {
+          "sha256": "002cf47aeb3068cd929c6fae8f5e0090f27e29a19178da2a62748c0d691db2e5",
+          "source_member": "Task/environment/tools/public-cli.part-05.bin"
+        },
+        "/opt/bifrost/entrypoint.py": {
+          "sha256": "877e82cabce08cd6ad0f781f920bc9e3dd56320e302b960724b9fae4ba05f8f8",
+          "source_member": "Task/environment/runtime/entrypoint.py"
+        },
+        "/opt/bifrost/local_model_proxy.py": {
+          "sha256": "805291feda27f046f62a03aee741dfeaa7185bf7ae92985cd6047d282f4b7549",
+          "source_member": "Task/environment/runtime/local_model_proxy.py"
+        },
+        "/opt/bifrost/queue_client.py": {
+          "sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+          "source_member": "Task/environment/runtime/queue_client.py"
+        },
+        "/opt/bifrost/public_eval/LICENSE-APACHE-2.0.txt": {
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "source_member": "Task/environment/public_eval/LICENSE-APACHE-2.0.txt"
+        },
+        "/opt/bifrost/public_eval/NOTICE.md": {
+          "sha256": "6e66cb74fe9ad28810e251a70d95331e9e19570b1bcffb7a2f3b9a75e02b8a68",
+          "source_member": "Task/environment/public_eval/NOTICE.md"
+        },
+        "/opt/bifrost/public_eval/baseline-program.json": {
+          "sha256": "d28ad4def04e7f2bab9d0f91c35f46971994d8c023d676c426de72a584230cb9",
+          "source_member": "Task/environment/public_eval/baseline-program.json"
+        },
+        "/opt/bifrost/public_eval/bounded_graph_compiler.py": {
+          "sha256": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619",
+          "source_member": "Task/environment/public_eval/bounded_graph_compiler.py"
+        },
+        "/opt/bifrost/public_eval/data/full-scout-inputs.safetensors": {
+          "sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+          "source_member": "Task/environment/public_eval/data/full-scout-inputs.safetensors"
+        },
+        "/opt/bifrost/public_eval/data/provenance.json": {
+          "sha256": "ea24da88438c9cb935b0ade2385b8a0084e25ccd97c8dd459e3295e377982c27",
+          "source_member": "Task/environment/public_eval/data/provenance.json"
+        },
+        "/opt/bifrost/public_eval/evaluate.py": {
+          "sha256": "89b5090e976d8c324bf4c6a49090539c42a48c5b0597ead9137a3882dc43857e",
+          "source_member": "Task/environment/public_eval/evaluate.py"
+        },
+        "/opt/bifrost/public_eval/full_decoder_evaluator.py": {
+          "sha256": "19b2e7c22893d378ec542eb3a2e25b67b1aa3a7171818f618074feefc7cf57ad",
+          "source_member": "Task/environment/public_eval/full_decoder_evaluator.py"
+        },
+        "/opt/bifrost/public_eval/operator-catalog.md": {
+          "sha256": "a700a400bda8816ae1a64717387ef65ee0fbda31ec3d4721e2e7ba955f40a5af",
+          "source_member": "Task/environment/public_eval/operator-catalog.md"
+        },
+        "/opt/bifrost/public_eval/protocol/benchmark.json": {
+          "sha256": "f2fffa4cf44cc472b305faf64b0867cc521884bc9d3f298a582f101d37946b5c",
+          "source_member": "Task/environment/public_eval/protocol/benchmark.json"
+        },
+        "/opt/bifrost/public_eval/public-tensor-manifest.json": {
+          "sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+          "source_member": "Task/environment/public_eval/public-tensor-manifest.json"
+        },
+        "/opt/bifrost/public_eval/published/baseline_ops.py": {
+          "sha256": "a5a237c37cafd1f9a0a7fe6396ff8364685e8e53e111a93c0fb4ac05b657c19a",
+          "source_member": "Task/environment/public_eval/published/baseline_ops.py"
+        },
+        "/opt/bifrost/public_eval/published/configuration_qwen2_5_vl.py": {
+          "sha256": "98a550f509e4c1965d0338381ea8733affa5ff5c1b731a87c04e4995be840381",
+          "source_member": "Task/environment/public_eval/published/configuration_qwen2_5_vl.py"
+        },
+        "/opt/bifrost/public_eval/tensor_dag.py": {
+          "sha256": "8f6dc1fdcfaca46e0f802afb22691aeda9bc38f3854d38cf9b36e1d589e77aec",
+          "source_member": "Task/environment/public_eval/tensor_dag.py"
+        },
+        "/opt/bifrost/starter/method.py": {
+          "sha256": "07053b2dd5ac52bf587c88ed0d2bfd86f735e4d17ae1bec5679beee864d930e9",
+          "source_member": "Task/environment/starter/method.py"
+        }
+      },
+      "actual_source_matched_member_count": 25,
+      "actual_image_file_readback": {
+        "uid": 1000,
+        "all_current_COPY_target_file_SHA_match": true,
+        "files": {
+          "/opt/bifrost/public-cli/install_cli.py": {
+            "sha256": "8ffe204e2a5cd047cbd0076c756929139f6d8a4cd0566cb07ae5561060560e9e",
+            "bytes": 1359
+          },
+          "/opt/bifrost/public-cli/manifest.json": {
+            "sha256": "3607ccf746f3352eb7bd8e42ce2aa35c7c5a0b0544f07ceb481a3c88789c87e7",
+            "bytes": 1825
+          },
+          "/opt/bifrost/public-cli/public-cli.part-01.bin": {
+            "sha256": "7e76501d5bf63e7f0f1bfc112337896470e6e9d74c6f6e8b4eba204fee5ae018",
+            "bytes": 16777216
+          },
+          "/opt/bifrost/public-cli/public-cli.part-02.bin": {
+            "sha256": "c1eab888cc8304440903b3ad5090081df8798ea072dc3bb6304bea9de7a55d2b",
+            "bytes": 16777216
+          },
+          "/opt/bifrost/public-cli/public-cli.part-03.bin": {
+            "sha256": "96790e72cea07a1e191e31ee0fb2c228d97a8a539c4b3918ed5eb229c9acc8f4",
+            "bytes": 16777216
+          },
+          "/opt/bifrost/public-cli/public-cli.part-04.bin": {
+            "sha256": "4aba080da9392e8c7249dc7f42eed624a8b1405448468c8df3a2d19456703fbf",
+            "bytes": 16777216
+          },
+          "/opt/bifrost/public-cli/public-cli.part-05.bin": {
+            "sha256": "002cf47aeb3068cd929c6fae8f5e0090f27e29a19178da2a62748c0d691db2e5",
+            "bytes": 7695500
+          },
+          "/opt/bifrost/entrypoint.py": {
+            "sha256": "877e82cabce08cd6ad0f781f920bc9e3dd56320e302b960724b9fae4ba05f8f8",
+            "bytes": 1377
+          },
+          "/opt/bifrost/local_model_proxy.py": {
+            "sha256": "805291feda27f046f62a03aee741dfeaa7185bf7ae92985cd6047d282f4b7549",
+            "bytes": 1877
+          },
+          "/opt/bifrost/queue_client.py": {
+            "sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+            "bytes": 2413
+          },
+          "/opt/bifrost/public_eval/LICENSE-APACHE-2.0.txt": {
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+            "bytes": 11358
+          },
+          "/opt/bifrost/public_eval/NOTICE.md": {
+            "sha256": "6e66cb74fe9ad28810e251a70d95331e9e19570b1bcffb7a2f3b9a75e02b8a68",
+            "bytes": 422
+          },
+          "/opt/bifrost/public_eval/baseline-program.json": {
+            "sha256": "d28ad4def04e7f2bab9d0f91c35f46971994d8c023d676c426de72a584230cb9",
+            "bytes": 2526
+          },
+          "/opt/bifrost/public_eval/bounded_graph_compiler.py": {
+            "sha256": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619",
+            "bytes": 6508
+          },
+          "/opt/bifrost/public_eval/data/full-scout-inputs.safetensors": {
+            "sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+            "bytes": 20456432
+          },
+          "/opt/bifrost/public_eval/data/provenance.json": {
+            "sha256": "ea24da88438c9cb935b0ade2385b8a0084e25ccd97c8dd459e3295e377982c27",
+            "bytes": 875
+          },
+          "/opt/bifrost/public_eval/evaluate.py": {
+            "sha256": "89b5090e976d8c324bf4c6a49090539c42a48c5b0597ead9137a3882dc43857e",
+            "bytes": 1583
+          },
+          "/opt/bifrost/public_eval/full_decoder_evaluator.py": {
+            "sha256": "19b2e7c22893d378ec542eb3a2e25b67b1aa3a7171818f618074feefc7cf57ad",
+            "bytes": 17709
+          },
+          "/opt/bifrost/public_eval/operator-catalog.md": {
+            "sha256": "a700a400bda8816ae1a64717387ef65ee0fbda31ec3d4721e2e7ba955f40a5af",
+            "bytes": 4481
+          },
+          "/opt/bifrost/public_eval/protocol/benchmark.json": {
+            "sha256": "f2fffa4cf44cc472b305faf64b0867cc521884bc9d3f298a582f101d37946b5c",
+            "bytes": 6072
+          },
+          "/opt/bifrost/public_eval/public-tensor-manifest.json": {
+            "sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+            "bytes": 250991
+          },
+          "/opt/bifrost/public_eval/published/baseline_ops.py": {
+            "sha256": "a5a237c37cafd1f9a0a7fe6396ff8364685e8e53e111a93c0fb4ac05b657c19a",
+            "bytes": 21561
+          },
+          "/opt/bifrost/public_eval/published/configuration_qwen2_5_vl.py": {
+            "sha256": "98a550f509e4c1965d0338381ea8733affa5ff5c1b731a87c04e4995be840381",
+            "bytes": 12956
+          },
+          "/opt/bifrost/public_eval/tensor_dag.py": {
+            "sha256": "8f6dc1fdcfaca46e0f802afb22691aeda9bc38f3854d38cf9b36e1d589e77aec",
+            "bytes": 13794
+          },
+          "/opt/bifrost/starter/method.py": {
+            "sha256": "07053b2dd5ac52bf587c88ed0d2bfd86f735e4d17ae1bec5679beee864d930e9",
+            "bytes": 2408
+          }
+        },
+        "candidate_code_imported_or_executed": false,
+        "cuda_initialized": false
+      },
+      "literal_dockerignore": "__pycache__\n**/__pycache__\n*.pyc\n**/*.pyc\n.DS_Store\n",
+      "all_current_required_COPY_targets_survive_actual_Docker_build": true,
+      "no_image_rebuild_or_candidate_entrypoint_or_GPU_execution": true
+    },
+    "verifier": {
+      "image_id": "sha256:87a10eba1f24611d3a06a65c34bd91e500b577861cf0134907bae81a6e2260e5",
+      "actual_image_workdir": "/workspace/solution",
+      "actual_image_user": "1000:1000",
+      "source_context": "Task/tests",
+      "current_COPY_source_to_image_target": {
+        "/opt/bifrost/queue_client.py": {
+          "sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+          "source_member": "Task/tests/queue_client.py"
+        },
+        "/tests/grade.py": {
+          "sha256": "5ca912ee0fab3efb0937835c010496c4b6b31848c59964fb86a53b068146df86",
+          "source_member": "Task/tests/grade.py"
+        },
+        "/tests/test.sh": {
+          "sha256": "433555f3d6245512446f9da4bd60eeef53d26945ea81c2d90d99081d178c3dd9",
+          "source_member": "Task/tests/test.sh"
+        },
+        "/tests/prepare_hidden.py": {
+          "sha256": "6db0b0c15acb2df7c581fd31bf4aa84937bcb74c7e7eac63a40f76fd1c829a90",
+          "source_member": "Task/tests/prepare_hidden.py"
+        },
+        "/tests/hidden-chunks/hidden-input.part-01.bin": {
+          "sha256": "c1241c3236610188fc2a1f937f3e0dc0aef4aa879f8dbb98cb06ce7ad211e3be",
+          "source_member": "Task/tests/hidden-chunks/hidden-input.part-01.bin"
+        },
+        "/tests/hidden-chunks/hidden-input.part-02.bin": {
+          "sha256": "42d3c0c3288f911c5c1c7517b297d9b50f31fe0cb348182fdf6a4264f96dfd52",
+          "source_member": "Task/tests/hidden-chunks/hidden-input.part-02.bin"
+        },
+        "/tests/hidden-chunks/hidden-input.part-03.bin": {
+          "sha256": "b53c4a34fedadf4ee0cd9d4c92551c6d322f0dd7f29d6e380679d2f696e3ed0e",
+          "source_member": "Task/tests/hidden-chunks/hidden-input.part-03.bin"
+        },
+        "/tests/hidden-chunks/manifest.json": {
+          "sha256": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+          "source_member": "Task/tests/hidden-chunks/manifest.json"
+        }
+      },
+      "actual_source_matched_member_count": 8,
+      "actual_image_file_readback": {
+        "uid": 1000,
+        "all_current_COPY_target_file_SHA_match": true,
+        "files": {
+          "/opt/bifrost/queue_client.py": {
+            "sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+            "bytes": 2413
+          },
+          "/tests/grade.py": {
+            "sha256": "5ca912ee0fab3efb0937835c010496c4b6b31848c59964fb86a53b068146df86",
+            "bytes": 3167
+          },
+          "/tests/test.sh": {
+            "sha256": "433555f3d6245512446f9da4bd60eeef53d26945ea81c2d90d99081d178c3dd9",
+            "bytes": 172
+          },
+          "/tests/prepare_hidden.py": {
+            "sha256": "6db0b0c15acb2df7c581fd31bf4aa84937bcb74c7e7eac63a40f76fd1c829a90",
+            "bytes": 800
+          },
+          "/tests/hidden-chunks/hidden-input.part-01.bin": {
+            "sha256": "c1241c3236610188fc2a1f937f3e0dc0aef4aa879f8dbb98cb06ce7ad211e3be",
+            "bytes": 16777216
+          },
+          "/tests/hidden-chunks/hidden-input.part-02.bin": {
+            "sha256": "42d3c0c3288f911c5c1c7517b297d9b50f31fe0cb348182fdf6a4264f96dfd52",
+            "bytes": 16777216
+          },
+          "/tests/hidden-chunks/hidden-input.part-03.bin": {
+            "sha256": "b53c4a34fedadf4ee0cd9d4c92551c6d322f0dd7f29d6e380679d2f696e3ed0e",
+            "bytes": 7358440
+          },
+          "/tests/hidden-chunks/manifest.json": {
+            "sha256": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+            "bytes": 930
+          }
+        },
+        "candidate_code_imported_or_executed": false,
+        "cuda_initialized": false
+      },
+      "literal_dockerignore": "__pycache__\n**/__pycache__\n*.pyc\n**/*.pyc\n.DS_Store\n",
+      "all_current_required_COPY_targets_survive_actual_Docker_build": true,
+      "no_image_rebuild_or_candidate_entrypoint_or_GPU_execution": true
+    }
+  },
+  "actual_installed_Harbor": {
+    "actual_installed_Harbor_version": "0.23.0",
+    "trusted_modules": {
+      "EnvironmentFactory": {
+        "module": "harbor.environments.factory",
+        "source_SHA256": "24f1719e3bd2b49da9061d14b4cbd2ca12325d7bb82b0d8552b2300ee96cadcb"
+      },
+      "Trial": {
+        "module": "harbor.trial.trial",
+        "source_SHA256": "757f34424e35ea6e924484bff9ae75464e94acd5dec3d769bc65a9518ada79a8"
+      },
+      "TrialConfig": {
+        "module": "harbor.models.trial.config",
+        "source_SHA256": "c95acedd896e7bab9f4007ed6373adc7e414ac2b63dfd188b7bbcae6ce5ac480"
+      },
+      "DockerEnvironment": {
+        "module": "harbor.environments.docker.docker",
+        "source_SHA256": "8757d3fbc19e58c7ccd14c9b613a0d00dccd1b514375fa0e546ff41ca963a15e"
+      }
+    }
+  },
+  "adapter_literal_base_classes": [
+    "DockerEnvironment"
+  ],
+  "adapter_source_SHA256": "f5242e4eb6ceac0b9d62d8c12b1f4e4106bc0798aae42a57b412138ad25a43fc",
+  "native_launcher_literal_Trial_TrialConfig_calls": [
+    {
+      "function": "TrialConfig",
+      "line": 48
+    },
+    {
+      "function": "Trial.create",
+      "line": 63
+    },
+    {
+      "function": "Trial.create",
+      "line": 52
+    }
+  ],
+  "native_launcher_source_SHA256": "2aa6f644d388b8717d8bfb580ad8728916c31040fa7f135e63174f2a49599516",
+  "current_NOP_config_environment_import_path": "hybrid_harbor_environment:HybridDockerEnvironment",
+  "current_NOP_binding_image_ids": {
+    "gpt": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+    "seed": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+    "verifier": "sha256:87a10eba1f24611d3a06a65c34bd91e500b577861cf0134907bae81a6e2260e5"
+  },
+  "current_NOP_original_trial_id": "7f58b9e5-1896-4280-902e-bb2ba89a7e92",
+  "current_NOP_full_numeric_run_id": "dc02ea50528e4ce1b31adfc1bc2f1ff1",
+  "current_NOP_reward_original": -0.000337629593978607,
+  "actual_entrypoint_override_stdlib_data_read_only": true,
+  "candidate_code_or_GPU_or_QA_model_executed": false,
+  "image_ids_are_actual_local_content_ids_not_claimed_remote_registry_reproducibility": true,
+  "custom_adapter_remains_custom_and_platform_acceptance_not_claimed": true,
+  "fixed_standard_or_collector_or_prior_reports_changed": false,
+  "Root_formal_QA_or_PASS_authored": false,
+  "historical_before_current_source": {
+    "schema_version": 1,
+    "status": "ACTUAL_EXISTING_IMAGE_COPY_BYTES_AND_SOURCE_BOUND_NOP_CHAIN_VERIFIED_NOT_A_QA_VERDICT",
+    "current_Task_source_manifest_SHA256": "3a3ace0b39903c462b577012b9908abc6a9ff3023db8b2bff3205ba536ecafe3",
+    "same_input_ZIP_SHA256": "e9e340cf503f8965f0b583498491226dc8e7f5ee0434742dafc2472e8674872e",
+    "actual_image_file_verification": {
+      "agent": {
+        "image_id": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+        "actual_image_workdir": "/workspace/solution",
+        "actual_image_user": "1000:1000",
+        "source_context": "Task/environment",
+        "current_COPY_source_to_image_target": {
+          "/opt/bifrost/public-cli/install_cli.py": {
+            "sha256": "8ffe204e2a5cd047cbd0076c756929139f6d8a4cd0566cb07ae5561060560e9e",
+            "source_member": "Task/environment/tools/install_cli.py"
+          },
+          "/opt/bifrost/public-cli/manifest.json": {
+            "sha256": "3607ccf746f3352eb7bd8e42ce2aa35c7c5a0b0544f07ceb481a3c88789c87e7",
+            "source_member": "Task/environment/tools/manifest.json"
+          },
+          "/opt/bifrost/public-cli/public-cli.part-01.bin": {
+            "sha256": "7e76501d5bf63e7f0f1bfc112337896470e6e9d74c6f6e8b4eba204fee5ae018",
+            "source_member": "Task/environment/tools/public-cli.part-01.bin"
+          },
+          "/opt/bifrost/public-cli/public-cli.part-02.bin": {
+            "sha256": "c1eab888cc8304440903b3ad5090081df8798ea072dc3bb6304bea9de7a55d2b",
+            "source_member": "Task/environment/tools/public-cli.part-02.bin"
+          },
+          "/opt/bifrost/public-cli/public-cli.part-03.bin": {
+            "sha256": "96790e72cea07a1e191e31ee0fb2c228d97a8a539c4b3918ed5eb229c9acc8f4",
+            "source_member": "Task/environment/tools/public-cli.part-03.bin"
+          },
+          "/opt/bifrost/public-cli/public-cli.part-04.bin": {
+            "sha256": "4aba080da9392e8c7249dc7f42eed624a8b1405448468c8df3a2d19456703fbf",
+            "source_member": "Task/environment/tools/public-cli.part-04.bin"
+          },
+          "/opt/bifrost/public-cli/public-cli.part-05.bin": {
+            "sha256": "002cf47aeb3068cd929c6fae8f5e0090f27e29a19178da2a62748c0d691db2e5",
+            "source_member": "Task/environment/tools/public-cli.part-05.bin"
+          },
+          "/opt/bifrost/entrypoint.py": {
+            "sha256": "877e82cabce08cd6ad0f781f920bc9e3dd56320e302b960724b9fae4ba05f8f8",
+            "source_member": "Task/environment/runtime/entrypoint.py"
+          },
+          "/opt/bifrost/local_model_proxy.py": {
+            "sha256": "805291feda27f046f62a03aee741dfeaa7185bf7ae92985cd6047d282f4b7549",
+            "source_member": "Task/environment/runtime/local_model_proxy.py"
+          },
+          "/opt/bifrost/queue_client.py": {
+            "sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+            "source_member": "Task/environment/runtime/queue_client.py"
+          },
+          "/opt/bifrost/public_eval/LICENSE-APACHE-2.0.txt": {
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+            "source_member": "Task/environment/public_eval/LICENSE-APACHE-2.0.txt"
+          },
+          "/opt/bifrost/public_eval/NOTICE.md": {
+            "sha256": "6e66cb74fe9ad28810e251a70d95331e9e19570b1bcffb7a2f3b9a75e02b8a68",
+            "source_member": "Task/environment/public_eval/NOTICE.md"
+          },
+          "/opt/bifrost/public_eval/baseline-program.json": {
+            "sha256": "d28ad4def04e7f2bab9d0f91c35f46971994d8c023d676c426de72a584230cb9",
+            "source_member": "Task/environment/public_eval/baseline-program.json"
+          },
+          "/opt/bifrost/public_eval/bounded_graph_compiler.py": {
+            "sha256": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619",
+            "source_member": "Task/environment/public_eval/bounded_graph_compiler.py"
+          },
+          "/opt/bifrost/public_eval/data/full-scout-inputs.safetensors": {
+            "sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+            "source_member": "Task/environment/public_eval/data/full-scout-inputs.safetensors"
+          },
+          "/opt/bifrost/public_eval/data/provenance.json": {
+            "sha256": "ea24da88438c9cb935b0ade2385b8a0084e25ccd97c8dd459e3295e377982c27",
+            "source_member": "Task/environment/public_eval/data/provenance.json"
+          },
+          "/opt/bifrost/public_eval/evaluate.py": {
+            "sha256": "89b5090e976d8c324bf4c6a49090539c42a48c5b0597ead9137a3882dc43857e",
+            "source_member": "Task/environment/public_eval/evaluate.py"
+          },
+          "/opt/bifrost/public_eval/full_decoder_evaluator.py": {
+            "sha256": "19b2e7c22893d378ec542eb3a2e25b67b1aa3a7171818f618074feefc7cf57ad",
+            "source_member": "Task/environment/public_eval/full_decoder_evaluator.py"
+          },
+          "/opt/bifrost/public_eval/operator-catalog.md": {
+            "sha256": "a700a400bda8816ae1a64717387ef65ee0fbda31ec3d4721e2e7ba955f40a5af",
+            "source_member": "Task/environment/public_eval/operator-catalog.md"
+          },
+          "/opt/bifrost/public_eval/protocol/benchmark.json": {
+            "sha256": "f2fffa4cf44cc472b305faf64b0867cc521884bc9d3f298a582f101d37946b5c",
+            "source_member": "Task/environment/public_eval/protocol/benchmark.json"
+          },
+          "/opt/bifrost/public_eval/public-tensor-manifest.json": {
+            "sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+            "source_member": "Task/environment/public_eval/public-tensor-manifest.json"
+          },
+          "/opt/bifrost/public_eval/published/baseline_ops.py": {
+            "sha256": "a5a237c37cafd1f9a0a7fe6396ff8364685e8e53e111a93c0fb4ac05b657c19a",
+            "source_member": "Task/environment/public_eval/published/baseline_ops.py"
+          },
+          "/opt/bifrost/public_eval/published/configuration_qwen2_5_vl.py": {
+            "sha256": "98a550f509e4c1965d0338381ea8733affa5ff5c1b731a87c04e4995be840381",
+            "source_member": "Task/environment/public_eval/published/configuration_qwen2_5_vl.py"
+          },
+          "/opt/bifrost/public_eval/tensor_dag.py": {
+            "sha256": "8f6dc1fdcfaca46e0f802afb22691aeda9bc38f3854d38cf9b36e1d589e77aec",
+            "source_member": "Task/environment/public_eval/tensor_dag.py"
+          },
+          "/opt/bifrost/starter/method.py": {
+            "sha256": "07053b2dd5ac52bf587c88ed0d2bfd86f735e4d17ae1bec5679beee864d930e9",
+            "source_member": "Task/environment/starter/method.py"
+          }
+        },
+        "actual_source_matched_member_count": 25,
+        "actual_image_file_readback": {
+          "uid": 1000,
+          "all_current_COPY_target_file_SHA_match": true,
+          "files": {
+            "/opt/bifrost/public-cli/install_cli.py": {
+              "sha256": "8ffe204e2a5cd047cbd0076c756929139f6d8a4cd0566cb07ae5561060560e9e",
+              "bytes": 1359
+            },
+            "/opt/bifrost/public-cli/manifest.json": {
+              "sha256": "3607ccf746f3352eb7bd8e42ce2aa35c7c5a0b0544f07ceb481a3c88789c87e7",
+              "bytes": 1825
+            },
+            "/opt/bifrost/public-cli/public-cli.part-01.bin": {
+              "sha256": "7e76501d5bf63e7f0f1bfc112337896470e6e9d74c6f6e8b4eba204fee5ae018",
+              "bytes": 16777216
+            },
+            "/opt/bifrost/public-cli/public-cli.part-02.bin": {
+              "sha256": "c1eab888cc8304440903b3ad5090081df8798ea072dc3bb6304bea9de7a55d2b",
+              "bytes": 16777216
+            },
+            "/opt/bifrost/public-cli/public-cli.part-03.bin": {
+              "sha256": "96790e72cea07a1e191e31ee0fb2c228d97a8a539c4b3918ed5eb229c9acc8f4",
+              "bytes": 16777216
+            },
+            "/opt/bifrost/public-cli/public-cli.part-04.bin": {
+              "sha256": "4aba080da9392e8c7249dc7f42eed624a8b1405448468c8df3a2d19456703fbf",
+              "bytes": 16777216
+            },
+            "/opt/bifrost/public-cli/public-cli.part-05.bin": {
+              "sha256": "002cf47aeb3068cd929c6fae8f5e0090f27e29a19178da2a62748c0d691db2e5",
+              "bytes": 7695500
+            },
+            "/opt/bifrost/entrypoint.py": {
+              "sha256": "877e82cabce08cd6ad0f781f920bc9e3dd56320e302b960724b9fae4ba05f8f8",
+              "bytes": 1377
+            },
+            "/opt/bifrost/local_model_proxy.py": {
+              "sha256": "805291feda27f046f62a03aee741dfeaa7185bf7ae92985cd6047d282f4b7549",
+              "bytes": 1877
+            },
+            "/opt/bifrost/queue_client.py": {
+              "sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+              "bytes": 2413
+            },
+            "/opt/bifrost/public_eval/LICENSE-APACHE-2.0.txt": {
+              "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+              "bytes": 11358
+            },
+            "/opt/bifrost/public_eval/NOTICE.md": {
+              "sha256": "6e66cb74fe9ad28810e251a70d95331e9e19570b1bcffb7a2f3b9a75e02b8a68",
+              "bytes": 422
+            },
+            "/opt/bifrost/public_eval/baseline-program.json": {
+              "sha256": "d28ad4def04e7f2bab9d0f91c35f46971994d8c023d676c426de72a584230cb9",
+              "bytes": 2526
+            },
+            "/opt/bifrost/public_eval/bounded_graph_compiler.py": {
+              "sha256": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619",
+              "bytes": 6508
+            },
+            "/opt/bifrost/public_eval/data/full-scout-inputs.safetensors": {
+              "sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+              "bytes": 20456432
+            },
+            "/opt/bifrost/public_eval/data/provenance.json": {
+              "sha256": "ea24da88438c9cb935b0ade2385b8a0084e25ccd97c8dd459e3295e377982c27",
+              "bytes": 875
+            },
+            "/opt/bifrost/public_eval/evaluate.py": {
+              "sha256": "89b5090e976d8c324bf4c6a49090539c42a48c5b0597ead9137a3882dc43857e",
+              "bytes": 1583
+            },
+            "/opt/bifrost/public_eval/full_decoder_evaluator.py": {
+              "sha256": "19b2e7c22893d378ec542eb3a2e25b67b1aa3a7171818f618074feefc7cf57ad",
+              "bytes": 17709
+            },
+            "/opt/bifrost/public_eval/operator-catalog.md": {
+              "sha256": "a700a400bda8816ae1a64717387ef65ee0fbda31ec3d4721e2e7ba955f40a5af",
+              "bytes": 4481
+            },
+            "/opt/bifrost/public_eval/protocol/benchmark.json": {
+              "sha256": "f2fffa4cf44cc472b305faf64b0867cc521884bc9d3f298a582f101d37946b5c",
+              "bytes": 6072
+            },
+            "/opt/bifrost/public_eval/public-tensor-manifest.json": {
+              "sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+              "bytes": 250991
+            },
+            "/opt/bifrost/public_eval/published/baseline_ops.py": {
+              "sha256": "a5a237c37cafd1f9a0a7fe6396ff8364685e8e53e111a93c0fb4ac05b657c19a",
+              "bytes": 21561
+            },
+            "/opt/bifrost/public_eval/published/configuration_qwen2_5_vl.py": {
+              "sha256": "98a550f509e4c1965d0338381ea8733affa5ff5c1b731a87c04e4995be840381",
+              "bytes": 12956
+            },
+            "/opt/bifrost/public_eval/tensor_dag.py": {
+              "sha256": "8f6dc1fdcfaca46e0f802afb22691aeda9bc38f3854d38cf9b36e1d589e77aec",
+              "bytes": 13794
+            },
+            "/opt/bifrost/starter/method.py": {
+              "sha256": "07053b2dd5ac52bf587c88ed0d2bfd86f735e4d17ae1bec5679beee864d930e9",
+              "bytes": 2408
+            }
+          },
+          "candidate_code_imported_or_executed": false,
+          "cuda_initialized": false
+        },
+        "literal_dockerignore": "__pycache__\n**/__pycache__\n*.pyc\n**/*.pyc\n.DS_Store\n",
+        "all_current_required_COPY_targets_survive_actual_Docker_build": true,
+        "no_image_rebuild_or_candidate_entrypoint_or_GPU_execution": true
+      },
+      "verifier": {
+        "image_id": "sha256:87a10eba1f24611d3a06a65c34bd91e500b577861cf0134907bae81a6e2260e5",
+        "actual_image_workdir": "/workspace/solution",
+        "actual_image_user": "1000:1000",
+        "source_context": "Task/tests",
+        "current_COPY_source_to_image_target": {
+          "/opt/bifrost/queue_client.py": {
+            "sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+            "source_member": "Task/tests/queue_client.py"
+          },
+          "/tests/grade.py": {
+            "sha256": "5ca912ee0fab3efb0937835c010496c4b6b31848c59964fb86a53b068146df86",
+            "source_member": "Task/tests/grade.py"
+          },
+          "/tests/test.sh": {
+            "sha256": "433555f3d6245512446f9da4bd60eeef53d26945ea81c2d90d99081d178c3dd9",
+            "source_member": "Task/tests/test.sh"
+          },
+          "/tests/prepare_hidden.py": {
+            "sha256": "6db0b0c15acb2df7c581fd31bf4aa84937bcb74c7e7eac63a40f76fd1c829a90",
+            "source_member": "Task/tests/prepare_hidden.py"
+          },
+          "/tests/hidden-chunks/hidden-input.part-01.bin": {
+            "sha256": "c1241c3236610188fc2a1f937f3e0dc0aef4aa879f8dbb98cb06ce7ad211e3be",
+            "source_member": "Task/tests/hidden-chunks/hidden-input.part-01.bin"
+          },
+          "/tests/hidden-chunks/hidden-input.part-02.bin": {
+            "sha256": "42d3c0c3288f911c5c1c7517b297d9b50f31fe0cb348182fdf6a4264f96dfd52",
+            "source_member": "Task/tests/hidden-chunks/hidden-input.part-02.bin"
+          },
+          "/tests/hidden-chunks/hidden-input.part-03.bin": {
+            "sha256": "b53c4a34fedadf4ee0cd9d4c92551c6d322f0dd7f29d6e380679d2f696e3ed0e",
+            "source_member": "Task/tests/hidden-chunks/hidden-input.part-03.bin"
+          },
+          "/tests/hidden-chunks/manifest.json": {
+            "sha256": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+            "source_member": "Task/tests/hidden-chunks/manifest.json"
+          }
+        },
+        "actual_source_matched_member_count": 8,
+        "actual_image_file_readback": {
+          "uid": 1000,
+          "all_current_COPY_target_file_SHA_match": true,
+          "files": {
+            "/opt/bifrost/queue_client.py": {
+              "sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+              "bytes": 2413
+            },
+            "/tests/grade.py": {
+              "sha256": "5ca912ee0fab3efb0937835c010496c4b6b31848c59964fb86a53b068146df86",
+              "bytes": 3167
+            },
+            "/tests/test.sh": {
+              "sha256": "433555f3d6245512446f9da4bd60eeef53d26945ea81c2d90d99081d178c3dd9",
+              "bytes": 172
+            },
+            "/tests/prepare_hidden.py": {
+              "sha256": "6db0b0c15acb2df7c581fd31bf4aa84937bcb74c7e7eac63a40f76fd1c829a90",
+              "bytes": 800
+            },
+            "/tests/hidden-chunks/hidden-input.part-01.bin": {
+              "sha256": "c1241c3236610188fc2a1f937f3e0dc0aef4aa879f8dbb98cb06ce7ad211e3be",
+              "bytes": 16777216
+            },
+            "/tests/hidden-chunks/hidden-input.part-02.bin": {
+              "sha256": "42d3c0c3288f911c5c1c7517b297d9b50f31fe0cb348182fdf6a4264f96dfd52",
+              "bytes": 16777216
+            },
+            "/tests/hidden-chunks/hidden-input.part-03.bin": {
+              "sha256": "b53c4a34fedadf4ee0cd9d4c92551c6d322f0dd7f29d6e380679d2f696e3ed0e",
+              "bytes": 7358440
+            },
+            "/tests/hidden-chunks/manifest.json": {
+              "sha256": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+              "bytes": 930
+            }
+          },
+          "candidate_code_imported_or_executed": false,
+          "cuda_initialized": false
+        },
+        "literal_dockerignore": "__pycache__\n**/__pycache__\n*.pyc\n**/*.pyc\n.DS_Store\n",
+        "all_current_required_COPY_targets_survive_actual_Docker_build": true,
+        "no_image_rebuild_or_candidate_entrypoint_or_GPU_execution": true
+      }
+    },
+    "actual_installed_Harbor": {
+      "actual_installed_Harbor_version": "0.23.0",
+      "trusted_modules": {
+        "EnvironmentFactory": {
+          "module": "harbor.environments.factory",
+          "source_SHA256": "24f1719e3bd2b49da9061d14b4cbd2ca12325d7bb82b0d8552b2300ee96cadcb"
+        },
+        "Trial": {
+          "module": "harbor.trial.trial",
+          "source_SHA256": "757f34424e35ea6e924484bff9ae75464e94acd5dec3d769bc65a9518ada79a8"
+        },
+        "TrialConfig": {
+          "module": "harbor.models.trial.config",
+          "source_SHA256": "c95acedd896e7bab9f4007ed6373adc7e414ac2b63dfd188b7bbcae6ce5ac480"
+        },
+        "DockerEnvironment": {
+          "module": "harbor.environments.docker.docker",
+          "source_SHA256": "8757d3fbc19e58c7ccd14c9b613a0d00dccd1b514375fa0e546ff41ca963a15e"
+        }
+      }
+    },
+    "adapter_literal_base_classes": [
+      "DockerEnvironment"
+    ],
+    "adapter_source_SHA256": "f5242e4eb6ceac0b9d62d8c12b1f4e4106bc0798aae42a57b412138ad25a43fc",
+    "native_launcher_literal_Trial_TrialConfig_calls": [
+      {
+        "function": "TrialConfig",
+        "line": 48
+      },
+      {
+        "function": "Trial.create",
+        "line": 63
+      },
+      {
+        "function": "Trial.create",
+        "line": 52
+      }
+    ],
+    "native_launcher_source_SHA256": "2aa6f644d388b8717d8bfb580ad8728916c31040fa7f135e63174f2a49599516",
+    "current_NOP_config_environment_import_path": "hybrid_harbor_environment:HybridDockerEnvironment",
+    "current_NOP_binding_image_ids": {
+      "gpt": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+      "seed": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+      "verifier": "sha256:87a10eba1f24611d3a06a65c34bd91e500b577861cf0134907bae81a6e2260e5"
+    },
+    "current_NOP_original_trial_id": "53f5da79-05c6-4509-a761-6e673cccd7c5",
+    "current_NOP_full_numeric_run_id": "0ebb71472a0946da9b64a5569354828c",
+    "current_NOP_reward_original": -4.409510198580376e-05,
+    "current_NOP_exact_full_GPU_CPU_evidence_not_repeated": true,
+    "actual_entrypoint_override_stdlib_data_read_only": true,
+    "candidate_code_or_GPU_or_QA_model_executed": false,
+    "image_ids_are_actual_local_content_ids_not_claimed_remote_registry_reproducibility": true,
+    "custom_adapter_remains_custom_and_platform_acceptance_not_claimed": true,
+    "fixed_standard_or_collector_or_prior_reports_changed": false,
+    "Root_formal_QA_or_PASS_authored": false
+  },
+  "historical_input_ZIP_SHA256": "e9e340cf503f8965f0b583498491226dc8e7f5ee0434742dafc2472e8674872e",
+  "current_NOP_full_GPU_CPU_is_fresh_for_this_Task_source": true,
+  "current_image_copy_bytes_equal_previously_actually_verified_content_addressed_images": true,
+  "scope": "Current source-bound native NOP with exact unchanged image-byte proof; prior execution and input fields are separately historical."
+}

@@ -1,0 +1,37 @@
+--- official/generate_training_data_his_PEMS.py
++++ expert/prepare_train_only.py
+@@ -75,7 +75,9 @@
+     data['weekdaytime'] = data['timestamp'].dt.weekday * 288 + (
+                 data['timestamp'].dt.hour * 60 + data['timestamp'].dt.minute) // 5
+ 
+-    df_train = data[(data.timestamp >= start_dates[dataset_name]) & (data.timestamp <= train_dates[dataset_name])]
++    training_end_exclusive = 11 + round((len(df_new) - 23) * 0.6) + 12
++    training_end_time = df_new.index[training_end_exclusive - 1]
++    df_train = data[data.timestamp <= training_end_time]
+     df_train = df_train[['sensorid', 'weekdaytime', 'flow']]
+ 
+     def get_mean_without_null_values(data, null_val=0.):
+@@ -115,7 +117,8 @@
+     num_samples = x.shape[0]
+     num_test = round(num_samples * 0.2)
+     num_train = round(num_samples * 0.6)
+-    num_val = num_samples - num_test - num_train
++    num_val = round(num_samples * 0.1)
++    num_dev = num_samples - num_test - num_train - num_val
+ 
+     # train
+     x_train, y_train = x[:num_train], y[:num_train]
+@@ -126,11 +129,12 @@
+     )
+     # test
+     x_test, y_test = x[-num_test:], y[-num_test:]
++    x_dev, y_dev = x[num_train+num_val:-num_test], y[num_train+num_val:-num_test]
+     print("Train Samples:", x_train.shape)
+     print("Val Samples:", x_val.shape)
+     print("Test Samples:", x_test.shape)
+ 
+-    for cat in ["train", "val", "test"]:
++    for cat in ["train", "val", "dev", "test"]:
+         _x, _y = locals()["x_" + cat], locals()["y_" + cat]
+         print(cat, "x: ", _x.shape, "y:", _y.shape)
+         np.savez_compressed(

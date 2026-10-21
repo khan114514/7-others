@@ -1,0 +1,23 @@
+{
+    "task": {
+        "path": "<TASK_ROOT>/private/native_task_v7"
+    },
+    "trial_name": "save-final-revalidate-seed",
+    "trials_dir": "<TASK_ROOT>/private/final-revalidation/e1ff7e8d9c6046d38a1fe00239284d2b",
+    "agent": {
+        "import_path": "save_artifact_validation_agent:SaveArtifactValidationAgent",
+        "model_name": "doubao-seed-2-1-turbo-260628",
+        "kwargs": {
+            "method_source": "<TASK_ROOT>/private/gpu-hold-attached-recovery/1e32b33f6cec41089a6cf08f21023e32/seed-research-evidence/recovered-own-evidence/method.py",
+            "method_sha256": "2dea1252c57e8c2c6d3ff4382c8074509b6e0c3d76d326be452efc7b37ef8042"
+        }
+    },
+    "environment": {
+        "import_path": "portable_runtime_v4.environment:SaveHybridDockerEnvironment",
+        "kwargs": {
+            "lane": "seed",
+            "numerical_status": "<TASK_ROOT>/private/no_numerical_controller.json",
+            "runtime_root": "<TASK_ROOT>/private/final-revalidation/e1ff7e8d9c6046d38a1fe00239284d2b/seed"
+        }
+    }
+}

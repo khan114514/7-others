@@ -1,0 +1,63 @@
+{
+  "role": "seed",
+  "runtime": "actual Linux Codex CLI 0.160.0",
+  "model_requested": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "command": [
+    "${LOCAL_OPERATOR_HOME}/Applications/Docker.app/Contents/Resources/bin/docker",
+    "exec",
+    "latentcli-seed-f5bf616fc8c3",
+    "codex",
+    "exec",
+    "--ephemeral",
+    "--json",
+    "--skip-git-repo-check",
+    "--sandbox",
+    "workspace-write",
+    "-m",
+    "doubao-seed-2-1-turbo-260628",
+    "-c",
+    "model_reasoning_effort=\"high\"",
+    "Continue the authorized research task through the actual CLI and actual tools. Read /workspace/instruction.md, your own method.py, method_notes.json and research_journal.md if present. Your track has a mandatory cumulative minimum of 10 effective research hours; a bounded CLI turn ending is not the end of the campaign. Do concrete normal analysis, coding, experiments and verification. Do not add sleeps, redundant reruns, invented results, token padding, or other work whose only purpose is passing time. Preserve reproducible code and actual outputs. All ordinary failed experiments count as research. Infrastructure stalls and resource waits do not.\n\nThis turn is pre-score research while the trusted host prepares the isolated GPU scorer. There is no GPU evaluation service in this workspace yet. Never claim a formal score or infer private Reference, Hidden data, credentials or another track. Use only your own accumulated work and the public interface. Update research_journal.md with findings, decisions, uncertainties and a concrete next experiment, and retain a valid method.py and method_notes.json. Complete the specific work below within this turn; if interrupted, preserve enough progress for your next turn to continue without starting over.\n\nSpecific research work:\nConstruct a deterministic CPU testbed for structural draft policies. Compare at least three genuinely different approaches (a prefix grammar, adaptive acceptance-history control, and a small token-history reuse method). Simulate target verification with reproducible streams and heterogeneous response formats, including mismatches and stop tokens. Explain what these measurements do and do not predict about the actual target. Implement your preferred policy, preserve executable experiments and results, and select the next discriminating GPU experiment.\n"
+  ],
+  "started_epoch": 1791206939.601738,
+  "completed_epoch": 1791208004.355433,
+  "monotonic_elapsed_seconds": 1064.5462406670001,
+  "cli_exit_code": 0,
+  "timed_out": false,
+  "model_turn_completed": true,
+  "tool_commands_succeeded": 28,
+  "tool_commands_failed": 1,
+  "method_changed": true,
+  "method_sha256": "02e4880449429ce13ce81c4a0e6ff709b1563baecd142abc662d7dbef947919b",
+  "independent_compile_exit_code": 0,
+  "notes_produced": true,
+  "status": "PRODUCTIVE_CLI_RESEARCH_PREPARATION",
+  "effective_research_seconds": 1064.753695011139,
+  "time_accounting": {
+    "effective_seconds": 1064.753695011139,
+    "infrastructure_failure_seconds": 0,
+    "pending_activity_audit_seconds": 0.0,
+    "excluded_seconds": 0.0,
+    "accounting_status": "COUNTED_NORMAL_RESEARCH",
+    "artifact_validity_used_for_time": false
+  },
+  "included_activity": [
+    "normal analysis",
+    "coding",
+    "contract verification",
+    "ordinary failed experiments"
+  ],
+  "formal_trajectory_started": false,
+  "formal_scored_round": false,
+  "score": null,
+  "same_prompt_sha256": "8df40fffb83884e7234964b59673c017b51aa53e72be59be40fc52e6a5e809fb",
+  "same_instruction_sha256": "807c7a2541ed1eecd07a8a9862ec67e7d3f99d068819f56433b0620b8a5fcab0",
+  "usage": {
+    "input_tokens": 1226745,
+    "cached_input_tokens": 1148536,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 50536,
+    "reasoning_output_tokens": 5546
+  }
+}

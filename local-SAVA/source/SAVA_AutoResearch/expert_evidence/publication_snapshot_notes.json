@@ -1,0 +1,17 @@
+{
+  "scope": "Publication snapshot chronology; raw historical receipts are retained verbatim.",
+  "historical_fields": [
+    {
+      "path": "expert_evidence/runtime_repairs/current_binding.json",
+      "field": "final_stability",
+      "basis": "This field records a pre-completion snapshot. Final actual observation and full IPC are in expert_evidence/stability/current/summary.json and final_protected_measurement.json."
+    },
+    {
+      "path": "expert_evidence/time_accounting/summary.json",
+      "field": "state",
+      "basis": "The INCOMPLETE_LIVE_SNAPSHOT label is historical; these final v21 numerical totals are unchanged. Final collected track/cycle qualification evidence is in expert_evidence/run_summary.json, method_cycles/codex.json, method_cycles/seed.json and method_cycles/ending_directions.json."
+    }
+  ],
+  "historical_exposure_manifests": "Earlier native_records exposure manifests describe their original launch images and paths. Current configuration is bound by expert_evidence/runtime_repairs/current_binding.json, runtime_repairs/seed_v5_actual_runtime, harbor_nop/current/trial_task_binding.json and stability/current/configuration.json.",
+  "independent_release_review_pending": true
+}

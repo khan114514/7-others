@@ -1,0 +1,36 @@
+schema_version = "1.4"
+artifacts = ["/workspace/solution/method.py"]
+[task]
+name = "autoresearch/pbmc-context-transfer"
+version = "0.1.2-hybrid-gpu"
+description = "Predict an unseen cellular context's response to stimulation"
+[metadata]
+category = "single-cell-perturbation-prediction"
+execution_profile = "local-docker-cli-remote-cuda-chroot-v1"
+path_contract = "teaching-task-root-v1"
+difficulty_explanation = "Difficulty pending independent trajectories and complete validation"
+[environment]
+cpus = 4
+memory_mb = 32768
+storage_mb = 8192
+gpus = 1
+gpu_types = ["A100", "H20", "L20"]
+network_mode = "no-network"
+build_timeout_sec = 1800
+workdir = "/workspace"
+[agent]
+timeout_sec = 86400
+user = "candidate"
+[verifier]
+timeout_sec = 6000
+environment_mode = "separate"
+user = "1000:1000"
+[verifier.environment]
+cpus = 4
+memory_mb = 32768
+storage_mb = 8192
+gpus = 1
+gpu_types = ["A100", "H20", "L20"]
+network_mode = "no-network"
+build_timeout_sec = 1800
+workdir = "/workspace"

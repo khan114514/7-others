@@ -1,0 +1,33 @@
+{
+  "configuration": {
+    "name": "dd_median3_paired_anchor128",
+    "protocol_version": "dd-selfproto-v1.3",
+    "initialization": "warmstart_official_dd_ema",
+    "teacher": {
+      "num_samples": 128,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "student_agreement_per_label",
+      "weighting": "uniform",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 3
+    },
+    "time_sampler_note": "Each adjacent pair has one U[0,.1) anchor and one U[.1,1] context time from an antithetic draw, with random assignment to its samples. Marginal prefix probabilities: k=0 is .5; k=1..9 are 1/18 each.",
+    "train_notes": "Official DD EMA initialization under dd-selfproto-v1.3. 128 targets, three proposals per original label, stable lower-median LPIPS-distance selection, one pass, uniform weights. Frozen training and evaluation settings are supplied exclusively by the trainer."
+  },
+  "worker_guard": {
+    "landlock_abi": 1,
+    "filesystem_enforced": true,
+    "network_denied": true,
+    "unix_sockets_denied": true,
+    "cross_process_signals_denied": true,
+    "new_processes_denied": true,
+    "device_creation_denied": true,
+    "gpu_devices_denied": true,
+    "system_private_files_denied": true
+  }
+}

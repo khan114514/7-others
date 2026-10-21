@@ -1,0 +1,69 @@
+{
+  "schema": "bifrost-trusted-numerical-deployment/2",
+  "scope": "Existing evaluator and worker bytes, published baseline definitions and verified public/hidden inputs; no selected candidate Python is executed by this deployment helper.",
+  "manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+  "tensor_count": 677,
+  "python_version": "3.12.13",
+  "torch_version": "2.5.1+cu121",
+  "public_tensor_endpoint": "http://127.0.0.1:19195",
+  "worker_code_file_count": 7,
+  "files": {
+    "numerical_worker.py": {
+      "source": "trusted/numerical_worker.py",
+      "bytes": 7121,
+      "sha256": "fb9451633c09572999e778aec78c121e9b2441bf29235a47bd93a8967b06b907"
+    },
+    "checkpoint_loader.py": {
+      "source": "trusted/checkpoint_loader.py",
+      "bytes": 3464,
+      "sha256": "90e044aa7f0f6b4f3abc3f77ef2983cf201b04584995effbdd76b5604b22f76f"
+    },
+    "full_decoder_evaluator.py": {
+      "source": "trusted/full_decoder_evaluator.py",
+      "bytes": 17709,
+      "sha256": "19b2e7c22893d378ec542eb3a2e25b67b1aa3a7171818f618074feefc7cf57ad"
+    },
+    "tensor_dag.py": {
+      "source": "trusted/tensor_dag.py",
+      "bytes": 13794,
+      "sha256": "8f6dc1fdcfaca46e0f802afb22691aeda9bc38f3854d38cf9b36e1d589e77aec"
+    },
+    "baseline_ops.py": {
+      "source": "environment/public_eval/published/baseline_ops.py",
+      "bytes": 21561,
+      "sha256": "a5a237c37cafd1f9a0a7fe6396ff8364685e8e53e111a93c0fb4ac05b657c19a"
+    },
+    "configuration_qwen2_5_vl.py": {
+      "source": "environment/public_eval/published/configuration_qwen2_5_vl.py",
+      "bytes": 12956,
+      "sha256": "98a550f509e4c1965d0338381ea8733affa5ff5c1b731a87c04e4995be840381"
+    },
+    "independent-audit/recompute_numerical_result.py": {
+      "source": "trusted/recompute_numerical_result.py",
+      "bytes": 8221,
+      "sha256": "cbc682a293258a68e65bfeeb8a1f2e41efeea8366c827b6ea5e25028fc6543c9"
+    },
+    "baseline-program.json": {
+      "source": "environment/public_eval/baseline-program.json",
+      "bytes": 2526,
+      "sha256": "d28ad4def04e7f2bab9d0f91c35f46971994d8c023d676c426de72a584230cb9"
+    },
+    "full-scout-inputs.safetensors": {
+      "source": "environment/public_eval/data/full-scout-inputs.safetensors",
+      "bytes": 20456432,
+      "sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307"
+    },
+    "hidden-decoder-inputs-v1.safetensors": {
+      "source": "trusted/data/hidden-decoder-inputs-v1.safetensors",
+      "bytes": 40912872,
+      "sha256": "db9c6aab916da4b5914a96a642169fd122a67e8b15fbb16628ad90dc240e40e5"
+    },
+    "bounded_graph_compiler.py": {
+      "source": "trusted/bounded_graph_compiler.py",
+      "bytes": 6508,
+      "sha256": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619"
+    }
+  },
+  "worker_entry": "numerical_worker.py",
+  "audit_entry": "independent-audit/recompute_numerical_result.py"
+}

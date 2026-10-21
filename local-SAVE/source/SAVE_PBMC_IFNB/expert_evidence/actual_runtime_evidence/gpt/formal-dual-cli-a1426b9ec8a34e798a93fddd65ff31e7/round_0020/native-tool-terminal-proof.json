@@ -1,0 +1,232 @@
+{
+  "original_event_sha256": "1626266fb33e0eede0c7474de06e22be114998abc4647c8c46b67cf3c2f3d1b1",
+  "original_receipt_sha256": "9a15388f2f8be642496b7157eeda8d0c5e8ee4de928d214c3fdf213ebdbe37fc",
+  "original_event_last_write_epoch": 1791576499.260625,
+  "original_native_session_ids": [
+    "01a12103-abe0-7ec0-b92f-6231dde78c2d"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /tests/protocol.json /tests/anchors.json /tests/train_eval.py'",
+      "original_command_sha256": "b0bd104bbc62799987a698797a0478929acbfa8173b574c060252f40d280b25b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "bd8281abdcad0f2675396f7f8026f7ff47a5d0acb8fc1a40f1031c5e23aef059",
+      "output_characters": 4797
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'tail -n 195 /workspace/solution/research-notes.md'",
+      "original_command_sha256": "8b9cad1c0c6eeadd9ee1fe71ec8c5698302aeff11aeb1769ea0523e4a6d5556b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "32d019d8fdb38520e7cd41f01a4bb30e5e6a0f8f5967cd86fa11feda475e6823",
+      "output_characters": 9604
+    },
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c86a70ffe180bb4df794520ff5c8023877ab6ec10cb3db6fd3f2346df92ae825",
+      "output_characters": 17881
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'tail -n 240 /workspace/solution/research-notes.md'",
+      "original_command_sha256": "d403205e748ea9e7170b35ea116fc954be7de471cc81d4452d745ec97254fe4b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "66100632ddde9893d41157df94f1b38690c0b66575754216c0114dada2ea751d",
+      "output_characters": 12008
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution /tests'",
+      "original_command_sha256": "f3e3ba3a0707e97c769dc8ec062a768e8bfbb3dd1989facb2c28b147e3182130",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b359b8ef8f407580430813d8c79765932781995b18633423f3d04185edc272da",
+      "output_characters": 1154
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc \"sed -n '1,260p' /workspace/solution/method.py\"",
+      "original_command_sha256": "8da4e4017f01d2789eded6b20c8d239b0bf27c719fd823451f03267428a97066",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "0effcb0a996ca4528132fb98fbb5f4d7a6f70bf9ddb9aaf2e2d0f63e9ebf8dc0",
+      "output_characters": 11485
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cat /tests/train_eval.py /tests/metrics.py /tests/frozen_assets.json /tests/local_model_proxy.py /tests/solve.sh /tests/protocol.json'",
+      "original_command_sha256": "180c2a8c1ffaaeab29cf714e8db4e77b73437f9235cd6c03dcead7bf05b4fd21",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8259ad40e487d1b8abbcc3d9273327e9eaeb3eafe8950676ac2cd0eea030240e",
+      "output_characters": 13354
+    },
+    {
+      "id": "item_12",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\ntext=Path('/workspace/solution/research-notes.md').read_text()\nfor key in ['Session 19 measured matching centered prediction','Session 19 incoming','excluded_training_contexts','Session 18']:\n print(key, text.rfind(key))\np=text.rfind('### Session 19 measured matching centered prediction')\nprint(text[p:p+16000])\nPY\"",
+      "original_command_sha256": "ee3245ffb6b47a3e2252386a82b966e89b8093e7ce0b811bc0519547456f8bd4",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "db3c918930cc1d662dd0c41fe185d777ca9f2da30d7f89ff431fdb5481189fb4",
+      "output_characters": 16135
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc \"sed -n '250,520p' /workspace/solution/method.py\"",
+      "original_command_sha256": "23dbdccd8683ad6f2c206cd421d934e74b5e47bda3f917d3b1834df8250c77e0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "52d2f91c6388b72ff120436ee824c9105eb6a925bbc3d322904a41f46d5a89aa",
+      "output_characters": 7035
+    },
+    {
+      "id": "item_14",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport hashlib,json\nmethod=Path('/workspace/solution/method.py').read_text()\nfeedback=json.loads(Path('/workspace/solution/dev_result.json').read_text())\nmanifest=json.loads(Path('/tests/frozen_assets.json').read_text())\nmatched=[]; missing=[]; bad=[]\nfor name,want in manifest.items():\n p=Path(name) if name.startswith('/') else Path('/workspace')/name\n if not p.exists(): missing.append(name); continue\n got=hashlib.sha256(p.read_bytes()).hexdigest()\n (matched if got==want else bad).append(name)\nreport={'incoming_sha256':hashlib.sha256(method.encode()).hexdigest(),'incoming_bytes':len(method.encode()),'incoming_formal_mse':feedback['raw_metric'],'incoming_formal_score':feedback['score'],'integrity':{'matched_count':len(matched),'missing_count':len(missing),'mismatches':bad}}\nassert not bad\nwith Path('/workspace/solution/research-notes.md').open('a') as f:\n f.write('\\\\n\\\\n## Session 20: control-weighted local reliability adjustments\\\\n\\\\n')\n f.write('Continue the independent Session 19 proposal. No delegation, external research, peer/author/withheld records, evaluator or protocol edits. The only candidate inputs are training data and query controls. Cached Session 19 complete Dev, excluded-context, and detection-group metrics supply incumbent comparisons without executing the unchanged incumbent again.\\\\n\\\\n')\n f.write('### Session 20 exact incoming best source and feedback\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(report,indent=2)+'\\\\n\"'```'\"\\\\n\\\\n\"'```python'\"\\\\n'+method+'\"'```'\"\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(feedback,indent=2)+'\\\\n\"'```'\"\\\\n\\\\n')\n f.write('### Session 20 declared algorithmic experiment\\\\n\\\\n')\n f.write('Fit the incumbent five-coefficient global reliability rule unchanged (400 Adam steps, zero initialization, bounded coefficients 2*tanh). Then freeze it and fit one five-coefficient adjustment per training control context, each zero initialized and bounded to \u00b10.5 via 0.5*tanh. Local supervision uses the same donor pseudo-transfers, each excluding its entire query context from response sources. For profile j, weight pseudo-query (i,k) by its existing donor effective-count weight times exp(-D[j,i,k]/0.1); D is the donor-aware squared mean control distance computed before query-context exclusion. Multiply training scaled distances by TRAIN_EXPRESSION_SCALE\u00b2=25 to approximate original log1p distance units, and normalize weights separately within each profile. Local Adam uses 400 steps, learning rate 0.03. Apply an adjustment penalty LOCAL_RULE_RIDGE*(sum(first_four\u00b2)+4*fifth\u00b2)/4; screen declared values 1e-3 and 1e-2. During prediction, compute the original-scale donor-aware distances and softmax(-D/0.1) over available profiles, blend their saved adjustments, and add this vector to the frozen fitted global rule. No response statistics, global features, centering, donor smoothing, support gates, pooling, calibration or seed protocol change. All local learned vectors must be registered context-by-five float64 buffers.\\\\n\\\\n')\n f.write('Screen fresh changed fits with Dev controls and all six outer excluded training contexts. Keep all predictions fixed before separate public-label assessment; training/predict functions must never load labels. Preserve both source recipe and losses, including regressions. Select the lower exploratory Dev candidate for artifact checks and complete five-seed public execution through the fixed entry. Adopt only a lower complete valid formal Dev loss; otherwise restore these exact incoming bytes. These are small selection gains, not an independent generalization guarantee.\\\\n')\nprint(json.dumps(report,indent=2))\nPY\"",
+      "original_command_sha256": "bd1f94df40cf7893fb51efb08f7be3f061a1fae1b39ca47287186b9f17f98d63",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ae3eb31e9247ba98933cc3a8dccb05a5604cd5279b19886c9612f2307cc8a0ab",
+      "output_characters": 307
+    },
+    {
+      "id": "item_17",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport ast,hashlib\np=Path('/workspace/solution/method.py')\nsource=p.read_text(); ast.parse(source)\nprint({'source_sha256':hashlib.sha256(source.encode()).hexdigest(),'bytes':p.stat().st_size})\nPY\"",
+      "original_command_sha256": "a175eb244f681fb75c28f28eec1536a3e70f90fa2b226d0a6ee1e933ab590f6f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "44cf25b06341c2d7e925ab9340d9bbf1314fb9d428ed4a4cfbb09f621b29e1d8",
+      "output_characters": 102
+    },
+    {
+      "id": "item_16",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\ns=Path('/workspace/solution/research-notes.md').read_text()\na=s.index('## Session 19')\nprint(s[a:a+14500])\nPY\"",
+      "original_command_sha256": "a60f7c6aaa05533a61f8cb1d871f7ebaf5d55947d00c098646c25ac11e72d275",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "39566905f2e970473e9159e883cd29d99363055bc04acae57b8ad560bb3541d9",
+      "output_characters": 14501
+    },
+    {
+      "id": "item_18",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\ns=Path('/workspace/solution/research-notes.md').read_text()\na=s.index('## Session 19')\npart=s[a:]\nfor key in ['scaler','outer','diagnostic_source','excluded','screen','MaxAbsScaler','rescal']:\n start=0; count=0\n while True:\n  p=part.find(key,start)\n  if p<0: break\n  if not (part[max(0,p-20):p]==''):\n   if count<8: print(key,part[max(0,p-250):p+450])\n  count+=1; start=p+len(key)\n print('count',key,count)\nPY\"",
+      "original_command_sha256": "4eba4a2a41b266073808e53b1228bcf42e5021f5b93cdb566b9f07c1b0956c16",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "355df3fb4845a473d0309a624742489a244ece6ca531c57b7df493a00992134b",
+      "output_characters": 20677
+    },
+    {
+      "id": "item_19",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport hashlib\nsource=Path('/workspace/solution/method.py').read_text()\nwith Path('/workspace/solution/research-notes.md').open('a') as f:\n f.write('\\\\n### Session 20 implemented local-adjustment source\\\\n\\\\n')\n f.write('Default LOCAL_RULE_RIDGE=0.001. The second fresh screen changes only this constant to 0.01 in an in-memory module. This exact source plus that one-line replacement preserves both candidates. SHA-256 '+hashlib.sha256(source.encode()).hexdigest()+'.\\\\n\\\\n\"'```python'\"\\\\n'+source+'\"'```'\"\\\\n\\\\n')\n f.write('Local exploratory fits use four CPU threads, seed 17, and the same common full-training MaxAbsScaler as cached Sessions 18\u201319 outer diagnostics. All excluded-context summaries and rule targets are recomputed from remaining contexts, so the excluded context supplies no learned response data; the common scaler means these are comparative diagnostics rather than independent cross-validation. Instrumentation records local effective example counts, initial/final unpenalized weighted proxy losses and coefficient vectors without changing fitting. Formal comparisons still require all five declared seeds.\\\\n')\nprint('Source and comparison recipe preserved.')\nPY\"",
+      "original_command_sha256": "a1c2a8429f0cae7755226fc41f50bdb19126a0096eeaf55600501659ab9e376e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "040d9a824f8901c420b8b36154eb6f7f3de482c9f63f1dbf19d517577589b2ec",
+      "output_characters": 40
+    },
+    {
+      "id": "item_20",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nfrom types import ModuleType\nimport hashlib,json,time,gc\nimport anndata as ad\nimport numpy as np\nimport torch\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import r2_score\nfrom scipy.stats import pearsonr\n\ntorch.set_num_threads(4)\nstart=time.perf_counter()\nsource=Path('/workspace/solution/method.py').read_text()\nnotes=Path('/workspace/solution/research-notes.md')\nsaved=notes.read_text()\npart=saved.split('### Session 19 measured matching centered prediction',1)[1]\nreference=json.loads(part.split('\"'```json'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0])\nreference_dev=next(row['mse'] for row in reference['dev'] if row['centering_strength']==1.0)\nreference_outer={row['context']:row['direct_centered_mse']['1.0'] for row in reference['excluded_training_contexts']}\n\n# Training-only instrumentation: no changes to update rules or prediction.\ninstrumented=source.replace('    global_coefficients = state.transfer_coefficients.detach()\\\\n', '    global_coefficients = state.transfer_coefficients.detach()\\\\n    model.local_fit_diagnostics = []\\\\n')\ninstrumented=instrumented.replace('    for j, profile_weights in enumerate(local_weights):\\\\n', '''    for j, profile_weights in enumerate(local_weights):\n        effective_examples = 1.0 / np.sum(profile_weights ** 2)\n''')\nanchor='''            state.local_transfer_adjustments[j].copy_(\n                LOCAL_RULE_BOUND * torch.tanh(local_theta)\n            )\n'''\naddition='''            losses = []\n            for test_adjustment in [torch.zeros(5, dtype=torch.float64), state.local_transfer_adjustments[j]]:\n                r = torch.sigmoid(base_logits + (features * (global_coefficients + test_adjustment)).sum(dim=-1))\n                p = (1.0 - HURDLE_BLEND) * means + HURDLE_BLEND * (torch.sigmoid(input_logits + r * effects) * intensities)\n                losses.append(float(((p - targets).square().mean(dim=-1) * profile_weights).sum()))\n            model.local_fit_diagnostics.append(dict(context=model.contexts[j], effective_examples=float(effective_examples), global_loss=losses[0], adjusted_loss=losses[1]))\n'''\nassert anchor in instrumented\ninstrumented=instrumented.replace(anchor,anchor+addition)\ntrain_raw=ad.read_h5ad('/workspace/public_assets/train.h5ad')\ncontrols_raw=ad.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\nassert list(train_raw.var_names)==list(controls_raw.var_names)\nscaler=MaxAbsScaler()\ntrain=train_raw.copy(); train.X=scaler.fit_transform(train.X)\ncontrols=controls_raw.copy(); controls.X=scaler.transform(controls.X)\ntypes=np.asarray(train.obs['cell_type'].astype(str)); conditions=np.asarray(train.obs['condition'].astype(str))\ncontexts=sorted(set(types))\noutputs={}; gates=[]; diagnostics=[]; failures=[]\nfor ridge in [0.001,0.01]:\n variant_source=source.replace('LOCAL_RULE_RIDGE = 0.001','LOCAL_RULE_RIDGE = '+repr(ridge))\n variant_instrumented=instrumented.replace('LOCAL_RULE_RIDGE = 0.001','LOCAL_RULE_RIDGE = '+repr(ridge))\n module=ModuleType('local_rule_screen')\n exec(compile(variant_instrumented,'<training_only_instrumented>','exec'),module.__dict__)\n for held in [None]+contexts:\n  fit_start=time.perf_counter()\n  try:\n   fit_train=train if held is None else train[types\"'!=held].copy()\n   query=controls if held is None else train[(types==held)&(conditions=='\"'control')].copy()\n   model=module.build_model(fit_train,torch.device('cpu'),17)\n   module.train_model(model,17)\n   prediction=module.predict(model,query,scaler,10017)\n   assert prediction.shape==query.shape and prediction.dtype==np.float32\n   assert np.isfinite(prediction).all() and prediction.min()>=0 and prediction.flags.c_contiguous\n   outputs[(ridge,held)]=np.asarray(prediction,dtype=np.float64).mean(axis=0)\n   gates.append(dict(local_ridge=ridge,held_context=held,shape=list(prediction.shape),minimum=float(prediction.min()),maximum=float(prediction.max()),finite_nonnegative_contiguous=True))\n   diagnostic=dict(local_ridge=ridge,held_context=held,source_sha256=hashlib.sha256(variant_source.encode()).hexdigest(),training_and_prediction_seconds=time.perf_counter()-fit_start,global_coefficients=model.model.transfer_coefficients.tolist(),context_adjustments=model.model.local_transfer_adjustments.tolist(),local_fit=model.local_fit_diagnostics)\n   if held is None:\n    raw=query.X.toarray() if hasattr(query.X,'toarray') else query.X\n    expression=np.asarray(raw,dtype=np.float64)*scaler.scale_\n    q=expression.mean(axis=0)\n    donors=np.asarray(query.obs['replicate'].astype(str))\n    fractions=np.asarray([(donors==d).mean() for d in model.donors])\n    c=model.model.control_mean.numpy()*scaler.scale_\n    donor_c=model.model.donor_control_mean.numpy()*scaler.scale_\n    matched=(1-module.DONOR_BLEND)*c+module.DONOR_BLEND*(fractions[None,:,None]*donor_c).sum(axis=1)\n    distance=module._control_distances(c,matched,q)\n    w=np.exp(-(distance-distance.min())/module.LOCAL_RULE_TEMPERATURE);w/=w.sum()\n    diagnostic['dev_aggregate_profile_weights']=dict(zip(model.contexts,w.tolist()))\n    diagnostic['dev_aggregate_adjustment']=(w[:,None]*model.model.local_transfer_adjustments.numpy()).sum(axis=0).tolist()\n   diagnostics.append(diagnostic)\n   print(json.dumps(dict(progress='CHANGED_FRESH_FIT_COMPLETE',local_ridge=ridge,held_context=held,seconds=time.perf_counter()-fit_start)),flush=True)\n   del model,prediction,query,fit_train\n   gc.collect()\n  except Exception as error:\n   failures.append(dict(local_ridge=ridge,held_context=held,error=repr(error)))\n   print(json.dumps(failures[-1]),flush=True)\nassert len(outputs)==14,failures\n# All predictions have been fixed. Labels are opened only for separate assessment.\ndev_targets=ad.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\ndef observed_mean(data):\n x=data.X.toarray() if hasattr(data.X,'toarray') else data.X\n return np.asarray(x,dtype=np.float64).mean(axis=0)\ntruth_dev=observed_mean(dev_targets)\ntruth_outer={held:observed_mean(train_raw[(types==held)&(conditions=='stimulated')]) for held in contexts}\ndef metrics(y,p):\n return dict(mse=float(np.mean((y-p)**2)),r2=float(r2_score(y,p)),pcc=float(pearsonr(y,p).statistic))\ndev=[];outer=[];groups=[]\nraw_controls=controls_raw.X.toarray() if hasattr(controls_raw.X,'toarray') else controls_raw.X\nrate=(raw_controls>0).mean(axis=0)\nfor ridge in [0.001,0.01]:\n m=metrics(truth_dev,outputs[(ridge,None)])\n dev.append(dict(local_ridge=ridge,**m,mse_improvement_vs_cached_incumbent=reference_dev-m['mse']))\nfor held in contexts:\n row=dict(context=held,incumbent_cached_mse=reference_outer[held],mse_by_local_ridge={})\n for ridge in [0.001,0.01]: row['mse_by_local_ridge'][str(ridge)]=metrics(truth_outer[held],outputs[(ridge,held)])['mse']\n outer.append(row)\nfor cached in reference['dev_detection_groups']:\n low,high=cached['input_detection_range'];mask=(rate>=low)&(rate<high)\n row=dict(input_detection_range=[low,high],genes=int(mask.sum()),incumbent_cached_mse=cached['direct_centered_mse']['1.0'],mse_by_local_ridge={})\n for ridge in [0.001,0.01]: row['mse_by_local_ridge'][str(ridge)]=float(np.mean((truth_dev[mask]-outputs[(ridge,None)][mask])**2))\n groups.append(row)\nreport=dict(scope='EXPLORATORY_CPU_LOCAL_ADJUSTMENT_SCREEN_NOT_FORMAL',source_sha256=hashlib.sha256(source.encode()).hexdigest(),instrumented_source_sha256=hashlib.sha256(instrumented.encode()).hexdigest(),seed=17,common_full_training_scaler=True,dev=dev,excluded_training_contexts=outer,excluded_equal_context_mean_mse={'incumbent_cached':float(np.mean(list(reference_outer.values()))),**{str(ridge):float(np.mean([row['mse_by_local_ridge'][str(ridge)] for row in outer])) for ridge in [0.001,0.01]}},dev_detection_groups=groups,fitting_diagnostics=diagnostics,output_gates=gates,failures=failures,elapsed_seconds=time.perf_counter()-start)\nwith notes.open('a') as f:\n f.write('\\\\n### Session 20 measured fresh local-adjustment screen\\\\n\\\\nBoth declared settings received fresh fitting, including all outer exclusions. All prediction calls completed and their column means were fixed before separate Dev label assessment. Exact losses, diagnostics and every regression follow. Local CPU diagnostics are not formal execution.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(report,indent=2)+'\\\\n\"'```'\"\\\\n')\nprint(json.dumps({k:v for k,v in report.items() if k not in ['fitting_diagnostics','output_gates']},indent=2),flush=True)\nPY\"",
+      "original_command_sha256": "3d30059d949c9e87894314117a503695b9cc889cbe099c76108e0e37c23b7659",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "f1ed253e3f04e70e0cfb37158b7792ed51ae7063a5c21956d7626a1aea479342",
+      "output_characters": 5145
+    },
+    {
+      "id": "item_25",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport json,hashlib\nnotes=Path('/workspace/solution/research-notes.md')\ns=notes.read_text();section=s.split('### Session 20 measured fresh local-adjustment screen',1)[1]\nr=json.loads(section.split('\"'```json'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0])\nfor row in r['fitting_diagnostics']:\n if row['held_context'] is None:\n  print(json.dumps({k:row[k] for k in ['local_ridge','global_coefficients','context_adjustments','local_fit','dev_aggregate_profile_weights','dev_aggregate_adjustment']},indent=2))\nsource=Path('/workspace/solution/method.py').read_text()\nwith notes.open('a') as f:\n f.write('\\\\n### Session 20 formal candidate selection after screen\\\\n\\\\n')\n f.write('Both changed methods regress Dev, as do their outer equal-context means. Penalty 0.001 gives Dev MSE 0.0014172989936544673 (regression 3.4920277722878465e-7); penalty 0.01 gives 0.001416980276238362 (regression 3.04853611235098e-8). Select the declared stronger penalty 0.01 for actual full-seed validity/Dev confirmation because it has the lower changed-candidate loss. This is a regression candidate, not a claimed improvement. Retain it only if complete formal Dev is lower than incoming 0.0014169497908772385; otherwise restore exact Session 20 incoming source.\\\\n\\\\n')\n f.write('Both settings improve the 0.05\u20130.2 and 0.2\u20130.5 input-detection groups but worsen <0.05 and \u22650.5 groups. Both improve B and CD4 outer contexts and worsen CD14, Dendritic, FCGR3A and Megakaryocyte contexts. Equal-context outer MSE is 0.0078913978885764 and 0.007887154440589161 versus cached 0.00788669929654017. There were no execution failures in the 14-fit exploratory screen. All worse losses and fitted diagnostics remain above.\\\\n\\\\n')\n f.write('Selected exact source SHA-256 '+hashlib.sha256(source.encode()).hexdigest()+'; identical to the complete preserved local-adjustment source except LOCAL_RULE_RIDGE=0.01. Source has not embedded fitted coefficients or label-derived statistics. Next verify fresh artifact/reload/output/order/fallback gates without Dev targets, then submit the fixed entry.\\\\n')\nprint('selected_source_sha256',hashlib.sha256(source.encode()).hexdigest())\nPY\"",
+      "original_command_sha256": "d82239d04c6bc5bbc68797124d2a94d3e9e340352e5c16726aa797a691373f65",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "7977e8aab6b735ce60b3b9f3c261fe55c43eee599fd3f6c244d3bc07a087bb4f",
+      "output_characters": 5582
+    },
+    {
+      "id": "item_26",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nfrom types import ModuleType\nimport ast,io,time,hashlib,json\nimport anndata as ad\nimport numpy as np\nimport torch\nfrom sklearn.preprocessing import MaxAbsScaler\n\ntorch.set_num_threads(4)\nstart=time.perf_counter()\nsource=Path('/workspace/solution/method.py').read_text();ast.parse(source)\nmodule=ModuleType('artifact_candidate');exec(compile(source,'<selected_candidate>','exec'),module.__dict__)\ntrain=ad.read_h5ad('/workspace/public_assets/train.h5ad');controls=ad.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\nassert list(train.var_names)==list(controls.var_names)\nscaler=MaxAbsScaler();train.X=scaler.fit_transform(train.X);controls.X=scaler.transform(controls.X)\nmodel=module.build_model(train,torch.device('cpu'),17)\ntraining_start=time.perf_counter();module.train_model(model,17);training_seconds=time.perf_counter()-training_start\nsnapshot={key:value.clone() for key,value in model.model.state_dict().items()}\ncheckpoint=io.BytesIO();torch.save(snapshot,checkpoint)\nprediction=module.predict(model,controls,scaler,10017)\nassert prediction.shape==controls.shape and prediction.dtype==np.float32\nassert np.isfinite(prediction).all() and prediction.min()>=0 and prediction.flags.c_contiguous\nassert all(torch.equal(value,model.model.state_dict()[key]) for key,value in snapshot.items())\nassert checkpoint.tell()<=256*1024**2\ncheckpoint_bytes=checkpoint.tell();checkpoint.seek(0)\nreloaded=module.build_model(train,torch.device('cpu'),17)\nreloaded.model.load_state_dict(torch.load(checkpoint,map_location='cpu',weights_only=True),strict=True);reloaded.is_trained=True\nreload_prediction=module.predict(reloaded,controls,scaler,10017)\nreload_difference=float(np.max(np.abs(prediction.astype(np.float64)-reload_prediction)))\nassert reload_difference<=1e-7\npermutation=np.random.default_rng(1017).permutation(len(controls));inverse=np.argsort(permutation)\npermuted_prediction=module.predict(reloaded,controls[permutation].copy(),scaler,10017)[inverse]\npermutation_difference=float(np.max(np.abs(prediction.astype(np.float64)-permuted_prediction)))\nassert permutation_difference<=1e-7\nunknown=controls.copy();unknown.obs['replicate']='not_in_training'\nabsent=controls.copy();del absent.obs['replicate']\nunknown_prediction=module.predict(reloaded,unknown,scaler,10017)\nabsent_prediction=module.predict(reloaded,absent,scaler,10017)\nassert np.isfinite(unknown_prediction).all() and unknown_prediction.min()>=0\nfallback_difference=float(np.max(np.abs(unknown_prediction.astype(np.float64)-absent_prediction)))\nassert fallback_difference<=1e-7\nassert torch.max(torch.abs(model.model.local_transfer_adjustments))<module.LOCAL_RULE_BOUND\nmanifest=json.loads(Path('/tests/frozen_assets.json').read_text());matched=0;missing=0;bad=[]\nfor name,want in manifest.items():\n p=Path(name) if name.startswith('/') else Path('/workspace')/name\n if not p.exists():missing+=1;continue\n if hashlib.sha256(p.read_bytes()).hexdigest()==want:matched+=1\n else:bad.append(name)\nassert not bad\nreport=dict(scope='LOCAL_SELECTED_ADJUSTMENT_ARTIFACT_CHECK_WITHOUT_DEV_TARGETS',method_sha256=hashlib.sha256(source.encode()).hexdigest(),seed=17,local_ridge=module.LOCAL_RULE_RIDGE,shape=list(prediction.shape),dtype=str(prediction.dtype),c_contiguous=bool(prediction.flags.c_contiguous),minimum=float(prediction.min()),maximum=float(prediction.max()),checkpoint_bytes=checkpoint_bytes,saved_local_shape=list(model.model.local_transfer_adjustments.shape),prediction_preserves_all_learned_state=True,reload_max_abs_difference=reload_difference,cell_permutation_max_abs_difference=permutation_difference,unknown_vs_absent_donor_max_abs_difference=fallback_difference,global_coefficients=model.model.transfer_coefficients.tolist(),local_adjustments=model.model.local_transfer_adjustments.tolist(),training_seconds=training_seconds,total_seconds=time.perf_counter()-start,protected_integrity=dict(matched_count=matched,missing_count=missing,mismatches=bad))\nwith Path('/workspace/solution/research-notes.md').open('a') as f:\n f.write('\\\\n### Session 20 selected local-adjustment artifact verification\\\\n\\\\nFresh training and predictions read only training data and controls. In-memory strict weights-only reload, source/state/output/order/fallback gates passed. These checks do not establish a formal score.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(report,indent=2)+'\\\\n\"'```'\"\\\\n')\nprint(json.dumps(report,indent=2),flush=True)\nPY\"",
+      "original_command_sha256": "bc92a56792e6c78aa7623a08908d8180f5522bd997060e32ff7f6deb72828967",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b223dc368a5a3df744507ec8a36724c04519e1c1584a8975f823e915989c95f4",
+      "output_characters": 1922
+    },
+    {
+      "id": "item_29",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport json,hashlib\nimport numpy as np\nnotes=Path('/workspace/solution/research-notes.md')\ns=notes.read_text();part=s.split('### Session 20 measured fresh local-adjustment screen',1)[1]\nr=json.loads(part.split('\"'```json'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0])\nsummary=[]\nfor diagnostic in r['fitting_diagnostics']:\n if diagnostic['held_context'] is not None:continue\n delta=np.array(diagnostic['context_adjustments']);global_coefficients=np.array(diagnostic['global_coefficients'])\n query=np.array(diagnostic['dev_aggregate_adjustment'])\n direction=delta@global_coefficients/(np.linalg.norm(delta,axis=1)*np.linalg.norm(global_coefficients))\n summary.append(dict(local_ridge=diagnostic['local_ridge'],all_local_coefficient_signs_match_global=bool((np.sign(delta)==np.sign(global_coefficients)).all()),mean_adjustment_across_profiles=delta.mean(axis=0).tolist(),max_abs_adjustment=float(np.abs(delta).max()),local_to_global_cosine_similarity=direction.tolist(),dev_aggregate_adjustment=query.tolist(),dev_aggregate_contrast_after_profile_mean_removal=(query-delta.mean(axis=0)).tolist(),effective_example_range=[min(x['effective_examples'] for x in diagnostic['local_fit']),max(x['effective_examples'] for x in diagnostic['local_fit'])]))\nsource=Path('/workspace/solution/method.py').read_bytes()\nassert hashlib.sha256(source).hexdigest()=='4ce91655bc836f8532389e917e6418caa5b121f6190b3f5179b5d6f106950987'\nwith notes.open('a') as f:\n f.write('\\\\n### Session 20 formal execution started and interpretation of local fits\\\\n\\\\n')\n f.write('Executed the actual fixed bash /workspace/solution/solve.sh through the native terminal; process session 6130 is pending. Candidate source remains frozen at 4ce91655bc836f8532389e917e6418caa5b121f6190b3f5179b5d6f106950987. No formal metric is claimed until complete public feedback arrives.\\\\n\\\\n')\n f.write('All 30 local coefficients have the same signs as their corresponding global coefficients at both penalties. Every profile reduces its unpenalized training proxy loss, yet both Dev and outer averages worsen. The aggregate Dev profile weights are broad: largest weight 0.317607862600353 on CD4, with substantial B/other-context weights. Profile fits have 6.65\u201329.65 effective donor examples. The direction alignment suggests second-stage fitting partly continues (and thus weakens) the ridge-shrunk global rule, rather than transferring only context differences. This is an interpretation, not a demonstrated mechanism; scaling mismatch and nearest-source fitting versus full inference also remain possible explanations.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(summary,indent=2)+'\\\\n\"'```'\"\\\\n\\\\n')\n f.write('Provisional next research decision, subject to formal confirmation: remove the common component of local adjustments. Fit a zero-initialized context-by-five matrix jointly after freezing the incumbent global coefficients. At every step set local adjustments to 0.25*tanh(theta) minus their equal-context mean; this enforces exactly zero shared adjustment while maintaining each coordinate within \u00b10.5. Use the same profile weights, features and training-only pseudo-transfers, averaged per-profile losses and the declared local ridge 1e-3 with fifth-coefficient multiplier 4. Prediction blends the saved centered adjustments with the existing query-control distances. This directly tests whether context contrasts help when the global rule cannot be unshrunk. Keep global fitting, source statistics, centering, donor smoothing, pooling and gates fixed. Do not launch or claim this untested follow-up in Session 20.\\\\n')\nprint(json.dumps(summary,indent=2))\nPY\"",
+      "original_command_sha256": "bb95c11af5d784132efdbd9b334c4a662e55b086e107fc43e0fb7008694c6570",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a5cc6d3af9f29b536bfbeecd4eac53d6501f41036c4b3f6a75c23d5011342971",
+      "output_characters": 2042
+    },
+    {
+      "id": "item_34",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport json,hashlib,time\nmethod=Path('/workspace/solution/method.py')\nfeedback=Path('/workspace/solution/dev_result.json')\nnotes=Path('/workspace/solution/research-notes.md')\nf=json.loads(feedback.read_text())\nprint(json.dumps({'frozen_source_sha256':hashlib.sha256(method.read_bytes()).hexdigest(),'feedback_still_refers_to_previous_method':f['method_sha256']\"'!=hashlib.sha256(method.read_bytes()).hexdigest(),'\"'seconds_since_pending_run_note':time.time()-notes.stat().st_mtime},indent=2))\nPY\"",
+      "original_command_sha256": "cace36d5eaf19773dca31005d1bf0a113160711340675e443ec769023aeda4ec",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c34706af2ea5b020f0f09876a39559b6ac14392c612c1f3bce70c99596bad3ee",
+      "output_characters": 205
+    },
+    {
+      "id": "item_35",
+      "command": "/bin/sh -lc 'cat /tests/grader.py /tests/isolated_executor.py'",
+      "original_command_sha256": "d626446eb1b2f54ac2a6cab84bfcd82b9f9ce7cfde46ead64cbe66ea7c330609",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c067b72fc040c7ef6f50cbe4d275b066f736adbc275c14777314dbef05932499",
+      "output_characters": 5237
+    },
+    {
+      "id": "item_39",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport json\nimport numpy as np\nnotes=Path('/workspace/solution/research-notes.md')\ns=notes.read_text();part=s.split('### Session 20 measured fresh local-adjustment screen',1)[1]\nr=json.loads(part.split('\"'```json'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0])\nreport=[]\nfor row in r['fitting_diagnostics']:\n if row['held_context'] is not None:continue\n a=np.array(row['context_adjustments']);common=a.mean(axis=0);contrasts=a-common\n report.append(dict(local_ridge=row['local_ridge'],common_component_fraction_of_squared_adjustment_norm=float(len(a)*np.sum(common**2)/np.sum(a**2)),common_adjustment_norm=float(np.linalg.norm(common)),root_mean_squared_context_contrast_norm=float(np.sqrt(np.mean(np.sum(contrasts**2,axis=1)))),maximum_abs_centered_context_contrast=float(np.abs(contrasts).max())))\nwith notes.open('a') as f:\n f.write('\\\\n### Session 20 decomposition of saved local coefficients while formal feedback is pending\\\\n\\\\nReanalysis of the already measured training-only coefficient matrices, not a new fit or experiment. Separate each matrix into its equal-context mean and zero-mean context contrasts. This quantifies the motivation for the next centered-local experiment; it supplies no new selection loss.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(report,indent=2)+'\\\\n\"'```'\"\\\\n')\nprint(json.dumps(report,indent=2))\nPY\"",
+      "original_command_sha256": "fcdd2c39da1b5343250fd29932bd5b97d2292d6a729b1c135862e63c542b27b6",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "04e2dc4db860b7dfcb8f8507ad6eea22fe5a92e908b96c92bccd054473aa6853",
+      "output_characters": 608
+    },
+    {
+      "id": "item_27",
+      "command": "/bin/sh -lc 'bash /workspace/solution/solve.sh'",
+      "original_command_sha256": "62ded559d79c208b11661e48f22268a92f7942c98f5e4d1d92420389a817423f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8e26fa81b3d7e07a0bf1d561927eafea4bef5b3af28ffeec435bc67e7209d663",
+      "output_characters": 3055
+    },
+    {
+      "id": "item_50",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport json,hashlib,ast,stat\nnotes=Path('/workspace/solution/research-notes.md')\nmethod=Path('/workspace/solution/method.py')\nsource=method.read_text();actual_sha=hashlib.sha256(source.encode()).hexdigest()\nfeedback=json.loads(Path('/workspace/solution/dev_result.json').read_text())\nassert feedback['method_sha256']==actual_sha=='4ce91655bc836f8532389e917e6418caa5b121f6190b3f5179b5d6f106950987'\nassert feedback['status']=='COMPLETE' and feedback['quality_gates_passed'] and feedback['all_seeds_complete']\nassert feedback['seeds']==json.loads(Path('/tests/protocol.json').read_text())['seeds']\nassert feedback['elapsed_seconds']<=3600\nassert all(row['reload_max_abs_difference']<=1e-7 for row in feedback['rows'])\nsaved=notes.read_text()\nincoming_section=saved.split('### Session 20 exact incoming best source and feedback',1)[1]\nincoming=json.loads(incoming_section.split('\"'```json'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0])\nincoming_source=incoming_section.split('\"'```python'\"\\\\n',1)[1].split('\"'```'\"',1)[0]\nassert hashlib.sha256(incoming_source.encode()).hexdigest()==incoming['incoming_sha256']\nassert feedback['raw_metric']>incoming['incoming_formal_mse']\nwith notes.open('a') as f:\n f.write('\\\\n### Session 20 actual complete public Dev feedback\\\\n\\\\n')\n f.write('The fixed entry completed fresh training and independent reload for all five declared seeds on the exact frozen LOCAL_RULE_RIDGE=0.01 candidate. The measured loss agrees exactly with exploratory assessment. Source, checkpoint/output/reload gates passed, every seed reload difference is zero, and elapsed execution is within 3600 seconds. There was no infrastructure or formal execution failure. Actual public feedback follows in full; candidate-reported metrics were not used.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(feedback,indent=2)+'\\\\n\"'```'\"\\\\n\\\\n')\n f.write('### Session 20 exact tested regression source\\\\n\\\\nSHA-256 '+actual_sha+'. Preserve complete source even though it is rejected for worse Dev loss.\\\\n\\\\n\"'```python'\"\\\\n'+source+'\"'```'\"\\\\n')\n# Restore only after the full evaluated source and actual feedback are preserved.\nmethod.write_text(incoming_source)\nrestored=method.read_bytes();assert hashlib.sha256(restored).hexdigest()==incoming['incoming_sha256']\nparsed=ast.parse(restored.decode())\nfunctions={node.name for node in parsed.body if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef))}\nassert {'build_model','train_model','predict'}<=functions\nassert stat.S_ISREG(method.stat().st_mode) and len(restored)<=1024**2\nmanifest=json.loads(Path('/tests/frozen_assets.json').read_text());matched=[];missing=[];mismatches=[]\nfor name,want in manifest.items():\n p=Path(name) if name.startswith('/') else Path('/workspace')/name\n if not p.exists():missing.append(name);continue\n got=hashlib.sha256(p.read_bytes()).hexdigest()\n if got==want:matched.append(name)\n else:mismatches.append(dict(path=name,expected=want,actual=got))\nassert not mismatches\nreport=dict(decision='REJECT_LOCAL_ADJUSTMENTS_AND_RESTORE_EXACT_INCOMING_BEST',retained_method_sha256=hashlib.sha256(restored).hexdigest(),retained_method_bytes=len(restored),retained_mse=incoming['incoming_formal_mse'],retained_score=incoming['incoming_formal_score'],tested_regression_sha256=actual_sha,tested_mse=feedback['raw_metric'],tested_score=feedback['score'],mse_regression=feedback['raw_metric']-incoming['incoming_formal_mse'],relative_regression_percent=100*(feedback['raw_metric']/incoming['incoming_formal_mse']-1),all_tested_formal_seeds=feedback['seeds'],tested_reload_max_abs_difference=max(row['reload_max_abs_difference'] for row in feedback['rows']),tested_formal_elapsed_seconds=feedback['elapsed_seconds'],tested_formal_dispatch_seconds=feedback['dispatch_total_seconds'],tested_peak_rss_bytes=max(row['actual_peak_rss_bytes'] for row in feedback['rows']),accessible_protected_hashes_matched=len(matched),missing_manifest_paths=len(missing),protected_hash_mismatches=mismatches,regular_python_file=True,required_callables_present=True,feedback_file_left_untouched_after_evaluator=True)\nwith notes.open('a') as f:\n f.write('\\\\n### Session 20 final retention, failures, integrity and next decision\\\\n\\\\n')\n f.write('Reject the tested local adjustments for worse complete Dev MSE. Restore the exact best centered-global Session 19 bytes, already tested through the fixed five-seed entry with zero reload differences. Do not rerun this unchanged incumbent. Its formal loss remains 0.0014169497908772385 and score 0.6125185836701688; the rejected changed method has 0.001416980276238362 and 0.6125102470932615. dev_result.json remains the fixed grader\u2019s actual latest feedback for the rejected method and is not overwritten to pretend a new incumbent run. Both 0.001 and 0.01 penalty variants failed to improve Dev and outer-context mean; source recipes, fitted vectors, all group/context regressions and actual public feedback are preserved. No invalid outputs, failed executions or unmeasured successful scores are claimed.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(report,indent=2)+'\\\\n\"'```'\"\\\\n\\\\n')\n f.write('Next research decision: jointly fit zero-mean control-local coefficient contrasts after freezing the incumbent global coefficients. Initialize the context-by-five parameter matrix at zero; use 0.25*tanh(theta) minus its equal-context mean at every optimization step to enforce zero common adjustment and bounds within \u00b10.5. Use the same training-only context-excluded donor pseudo-transfers and control similarity weights, 400 Adam steps at 0.03, LOCAL_RULE_RIDGE=1e-3 and level multiplier 4. Blend saved centered adjustments using existing control distances. Keep all other incumbent fitting, response statistics, features, centering, smoothing and inference gates unchanged. This is a new untested follow-up, motivated by the 74% common adjustment component and observed aligned-sign drift. Test fresh excluded-context diagnostics and actual full-seed Dev before any adoption. Do not execute this proposal during the completed Session 20.\\\\n\\\\n')\n f.write('Only method.py and requested research-notes.md were edited; the fixed evaluator generated dev_result.json. Protected accessible files are intact. No delegation, author/peer material, withheld labels, external research, evaluator/protocol/entry modifications or reward-file edits occurred. method.py now remains byte-for-byte the best valid previously formal-tested Dev method.\\\\n')\nprint(json.dumps(report,indent=2))\nPY\"",
+      "original_command_sha256": "da5f460d9df8da5cfcccce2d9f825a0d907a9569194c8b8eaa90e2fec7c06a2d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "89d06d463b1a7ff07de38ab1f3c219f98217e6036baa72e04ed386af7deede6f",
+      "output_characters": 1064
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 61117028,
+        "cached_input_tokens": 55036716,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 398983,
+        "reasoning_output_tokens": 175839
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

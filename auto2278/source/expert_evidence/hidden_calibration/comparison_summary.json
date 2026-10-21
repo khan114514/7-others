@@ -1,0 +1,82 @@
+{
+  "schema_version": "autoresearch-comparison-summary.v2",
+  "status": "COMPLETE",
+  "metric": {
+    "name": "relative_process_cpu_time",
+    "direction": "minimize"
+  },
+  "split": "hidden",
+  "seeds": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "paired_results": {
+    "17": {
+      "baseline": 1.212927949145425,
+      "reference": 0.5258901879801482,
+      "paired_improvement": 0.6870377611652768
+    },
+    "29": {
+      "reference": 0.450082740436716,
+      "baseline": 1.1910406840214933,
+      "paired_improvement": 0.7409579435847773
+    },
+    "43": {
+      "baseline": 1.0329563880410473,
+      "reference": 0.5296006741709839,
+      "paired_improvement": 0.5033557138700634
+    },
+    "71": {
+      "reference": 0.43406224809176036,
+      "baseline": 0.9720198731539528,
+      "paired_improvement": 0.5379576250621925
+    },
+    "101": {
+      "baseline": 0.9153536438216223,
+      "reference": 0.3888142755423572,
+      "paired_improvement": 0.5265393682792652
+    }
+  },
+  "statistics": {
+    "paired_run_count": 5,
+    "baseline_mean": 1.0648597076367081,
+    "reference_mean": 0.4656900252443931,
+    "baseline_sample_std": 0.13213152796587782,
+    "reference_sample_std": 0.0609557527198294,
+    "mean_paired_improvement": 0.5991696823923149,
+    "baseline_sigma_multiple": 4.5346458306835515,
+    "relative_improvement": 0.5626747618445247
+  },
+  "score_contract": {
+    "baseline": 1.0648597076367081,
+    "reference": 0.4656900252443931,
+    "upper_bound": 0.0,
+    "reference_normalized": 0.5626747618445247,
+    "upper_bound_source": "metric_ceiling_zero_latency"
+  },
+  "significance_rule": {
+    "required_baseline_sigma_multiple": 3.0,
+    "passed": true
+  },
+  "validity": {
+    "same_protocol": true,
+    "same_seed_set": true,
+    "all_quality_gates_passed": true,
+    "all_checkpoints_reload_and_rescore_passed": "NOT_APPLICABLE"
+  },
+  "source_results": [
+    "expert_evidence/hidden_calibration/baseline_runs/seed_17/result.json",
+    "expert_evidence/hidden_calibration/reference_runs/seed_17/result.json",
+    "expert_evidence/hidden_calibration/baseline_runs/seed_29/result.json",
+    "expert_evidence/hidden_calibration/reference_runs/seed_29/result.json",
+    "expert_evidence/hidden_calibration/baseline_runs/seed_43/result.json",
+    "expert_evidence/hidden_calibration/reference_runs/seed_43/result.json",
+    "expert_evidence/hidden_calibration/baseline_runs/seed_71/result.json",
+    "expert_evidence/hidden_calibration/reference_runs/seed_71/result.json",
+    "expert_evidence/hidden_calibration/baseline_runs/seed_101/result.json",
+    "expert_evidence/hidden_calibration/reference_runs/seed_101/result.json"
+  ]
+}

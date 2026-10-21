@@ -1,0 +1,44 @@
+{
+  "schema_version": "source-alignment.v1",
+  "paper": {
+    "title": "SAVA: Scalable Learning-Agnostic Data Valuation",
+    "venue": "ICLR 2025",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/137101016144540ed3191dc2b02f09a5-Abstract-Conference.html",
+    "full_text_read_in_authoring": true,
+    "paper_text_sha256": "5cbe3869edbc9f141c9c86233cb53befc39aea166f798ce64c03a3cb7f5ff0bd"
+  },
+  "official_repo": {
+    "url": "https://github.com/skezle/sava",
+    "commit": "7efc8a20cab9898d56fcf32d4f57ae55589152c9",
+    "source_file_sha256": {
+      "api.py": "71ed5807aa5ed72a64cae2ef0221cd65d9462113acaa4a13ce666c7323042dc8",
+      "lava.py": "095e71cdaf44577f1dbfe5da0fb850d5e29eada08d65c63a7859ed40cce77bf0",
+      "otdd/pytorch/distance_fast.py": "0432c8b3964a7f697c6786fb13783e46e7b2b4881926280afff055fc88c13713",
+      "models/preact_resnet.py": "4deebd324818740e4841f314ab41a11ea6c07afd833a06c303e18e412a286b16",
+      "value_cifar10.py": "1b0cf59f772bbb05d5343cb38e89eec1cc8323bc81d12830966f4dd84cc71d80",
+      "input_args.py": "5b6a8c8dcc9cc1cac280679d4773e4e226270c6459a948e06fe6fd23764f6d4a"
+    }
+  },
+  "alignment": {
+    "label_geometry": "Class-conditional OT in augmented sample cost",
+    "within_batch": "Sample coupling and source/target dual potentials per batch pair",
+    "batch_level": "OT coupling over batch costs",
+    "calibration": "Source potential minus its batch mean, multiplied by n/(n-1)",
+    "valuation": "Batch coupling weighted sum of calibrated source potentials"
+  },
+  "intentional_scope": {
+    "numeric_functional": true,
+    "representation": "fixed actual image logits; shared pretrained encoder cache",
+    "not_claimed": [
+      "paper-reported complete benchmark reproduction",
+      "bitwise identity with uncached official path",
+      "unknown checkpoint training history proved sufficient",
+      "best known data corruption detector",
+      "strict single-epsilon theoretical OT equivalence"
+    ]
+  },
+  "common_repairs": "prerequisites/common_repairs.patch",
+  "parity": "prerequisites/preextract_parity.json",
+  "formal_pairs": "optimization_evidence/comparison_summary.json",
+  "final_runtime_repair": "runtime_repairs/current_binding.json"
+}

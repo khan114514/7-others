@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-10-04T07:06:51.563741+08:00",
+  "round": 15,
+  "quality_gate_passed": true,
+  "manually_inspected_grid": true,
+  "visual_review": "Formal64 grid retains diverse recognizable objects and scenes, with blur and ghosting but no all-black, identical-image or repetitive-texture collapse. Full FID9.497105760787463 is0.166156298033229 below B (1.7195 percent) and0.079079977838319 below round12. Stronger8x per-label proposal selection improves this single-trial,16-update latehalf comparison. All50000 outputs finite and original PNG hashes retained. Generation of all2048 proposals, selection,16updates and direct lossless optimizer storage charged630.502s; budget eligible. Fixed trainer computations unchanged; single-trial attribution and3sigma sufficiency remain unproven. New best round15 requires independent saved-weight50k revalidation.",
+  "grid_sha256": "2de1a0a85620046e8ea6575ee665902d227ed5eb65413c0eddf3c36ff132d192",
+  "result_sha256": "ed9e098521fe611dd23c09a4027bc9b66bc7394c730747525711a24f3bf94a8c",
+  "score": 9.497105760787463,
+  "fid_minus_baseline": -0.16615629803322918,
+  "training_budget_seconds": 630.5017609596252,
+  "updates": 16,
+  "row": {
+    "round": 15,
+    "policy_name": "warmstart_official_dd_teacher256_agreement8x_latehalf",
+    "method_summary": "dd-selfproto-v1.1; warmstart_official_dd_ema; 256 fresh teacher pairs, measured generation 335.909s included in total budget; 1 shuffled teacher pass(es), 16 updates; uniform U(0.5,1); P(prefix5..9)=0.2 each; frozen floor(10*t) prefix mapping; fixed full FID-50k=9.497105761, delta to B=-0.166156298. Independent training reimplementation. Visual review: Formal64 grid retains diverse recognizable objects and scenes, with blur and ghosting but no all-black, identical-image or repetitive-texture collapse. Full FID9.497105760787463 is0.166156298033229 below B (1.7195 percent) and0.079079977838319 below round12. Stronger8x per-label proposal selection improves this single-trial,16-update latehalf comparison. All50000 outputs finite and original PNG hashes retained. Generation of all2048 proposals, selection,16updates and direct lossless optimizer storage charged630.502s; budget eligible. Fixed trainer computations unchanged; single-trial attribution and3sigma sufficiency remain unproven. New best round15 requires independent saved-weight50k revalidation.",
+    "status": "ok",
+    "score": 9.497105760787463,
+    "failure_reason": null,
+    "retained_best": true,
+    "time": "2026-10-04 07:06:51"
+  }
+}

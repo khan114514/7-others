@@ -1,0 +1,372 @@
+{
+  "protocol": "dd-selfproto-v1.3",
+  "time": "2026-10-05T11:34:03.818536Z",
+  "torch_version": "2.5.1",
+  "device": "cpu",
+  "method_sha256": "8f92177304433b7abab9b0413a9eb6717e3d874db18fe49d0461662bea47ede7",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "get_method_contract",
+      "status": "PASS",
+      "detail": {
+        "checked_spec": {
+          "name": "dd_median3_paired_anchor128",
+          "protocol_version": "dd-selfproto-v1.3",
+          "initialization": "warmstart_official_dd_ema",
+          "teacher": {
+            "num_samples": 128,
+            "teacher_steps": 10,
+            "guidance": 2.0,
+            "filter_rule": "student_agreement_per_label",
+            "weighting": "uniform",
+            "reuse": 1,
+            "top_k": 900,
+            "top_p": 0.95,
+            "ode_nfe": 32,
+            "ode_grid": "logSNR",
+            "proposal_multiplier": 3
+          },
+          "time_sampler_note": "Each adjacent pair has one U[0,.1) anchor and one U[.1,1] context time from an antithetic draw, with random assignment to its samples. Marginal prefix probabilities: k=0 is .5; k=1..9 are 1/18 each.",
+          "train_notes": "Official DD EMA initialization under dd-selfproto-v1.3. 128 targets, three proposals per original label, stable lower-median LPIPS-distance selection, one pass, uniform weights. Frozen training and evaluation settings are supplied exclusively by the trainer."
+        },
+        "proposal_count": 384,
+        "planned_pair_visits": 128,
+        "planned_optimizer_updates": 8,
+        "updates_are_not_completed_training": true
+      },
+      "cpu_wall_seconds": 0.00019012499978998676
+    },
+    {
+      "name": "time_shape_range_pairing",
+      "status": "PASS",
+      "detail": {
+        "shapes": [
+          {
+            "shape": [
+              1
+            ],
+            "count": 1,
+            "min": 0.9763034582138062,
+            "max": 0.9763034582138062
+          },
+          {
+            "shape": [
+              2
+            ],
+            "count": 2,
+            "min": 0.007205355446785688,
+            "max": 0.9351518154144287
+          },
+          {
+            "shape": [
+              16
+            ],
+            "count": 16,
+            "min": 0.00036687255487777293,
+            "max": 0.9966981410980225
+          },
+          {
+            "shape": [
+              128
+            ],
+            "count": 128,
+            "min": 0.0030125498306006193,
+            "max": 0.9728870391845703
+          },
+          {
+            "shape": [
+              256
+            ],
+            "count": 256,
+            "min": 0.0005212128162384033,
+            "max": 0.9953091144561768
+          },
+          {
+            "shape": [
+              2,
+              3
+            ],
+            "count": 6,
+            "min": 0.018188495188951492,
+            "max": 0.8363035321235657
+          },
+          {
+            "shape": [
+              0
+            ],
+            "count": 0,
+            "min": null,
+            "max": null
+          },
+          {
+            "shape": [],
+            "count": 1,
+            "min": 0.819573700428009,
+            "max": 0.819573700428009
+          }
+        ],
+        "all_complete_pairs_have_one_k0": true
+      },
+      "cpu_wall_seconds": 0.026159291999647394
+    },
+    {
+      "name": "time_cpu_rng_replay_and_training_stream",
+      "status": "PASS",
+      "detail": {
+        "equal_seed_equal_output": true,
+        "generator_state_advances": true,
+        "transport_state_replay_equal": true,
+        "global_rng_unchanged": true,
+        "simulated_128_pair_time_histogram": [
+          64,
+          6,
+          9,
+          10,
+          8,
+          8,
+          5,
+          8,
+          3,
+          7
+        ],
+        "first_sample_context_count_in_64_microbatches": 34
+      },
+      "cpu_wall_seconds": 0.008296291998703964
+    },
+    {
+      "name": "selection_unique_group_indices_and_rank",
+      "status": "PASS",
+      "detail": {
+        "random_cases": [
+          {
+            "multiplier": 1,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 2,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 3,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 4,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 5,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 6,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 7,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 8,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 9,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 10,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 11,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 12,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 13,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 14,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 15,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 16,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          }
+        ],
+        "fixed_median_indices": [
+          2,
+          4,
+          8
+        ],
+        "stable_tie_indices": [
+          1,
+          4,
+          7,
+          10
+        ]
+      },
+      "cpu_wall_seconds": 0.06280020899794181
+    },
+    {
+      "name": "weights_finite_nonnegative_positive_mass",
+      "status": "PASS",
+      "detail": {
+        "batches": [
+          {
+            "batch": 1,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 1.0
+          },
+          {
+            "batch": 1,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 1.0
+          },
+          {
+            "batch": 1,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 1.0
+          },
+          {
+            "batch": 2,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 2.0
+          },
+          {
+            "batch": 2,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 2.0
+          },
+          {
+            "batch": 2,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 2.0
+          },
+          {
+            "batch": 16,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 16.0
+          },
+          {
+            "batch": 16,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 16.0
+          },
+          {
+            "batch": 16,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 16.0
+          },
+          {
+            "batch": 128,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 128.0
+          },
+          {
+            "batch": 128,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 128.0
+          },
+          {
+            "batch": 128,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 128.0
+          },
+          {
+            "batch": 256,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 256.0
+          },
+          {
+            "batch": 256,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 256.0
+          },
+          {
+            "batch": 256,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 256.0
+          }
+        ],
+        "normalized_mean": 1.0,
+        "weight_hook_enabled_in_training": false
+      },
+      "cpu_wall_seconds": 0.025670125000033295
+    },
+    {
+      "name": "invalid_input_rejections",
+      "status": "PASS",
+      "detail": {
+        "expected_invalid_inputs_rejected": {
+          "missing_cpu_generator": "Method time sampling requires a CPU generator",
+          "incomplete_group": "Agreement must contain complete finite proposal groups",
+          "nonfinite_agreement_nan": "Agreement must contain complete finite proposal groups",
+          "nonfinite_agreement_inf": "Agreement must contain complete finite proposal groups",
+          "zero_multiplier": "Proposal multiplier must be a positive integer",
+          "empty_weight_batch": "A weighted batch must have positive mass",
+          "mismatched_weight_batch": "Pair labels and token rows must have matching batch dimensions"
+        }
+      },
+      "cpu_wall_seconds": 0.0019673329989018384
+    }
+  ],
+  "evaluated": false,
+  "score": null
+}

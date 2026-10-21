@@ -1,0 +1,34 @@
+{
+  "original_event_sha256": "7f78d2ee27d5462ff6a61aab08c52343dcfc500fc734372f364216c6123ae19f",
+  "original_receipt_sha256": "2742a62223b57f2d1050c12ba3bba850493fc9ba5917df1a8529847e26e23090",
+  "original_event_last_write_epoch": 1791655882.35595,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'ls /workspace/solution/loo_eval.py 2>/dev/null && echo \"EXISTS\" || echo \"NOT FOUND\"'",
+      "original_command_sha256": "8ce7caceccfc87922101e21faa148733a62421c5560f776483ac012216b93eae",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "10c306fd56bf7dc8f6737fabdfefd491d1523efeca3da15c5af35f8da55f6b9f",
+      "output_characters": 10
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 12194503,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 478776,
+        "reasoning_output_tokens": 42536
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

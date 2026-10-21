@@ -1,0 +1,18 @@
+services:
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs:
+      - /tmp:rw,mode=1777,size=64m
+      - /root:rw,mode=700,size=64m
+      - /workspace/solution:rw,size=4m
+      - /logs/artifacts:rw,size=16m
+    volumes:
+      - type: bind
+        source: ${DD_SOCKET_ROOT:?Set DD_SOCKET_ROOT to this track's trusted sockets}/formal.sock
+        target: /run/dd/formal.sock
+        read_only: true

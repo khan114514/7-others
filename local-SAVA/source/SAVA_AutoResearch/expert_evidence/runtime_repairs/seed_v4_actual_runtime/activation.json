@@ -1,0 +1,55 @@
+{
+  "state": "PASS_REAL_NATIVE_ACTOR_RUNNING",
+  "timestamp": "2026-10-10T12:29:08.664492+00:00",
+  "job": "seed_resume_retry0_20261010_v4",
+  "trial": "harbor_task__5LkHcNZ",
+  "container": "harbor_task__5lkhcnz__env-main-1",
+  "actual_image_id": "sha256:88d84d66ba4fb1e7a6ff7e798292e0836df15d6437cfb9948173338aea710db8",
+  "final_base_image_id": "sha256:e023560824f59aca7df8ee55168b9c4286d05072802cf5b8588f4f21f2a8761f",
+  "exact16_rootfs_layers_equal": true,
+  "image_config_equal_except_compose_labels": true,
+  "actual_image_labels": {
+    "com.docker.compose.project": "harbor_task__5lkhcnz__env",
+    "com.docker.compose.service": "main",
+    "com.docker.compose.version": "5.5.1"
+  },
+  "rootfs_layers": [
+    "sha256:dca69811453d69d10b6c0345a5c49147162abe20a2f77802d66efc60667949ea",
+    "sha256:71d376017d74585ae66a0cff6a897d700d6ec3c022581289896d97a2039a72dc",
+    "sha256:f3ecea28f7fbe64363ca6fb66255d4d0ca99279fbe367477c1be78a2c1b02aa8",
+    "sha256:af2ab20f67b10fdb4750f26032f38f30d36ee3fa7a8ea1980d516b124ac348e8",
+    "sha256:f8b0c14517b92e2a20ac7f3977eee4713a329bfadf9887ab808beb6e47847e2d",
+    "sha256:c66d8a064ec1e258be5e69374acb0178e10c1b69c53b30fb0962c836764c84a8",
+    "sha256:f3453d56fc7bbec4d23fbeb89f43feed1b2e83a54f13dc820d8e6791dbfc4180",
+    "sha256:8b358b646538ca2073708d0639a07c05f2257c6707de4dca213c637cbe576939",
+    "sha256:b3aecfc20c35a9d9505b2e50c71cf11c32fa71e5fd6b3b668199656fdc21a9cc",
+    "sha256:827faa4aef63abc6c9e41e39f8db17ecfeb302eced25c9dbdb4f4a2b29d895db",
+    "sha256:3b57ccfa915b3688f1dd1f41591cb2363a73d5acddab8ab8668e9385d8522925",
+    "sha256:2b302460fae8b036fa71b419772af6abe635f2bfea3813f5dca62da1d8315558",
+    "sha256:b73238d7969e760f9296f5f3e736490cb0c47b6546d20cc76d9c44016160937d",
+    "sha256:37e05e204937c9ca2d97ade38709366c775ef9b6efb7eff5d0e763c0d856dc8c",
+    "sha256:d543ec2708ca2cfd7eeb497291e34cd1b4a4681d69ae4aad07bf3d1b82a79559",
+    "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+  ],
+  "cap_add": [
+    "CAP_KILL",
+    "CAP_SETGID",
+    "CAP_SETUID"
+  ],
+  "model_network": [
+    "sava-harbor-model-66dde61f0386"
+  ],
+  "network_internal": true,
+  "cpus": 2.0,
+  "memory_bytes": 2147483648,
+  "actual_native_codex_process_present": true,
+  "mount_destinations": [
+    "/logs/agent",
+    "/logs/artifacts",
+    "/logs/verifier"
+  ],
+  "runtime_gate_sha256": "badbaa0c68beb020bb24598ff380496785431ac7520d3396b2b9fae1a8d436c4",
+  "no_other_model_history_restored": true,
+  "actual_reset_probe": "reset_probe.json",
+  "scope": "Actual isolated Seed continuation Actor runtime, not research duration or completed trajectory"
+}

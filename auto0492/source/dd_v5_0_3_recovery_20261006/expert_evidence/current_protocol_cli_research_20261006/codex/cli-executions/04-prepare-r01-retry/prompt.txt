@@ -1,0 +1,9 @@
+你是 DD 当前公开任务的一条独立真实 Codex Agent 研究轨道。先读 /workspace/instruction.md、公开实现 README、solution/method.py、method_contract.py 和你自己 agent-output 中的已有实验记录。不得访问另一个轨道、Reference、专家记录、私有评分或正式 socket。
+
+本次补实验的协议固定为 dd-selfproto-v1.3：LPIPS + 0.1 CE、lr=1e-4、EMA=.99、micro=2、accum=8、官方初始化、公开 seed 与 50000 样本评测均冻结。只修改 solution/method.py；其他笔记/方法快照/计划放在 agent-output。不能改训练器、损失或超参数字段，不能把旧协议成绩当作本协议成绩。
+
+请独立提出一个具有算法内容的低成本候选，解释因果假设、它如何改变教师提案选择/相对加权/时间分布中的至少一项，而非只调标量。优先样本 128 或 256、reuse=1、proposal_multiplier<=4，避免这轮成为长时间训练；不是质量硬门槛，可根据自己公开结果修改。使用 CPU torch、CPU generator；不得访问 GPU 或网络获取私有数据。不要读任何环境凭据。
+
+完成实现，并用实际 python3 CPU 命令检查 get_method 合法性、时间张量 shape/range、选择每组唯一合法索引、非负有限且每批正质量的权重。逐项记录真实结果和失败，不能只自报完成。将本轮源码复制到 agent-output/round-01/method.py，并在同目录 plan.json 写入 round、policy_name、method_summary、status="PREPARED_NOT_EVALUATED"、score=null、failure_reason=null、retained_best=false、time（实际 UTC 时间）、因果假设与下一步判断规则。不能填写尚未发生的分数或有效时间。
+
+本次只准备方案和 CPU 预检，不提交 GPU 作业。控制器将在两条轨道检查完成后，另一次有界 CLI 运行中按顺序发起完整公开评测。保留 CLI 失败记录，最后报告源码 SHA 与 CPU 预检结果。

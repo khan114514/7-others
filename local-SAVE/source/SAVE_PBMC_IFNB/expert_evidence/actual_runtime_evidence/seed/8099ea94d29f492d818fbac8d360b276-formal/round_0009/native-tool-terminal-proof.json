@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "ec3e69cf517f145d1e0546db76f654a079d6de46dc8856634d798f19a66acc08",
+  "original_receipt_sha256": "8a4a16f15a91585b52496274996ee8d2f968caa1ad4c31ee84986a427e328607",
+  "original_event_last_write_epoch": 1791565950.6374896,
+  "original_native_session_ids": [
+    "01a12188-e1ec-75c1-9992-dee7c9424cbf"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'ps aux | grep python | grep -v grep | head -5'",
+      "original_command_sha256": "b231aa65b70cfdde7a96f5c1c5687b5da9710201661ef893443f5dd41dc3bb9a",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "9ede730aaa123179f42a42d35f4f94fdd75184cab3977d2c8ecc2713a19ef70d",
+      "output_characters": 26
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python3 -c \\\"\nimport anndata as ad\nimport numpy as np\nfrom sklearn.preprocessing import MaxAbsScaler\n\ntrain = ad.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = ad.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_tgt = ad.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ntrain_X = train.X.toarray() if hasattr(train.X, 'toarray') else np.asarray(train.X)\ndev_ctrl_X = dev_ctrl.X.toarray() if hasattr(dev_ctrl.X, 'toarray') else np.asarray(dev_ctrl.X)\ndev_tgt_X = dev_tgt.X.toarray() if hasattr(dev_tgt.X, 'toarray') else np.asarray(dev_tgt.X)\n\nscaler = MaxAbsScaler()\nscaler.fit(train_X)\ntrain_scaled = scaler.transform(train_X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_X)\ndev_tgt_mean = dev_tgt_X.mean(axis=0)\n\ncell_types = sorted(train.obs['cell_type'].unique())\nctrl_means = {}\nstim_means = {}\nfor ct in cell_types:\n    mask = train.obs['cell_type'] == ct\n    ctrl = train_scaled[(mask.values) & (train.obs['condition'] == 'control').values]\n    stim = train_scaled[(mask.values) & (train.obs['condition'] == 'stimulated').values]\n    ctrl_means[ct] = ctrl.mean(axis=0)\n    stim_means[ct] = stim.mean(axis=0)\n\nctrl_mat = np.stack([ctrl_means[ct] for ct in cell_types])\nstim_mat = np.stack([stim_means[ct] for ct in cell_types])\ndiff_mat = stim_mat - ctrl_mat\nn_ct = len(cell_types)\n\ndef loo_orig(up_pow, dn_pow):\n    mses = []\n    for h in range(n_ct):\n        rem = [i for i in range(n_ct) if i \"'!= h]\n        ho = ctrl_mat[h]\n        corrs = [np.corrcoef(ho, ctrl_mat[r])[0,1] if np.isfinite(np.corrcoef(ho, ctrl_mat[r])[0,1]) else -1 for r in rem]\n        nidx = rem[int(np.argmax(corrs))]\n        r = np.clip(np.where(ctrl_mat[nidx] > 1e-8, ho / np.maximum(ctrl_mat[nidx], 1e-8), 1.0), 0.1, 10.0)\n        nd = diff_mat[nidx]\n        um = nd > 0\n        dm = nd < 0\n        sd = np.zeros_like(nd)\n        sd[um] = nd[um] * (r[um] ** up_pow)\n        sd[dm] = nd[dm] * (r[dm] ** dn_pow)\n        pred = np.clip(ho + sd, 0, 1)\n        po = scaler.inverse_transform(pred.reshape(1,-1)).flatten()\n        so = scaler.inverse_transform(stim_mat[h].reshape(1,-1)).flatten()\n        mses.append(np.mean((so - po)**2))\n    return np.mean(mses)\n\n# Quick scan: uniform best\nbest_u = 1e9\nbu = 0\nfor p in [0.18, 0.20, 0.22, 0.24, 0.26, 0.28, 0.30]:\n    m = loo_orig(p, p)\n    if m < best_u:\n        best_u = m\n        bu = p\n    print(f'\"'uniform pow={p:.2f}: {m:.8f}')\n\nprint(f'Best uniform: {bu:.2f}, MSE={best_u:.8f}')\n\n# Sign-aware: scan coarse grid\nprint()\nbest_s = 1e9\nbsu = bsd = 0\nfor up in [0.0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50]:\n    for dn in [0.0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 1.00]:\n        m = loo_orig(up, dn)\n        if m < best_s:\n            best_s = m\n            bsu = up\n            bsd = dn\nprint(f'Best sign-aware (coarse): up={bsu:.2f}, dn={bsd:.2f}, MSE={best_s:.8f}')\nprint(f'Improvement: {(best_u-best_s)/best_u*100:.2f}%')\n\n# Dev check\ndev_mean = dev_ctrl_scaled.mean(axis=0)\ncorrs = [np.corrcoef(dev_mean, ctrl_mat[i])[0,1] if np.isfinite(np.corrcoef(dev_mean, ctrl_mat[i])[0,1]) else -1 for i in range(n_ct)]\nnidx = int(np.argmax(corrs))\nprint(f'\\\\nDev nearest: {cell_types[nidx]} (corr={max(corrs):.4f})')\nnd = diff_mat[nidx]\nr_dev = np.clip(np.where(ctrl_mat[nidx] > 1e-8, dev_mean / np.maximum(ctrl_mat[nidx], 1e-8), 1.0), 0.1, 10.0)\n\n# Uniform best\npred_u = np.clip(dev_mean + nd * (r_dev ** bu), 0, 1)\npred_u_o = scaler.inverse_transform(pred_u.reshape(1,-1)).flatten()\nmse_u = np.mean((dev_tgt_mean - np.clip(pred_u_o, 0, None))**2)\nprint(f'Dev uniform (pow={bu:.2f}): {mse_u:.8f}')\n\n# Sign-aware best\num = nd > 0\ndm = nd < 0\nsd = np.zeros_like(nd)\nsd[um] = nd[um] * (r_dev[um] ** bsu)\nsd[dm] = nd[dm] * (r_dev[dm] ** bsd)\npred_s = np.clip(dev_mean + sd, 0, 1)\npred_s_o = scaler.inverse_transform(pred_s.reshape(1,-1)).flatten()\nmse_s = np.mean((dev_tgt_mean - np.clip(pred_s_o, 0, None))**2)\nprint(f'Dev sign-aware (up={bsu:.2f}, dn={bsd:.2f}): {mse_s:.8f}')\nprint(f'Dev improvement: {(mse_u-mse_s)/mse_u*100:.2f}%')\n\\\" 2>&1\n\"",
+      "original_command_sha256": "aea57d7a21c1033a3d54022aa40eae5d77a75df90fdcabbe5ae0e2343c33f818",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "bcac15065bf743a0d3d53a03f57bba1121ea6b78681ecee8480cf65d8c6b40ac",
+      "output_characters": 461
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 2537802,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 68282,
+        "reasoning_output_tokens": 2560
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

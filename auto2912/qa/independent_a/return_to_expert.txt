@@ -1,0 +1,24 @@
+本轮独立静态内容审查为 NOT READY。研究三门通过；以下当前V4核心问题需修订。
+
+C1 Unsupported network/storage conditions
+事实/定位：workspace/harbor_task/instruction.md:16; workspace/harbor_task/task.toml:9; workspace/harbor_task/task.toml:18; expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py:51
+最小修改：Remove unsupported storage_mb and no-network/allowlist requirements from current submission. Synchronize instruction,TOML and offline-only adapter; retain private-data/scoring confinement under actual platform networking.
+复验验收：New complete ZIP with supported network/resource declarations and actual platform mapping; constraint call chain remains valid. Do not automatically rerun all training solely for this edit.
+
+C2 Compose-dependent formal build/runtime and old task-root context
+事实/定位：workspace/harbor_task/environment/docker-compose.yaml:1; workspace/harbor_task/tests/docker-compose.yaml:1; workspace/harbor_task/environment/Dockerfile:5; expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py:72
+最小修改：Remove direct Compose files and formal Compose/extra broker-container dependencies. Put public Starter inside environment and rewrite Agent COPY for environment build context; preserve separate Verifier and candidate artifacts handoff.
+复验验收：Complete package,one-container startup contract,valid COPY/dependency/entry mappings for both contexts and platform adapter evidence. Dynamic build/handoff/reward evidence only in an authorized target environment.
+
+C3 Trajectory rounds have extra keys and vague scorer-busy classification
+事实/定位：expert_evidence/trajectory_codex.json#rounds[1]; expert_evidence/trajectory_seed.json#rounds[0]
+最小修改：Keep exactly8 keys per round. Move original_status and method_summary_evidence into a sidecar with original records preserved. Classify409 scorer-busy separately from invalid methods and clarify ledger rounds versus effective method cycles.
+复验验收：Both trajectory JSONs have exactly8 round keys,unchanged original scores/times/retention,and relative sidecar references. Failure classification traces to original trusted evaluation command.
+
+外发门禁：Author-machine absolute paths remain. Only types and member locations are reported; values are not copied. Runtime container paths must be distinguished from author-machine paths. No whole-binary/nested-archive strict certification or external release was performed.
+仅报命中位置：AUTHOR_ABSOLUTE_PATH expert_evidence/provenance/forecast-export-manifest.json:5; AUTHOR_ABSOLUTE_PATH expert_evidence/provenance/shared-backbone-training.run.log:254; AUTHOR_ABSOLUTE_PATH expert_evidence/provenance/preparation-complete.json:3
+修改与验收：Regenerate author-machine paths as relative paths or stable logical identifiers. Preserve raw originals outside release attachments. Rebuild the complete ZIP and strictly scan each final artifact separately. Zero-blocker strict scan for final ZIP and every attachment,rebuilt member/hash manifests,and relative-only report references.
+
+非阻断待补：缺官方四项指纹可后补；不因换卡自动全量重算重训；本包已有当前本地NOP，后续版本关联可后补，不豁免确定Compose问题。
+工具缺口：官方0.3.10及格式/GPU/指纹工具验收待补，不冒充官方PASS。
+本次只静态读取唯一完整ZIP，未执行未知代码、容器、评分、模型或外发。

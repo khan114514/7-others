@@ -1,0 +1,195 @@
+{
+  "task_id": "auto2912",
+  "status": "LOCAL_RESEARCH_COMPLETE_PLATFORM_ACCEPTANCE_UNVERIFIED",
+  "agent_execution": [
+    {
+      "runtime": "actual Codex CLI in native local Harbor",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh",
+      "duration_hours": 10.001053029961056,
+      "effective_rounds": 27,
+      "time_policy": {
+        "version": "user-normal-work-clock-20261006",
+        "minimum_seconds_per_actual_model_track": 36000,
+        "included": [
+          "normal model reasoning",
+          "reading",
+          "analysis",
+          "coding",
+          "experiments",
+          "verification",
+          "unsuccessful method attempts",
+          "normal local builds and compilation during model work"
+        ],
+        "excluded": [
+          "downloads",
+          "demonstrated abnormal stalls or infrastructure blocks",
+          "deliberate idle filler",
+          "work before that model track starts"
+        ],
+        "no_successful_score_requirement_for_time": true,
+        "no_automatic_idle_event_gap_penalty": true,
+        "no_artifact_validity_requirement_for_time": true,
+        "evidence_required_for_exclusion": true,
+        "tracks_are_counted_separately": true
+      }
+    },
+    {
+      "runtime": "actual Codex CLI in native local Harbor",
+      "model": "doubao-seed-2-1-turbo-260628",
+      "reasoning_effort": "high",
+      "duration_hours": 10.002329799599117,
+      "effective_rounds": 79,
+      "time_policy": {
+        "version": "user-normal-work-clock-20261006",
+        "minimum_seconds_per_actual_model_track": 36000,
+        "included": [
+          "normal model reasoning",
+          "reading",
+          "analysis",
+          "coding",
+          "experiments",
+          "verification",
+          "unsuccessful method attempts",
+          "normal local builds and compilation during model work"
+        ],
+        "excluded": [
+          "downloads",
+          "demonstrated abnormal stalls or infrastructure blocks",
+          "deliberate idle filler",
+          "work before that model track starts"
+        ],
+        "no_successful_score_requirement_for_time": true,
+        "no_automatic_idle_event_gap_penalty": true,
+        "no_artifact_validity_requirement_for_time": true,
+        "evidence_required_for_exclusion": true,
+        "tracks_are_counted_separately": true
+      }
+    }
+  ],
+  "selected_track": "gpt",
+  "selection_scores": {
+    "gpt": 3.210737004562953,
+    "seed": 0.5406104908058266
+  },
+  "clean_native_verification_passed": true,
+  "local_native_harbor_nop_passed": true,
+  "container_stability_seconds": 43239.755033016205,
+  "container_12h_passed": true,
+  "paired_baseline_reference_complete": true,
+  "official_hidden_result_verified": false,
+  "platform_acceptance_verified": false,
+  "shared_pretrained_neural_initialization": true,
+  "independent_neural_training_replicates": false,
+  "model_provider_weights_independently_verified": false,
+  "provider_side_storage_suppression_verified": false,
+  "seed_route_migration": {
+    "observed_epoch": 1791307337.923764,
+    "task_id": "auto2912",
+    "model": "doubao-seed-2-1-turbo-260628",
+    "reasoning_effort": "high",
+    "upstream": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+    "native_cli_round": 22,
+    "routes": [
+      {
+        "upstream": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "http_status": 200,
+        "status": "RESPONSE_FINISHED",
+        "reasoning_effort": "high",
+        "model_requested": "doubao-seed-2-1-turbo-260628",
+        "model_identifiers_in_provider_response": [
+          "doubao-seed-2-1-turbo-260628"
+        ],
+        "model_response_completed": true,
+        "tool_calls_returned": 2,
+        "error_type": null,
+        "error": null
+      },
+      {
+        "upstream": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "http_status": 200,
+        "status": "RESPONSE_FINISHED",
+        "reasoning_effort": "high",
+        "model_requested": "doubao-seed-2-1-turbo-260628",
+        "model_identifiers_in_provider_response": [
+          "doubao-seed-2-1-turbo-260628"
+        ],
+        "model_response_completed": true,
+        "tool_calls_returned": 3,
+        "error_type": null,
+        "error": null
+      },
+      {
+        "upstream": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "http_status": 200,
+        "status": "RESPONSE_FINISHED",
+        "reasoning_effort": "high",
+        "model_requested": "doubao-seed-2-1-turbo-260628",
+        "model_identifiers_in_provider_response": [
+          "doubao-seed-2-1-turbo-260628"
+        ],
+        "model_response_completed": true,
+        "tool_calls_returned": 3,
+        "error_type": null,
+        "error": null
+      },
+      {
+        "upstream": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "http_status": 200,
+        "status": "RESPONSE_FINISHED",
+        "reasoning_effort": "high",
+        "model_requested": "doubao-seed-2-1-turbo-260628",
+        "model_identifiers_in_provider_response": [
+          "doubao-seed-2-1-turbo-260628"
+        ],
+        "model_response_completed": true,
+        "tool_calls_returned": 1,
+        "error_type": null,
+        "error": null
+      },
+      {
+        "upstream": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "http_status": 200,
+        "status": "RESPONSE_FINISHED",
+        "reasoning_effort": "high",
+        "model_requested": "doubao-seed-2-1-turbo-260628",
+        "model_identifiers_in_provider_response": [
+          "doubao-seed-2-1-turbo-260628"
+        ],
+        "model_response_completed": true,
+        "tool_calls_returned": 1,
+        "error_type": null,
+        "error": null
+      }
+    ],
+    "successful_actual_native_shell_tools": 9,
+    "tool_event_evidence": "private/campaign/seed/round_0022/events.jsonl",
+    "actual_native_cli_verified": true,
+    "old_normal_work_seconds_preserved": 17360.218282938004,
+    "gpt_not_restarted": true,
+    "container_stability_reset": false,
+    "credentials_in_actor_inspect": false,
+    "host_bind_count": 0,
+    "frozen_protocol_unchanged": true,
+    "controller_maintenance_seconds_credited": 0
+  },
+  "seed_coding_plan_migration": {
+    "verified_epoch": 1791310942.1746838,
+    "upstream": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+    "billing_mode": "coding_plan",
+    "native_cli_verified": true,
+    "model": "doubao-seed-2-1-turbo-260628",
+    "reasoning_effort": "high",
+    "actual_completed_http_200_receipts": [
+      "harbor-runtime/forecast-research-seed-c6112f5b__env/routes/seed-a57c1419eade48b89e39b216b60571c8-route.json"
+    ],
+    "successful_native_cli_tools": 3,
+    "preserved_committed_seconds": 19099.23517560959,
+    "seed_pid": 73275,
+    "host_only_credentials": true,
+    "old_metered_endpoint_fallback": false,
+    "gpt_restarted": false,
+    "stability_reset": false,
+    "controller_preparation_credited_model_seconds": 0
+  }
+}

@@ -1,0 +1,652 @@
+{
+  "schema_version": 2,
+  "scope": "Literal current source blocks and actual evidence locators",
+  "instruction_member": "Task/instruction.md",
+  "instruction_SHA256": "135031ffb8cfd64f42cfea2793dfb77f32da229ae8bc648481f763ca18477282",
+  "instruction_literal_nonempty_blocks": [
+    {
+      "block_index": 1,
+      "literal_text": "## Goal"
+    },
+    {
+      "block_index": 2,
+      "literal_text": "Optimize the execution algorithm of the pretrained Bifrost-1 patch-latent decoder while preserving its numerical predictions. The model bridges multimodal language representations to image patch latents. This task covers all 28 decoder layers, final image RMS normalization and projection head; the FLUX image renderer and retraining are outside this benchmark."
+    },
+    {
+      "block_index": 3,
+      "literal_text": "## Task Setting"
+    },
+    {
+      "block_index": 4,
+      "literal_text": "The canonical sampler has batch size 2 (unconditional and conditional), 300 padded text positions, 256 image positions, seeded reveal ordering, a cosine reveal schedule and per-patch classifier-free guidance weight 4. This benchmark explicitly uses canonical per-patch CFG; it does not claim to reproduce the published script's multi-patch indexing or rendered image quality unchanged. Public Dev has 3 disclosed prompts, sampling seeds 101/202/303 and 32 stages. Final evaluation uses 6 withheld prompts, 2 for each of those sampling seeds, 256 stages and 3 paired repetitions per prompt. The scoring code and rules are public; final prompt embeddings remain private."
+    },
+    {
+      "block_index": 5,
+      "literal_text": "Your local Docker environment has no direct network or GPU access."
+    },
+    {
+      "block_index": 6,
+      "literal_text": "## Objective and Metrics"
+    },
+    {
+      "block_index": 7,
+      "literal_text": "The score measures the fractional reduction in paired decoder latency: `(B - T) / (B - U)`, with the metric lower bound U = 0 ms; equivalently `(B - T) / B` without clipping. Here B and T are the Baseline and candidate means measured during the same evaluation. First take the median of 3 repetitions per prompt, then average the 2 prompts within each seed, then average the 3 seed means. Latency sums CUDA-event times of all 256 decoder forwards, including first-stage intermediate construction, all layers, final normalization and projection. CFG/reveal, input preparation, quality diagnostics, checkpoint loading, transport and GPU queue waits are excluded equally and recorded separately. The unchanged Starter has the Baseline semantics; paired timing noise is retained in its measured score rather than forced to zero by identity. A measured candidate slower than B receives a negative score. An effective improvement requires `B - T >= 3 * sigma_B`, where sigma_B is the sample standard deviation (n-1) of the three Baseline seed means; a smaller positive change is reported as insufficient evidence, not relabeled as a verified improvement."
+    },
+    {
+      "block_index": 8,
+      "literal_text": "## Allowed Scope"
+    },
+    {
+      "block_index": 9,
+      "literal_text": "Use graph factoring, partitioning and recombination, alternative attention computation, intermediate reuse, or equivalent operator compositions. The graph is an open sequence of up to 256 operator nodes with a single layer output, applied to each pretrained layer. Its complete numerical interpreter, operator catalog, published decoder source, configuration, frozen public inputs and public checkpoint tensor manifest are in `/opt/bifrost/public_eval/`. You may inspect all of them. The trusted A100 worker validates allocation-free tensor shapes before executing a graph. It accepts JSON operations, never arbitrary Python, shell, modules, filesystem paths or network targets. Checkpoint weights and evaluator rules are fixed."
+    },
+    {
+      "block_index": 10,
+      "literal_text": "Each node names its operation and earlier inputs; weights use `w:<layer-weight-name>`. Node `lifetime` can be `stage` or `prefix`. The latter retains a node's first value within one prompt rollout and is reset between prompts and repetitions. You are responsible for whether that reuse preserves predictions as image tokens change. The interpreter enforces a 7 GiB retained-tensor budget and bounded tensor dimensions. Exact graph syntax, allowed attributes, tensor shapes and weight names are documented in the public catalog and source."
+    },
+    {
+      "block_index": 11,
+      "literal_text": "The optional `bifrost-tensor-dag/2` format adds `compile_regions` to the three graph fields. Declare 1–16 nonoverlapping regions by region `id` and an ordered, contiguous list of existing node IDs. A region must contain only `stage` nodes or only `prefix` nodes. Its input/output boundary is derived from the graph. All operators, graph/tensor/cache limits and numerical checks remain the same. The trusted worker compiles these regions with a fixed full-graph PyTorch Inductor backend; custom code, backends, flags and fallback are unavailable. The version1 eager graph remains supported. See the public operator catalog for the exact contract."
+    },
+    {
+      "block_index": 12,
+      "literal_text": "## Hard Boundaries"
+    },
+    {
+      "block_index": 13,
+      "literal_text": "The Agent uses the task environment's shell, filesystem and local Python tools. Read the public files in `/opt/bifrost/public_eval/` and the task-local Starter; write your builder and graph artifact in `/workspace/solution/`. `/tmp/` and the sandbox user's home directory (`$HOME`) are disposable writable scratch directories. The evaluator, checkpoint assets, Baseline and trusted worker implementation are read-only and are outside your editable submission."
+    },
+    {
+      "block_index": 14,
+      "literal_text": "WebSearch, WebFetch, external downloads, SSH and direct GPU or trusted-worker control are unavailable and are not permitted. Use only `python /opt/bifrost/public_eval/evaluate.py` for Dev evaluation through the provided bounded queue. Local shell and Python processes share the sandbox CPU, memory and filesystem restrictions. The provided evaluator submits a candidate through the bounded queue and waits for its recorded result; the trusted worker serializes GPU evaluations under its resource locks. Do not modify trusted services or bypass the queue, resource locks or evaluator. The worker executes only the submitted data-only graph under the fixed numerical and memory gates."
+    },
+    {
+      "block_index": 15,
+      "literal_text": "\nEvery stage must produce finite predictions with relative RMSE and scaled maximum absolute error at most 0.001 against the published-shape eager Baseline. An additional autonomous candidate rollout checks final latents with both limits. Relative RMSE is `rms(candidate-baseline)/(rms(baseline)+1e-12)`; scaled maximum error is `max(abs(candidate-baseline))/(1+max(abs(baseline)))`. All cases must pass, and peak CUDA allocation must not exceed 34 GiB. Any quality or memory failure is a hard-gate invalid result with score -1, excluded from valid ranking; it is recorded separately from valid negative improvement and from infrastructure failure. The Baseline uses the same pretrained BF16 weights, hardware, prefix lengths, sampler, seeds, warmup and repetition budget. All prefix caches are discarded before timing; their first construction is included."
+    },
+    {
+      "block_index": 16,
+      "literal_text": "## Submission Instructions"
+    },
+    {
+      "block_index": 17,
+      "literal_text": "The runnable Starter in `/workspace/solution/method.py` builds the published eager dual-branch computation as a data-only tensor DAG. Edit it or construct your own `program.json`. Run `python method.py` to emit the artifact, then run `python /opt/bifrost/public_eval/evaluate.py` for public Dev feedback. The Verifier reads only your submitted `/workspace/solution/program.json`; it never imports your Python builder. Keep the builder as an explanation and reproducibility artifact. Changes to files outside the submission have no effect on final scoring."
+    },
+    {
+      "block_index": 18,
+      "literal_text": "## Workflow & Iteration"
+    },
+    {
+      "block_index": 19,
+      "literal_text": "Compilation and first execution during the existing disposable warmup are recorded separately. All numerical prefix values are cleared after warmup and between repetitions/prompts, so their reconstruction remains inside the first timed forward. A reusable compiled executable never substitutes cached numerical results. A compiler or resource failure invalidates the run and is preserved; it does not silently use an eager candidate."
+    },
+    {
+      "block_index": 20,
+      "literal_text": "Public Dev runs through its isolated bounded file queue to the trusted remote A100 executor. Model transport uses a separate trusted relay with the fixed lane model and no credentials in your tools. Final scoring uses a separate Docker Verifier image and queue."
+    },
+    {
+      "block_index": 21,
+      "literal_text": "## Completion Criteria"
+    },
+    {
+      "block_index": 22,
+      "literal_text": "Save the best public Dev candidate and regenerate `program.json` before ending.\n"
+    }
+  ],
+  "current_selected_identities": {
+    "GPT": {
+      "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "source_files": {
+        "method.py": "28c4f480b01e84eeb992e56285eb419199182281f756174bf4129e87e6a63bf7",
+        "program.json": "aa97efaefa4bc23e6df5eba3f7051a0131463b1710c6855c8c8692c84ae15f85"
+      }
+    },
+    "Seed": {
+      "artifact_sha256": "637b952f46e7bd25126e1d9e20bfa59cab8c28fd9a2f2605bb565d15129273d7",
+      "source_files": {
+        "method.py": "0da5c4cb0fd76c3dd01b58aa2e1341888c68216091893476cf76c335dc74d012",
+        "program.json": "20ce4ff0464588ae073753476c3a851e501972e62a6b8d3adf174989e8fabd16"
+      }
+    }
+  },
+  "current_trajectory_array_lengths": {
+    "GPT": 102,
+    "Seed": 59
+  },
+  "existing_current_evidence_members": {
+    "Task/instruction.md": {
+      "sha256": "135031ffb8cfd64f42cfea2793dfb77f32da229ae8bc648481f763ca18477282",
+      "bytes": 7675
+    },
+    "selected-method-identities.json": {
+      "sha256": "683e60048c60bea83fb1f68adbe4c50738a44448052ddd0826072daeeb466c06",
+      "bytes": 626
+    },
+    "expert_evidence/trajectory_codex.json": {
+      "sha256": "77c5ef700b0282d18fae14d2aab8aeae9e69330d70b974535f75b16fc5594b0e",
+      "bytes": 99143
+    },
+    "expert_evidence/trajectory_seed.json": {
+      "sha256": "d23df25de134684744f05a4d505b1dd2422058e8f2572c592de08d6ba305fa16",
+      "bytes": 76759
+    },
+    "Trajectories/GPT/selected-method/method.py": {
+      "sha256": "28c4f480b01e84eeb992e56285eb419199182281f756174bf4129e87e6a63bf7",
+      "bytes": 13603
+    },
+    "Trajectories/GPT/selected-method/program.json": {
+      "sha256": "aa97efaefa4bc23e6df5eba3f7051a0131463b1710c6855c8c8692c84ae15f85",
+      "bytes": 21975
+    },
+    "expert_evidence/run_summary.json": {
+      "sha256": "27f324133b3f183e2c0dfe6a1db0ae6bdaf10a13f7c084eca332dbdf5f6b912c",
+      "bytes": 157676
+    },
+    "expert_evidence/expert_annotation.json": {
+      "sha256": "16c0fedde5846152828546fa77f29941255560bc4672b60138cb9466f6c0019f",
+      "bytes": 10236
+    },
+    "expert_evidence/current-package-nop/trial/artifacts/manifest.json": {
+      "sha256": "f1fd287c42e70802d5c2cf4904dbf8415b0de4891c253fe505a3049b1e115ca0",
+      "bytes": 585
+    },
+    "expert_evidence/current-package-nop/trial/artifacts/workspace/solution/method.py": {
+      "sha256": "07053b2dd5ac52bf587c88ed0d2bfd86f735e4d17ae1bec5679beee864d930e9",
+      "bytes": 2408
+    },
+    "expert_evidence/current-package-nop/trial/artifacts/workspace/solution/program.json": {
+      "sha256": "0628e466791289dc755a1ea1f0bb41c29773a781a18b7bbac3c180d3d3138ebe",
+      "bytes": 4147
+    },
+    "expert_evidence/current-package-nop/trial/config.json": {
+      "sha256": "6f8a55fd5c7282a157c4b835e0b8b6bc2f68defe2f521089e94baa642e7c1c3a",
+      "bytes": 571
+    },
+    "expert_evidence/current-package-nop/trial/lock.json": {
+      "sha256": "62391dc6d7f2794e6e4fca0dfb19bf2f5bd69eaaf38d42a8418bfa9d5e603f7b",
+      "bytes": 1097
+    },
+    "expert_evidence/current-package-nop/trial/result.json": {
+      "sha256": "9da921208a7da406fad308e9c0ad9c1905d12f905a0a648f54d23d53f265c731",
+      "bytes": 3698
+    },
+    "expert_evidence/current-package-nop/trial/trial.log": {
+      "sha256": "5868e519b78e4f2f267470e411fb5e62ab85729eb3642ffbddd64e569930f993",
+      "bytes": 34
+    },
+    "expert_evidence/current-package-nop/trial/verifier/numerical-result.json": {
+      "sha256": "a0c17b5c1d4099dcac54cab607b1db68f7786a254b710d4de11e110bc8b46fb8",
+      "bytes": 10779
+    },
+    "expert_evidence/current-package-nop/trial/verifier/reward.txt": {
+      "sha256": "4b9cef00a895915e03a9bb502663e0dae78f7b7a50804a3ae613c15ebb54df47",
+      "bytes": 24
+    },
+    "expert_evidence/current-package-nop/trial/verifier/test-stdout.txt": {
+      "sha256": "ea40aa412ce938cb5fea5ff2c13af1a951cd8032409cf7847c6ae75e3eaa7171",
+      "bytes": 239
+    },
+    "expert_evidence/current-package-nop/trial_task_binding.json": {
+      "sha256": "04d938302b15100f78be5b0a1c026174400029ff7d70e25f65098908e8f087dc",
+      "bytes": 9671
+    },
+    "expert_evidence/portable-runtime-isolation/index.json": {
+      "sha256": "9de5543412890c4dd7131430f72598f323ead3f9bff2617e57e630530935d538",
+      "bytes": 4059
+    },
+    "expert_evidence/portable-runtime-isolation/original-isolation-closure.json": {
+      "sha256": "dda8aa7bac624898fed26d77423d878e38d84d414093203f27c68b88798f4ea8",
+      "bytes": 6960
+    },
+    "expert_evidence/release-full-validation/gpt-selected/README.md": {
+      "sha256": "aaceb60ea80f0f515f9f372004891ff680a5ab1c4a8f37d1d2a3dec977e8ea5d",
+      "bytes": 407
+    },
+    "expert_evidence/release-full-validation/gpt-selected/actual-native-command.json": {
+      "sha256": "52554b352beb8cbfa54b01c4befeb05bd40c7b1a164f8a647d2dcaa96e218a3b",
+      "bytes": 943
+    },
+    "expert_evidence/release-full-validation/gpt-selected/audit-command.json": {
+      "sha256": "16f17575f2a17c8f2e932a965bb543ee9ea6cb225fb1e52a97004ef5164c8504",
+      "bytes": 3890
+    },
+    "expert_evidence/release-full-validation/gpt-selected/audit.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "expert_evidence/release-full-validation/gpt-selected/audit.stdout.log": {
+      "sha256": "a56ecdcffce8a848609a8dc601128493eece8d4fee867dcf1e7647929cb77e21",
+      "bytes": 2794
+    },
+    "expert_evidence/release-full-validation/gpt-selected/case-0-final-latents.safetensors": {
+      "sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/gpt-selected/case-1-final-latents.safetensors": {
+      "sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/gpt-selected/case-2-final-latents.safetensors": {
+      "sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/gpt-selected/case-3-final-latents.safetensors": {
+      "sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/gpt-selected/case-4-final-latents.safetensors": {
+      "sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/gpt-selected/case-5-final-latents.safetensors": {
+      "sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/gpt-selected/index.json": {
+      "sha256": "43c4a8685e6f153faeb448fa086833afed92688c1d37d181e812a390f37fb5b7",
+      "bytes": 6543
+    },
+    "expert_evidence/release-full-validation/gpt-selected/native-full-GPU-CPU-durable-closure.json": {
+      "sha256": "c1ce895fd1833c7f37ec85de08b4844345d35adaafe7886dc5b2e0c15d0d879c",
+      "bytes": 4089
+    },
+    "expert_evidence/release-full-validation/gpt-selected/original-native-gpu-closure.json": {
+      "sha256": "06ba08584c0dbea474337fa73e389af459eae51aac941f18bb60a2dc02e77de5",
+      "bytes": 4614
+    },
+    "expert_evidence/release-full-validation/gpt-selected/program.json": {
+      "sha256": "a524ef939d3ee22084b11e8b644bf0fa716dbc83a11c2aa5f2f883960eb2a14f",
+      "bytes": 12915
+    },
+    "expert_evidence/release-full-validation/gpt-selected/raw-stage-times.json": {
+      "sha256": "7f747c2223ddfa2cc8a80cce7df94811b161c111bd5fa0bf0cd163a0bcf724c8",
+      "bytes": 826050
+    },
+    "expert_evidence/release-full-validation/gpt-selected/repair-independent-cpu-audit.json": {
+      "sha256": "a56ecdcffce8a848609a8dc601128493eece8d4fee867dcf1e7647929cb77e21",
+      "bytes": 2794
+    },
+    "expert_evidence/release-full-validation/gpt-selected/request.json": {
+      "sha256": "5d826c4fcad6db92801c2f2ca68d1bb2f11e444b4435a62d4cefaae79e61078f",
+      "bytes": 24578
+    },
+    "expert_evidence/release-full-validation/gpt-selected/result.json": {
+      "sha256": "6f7e62562414b813571f4c5d6e9e0bac2ce4eb5c81bee49784a8fe2628a22c73",
+      "bytes": 13644
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/artifacts/manifest.json": {
+      "sha256": "f1fd287c42e70802d5c2cf4904dbf8415b0de4891c253fe505a3049b1e115ca0",
+      "bytes": 585
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/artifacts/workspace/solution/method.py": {
+      "sha256": "28c4f480b01e84eeb992e56285eb419199182281f756174bf4129e87e6a63bf7",
+      "bytes": 13603
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/artifacts/workspace/solution/program.json": {
+      "sha256": "aa97efaefa4bc23e6df5eba3f7051a0131463b1710c6855c8c8692c84ae15f85",
+      "bytes": 21975
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/config.json": {
+      "sha256": "6201bcb2334d3ffec2e637109f9b9424c84cf3b9c1afd4f99cb47b6b4fbc77a6",
+      "bytes": 5005
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/lock.json": {
+      "sha256": "6fa602bc9ffd2600fe5a4cfade6fa03966689d02e939d53af28a22b628340304",
+      "bytes": 5508
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/result.json": {
+      "sha256": "cd54e839d215f32fd5b6e94d77333915eae3fdae3fc199a9f55821ff28ef8a08",
+      "bytes": 8235
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/trial.log": {
+      "sha256": "5868e519b78e4f2f267470e411fb5e62ab85729eb3642ffbddd64e569930f993",
+      "bytes": 34
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/verifier/numerical-result.json": {
+      "sha256": "1fa4f3986eef5e9929d98a44c15073f04558476e0124fb1b9eb225112ab31bda",
+      "bytes": 13664
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/verifier/reward.txt": {
+      "sha256": "9b791362fda4e4fc101d6a6fb304e0fbde755cb16698c5d2b9fcb4c54cf37ac8",
+      "bytes": 20
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial/verifier/test-stdout.txt": {
+      "sha256": "2e0eed41dff803a7cdbc08025f48626e0ddae802664eea2ccf4239e0a876260c",
+      "bytes": 237
+    },
+    "expert_evidence/release-full-validation/gpt-selected/trial_task_binding.json": {
+      "sha256": "7177444d0cab59480e37dcc4fd6b62b123ec5955b2bbc81aa26ce8c865fa76fa",
+      "bytes": 9680
+    },
+    "expert_evidence/release-full-validation/nop/README.md": {
+      "sha256": "aaceb60ea80f0f515f9f372004891ff680a5ab1c4a8f37d1d2a3dec977e8ea5d",
+      "bytes": 407
+    },
+    "expert_evidence/release-full-validation/nop/actual-native-command.json": {
+      "sha256": "b934631eee0bd68cd7200c690a2efcce64da6a78eb282656b0ba35577ef58e76",
+      "bytes": 937
+    },
+    "expert_evidence/release-full-validation/nop/audit-command.json": {
+      "sha256": "a70e0704b4dbca74d1538e9ef5023bd181448ac7400ccff275fa275ddb114254",
+      "bytes": 3894
+    },
+    "expert_evidence/release-full-validation/nop/audit.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "expert_evidence/release-full-validation/nop/audit.stdout.log": {
+      "sha256": "894f113c6d6a75169bad15d540c5af380101351eb2db8a7c69de5531e278b78a",
+      "bytes": 2798
+    },
+    "expert_evidence/release-full-validation/nop/case-0-final-latents.safetensors": {
+      "sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/nop/case-1-final-latents.safetensors": {
+      "sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/nop/case-2-final-latents.safetensors": {
+      "sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/nop/case-3-final-latents.safetensors": {
+      "sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/nop/case-4-final-latents.safetensors": {
+      "sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/nop/case-5-final-latents.safetensors": {
+      "sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/nop/index.json": {
+      "sha256": "97114366e1e9c3df4436dcd2148c8548e37a7f2b814cb35816c714598b1dfb83",
+      "bytes": 6526
+    },
+    "expert_evidence/release-full-validation/nop/native-full-GPU-CPU-durable-closure.json": {
+      "sha256": "b3d56425ef4eb038c379b37b6117b1dae390782412712f3df6578ddea30dca58",
+      "bytes": 4092
+    },
+    "expert_evidence/release-full-validation/nop/original-native-gpu-closure.json": {
+      "sha256": "40265e1c0b8714c228a67363b4b45a72547b9350d6aa298cad8e908eca62c1ba",
+      "bytes": 4605
+    },
+    "expert_evidence/release-full-validation/nop/program.json": {
+      "sha256": "d28ad4def04e7f2bab9d0f91c35f46971994d8c023d676c426de72a584230cb9",
+      "bytes": 2526
+    },
+    "expert_evidence/release-full-validation/nop/raw-stage-times.json": {
+      "sha256": "5611968688381be4838844ad4d4c641425540462220a0603966aa9a67d454210",
+      "bytes": 827355
+    },
+    "expert_evidence/release-full-validation/nop/repair-independent-cpu-audit.json": {
+      "sha256": "894f113c6d6a75169bad15d540c5af380101351eb2db8a7c69de5531e278b78a",
+      "bytes": 2798
+    },
+    "expert_evidence/release-full-validation/nop/request.json": {
+      "sha256": "af10b9c2875d8de0d518da68f6767de36efa11c1e9998e0959cf45fa24d203e8",
+      "bytes": 4784
+    },
+    "expert_evidence/release-full-validation/nop/result.json": {
+      "sha256": "bc9f4cd27e65912b4528c9d790e2594da3486bd88a525a32420d760e135c578b",
+      "bytes": 10759
+    },
+    "expert_evidence/release-full-validation/oracle/README.md": {
+      "sha256": "aaceb60ea80f0f515f9f372004891ff680a5ab1c4a8f37d1d2a3dec977e8ea5d",
+      "bytes": 407
+    },
+    "expert_evidence/release-full-validation/oracle/actual-native-command.json": {
+      "sha256": "3d200c4fd8bfd77283a0183be2f7027ed103c56b20e9ba06d85c1c0f8bd60f68",
+      "bytes": 940
+    },
+    "expert_evidence/release-full-validation/oracle/audit-command.json": {
+      "sha256": "555b9d0d995c29305a1ce62e94eee8616c24e7299622e7eaa958e0b07f73b429",
+      "bytes": 3884
+    },
+    "expert_evidence/release-full-validation/oracle/audit.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "expert_evidence/release-full-validation/oracle/audit.stdout.log": {
+      "sha256": "888a8bf9068fdb093ed44a8feea9fd2b516fc7c17b338aea38d1254dd4692b5a",
+      "bytes": 2788
+    },
+    "expert_evidence/release-full-validation/oracle/case-0-final-latents.safetensors": {
+      "sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/oracle/case-1-final-latents.safetensors": {
+      "sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/oracle/case-2-final-latents.safetensors": {
+      "sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/oracle/case-3-final-latents.safetensors": {
+      "sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/oracle/case-4-final-latents.safetensors": {
+      "sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/oracle/case-5-final-latents.safetensors": {
+      "sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/oracle/index.json": {
+      "sha256": "023ef7ee423d4710287be7e5571048be1fcc0bd6b72ab245ea72c25c474d83d1",
+      "bytes": 6525
+    },
+    "expert_evidence/release-full-validation/oracle/native-full-GPU-CPU-durable-closure.json": {
+      "sha256": "93db987c66b91b5c5ad4ba21e56892ae5a1056514fd80380553b1ef99a321c22",
+      "bytes": 4088
+    },
+    "expert_evidence/release-full-validation/oracle/original-native-gpu-closure.json": {
+      "sha256": "9ca8f476519716a0946354dfa6b758f015053f6c289cc2acb4e39eaebe0fe565",
+      "bytes": 4686
+    },
+    "expert_evidence/release-full-validation/oracle/program.json": {
+      "sha256": "0a0a76dd2af179568aef70ef4d280cdf3ca8076a423b68acad1f0ed77f512f3a",
+      "bytes": 2666
+    },
+    "expert_evidence/release-full-validation/oracle/raw-stage-times.json": {
+      "sha256": "d9a2a89797081d189ff8429c61c61df7c8668fa3b505008e0248b16569d4b9c4",
+      "bytes": 827401
+    },
+    "expert_evidence/release-full-validation/oracle/repair-independent-cpu-audit.json": {
+      "sha256": "888a8bf9068fdb093ed44a8feea9fd2b516fc7c17b338aea38d1254dd4692b5a",
+      "bytes": 2788
+    },
+    "expert_evidence/release-full-validation/oracle/request.json": {
+      "sha256": "11fe7c0035bf43deec00eeebc1b5be6c86c28f71c7f4647b82f1c2353c259603",
+      "bytes": 4994
+    },
+    "expert_evidence/release-full-validation/oracle/result.json": {
+      "sha256": "9886057743eba11fc56ce22e6696e8a369e02649a59ad019690b5e6c53d83a5c",
+      "bytes": 10750
+    },
+    "expert_evidence/release-full-validation/oracle/trial/agent/oracle.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "expert_evidence/release-full-validation/oracle/trial/artifacts/manifest.json": {
+      "sha256": "f1fd287c42e70802d5c2cf4904dbf8415b0de4891c253fe505a3049b1e115ca0",
+      "bytes": 585
+    },
+    "expert_evidence/release-full-validation/oracle/trial/artifacts/workspace/solution/method.py": {
+      "sha256": "e0ec27378e2223946186c9c6c4413c06f636b2204f97eb0f43dddab2f72b49b6",
+      "bytes": 2544
+    },
+    "expert_evidence/release-full-validation/oracle/trial/artifacts/workspace/solution/program.json": {
+      "sha256": "540a37f836942f5b89df7aec5abe3aed7f9ab7606a693048ab15fcb97847fa3c",
+      "bytes": 4343
+    },
+    "expert_evidence/release-full-validation/oracle/trial/config.json": {
+      "sha256": "e62fbe6cae2128790656cb53510554f10365fb686e927c66ca03bfc1c76778b0",
+      "bytes": 569
+    },
+    "expert_evidence/release-full-validation/oracle/trial/lock.json": {
+      "sha256": "e360a1fabfb05db76f88820f2a5725c6c9a2956edc43733bf8019897ceb79af3",
+      "bytes": 1131
+    },
+    "expert_evidence/release-full-validation/oracle/trial/result.json": {
+      "sha256": "751e5a39f40820866dadc4253914946e42114325ff9bcd524c6a535c6415effe",
+      "bytes": 3742
+    },
+    "expert_evidence/release-full-validation/oracle/trial/trial.log": {
+      "sha256": "5868e519b78e4f2f267470e411fb5e62ab85729eb3642ffbddd64e569930f993",
+      "bytes": 34
+    },
+    "expert_evidence/release-full-validation/oracle/trial/verifier/numerical-result.json": {
+      "sha256": "bc91d23e2b8c235f81a1aed407b3edd5d010fc6b3589b0eb3a5a74b80f9f4264",
+      "bytes": 10770
+    },
+    "expert_evidence/release-full-validation/oracle/trial/verifier/reward.txt": {
+      "sha256": "7be1fdc52cede253afab940d73e4182b73105fe6e9a676e05cc78e9286b25828",
+      "bytes": 20
+    },
+    "expert_evidence/release-full-validation/oracle/trial/verifier/test-stdout.txt": {
+      "sha256": "947003baea1d00a2b11988a32b51c46969b9e2b9678d65b77f41d7bad2cc8f6f",
+      "bytes": 236
+    },
+    "expert_evidence/release-full-validation/oracle/trial_task_binding.json": {
+      "sha256": "24207b83c1d445379a798b91507bd0bafdef7eabd00081531e2e5d6074d074de",
+      "bytes": 9674
+    },
+    "expert_evidence/release-full-validation/seed-selected/README.md": {
+      "sha256": "aaceb60ea80f0f515f9f372004891ff680a5ab1c4a8f37d1d2a3dec977e8ea5d",
+      "bytes": 407
+    },
+    "expert_evidence/release-full-validation/seed-selected/actual-native-command.json": {
+      "sha256": "4cbbb2e3a2d2403365681942f520cb35c3e39af336cc5495b31310be6eefd033",
+      "bytes": 949
+    },
+    "expert_evidence/release-full-validation/seed-selected/audit-command.json": {
+      "sha256": "efb119ccd82f2646d3ccc879efedcb680f50a46351e287a9580a8b3344bdad88",
+      "bytes": 3891
+    },
+    "expert_evidence/release-full-validation/seed-selected/audit.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "expert_evidence/release-full-validation/seed-selected/audit.stdout.log": {
+      "sha256": "9f3c333fb620d538815c9f7a6f31532a1a627cd4b648d7405a89b140e07c55be",
+      "bytes": 2795
+    },
+    "expert_evidence/release-full-validation/seed-selected/case-0-final-latents.safetensors": {
+      "sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/seed-selected/case-1-final-latents.safetensors": {
+      "sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/seed-selected/case-2-final-latents.safetensors": {
+      "sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/seed-selected/case-3-final-latents.safetensors": {
+      "sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/seed-selected/case-4-final-latents.safetensors": {
+      "sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/seed-selected/case-5-final-latents.safetensors": {
+      "sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c",
+      "bytes": 3670216
+    },
+    "expert_evidence/release-full-validation/seed-selected/index.json": {
+      "sha256": "79ade49aa3035b7cc9c0f0e8734d75326ffa8da273dcfbcdc76ad5a11885c0c4",
+      "bytes": 6545
+    },
+    "expert_evidence/release-full-validation/seed-selected/native-full-GPU-CPU-durable-closure.json": {
+      "sha256": "a892fbe6cb26fa5233d2cfa96caf2c77ead3fcab2bb292215c9e61d790390e04",
+      "bytes": 4089
+    },
+    "expert_evidence/release-full-validation/seed-selected/original-native-gpu-closure.json": {
+      "sha256": "008788e0a16a45c2e6181262a0f3d719707a23deed6a801fa880392fb420f2e2",
+      "bytes": 4619
+    },
+    "expert_evidence/release-full-validation/seed-selected/program.json": {
+      "sha256": "56d4d0d74cd54362bd764ff6ce595eefca6d0a588214918088bb2c8033a955dd",
+      "bytes": 6593
+    },
+    "expert_evidence/release-full-validation/seed-selected/raw-stage-times.json": {
+      "sha256": "701fe5e433e59843f3d4af27a6129d9d0bd55dc303aacc140d8973f78289a332",
+      "bytes": 826028
+    },
+    "expert_evidence/release-full-validation/seed-selected/repair-independent-cpu-audit.json": {
+      "sha256": "9f3c333fb620d538815c9f7a6f31532a1a627cd4b648d7405a89b140e07c55be",
+      "bytes": 2795
+    },
+    "expert_evidence/release-full-validation/seed-selected/request.json": {
+      "sha256": "228da4ad558ba78a60af25e81fd1867e1b29419513b563525ce1b43dc3bdfdc8",
+      "bytes": 13040
+    },
+    "expert_evidence/release-full-validation/seed-selected/result.json": {
+      "sha256": "bef2e678a3ddac4427fff9da8b494772e3db8ee46f3971224dfea09982915bb2",
+      "bytes": 10768
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/artifacts/manifest.json": {
+      "sha256": "f1fd287c42e70802d5c2cf4904dbf8415b0de4891c253fe505a3049b1e115ca0",
+      "bytes": 585
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/artifacts/workspace/solution/method.py": {
+      "sha256": "0da5c4cb0fd76c3dd01b58aa2e1341888c68216091893476cf76c335dc74d012",
+      "bytes": 9624
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/artifacts/workspace/solution/program.json": {
+      "sha256": "20ce4ff0464588ae073753476c3a851e501972e62a6b8d3adf174989e8fabd16",
+      "bytes": 11521
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/config.json": {
+      "sha256": "947859c3051af2e8ba54c845046ca3756ab6467c9d16f7855ed1471fa09f72d2",
+      "bytes": 5023
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/lock.json": {
+      "sha256": "29ae1a31cf456e4a9552d8fa41d6711ae0ea9e39455e4809116058d36181ea13",
+      "bytes": 5521
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/result.json": {
+      "sha256": "ca1eb4f90335eeac59482fe69c86b190478e90a3491434758942049a68b48b8f",
+      "bytes": 8256
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/trial.log": {
+      "sha256": "5868e519b78e4f2f267470e411fb5e62ab85729eb3642ffbddd64e569930f993",
+      "bytes": 34
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/verifier/numerical-result.json": {
+      "sha256": "6fb7b30f2fa99c9b021661a092f8e3031e61e6cb09ada0dbb99640d99a221c29",
+      "bytes": 10788
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/verifier/reward.txt": {
+      "sha256": "c10cb89573d57e8f6ec6e598fb8ec241b59328983e21c15f7c569bf3bb317b40",
+      "bytes": 20
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial/verifier/test-stdout.txt": {
+      "sha256": "587519890cffd04c890a59621609a6a99fe92b9c16912335785c6b6a5c3afcbb",
+      "bytes": 237
+    },
+    "expert_evidence/release-full-validation/seed-selected/trial_task_binding.json": {
+      "sha256": "543d37de582d6e8bea8e027d5a95490f0ab8563144e36e5ca8d0dfca459b5800",
+      "bytes": 9681
+    }
+  },
+  "protected_changed_members": [
+    "Task/instruction.md",
+    "dependencies/task/task-files.json",
+    "Runtime/release_source_binding.py"
+  ],
+  "selected_methods_and_numerical_sources_unchanged": true,
+  "current_four_source_bound_full_GPU_CPU_executions_new": true,
+  "Root_formal_QA_or_method_description_authored": false,
+  "canonical_effective_seconds": null,
+  "canonical_status": "NOT_VERIFIED"
+}

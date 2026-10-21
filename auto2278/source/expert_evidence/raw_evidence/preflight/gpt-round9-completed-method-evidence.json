@@ -1,0 +1,78 @@
+{
+  "checked_unix": 1791433237.88709,
+  "track": "gpt",
+  "round": 9,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "6a27d7fdcd46aae9c4829aa9990c34feb5c9645972e82207128862b6a4795b00",
+  "candidate_source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/private_candidate_sources/round_00009.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.44758313645175385,
+      "score": 0.5807776669015896,
+      "quality_gates_passed": true,
+      "method_sha256": "6a27d7fdcd46aae9c4829aa9990c34feb5c9645972e82207128862b6a4795b00",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791432447.593304,
+      "end_unix": 1791432728.9554965
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.4547648259118389,
+    "score": 0.574051040346995,
+    "quality_gates_passed": true,
+    "method_sha256": "6a27d7fdcd46aae9c4829aa9990c34feb5c9645972e82207128862b6a4795b00",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791432805.824564,
+    "end_unix": 1791433091.8431435
+  },
+  "model_final_decision": {
+    "policy_name": "length_256_cholesky_threshold",
+    "method_summary": "Changed shared Cholesky norm factoring to activate only for length-256 cases, using direct Gram contractions at length 128. Protected Dev passed with raw relative CPU time 0.4475831365 and maximum error about 5.01e-6, improving the prior 0.4532180902 result.",
+    "next_direction": "Restore or recover the historical 0.424637603 variant before further optimization."
+  },
+  "original_controller_decision": {
+    "round": 9,
+    "policy_name": "length_256_cholesky_threshold",
+    "method_summary": "Changed shared Cholesky norm factoring to activate only for length-256 cases, using direct Gram contractions at length 128. Protected Dev passed with raw relative CPU time 0.4475831365 and maximum error about 5.01e-6, improving the prior 0.4532180902 result.",
+    "status": "ok",
+    "score": 0.4547648259118389,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 12:18:12"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791432199.1567829,
+    "ended_unix": 1791432803.341714,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 9,
+    "start_unix": 1791432198.237112,
+    "end_unix": 1791433092.806078,
+    "observed_seconds": 894.5641087091062,
+    "effective_seconds": 894.5641087091062,
+    "model_seconds": 605.2337764999829,
+    "model_completed": true,
+    "successful_command_tools": 9,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "model_transport_failed": true,
+    "method_sha256": "6a27d7fdcd46aae9c4829aa9990c34feb5c9645972e82207128862b6a4795b00",
+    "public_result": "round_00009.grader.log",
+    "events": "round_00009.events.jsonl",
+    "next_direction": "Restore or recover the historical 0.424637603 variant before further optimization."
+  },
+  "original_events": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00009.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/resume-provenance.json"
+}

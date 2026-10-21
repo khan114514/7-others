@@ -1,0 +1,23 @@
+{
+  "health": {
+    "http_status": 200,
+    "reply": {
+      "status": "OK",
+      "mode": "restricted-dd-gateway"
+    }
+  },
+  "role_override_rejected": {
+    "http_status": 422,
+    "reply": {
+      "status": "REJECTED"
+    }
+  },
+  "uncalibrated_formal_rejected": {
+    "http_status": 422,
+    "reply": {
+      "status": "REJECTED",
+      "error_type": "ValueError",
+      "error": "Request rejected; inspect trusted gateway logs."
+    }
+  }
+}

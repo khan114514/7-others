@@ -1,0 +1,79 @@
+{
+  "checked_unix": 1791440128.6328452,
+  "track": "gpt",
+  "round": 16,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "b1589c9b9a43b0528ce51e0bf3fee7d650ff8a5da0c342755f10f5c77b95ca41",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00016.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.3960858877312794,
+      "score": 0.6290118272140024,
+      "quality_gates_passed": true,
+      "method_sha256": "b1589c9b9a43b0528ce51e0bf3fee7d650ff8a5da0c342755f10f5c77b95ca41",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791439595.1913419,
+      "end_unix": 1791439755.649426
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.4006255663966386,
+    "score": 0.6247598022233019,
+    "quality_gates_passed": true,
+    "method_sha256": "b1589c9b9a43b0528ce51e0bf3fee7d650ff8a5da0c342755f10f5c77b95ca41",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791439802.2954695,
+    "end_unix": 1791439967.9788613
+  },
+  "model_final_decision": {
+    "policy_name": "token_packed_fused_equal_attention",
+    "method_summary": "Added token-packed QKV projection and fused CPU attention when alpha equals one. Full protected Dev passed all gates with raw CPU ratio 0.396085888, score 0.629011827, and maximum error 5.01e-6; the evaluated candidate remains in place.",
+    "next_direction": "Verify retention against the independently measured best, then test token-major fused QKV/Gram projection for nonunit-alpha cases."
+  },
+  "original_controller_decision": {
+    "round": 16,
+    "policy_name": "token_packed_fused_equal_attention",
+    "method_summary": "Added token-packed QKV projection and fused CPU attention when alpha equals one. Full protected Dev passed all gates with raw CPU ratio 0.396085888, score 0.629011827, and maximum error 5.01e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.4006255663966386,
+    "failure_reason": null,
+    "retained_best": true,
+    "time": "2026-10-08 14:12:48"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791439295.8058782,
+    "ended_unix": 1791439800.199309,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 16,
+    "start_unix": 1791439295.648902,
+    "end_unix": 1791439968.3197162,
+    "observed_seconds": 672.6674232499208,
+    "effective_seconds": 672.6674232499208,
+    "model_seconds": 504.6084434578661,
+    "model_completed": true,
+    "successful_command_tools": 15,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": false,
+    "method_sha256": "b1589c9b9a43b0528ce51e0bf3fee7d650ff8a5da0c342755f10f5c77b95ca41",
+    "public_result": "round_00016.grader.log",
+    "events": "round_00016.events.jsonl",
+    "next_direction": "Verify retention against the independently measured best, then test token-major fused QKV/Gram projection for nonunit-alpha cases."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00016.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": true,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

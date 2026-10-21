@@ -1,0 +1,37 @@
+{
+  "role": "gpt",
+  "model_requested": "gpt-6.1-sol",
+  "reasoning_effort": "xhigh",
+  "phase": "TEN_HOURS_COMPLETE_AWAITING_NATIVE_FINAL_VERIFIER",
+  "effective_seconds": 36003.7909078598,
+  "effective_hours": 10.001053029961056,
+  "minimum_effective_seconds": 36000,
+  "round_count": 27,
+  "best_raw_mae": 13.902094246542314,
+  "time_policy": {
+    "version": "user-normal-work-clock-20261006",
+    "minimum_seconds_per_actual_model_track": 36000,
+    "included": [
+      "normal model reasoning",
+      "reading",
+      "analysis",
+      "coding",
+      "experiments",
+      "verification",
+      "unsuccessful method attempts",
+      "normal local builds and compilation during model work"
+    ],
+    "excluded": [
+      "downloads",
+      "demonstrated abnormal stalls or infrastructure blocks",
+      "deliberate idle filler",
+      "work before that model track starts"
+    ],
+    "no_successful_score_requirement_for_time": true,
+    "no_automatic_idle_event_gap_penalty": true,
+    "no_artifact_validity_requirement_for_time": true,
+    "evidence_required_for_exclusion": true,
+    "tracks_are_counted_separately": true
+  },
+  "observed_epoch": 1791325386.086668
+}

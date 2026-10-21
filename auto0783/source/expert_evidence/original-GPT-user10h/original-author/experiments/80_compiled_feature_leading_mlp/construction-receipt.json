@@ -1,0 +1,19 @@
+{
+  "base": "53_compiled_image_rotary",
+  "compiled_mlp_nodes": [
+    "image_mlp_flat",
+    "image_mlp_columns",
+    "image_gate",
+    "image_up",
+    "image_gate_silu",
+    "image_gated",
+    "image_down",
+    "image_mlp_rows",
+    "image_mlp"
+  ],
+  "only_changed_existing_node": "image_mlp",
+  "all_other_nodes_equal": true,
+  "rotary_region_equal": true,
+  "extra_prefix_tensors": 0,
+  "new_weight_copies": 0
+}

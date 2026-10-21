@@ -1,0 +1,22 @@
+{
+  "round": 3,
+  "policy_name": "coupled8192_cfg2_nfe32_prefix0half",
+  "method_summary": "仅将FM尺度0采样概率从10%增加到50%，教师策略和固定训练框架保持第二轮一致。原训练在6200次更新保存因磁盘满退出；从已核验完整且模型/optimizer匹配的6100快照完成固定50k评分，6200次尝试全部收费且原失败保留。FID较第二轮下降约11.08，但正式64图仍被重复曲线纹理支配、缺乏对象结构，未通过质量门，最佳仍官方Baseline。",
+  "status": "quality_gate_failed",
+  "failure_reason": "Formal FID-50k 341.9779499196176 remains far above baseline9.663262058820692; all64 inspected images are dominated by repetitive curved/shiny texture without clear recognizable objects. Original exit1 at6200 checkpoint saving retained; score uses verified complete6100 snapshot.",
+  "quality_gate_passed": false,
+  "manually_inspected_grid": true,
+  "visual_review": "historical-codex-workspace/agent-output/rounds/round03/sample_grid.jpg",
+  "grid_sha256": "3ebc51db30b42b1003af8dd30bbdaa400ff4ff95c7173f220354adaf3c554057",
+  "result_sha256": "1dcf0e750fda542bb8e46bb821394d04b3523762c2e6f7dacdb29a20e35e0031",
+  "score": 341.9779499196176,
+  "budget_seconds": 13511.892242193222,
+  "checkpoint_update": 6100,
+  "attempted_updates_billed": 6200,
+  "original_training_exit_code": 1,
+  "reviewed_at": "2026-10-03T10:57:43.637010+08:00",
+  "diagnostic_evidence": [
+    "formal_preview_review.json",
+    "cpu_prefix_step02500/visual_review.json"
+  ]
+}

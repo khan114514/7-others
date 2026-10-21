@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "entrypoint": "method.py:draft(state)",
+  "algorithm": {
+    "name": "Question-independent verified structural drafting, cap8",
+    "retained_source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "interface": "Integer committed history; bounded by min(8,32,remaining_tokens,maximum_draft_tokens). Malformed states abstain; stateless question resets.",
+    "strategy": "Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification.",
+    "provenance": "Invariant markup from own observations0..11; no question, label or answer lookup."
+  },
+  "retained_evidence": {
+    "job_id": "c3f9b592af3f4292b966d62e92c9f19e",
+    "protocol": "96 Dev questions x seeds17,29,43,71,101",
+    "latency_ratio": 0.42642933194274285,
+    "development_normalized_score": 0.5736291212273931,
+    "token_agreement_each_seed": 1,
+    "answer_agreement_each_seed": 1,
+    "all_quality_gates_pass": true,
+    "candidate_forward_calls": 7754,
+    "calibration_forward_calls": 20480,
+    "candidate_guard_replays": 58,
+    "candidate_extra_sampled_ids": 1964,
+    "acceptance_fraction": null,
+    "acceptance_limit": "Per-proposal acceptance and guard positions not exported; aggregate work cannot identify acceptance rate.",
+    "raw_result": "evaluation-c3f9b592af3f4292b966d62e92c9f19e.json",
+    "raw_sha256": "e5630b37c641fd382a4bd908892faa3fe919e9858fa45804d0c969ebb877df3a",
+    "independent_final_verifier_score": null
+  },
+  "history": {
+    "journal": "research_journal.md",
+    "incoming_metadata_archive": "gpu_live_research/runtime_history_v1.zip:incoming_method_notes_20261006.json",
+    "incoming_metadata_bytes": 4844,
+    "missing_prior_artifacts": "Prior .py.source harness/candidates and 68068-byte original metadata archive absent from checkpoint. Historical journal/hashes survive; missing bytes cannot be verified.",
+    "slower_valid_reuse_full_ratio": 1.000535779857341,
+    "slower_valid_reuse_source": "gpu_live_research/runtime_history_v1.zip:real_prefix_gpu_preparation/candidates/incumbent/method.py",
+    "rejected_ticket": "9c21b590fa414714b23fb6738c93d9ed",
+    "rejected_ticket_latest_feedback": "Saved-ticket status still rejected before target feedback; no score inferred.",
+    "simulations": "Authored streams and callback schedules are simulations, never target outputs or scores."
+  },
+  "completed_experiment": {
+    "hypothesis": "Leave middle observed placeholder at opening position15 to ordinary decoding to test replay-work reduction with small callback cost.",
+    "variant": "middle_ordinary8_reconstructed",
+    "source_record": "gpu_live_research/resumed_boundary_candidate.json",
+    "source_sha256": "fd5caf2186cae21df2145663f5f85a1f6e304e4ba5c7bc5976a5865c2e5ecf8c",
+    "source_limit": "Behavior reconstructed from own journal; not byte-identical claim for missing candidate.",
+    "job_id": "d95eb79c44c64243bf82313ae225f860",
+    "protocol": "Quick seed17 on96 Dev questions; exploratory only",
+    "status": "COMPLETE; quick exploratory feedback, not full formal score",
+    "actual_feedback": "96 seed17 cases: ratio0.40984209608176675; candidate1.2489705288s vs calibration2.9967747604s. Token/answer agreement1, parsed rate1, accuracy0.46875 both arms; all quality gates pass.",
+    "target_acceptance": null,
+    "target_latency_ratio": 0.40984209608176675,
+    "target_quality": "All gates pass",
+    "target_score": null,
+    "work": "1486 forwards,1024 callbacks,8 guards,284 extra sampled IDs. Vs matched incumbent seed17:+135 forwards,+88 callbacks,+1 guard,+39 extra IDs; ratio delta+0.03152119435110973.",
+    "analysis": "gpu_live_research/checkpoint_comparison-d95eb79c44c64243bf82313ae225f860.json",
+    "decision": "Replay-reduction hypothesis unsupported. Slower exploratory variant preserved; no full promotion. Exact full-validated structure8 restored."
+  },
+  "pending_experiment": {
+    "hypothesis": "Closing speculation costs more verification/replay work than ordinary closing steps saved.",
+    "variant": "opening_only8_flag_ablation",
+    "change": "Only COMPLETE_CLOSING=False; opening strategy,cap and interface unchanged.",
+    "candidate": "gpu_live_research/opening_only8_candidate.json",
+    "candidate_sha256": "3b08ec42ae054f1e2a4b4b048491752b1d109a5f73227ef50e18168409e54046",
+    "job_id": "cbc142afdef14c8b9b0855f545f5a903",
+    "protocol": "Quick seed17; asynchronous accepted submission",
+    "latest_phase": "WAITING_FOR_GPU_EXCLUDED",
+    "actual_target_feedback": null,
+    "local_validation": "77189 checks pass;1800 changed overlapping probes over24 owned outputs. Local prefix agreement is not acceptance.",
+    "attribution_limit": "New upload has one runtime file; prior incumbent upload included history. Startup is amortized; separate batches give no simultaneous arm-to-arm confidence interval.",
+    "next_experiment": "python checkpoint_research.py.source request opening_only8_resume_status --status cbc142afdef14c8b9b0855f545f5a903; query saved job, never duplicate. When COMPLETE: python checkpoint_research.py.source compare evaluation-cbc142afdef14c8b9b0855f545f5a903.json. If quick quality passes and work/latency improve, stage using python checkpoint_research.py.source stage and submit one full fixed-five-seed job using python checkpoint_research.py.source request opening_only8_full_submit. Selection requires full feedback. Restore using python checkpoint_research.py.source restore before checkpoints."
+  },
+  "release": {
+    "runtime_dependency_closure": [
+      "method.py"
+    ],
+    "closure_evidence": "Full source has no imports/dynamic loading. Isolated -I import loads no new modules. Retained bytes unchanged.",
+    "historical_archive": "gpu_live_research/runtime_history_v1.zip",
+    "archive_bytes": 173053,
+    "archive_sha256": "02a993cc965ebd91afc26f39180805c71d0a808171905bc84a400b4dd7165151",
+    "member_manifest": "gpu_live_research/runtime_history_v1_manifest.json",
+    "preservation": "63 nonruntime Python files plus exact incoming metadata. Every member's bytes/SHA256 and ZIP CRC verified before redundant loose Python removal. Journals/results remain. Earlier missing originals still documented.",
+    "interface_evidence": "gpu_live_research/retained_interface_v1.json:4019 checks pass; failed harness assumption/state/traceback preserved separately. Authored fixtures are not target outputs.",
+    "contract_evidence": "gpu_live_research/release_contract_v1.json",
+    "research_tool": "checkpoint_research.py.source is development data, excluded from runtime upload."
+  },
+  "campaign": {
+    "status": "Continuing; bounded turn endings are checkpoints.",
+    "required_effective_seconds_per_track": 36000,
+    "duration_authority": "Trusted external CLI activity ledger only. Local hour estimates unverified. GPU queues, provider errors, stalls and recovery excluded."
+  }
+}

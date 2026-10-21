@@ -1,0 +1,95 @@
+{
+  "schema_version": "sava-run-summary.v1",
+  "task_id": "autoresearch/hierarchical-transport-valuation",
+  "status": "CANDIDATE_COMPLETE_INDEPENDENT_RELEASE_REVIEW_PENDING",
+  "reference_and_baseline": "optimization_evidence/comparison_summary.json",
+  "non_training_basis": "Fixed cached10D public inputs, value function and protected fresh process inference; no training or fine tuning. Frozen encoder unknown provenance remains disclosed.",
+  "duration_exception": {
+    "minimum_each_seconds": 25200,
+    "default_each_seconds": 36000,
+    "author_qualification": "Verified non-training, observed short full iterations, three source-bound cycles per track, ending own directions, GPT global-best clean IPC and separate Seed own-best clean IPC. Independent review still pending.",
+    "whole_iteration_wall_windows_seconds": {
+      "gpt": [
+        1012.348,
+        788.682,
+        1012.304
+      ],
+      "seed": [
+        962.327,
+        930.333
+      ]
+    },
+    "whole_iteration_scope": "Actual complete proposal/implementation through next decision windows, including model/tool/scoring; overlapping windows not additive effective time. Interrupted v15 and long abandoned diagnostics are not representative short iteration windows.",
+    "evidence": [
+      "expert_evidence/method_cycles/codex.json",
+      "expert_evidence/method_cycles/seed.json",
+      "expert_evidence/method_cycles/ending_directions.json",
+      "expert_evidence/best_method_clean_rerun/execution.json",
+      "expert_evidence/seed_best_clean_rerun/execution.json"
+    ]
+  },
+  "trajectories": [
+    {
+      "name": "Codex + GPT-6.1 Sol",
+      "model": "gpt-6.1-sol",
+      "effort": "xhigh",
+      "source_path": "expert_evidence/trajectory_codex.json",
+      "duration_seconds": 33583.012909626006,
+      "effective_seconds": 31751.36391291509,
+      "duration_hours": 9.328614697118335,
+      "formal_reports": 63,
+      "distinct_quality_valid_sources": 55,
+      "trajectory_rows": 64,
+      "effective_method_cycles_verified": 3,
+      "termination": "12 collected successful Native episodes; episode13 real502/turn.failed raw log preserved, no collected ledger, whole episode13 time excluded. Last collected source is the measured best.",
+      "next_direction_evidence": "expert_evidence/method_cycles/ending_directions.json"
+    },
+    {
+      "name": "Codex + Seed 2.1 Turbo",
+      "model": "doubao-seed-2-1-turbo-260628",
+      "effort": "high",
+      "source_path": "expert_evidence/trajectory_seed.json",
+      "duration_seconds": 40587.437968413025,
+      "effective_seconds": 27200.780761258,
+      "duration_hours": 11.274288324559175,
+      "formal_reports": 16,
+      "trajectory_rows": 36,
+      "effective_method_cycles_verified": 3,
+      "collected_native_episodes": 50,
+      "termination": "Final v5 Native controller complete after5 collected episodes; own current v19 source matches actual quality-valid full report. Historical quota/DNS/truncation failures preserved; all Seed requests use CodingPlan.",
+      "next_direction_evidence": "expert_evidence/method_cycles/ending_directions.json",
+      "own_best_clean_rerun": "expert_evidence/seed_best_clean_rerun/execution.json",
+      "own_best_source_sha256": "2e549e2e73a887a078d66b3c7770d4e94c84a19a67a5b7f3df55d3d2561de738",
+      "author_validation_not_research_time": true
+    }
+  ],
+  "best_method": {
+    "directory": "expert_evidence/best_method",
+    "selection": "expert_evidence/best_method_selection.json",
+    "source_sha256": "2694f45829ddab057619f6b334042bb3b7cfa8a6b1c10b7c7ac062344da0fe9e",
+    "clean_rerun": "expert_evidence/best_method_clean_rerun/execution.json",
+    "clean_score": 0.9315204853730451,
+    "clean_raw_metric": 0.03571169853336566,
+    "quality_records": 270,
+    "hidden_used_for_selection": false
+  },
+  "current_nop": "expert_evidence/harbor_nop/current/trial_task_binding.json",
+  "pending": [
+    "Two fresh independent QA0.3.2 reviews of same fixedZIP and unanimous consensus",
+    "Strict privacy and portability check of every final delivery attachment"
+  ],
+  "created_at": "2026-10-10T16:50:01.050336+00:00",
+  "stability": {
+    "evidence": "expert_evidence/stability/current",
+    "status": "PASS",
+    "observed_duration_seconds": 43815.05229387502,
+    "functional_rounds": 6,
+    "final_actual_client_exit_code": 0,
+    "final_actual_client_passed": true,
+    "final_ipc_quality_records": 270,
+    "unchanged_task_files": true,
+    "no_oom_restart_or_service_failure": true,
+    "counts_as_model_research_time": false
+  },
+  "updated_at": "2026-10-10T23:42:50.572071+00:00"
+}

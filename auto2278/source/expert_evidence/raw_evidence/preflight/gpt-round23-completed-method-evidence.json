@@ -1,0 +1,89 @@
+{
+  "checked_unix": 1791451903.856374,
+  "track": "gpt",
+  "round": 23,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "49c8133ae752b3403a814ffab71cc8cc251f8445a2ae45a1a5ec2ecbd5fe9462",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00023.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.4173076415045604,
+      "score": 0.6091347755453369,
+      "quality_gates_passed": true,
+      "method_sha256": "49c8133ae752b3403a814ffab71cc8cc251f8445a2ae45a1a5ec2ecbd5fe9462",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791448761.5892143,
+      "end_unix": 1791450362.403588
+    },
+    {
+      "status": "ok",
+      "raw_value": 0.4173076415045604,
+      "score": 0.6091347755453369,
+      "quality_gates_passed": true,
+      "method_sha256": "49c8133ae752b3403a814ffab71cc8cc251f8445a2ae45a1a5ec2ecbd5fe9462",
+      "protocol_sha256": null,
+      "start_unix": null,
+      "end_unix": null
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.4480789007430686,
+    "score": 0.5803133163799872,
+    "quality_gates_passed": true,
+    "method_sha256": "49c8133ae752b3403a814ffab71cc8cc251f8445a2ae45a1a5ec2ecbd5fe9462",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791451009.4645479,
+    "end_unix": 1791451773.0151951
+  },
+  "model_final_decision": {
+    "policy_name": "direct_softmax_coefficient_workspace",
+    "method_summary": "Both softmax distributions now write into one per-call coefficient buffer, removing concatenation and separate perturbed-logit storage. Full protected Dev passed all gates with CPU ratio 0.417307642, score 0.609134776, and maximum error 4.95e-6; the evaluated candidate remains in place.",
+    "next_direction": "Recommend rejecting against the verified best ratio 0.397143907. Next investigate cache-sized blocks for packed QKV projections."
+  },
+  "original_controller_decision": {
+    "round": 23,
+    "policy_name": "direct_softmax_coefficient_workspace",
+    "method_summary": "Both softmax distributions now write into one per-call coefficient buffer, removing concatenation and separate perturbed-logit storage. Full protected Dev passed all gates with CPU ratio 0.417307642, score 0.609134776, and maximum error 4.95e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.4480789007430686,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 17:29:34"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791448519.0593424,
+    "ended_unix": 1791450994.84561,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 23,
+    "start_unix": 1791448518.849121,
+    "end_unix": 1791451774.8394308,
+    "observed_seconds": 1635.7969750422053,
+    "effective_seconds": 1635.7969750422053,
+    "model_seconds": 1246.17317108321,
+    "model_completed": true,
+    "successful_command_tools": 13,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": true,
+    "method_sha256": "49c8133ae752b3403a814ffab71cc8cc251f8445a2ae45a1a5ec2ecbd5fe9462",
+    "public_result": "round_00023.grader.log",
+    "events": "round_00023.events.jsonl",
+    "next_direction": "Recommend rejecting against the verified best ratio 0.397143907. Next investigate cache-sized blocks for packed QKV projections."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00023.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

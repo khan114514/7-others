@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<string>", line 12, in <module>
+  File "historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR/evaluation/fid_score.py", line 325, in calculate_fid_given_paths
+    m1, s1 = compute_statistics_of_path(paths[0], model, batch_size,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR/evaluation/fid_score.py", line 298, in compute_statistics_of_path
+    m, s = calculate_activation_statistics(files, model, batch_size,
+                                           ^^^^^
+UnboundLocalError: cannot access local variable 'files' where it is not associated with a value
+Computing FID...
+['historical-resources/models/dd1/fid_stats/statistic.pth', None]
+None
+0

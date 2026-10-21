@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-10-03T22:23:17.227113+08:00",
+  "round": 8,
+  "quality_gate_passed": true,
+  "manually_inspected_grid": true,
+  "visual_review": "Formal64 grid contains varied recognizable objects and scenes with some blur and ghosting. No all-black, identical-image or dominant repetitive-ring collapse. All50000 outputs finite. Full FID9.709865768623956 exceeds B by0.046603709803264; increasing teacher count64 to256 with uniform time sampling did not improve the frozen one-step result. Best remains independently validated round06.",
+  "grid_sha256": "e4f2e9854120427ecaa4543352f51d7677e19a6ce5f0ea512cc31b1d8ca2301d",
+  "result_sha256": "ac44beb3f5e080e5e704e05bb096d2c0048baf09ee9189fb24a427ea3a955c3c",
+  "score": 9.709865768623956,
+  "fid_minus_baseline": 0.04660370980326434,
+  "training_budget_seconds": 92.88421297073364,
+  "updates": 16,
+  "row": {
+    "round": 8,
+    "policy_name": "warmstart_official_dd_teacher256_onepass_uniform",
+    "method_summary": "dd-selfproto-v1.1; warmstart_official_dd_ema; 256 fresh teacher pairs, measured generation 30.313s included in total budget; one shuffled pass, 16 updates; uniform U(0,1); floor(10*t) selects native prefix scale 0..9; fixed full FID-50k=9.709865769, delta to B=+0.046603710. Independent training reimplementation. Visual review: Formal64 grid contains varied recognizable objects and scenes with some blur and ghosting. No all-black, identical-image or dominant repetitive-ring collapse. All50000 outputs finite. Full FID9.709865768623956 exceeds B by0.046603709803264; increasing teacher count64 to256 with uniform time sampling did not improve the frozen one-step result. Best remains independently validated round06.",
+    "status": "ok",
+    "score": 9.709865768623956,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-03 22:23:17"
+  }
+}

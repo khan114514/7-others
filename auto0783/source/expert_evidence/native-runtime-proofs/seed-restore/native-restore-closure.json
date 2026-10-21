@@ -1,0 +1,90 @@
+{
+  "task_source_manifest_sha256": "11bba34ce6c95cfa177d875f2e5b470fb98a358060baa205668cd42abb54e112",
+  "runtime_sources": {
+    "hybrid_harbor_environment.py": "43d99fd9551c0f6ad9fd1a3d118f387cb9802571101bcc8fe9859d18cfff80ab",
+    "hybrid_relay.py": "74efe87906a6656ee24a12b07a1496b53b6834d4008f7b9f27ab1f09aaf8fe6b",
+    "runtime-build/queue_broker.py": "38b4e68cfa0653924881555b072ca74c273042846ba708e5f0956ac76ce9903f",
+    "task_source_bindings.py": "d1971c393c385d3ba8eb7b7be3ed58126d0afcc0ea19e8c60220b82cba676025",
+    "harbor_isolation_preflight.py": "21d160edf8849cec907915c5853c38c8fe53d3fe734baf0ea0afc4450102c9aa",
+    "run_native_harbor_nop.py": "13f5b57d13d8938327d286efbc9e9936b75797d16ca3a43250f3834ac15d4f36",
+    "run_native_harbor_oracle.py": "7162eebc229ff070db7d5dcd2b2c936a5ffe68876fcdfec0f1e8fd6f5b76021b",
+    "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d"
+  },
+  "run_id": "20917d19bf7d4ecf8a2e6ade0b2710a1",
+  "pid": 4465,
+  "status": "FINAL_SELECTED_SEED_METHOD_FRESH_NATIVE_CLI_RESTORE_PASS",
+  "started_epoch": 1791239416.591861,
+  "source_sha256": "bb0074b1a30421c6984e76d79574ce00a9fa2320969a88f6313273fcb60d56b1",
+  "selected_source_files": {
+    "method.py": "0da5c4cb0fd76c3dd01b58aa2e1341888c68216091893476cf76c335dc74d012",
+    "program.json": "20ce4ff0464588ae073753476c3a851e501972e62a6b8d3adf174989e8fabd16"
+  },
+  "selected_artifact_sha256": "637b952f46e7bd25126e1d9e20bfa59cab8c28fd9a2f2605bb565d15129273d7",
+  "native_session_id": "01a10ba5-32e5-7822-b735-a30960ae2c49",
+  "original_seed_research_campaign": "420bd9baf93c486c81e0fe51d15bb2b9",
+  "research_credit": 0,
+  "new_GPU_request": false,
+  "optimization_author": false,
+  "original_container_untouched": true,
+  "ordinary_Task_runtime_sources_unchanged": true,
+  "validation_only_numerical_dispatch_denied": true,
+  "final_delivery_complete": false,
+  "updated_epoch": 1791239483.704177,
+  "native_trial_id": "d418e295-52ac-40c6-8d95-d389639bb7b2",
+  "native_trial_dir": "<task-root>/private/seed-final-native-resume/20917d19bf7d4ecf8a2e6ade0b2710a1/native-trial/bifrost-seed-final-native-restore-20917d19bf7d",
+  "evidence_path": "<task-root>/private/seed-final-native-resume/20917d19bf7d4ecf8a2e6ade0b2710a1/agent-evidence/status.json",
+  "actual_restore": {
+    "actual_restored_path_and_SHA_set_match": true,
+    "files": 255,
+    "native_session_id": "01a10ba5-32e5-7822-b735-a30960ae2c49",
+    "actual_offmachine_archive_sha256": "78e10fbb9faa8f25af1675d61871ec99f1b991a5a641f97a129d77bc95c73d68"
+  },
+  "actual_fresh_environment": {
+    "environment_id": "496450a1a1594572a2c891b2cd6833d7",
+    "physical_role": "seed",
+    "session_id": "bifrost-seed-final-native-restore-20917d19bf7d__env",
+    "container_id": "e88bd3fbf498c42ab86db0c9943ff2dae4f39edf1c73521dab9872987b13b579",
+    "image_id": "sha256:a306ad14c743badd654a82c1bda5331dc12dbe5ddd57a1ff0af7d5e6d022bcf9",
+    "queue_volume": "bifrost1-harbor-q-496450a1a1594572a2c891b2cd6833d7",
+    "content_addressed_image_name": "<content-addressed-agent-image>",
+    "Agent_uses_private_verifier_log_shadow": true,
+    "adapter_sha256": "43d99fd9551c0f6ad9fd1a3d118f387cb9802571101bcc8fe9859d18cfff80ab",
+    "relay_sha256": "74efe87906a6656ee24a12b07a1496b53b6834d4008f7b9f27ab1f09aaf8fe6b",
+    "broker_source_sha256": "38b4e68cfa0653924881555b072ca74c273042846ba708e5f0956ac76ce9903f",
+    "author_oracle": false,
+    "native_container_GPU": false,
+    "remote_trusted_GPU": "A100 through bounded tensor DAG"
+  },
+  "native_exit_code": 0,
+  "native_turn_completed": true,
+  "actual_own_UUID_resumed": true,
+  "successful_native_commands": 1,
+  "actual_provider_routes": [
+    {
+      "model": "doubao-seed-2-1-turbo-260628",
+      "reasoning_effort": "high",
+      "store": false,
+      "upstream": "https://ark.cn-beijing.volces.com/api/v3/responses",
+      "http_status": 200,
+      "request_sha256": "e5b826dc7b39caf7fd85b59f0c2a9cb66f21ba4a47522632b749c883d2fa48c2",
+      "response_sha256": "c2b81f8e1218a87885e833e278f1c8f51c9fe248b571f380bdca042b0c4f6aef",
+      "started_epoch": 1791239425.106997,
+      "completed_epoch": 1791239453.640297,
+      "credential_in_candidate": false
+    },
+    {
+      "model": "doubao-seed-2-1-turbo-260628",
+      "reasoning_effort": "high",
+      "store": false,
+      "upstream": "https://ark.cn-beijing.volces.com/api/v3/responses",
+      "http_status": 200,
+      "request_sha256": "e45267a61bf2a9ab8fc000cad03a1289ef1074e46eecd6dd2af045c37115b890",
+      "response_sha256": "f64973f465a782a3818554605b13625d31aaecede05f855f8e42b67212e9d8f5",
+      "started_epoch": 1791239453.770794,
+      "completed_epoch": 1791239469.154498,
+      "credential_in_candidate": false
+    }
+  ],
+  "selected_method_bytes_unchanged": true,
+  "completed_epoch": 1791239483.704173
+}

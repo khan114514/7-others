@@ -1,0 +1,257 @@
+dataset: PEMS08
+num_nodes: 170
+seq_len: 12
+horizon: 12
+input_dim: 1
+output_dim: 1
+tod_embed_dim: 20
+cheb_k: 3
+rnn_layers: 1
+rnn_units: 12
+prototype_num: 20
+prototype_dim: 64
+loss: mask_mae_loss
+epochs: 200
+patience: 20
+batch_size: 16
+lr: 0.01
+steps: [70, 100]
+lr_decay_ratio: 0.1
+weight_decay: 0
+epsilon: 0.001
+max_grad_norm: 5
+use_curriculum_learning: True
+adj_type: symadj
+cl_decay_steps: 6000
+gpu: 0
+seed: 17
+temp: 1.0
+lamb_c: 0.1
+lamb_d: 1
+contra_loss: triplet
+use_STE: True
+adaptive_embedding_dim: 0
+node_embedding_dim: 20
+input_embedding_dim: 16
+max_diffusion_step: 3
+  
+PEMS08 training and testing started Tue Oct  6 17:41:31 2026 
+train xs.shape, ys.shape (10700, 12, 170, 3) (10700, 12, 170, 3) 
+val xs.shape, ys.shape (1783, 12, 170, 3) (1783, 12, 170, 3) 
+test xs.shape, ys.shape (3567, 12, 170, 3) (3567, 12, 170, 3) 
+Trainable parameter list:  
+node_embedding torch.Size([170, 20]) 3400
+time_embedding torch.Size([288, 20]) 5760
+prototypes.prototypes torch.Size([20, 64]) 1280
+prototypes.Wq torch.Size([12, 64]) 768
+input_proj.weight torch.Size([16, 1]) 16
+input_proj.bias torch.Size([16]) 16
+encoder.dcrnn_cells.0.gate.weights torch.Size([204, 24]) 4896
+encoder.dcrnn_cells.0.gate.bias torch.Size([24]) 24
+encoder.dcrnn_cells.0.update.weights torch.Size([204, 12]) 2448
+encoder.dcrnn_cells.0.update.bias torch.Size([12]) 12
+decoder.dcrnn_cells.0.gate.weights torch.Size([396, 152]) 60192
+decoder.dcrnn_cells.0.gate.bias torch.Size([152]) 152
+decoder.dcrnn_cells.0.update.weights torch.Size([396, 76]) 30096
+decoder.dcrnn_cells.0.update.bias torch.Size([76]) 76
+proj.0.weight torch.Size([1, 76]) 76
+proj.0.bias torch.Size([1]) 1
+hypernet.0.weight torch.Size([20, 152]) 3040
+hypernet.0.bias torch.Size([20]) 20
+In total: 112273 trainable parameters.  
+Epoch [1/200] (669) train_loss: 17.8930, train_mae_loss: 16.1262, train_contra_loss: 0.1453, train_deviation_loss: 1.7523, val_loss: 19.0202, lr: 0.010000, 86.71s  
+
+  
+Epoch [2/200] (1338) train_loss: 15.6970, train_mae_loss: 14.0729, train_contra_loss: 0.0913, train_deviation_loss: 1.6150, val_loss: 19.0234, lr: 0.010000, 83.78s  
+
+  
+Epoch [3/200] (2007) train_loss: 15.5049, train_mae_loss: 13.7560, train_contra_loss: 0.0738, train_deviation_loss: 1.7415, val_loss: 18.2748, lr: 0.010000, 83.76s  
+
+  
+Epoch [4/200] (2676) train_loss: 15.2606, train_mae_loss: 13.4313, train_contra_loss: 0.0537, train_deviation_loss: 1.8240, val_loss: 19.5333, lr: 0.010000, 83.73s  
+
+  
+Epoch [5/200] (3345) train_loss: 15.2507, train_mae_loss: 13.3594, train_contra_loss: 0.0445, train_deviation_loss: 1.8869, val_loss: 20.2647, lr: 0.010000, 83.39s  
+
+  
+Epoch [6/200] (4014) train_loss: 15.1832, train_mae_loss: 13.2320, train_contra_loss: 0.0422, train_deviation_loss: 1.9470, val_loss: 16.6661, lr: 0.010000, 88.39s  
+
+  
+Epoch [7/200] (4683) train_loss: 15.1756, train_mae_loss: 13.1407, train_contra_loss: 0.0395, train_deviation_loss: 2.0309, val_loss: 17.6739, lr: 0.010000, 89.54s  
+
+  
+Epoch [8/200] (5352) train_loss: 15.0728, train_mae_loss: 12.9604, train_contra_loss: 0.0407, train_deviation_loss: 2.1084, val_loss: 21.1143, lr: 0.010000, 83.36s  
+
+  
+Epoch [9/200] (6021) train_loss: 15.0800, train_mae_loss: 12.9197, train_contra_loss: 0.0419, train_deviation_loss: 2.1562, val_loss: 17.2948, lr: 0.010000, 83.44s  
+
+  
+Epoch [10/200] (6690) train_loss: 15.0826, train_mae_loss: 12.8402, train_contra_loss: 0.0452, train_deviation_loss: 2.2378, val_loss: 16.3403, lr: 0.010000, 83.29s  
+
+  
+Epoch [11/200] (7359) train_loss: 15.0914, train_mae_loss: 12.7933, train_contra_loss: 0.0456, train_deviation_loss: 2.2936, val_loss: 16.1258, lr: 0.010000, 82.84s  
+
+  
+Epoch [12/200] (8028) train_loss: 15.0742, train_mae_loss: 12.7169, train_contra_loss: 0.0466, train_deviation_loss: 2.3527, val_loss: 16.1795, lr: 0.010000, 83.30s  
+
+  
+Epoch [13/200] (8697) train_loss: 15.0202, train_mae_loss: 12.6224, train_contra_loss: 0.0452, train_deviation_loss: 2.3933, val_loss: 18.1511, lr: 0.010000, 83.26s  
+
+  
+Epoch [14/200] (9366) train_loss: 14.9686, train_mae_loss: 12.5660, train_contra_loss: 0.0460, train_deviation_loss: 2.3981, val_loss: 17.3105, lr: 0.010000, 83.08s  
+
+  
+Epoch [15/200] (10035) train_loss: 15.0661, train_mae_loss: 12.6256, train_contra_loss: 0.0503, train_deviation_loss: 2.4354, val_loss: 19.5474, lr: 0.010000, 85.56s  
+
+  
+Epoch [16/200] (10704) train_loss: 14.9022, train_mae_loss: 12.4268, train_contra_loss: 0.0555, train_deviation_loss: 2.4698, val_loss: 16.1775, lr: 0.010000, 83.49s  
+
+  
+Epoch [17/200] (11373) train_loss: 14.9146, train_mae_loss: 12.4153, train_contra_loss: 0.0586, train_deviation_loss: 2.4934, val_loss: 16.7912, lr: 0.010000, 83.17s  
+
+  
+Epoch [18/200] (12042) train_loss: 14.9546, train_mae_loss: 12.3915, train_contra_loss: 0.0667, train_deviation_loss: 2.5564, val_loss: 17.2064, lr: 0.010000, 83.34s  
+
+  
+Epoch [19/200] (12711) train_loss: 14.8893, train_mae_loss: 12.2711, train_contra_loss: 0.0701, train_deviation_loss: 2.6112, val_loss: 16.0039, lr: 0.010000, 84.27s  
+
+  
+Epoch [20/200] (13380) train_loss: 14.9173, train_mae_loss: 12.2592, train_contra_loss: 0.0745, train_deviation_loss: 2.6506, val_loss: 17.8453, lr: 0.010000, 83.54s  
+
+  
+Epoch [21/200] (14049) train_loss: 14.9448, train_mae_loss: 12.2349, train_contra_loss: 0.0780, train_deviation_loss: 2.7021, val_loss: 18.7738, lr: 0.010000, 83.63s  
+
+  
+Epoch [22/200] (14718) train_loss: 14.9607, train_mae_loss: 12.1914, train_contra_loss: 0.0801, train_deviation_loss: 2.7613, val_loss: 16.7063, lr: 0.010000, 83.09s  
+
+  
+Epoch [23/200] (15387) train_loss: 14.9374, train_mae_loss: 12.1259, train_contra_loss: 0.0834, train_deviation_loss: 2.8031, val_loss: 15.4391, lr: 0.010000, 85.30s  
+
+  
+Epoch [24/200] (16056) train_loss: 15.0010, train_mae_loss: 12.1377, train_contra_loss: 0.0870, train_deviation_loss: 2.8545, val_loss: 20.7432, lr: 0.010000, 83.66s  
+
+  
+Epoch [25/200] (16725) train_loss: 15.0046, train_mae_loss: 12.1172, train_contra_loss: 0.0896, train_deviation_loss: 2.8785, val_loss: 16.4551, lr: 0.010000, 83.69s  
+
+  
+Epoch [26/200] (17394) train_loss: 14.9969, train_mae_loss: 12.0834, train_contra_loss: 0.0924, train_deviation_loss: 2.9043, val_loss: 16.4342, lr: 0.010000, 83.27s  
+
+  
+Epoch [27/200] (18063) train_loss: 14.9533, train_mae_loss: 12.0425, train_contra_loss: 0.0967, train_deviation_loss: 2.9011, val_loss: 15.8844, lr: 0.010000, 84.32s  
+
+  
+Epoch [28/200] (18732) train_loss: 14.9392, train_mae_loss: 12.0163, train_contra_loss: 0.0972, train_deviation_loss: 2.9132, val_loss: 16.9354, lr: 0.010000, 83.40s  
+
+  
+Epoch [29/200] (19401) train_loss: 14.9920, train_mae_loss: 12.0323, train_contra_loss: 0.0963, train_deviation_loss: 2.9501, val_loss: 17.4583, lr: 0.010000, 84.56s  
+
+  
+Epoch [30/200] (20070) train_loss: 15.0183, train_mae_loss: 12.0363, train_contra_loss: 0.0963, train_deviation_loss: 2.9724, val_loss: 16.8046, lr: 0.010000, 84.09s  
+
+  
+Epoch [31/200] (20739) train_loss: 14.9344, train_mae_loss: 11.9507, train_contra_loss: 0.0979, train_deviation_loss: 2.9740, val_loss: 18.3157, lr: 0.010000, 85.43s  
+
+  
+Epoch [32/200] (21408) train_loss: 14.9870, train_mae_loss: 12.0002, train_contra_loss: 0.1029, train_deviation_loss: 2.9765, val_loss: 18.4142, lr: 0.010000, 85.36s  
+
+  
+Epoch [33/200] (22077) train_loss: 14.9435, train_mae_loss: 11.9692, train_contra_loss: 0.0995, train_deviation_loss: 2.9644, val_loss: 19.9613, lr: 0.010000, 83.54s  
+
+  
+Epoch [34/200] (22746) train_loss: 14.9021, train_mae_loss: 11.9238, train_contra_loss: 0.1013, train_deviation_loss: 2.9682, val_loss: 15.6279, lr: 0.010000, 83.62s  
+
+  
+Epoch [35/200] (23415) train_loss: 14.9459, train_mae_loss: 11.9661, train_contra_loss: 0.0992, train_deviation_loss: 2.9698, val_loss: 17.4987, lr: 0.010000, 83.73s  
+
+  
+Epoch [36/200] (24084) train_loss: 14.9305, train_mae_loss: 11.9650, train_contra_loss: 0.1019, train_deviation_loss: 2.9553, val_loss: 15.6487, lr: 0.010000, 83.73s  
+
+  
+Epoch [37/200] (24753) train_loss: 14.7922, train_mae_loss: 11.8681, train_contra_loss: 0.0985, train_deviation_loss: 2.9142, val_loss: 17.0777, lr: 0.010000, 83.85s  
+
+  
+Epoch [38/200] (25422) train_loss: 14.8039, train_mae_loss: 11.8903, train_contra_loss: 0.1018, train_deviation_loss: 2.9034, val_loss: 15.5140, lr: 0.010000, 82.69s  
+
+  
+Epoch [39/200] (26091) train_loss: 14.7941, train_mae_loss: 11.8945, train_contra_loss: 0.1047, train_deviation_loss: 2.8891, val_loss: 16.3322, lr: 0.010000, 83.04s  
+
+  
+Epoch [40/200] (26760) train_loss: 14.7646, train_mae_loss: 11.8784, train_contra_loss: 0.1055, train_deviation_loss: 2.8757, val_loss: 16.1253, lr: 0.010000, 83.74s  
+
+  
+Epoch [41/200] (27429) train_loss: 14.7326, train_mae_loss: 11.8727, train_contra_loss: 0.1068, train_deviation_loss: 2.8492, val_loss: 15.9726, lr: 0.010000, 83.70s  
+
+  
+Epoch [42/200] (28098) train_loss: 14.6888, train_mae_loss: 11.8728, train_contra_loss: 0.1099, train_deviation_loss: 2.8050, val_loss: 17.1917, lr: 0.010000, 83.61s  
+
+  
+Epoch [43/200] (28767) train_loss: 14.6722, train_mae_loss: 11.8444, train_contra_loss: 0.1094, train_deviation_loss: 2.8169, val_loss: 15.0401, lr: 0.010000, 83.61s  
+
+  
+Epoch [44/200] (29436) train_loss: 14.6748, train_mae_loss: 11.8438, train_contra_loss: 0.1087, train_deviation_loss: 2.8201, val_loss: 15.6810, lr: 0.010000, 83.37s  
+
+  
+Epoch [45/200] (30105) train_loss: 14.6709, train_mae_loss: 11.8302, train_contra_loss: 0.1087, train_deviation_loss: 2.8298, val_loss: 17.3490, lr: 0.010000, 83.53s  
+
+  
+Epoch [46/200] (30774) train_loss: 14.7231, train_mae_loss: 11.8640, train_contra_loss: 0.1101, train_deviation_loss: 2.8482, val_loss: 16.8649, lr: 0.010000, 84.28s  
+
+  
+Epoch [47/200] (31443) train_loss: 14.7694, train_mae_loss: 11.8889, train_contra_loss: 0.1092, train_deviation_loss: 2.8695, val_loss: 15.2922, lr: 0.010000, 83.54s  
+
+  
+Epoch [48/200] (32112) train_loss: 14.6773, train_mae_loss: 11.8242, train_contra_loss: 0.1094, train_deviation_loss: 2.8422, val_loss: 15.2861, lr: 0.010000, 83.68s  
+
+  
+Epoch [49/200] (32781) train_loss: 14.6995, train_mae_loss: 11.8700, train_contra_loss: 0.1118, train_deviation_loss: 2.8184, val_loss: 16.2013, lr: 0.010000, 83.14s  
+
+  
+Epoch [50/200] (33450) train_loss: 14.7017, train_mae_loss: 11.8533, train_contra_loss: 0.1095, train_deviation_loss: 2.8374, val_loss: 15.4598, lr: 0.010000, 82.79s  
+
+  
+Epoch [51/200] (34119) train_loss: 14.6699, train_mae_loss: 11.8644, train_contra_loss: 0.1102, train_deviation_loss: 2.7945, val_loss: 16.9796, lr: 0.010000, 83.77s  
+
+  
+Epoch [52/200] (34788) train_loss: 14.6228, train_mae_loss: 11.8298, train_contra_loss: 0.1106, train_deviation_loss: 2.7820, val_loss: 16.2101, lr: 0.010000, 83.12s  
+
+  
+Epoch [53/200] (35457) train_loss: 14.6682, train_mae_loss: 11.8400, train_contra_loss: 0.1123, train_deviation_loss: 2.8170, val_loss: 15.5267, lr: 0.010000, 83.90s  
+
+  
+Epoch [54/200] (36126) train_loss: 14.7256, train_mae_loss: 11.8978, train_contra_loss: 0.1217, train_deviation_loss: 2.8157, val_loss: 16.8130, lr: 0.010000, 83.19s  
+
+  
+Epoch [55/200] (36795) train_loss: 14.7018, train_mae_loss: 11.8981, train_contra_loss: 0.1206, train_deviation_loss: 2.7917, val_loss: 15.3063, lr: 0.010000, 83.09s  
+
+  
+Epoch [56/200] (37464) train_loss: 14.7033, train_mae_loss: 11.9007, train_contra_loss: 0.1203, train_deviation_loss: 2.7905, val_loss: 17.0110, lr: 0.010000, 83.48s  
+
+  
+Epoch [57/200] (38133) train_loss: 14.6962, train_mae_loss: 11.8992, train_contra_loss: 0.1211, train_deviation_loss: 2.7848, val_loss: 15.4331, lr: 0.010000, 84.42s  
+
+  
+Epoch [58/200] (38802) train_loss: 14.7136, train_mae_loss: 11.9140, train_contra_loss: 0.1191, train_deviation_loss: 2.7877, val_loss: 18.0223, lr: 0.010000, 84.11s  
+
+  
+Epoch [59/200] (39471) train_loss: 14.7610, train_mae_loss: 11.9481, train_contra_loss: 0.1223, train_deviation_loss: 2.8007, val_loss: 16.1406, lr: 0.010000, 83.94s  
+
+  
+Epoch [60/200] (40140) train_loss: 14.7261, train_mae_loss: 11.9119, train_contra_loss: 0.1243, train_deviation_loss: 2.8017, val_loss: 15.8579, lr: 0.010000, 83.79s  
+
+  
+Epoch [61/200] (40809) train_loss: 14.7663, train_mae_loss: 11.9448, train_contra_loss: 0.1222, train_deviation_loss: 2.8092, val_loss: 15.0577, lr: 0.010000, 83.46s  
+
+  
+Epoch [62/200] (41478) train_loss: 14.7880, train_mae_loss: 11.9930, train_contra_loss: 0.1257, train_deviation_loss: 2.7824, val_loss: 15.7902, lr: 0.010000, 83.65s  
+
+  
+Epoch [63/200] (42147) train_loss: 14.8521, train_mae_loss: 12.0424, train_contra_loss: 0.1270, train_deviation_loss: 2.7970, val_loss: 15.5669, lr: 0.010000, 84.06s  
+
+  
+Early stopping at epoch: 63  
+===================================Best val_loss model performance===================================  
+======================Better results might be found from model at different epoch======================  
+/opt/author_work/rivermind-data/stssdl_auto2912_20261006/source/ST-SSDL/model_STSSDL/train_prepared.py:180: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(modelpt_path))
+Inference Time: 6.10s  
+PEMS08 training and testing ended Tue Oct  6 19:15:54 2026 

@@ -1,0 +1,46 @@
+{
+  "scope": "Delivery layout alignment only; same actual model bytes, no new GPU or scores",
+  "epoch": 1791159650.6487591,
+  "model_files": [
+    {
+      "former_delivery_path": "expert_evidence/model_assets/published_baseline/ema_inference_checkpoint.pth",
+      "actual_delivery_path": "optimization_evidence/baseline_runs/seed_0/model/ema_inference_checkpoint.pth",
+      "sha256": "387bd60acaa30b114ebe39188e5d174175a04ab39393d947ef2af24c43a2259d",
+      "bytes": 1312736238,
+      "same_file_bytes_verified_after_move": true,
+      "duplicated_model_payload": false
+    },
+    {
+      "former_delivery_path": "expert_evidence/model_assets/current_phi_public_reference/ema_inference_checkpoint.pth",
+      "actual_delivery_path": "optimization_evidence/reference_runs/seed_0/model/ema_inference_checkpoint.pth",
+      "sha256": "bf07515aad89a3ca0832f16eab9c1be9669810c5ee4d1a15d06473696c7fdb79",
+      "bytes": 1312736238,
+      "same_file_bytes_verified_after_move": true,
+      "duplicated_model_payload": false
+    }
+  ],
+  "updated_location_indices": [
+    {
+      "file": "expert_evidence/repair_status.json",
+      "previous_sha256": "07dfc2f2bdb6f4ff4ce0cd6b0a969ad6075fb4f9cba526bdb8b5b6fd2dc99209",
+      "sha256": "7bcefc8b77540b0490ba85de461f9e820be302462843477843ae051d8c3e9920"
+    },
+    {
+      "file": "expert_evidence/model_assets/current_phi_public_reference/delivery_verification.json",
+      "previous_sha256": "0451475305b026deff15e3bf8d56e1e287bce440863033973769c72b9743f0b7",
+      "sha256": "77dbaf69d72746d335f6e7208c6df0a1bdab1ccfe3c3beb428489c13d0ed9fdb"
+    },
+    {
+      "file": "optimization_evidence/reference_runs/seed_0/model/artifact.json",
+      "previous_sha256": "9fe1ad74580f9595b0baa018fb1d5147e068bf402fd6e15363852de52912c837",
+      "sha256": "ea3b356b4d4483da35fde63a7e378271484d24bdc507ff121fece62d6e3517c7"
+    },
+    {
+      "file": "optimization_evidence/baseline_runs/seed_0/model/artifact.json",
+      "previous_sha256": "62050cfe4ed854dd88d5dc67dbfe1a7c5fe669602edc71df20c25ba6cba5728d",
+      "sha256": "52e6fd09bd8aa9058bba7629b9aace600ef26c10384b17f002f3c87f4ad310ff"
+    }
+  ],
+  "original_model_full_archives_and_original_indices_retained": true,
+  "release_qa_pass_claimed": false
+}

@@ -1,0 +1,54 @@
+[
+  {
+    "actual_argv": [
+      "/usr/local/bin/python",
+      "-I",
+      "/submission/dependencies/cli/materialize_cli_assets.py",
+      "--manifest",
+      "/submission/dependencies/cli/public-cli-assets.json",
+      "--destination",
+      "/proof/restored-package/Task/environment/tools",
+      "--archive",
+      "/cached-cli.tgz"
+    ],
+    "started_epoch": 1791443551.8300285,
+    "completed_epoch": 1791443559.499567,
+    "actual_exit_code": 0,
+    "stdout": "{\"status\": \"PINNED_PUBLIC_CLI_ASSETS_MATERIALIZED\", \"files\": [{\"name\": \"codex\", \"bytes\": 248966648, \"sha256\": \"50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0\"}, {\"name\": \"codex-code-mode-host\", \"bytes\": 66921472, \"sha256\": \"7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c\"}, {\"name\": \"rg\", \"bytes\": 4506992, \"sha256\": \"e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b\"}]}\n",
+    "stderr": ""
+  },
+  {
+    "actual_argv": [
+      "/usr/local/bin/python",
+      "-I",
+      "/submission/dependencies/hidden-input/materialize_hidden_asset.py",
+      "--manifest",
+      "/submission/dependencies/hidden-input/hidden-input-chunks.json",
+      "--destination",
+      "/proof/restored-package/Task"
+    ],
+    "started_epoch": 1791443559.501278,
+    "completed_epoch": 1791443560.0811548,
+    "actual_exit_code": 0,
+    "stdout": "{\"status\": \"DECLARED_HIDDEN_ASSET_MATERIALIZED\", \"targets\": [\"tests/hidden/hidden-decoder-inputs-v1.safetensors\", \"trusted/data/hidden-decoder-inputs-v1.safetensors\"], \"bytes_each\": 40912872, \"sha256_each\": \"db9c6aab916da4b5914a96a642169fd122a67e8b15fbb16628ad90dc240e40e5\"}\n",
+    "stderr": ""
+  },
+  {
+    "actual_argv": [
+      "/usr/local/bin/python",
+      "-I",
+      "/submission/dependencies/task/materialize_task.py",
+      "--package",
+      "/proof/restored-package",
+      "--destination",
+      "/proof/fresh-Task",
+      "--evidence",
+      "/proof/fresh-copy-proof"
+    ],
+    "started_epoch": 1791443560.08831,
+    "completed_epoch": 1791443566.0986052,
+    "actual_exit_code": 0,
+    "stdout": "{\"status\": \"FROZEN_TASK_ALL39_FILES_SHA_MATCH\", \"files\": 39, \"task_manifest_sha256\": \"f4868f2e71e97f05ce30b54c33af97753c8c966c6105ee855da91bbc23c2473b\", \"verification_only\": false, \"CLI_download_allowed\": false, \"Task_or_candidate_Python_executed\": false, \"Docker_model_GPU_started\": false}\n",
+    "stderr": ""
+  }
+]

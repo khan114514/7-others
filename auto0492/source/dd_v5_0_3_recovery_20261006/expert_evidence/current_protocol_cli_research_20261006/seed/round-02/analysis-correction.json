@@ -1,0 +1,134 @@
+{
+  "correction_of": "agent-output/round-02/analysis.json",
+  "original_analysis_sha256": "774f44b7ec50e3034c2bc4fa67b7f5468e42de24e7492fabedac471c7cda5bc9",
+  "original_method_sha256": "6e770e3ad3b38700f56b337ade61a6be69350879d4c47f26f31d9d3a1bdef208",
+  "original_plan_sha256": "b7ee9bb6bde5cf657575638361e8e98d43bd46c4f82cbf2ee8969067b52c9e1d",
+  "evaluation_result_sha256": "0082a66ca1c8000ddb8d10e8557173725434553c0f82629dadb9c538c68a2499",
+  "controller_verified_sha256": "da0c005bcd1299c74e90137cfbcf995a101d1852ae4b0cc7884f24fb10f9571d",
+  "correction_date_utc": "2026-10-06T05:37:00+00:00",
+  "correction_scope": "Evidence-scope review only. No changes to method, scores, plan, checkpoints, best_method flag, timestamps, or trajectory. Only correcting over-reach in causal inference and sample-count bottleneck claims.",
+  "verified_factual_values": {
+    "round02_fid": 9.784449511236346,
+    "round02_sample_count_evaluation": 50000,
+    "round02_training_samples": 256,
+    "round01_fid": 10.126636628087738,
+    "public_baseline_fid": 9.663262058820692,
+    "delta_round02_vs_round01": -0.342187,
+    "delta_round02_vs_baseline": 0.121187,
+    "round02_better_than_round01": true,
+    "round02_better_than_baseline": false,
+    "baseline_is_published_reference": true,
+    "note": "Baseline FID is from published anchors; not re-run under identical evaluation seed/conditions in this round."
+  },
+  "what_is_actually_observed": [
+    "Round-02 (min-LPIPS + uniform time, 256 training samples) achieves FID 9.784 on a single 50k-sample evaluation run.",
+    "Round-01 (max-LPIPS + early-scale bias, 256 training samples) achieved FID 10.127 on a single 50k-sample evaluation run.",
+    "The round-02 joint configuration outperforms the round-01 joint configuration by 0.34 FID in this pairwise comparison.",
+    "Both round-01 and round-02 underperform the published no-training baseline (FID 9.663).",
+    "Both configurations use the same sample count (256 training pairs), same proposal multiplier (4), same protocol (dd-selfproto-v1.3)."
+  ],
+  "confounded_factors_cannot_be_isolated": {
+    "simultaneous_changes": [
+      "selection_strategy: max_lpips -> min_lpips",
+      "time_sampler: power_law_alpha_2.5 -> uniform"
+    ],
+    "what_cannot_be_concluded": [
+      "Cannot determine whether selection direction alone improves FID \u2014 time distribution may be the entire cause.",
+      "Cannot determine whether time distribution alone improves FID \u2014 selection direction may be the entire cause.",
+      "Cannot rule out interaction effects: the two changes may reinforce or partially cancel each other.",
+      "Cannot quantify the magnitude of either factor's individual contribution.",
+      "Cannot rule out evaluation noise as a contributor \u2014 each result is a single 50k-sample FID estimate, not a distribution of runs."
+    ],
+    "what_is_plausible_but_unproven": {
+      "min_lpips_better_than_max": "Easy-example selection may provide cleaner gradients at 256 samples. Plausible but not isolated.",
+      "uniform_time_better_than_early_bias": "Uniform time may provide better scale coverage at 256 samples. Plausible but not isolated.",
+      "both_factors_help": "Both changes may contribute. Plausible but we cannot estimate relative contributions."
+    }
+  },
+  "sample_count_bottleneck_claim_correction": {
+    "original_claim_location": "analysis.json -> next_round_algorithm_change -> why_scale_instead_of_isolation",
+    "original_claim": "Sample count is the dominant bottleneck.",
+    "corrected_status": "This is a working hypothesis, NOT an established finding.",
+    "why_it_is_not_proven": [
+      "Only two specific strategies have been tested at 256 samples. Failure of two joint configurations does not imply all 256-sample strategies fail.",
+      "We have zero data points at other sample counts (e.g., 512, 1024) to establish a scaling curve or confirm sample count is indeed the limiting factor.",
+      "Alternative explanations for the baseline gap remain viable: the selection/weighting approach itself may be fundamentally weak, or the training protocol hyperparameters may be suboptimal, independent of sample count.",
+      "No ablation against simpler baselines (e.g., random selection, no selection at all, vanilla distillation with 256 samples) has been run \u2014 we don't know if proposal selection helps or hurts relative to a no-selection control at the same sample count.",
+      "The 0.34 FID improvement from r01 to r02 is within the range that could be explained by strategy choices alone, suggesting strategy quality is a real factor \u2014 it may even be dominant at this budget."
+    ],
+    "retained_as_hypothesis": "Scaling sample count to 1024 is a reasonable next experiment and may reveal a sample-count effect, but it should be framed as testing the sample-count hypothesis, not confirming an already-established bottleneck."
+  },
+  "stable_improvement_claim_check": {
+    "claim_found": "No explicit 'stable improvement' claim found. The analysis correctly describes a single pairwise comparison.",
+    "still_not_stable": [
+      "Only one run per configuration \u2014 no replication.",
+      "No estimate of FID variance across runs with different seeds.",
+      "The 0.34 delta may partially reflect evaluation noise rather than true method difference."
+    ]
+  },
+  "other_overreach_corrections": {
+    "the_strategy_directionally_better": {
+      "original_phrase_location": "next_round_algorithm_change.rationale: 'Round-02 showed the strategy is directionally better than round-01'",
+      "correction": "A specific joint configuration (min-LPIPS + uniform time) is directionally better than another specific joint configuration (max-LPIPS + early-bias). Calling it 'the strategy' implies a coherent method identity, but we don't know which component drives the improvement. Better phrasing: 'this joint configuration beats round-01's joint configuration'."
+    },
+    "256_samples_insufficient_for_any_selection_strategy": {
+      "original_phrase_location": "rationale: '256 training pairs may simply be too few for any selection strategy to overcome the noise floor'",
+      "correction": "256 samples may be insufficient for THIS selection strategy. We have not tested other selection approaches (curriculum, diversity-based, random, weighted ensemble of proposals) at 256 samples, nor have we tested no-selection distillation at 256 samples as a control. The claim 'any selection strategy' is an overgeneralization."
+    },
+    "if_1024_still_fails_abandon_selection": {
+      "original_phrase_location": "fallback_if_still_below_baseline: 'abandon proposal selection entirely'",
+      "correction": "If 1024 samples with min-LPIPS + uniform still fails, it suggests this PARTICULAR selection approach with this weighting doesn't work at 1024 samples. It does not logically imply all proposal selection approaches are ineffective. Before abandoning selection entirely, a simpler control (e.g., random selection at 1024 samples, or no-selection distillation at 1024 samples) would help isolate whether selection is harmful or just this specific selection rule is."
+    }
+  },
+  "what_this_trial_can_answer": [
+    "Whether the joint configuration of min-LPIPS selection + uniform time beats the joint configuration of max-LPIPS + early-bias at 256 samples (answer: yes, by 0.34 FID).",
+    "Whether this specific joint configuration at 256 samples beats the no-training baseline (answer: no, it's worse by +0.12 FID).",
+    "That at least one of the two changed factors (selection direction or time distribution) matters for 256-sample distillation quality."
+  ],
+  "what_this_trial_cannot_answer": [
+    "Which of the two changed factors (selection direction, time distribution) drives the improvement, or in what proportion.",
+    "Whether sample count is the dominant bottleneck \u2014 no scaling data exists.",
+    "Whether any 256-sample strategy can beat baseline \u2014 only two strategies tested.",
+    "Whether proposal selection in general helps or hurts \u2014 no no-selection control at same sample count.",
+    "Whether the improvement is statistically stable \u2014 only one run per condition.",
+    "Whether the baseline FID would be the same if re-evaluated with the same evaluation seed/setup."
+  ],
+  "next_step_algorithm_directions": {
+    "recommended_primary": {
+      "description": "Scale to 1024 samples with min-LPIPS + uniform (same as original plan)",
+      "why_still_reasonable": "Scaling tests the sample-count hypothesis directly. If 1024 samples beats baseline, we know sample count was indeed limiting. If not, we learn the strategy itself has a problem at scale. High information value regardless of outcome.",
+      "framing_correction": "Should be described as 'testing whether sample count is limiting' not 'confirming the dominant bottleneck'."
+    },
+    "additional_directions_worth_considering": [
+      {
+        "name": "No-selection control at 256 samples",
+        "why": "Establishes whether proposal selection helps or hurts at the 256-sample budget. Without this baseline, we can't tell if our selection approach is adding value or actively degrading quality. Uses same GPU budget as one round."
+      },
+      {
+        "name": "Single-factor isolation (e.g., max-LPIPS + uniform, or min-LPIPS + early-bias)",
+        "why": "Decomposes which of the two factors actually matters. Needed for principled algorithm design rather than joint guessing. Would take 1-2 additional rounds at 256 samples."
+      },
+      {
+        "name": "Weighted ensemble of all proposals instead of hard selection",
+        "why": "Soft weighting may preserve more signal than picking just one proposal per group. Could be tested at 256 or 1024 samples."
+      }
+    ]
+  },
+  "retention_and_best_method_unchanged": {
+    "retained_best": false,
+    "current_best_still": "published baseline (no training, FID 9.663)",
+    "note": "Round-02 FID 9.784 > baseline FID 9.663, so round-02 does not surpass baseline. Among method rounds only, round-02 is better than round-01, but the baseline anchor remains the best known result. This part of the original analysis is correct.",
+    "qa_pass_claimed": false,
+    "correction_does_not_claim_qa_pass": true
+  },
+  "files_preserved_unchanged": [
+    "agent-output/round-02/analysis.json (original bytes preserved, SHA256 verified)",
+    "agent-output/round-02/plan.json (original bytes preserved)",
+    "agent-output/round-02/method.py (original bytes preserved)",
+    "agent-output/round-02/evaluation/result.json (original bytes preserved)",
+    "agent-output/round-02/controller-verified-round.json (original bytes preserved)",
+    "All round-01 files, trajectories, checkpoints, and scores",
+    "best_method flag not modified",
+    "Timestamps not modified"
+  ]
+}

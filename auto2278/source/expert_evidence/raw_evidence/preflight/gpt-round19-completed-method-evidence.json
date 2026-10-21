@@ -1,0 +1,89 @@
+{
+  "checked_unix": 1791443117.998564,
+  "track": "gpt",
+  "round": 19,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "641935044b1982755d9be0c95299848ecd6d36cdd03c6913a545ab0ba37f4ab2",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00019.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.42510374908995324,
+      "score": 0.6018326630552546,
+      "quality_gates_passed": true,
+      "method_sha256": "641935044b1982755d9be0c95299848ecd6d36cdd03c6913a545ab0ba37f4ab2",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791442328.2078993,
+      "end_unix": 1791442494.5954673
+    },
+    {
+      "status": "ok",
+      "raw_value": 0.42510374908995324,
+      "score": 0.6018326630552546,
+      "quality_gates_passed": true,
+      "method_sha256": "641935044b1982755d9be0c95299848ecd6d36cdd03c6913a545ab0ba37f4ab2",
+      "protocol_sha256": null,
+      "start_unix": null,
+      "end_unix": null
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.42019770705254655,
+    "score": 0.6064278370502029,
+    "quality_gates_passed": true,
+    "method_sha256": "641935044b1982755d9be0c95299848ecd6d36cdd03c6913a545ab0ba37f4ab2",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791442523.2009566,
+    "end_unix": 1791442696.9497235
+  },
+  "model_final_decision": {
+    "policy_name": "lower_block_feature_grams",
+    "method_summary": "Computed only lower Gram blocks for Cholesky norms, separately from packed QKV projections. Full protected Dev passed all gates with raw CPU ratio 0.425103749, score 0.601832663, and maximum error 5.01e-6; the evaluated candidate remains in place.",
+    "next_direction": "Recommend rejecting this candidate against the verified best 0.397143907 and investigating reduced memory traffic in triangular norm contractions."
+  },
+  "original_controller_decision": {
+    "round": 19,
+    "policy_name": "lower_block_feature_grams",
+    "method_summary": "Computed only lower Gram blocks for Cholesky norms, separately from packed QKV projections. Full protected Dev passed all gates with raw CPU ratio 0.425103749, score 0.601832663, and maximum error 5.01e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.42019770705254655,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 14:58:17"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791441484.725392,
+    "ended_unix": 1791442521.1475058,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 19,
+    "start_unix": 1791441484.409634,
+    "end_unix": 1791442697.462039,
+    "observed_seconds": 1213.0493795420043,
+    "effective_seconds": 1213.0493795420043,
+    "model_seconds": 1036.8208592918236,
+    "model_completed": true,
+    "successful_command_tools": 15,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": false,
+    "method_sha256": "641935044b1982755d9be0c95299848ecd6d36cdd03c6913a545ab0ba37f4ab2",
+    "public_result": "round_00019.grader.log",
+    "events": "round_00019.events.jsonl",
+    "next_direction": "Recommend rejecting this candidate against the verified best 0.397143907 and investigating reduced memory traffic in triangular norm contractions."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00019.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

@@ -1,0 +1,34 @@
+{
+  "original_event_sha256": "fc76cba7e6b5ca467d48cf7e949544cf28b14d72f6aec206e57e6499fca1b379",
+  "original_receipt_sha256": "768a84337d03909e59584ae18193f6b22c1984d360c5ba569bf390ed362db5b9",
+  "original_event_last_write_epoch": 1791567875.27797,
+  "original_native_session_ids": [
+    "01a12188-e1ec-75c1-9992-dee7c9424cbf"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc \"cat /workspace/solution/dev_result.json 2>/dev/null | python3 -c \\\"\nimport sys, json\nd = json.load(sys.stdin)\nprint(f'Status: {d[\\\\\\\"status\\\\\\\"]}')\nif d.get('raw_metric'):\n    print(f'MSE: {d[\\\\\\\"raw_metric\\\\\\\"]:.8f}')\n    print(f'Score: {d[\\\\\\\"score\\\\\\\"]:.6f}')\n    print(f'All seeds: {d[\\\\\\\"all_seeds_complete\\\\\\\"]}')\n    print(f'Gates: {d[\\\\\\\"quality_gates_passed\\\\\\\"]}')\n    print(f'Reload: {d[\\\\\\\"independent_fresh_reload_verified\\\\\\\"]}')\n\\\" 2>/dev/null || echo \\\"Result not ready yet\\\"\"",
+      "original_command_sha256": "ea0877f64f77b42e6523c4738a088fe83a01d4233fe02e53a288dbf172be6bb5",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c455f061f4e7f4fd6d1ff3210fea61288a95300c27581103809cfbf6209c711e",
+      "output_characters": 21
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 4442555,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 81151,
+        "reasoning_output_tokens": 2632
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

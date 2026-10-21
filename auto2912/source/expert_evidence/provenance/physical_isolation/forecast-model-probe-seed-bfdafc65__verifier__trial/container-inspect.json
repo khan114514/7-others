@@ -1,0 +1,211 @@
+{
+  "Id": "14fa73c0088a7f501f4fca5a4cec40617dcab34fb8ed2dcca072485807c7c878",
+  "Created": "2026-10-06T12:09:17.058162752Z",
+  "Path": "python",
+  "Args": [
+    "-I",
+    "/opt/forecast-engine/start_task.py",
+    "sh",
+    "-c",
+    "sleep infinity"
+  ],
+  "State": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 27851,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-06T12:09:17.251694627Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "Image": "sha256:b840bea145dd0f1658f717d1eed579ca8d3c802703611e2fdd6cff13f6019b0d",
+  "ResolvConfPath": "/var/lib/docker/containers/14fa73c0088a7f501f4fca5a4cec40617dcab34fb8ed2dcca072485807c7c878/resolv.conf",
+  "HostnamePath": "/var/lib/docker/containers/14fa73c0088a7f501f4fca5a4cec40617dcab34fb8ed2dcca072485807c7c878/hostname",
+  "HostsPath": "/var/lib/docker/containers/14fa73c0088a7f501f4fca5a4cec40617dcab34fb8ed2dcca072485807c7c878/hosts",
+  "LogPath": "/var/lib/docker/containers/14fa73c0088a7f501f4fca5a4cec40617dcab34fb8ed2dcca072485807c7c878/14fa73c0088a7f501f4fca5a4cec40617dcab34fb8ed2dcca072485807c7c878-json.log",
+  "Name": "/forecast-model-probe-seed-bfdafc65__verifier__trial-main-1",
+  "RestartCount": 0,
+  "Driver": "overlayfs",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": null,
+  "HostConfig": {
+    "Binds": null,
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    },
+    "NetworkMode": "none",
+    "PortBindings": {},
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": [
+      "CAP_CHOWN",
+      "CAP_SETGID",
+      "CAP_SETUID"
+    ],
+    "CapDrop": [
+      "ALL"
+    ],
+    "CgroupnsMode": "private",
+    "Dns": null,
+    "DnsOptions": null,
+    "DnsSearch": null,
+    "ExtraHosts": [],
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": [
+      "no-new-privileges=true",
+      "seccomp=unconfined"
+    ],
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 4294967296,
+    "NanoCpus": 2000000000,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": null,
+    "BlkioDeviceReadBps": null,
+    "BlkioDeviceWriteBps": null,
+    "BlkioDeviceReadIOps": null,
+    "BlkioDeviceWriteIOps": null,
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": null,
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 8589934592,
+    "MemorySwappiness": null,
+    "OomKillDisable": null,
+    "PidsLimit": null,
+    "Ulimits": null,
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "MaskedPaths": [],
+    "ReadonlyPaths": []
+  },
+  "Storage": {
+    "RootFS": {
+      "Snapshot": {
+        "Name": "overlayfs"
+      }
+    }
+  },
+  "Mounts": [],
+  "Config": {
+    "Hostname": "14fa73c0088a",
+    "Domainname": "",
+    "User": "root",
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "AttachStderr": true,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/bin:/usr/bin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.12.15",
+      "PYTHON_SHA256=c2c4321961fab0fb999d66e0cecf521c2ab3994c7992873ea99e306c1094fd5a",
+      "HOME=/home/candidate",
+      "FORECAST_LANE=gpt",
+      "PYTHONPATH=/opt/forecastcli",
+      "OMP_NUM_THREADS=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1"
+    ],
+    "Cmd": [
+      "sh",
+      "-c",
+      "sleep infinity"
+    ],
+    "Image": "forecast-model-probe-seed-bfdafc65__verifier__trial-main",
+    "Volumes": null,
+    "WorkingDir": "/workspace/solution",
+    "Entrypoint": [
+      "python",
+      "-I",
+      "/opt/forecast-engine/start_task.py"
+    ],
+    "Labels": {
+      "com.docker.compose.config-hash": "b33b14d2da2d7964c23dd38efa0b1f7c745df23dc21f795e7f755e67c1895691",
+      "com.docker.compose.container-number": "1",
+      "com.docker.compose.depends_on": "",
+      "com.docker.compose.image": "sha256:66e59bc61d537e8692ec0ad3c90fc4ef309a0ab8f44b2b95f0932af08397f40f",
+      "com.docker.compose.oneoff": "False",
+      "com.docker.compose.project": "forecast-model-probe-seed-bfdafc65__verifier__trial",
+      "com.docker.compose.project.config_files": "/private/var/folders/9r/6rs1rzr14rq5bnkvppg0rg5m0000gn/T/tmpqulw2skj/forecast-model-probe-seed-bfdafc65__verifier__trial-docker-compose-resources.json,<AUTHOR_HOME>/Documents/ChatGPT/New project/heima_20261005/private/harbor-venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml,<TASK_SOURCE_ROOT>/workspace/harbor_task/tests/docker-compose.yaml,/private/var/folders/9r/6rs1rzr14rq5bnkvppg0rg5m0000gn/T/tmp8iugnfuf/docker-compose-environment.json",
+      "com.docker.compose.project.working_dir": "<TASK_SOURCE_ROOT>/workspace/harbor_task/tests",
+      "com.docker.compose.service": "main",
+      "com.docker.compose.version": "5.5.1"
+    }
+  },
+  "NetworkSettings": {
+    "SandboxID": "3289a94287bc8fac16a6d10ada2dc45e409510d4fc3bf346f15e6090531b654d",
+    "SandboxKey": "/var/run/docker/netns/3289a94287bc",
+    "Ports": {},
+    "Networks": {
+      "none": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "9c3ec2a81584293716e94f9b7b6db3418a3f667ec643cef1242a1fc59a149082",
+        "EndpointID": "4fc7ea6e3e4264edd9b7d57212cb3fda489dda30bf2cb4ae6d02b6c0a30f89e5",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  },
+  "ImageManifestDescriptor": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:66e59bc61d537e8692ec0ad3c90fc4ef309a0ab8f44b2b95f0932af08397f40f",
+    "size": 3903,
+    "platform": {
+      "architecture": "arm64",
+      "os": "linux"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/usr/bin/ionice",
+    "-c",
+    "3",
+    "/usr/bin/nice",
+    "-n",
+    "15",
+    "/opt/conda/bin/python3.12",
+    "-S",
+    "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/bundle/install_backend.py",
+    "--config",
+    "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment.json",
+    "--receipt-name",
+    "portable-full-install-receipt.json"
+  ],
+  "started_epoch": 1791371729.037024,
+  "completed_epoch": 1791371792.8270762,
+  "exit_code": 0,
+  "root_research_credit": 0
+}

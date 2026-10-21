@@ -1,0 +1,38 @@
+{
+  "original_event_sha256": "7cd2461587911195fea05883b66b5a1538468cb38df9a8d79513212b27aba0b7",
+  "original_receipt_sha256": "0b0e07ade4a97a6decec486efa16e6dac64aa643b765e4ea7e5374f6c81423bd",
+  "original_event_last_write_epoch": 1791619354.8640864,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python << 'PYEOF'\nimport scanpy as sc\nimport numpy as np\n\ntrain = sc.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_target = sc.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ncell_types = sorted(train.obs['cell_type'].unique().tolist())\nn_genes = 2000\n\nctrl_means = {}\nstim_means = {}\nstim_diffs = {}\nfor ct in cell_types:\n    mask_ct = train.obs['cell_type'] == ct\n    ctrl_mask = mask_ct & (train.obs['condition'] == 'control')\n    stim_mask = mask_ct & (train.obs['condition'] == 'stimulated')\n    cm = np.asarray(train[ctrl_mask].X.mean(axis=0)).flatten()\n    sm = np.asarray(train[stim_mask].X.mean(axis=0)).flatten()\n    ctrl_means[ct] = cm\n    stim_means[ct] = sm\n    stim_diffs[ct] = sm - cm\n\ndev_stim_mean = np.asarray(dev_target.X.mean(axis=0)).flatten()\ndev_ctrl_mean = np.asarray(dev_ctrl.X.mean(axis=0)).flatten()\n\nprint(\\\"=== Ensemble (top-k CTs, softmax weighting) on Dev ===\\\")\ndef dev_ensemble(k=3, temp=5.0, up_pow=0.16, down_pow=0.80, clip=60):\n    corrs = np.array([np.corrcoef(dev_ctrl_mean, ctrl_means[ct])[0,1] for ct in cell_types])\n    top_k_idx = np.argsort(corrs)[-k:]\n    top_corrs = corrs[top_k_idx]\n    weights = np.exp(temp * (top_corrs - top_corrs.max()))\n    weights = weights / weights.sum()\n    combined_diff = np.zeros(n_genes)\n    for w, idx in zip(weights, top_k_idx):\n        ct = cell_types[idx]\n        ct_ctrl = ctrl_means[ct]\n        ratio = np.where(ct_ctrl > 1e-8, dev_ctrl_mean / np.maximum(ct_ctrl, 1e-8), 1.0)\n        ratio = np.clip(ratio, 1/clip, clip)\n        diff = stim_diffs[ct]\n        up = diff > 0\n        sd = np.zeros_like(diff)\n        sd[up] = diff[up] * (ratio[up] ** up_pow)\n        sd[~up] = diff[~up] * (ratio[~up] ** down_pow)\n        combined_diff += w * sd\n    pred = dev_ctrl_mean + combined_diff\n    pred = np.clip(pred, 0, None)\n    return np.mean((pred - dev_stim_mean) ** 2), [(cell_types[idx], w, corrs[idx]) for w, idx in zip(weights, top_k_idx)]\n\nfor k in [1, 2, 3, 4, 5, 6]:\n    for temp in [3, 5, 10, 20, 50, 100]:\n        mse, details = dev_ensemble(k=k, temp=temp)\n        marker = \\\" ***\\\" if mse < 0.002835 else \\\"\\\"\n        print(f\\\"  k={k}, temp={temp:3d}: Dev MSE={mse:.6f}{marker}\\\")\n\nprint(\\\"\\\\n=== V6 baseline: 0.002835 ===\\\")\n\nPYEOF\n\"",
+      "original_command_sha256": "ccaf5de59dc447d41d5319a5751f115ac33f9f724c28524a85de78609767acb0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2749476051a68c904b2335f6528e02944009edeadbfba9b737fd09d2d79ccfdb",
+      "output_characters": 1354
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "error",
+      "message": "Reconnecting... 1/5 (stream disconnected before completion: Authorized Coding Plan stream failed; original attempts preserved)"
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 2605647,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 137335,
+        "reasoning_output_tokens": 10080
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

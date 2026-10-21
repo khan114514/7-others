@@ -1,0 +1,81 @@
+{
+  "note": "Eight-field normalized export only; original trajectory and diagnostic evidence retained unchanged",
+  "source_original_export_sha256": "32b76cbb0c842e025971132b60acf71f6377ba869ce33eb16702bdb1a32b65e6",
+  "round_metadata": [
+    {
+      "round": 2,
+      "unchanged_diagnostic_metadata": {
+        "diagnostic_metric": {
+          "name": "FID",
+          "sample_count": 2000,
+          "value": 240.30712041459782,
+          "formal_score": false,
+          "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round02_diag/run.log",
+          "evidence_sha256": "400fb68328c8973bf5c06128b39c7bf032140f8c32a8cced5f7f6aa4f5e765f8"
+        },
+        "status_scope": "FORMAL_FID_50000_METRIC_AVAILABILITY",
+        "original_status": "ok"
+      }
+    },
+    {
+      "round": 8,
+      "unchanged_diagnostic_metadata": {
+        "diagnostic_metric": {
+          "name": "FID",
+          "sample_count": 2000,
+          "value": 28.293305741270103,
+          "formal_score": false,
+          "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round08_gentle_ft_lowlr_t0only/run.log",
+          "evidence_sha256": "b07f7b98d19ccae007af1253804cb4b48685845cfda0499eac8c53f1f7abd958"
+        },
+        "status_scope": "FORMAL_FID_50000_METRIC_AVAILABILITY",
+        "original_status": "ok"
+      }
+    },
+    {
+      "round": 9,
+      "unchanged_diagnostic_metadata": {
+        "diagnostic_metric": {
+          "name": "FID",
+          "sample_count": 2000,
+          "value": 28.560218920759098,
+          "formal_score": false,
+          "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round09_mseonly_lowlr_t0only/run.log",
+          "evidence_sha256": "cac4166a1698600b14bfd0284498155d4dac4623865e5a39e65c09937c4c2495"
+        },
+        "status_scope": "FORMAL_FID_50000_METRIC_AVAILABILITY",
+        "original_status": "ok"
+      }
+    },
+    {
+      "round": 10,
+      "unchanged_diagnostic_metadata": {
+        "diagnostic_metric": {
+          "name": "FID",
+          "sample_count": 5000,
+          "value": 62.62587170703512,
+          "formal_score": false,
+          "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round10_t0importance_mse_5k/run.log",
+          "evidence_sha256": "0876211643510bc26f982cb1bb7a94cc2971b476c02fa2d9b7c05484e70bae41"
+        },
+        "status_scope": "FORMAL_FID_50000_METRIC_AVAILABILITY",
+        "original_status": "ok"
+      }
+    },
+    {
+      "round": 11,
+      "unchanged_diagnostic_metadata": {
+        "diagnostic_metric": {
+          "name": "FID",
+          "sample_count": 2000,
+          "value": 50.79455341901178,
+          "formal_score": false,
+          "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round11_t0only_msece_5k_diag/run.log",
+          "evidence_sha256": "08840b52c5a2c4c3bbf4d9210a31290d4c8cbd73448fcd6e808d0142aa56ee01"
+        },
+        "status_scope": "FORMAL_FID_50000_METRIC_AVAILABILITY",
+        "original_status": "ok"
+      }
+    }
+  ]
+}

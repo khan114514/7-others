@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "scope": "Static index of supplied byte-identical executed sources and actual existing Harbor records. No new Trial, Job, model or GPU work.",
+  "research_credit_seconds": 0,
+  "sources": {
+    "gpu_fixed_evaluator.py": {
+      "path": "expert_evidence/runtime_integration/numerical_sources/gpu_fixed_evaluator.py",
+      "executed_and_supplied_sha256": "7a591faafa18c9ad6b033a0bae604032028a956d93953d4c445eecbed33445a9",
+      "line_index": [
+        {
+          "line": 78,
+          "text": "        if difference>1e-7 or any((fresh['metrics'][k] is None)!=(loaded['metrics'][k] is None) or (fresh['metrics'][k] is not None and abs(fresh['metrics'][k]-loaded['metrics'][k])>1e-8) for k in ['mse','r2','pcc']):"
+        },
+        {
+          "line": 87,
+          "text": "        mean=statistics.mean(x['metrics']['mse'] for x in rows)"
+        },
+        {
+          "line": 89,
+          "text": "        if a.split=='hidden':anchors['hidden']=json.loads((root/'private/private_verifier_contract_v1.json').read_text())['hidden_anchor']"
+        },
+        {
+          "line": 90,
+          "text": "        anchor=anchors[a.split];assert anchor['status']=='CALIBRATED' and anchor['baseline']>anchor['upper_bound']"
+        },
+        {
+          "line": 91,
+          "text": "        report.update(raw_metric=mean,score=(anchor['baseline']-mean)/(anchor['baseline']-anchor['upper_bound']),"
+        },
+        {
+          "line": 93,
+          "text": "    if status=='HARD_GATE':report['score']=-1"
+        }
+      ]
+    },
+    "gpu_jail_entry.py": {
+      "path": "expert_evidence/runtime_integration/numerical_sources/gpu_jail_entry.py",
+      "executed_and_supplied_sha256": "d8fd94dacfbdeb827565734ed736cf1631eff5435338d1b386ec2d67ebc57a64",
+      "line_index": [
+        {
+          "line": 55,
+          "text": "os.chroot(a.jail);os.chdir('/workspace')"
+        },
+        {
+          "line": 59,
+          "text": "os.setgroups([]);os.setresgid(a.uid,a.uid,a.uid);os.setresuid(a.uid,a.uid,a.uid)"
+        },
+        {
+          "line": 61,
+          "text": "assert libc.prctl(38,1,0,0,0)==0"
+        },
+        {
+          "line": 74,
+          "text": "lib.seccomp_load.argtypes=[ctypes.c_void_p];lib.seccomp_release.argtypes=[ctypes.c_void_p]"
+        },
+        {
+          "line": 77,
+          "text": "assert lib.seccomp_attr_set(ctx,4,1)==0,'All-thread seccomp synchronization is required'"
+        },
+        {
+          "line": 83,
+          "text": "denied='''socket socketpair connect bind listen accept accept4 sendto recvfrom sendmsg recvmsg sendmmsg recvmmsg"
+        },
+        {
+          "line": 93,
+          "text": "rule('clone',cmp=[Cmp(0,7,0x10000,0)])"
+        },
+        {
+          "line": 98,
+          "text": "assert lib.seccomp_load(ctx)==0;lib.seccomp_release(ctx)"
+        },
+        {
+          "line": 115,
+          "text": "assert all(checks.values()),checks"
+        },
+        {
+          "line": 116,
+          "text": "print(json.dumps({'phase':'UNPRIVILEGED_CHROOT_SECCOMP_CUDA_PROBE_PASSED','checks':checks,"
+        }
+      ]
+    },
+    "gpu_jail_launcher.py": {
+      "path": "expert_evidence/runtime_integration/numerical_sources/gpu_jail_launcher.py",
+      "executed_and_supplied_sha256": "5aa8c79274c98bc4823ea0a3ee9812a5882f4ff6fb9020181ce58632aafae230",
+      "line_index": [
+        {
+          "line": 10,
+          "text": "resource.setrlimit(resource.RLIMIT_DATA,(32*1024**3,)*2)"
+        },
+        {
+          "line": 11,
+          "text": "resource.setrlimit(resource.RLIMIT_CPU,(3600,3600))"
+        },
+        {
+          "line": 12,
+          "text": "resource.setrlimit(resource.RLIMIT_FSIZE,(256*1024**2,)*2)"
+        },
+        {
+          "line": 13,
+          "text": "resource.setrlimit(resource.RLIMIT_NOFILE,(256,256));resource.setrlimit(resource.RLIMIT_CORE,(0,0))"
+        },
+        {
+          "line": 14,
+          "text": "os.sched_setaffinity(0,sorted(os.sched_getaffinity(0))[:4])"
+        },
+        {
+          "line": 21,
+          "text": "os.execve(str(runtime),argv,"
+        }
+      ]
+    },
+    "gpu_jail_supervisor.py": {
+      "path": "expert_evidence/runtime_integration/numerical_sources/gpu_jail_supervisor.py",
+      "executed_and_supplied_sha256": "2c7e7734fd309537552c079b17ed0d6271f81a50ab4847f6220e0502671b33ec",
+      "line_index": [
+        {
+          "line": 75,
+          "text": "              close_fds=True,pass_fds=tuple(outputs.values()),start_new_session=True,"
+        },
+        {
+          "line": 86,
+          "text": "                if duration>(120 if a.reload_checkpoint else 900):timed_out=True;os.killpg(proc.pid,signal.SIGKILL);break"
+        },
+        {
+          "line": 91,
+          "text": "                    if peak_rss>32*1024**3:memory_exceeded=True;os.killpg(proc.pid,signal.SIGKILL);break"
+        },
+        {
+          "line": 99,
+          "text": "        memory_exceeded|=peak_rss>32*1024**3"
+        },
+        {
+          "line": 105,
+          "text": "          'candidate_imported_on_host':False,'target_labels_in_candidate':False,'formal_model_research_credit':0,"
+        },
+        {
+          "line": 109,
+          "text": "            from independent_metrics import expression_mean_metrics"
+        },
+        {
+          "line": 120,
+          "text": "            pred=np.load(prediction_file,allow_pickle=False,max_header_size=4096)"
+        },
+        {
+          "line": 121,
+          "text": "            if not np.isfinite(pred).all() or pred.min()<0:raise ValueError('Hard gate: prediction must be finite and nonnegative')"
+        },
+        {
+          "line": 122,
+          "text": "            target=task/'environment/public_assets/dev_targets.h5ad' if a.split=='dev' else root/'private/hidden_calibration_assets/targets.h5ad'"
+        },
+        {
+          "line": 124,
+          "text": "            report['metrics']=expression_mean_metrics(truth,pred)"
+        },
+        {
+          "line": 125,
+          "text": "            report['checkpoint_bytes']=(a.out/'model.pt').stat().st_size"
+        },
+        {
+          "line": 126,
+          "text": "            assert report['checkpoint_bytes']<=256*1024**2"
+        }
+      ]
+    }
+  },
+  "native_NOP_records": [
+    {
+      "path": "expert_evidence/nop_trial",
+      "actual_native_Trial_id": "dbf1dd7f-b1bb-47a7-bd2b-b53fcd736199",
+      "config_schema_validated": true,
+      "result_schema_validated": true,
+      "agent_name": "nop",
+      "environment_import_path": "save_hybrid_environment:SaveHybridDockerEnvironment",
+      "verifier_disabled": false,
+      "finished_at": "2026-10-09T14:11:30.926998+00:00",
+      "exception_info": null,
+      "separate_Verifier": true,
+      "actual_reward": 0.0,
+      "raw_config_sha256": "cdd5ea2f01f30cd5ca692294f4f86a1685c09538ef7f0b68f482ade7daefd043",
+      "raw_native_result_sha256": "d93fcc8906967216723d48cf5adaf653895c4c1385b21c01fed669c4ddd3a2be",
+      "published_config_sha256": "9a5abb49d12b52d2665ab01e8f8f66c9d9fe7fb7f8422dd77ca43da598161198",
+      "published_native_result_sha256": "977e4e6b3241b205c8d6bb6bc74c0e15a98c2eb5fa7e8b0da09a83092b2a1d7a",
+      "published_Verifier_result_sha256": "2630a12f24fe28285367f57fdb5cd4d1e4ff45bcf54614eb6bd398b7c22618e5",
+      "raw_private_record_path_not_published": true,
+      "original_native_result_not_given_an_invented_status": true,
+      "actual_fresh_seeds": [
+        17,
+        29,
+        43,
+        71,
+        97
+      ],
+      "actual_reload_difference_max": 0,
+      "is_official_platform_attestation": false
+    },
+    {
+      "path": "expert_evidence/portable_runtime_nop",
+      "actual_native_Trial_id": "b5e719ce-f9a0-47a3-aa86-3d76d3f9c660",
+      "config_schema_validated": true,
+      "result_schema_validated": true,
+      "agent_name": "nop",
+      "environment_import_path": "portable_runtime.environment:SaveHybridDockerEnvironment",
+      "verifier_disabled": false,
+      "finished_at": "2026-10-09T18:00:14.378579+00:00",
+      "exception_info": null,
+      "separate_Verifier": true,
+      "actual_reward": 0.0,
+      "raw_config_sha256": "50963f900d5b0eb740691d6b721078e5f655db46a868a6003a6546772c72748d",
+      "raw_native_result_sha256": "8cab5fcb5f915164788553588e8e1316be44a9adac9d7e0ad98362e3776f9900",
+      "published_config_sha256": "bbb0b3ac38695fc79e08ab782ab3b5a039d6795b90d420e75a205619293b2b10",
+      "published_native_result_sha256": "23da39dde295af73f915886e8b2e923cd2c240886b0df9d31c74d46bf7416f89",
+      "published_Verifier_result_sha256": "cbf7266726c0293817ecbba250416ad6cd6fb2734a574bc768607212e897d8f7",
+      "raw_private_record_path_not_published": true,
+      "original_native_result_not_given_an_invented_status": true,
+      "actual_fresh_seeds": [
+        17,
+        29,
+        43,
+        71,
+        97
+      ],
+      "actual_reload_difference_max": 0,
+      "is_official_platform_attestation": false
+    }
+  ],
+  "scoring": {
+    "actual_source": "expert_evidence/runtime_integration/numerical_sources/gpu_fixed_evaluator.py",
+    "formula_line": 91,
+    "expression": "(anchor['baseline'] - mean) / (anchor['baseline'] - anchor['upper_bound'])",
+    "expression_AST_verified_against_executed_source": true,
+    "successful_normalization_has_no_clip_min_max_call": true,
+    "dev_anchor": {
+      "status": "CALIBRATED",
+      "baseline": 0.0036568199948745547,
+      "upper_bound": 0.0,
+      "seeds": [
+        17,
+        29,
+        43,
+        71,
+        97
+      ],
+      "scope": "EXPERT_FORMAL_PUBLIC_DEV",
+      "comparison_summary_sha256": "db3cef967969648c09570c651e5bf7a42316d211bfe08838471fab93c43330b1"
+    },
+    "local_private_calibration_anchor": {
+      "status": "CALIBRATED",
+      "baseline": 0.008790752743673927,
+      "upper_bound": 0.0,
+      "seeds": [
+        17,
+        29,
+        43,
+        71,
+        97
+      ],
+      "scope": "EXPERT_PRIVATE_CALIBRATION_NOT_OFFICIAL_HIDDEN",
+      "official_hidden_verified": false
+    },
+    "anchor_selection": "Dev uses tests/anchors.json; local private calibration uses private_verifier_contract_v1.json hidden_anchor, read by trusted parent after candidate isolation.",
+    "invalid_hard_gate": "HARD_GATE is unsuccessful and gets sentinel score -1. It is not a successful normalized MSE observation.",
+    "private_context_is_official_platform_hidden": false
+  },
+  "native_result_schema": {
+    "Harbor_version": "0.23.0",
+    "native_module": "harbor.models.trial.result",
+    "installed_source_sha256": "66130539641e97e6f07569a5264c2d2d2ffda962a68b0be13255a1f8539edcb7",
+    "supplied_schema": "expert_evidence/runtime_integration/native_schema/TrialResult.schema.json",
+    "schema_sha256": "f1239144996a8d4b41d08e538832614f69c318ed9e76f65d77655273329f5e0d",
+    "actual_native_field_names": [
+      "id",
+      "task_name",
+      "trial_name",
+      "trial_uri",
+      "task_id",
+      "source",
+      "task_checksum",
+      "config",
+      "agent_info",
+      "agent_result",
+      "verifier_result",
+      "verifier_environment_mode",
+      "exception_info",
+      "started_at",
+      "finished_at",
+      "environment_setup",
+      "agent_setup",
+      "agent_execution",
+      "verifier",
+      "step_results"
+    ],
+    "top_level_status_is_a_native_field": false,
+    "interpretation": "This target version has no top-level status field. A JSON .get(status) yielding null does not identify a failed or incomplete native Trial. Inspect the typed finished_at, exception_info, verifier_environment_mode, verifier_result and actual Verifier output instead. Raw native results are not edited to add COMPLETE."
+  },
+  "path_contract": {
+    "source_profile": "teaching-task-root-v1",
+    "exported_native_profile": "harbor-environment-v1",
+    "adapter": "expert_evidence/platform_adapter/export_native.py",
+    "private_injector": "expert_evidence/platform_adapter/inject_private_assets.py",
+    "existing_actual_injection_receipt": "expert_evidence/runtime_integration/native_schema/existing-private-injection-receipt.json",
+    "existing_receipt_SHA256": "6871f7427aa00cec2f2fa5aebb91daecf80022254f99ecbb284945c792767b65",
+    "source_Agent_context": "task root before export",
+    "actual_native_Agent_context": "environment/",
+    "actual_native_Verifier_context": "tests/",
+    "Agent_context_unchanged_by_private_injection": true,
+    "both_private_asset_fingerprints_match_actual_native_Verifier": true,
+    "Job_example_is_execution_evidence": false,
+    "Job_example": "expert_evidence/runtime_integration/job.example.json",
+    "actual_Trial_config_types_and_provider_maps": "expert_evidence/runtime_integration/native_schema/existing_config_validation.json",
+    "official_platform_task_id_or_hidden_acceptance_claimed": false
+  },
+  "active_entry_materialization": {
+    "scope": "Read-only observation of the already frozen runtime; not a newly executed preparation or build.",
+    "existing_active_receipt": "expert_evidence/runtime_integration/native_schema/existing-active-entry.json",
+    "active_receipt_sha256": "14694ef67a7796de2aef3e59c3cbcbe8c7b50d8c2726786bb67b676a16a077f1",
+    "entry_sha256": "d8fd94dacfbdeb827565734ed736cf1631eff5435338d1b386ec2d67ebc57a64",
+    "installed_runner_matches_supplied_trusted_source": true,
+    "frozen_binding_active_entry_sha256": "14694ef67a7796de2aef3e59c3cbcbe8c7b50d8c2726786bb67b676a16a077f1",
+    "full_frozen_numerical_binding_sha256": "be21b5950d3d87d27cec4e91c9d90e0f9a7113bd3129f55bd54a74816e04ed10",
+    "original_build_entry_sha256": "e3f4221b99d6abc254b8c5faa2afbdc646cfdd137e0243e3475bc44aa66dc69e",
+    "initial_builder_receipt_is_not_the_later_active_entry_receipt": true,
+    "preparation_entrypoint": "expert_evidence/runtime_integration/numerical_sources/prepare_gpu_active_entry.py",
+    "preparation_entrypoint_sha256": "27ccf468cf3e28eea09718dc4f65b07e1771166bae3bc8a959928b8deee18537",
+    "new_materializer_executed_on_live_runtime": false,
+    "existing_runtime_binding_or_runner_modified": false
+  }
+}

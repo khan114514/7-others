@@ -1,0 +1,24 @@
+{
+  "image_digest": "sha256:5e040c447c14e760239fb368d770b5a83fb500eb8afbd638945d273035e625ba",
+  "network_mode": "none",
+  "readonly_rootfs": true,
+  "privileged": false,
+  "cap_drop": [
+    "ALL"
+  ],
+  "devices": null,
+  "device_requests": null,
+  "mounts": [
+    {
+      "Type": "volume",
+      "Destination": "/run/heima-verifier/queue",
+      "RW": true
+    },
+    {
+      "Type": "volume",
+      "Destination": "/run/latentcli/queue",
+      "RW": true
+    }
+  ],
+  "original_container_inspect_sha256": "89ba30a2d4e9d14987e3a98bd4f6958ec290bde6a74f6fd6f3db46f326fd2eaf"
+}

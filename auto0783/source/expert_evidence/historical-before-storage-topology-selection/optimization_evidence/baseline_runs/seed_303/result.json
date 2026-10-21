@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "role": "baseline",
+  "seed": 303,
+  "task_type": "pretrained_decoder_inference",
+  "method": {
+    "source_path": "Task/environment/starter/method.py",
+    "source_sha256": "07053b2dd5ac52bf587c88ed0d2bfd86f735e4d17ae1bec5679beee864d930e9",
+    "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+    "numerical_source_binding_sha256": "308e9a3cd53710ac22def6a086e7a4212c0327a859e541e85b0b3e2bde6c6d40",
+    "baseline_program_path": "Task/environment/public_eval/baseline-program.json",
+    "reference_program_path": "expert_evidence/release-full-validation/oracle/program.json",
+    "reference_artifact_sha256": "4c051f10ad664d9fbe423752a3d15ed058c4b33e00e13c582fc7958111a5391e"
+  },
+  "protocol": {
+    "source_path": "Task/environment/public_eval/protocol/benchmark.json",
+    "source_sha256": "f2fffa4cf44cc472b305faf64b0867cc521884bc9d3f298a582f101d37946b5c",
+    "task_source_manifest_sha256": "a1bf9e27a4adae5e2f224c80d3426960caeb7bf101da6e1fd151fefc43e7534c",
+    "sampling_seed": 303,
+    "seed_type": "inference_sampling_seed",
+    "training_seed": null,
+    "evaluation_replicates_per_case": 3,
+    "case_count": 2,
+    "steps_per_repetition": 256,
+    "layer_count": 28,
+    "dtype": "bfloat16",
+    "indicator_direction": "lower_is_better",
+    "aggregation": "median of 3 repetitions per case, mean of both cases per sampling seed",
+    "timing_scope": "Sum of256 decoder forward events:28 layers, final norm and head. Frozen CFG/reveal/input preparation, quality diagnostics, loading and queueing are excluded equally.",
+    "canonical_semantics": "cosine reveal and per-patch CFG4; shared-oracle paired prediction replay plus autonomous candidate final-latent check; no FLUX renderer claim",
+    "resource": "same assigned A100 40 GiB; paired alternating order in one CUDA child",
+    "formal_protocol": {
+      "steps": 256,
+      "image_tokens": 256,
+      "cfg_batch_size": 2,
+      "text_prefix_max_length": 300,
+      "cfg_weight": 4.0,
+      "sampling_order": "Fixed seeded torch.randperm; cosine reveal schedule; per-patch CFG.",
+      "semantics_disclosure": "This is a canonical decoder benchmark. The published multi-patch CFG indexing is not claimed to be reproduced unchanged.",
+      "quality_plan": "Check every full-decoder prediction on the shared Baseline replay; additionally run an autonomous candidate rollout and compare final latent tokens. Both reset all per-prefix mutable state.",
+      "warmup": "For each case, one untimed source-alignment/Starter/candidate warmup; reset every prefix cache before each timed repetition.",
+      "cost_inclusion": "Sum of256 CUDA-event decoder forwards per rollout:28 layers, final vision RMS norm and projection head, including first-step cache construction and tensor operations. CFG/reveal/input concatenation/rotary setup, quality diagnostics, loading, queueing and authenticated transport are excluded equally and disclosed.",
+      "timing_order": "Alternate Baseline/candidate order by (step+repetition) parity.",
+      "sampling_seeds": [
+        101,
+        202,
+        303
+      ],
+      "repeats_per_seed": 3,
+      "seed_type": "Inference sampling seed; no independent training or retraining claim.",
+      "raw_data": "Retain each stage timing/delta, independent final latent tensors, source alignment, source/checkpoint/input/config hashes, CUDA-child exit and post-job GPU idle receipt.",
+      "hidden_cases": 6,
+      "cases_per_sampling_seed": 2,
+      "public_dev_cases": 3,
+      "public_dev_steps": 32
+    }
+  },
+  "training": {
+    "status": "NOT_APPLICABLE",
+    "performed": false,
+    "shared_pretrained_checkpoint": true,
+    "independent_training_run_claimed": false
+  },
+  "execution": {
+    "paired_numerical_run_id": "9e11cf3c87464f19b55619c76cf87d50",
+    "native_run_id": "5e05b0ff101143d09141578860a83e67",
+    "native_trial_id": "b12bf1de-409a-432e-bb74-26c1529e7087",
+    "actual_paired_request_path": "expert_evidence/release-full-validation/oracle/request.json",
+    "started_epoch": 1791706563.615059,
+    "completed_epoch": 1791708437.301713,
+    "elapsed_seconds": 1873.6866540908813,
+    "exit_code": 0,
+    "timing_scope": "whole paired job shared by every seed and both roles; not a per-seed start/end",
+    "active_evaluation_seconds": 1863.1741615878418,
+    "queue_seconds": 0.04114083759486675,
+    "cuda_weight_load_seconds": 8.821825359016657,
+    "original_independent_CPU_exit_code": 0,
+    "original_CPU_command_argv_privacy_derived": [
+      "ssh",
+      "-T",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ClearAllForwardings=yes",
+      "<trusted-primary-runtime>",
+      "<trusted-root>/rivermind-data/bifrost1_20261005/private/runtime251-direct/bin/python <trusted-root>/rivermind-data/bifrost1_20261005/private/bounded-compiler-1791526194302103000/independent-audit/recompute_numerical_result.py --job <trusted-root>/rivermind-data/bifrost1_20261005/private/bounded-compiler-1791526194302103000/numerical-workers/336328b76f4e446f97122bb8a92d145f/jobs/9e11cf3c87464f19b55619c76cf87d50 --output <trusted-root>/rivermind-data/bifrost1_20261005/private/bounded-compiler-1791526194302103000/numerical-workers/336328b76f4e446f97122bb8a92d145f/jobs/9e11cf3c87464f19b55619c76cf87d50/repair-independent-cpu-audit.json"
+    ],
+    "run_log_scope": "actual original independent CPU audit stdout for the whole paired job, repeated explicitly for each role/seed; not GPU stdout",
+    "original_GPU_stdout_available": false,
+    "log_source_path": "expert_evidence/release-full-validation/oracle/audit.stdout.log",
+    "original_GPU_stdout_path": "expert_evidence/release-full-validation/oracle/actual-worker.stdout.jsonl",
+    "native_reproduction_argv_from_fixed_spawn_source": [
+      "<author-home>/WorkBuddy/2026-10-02-20-41-50/repair_to_pass_20261004/private_mac_dd_controller_20261005/venv/bin/python",
+      "-u",
+      "./Runtime/run_native_validation.py",
+      "--mode",
+      "oracle",
+      "--lane",
+      "gpt",
+      "--task",
+      "Task",
+      "--runtime-state",
+      "<trusted-runtime-state>",
+      "--numerical-status",
+      "<private-evidence-root>/gpt-human-research-resume/continuous-until-user10h-1791679979081280000/numerical-controller-state/numerical-controller-latest.json",
+      "--execute"
+    ]
+  },
+  "metrics": {
+    "decoder_rollout_latency_ms": 58262.644187927246,
+    "paired_per_case": [
+      {
+        "case": 4,
+        "sampling_seed": 303,
+        "baseline_ms": 58228.80659484863,
+        "candidate_ms": 33539.91879272461
+      },
+      {
+        "case": 5,
+        "sampling_seed": 303,
+        "baseline_ms": 58296.48178100586,
+        "candidate_ms": 33614.39336395264
+      }
+    ],
+    "paired_repetition_records": [
+      {
+        "case": 4,
+        "sampling_seed": 303,
+        "repetition": 0,
+        "steps": 256,
+        "baseline_total_ms": 58169.39405822754,
+        "candidate_total_ms": 33523.6424407959,
+        "worst_relative_rmse": 0.0,
+        "worst_scaled_max_abs": 0.0
+      },
+      {
+        "case": 4,
+        "sampling_seed": 303,
+        "repetition": 1,
+        "steps": 256,
+        "baseline_total_ms": 58228.80659484863,
+        "candidate_total_ms": 33539.91879272461,
+        "worst_relative_rmse": 0.0,
+        "worst_scaled_max_abs": 0.0
+      },
+      {
+        "case": 4,
+        "sampling_seed": 303,
+        "repetition": 2,
+        "steps": 256,
+        "baseline_total_ms": 58266.667907714844,
+        "candidate_total_ms": 33590.22805786133,
+        "worst_relative_rmse": 0.0,
+        "worst_scaled_max_abs": 0.0
+      },
+      {
+        "case": 5,
+        "sampling_seed": 303,
+        "repetition": 0,
+        "steps": 256,
+        "baseline_total_ms": 58296.48178100586,
+        "candidate_total_ms": 33627.69923400879,
+        "worst_relative_rmse": 0.0,
+        "worst_scaled_max_abs": 0.0
+      },
+      {
+        "case": 5,
+        "sampling_seed": 303,
+        "repetition": 1,
+        "steps": 256,
+        "baseline_total_ms": 58193.56788635254,
+        "candidate_total_ms": 33550.36268615723,
+        "worst_relative_rmse": 0.0,
+        "worst_scaled_max_abs": 0.0
+      },
+      {
+        "case": 5,
+        "sampling_seed": 303,
+        "repetition": 2,
+        "steps": 256,
+        "baseline_total_ms": 58313.59086608887,
+        "candidate_total_ms": 33614.39336395264,
+        "worst_relative_rmse": 0.0,
+        "worst_scaled_max_abs": 0.0
+      }
+    ]
+  },
+  "quality_gate": {
+    "status": "PASS",
+    "quality_pass": true,
+    "final_quality": [
+      {
+        "case": 4,
+        "sampling_seed": 303,
+        "relative_rmse": 0.0,
+        "scaled_max_abs": 0.0
+      },
+      {
+        "case": 5,
+        "sampling_seed": 303,
+        "relative_rmse": 0.0,
+        "scaled_max_abs": 0.0
+      }
+    ],
+    "all_stage_quality_path": "expert_evidence/release-full-validation/oracle/raw-stage-times.json",
+    "original_independent_CPU_audit": "expert_evidence/release-full-validation/oracle/repair-independent-cpu-audit.json"
+  },
+  "artifacts": {
+    "model": {
+      "status": "NOT_APPLICABLE"
+    },
+    "original_full_result": "expert_evidence/release-full-validation/oracle/result.json",
+    "original_raw_stage_times": "expert_evidence/release-full-validation/oracle/raw-stage-times.json",
+    "final_latents": [
+      {
+        "path": "expert_evidence/release-full-validation/oracle/case-4-final-latents.safetensors",
+        "sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165"
+      },
+      {
+        "path": "expert_evidence/release-full-validation/oracle/case-5-final-latents.safetensors",
+        "sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c"
+      }
+    ]
+  }
+}

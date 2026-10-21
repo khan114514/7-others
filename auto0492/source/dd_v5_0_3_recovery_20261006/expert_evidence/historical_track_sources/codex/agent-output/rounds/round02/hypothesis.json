@@ -1,0 +1,45 @@
+{
+  "recorded_at": "2026-10-03T00:13:38.048901+08:00",
+  "round": 2,
+  "method": {
+    "name": "coupled8192_cfg2_nfe32_uniform",
+    "teacher": {
+      "num_samples": 8192,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "none",
+      "weighting": "uniform",
+      "reuse": 256,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR"
+    },
+    "time_sampler_note": "uniform U(0,1)，显式映射 floor(10*t) 到十个原生 AR 前缀尺度；端点1截到尺度9",
+    "train_notes": "FM 训练器为自行重实现；超参（lr/steps/bs）为配套工程参数，须在证据中记录实际值。"
+  },
+  "method_sha256": "c12ab0d977a62c0e51c72d100b8734199673077fa1a98a82414b1fd57dd388e8",
+  "hypothesis": "在预算内用有限数量、高精度Gaussian到教师token耦合对建立可复验的自行蒸馏起点，均匀覆盖十个前缀尺度。后续依据真实训练损失与完整单步FID检验时间采样是否浪费在未用于单步推理的前缀上。",
+  "evidence_basis": [
+    "preparation/paper_interface_review/full_codebook_probe.log",
+    "preparation/paper_interface_review/solver_accuracy_probe.log",
+    "rounds/round01/attempt03/review.json"
+  ],
+  "fixed_engineering": {
+    "training_hours": 3.8,
+    "batch_size": 2,
+    "gradient_accumulation": 8,
+    "lr": 0.0001,
+    "ema_decay": 0.99,
+    "student_initialization": "teacher",
+    "evaluation_batch_size": 8,
+    "evaluation_seed": [
+      0
+    ]
+  },
+  "innovation_surface": [
+    "teacher_sample_strategy",
+    "fm_time_sampling"
+  ],
+  "not_grid_search": true
+}

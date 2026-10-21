@@ -1,0 +1,68 @@
+{
+  "scope": "Author static baseline-quality review of provided material; not independent dual QA",
+  "overall": "在已提供材料范围内合理",
+  "protocol": "dd-selfproto-v1.3",
+  "current_version_native_nop": "ACTUAL_CURRENT_VERSION_NATIVE_NOP_SEPARATE_VERIFIER_FULL_50000_REWARD0_VERIFIED",
+  "checks": [
+    {
+      "id": "B01",
+      "status": "通过",
+      "evidence_reason": "Baseline is the fixed released DD EMA; source asset and 240-tensor exact export are bound by assets.json and model_assets/published_baseline/.",
+      "boundary": "No mandatory SOTA claim."
+    },
+    {
+      "id": "B02",
+      "status": "通过",
+      "evidence_reason": "Unmodified Starter num_samples=0 preserves the completed healthy initialization; actual FID50000 source and saved tensor manifest are present.",
+      "boundary": "No newly trained baseline is claimed."
+    },
+    {
+      "id": "B03",
+      "status": "通过",
+      "evidence_reason": "Both use the common14400-second teacher+training cap and the same data/assets/evaluator; Reference actual adaptation484.11931562423706s.",
+      "boundary": "Additional adaptation is an allowed research factor, not an unexplained baseline truncation."
+    },
+    {
+      "id": "B04",
+      "status": "通过",
+      "evidence_reason": "Fixed lr1e-4,LPIPS+0.1CE,EMA.99 and optimizer are common to every adapting candidate; Baseline is the zero-adaptation published decoder.",
+      "boundary": "No private-score-driven baseline parameter change is present."
+    },
+    {
+      "id": "B05",
+      "status": "通过",
+      "evidence_reason": "One predeclared frozen formal stream pairs B9.800031891769606 and R9.74957468191576; public stream0 is separately catalogued.",
+      "boundary": "n=1; no training-variance or3sigma sufficiency claim."
+    },
+    {
+      "id": "B06",
+      "status": "通过",
+      "evidence_reason": "Official healthy Starter itself is the anchor; calibrated checkpoint SHA64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c.",
+      "boundary": "No random/constant weak anchor replaces B."
+    },
+    {
+      "id": "B07",
+      "status": "通过",
+      "evidence_reason": "Reference changes genuine teacher proposal selection and FM time sampling within source-only method interface; formal50k metric/budget/initialization remain common.",
+      "boundary": "Joint method comparison; individual causal attribution and statistical significance remain limited."
+    },
+    {
+      "id": "B08",
+      "status": "通过",
+      "evidence_reason": "Role/source/configuration and limits disclosed in workspace/reference/README.md, optimization_evidence/current_formal_comparison.json and model asset receipts.",
+      "boundary": "Author review only; independent final-ZIP quality review pending"
+    }
+  ],
+  "evidence": [
+    "workspace/harbor_task/environment/starter/method.py",
+    "workspace/harbor_task/environment/assets.json",
+    "expert_evidence/current_formal_anchor_calibration/baseline-actual-50000-receipt.json",
+    "expert_evidence/current_formal_reference_20261005/result.json",
+    "optimization_evidence/current_formal_comparison.json",
+    "expert_evidence/model_assets/published_baseline/",
+    "expert_evidence/current_native_nop_20261006_recovery/verified-current-nop.json"
+  ],
+  "red_flags": "未发现直接弱化或不公平反证",
+  "acceptance_profile": "dd-user-20261005",
+  "default_statistical_rule_pass_claimed": false
+}

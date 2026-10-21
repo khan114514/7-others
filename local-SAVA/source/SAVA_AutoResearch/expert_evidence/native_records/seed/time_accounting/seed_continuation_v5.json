@@ -1,0 +1,329 @@
+{
+  "schema_version": "sava-time-reconciliation.v2",
+  "track": "seed_continuation_v5",
+  "state": "COLLECTED_EPISODES_ONLY_NOT_TRACK_COMPLETION",
+  "accounting_basis": "Successful API segments plus completed native tool durations, bounded by episode wall; failed requests, verified repetitive stalls, setup-only episodes, and uncollected episodes excluded.",
+  "effective_seconds": 5972.633931708693,
+  "episodes": [
+    {
+      "episode": 1,
+      "started_at": "2026-10-10T14:32:29.359754+00:00",
+      "ended_at": "2026-10-10T14:37:53.697406+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 323.9313092500088,
+      "successful_api_seconds": 284.3755671660183,
+      "incomplete_api_seconds_excluded": 0,
+      "completed_tool_seconds": 27.7097,
+      "effective_seconds": 312.0852671660183,
+      "cumulative_effective_seconds": 312.0852671660183,
+      "actual_completed_command_tools": 27,
+      "valid_episode": true,
+      "before_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "after_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "evaluator_observations": [],
+      "request_slice": [
+        0,
+        19
+      ],
+      "original_effective_seconds": 312.0852671660183,
+      "original_cumulative_effective_seconds": 312.0852671660183,
+      "counted_successful_api_seconds": 284.3755671660183,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 11.846042083990483
+    },
+    {
+      "episode": 2,
+      "started_at": "2026-10-10T14:37:53.951482+00:00",
+      "ended_at": "2026-10-10T15:02:08.214006+00:00",
+      "exit_code": 1,
+      "interruption": null,
+      "wall_seconds": 1453.7355902500276,
+      "successful_api_seconds": 1156.8371054578747,
+      "incomplete_api_seconds_excluded": 187.73271570901852,
+      "completed_tool_seconds": 281.18289999999996,
+      "effective_seconds": 1250.2872897488562,
+      "cumulative_effective_seconds": 1562.3725569148746,
+      "actual_completed_command_tools": 62,
+      "valid_episode": false,
+      "before_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "after_sha256": "4a4fd3c60fc59160c3b4efca0d59152dac5a93de50f33fe22f59e9578128bc9e",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/93a12f81ef1046a6b9f7690de23d1691.json",
+          "status": "ok",
+          "raw_metric": 0.7861404920001708,
+          "score": -0.507475744130998,
+          "quality_valid": true,
+          "method_sha256": "92f82df7998825200bf862fd97b3780f4b9436cbb062f5297daba46bbe76b446"
+        }
+      ],
+      "request_slice": [
+        19,
+        82
+      ],
+      "original_effective_seconds": 1250.2872897488562,
+      "original_cumulative_effective_seconds": 1562.3725569148746,
+      "counted_successful_api_seconds": 969.1043897488562,
+      "excluded_stall_request_indices": [
+        81
+      ],
+      "excluded_stall_api_seconds": 187.73271570901852,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 203.4483005011714
+    },
+    {
+      "episode": 3,
+      "started_at": "2026-10-10T15:02:08.427755+00:00",
+      "ended_at": "2026-10-10T15:08:44.059596+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 395.1948793339834,
+      "successful_api_seconds": 258.00022292204085,
+      "incomplete_api_seconds_excluded": 0,
+      "completed_tool_seconds": 126.7813,
+      "effective_seconds": 384.78152292204084,
+      "cumulative_effective_seconds": 1947.1540798369156,
+      "actual_completed_command_tools": 33,
+      "valid_episode": true,
+      "before_sha256": "4a4fd3c60fc59160c3b4efca0d59152dac5a93de50f33fe22f59e9578128bc9e",
+      "after_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/7f1d964682334d5981298ff03fb3dff7.json",
+          "status": "ok",
+          "raw_metric": 0.7103569434667103,
+          "score": -0.3621558396344095,
+          "quality_valid": true,
+          "method_sha256": "4a4fd3c60fc59160c3b4efca0d59152dac5a93de50f33fe22f59e9578128bc9e"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/93a12f81ef1046a6b9f7690de23d1691.json",
+          "status": "ok",
+          "raw_metric": 0.7861404920001708,
+          "score": -0.507475744130998,
+          "quality_valid": true,
+          "method_sha256": "92f82df7998825200bf862fd97b3780f4b9436cbb062f5297daba46bbe76b446"
+        }
+      ],
+      "request_slice": [
+        82,
+        115
+      ],
+      "original_effective_seconds": 384.78152292204084,
+      "original_cumulative_effective_seconds": 1947.1540798369156,
+      "counted_successful_api_seconds": 258.00022292204085,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 10.413356411942573
+    },
+    {
+      "episode": 4,
+      "started_at": "2026-10-10T15:08:44.223961+00:00",
+      "ended_at": "2026-10-10T15:29:47.606204+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 1262.7059237080102,
+      "successful_api_seconds": 722.1104804139177,
+      "incomplete_api_seconds_excluded": 0,
+      "completed_tool_seconds": 526.9544,
+      "effective_seconds": 1249.0648804139178,
+      "cumulative_effective_seconds": 3196.2189602508333,
+      "actual_completed_command_tools": 34,
+      "valid_episode": true,
+      "before_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d",
+      "after_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/7f1d964682334d5981298ff03fb3dff7.json",
+          "status": "ok",
+          "raw_metric": 0.7103569434667103,
+          "score": -0.3621558396344095,
+          "quality_valid": true,
+          "method_sha256": "4a4fd3c60fc59160c3b4efca0d59152dac5a93de50f33fe22f59e9578128bc9e"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/93a12f81ef1046a6b9f7690de23d1691.json",
+          "status": "ok",
+          "raw_metric": 0.7861404920001708,
+          "score": -0.507475744130998,
+          "quality_valid": true,
+          "method_sha256": "92f82df7998825200bf862fd97b3780f4b9436cbb062f5297daba46bbe76b446"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/bb6004669e084dd1ab1c47836afcb679.json",
+          "status": "HARD_GATE",
+          "raw_metric": 1.0123035546666264,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/d59d4477172c4c07879ab4c58e96cd07.json",
+          "status": "ok",
+          "raw_metric": 0.7420311573333795,
+          "score": -0.4228932136843538,
+          "quality_valid": true,
+          "method_sha256": "4a4fd3c60fc59160c3b4efca0d59152dac5a93de50f33fe22f59e9578128bc9e"
+        }
+      ],
+      "request_slice": [
+        115,
+        151
+      ],
+      "original_effective_seconds": 1249.0648804139178,
+      "original_cumulative_effective_seconds": 3196.2189602508333,
+      "counted_successful_api_seconds": 722.1104804139177,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 13.64104329409247
+    },
+    {
+      "episode": 5,
+      "started_at": "2026-10-10T15:29:48.511462+00:00",
+      "ended_at": "2026-10-10T16:35:46.093896+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 3957.008471582987,
+      "successful_api_seconds": 1564.376633830805,
+      "incomplete_api_seconds_excluded": 0,
+      "completed_tool_seconds": 2086.2927000000004,
+      "effective_seconds": 2776.41497145786,
+      "cumulative_effective_seconds": 5972.633931708693,
+      "actual_completed_command_tools": 78,
+      "valid_episode": false,
+      "before_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d",
+      "after_sha256": "2e549e2e73a887a078d66b3c7770d4e94c84a19a67a5b7f3df55d3d2561de738",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/19b90dc3f24c409c819cab2818ed606c.json",
+          "status": "ok",
+          "raw_metric": 0.5988116627335937,
+          "score": -0.14826047768755335,
+          "quality_valid": true,
+          "method_sha256": "2e549e2e73a887a078d66b3c7770d4e94c84a19a67a5b7f3df55d3d2561de738"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/7688f854b64341829414c0d8d19169a7.json",
+          "status": "HARD_GATE",
+          "raw_metric": 1.2953267976671972,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/7f1d964682334d5981298ff03fb3dff7.json",
+          "status": "ok",
+          "raw_metric": 0.7103569434667103,
+          "score": -0.3621558396344095,
+          "quality_valid": true,
+          "method_sha256": "4a4fd3c60fc59160c3b4efca0d59152dac5a93de50f33fe22f59e9578128bc9e"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/93a12f81ef1046a6b9f7690de23d1691.json",
+          "status": "ok",
+          "raw_metric": 0.7861404920001708,
+          "score": -0.507475744130998,
+          "quality_valid": true,
+          "method_sha256": "92f82df7998825200bf862fd97b3780f4b9436cbb062f5297daba46bbe76b446"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/bb6004669e084dd1ab1c47836afcb679.json",
+          "status": "HARD_GATE",
+          "raw_metric": 1.0123035546666264,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/d3960b5758354c4a9c6d5ff75179566c.json",
+          "status": "HARD_GATE",
+          "raw_metric": 1.1550326671333702,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/d59d4477172c4c07879ab4c58e96cd07.json",
+          "status": "ok",
+          "raw_metric": 0.7420311573333795,
+          "score": -0.4228932136843538,
+          "quality_valid": true,
+          "method_sha256": "4a4fd3c60fc59160c3b4efca0d59152dac5a93de50f33fe22f59e9578128bc9e"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/e84073b332d640a4b7593844679b1625.json",
+          "status": "HARD_GATE",
+          "raw_metric": 1.587034053433672,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "5b821d96354e9b732b666e05ddf4de309851790a3328d483e4b0430953400a3d"
+        }
+      ],
+      "request_slice": [
+        151,
+        248
+      ],
+      "original_effective_seconds": 3650.6693338308055,
+      "original_cumulative_effective_seconds": 6846.888294081638,
+      "counted_successful_api_seconds": 1470.5137714578595,
+      "excluded_stall_request_indices": [
+        189,
+        194,
+        199,
+        204,
+        209,
+        210,
+        221,
+        227,
+        242,
+        243
+      ],
+      "excluded_stall_api_seconds": 93.86286237294553,
+      "excluded_blocked_or_infrastructure_tool_seconds": 780.3915000000002,
+      "manual_episode_review": "time_accounting/reviews/continuation_v5.json",
+      "manual_episode_review_sha256": "3d6a75d5db028c68eed8215f307f4d12b69b2aa3f3d91b0df87c764e738e16db",
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 1180.5935001251273,
+      "original_manual_episode_review_identifier": "private/recovery_20261011/seed_v5_collected_review/review.json"
+    }
+  ],
+  "repeat_stall_proofs": [
+    {
+      "episode": 2,
+      "timestamp": "2026-10-10T15:02:07.346Z",
+      "native_session": "private/harbor_jobs/seed_resume_dns_20261010_v5/harbor_task__WvnYz4N/agent/episode_0002/sessions/2026/10/10/rollout-2026-10-10T14-37-54-01a1263f-bf1c-7841-8eb9-504dab3e07f9.jsonl",
+      "native_message_sha256": "ebc22ae957e165e9215fe1b9117aa758d93e6954fa628ffa69a156e77f6c9268",
+      "characters": 36886,
+      "repeated_phrase": "think think think think think think",
+      "phrase_count": 4085,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        81
+      ],
+      "reviewed_stall": true
+    }
+  ],
+  "unreviewed_repeat_matches": [],
+  "original_ledger_sha256": "d72d438a6e2aa02021c8fe060491c2cdbd4a085a2a507c66c2441e323c22766a",
+  "request_log_snapshot_sha256": "32b9981147c9925109b50ca002725ac7a2f6deb00b7b8110881d842f5070119f",
+  "request_count_at_snapshot": 248,
+  "created_at": "2026-10-10T16:39:56.972096+00:00",
+  "original_ledger_member": "time_accounting/original_ledgers/continuation_v5.json"
+}

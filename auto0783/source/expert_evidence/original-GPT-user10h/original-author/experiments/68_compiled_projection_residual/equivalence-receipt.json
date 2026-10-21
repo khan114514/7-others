@@ -1,0 +1,19 @@
+{
+  "all_original_nodes_attributes_and_inputs_preserved": true,
+  "layer_output_preserved": true,
+  "moved_independent_prefix_nodes": [
+    "text_state_rows",
+    "text_residual_rows",
+    "text_post_norm"
+  ],
+  "new_region_inputs": [
+    "image_attended_rows",
+    "w:self_attn.vision_branch_o_proj.weight",
+    "image_input_rows"
+  ],
+  "new_region_outputs": [
+    "image_residual_rows"
+  ],
+  "arithmetic_changed": false,
+  "semantic_caveat": "Compiled lowering still requires actual BF16 per-stage/final checks."
+}

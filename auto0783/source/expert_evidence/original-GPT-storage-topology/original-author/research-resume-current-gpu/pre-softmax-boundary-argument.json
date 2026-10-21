@@ -1,0 +1,69 @@
+{
+  "source_argument": "Return only original unrotatedV rows and BF16masked scores from an entire full-projection/QKrotary/keyrepeat/canonicalscore stage region. No padded identity frequencies or split biased GEMM widths.",
+  "region": {
+    "id": "image_pre_softmax_compiled",
+    "inputs": [
+      "image_input_norm",
+      "vision_qkv_weight",
+      "vision_qkv_bias",
+      "image_cos",
+      "image_signed_sin",
+      "text_key_rotary",
+      "image_attention_mask"
+    ],
+    "outputs": [
+      "image_v",
+      "image_masked"
+    ],
+    "prefix": false
+  },
+  "every_original97node_object_equal": true,
+  "region_nodes": [
+    "image_qkv",
+    "image_v",
+    "image_qk",
+    "image_qk_shape",
+    "image_qk_heads",
+    "image_qk_rotary_first",
+    "image_qk_rotary_second",
+    "image_qk_rotary_half",
+    "image_qk_rotary_direct",
+    "image_qk_rotary_rotated",
+    "image_qk_rotary",
+    "image_query",
+    "image_key",
+    "key_rotary",
+    "key_repeat",
+    "key_transpose",
+    "image_scores",
+    "image_scaled",
+    "image_masked"
+  ],
+  "GEMM_geometry_unchanged": {
+    "image_projection_M_N_K": [
+      512,
+      4608,
+      3584
+    ],
+    "score_batch_M_N_K": [
+      56,
+      256,
+      556,
+      128
+    ]
+  },
+  "all_BF16_rotary_score_scale_mask_boundaries": "original nodes intact under unchanged compiler policy",
+  "softmax_and_value_output_path": "original97 eager path",
+  "current110_comparison": "110returns full packed36-head QKV and invokes score region separately; proposed region returns rawV plusmaskedscore without exposing rotatedQK/packedQKV boundary.",
+  "potential_savings": [
+    "No original rotatedQK or full packed36-head result is observable outside region.",
+    "Projection/rotary and score producer/consumer use one dispatcher boundary."
+  ],
+  "counterarguments": [
+    "OriginalV slice can retain full4608 projection storage; eliminating raw QKV allocation is not assumed.",
+    "A100 GEMMs may still need internal rotary/replication outputs; no measured fusion/code layout.",
+    "Fullgraph may change accumulation/precision despite intact nodes; Dev must qualify.",
+    "Past historical58 and current109/110 are arithmetic-family evidence, not a paired timing forecast."
+  ],
+  "canonical_sha256": "a0cd0fe9d47bdbf332fb21a6c81ce19725ce3417167cf2e4bec02ab2283e064d"
+}

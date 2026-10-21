@@ -1,0 +1,52 @@
+{
+  "original_event_sha256": "d1b4e00681fd58de47b07ca062f168ce89132d93b118572dd45f5417d1fb9fc7",
+  "original_receipt_sha256": "bdb2761d8db59f2e5092e69057bceca119c134bb28a7d2d00dd8408fdf73fd02",
+  "original_event_last_write_epoch": 1791795130.9692569,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'ls /workspace/public_assets/ && ls /workspace/starter/ 2>/dev/null || ls /workspace/starter/ 2>/dev/null'",
+      "original_command_sha256": "7326befa58c743a40ee663383df49a4145636d41edfb32dfca0187d17b82f923",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "739e167b6bc8f7fc4c0988a8a64e1072320ff3eb1249a73a62e69bc7662faea8",
+      "output_characters": 90
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'ls /workspace/solution/'",
+      "original_command_sha256": "f96be8022710330b86bf8d7910bc4d5fe59518d6253e4db543738ef725d65b5e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "23fb6ce5f7f32f8fefdd4e3113ed496cbaf1f5ff70df1f4f3e291ee5d1ac1669",
+      "output_characters": 612
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /tests/frozen_assets.json'",
+      "original_command_sha256": "5b6bb119c598b9f3841c057c2dd991ab8f50e8ef40df7e4a9e6fe9840d81260c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "911de5f5dc63cc81b0c99bb5ab04df60d3dc74583d024dada8f2f1655071c0cd",
+      "output_characters": 5147
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 49116701,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1090473,
+        "reasoning_output_tokens": 149173
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

@@ -1,0 +1,119 @@
+{
+  "id": "aebc70e8-3a2a-4a14-bd62-83d248a8e8a7",
+  "task_name": "final-portable-task",
+  "trial_name": "heima-final-portable-reference-3c66f40a11b4",
+  "trial_uri": "file://${SOURCE_PROJECT}/private/final-backend-host-proof/full-native-reference/3c66f40a11b440f7a98324d1d1779acb/heima-final-portable-reference-3c66f40a11b4",
+  "task_id": {
+    "path": "${SOURCE_PROJECT}/private/portable-public-staging/final-portable-task"
+  },
+  "source": null,
+  "task_checksum": "e7b3b9c07d503eee20a7d925a2b2a6a48acd475db7e54c83e3c5b5f1400da98d",
+  "config": {
+    "task": {
+      "path": "${SOURCE_PROJECT}/private/portable-public-staging/final-portable-task",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "heima-final-portable-reference-3c66f40a11b4",
+    "trials_dir": "${SOURCE_PROJECT}/private/final-backend-host-proof/full-native-reference/3c66f40a11b440f7a98324d1d1779acb",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": null,
+      "import_path": "native_install_agent:MethodInstallAgent",
+      "model_name": null,
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {
+        "policy": "reference"
+      },
+      "mcp_servers": []
+    },
+    "user_agent": null,
+    "environment": {
+      "type": null,
+      "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+      "force_build": true,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {
+        "role": "seed"
+      },
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": 10800.0,
+      "max_timeout_sec": null,
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "extra_instructions": [],
+    "job_id": null,
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "heima-method-install",
+    "version": "1.0.0",
+    "model_info": null
+  },
+  "agent_result": {
+    "n_input_tokens": null,
+    "n_cache_tokens": null,
+    "n_output_tokens": null,
+    "cost_usd": null,
+    "model_usage": null,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.6040088026409688
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-10-06T02:14:42.362562Z",
+  "finished_at": "2026-10-06T03:24:58.696055Z",
+  "environment_setup": {
+    "started_at": "2026-10-06T02:14:42.411220Z",
+    "finished_at": "2026-10-06T02:14:50.143319Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-10-06T02:14:50.143493Z",
+    "finished_at": "2026-10-06T02:14:50.143618Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-10-06T02:14:50.143761Z",
+    "finished_at": "2026-10-06T02:14:50.919610Z"
+  },
+  "verifier": {
+    "started_at": "2026-10-06T02:14:56.950104Z",
+    "finished_at": "2026-10-06T03:24:58.695212Z"
+  },
+  "step_results": null
+}

@@ -1,0 +1,211 @@
+{
+  "Id": "4b30b4690fd8f93ad5fc75775b99d9c8a3e65830b6f924c8801efd95a9130354",
+  "Created": "2026-10-06T12:07:56.164307256Z",
+  "Path": "python",
+  "Args": [
+    "-I",
+    "/opt/forecast-engine/start_task.py",
+    "sh",
+    "-c",
+    "sleep infinity"
+  ],
+  "State": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 26214,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-06T12:07:56.391488006Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "Image": "sha256:2f2e6e48704a99353ab3bcf61f6c0a4c8764a76e94ea0916d35d19e525d85f28",
+  "ResolvConfPath": "/var/lib/docker/containers/4b30b4690fd8f93ad5fc75775b99d9c8a3e65830b6f924c8801efd95a9130354/resolv.conf",
+  "HostnamePath": "/var/lib/docker/containers/4b30b4690fd8f93ad5fc75775b99d9c8a3e65830b6f924c8801efd95a9130354/hostname",
+  "HostsPath": "/var/lib/docker/containers/4b30b4690fd8f93ad5fc75775b99d9c8a3e65830b6f924c8801efd95a9130354/hosts",
+  "LogPath": "/var/lib/docker/containers/4b30b4690fd8f93ad5fc75775b99d9c8a3e65830b6f924c8801efd95a9130354/4b30b4690fd8f93ad5fc75775b99d9c8a3e65830b6f924c8801efd95a9130354-json.log",
+  "Name": "/forecast-nop-gpt-edf55ec6__verifier__trial-main-1",
+  "RestartCount": 0,
+  "Driver": "overlayfs",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": null,
+  "HostConfig": {
+    "Binds": null,
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    },
+    "NetworkMode": "none",
+    "PortBindings": {},
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": [
+      "CAP_CHOWN",
+      "CAP_SETGID",
+      "CAP_SETUID"
+    ],
+    "CapDrop": [
+      "ALL"
+    ],
+    "CgroupnsMode": "private",
+    "Dns": null,
+    "DnsOptions": null,
+    "DnsSearch": null,
+    "ExtraHosts": [],
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": [
+      "no-new-privileges=true",
+      "seccomp=unconfined"
+    ],
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 4294967296,
+    "NanoCpus": 2000000000,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": null,
+    "BlkioDeviceReadBps": null,
+    "BlkioDeviceWriteBps": null,
+    "BlkioDeviceReadIOps": null,
+    "BlkioDeviceWriteIOps": null,
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": null,
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 8589934592,
+    "MemorySwappiness": null,
+    "OomKillDisable": null,
+    "PidsLimit": null,
+    "Ulimits": null,
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "MaskedPaths": [],
+    "ReadonlyPaths": []
+  },
+  "Storage": {
+    "RootFS": {
+      "Snapshot": {
+        "Name": "overlayfs"
+      }
+    }
+  },
+  "Mounts": [],
+  "Config": {
+    "Hostname": "4b30b4690fd8",
+    "Domainname": "",
+    "User": "root",
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "AttachStderr": true,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/bin:/usr/bin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.12.15",
+      "PYTHON_SHA256=c2c4321961fab0fb999d66e0cecf521c2ab3994c7992873ea99e306c1094fd5a",
+      "HOME=/home/candidate",
+      "FORECAST_LANE=gpt",
+      "PYTHONPATH=/opt/forecastcli",
+      "OMP_NUM_THREADS=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1"
+    ],
+    "Cmd": [
+      "sh",
+      "-c",
+      "sleep infinity"
+    ],
+    "Image": "forecast-nop-gpt-edf55ec6__verifier__trial-main",
+    "Volumes": null,
+    "WorkingDir": "/workspace/solution",
+    "Entrypoint": [
+      "python",
+      "-I",
+      "/opt/forecast-engine/start_task.py"
+    ],
+    "Labels": {
+      "com.docker.compose.config-hash": "b33b14d2da2d7964c23dd38efa0b1f7c745df23dc21f795e7f755e67c1895691",
+      "com.docker.compose.container-number": "1",
+      "com.docker.compose.depends_on": "",
+      "com.docker.compose.image": "sha256:005800a5c55e748ca9a609261830060be592f8bbd5b940f6b84541a3725a6615",
+      "com.docker.compose.oneoff": "False",
+      "com.docker.compose.project": "forecast-nop-gpt-edf55ec6__verifier__trial",
+      "com.docker.compose.project.config_files": "/private/var/folders/9r/6rs1rzr14rq5bnkvppg0rg5m0000gn/T/tmp4ysr0yxo/forecast-nop-gpt-edf55ec6__verifier__trial-docker-compose-resources.json,<AUTHOR_HOME>/Documents/ChatGPT/New project/heima_20261005/private/harbor-venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml,<TASK_SOURCE_ROOT>/workspace/harbor_task/tests/docker-compose.yaml,/private/var/folders/9r/6rs1rzr14rq5bnkvppg0rg5m0000gn/T/tmp1ocnah4r/docker-compose-environment.json",
+      "com.docker.compose.project.working_dir": "<TASK_SOURCE_ROOT>/workspace/harbor_task/tests",
+      "com.docker.compose.service": "main",
+      "com.docker.compose.version": "5.5.1"
+    }
+  },
+  "NetworkSettings": {
+    "SandboxID": "7f5cceced41518e40e02383ce26662674f3dddb0a8ce448a7d25a4631062cf23",
+    "SandboxKey": "/var/run/docker/netns/7f5cceced415",
+    "Ports": {},
+    "Networks": {
+      "none": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "9c3ec2a81584293716e94f9b7b6db3418a3f667ec643cef1242a1fc59a149082",
+        "EndpointID": "7e7f5206f3f2f4aad613b0546dc971a8517d2644b85807e16c7596869575e941",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  },
+  "ImageManifestDescriptor": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:005800a5c55e748ca9a609261830060be592f8bbd5b940f6b84541a3725a6615",
+    "size": 3903,
+    "platform": {
+      "architecture": "arm64",
+      "os": "linux"
+    }
+  }
+}

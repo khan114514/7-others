@@ -1,0 +1,123 @@
+{
+  "scope": "four distinct current-GPU own Dev jobs; no formal/Hidden/QA material",
+  "eligible_current_gpu_selection": {
+    "experiment": "110_compiled_key_score_composition",
+    "artifact_sha256": "a7c66b88bb6f11803621db159ed569ed5d82716e0d6fa9948dca0bd8c21d872d",
+    "run_id": "809cbe77816544d4b406ee5b80ec77df",
+    "current_gpu": "<assigned-accelerator>",
+    "quality_pass": true,
+    "reward": 0.7329098294615983,
+    "baseline_mean_ms": 6923.715225219727,
+    "candidate_mean_ms": 1849.256280263265,
+    "baseline_sd_ms": 48.354855047763245,
+    "own_baseline_reduction_ms": 5074.458944956462,
+    "own_baseline_3sigma_pass": true,
+    "peak_bytes": 29697115648,
+    "peak_margin_bytes": 6810106368,
+    "worst_stage_rmse": 0.0,
+    "worst_stage_scaled_max": 0.0,
+    "worst_final_rmse": 0.0,
+    "worker_clocks": [
+      1791770281.6031754,
+      1791770336.2134743
+    ],
+    "full_console_capture": "actual console parsed equals result"
+  },
+  "results": [
+    {
+      "experiment": "108_isolated_v_compiled_qk",
+      "artifact_sha256": "2da4ecea7b2ca82dd7c672bca484f08c86badc5af150f56b5161a983ad655524",
+      "run_id": "af36fb95b28941838bfedb9c822f4e93",
+      "current_gpu": "<assigned-accelerator>",
+      "quality_pass": false,
+      "reward": -1.0,
+      "baseline_mean_ms": 6905.765182495117,
+      "candidate_mean_ms": 1851.416239420573,
+      "baseline_sd_ms": 34.04394356002663,
+      "own_baseline_reduction_ms": 5054.348943074544,
+      "own_baseline_3sigma_pass": true,
+      "peak_bytes": 29575910912,
+      "peak_margin_bytes": 6931311104,
+      "worst_stage_rmse": 0.11247575283050537,
+      "worst_stage_scaled_max": 0.15469858050346375,
+      "worst_final_rmse": 1.2238649129867554,
+      "worker_clocks": [
+        1791769783.8001473,
+        1791769851.5328453
+      ],
+      "full_console_capture": "actual console parsed equals result"
+    },
+    {
+      "experiment": "109_packed_compiled_qkv",
+      "artifact_sha256": "d5b9a87326b6a65b2c62869b984de4e04175494cbd4b5356c161df7b086e2438",
+      "run_id": "c8061fcc697d45c6bd289129521391e9",
+      "current_gpu": "<assigned-accelerator>",
+      "quality_pass": true,
+      "reward": 0.7310286687003699,
+      "baseline_mean_ms": 6917.560323079427,
+      "candidate_mean_ms": 1860.625409444173,
+      "baseline_sd_ms": 35.31029885503257,
+      "own_baseline_reduction_ms": 5056.934913635254,
+      "own_baseline_3sigma_pass": true,
+      "peak_bytes": 29693445632,
+      "peak_margin_bytes": 6813776384,
+      "worst_stage_rmse": 0.0,
+      "worst_stage_scaled_max": 0.0,
+      "worst_final_rmse": 0.0,
+      "worker_clocks": [
+        1791770035.2730837,
+        1791770086.9967687
+      ],
+      "full_console_capture": "limited/truncated"
+    },
+    {
+      "experiment": "110_compiled_key_score_composition",
+      "artifact_sha256": "a7c66b88bb6f11803621db159ed569ed5d82716e0d6fa9948dca0bd8c21d872d",
+      "run_id": "809cbe77816544d4b406ee5b80ec77df",
+      "current_gpu": "<assigned-accelerator>",
+      "quality_pass": true,
+      "reward": 0.7329098294615983,
+      "baseline_mean_ms": 6923.715225219727,
+      "candidate_mean_ms": 1849.256280263265,
+      "baseline_sd_ms": 48.354855047763245,
+      "own_baseline_reduction_ms": 5074.458944956462,
+      "own_baseline_3sigma_pass": true,
+      "peak_bytes": 29697115648,
+      "peak_margin_bytes": 6810106368,
+      "worst_stage_rmse": 0.0,
+      "worst_stage_scaled_max": 0.0,
+      "worst_final_rmse": 0.0,
+      "worker_clocks": [
+        1791770281.6031754,
+        1791770336.2134743
+      ],
+      "full_console_capture": "actual console parsed equals result"
+    },
+    {
+      "experiment": "111_compiled_packed_value_contraction",
+      "artifact_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df",
+      "run_id": "ffea805fe34b4385af5b1d2bf11804ec",
+      "current_gpu": "<assigned-accelerator>",
+      "quality_pass": true,
+      "reward": 0.7223223268390225,
+      "baseline_mean_ms": 6901.40158589681,
+      "candidate_mean_ms": 1916.3651339213054,
+      "baseline_sd_ms": 30.01827049984247,
+      "own_baseline_reduction_ms": 4985.036451975504,
+      "own_baseline_3sigma_pass": true,
+      "peak_bytes": 29692024320,
+      "peak_margin_bytes": 6815197696,
+      "worst_stage_rmse": 0.0,
+      "worst_stage_scaled_max": 0.0,
+      "worst_final_rmse": 0.0,
+      "worker_clocks": [
+        1791770631.868071,
+        1791770687.316102
+      ],
+      "full_console_capture": "actual console parsed equals result"
+    }
+  ],
+  "historical_selection": "97_compiled_frequency_prefix; separately preserved, not current-GPU comparator",
+  "candidate_comparison_limit": "Different jobs have separate Baseline measurements. Ranking eligible current-GPU Dev reward does not establish statistical candidate-paired incremental improvement or kernel cause. No unchanged selected97rerun.",
+  "formal_extrapolation": "Public Dev has32stages/1repetition/3cases; formal256stages/3repetitions/6withheldcases not measured. First-prefix build cost is included but its current-GPU per-stage share is unavailable."
+}

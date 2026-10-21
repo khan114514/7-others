@@ -1,0 +1,89 @@
+{
+  "schema_version": "autoresearch-comparison-summary.v2",
+  "status": "COMPLETE",
+  "evidence_scope": "ACTUAL_CURRENT_RUNTIME_FIVE_SEED_DEV_ANCHORS",
+  "metric": {
+    "name": "mean per-question latency ratio to a fresh counterbalanced ordinary AR calibration",
+    "direction": "minimize",
+    "split": "dev"
+  },
+  "seeds": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "paired_results": {
+    "17": {
+      "baseline": 0.9997822542485277,
+      "reference": 0.3731472421171405,
+      "paired_improvement": 0.6266350121313873
+    },
+    "29": {
+      "baseline": 0.9982361991817432,
+      "reference": 0.406408699415344,
+      "paired_improvement": 0.5918274997663993
+    },
+    "43": {
+      "baseline": 0.9916341951986504,
+      "reference": 0.40791266528532133,
+      "paired_improvement": 0.583721529913329
+    },
+    "71": {
+      "baseline": 1.0091860574057574,
+      "reference": 0.39276123532229207,
+      "paired_improvement": 0.6164248220834654
+    },
+    "101": {
+      "baseline": 0.9951989720463189,
+      "reference": 0.3947026968744743,
+      "paired_improvement": 0.6004962751718446
+    }
+  },
+  "statistics": {
+    "paired_run_count": 5,
+    "baseline_mean": 0.9988075356161995,
+    "baseline_sample_std": 0.006585376983396364,
+    "reference_mean": 0.39498650780291444,
+    "reference_sample_std": 0.013960103155429943,
+    "mean_paired_improvement": 0.6038210278132851,
+    "normalized_reference": 0.6045419225244097,
+    "baseline_sigma_multiple": 91.69118629589349
+  },
+  "significance_rule": {
+    "required_baseline_sigma_multiple": 3,
+    "strong_evidence_multiple": 5,
+    "passed": true,
+    "strong_evidence": true
+  },
+  "validity": {
+    "same_protocol": true,
+    "same_seed_set": true,
+    "all_quality_gates_passed": true,
+    "all_checkpoints_reload_and_rescore_passed": null,
+    "training": "NOT_APPLICABLE"
+  },
+  "protocol_sha256": "71ef938d17f91099d9ff2f7f0abb2e9b4aa05dd0e7e0ada06ccc6ca472544429",
+  "B": 0.9988075356161995,
+  "R": 0.39498650780291444,
+  "U": 0.0,
+  "source_results": {
+    "baseline": [
+      "optimization_evidence/baseline_runs/seed_17/result.json",
+      "optimization_evidence/baseline_runs/seed_29/result.json",
+      "optimization_evidence/baseline_runs/seed_43/result.json",
+      "optimization_evidence/baseline_runs/seed_71/result.json",
+      "optimization_evidence/baseline_runs/seed_101/result.json"
+    ],
+    "reference": [
+      "optimization_evidence/reference_runs/seed_17/result.json",
+      "optimization_evidence/reference_runs/seed_29/result.json",
+      "optimization_evidence/reference_runs/seed_43/result.json",
+      "optimization_evidence/reference_runs/seed_71/result.json",
+      "optimization_evidence/reference_runs/seed_101/result.json"
+    ]
+  },
+  "native_harbor_gates": "Native self-check records have a separate source-bound evidence directory; these Dev measurements do not claim a Native Trial.",
+  "official_platform_hidden_claim": false
+}

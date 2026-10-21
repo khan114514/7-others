@@ -1,0 +1,702 @@
+[
+  {
+    "name": "451_episode8_start432_repeat",
+    "sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354",
+    "hypothesis": "Starting best-source repeat",
+    "official": {
+      "status": "ok",
+      "quality_valid": true,
+      "raw_metric": 0.0631893097650997,
+      "score": 0.8788303709977997,
+      "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354",
+      "name": "451_episode8_start432_repeat",
+      "case_count": 30,
+      "quality_records": 270,
+      "worst_nrmse": 0.007025948263800726,
+      "min_spearman": 0.9999565959951772,
+      "min_top_overlap": 0.992
+    }
+  },
+  {
+    "name": "452_episode8_point_late4_extrap0.0",
+    "sha256": "3b7b181440cfc725ae31358700ff1fc4a141bd5f8fe0dbe81436aba4894dc7f6",
+    "hypothesis": "One fewer late point transform, compensate latest reference residual.",
+    "local_screen": {
+      "name": "452_episode8_point_late4_extrap0.0",
+      "sha256": "3b7b181440cfc725ae31358700ff1fc4a141bd5f8fe0dbe81436aba4894dc7f6",
+      "cases": 30,
+      "valid": false,
+      "failures": 24,
+      "worst_nrmse": 0.014423311341443706,
+      "mean_seconds": 0.04701495839835843
+    }
+  },
+  {
+    "name": "453_episode8_point_late4_extrap0.25",
+    "sha256": "2fbb5dc60ea02713b3bd38fa257d903126e2a33a5607d87ae2e365bc2a581f47",
+    "hypothesis": "One fewer late point transform, compensate latest reference residual.",
+    "local_screen": {
+      "name": "453_episode8_point_late4_extrap0.25",
+      "sha256": "2fbb5dc60ea02713b3bd38fa257d903126e2a33a5607d87ae2e365bc2a581f47",
+      "cases": 30,
+      "valid": false,
+      "failures": 30,
+      "worst_nrmse": 0.02691407216345865,
+      "mean_seconds": 0.04700894166696041
+    }
+  },
+  {
+    "name": "454_episode8_point_late4_extrap0.5",
+    "sha256": "9ab41626603bf689c00bbf03bfc9d66475a04bcde6ad40dd62580f117a235d5a",
+    "hypothesis": "One fewer late point transform, compensate latest reference residual.",
+    "local_screen": {
+      "name": "454_episode8_point_late4_extrap0.5",
+      "sha256": "9ab41626603bf689c00bbf03bfc9d66475a04bcde6ad40dd62580f117a235d5a",
+      "cases": 30,
+      "valid": false,
+      "failures": 30,
+      "worst_nrmse": 0.06033653485094976,
+      "mean_seconds": 0.047896699934305315
+    }
+  },
+  {
+    "name": "455_episode8_point_late4_extrap1.0",
+    "sha256": "d19fe08538bd5be317bcabe7bf99755561c7aa5c29dfe3b1a86eb5060306fb9c",
+    "hypothesis": "One fewer late point transform, compensate latest reference residual.",
+    "local_screen": {
+      "name": "455_episode8_point_late4_extrap1.0",
+      "sha256": "d19fe08538bd5be317bcabe7bf99755561c7aa5c29dfe3b1a86eb5060306fb9c",
+      "cases": 30,
+      "valid": false,
+      "failures": 30,
+      "worst_nrmse": 0.11429589767239894,
+      "mean_seconds": 0.04578966656699777
+    }
+  },
+  {
+    "name": "456_episode8_class_final_argmin",
+    "sha256": "2960135195e8680b6015d931650effa7f92053b3045593708fb09af7a5c3aa97",
+    "hypothesis": "Use final class-stage minimizers to estimate final c-transform without dense pass.",
+    "local_screen": {
+      "name": "456_episode8_class_final_argmin",
+      "sha256": "2960135195e8680b6015d931650effa7f92053b3045593708fb09af7a5c3aa97",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007117443699790126,
+      "mean_seconds": 0.05171007353298288
+    }
+  },
+  {
+    "name": "457_episode8_class_final_separate",
+    "sha256": "dfc474801f3d13d06a1142ff73b37cac44b1ff327d695fa36031a798e7945354",
+    "hypothesis": "Exact final class transforms avoid subtracting and adding same-side potentials.",
+    "local_screen": {
+      "name": "457_episode8_class_final_separate",
+      "sha256": "dfc474801f3d13d06a1142ff73b37cac44b1ff327d695fa36031a798e7945354",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025873494418435,
+      "mean_seconds": 0.04755311106709996
+    }
+  },
+  {
+    "name": "458_episode8_shared_analytic_initial",
+    "sha256": "e84ba2d2b4cc448ceebccf07aacf7efa2664f52f86ae1459718ae4474b886f52",
+    "hypothesis": "Compute point means using shared feature/label batch statistics; eliminate twelve dense means.",
+    "local_screen": {
+      "name": "458_episode8_shared_analytic_initial",
+      "sha256": "e84ba2d2b4cc448ceebccf07aacf7efa2664f52f86ae1459718ae4474b886f52",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025801091126253,
+      "mean_seconds": 0.04627224583528004
+    }
+  },
+  {
+    "name": "459_episode8_point_cost_gauge",
+    "sha256": "4c4c056b6eac0902272c6435be5bb2b006cdef238690c99eb63d81c86d5deb7b",
+    "hypothesis": "Recenter point cost by initial unary duals and solve in an equivalent gauge.",
+    "local_screen": {
+      "name": "459_episode8_point_cost_gauge",
+      "sha256": "4c4c056b6eac0902272c6435be5bb2b006cdef238690c99eb63d81c86d5deb7b",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.0070259018402215444,
+      "mean_seconds": 0.04675605693385781
+    }
+  },
+  {
+    "name": "460_episode8_shared_initial_gauge",
+    "sha256": "fab4ae464687ac8e3c80604ccd4be38b66476d47e031b62425cc7300a9f253a5",
+    "hypothesis": "Combine shared analytic means with equivalent point cost gauge.",
+    "local_screen": {
+      "name": "460_episode8_shared_initial_gauge",
+      "sha256": "fab4ae464687ac8e3c80604ccd4be38b66476d47e031b62425cc7300a9f253a5",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025822371140608,
+      "mean_seconds": 0.04287116816800941
+    },
+    "official": {
+      "status": "ok",
+      "quality_valid": true,
+      "raw_metric": 0.04126905420174201,
+      "score": 0.9208638928722934,
+      "method_sha256": "fab4ae464687ac8e3c80604ccd4be38b66476d47e031b62425cc7300a9f253a5",
+      "name": "460_episode8_shared_initial_gauge",
+      "case_count": 30,
+      "quality_records": 270,
+      "worst_nrmse": 0.00702582237114048,
+      "min_spearman": 0.9999566004396221,
+      "min_top_overlap": 0.992
+    }
+  },
+  {
+    "name": "461_episode8_class_direct_separate",
+    "sha256": "3079a4cbec3363158cf257127ca23a11399f669b46936c51ba0d0f8e09227d21",
+    "hypothesis": "Separate hard class transforms avoid subtraction and readdition of same-side duals.",
+    "local_screen": {
+      "name": "461_episode8_class_direct_separate",
+      "sha256": "3079a4cbec3363158cf257127ca23a11399f669b46936c51ba0d0f8e09227d21",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.0070258741562748295,
+      "mean_seconds": 0.04344911379982174
+    }
+  },
+  {
+    "name": "462_episode8_point_foldcol_half",
+    "sha256": "884a58ac6717338dee18696d32a7ec35b20ab7d1ccd461df05c10a5fe3ac3a90",
+    "hypothesis": "Move one balancing factor between two kernel squares, eliminating its square root.",
+    "local_screen": {
+      "name": "462_episode8_point_foldcol_half",
+      "sha256": "884a58ac6717338dee18696d32a7ec35b20ab7d1ccd461df05c10a5fe3ac3a90",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025945879221473,
+      "mean_seconds": 0.04046841803307567
+    }
+  },
+  {
+    "name": "463_episode8_class_foldcol_half",
+    "sha256": "2c9165840c5f5599528939d17f7c9ed517fa70ddf4866ac5432df6711e673e84",
+    "hypothesis": "Move class balancing factor between squares, check intermediate range.",
+    "local_screen": {
+      "name": "463_episode8_class_foldcol_half",
+      "sha256": "2c9165840c5f5599528939d17f7c9ed517fa70ddf4866ac5432df6711e673e84",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025910736332909,
+      "mean_seconds": 0.04330128186653989
+    }
+  },
+  {
+    "name": "464_episode8_both_foldcol_half",
+    "sha256": "51b4af7161f84197f36c8cbd21f72a4a63d2ba53ba434f62362f709dcddd1a81",
+    "hypothesis": "Combine half-power recurrence rearrangements.",
+    "local_screen": {
+      "name": "464_episode8_both_foldcol_half",
+      "sha256": "51b4af7161f84197f36c8cbd21f72a4a63d2ba53ba434f62362f709dcddd1a81",
+      "cases": 30,
+      "valid": false,
+      "failures": 30,
+      "worst_nrmse": Infinity,
+      "mean_seconds": 2.283266803715378e-06
+    }
+  },
+  {
+    "name": "465_episode8_point_foldrow_half",
+    "sha256": "774558423c35feb0cfc067a833ee2db99d191dcfb9002565e77e2c66f5d7dc8c",
+    "hypothesis": "Move one balancing factor between two kernel squares, eliminating its square root.",
+    "local_screen": {
+      "name": "465_episode8_point_foldrow_half",
+      "sha256": "774558423c35feb0cfc067a833ee2db99d191dcfb9002565e77e2c66f5d7dc8c",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025967771573311,
+      "mean_seconds": 0.043088358367579835
+    }
+  },
+  {
+    "name": "466_episode8_class_foldrow_half",
+    "sha256": "dcc29ee453d4a59b05b3dbe33de7f77c15f16966f9da698272ec5ff174e08c6a",
+    "hypothesis": "Move class balancing factor between squares, check intermediate range.",
+    "local_screen": {
+      "name": "466_episode8_class_foldrow_half",
+      "sha256": "dcc29ee453d4a59b05b3dbe33de7f77c15f16966f9da698272ec5ff174e08c6a",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.00702592712331606,
+      "mean_seconds": 0.041238037468186425
+    }
+  },
+  {
+    "name": "467_episode8_point_last_logcolumn",
+    "sha256": "e60858694c47b424c4919a13558bc0ca5d121e118efb44c697c14d81cc680d54",
+    "hypothesis": "Move final point column balancing into vector log-mass; preserve exact recurrence with stable fallback.",
+    "local_screen": {
+      "name": "467_episode8_point_last_logcolumn",
+      "sha256": "e60858694c47b424c4919a13558bc0ca5d121e118efb44c697c14d81cc680d54",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025948263800854,
+      "mean_seconds": 0.044501950100432924
+    }
+  },
+  {
+    "name": "468_episode8_point_last_logratio",
+    "sha256": "5d53824bd11955300779279ad87692e3037b4439f03c08c6501bce7a00ed1009",
+    "hypothesis": "Controlled vector log-ratio formulation of the final column cancellation.",
+    "local_screen": {
+      "name": "468_episode8_point_last_logratio",
+      "sha256": "5d53824bd11955300779279ad87692e3037b4439f03c08c6501bce7a00ed1009",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025948263800854,
+      "mean_seconds": 0.04446095689927461
+    }
+  },
+  {
+    "name": "469_episode8_class_final_argmin_once",
+    "sha256": "a844aee1028bd4d5e1857930b04212940a57bf7a0d8c7238cb38eb17715e9373",
+    "hypothesis": "Compute minimizer indices only at the last class stage, removing repeated index work.",
+    "local_screen": {
+      "name": "469_episode8_class_final_argmin_once",
+      "sha256": "a844aee1028bd4d5e1857930b04212940a57bf7a0d8c7238cb38eb17715e9373",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007117443699790126,
+      "mean_seconds": 0.04574117370066233
+    }
+  },
+  {
+    "name": "470_episode8_class_virtual_final_dense",
+    "sha256": "df2f521609b7775bbd8b63930056d1cd48499b3e8f5896152b5a26a2d129dbe8",
+    "hypothesis": "Use frozen minimizers for one omitted class step, keep exact dense final transforms.",
+    "local_screen": {
+      "name": "470_episode8_class_virtual_final_dense",
+      "sha256": "df2f521609b7775bbd8b63930056d1cd48499b3e8f5896152b5a26a2d129dbe8",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007023253667215564,
+      "mean_seconds": 0.04590602906779774
+    }
+  },
+  {
+    "name": "471_episode8_class_virtual_final_cached",
+    "sha256": "ffb743170e366cae22313b3580e41ffe94b090eef24d9c560875d39fbca3e482",
+    "hypothesis": "Use final-stage minimizer graph for one omitted annealing step and final class transform.",
+    "local_screen": {
+      "name": "471_episode8_class_virtual_final_cached",
+      "sha256": "ffb743170e366cae22313b3580e41ffe94b090eef24d9c560875d39fbca3e482",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007261343047511181,
+      "mean_seconds": 0.041926804100027464
+    }
+  },
+  {
+    "name": "472_episode8_both_foldcol_half_corrected",
+    "sha256": "347d2559c1f8b6dfc7edd51d284a388cc69ccd04073479212f4a0537b4c4af7d",
+    "hypothesis": "Corrected combination of class and point half-power balance folding; invalid original464 preserved.",
+    "local_screen": {
+      "name": "472_episode8_both_foldcol_half_corrected",
+      "sha256": "347d2559c1f8b6dfc7edd51d284a388cc69ccd04073479212f4a0537b4c4af7d",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025894218194868,
+      "mean_seconds": 0.04348947229979482
+    }
+  },
+  {
+    "name": "473_episode8_virtual_combine_point_last_logcolumn",
+    "sha256": "fc9b3e4401eea47ac5d9df307a79d703e8a1bf9e0ea5f759c19ff992e6475cfb",
+    "hypothesis": "Combine one virtual class step with independently valid point change.",
+    "local_screen": {
+      "name": "473_episode8_virtual_combine_point_last_logcolumn",
+      "sha256": "fc9b3e4401eea47ac5d9df307a79d703e8a1bf9e0ea5f759c19ff992e6475cfb",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007261343047511181,
+      "mean_seconds": 0.04392468476871727
+    },
+    "official": {
+      "status": "ok",
+      "quality_valid": true,
+      "raw_metric": 0.04523859436594648,
+      "score": 0.913252040316948,
+      "method_sha256": "fc9b3e4401eea47ac5d9df307a79d703e8a1bf9e0ea5f759c19ff992e6475cfb",
+      "name": "473_episode8_virtual_combine_point_last_logcolumn",
+      "case_count": 30,
+      "quality_records": 270,
+      "worst_nrmse": 0.007261343047511049,
+      "min_spearman": 0.9999597742177526,
+      "min_top_overlap": 0.9933333333333333
+    }
+  },
+  {
+    "name": "474_episode8_virtual_combine_point_foldcol_half",
+    "sha256": "f06367cc505b8b2b5eb8182165529c7f961e0a5e082a9334f89d6d36f2d89510",
+    "hypothesis": "Combine one virtual class step with independently valid point change.",
+    "local_screen": {
+      "name": "474_episode8_virtual_combine_point_foldcol_half",
+      "sha256": "f06367cc505b8b2b5eb8182165529c7f961e0a5e082a9334f89d6d36f2d89510",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007261323422361864,
+      "mean_seconds": 0.043408637498699436
+    }
+  },
+  {
+    "name": "475_episode8_virtual_combine_shared_initial_gauge",
+    "sha256": "e391fca83250754598372e8169b2e40963f9683f2ca1b6736cd4dea0e8be7716",
+    "hypothesis": "Combine one virtual class step with independently valid point change.",
+    "local_screen": {
+      "name": "475_episode8_virtual_combine_shared_initial_gauge",
+      "sha256": "e391fca83250754598372e8169b2e40963f9683f2ca1b6736cd4dea0e8be7716",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007261316530998371,
+      "mean_seconds": 0.04573109583434416
+    }
+  },
+  {
+    "name": "476_episode8_class_virtual2_dense",
+    "sha256": "2f93229750c88c8f6d325a55b3b18821b36e939d7ee0dc8d095d5e7401c33767",
+    "hypothesis": "Replace 2 late class stages with updates on frozen final dense minimizers.",
+    "local_screen": {
+      "name": "476_episode8_class_virtual2_dense",
+      "sha256": "2f93229750c88c8f6d325a55b3b18821b36e939d7ee0dc8d095d5e7401c33767",
+      "cases": 30,
+      "valid": false,
+      "failures": 13,
+      "worst_nrmse": 0.09422563486846325,
+      "mean_seconds": 0.04555567503266502
+    }
+  },
+  {
+    "name": "477_episode8_class_virtual2_cached",
+    "sha256": "ae3a1e59539bbbd9e17d1fff8c55add7c376e5f5408cd54684ca3f8f2f0bedd3",
+    "hypothesis": "Replace 2 late class stages with updates on frozen final dense minimizers.",
+    "local_screen": {
+      "name": "477_episode8_class_virtual2_cached",
+      "sha256": "ae3a1e59539bbbd9e17d1fff8c55add7c376e5f5408cd54684ca3f8f2f0bedd3",
+      "cases": 30,
+      "valid": false,
+      "failures": 5,
+      "worst_nrmse": 0.03468656468528397,
+      "mean_seconds": 0.04054803610003243
+    }
+  },
+  {
+    "name": "478_episode8_class_virtual3_dense",
+    "sha256": "2dd202b6ee709cac7e6e393c57a43e21beeaa1332110d42e460e899e0c5ba981",
+    "hypothesis": "Replace 3 late class stages with updates on frozen final dense minimizers.",
+    "local_screen": {
+      "name": "478_episode8_class_virtual3_dense",
+      "sha256": "2dd202b6ee709cac7e6e393c57a43e21beeaa1332110d42e460e899e0c5ba981",
+      "cases": 30,
+      "valid": false,
+      "failures": 30,
+      "worst_nrmse": 0.3463562585679697,
+      "mean_seconds": 0.0463775097009299
+    }
+  },
+  {
+    "name": "479_episode8_class_virtual3_cached",
+    "sha256": "ecb9555ad28264501ae159e57566c8eb4f31d6ac16b74550ae7c72fab983a0e1",
+    "hypothesis": "Replace 3 late class stages with updates on frozen final dense minimizers.",
+    "local_screen": {
+      "name": "479_episode8_class_virtual3_cached",
+      "sha256": "ecb9555ad28264501ae159e57566c8eb4f31d6ac16b74550ae7c72fab983a0e1",
+      "cases": 30,
+      "valid": false,
+      "failures": 30,
+      "worst_nrmse": 0.08247095198808084,
+      "mean_seconds": 0.04428316663397709
+    }
+  },
+  {
+    "name": "480_episode8_class_adaptive1_top2",
+    "sha256": "87a4c6ab19c38f85902a81f2d6d525ad657f4ce8b36e4dbbc65b142466de724c",
+    "hypothesis": "Certify class virtual transforms using outside-neighbor lower bounds; exact dense fallback for uncertain rows/columns.",
+    "local_screen": {
+      "name": "480_episode8_class_adaptive1_top2",
+      "sha256": "87a4c6ab19c38f85902a81f2d6d525ad657f4ce8b36e4dbbc65b142466de724c",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025709582261806,
+      "mean_seconds": 0.04699831806744138
+    }
+  },
+  {
+    "name": "481_episode8_class_adaptive2_top2",
+    "sha256": "462830b8067cdda510cc2417bd0da328e6d0e94505b5571c77e32bc60ce015d2",
+    "hypothesis": "Certify class virtual transforms using outside-neighbor lower bounds; exact dense fallback for uncertain rows/columns.",
+    "local_screen": {
+      "name": "481_episode8_class_adaptive2_top2",
+      "sha256": "462830b8067cdda510cc2417bd0da328e6d0e94505b5571c77e32bc60ce015d2",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.00702595515497792,
+      "mean_seconds": 0.05010680563330728
+    }
+  },
+  {
+    "name": "482_episode8_class_adaptive3_top2",
+    "sha256": "2d1c6ad0711fd05664a0a9c7290dfa78965e146d51b4507caf1d4dbc6653915c",
+    "hypothesis": "Certify class virtual transforms using outside-neighbor lower bounds; exact dense fallback for uncertain rows/columns.",
+    "local_screen": {
+      "name": "482_episode8_class_adaptive3_top2",
+      "sha256": "2d1c6ad0711fd05664a0a9c7290dfa78965e146d51b4507caf1d4dbc6653915c",
+      "cases": 30,
+      "valid": false,
+      "failures": 5,
+      "worst_nrmse": Infinity,
+      "mean_seconds": 0.047481972265813965
+    }
+  },
+  {
+    "name": "483_episode8_gauge_skip_zero_subtracts",
+    "sha256": "c94049c3554c374e7a4271bf83848c312fa666a13b3c5452332e06dfd357173c",
+    "hypothesis": "Equivalent gauge permits first residual clone without subtracting zero dual vectors.",
+    "local_screen": {
+      "name": "483_episode8_gauge_skip_zero_subtracts",
+      "sha256": "c94049c3554c374e7a4271bf83848c312fa666a13b3c5452332e06dfd357173c",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025822371140608,
+      "mean_seconds": 0.039627874934133916
+    }
+  },
+  {
+    "name": "484_episode8_shared_initial_last_logcolumn",
+    "sha256": "78aaa73578ba62646767fe4f9f5483b6684769175c494513c7dd18ca023ac958",
+    "hypothesis": "Combine shared analytic initial potentials with exact final point column cancellation.",
+    "local_screen": {
+      "name": "484_episode8_shared_initial_last_logcolumn",
+      "sha256": "78aaa73578ba62646767fe4f9f5483b6684769175c494513c7dd18ca023ac958",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025801091126253,
+      "mean_seconds": 0.03913915839899952
+    }
+  },
+  {
+    "name": "485_episode8_shared_initial_foldcol_logcolumn",
+    "sha256": "2d3e4d0b97670c6cc58b1ee20f8e0c680daa448f4936e378ab4ebce194d7572b",
+    "hypothesis": "Combine three independently validated exact point-kernel/statistic changes.",
+    "local_screen": {
+      "name": "485_episode8_shared_initial_foldcol_logcolumn",
+      "sha256": "2d3e4d0b97670c6cc58b1ee20f8e0c680daa448f4936e378ab4ebce194d7572b",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025777374932396,
+      "mean_seconds": 0.04191408613405656
+    }
+  },
+  {
+    "name": "486_episode8_class_shared_covariance_first",
+    "sha256": "95b1c95022f99070acba318b1bd0dcf2b044b933838d8b259356af5a6b1c125a",
+    "hypothesis": "Approximate first class soft transform with second cumulant; compute covariance only for20unique class supports.",
+    "local_screen": {
+      "name": "486_episode8_class_shared_covariance_first",
+      "sha256": "95b1c95022f99070acba318b1bd0dcf2b044b933838d8b259356af5a6b1c125a",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007044112503073683,
+      "mean_seconds": 0.04698940829888064
+    }
+  },
+  {
+    "name": "487_episode8_class_mean_first_control",
+    "sha256": "0499b681f290b0016e51dd5bb32ef6d0f5ecc2b576d1a61061416ac193f98db1",
+    "hypothesis": "First-cumulant ablation tests whether covariance correction is needed with current schedule.",
+    "local_screen": {
+      "name": "487_episode8_class_mean_first_control",
+      "sha256": "0499b681f290b0016e51dd5bb32ef6d0f5ecc2b576d1a61061416ac193f98db1",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007173512117927583,
+      "mean_seconds": 0.03881815139951262
+    }
+  },
+  {
+    "name": "488_episode8_class_dense_variance_control",
+    "sha256": "f0127c73ee29bf7e1ca6e9457b41ef4d8c5514532b81791c8ca2d33e65f65ef1",
+    "hypothesis": "Dense residual variance checks analytic shared-covariance transformation and approximation separately.",
+    "local_screen": {
+      "name": "488_episode8_class_dense_variance_control",
+      "sha256": "f0127c73ee29bf7e1ca6e9457b41ef4d8c5514532b81791c8ca2d33e65f65ef1",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007044114463968431,
+      "mean_seconds": 0.040200772233462585
+    }
+  },
+  {
+    "name": "489_episode8_class_adaptive3_corrected",
+    "sha256": "8a647ecb55250a3be1aa703b9782e33f8585a4c7a352c8dd3ce41404f781942c",
+    "hypothesis": "Initialize cached costs and source potentials when a soft fallback first enters hard transforms; failed482 preserved.",
+    "local_screen": {
+      "name": "489_episode8_class_adaptive3_corrected",
+      "sha256": "8a647ecb55250a3be1aa703b9782e33f8585a4c7a352c8dd3ce41404f781942c",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007025926087745078,
+      "mean_seconds": 0.051801512533954035
+    }
+  },
+  {
+    "name": "490_episode8_mean_first_combine_shared_point_logcolumn",
+    "sha256": "1ff73d90ffb05ae31910ecc236b7481fdc268b37573cd916036dd2058015cb90",
+    "hypothesis": "Combine validated first class-cumulant approximation with exact point optimizations.",
+    "local_screen": {
+      "name": "490_episode8_mean_first_combine_shared_point_logcolumn",
+      "sha256": "1ff73d90ffb05ae31910ecc236b7481fdc268b37573cd916036dd2058015cb90",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007173532744733096,
+      "mean_seconds": 0.0379485306305772
+    },
+    "official": {
+      "status": "ok",
+      "quality_valid": true,
+      "raw_metric": 0.04008131396646301,
+      "score": 0.9231414623566688,
+      "method_sha256": "1ff73d90ffb05ae31910ecc236b7481fdc268b37573cd916036dd2058015cb90",
+      "name": "490_episode8_mean_first_combine_shared_point_logcolumn",
+      "case_count": 30,
+      "quality_records": 270,
+      "worst_nrmse": 0.007173533238581139,
+      "min_spearman": 0.9999524804391644,
+      "min_top_overlap": 0.992
+    }
+  },
+  {
+    "name": "491_episode8_mean_first_combine_point_foldcol",
+    "sha256": "0b6d2d08768addc7cc6342bb22a1c0fcf89ef73f797b287444b367dd3d87667f",
+    "hypothesis": "Combine validated first class-cumulant approximation with exact point optimizations.",
+    "local_screen": {
+      "name": "491_episode8_mean_first_combine_point_foldcol",
+      "sha256": "0b6d2d08768addc7cc6342bb22a1c0fcf89ef73f797b287444b367dd3d87667f",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.0071734994998269175,
+      "mean_seconds": 0.03688906673341989
+    },
+    "official": {
+      "status": "ok",
+      "quality_valid": true,
+      "raw_metric": 0.04727764859999297,
+      "score": 0.9093420206320797,
+      "method_sha256": "0b6d2d08768addc7cc6342bb22a1c0fcf89ef73f797b287444b367dd3d87667f",
+      "name": "491_episode8_mean_first_combine_point_foldcol",
+      "case_count": 30,
+      "quality_records": 270,
+      "worst_nrmse": 0.0071734999936619555,
+      "min_spearman": 0.999952497328055,
+      "min_top_overlap": 0.992
+    }
+  },
+  {
+    "name": "492_episode8_covariance_first_combine_shared_point_logcolumn",
+    "sha256": "bde169e24055ba825d837f317916060ee681c8517f126b52078d33ddbd4b2f76",
+    "hypothesis": "Combine validated first class-cumulant approximation with exact point optimizations.",
+    "local_screen": {
+      "name": "492_episode8_covariance_first_combine_shared_point_logcolumn",
+      "sha256": "bde169e24055ba825d837f317916060ee681c8517f126b52078d33ddbd4b2f76",
+      "cases": 30,
+      "valid": true,
+      "failures": 0,
+      "worst_nrmse": 0.007044097083396313,
+      "mean_seconds": 0.050770051398527964
+    }
+  },
+  {
+    "name": "493_episode8_class_frozen2_top2_dense",
+    "sha256": "0a9eeb546c5544106335a07630e5aa34513ddaeec36e39e9b99be4bf95e6760c",
+    "hypothesis": "Use multiple frozen class neighbors for 2 virtual late stages; remove exact certificates as controlled approximation.",
+    "local_screen": {
+      "name": "493_episode8_class_frozen2_top2_dense",
+      "sha256": "0a9eeb546c5544106335a07630e5aa34513ddaeec36e39e9b99be4bf95e6760c",
+      "cases": 30,
+      "valid": false,
+      "failures": 5,
+      "worst_nrmse": 0.05978024720817185,
+      "mean_seconds": 0.05102415423316416
+    }
+  },
+  {
+    "name": "494_episode8_class_frozen2_top2_cached",
+    "sha256": "6564df95e4b8c0fae5e69edd41a41d4aadaab8cede046c162f445f657e0ea803",
+    "hypothesis": "Use multiple frozen class neighbors for 2 virtual late stages; remove exact certificates as controlled approximation.",
+    "local_screen": {
+      "name": "494_episode8_class_frozen2_top2_cached",
+      "sha256": "6564df95e4b8c0fae5e69edd41a41d4aadaab8cede046c162f445f657e0ea803",
+      "cases": 30,
+      "valid": false,
+      "failures": 5,
+      "worst_nrmse": 0.015729167936492018,
+      "mean_seconds": 0.04580590413194538
+    }
+  },
+  {
+    "name": "495_episode8_class_frozen3_top2_dense",
+    "sha256": "7305206e900cd5564273ed28c90ff81d97b2a2c128ec421942efe3bd51e76693",
+    "hypothesis": "Use multiple frozen class neighbors for 3 virtual late stages; remove exact certificates as controlled approximation.",
+    "local_screen": {
+      "name": "495_episode8_class_frozen3_top2_dense",
+      "sha256": "7305206e900cd5564273ed28c90ff81d97b2a2c128ec421942efe3bd51e76693",
+      "cases": 30,
+      "valid": false,
+      "failures": 30,
+      "worst_nrmse": 0.15247608981848534,
+      "mean_seconds": 0.051232080534100534
+    }
+  },
+  {
+    "name": "496_episode8_class_frozen3_top4_dense",
+    "sha256": "c152a5152a287855e0cd6e2356b1b31834e1145e8dfa7567ae56958b0c8ece0d",
+    "hypothesis": "Use multiple frozen class neighbors for 3 virtual late stages; remove exact certificates as controlled approximation.",
+    "local_screen": {
+      "name": "496_episode8_class_frozen3_top4_dense",
+      "sha256": "c152a5152a287855e0cd6e2356b1b31834e1145e8dfa7567ae56958b0c8ece0d",
+      "cases": 30,
+      "valid": false,
+      "failures": 30,
+      "worst_nrmse": 0.08826934925660845,
+      "mean_seconds": 0.04769517359818565
+    }
+  }
+]

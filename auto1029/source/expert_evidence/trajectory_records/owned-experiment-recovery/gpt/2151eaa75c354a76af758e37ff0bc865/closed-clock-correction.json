@@ -1,0 +1,82 @@
+{
+  "phase": "ACTUAL_CLOSED_OWNED_ASYNC_COMPLETION_CLOCK_AUDIT_PASS",
+  "role": "gpt",
+  "run_id": "2151eaa75c354a76af758e37ff0bc865",
+  "original_effective_seconds": 2538.662753343582,
+  "audited_effective_seconds": 4694.224331140518,
+  "changed_effective_seconds": 2155.561577796936,
+  "source_execution_sha256": "491b86422b5db89ff23eae1160b138846fa216f779be6df63177782e60657a69",
+  "original_journal_hashes": {
+    "harbor-runtime/heima-research-gpt-2151eaa75c35__env/evaluation/gpt-gpu-activity.jsonl": "cf96f75679a22297db958c8f02b4c7c6ce604d3bf49dafa61daeb3dac4d7f1c1",
+    "harbor-runtime/heima-research-gpt-2151eaa75c35__verifier__trial/verifier-evaluation/gpt-gpu-activity.jsonl": "2311edfebc70f6e9b8c983a966162f691cc4c6bf5e10c0eda569c22554ab60fe"
+  },
+  "recovered_receipt_hashes": {
+    "c0176068ceea4c3096bf80fbffd953db": "7534a09e9ddd3617b7d91f2fb90cde75ac6b05d16ab078bdb8f7a275e14da2e3"
+  },
+  "jobs": [
+    {
+      "job_id": "c3f9b592af3f4292b966d62e92c9f19e",
+      "phase": "COMPLETE",
+      "policy_sha256": "db85929d3147b4057d213cb4ef0c4d9a29897939bd72d618f75fd1690a1c2b36",
+      "original_owned_ticket_observed_epoch": 1791247389.352437,
+      "recovered": false,
+      "credited_gpu_interval": null,
+      "transport_uncertainty_seconds": 0.05797851085662842
+    },
+    {
+      "job_id": "7309139f43434ef3a4771e80f41a31fd",
+      "phase": "COMPLETE",
+      "policy_sha256": "f30b7cc91969e8cf6ebea110b18f6588f013579e928dabb3936c745118c575cf",
+      "original_owned_ticket_observed_epoch": 1791247782.137324,
+      "recovered": false,
+      "credited_gpu_interval": [
+        1791247334.300831,
+        1791249872.9635844
+      ],
+      "transport_uncertainty_seconds": 0.06124746799468994
+    },
+    {
+      "job_id": "c0176068ceea4c3096bf80fbffd953db",
+      "phase": "COMPLETE",
+      "policy_sha256": "db85929d3147b4057d213cb4ef0c4d9a29897939bd72d618f75fd1690a1c2b36",
+      "original_owned_ticket_observed_epoch": 1791249875.249585,
+      "recovered": true,
+      "credited_gpu_interval": [
+        1791252869.8438811,
+        1791255025.405459
+      ],
+      "transport_uncertainty_seconds": 0.06049048900604248
+    }
+  ],
+  "queue_intervals_excluded": [],
+  "cli_gpu_union_no_doublecount": true,
+  "current_round_bounds_enforced": true,
+  "original_execution_and_ledgers_preserved": true,
+  "root_query_time_credited": false,
+  "correction_row": {
+    "phase": "NATIVE_FORMAL_CLI_RESEARCH",
+    "start_epoch": 1791247334.300831,
+    "end_epoch": 1791255030.750487,
+    "effective_seconds": 4694.224331140518,
+    "excluded_seconds": 3002.225324869156,
+    "included_intervals": [
+      [
+        1791247334.300831,
+        1791247766.075289
+      ],
+      [
+        1791247334.300831,
+        1791249872.9635844
+      ],
+      [
+        1791252869.8438811,
+        1791255025.405459
+      ]
+    ],
+    "minimum_effective_seconds": 36000,
+    "evidence": "cli-research-preparation/2151eaa75c354a76af758e37ff0bc865/gpt/execution.json",
+    "audit_override": "OWNED_ASYNC_GPU_COMPLETION_CLOCK_V1:2151eaa75c354a76af758e37ff0bc865",
+    "audit_evidence": "owned-experiment-recovery/gpt/2151eaa75c354a76af758e37ff0bc865/closed-clock-correction.json"
+  },
+  "recorded_epoch": 1791255619.859879
+}

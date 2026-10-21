@@ -1,0 +1,20 @@
+{
+  "command": [
+    "historical-resources/venvs/dd1/bin/python",
+    "-B",
+    "-u",
+    "-c",
+    "import sys,json,torch\nsys.path.insert(0,'historical-codex-workspace')\nfrom runtime_guard import apply_guard\nprint(json.dumps({'guard':apply_guard()}),flush=True)\nsys.path.insert(0,'historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR')\nsys.path.insert(0,'historical-codex-models/framework')\nfrom models import build_vae_dd\nfrom train_student import initialize_from_teacher,attach_checkpointing\nimport torch.nn.functional as F\ntorch.set_num_threads(4);torch.manual_seed(2001)\nvae,student=build_vae_dd(device='cpu',depth=16,shared_aln=False,attn_l2_norm=True)\nvae.load_state_dict(torch.load('historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth',map_location='cpu',weights_only=True),strict=True)\nteacher=torch.load('historical-resources/models/dd1/VAR-teacher/var_d16.pth',map_location='cpu',weights_only=True)\nkeys=initialize_from_teacher(student,teacher);del teacher\nvae.eval().requires_grad_(False);student.train();attach_checkpointing(student)\npairs=torch.load('historical-codex-models/round02/pairs/pairs_00000.pt',map_location='cpu',weights_only=True)\nlabels=pairs['labels'][:1];noise=pairs['noise'][:1];ids=pairs['tokens'][:1].long();target=F.embedding(ids,vae.quantize.embedding.weight);k=torch.tensor([5]);x=student.perturb_data(target,k,noise)\nwith torch.autocast(device_type='cpu',dtype=torch.bfloat16):\n conti,logits=student(labels,x,k)\n loss=F.cross_entropy(logits.reshape(-1,4096),ids.reshape(-1))+.01*(conti-target).square().mean()\nassert torch.isfinite(conti).all() and torch.isfinite(logits).all() and torch.isfinite(loss)\nloss.backward()\nchecks={name:bool(p.grad is not None and torch.isfinite(p.grad).all() and p.grad.abs().sum()>0) for name,p in student.named_parameters() if name in ['head.weight','word_embed.weight','n_d_embed.weight','final_layer_conti.linear.weight']}\nassert all(checks.values()),checks\nprint(json.dumps({'diagnostic_only':True,'cuda_available':torch.cuda.is_available(),'cuda_initialized':torch.cuda.is_initialized(),'teacher_inherited_keys':len(keys),'full_depth':len(student.blocks),'output_shapes':[list(conti.shape),list(logits.shape)],'finite_outputs':True,'diagnostic_ce_plus_embedding_mse':float(loss.detach()),'gradients_finite_nonzero':checks,'lpips_training_executed':False,'fid_score':None}),flush=True)\n"
+  ],
+  "environment_patch": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "TMPDIR": "historical-codex-models/runtime/tmp"
+  },
+  "started_at": "2026-10-03T00:31:08.163992+08:00",
+  "finished_at": "2026-10-03T00:31:28.663588+08:00",
+  "wall_seconds": 20.499603690579534,
+  "exit_code": 0,
+  "GPU_budget_charge": 0,
+  "method_round_closed": false,
+  "purpose": "Detect initialization, output-shape, activation-checkpoint and gradient faults before the long training stage."
+}

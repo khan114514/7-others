@@ -1,0 +1,14 @@
+Bifrost 完整题包退回说明（独立静态复核）
+结论：NOT READY。研究优化面成立，Baseline在材料范围内合理，正式Hidden全量B/R改善强；以下核心交付问题仍须处理。
+
+1. 执行架构与当前平台契约不符。Task/task.toml的gpus=0/storage_mb/no-network与Runtime/hybrid_harbor_environment.py:107、137显示实际靠Compose override、额外broker容器和远程A100 worker。将公开 Dev 和私有 Verifier 的数值执行各自放入对应单容器，直接使用该 sandbox 的 H20/L20；移除远程 worker、额外 broker 容器、Compose override 与数值 SSH/controller 依赖。保留 data-only DAG 校验、候选移交与独立私有评分。提交更新后的题面、TOML、镜像依赖和调用链；提供目标 Harbor 对自身 GPU、单容器及候选→独立 Verifier 的配置/验收材料。历史 A100 数值保真保留，换卡成绩/耗时补验可后补。
+
+2. 失败评分分类需修复。Task/tests/grade.py:53–62全部异常写-1，Task/trusted/numerical_worker.py:50–52异常写reward=0；未完成评估不能当普通分数。区分质量/内存 Hard Gate 与格式、超时、基础设施异常；只有已完成质量评估的无效候选写 -1。未出分异常记录 score=null 并按 Harness 异常通道失败，不产生正常 reward 哨兵。给出正常有限分数、质量失败、格式错误、队列失联/超时四分支的状态/reward 对照及更新源码；异常不得被收集成普通 0 或 -1 排名。
+
+3. 规范轨迹与最终交付。expert_evidence/trajectory_codex.json第48–102轮多字段，45轮COMPLETED而非ok；两轨全部161条time需统一指定格式，摘要需1–3句说明实际方法而不是长原话/标签。保留原始记录，额外来源放旁表，输出恰八字段规范版，分数/null/失败和best标记按实际证据保真。两条selected可继续作证据，另明确唯一最终方法及公开Dev选择依据，提供best_method或明确等价路径。验收查逐轮映射、最终恢复与移交SHA。
+
+4. 公开Dev Reference证据待核。optimization_evidence的全部正式结果来自formal/Hidden，未定位同一作者Reference公开Dev成对自验。补作者 Reference 同一源码/graph 在公开 Dev 协议下的正式成对结果；明确公开与 Hidden 分别使用的案例、重复数、聚合和 B/R/U，现有 Hidden 全量结果继续保留。公开 Dev 的原始阶段/重复记录、全部声明 seed、结果与日志，绑定当前 Reference；复算归一化 [0.15,0.8] 和 ≥3σ。若已有结果可直接补入，无需为本静态审查自动启动运行。
+
+现有正式数据无需因以上文字/格式修订自动重跑：B=58432.48055013021ms，R=33729.16768900553ms，归一化0.422766800733905，σ_B=180.57194646667463ms，改善136.8059σ。全部3seed、18重复、4608阶段来源完整且静态复算相符。
+两轨保守活动下界7.175/7.739小时且满足无训练短迭代例外证据；本次不要求补凑10小时，也不将多日wall span当有效时长。已有NOP48项Task文件与当前ZIP一致，不因NOP/指纹放宽项单独退回。
+标准四项指纹、H20/L20换卡影响/耗时/重算及迁移后的NOP关联可按2026-10-21口径后补；架构迁移本身不属于该放宽。官方0.3.10与独立脚本验收待补，本报告不宣称平台通过。

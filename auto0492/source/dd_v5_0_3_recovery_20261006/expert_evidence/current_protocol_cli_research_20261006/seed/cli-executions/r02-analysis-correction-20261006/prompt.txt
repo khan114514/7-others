@@ -1,0 +1,5 @@
+请仅在你自己的工作区内，用实际 shell 工具读取 agent-output/round-02/analysis.json、plan.json、method.py、evaluation/result.json，以及自己 round-01 的结果和 analysis-correction.json。不要读取其他轨道、Reference、专家私有材料或凭据，不启动 GPU 作业。
+
+对自己的第二轮分析作一次证据范围复核：只有当前两个固定公开流的联合方法比较，是否足以证明独立选择因素/时间因素的作用、稳定改善、或“sample count is the dominant bottleneck”？请区分实际观察、尚未隔离的因素及交互作用、未经验证的样本量假设。单轮观察不能把待检验假设写成已证实的主因，也不能以未超过 Baseline 的两个联合配置推断所有 256 样本策略无效。
+
+完整保留 analysis.json、plan.json、所有旧轨迹、源码、得分、best_method 和回执的字节。另写 agent-output/round-02/analysis-correction.json，引用原分析 SHA 与可信公开结果，报告实际 FID 和与自己首轮/公开 Baseline 的差值、保留判断，以及下一步算法方向和该试验能够与不能够回答的问题。只纠正分析的推断范围，不改方法、分数、历史最佳标记或时间，不声称 QA PASS。最后概述你发现的表述问题与修正范围。

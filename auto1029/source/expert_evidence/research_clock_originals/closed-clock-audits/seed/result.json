@@ -1,0 +1,134 @@
+{
+  "phase": "ACTUAL_CLOSED_FORMAL_CLOCK_AUDIT_PASS",
+  "role": "seed",
+  "run_id": "146a072f494a4dad8f2fd8e4d1f770ca",
+  "source_receipt_sha256": "0b205bcacb7f26c7b696812347c88a146daca71b04bd7431d5c6465899983b6c",
+  "original_effective_seconds": 4821.158865690231,
+  "audited_effective_seconds": 4820.2165858745575,
+  "additional_infrastructure_seconds_excluded": 0.9422798156738281,
+  "readonly_queue_failed_commands": [
+    {
+      "item_id": "item_26",
+      "start_epoch": 1791228538.3405619,
+      "end_epoch": 1791228538.3853729,
+      "reason": "Confirmed infrastructure IPC write failure; surrounding model diagnosis is normal research"
+    },
+    {
+      "item_id": "item_44",
+      "start_epoch": 1791228591.390728,
+      "end_epoch": 1791228591.494185,
+      "reason": "Confirmed infrastructure IPC write failure; surrounding model diagnosis is normal research"
+    },
+    {
+      "item_id": "item_77",
+      "start_epoch": 1791228843.0567522,
+      "end_epoch": 1791228843.172192,
+      "reason": "Confirmed infrastructure IPC write failure; surrounding model diagnosis is normal research"
+    },
+    {
+      "item_id": "item_130",
+      "start_epoch": 1791229311.921269,
+      "end_epoch": 1791229311.922497,
+      "reason": "Confirmed infrastructure IPC write failure; surrounding model diagnosis is normal research"
+    },
+    {
+      "item_id": "item_142",
+      "start_epoch": 1791229443.158394,
+      "end_epoch": 1791229443.434083,
+      "reason": "Confirmed infrastructure IPC write failure; surrounding model diagnosis is normal research"
+    },
+    {
+      "item_id": "item_172",
+      "start_epoch": 1791229779.3707101,
+      "end_epoch": 1791229779.613685,
+      "reason": "Confirmed infrastructure IPC write failure; surrounding model diagnosis is normal research"
+    },
+    {
+      "item_id": "item_198",
+      "start_epoch": 1791230070.799362,
+      "end_epoch": 1791230070.9417112,
+      "reason": "Confirmed infrastructure IPC write failure; surrounding model diagnosis is normal research"
+    },
+    {
+      "item_id": "item_210",
+      "start_epoch": 1791230154.423142,
+      "end_epoch": 1791230154.439473,
+      "reason": "Confirmed infrastructure IPC write failure; surrounding model diagnosis is normal research"
+    }
+  ],
+  "genuine_cli_seconds": 1703.0310671329498,
+  "gpu_active_seconds": 3117.1855187416077,
+  "clock_mapping": [
+    {
+      "job_id": "2ff8c5be613a4f22a3a4594196ce79a1",
+      "phase": "COMPLETE",
+      "final_offset_seconds": 64.94614505767822,
+      "final_transport_uncertainty_seconds": 0.2604750394821167,
+      "offset_min_seconds": 63.35155177116394,
+      "offset_max_seconds": 65.06696605682373,
+      "gpu_started_epoch": 1791232601.2822688,
+      "completed_epoch": 1791235718.9887376
+    }
+  ],
+  "cli_gpu_union_no_doublecount": true,
+  "gpu_queue_time_excluded": true,
+  "actor_queue_requests_reached_bridge": 0,
+  "root_work_counted": false,
+  "served_identity_and_request_high_store_false_verified": true,
+  "score": -0.1336201933416732,
+  "formal_scored_round": true,
+  "execution_receipt_unmodified": true,
+  "correction_row": {
+    "phase": "NATIVE_FORMAL_CLI_RESEARCH",
+    "start_epoch": 1791228481.762929,
+    "end_epoch": 1791235794.769294,
+    "effective_seconds": 4820.2165858745575,
+    "excluded_seconds": 2492.789779186249,
+    "included_intervals": [
+      [
+        1791228481.762929,
+        1791228538.3405619
+      ],
+      [
+        1791228538.3853729,
+        1791228591.390728
+      ],
+      [
+        1791228591.494185,
+        1791228843.0567522
+      ],
+      [
+        1791228843.172192,
+        1791229311.921269
+      ],
+      [
+        1791229311.922497,
+        1791229443.158394
+      ],
+      [
+        1791229443.434083,
+        1791229779.3707101
+      ],
+      [
+        1791229779.613685,
+        1791230070.799362
+      ],
+      [
+        1791230070.9417112,
+        1791230154.423142
+      ],
+      [
+        1791230154.439473,
+        1791230185.736276
+      ],
+      [
+        1791232666.4888887,
+        1791235783.6744075
+      ]
+    ],
+    "minimum_effective_seconds": 36000,
+    "evidence": "cli-research-preparation/146a072f494a4dad8f2fd8e4d1f770ca/seed/execution.json",
+    "audit_override": "FIRST_FORMAL_CLOSED_QUEUE_FAILURE_CLOCK_AUDIT",
+    "audit_evidence": "native-queue-sandbox-diagnosis/closed-clock-audits/seed/result.json"
+  }
+}

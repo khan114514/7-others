@@ -1,0 +1,31 @@
+SAVA 专家返修说明
+结论：当前完整ZIP为NOT READY；方法、Baseline、正式成对改善及非训练七小时例外在已提供证据内成立。无需仅因五类放宽事项重跑全部B/R或双模型轨迹。
+ZIP SHA256：8e950e70c9434f14da4ae64890a90074860a1598d1c4f6f543a9cf69d8165979
+
+1. 移除当前V4禁用的Compose、磁盘与禁网配置
+事实与位置：environment/直属存在docker-compose.yaml；task.toml的两个environment段声明storage_mb及network_mode=no-network；instruction.md第33行依赖禁网/模型白名单。 workspace/harbor_task/environment/docker-compose.yaml:1；workspace/harbor_task/task.toml:15；workspace/harbor_task/task.toml:19；workspace/harbor_task/task.toml:33；workspace/harbor_task/task.toml:37；workspace/harbor_task/instruction.md:33
+影响：V4当前内场明确不接受直属Compose以及storage_mb、禁网/网络白名单声明；历史Docker实验不能证明这一部署合同符合当前平台。
+最小修改：删除直属Compose文件；移除任务及镜像内副本的storage_mb/network_mode声明，更新题面网络/工具策略为平台实际可用能力。将必要的可信服务启动、UID降权与超时清理放入单sandbox单容器且平台支持的实现，不靠额外容器。
+重交验收材料：重交完整ZIP，静态配置与题面一致；目标平台确认服务启动、Actor UID与候选UID、CAP_KILL等必要权限及真实资源落实。保留历史记录而非改标为新平台实测。
+
+2. 将artifacts缩至候选所需资产
+事实与位置：task.toml第2行除候选目录还收集公开评分结果目录；dev_service.py会在该目录保存评分JSON和方法历史快照。 workspace/harbor_task/task.toml:2；workspace/harbor_task/environment/public_eval/dev_service.py:21；workspace/harbor_task/environment/public_eval/dev_service.py:24；workspace/harbor_task/tests/verifier.py:15
+影响：V4只移交候选代码及必要配置/模型，公开评分结果和历史源码并非Verifier输入。即使现有Verifier不信任这些结果，扩大artifacts仍违反交付边界。
+最小修改：从artifacts删除公开结果目录，仅保留题面规定的两文件候选目录；专家过程日志留在expert_evidence，不作为Agent候选移交。
+重交验收材料：更新配置与候选移交清单；新版本Verifier只接收必要候选并产生自身评分。既有NOP可保留，版本关联后补。
+
+3. 修复无换行stdout导致的超时失效
+事实与位置：两份evaluator.py在select确认可读后调用阻塞readline（第49、60行）；之后还有无deadline的stdout.read（第68行）。候选输出少量不带换行字节并继续计算时，readline可阻塞，后续60秒剩余量检查无法执行。 workspace/harbor_task/tests/evaluator.py:47；workspace/harbor_task/tests/evaluator.py:49；workspace/harbor_task/tests/evaluator.py:58；workspace/harbor_task/tests/evaluator.py:60；workspace/harbor_task/tests/evaluator.py:68；workspace/harbor_task/environment/public_eval/evaluator.py:49
+影响：单次初始化/方法60秒约束是题面核心规则；select只保证有字节可读，不保证完整行到达。7200秒外层Verifier时限不等于单次60秒，正常TIMEOUT探针也不能覆盖该分支。
+最小修改：使用非阻塞、有上限的字节读取与累计缓冲解析行，所有read/wait均服从同一monotonic deadline；在finally中终止并回收进程组。公开服务端也应执行完整评测deadline，而非只由客户端放弃等待。
+重交验收材料：授权隔离环境中的负向记录：导入/调用阶段无换行输出后持续运行、超长单行、DONE后不退出均在指定deadline内终止；无遗留worker，分类保留TIMEOUT/RESOURCE。同步两份评分器。
+
+4. 八字段score恢复V4原始指标口径
+事实与位置：两轨每轮均有八字段且全部79份完成报告可匹配，但score保存归一化奖励，例如Codex第1轮-0.374633743283，而对应原始耗时为0.716864103102秒。Codex score_semantics明确写normalized；Seed也使用同口径。 expert_evidence/trajectory_codex.json#score_semantics；expert_evidence/trajectory_codex.json#rounds[0].score；expert_evidence/trajectory_seed.json#rounds[0].score；expert_evidence/native_records/codex/protected_reports/2caed5f0a5cb48978475ac0f0c33f046.json#raw_metric
+影响：当前V4要求每轮score为实际Public/Dev原始指标或声明代理指标；当前使用主指标的归一化reward，未声明独立代理指标。可追溯但字段语义不符合当前格式。
+最小修改：按现成protected_reports将有完整测量轮的score写为raw_metric；未出分保持null，失败原因和质量失败状态保留。归一化reward与质量门用于选优，可在外部映射/说明保存，八字段不扩列。
+重交验收材料：两轨逐轮映射到原报告的raw_metric、时间、状态、方法标识；保留原轨迹原样为历史材料，新轨迹不改实验事实/顺序/有效时间。无需重跑模型或正式B/R。
+
+非阻断待补：真实四项指纹及新版本NOP关联可后补；本CPU题无换卡三类事项。缺真实官方0.3.10/独立格式GPU/指纹工具仅如实保留工具验收缺口，不能伪造官方PASS。
+按上述修改后重交workspace、expert_evidence、optimization_evidence完整ZIP，保留旧证据原值与修订说明，不只交补丁。此说明仅本地保存，未发送给专家。
+边界：本轮仅静态读取ZIP文本/元数据及复算日志；没有执行提交代码、Docker、训练或模型调用，也没有完成正式平台Hidden验收。

@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-10-04T05:49:47.250477+08:00",
+  "round": 14,
+  "quality_gate_passed": true,
+  "manually_inspected_grid": true,
+  "visual_review": "Formal64 grid retains diverse recognizable objects and scenes; blur and ghosting remain but no all-black, identical-image or repetitive-texture collapse. Full FID10.138528394137666 is0.475266335316974 above B and0.562342655511884 above round12. Increasing teacher reuse from one to four shuffled passes at late-half time sampling did not improve the one-step result; same configuration/seed training is not bitwise reproducible, so this is a single-trial comparison. Full50000 finite outputs and original PNG hashes retained; budget314.175s eligible. Best remains independently revalidated round12.",
+  "grid_sha256": "95a896a207044a601f08c830b4eb5433718b4c187d7e23b4a39274526555a4d9",
+  "result_sha256": "263c4ad38a199b84dd3bc55564d34aa442d77f8e0872380e3e2183da36e1ca55",
+  "score": 10.138528394137666,
+  "fid_minus_baseline": 0.4752663353169737,
+  "training_budget_seconds": 314.1752146212384,
+  "updates": 64,
+  "row": {
+    "round": 14,
+    "policy_name": "warmstart_official_dd_reuse256_agreement2x_latehalf_fourpass",
+    "method_summary": "dd-selfproto-v1.1; warmstart_official_dd_ema; 256 verified teacher pairs reused with full generation charge 152.158s; 4 shuffled teacher pass(es), 64 updates; uniform U(0.5,1); P(prefix5..9)=0.2 each; frozen floor(10*t) prefix mapping; fixed full FID-50k=10.138528394, delta to B=+0.475266335. Independent training reimplementation. Visual review: Formal64 grid retains diverse recognizable objects and scenes; blur and ghosting remain but no all-black, identical-image or repetitive-texture collapse. Full FID10.138528394137666 is0.475266335316974 above B and0.562342655511884 above round12. Increasing teacher reuse from one to four shuffled passes at late-half time sampling did not improve the one-step result; same configuration/seed training is not bitwise reproducible, so this is a single-trial comparison. Full50000 finite outputs and original PNG hashes retained; budget314.175s eligible. Best remains independently revalidated round12.",
+    "status": "ok",
+    "score": 10.138528394137666,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-04 05:49:47"
+  }
+}

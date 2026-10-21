@@ -1,0 +1,7 @@
+只在你自己的工作区中用真实 shell 工具复核 agent-output/best_method/method.py、自己的两个已完成公开结果、round-02/analysis.json、analysis-correction.json、environment/anchors.json 和公开 environment/starter/method.py。不得读取另一轨道或私有材料，不启动 GPU 作业。
+
+发现一个需要实际修复的源码绑定问题：你的分析称公共 Baseline(num_samples=0) 是当前最佳，但 best_method/method.py 的 SHA 仍是自己首轮候选的 68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c。请实际读取配置核对。自己的公开 Starter SHA 应为 bc4ac6b53af961775c669bca498d0f03d5ea26e484a1c6aa3e4b32a42a3c8fca；公共 anchors 记录其当前协议、evaluation_seed=0、50000样本与实际Baseline证据和checkpointSHA。
+
+先将错误 best_method 原字节保存到 agent-output/best_method_before_binding_correction/method.py。若复核支持公开 Starter 对应你保留的Baseline，实际把它复制为 best_method/method.py，并写 best_method/selection.json，清楚区分已发布公共Baseline回执与自己新训练轮次，记录源、旧/新SHA、实际分数来源及自己两个候选分数，不伪称本次新重跑。如果证据不能绑定则保留不确定性，不给错源码附上Baseline分数。
+
+另写 round-02/analysis-final-correction.json，保留旧两个分析的所有字节并引用SHA。继续修正残留推断：联合单次比较只提供固定公开流上的观测，不能证明任一因素独立有效或稳定因果效应；共同数据量不能证明主瓶颈。未来1024样本试验也改变更新数/目标集合，它的结果不能单独证明纯数据量是主因或所有提案选择都失效。公共 anchors 声明与本轮相同协议/公开seed0，应据其真实字段解释，不能无依据声称随机流不匹配。修正文档的记录时间必须通过实际datetime UTC工具取得。保持方法轮源码、plan、两个终态、全部轨迹、原best标记和旧分析不变；不修改solution/method.py，不增加方法轮或计入新GPU/研究时间，不声称QA PASS。

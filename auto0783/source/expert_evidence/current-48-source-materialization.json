@@ -1,0 +1,50 @@
+{
+  "original_preparation_record_SHA256": "142baa16f9274982c64b4795fa24469c48e6a674a6a84dd23e4a4a9511336e22",
+  "original_closure_SHA256": "54b437a76f969c8e52f5f22b4058bf8860ebf55fa7a22a9ce4c2c05b6574877a",
+  "actual_original_step": {
+    "supervisor_PID": 2972,
+    "child_PID": 2973,
+    "argv": [
+      "<author-home>/Applications/Docker.app/Contents/Resources/bin/docker",
+      "run",
+      "--rm",
+      "--pull=never",
+      "--network",
+      "none",
+      "--read-only",
+      "--user",
+      "1000:1000",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--mount",
+      "type=bind,source=.,target=/package,readonly",
+      "--mount",
+      "type=bind,source=<validation-evidence-root>/fresh-freeze,target=/out",
+      "python@sha256:02108f5d322dd89f1c9e552442c25acb0543dfdbc455693a5599624f20d9155d",
+      "python",
+      "-B",
+      "/package/dependencies/task/materialize_task.py",
+      "--package",
+      "/package",
+      "--destination",
+      "/out/frozen-task",
+      "--evidence",
+      "/out/proof"
+    ],
+    "started_epoch": 1792025289.474359,
+    "finished_epoch": 1792025290.42962,
+    "actual_exit_code": 0
+  },
+  "actual_original_closure": {
+    "status": "EXACT_BUILD_READY_TASK_SOURCE_SHA_MATCH",
+    "files": 48,
+    "task_manifest_sha256": "2abb0bb70731458dbf320b26be53b0f219a1f3807838d73201219e83333f386e",
+    "candidate_executed": false
+  },
+  "task_source_manifest_sha256": "2abb0bb70731458dbf320b26be53b0f219a1f3807838d73201219e83333f386e",
+  "original_historical_distribution_index": "expert_evidence/current-distribution-materialization/index.json",
+  "is_new_execution": false,
+  "is_formal_QA_verdict": false
+}

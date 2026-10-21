@@ -1,0 +1,17 @@
+{
+  "status": "PREDECLARED_CPU_PROBE_PENDING_NOT_GPU_STARTED",
+  "method_sha256": "db76d55ff88defbc4519819775fe0871a89aa7ed90098905d1b377afcef8c136",
+  "prior_current_fid": 9.656579371679868,
+  "prior_best_model_fid": 9.497105760787463,
+  "purpose": "Reduce within-microbatch FM prefix sampling variance with antithetic late-half times",
+  "only_changed_method_function": "fm_time_sampler: pair u and (u+0.5)%1; consume exactly the supplied CPU stream draws",
+  "teacher_policy": "256 fresh selected pairs,8 proposals perlabel,LPIPS argmin,one pass",
+  "frozen_numeric_environment_sha256": "d69fa87bc503cf12a33f32a718c313557a88e579d2fa8678f2f50bdaeb99b7a4",
+  "teacher_seed": 1001,
+  "training_seed": 2001,
+  "evaluation_seed": 0,
+  "hidden_results_observed": false,
+  "current_best_workspace_method_not_replaced": true,
+  "selection_rule": "Preserve all original/failed/worse runs; select only a valid full result improving paired Baseline and current candidate",
+  "predeclared_epoch": 1791141038.4555168
+}

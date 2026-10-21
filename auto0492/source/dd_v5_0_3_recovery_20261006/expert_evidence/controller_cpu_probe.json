@@ -1,0 +1,38 @@
+{
+  "public_health": {
+    "http_status": 200,
+    "reply": {
+      "status": "OK",
+      "mode": "restricted-dd-gateway"
+    }
+  },
+  "formal_health": {
+    "http_status": 200,
+    "reply": {
+      "status": "OK",
+      "mode": "restricted-dd-gateway"
+    }
+  },
+  "public_cannot_override_role": {
+    "http_status": 422,
+    "reply": {
+      "status": "REJECTED"
+    }
+  },
+  "formal_uncalibrated_rejected": {
+    "http_status": 422,
+    "reply": {
+      "status": "REJECTED",
+      "error_type": "ValueError",
+      "error": "Request rejected; inspect trusted gateway logs."
+    }
+  },
+  "foreign_job_rejected": {
+    "http_status": 422,
+    "reply": {
+      "status": "REJECTED",
+      "error_type": "FileNotFoundError",
+      "error": "Request rejected; inspect trusted gateway logs."
+    }
+  }
+}

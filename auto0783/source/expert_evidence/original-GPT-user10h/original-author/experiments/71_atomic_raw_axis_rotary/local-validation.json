@@ -1,0 +1,65 @@
+{
+  "canonical_sha256": "5eec7aacdf6d7bb6d42a7f77512bc22aab08e538a965d68f9d4fadaca323e0ae",
+  "node_count": 64,
+  "output_shape": [
+    2,
+    556,
+    3584
+  ],
+  "syntax_validation": "passed",
+  "compile_regions": [
+    {
+      "id": "text_key_rotary_compiled",
+      "nodes": [
+        "text_key_rotary"
+      ]
+    },
+    {
+      "id": "image_rotary_compiled",
+      "nodes": [
+        "image_qk_rotary"
+      ]
+    },
+    {
+      "id": "image_mlp_compiled",
+      "nodes": [
+        "image_mlp"
+      ]
+    }
+  ],
+  "local_prefix_budget_pass": true,
+  "prefix_bytes_all_28_layers": 3663052288,
+  "prefix_limit_bytes": 7516192768,
+  "prefix_node_bytes_per_layer": {
+    "text_input_norm": 4300800,
+    "text_input_norm_rows": 4300800,
+    "text_qkv_weight": 33030144,
+    "text_qkv_bias": 9216,
+    "text_input_flat": 4300800,
+    "text_flat_qkv": 5529600,
+    "text_qkv": 5529600,
+    "vision_qkv_weight": 33030144,
+    "vision_qkv_bias": 9216,
+    "text_q_rows": 4300800,
+    "text_k_rows": 614400,
+    "text_v_rows": 614400,
+    "text_mask_rows": 667200,
+    "text_attention_mask": 360000,
+    "text_cos": 460800,
+    "text_sin": 460800,
+    "text_attended": 4300800,
+    "text_attention_out": 4300800,
+    "image_raw_cos": 393216,
+    "image_raw_sin": 393216,
+    "text_key_shape": 614400,
+    "text_key_heads": 614400,
+    "text_key_rotary": 614400,
+    "image_attention_mask": 569344,
+    "text_state_rows": 4300800,
+    "text_residual_rows": 4300800,
+    "text_post_norm": 4300800,
+    "text_mlp": 4300800,
+    "text_output": 4300800
+  },
+  "caution": "Local arithmetic uses BF16 external tensors; worker meta validation is authoritative."
+}

@@ -1,0 +1,78 @@
+{
+  "checked_unix": 1791432685.161969,
+  "track": "gpt",
+  "round": 8,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "ab5e02b05357c34a57916a6b0c7a9fb5bc2b36e3957e28ec2ec037e02a1eb1ca",
+  "candidate_source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/private_candidate_sources/round_00008.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.4170385832651731,
+      "score": 0.6093867850909813,
+      "quality_gates_passed": true,
+      "method_sha256": "ab5e02b05357c34a57916a6b0c7a9fb5bc2b36e3957e28ec2ec037e02a1eb1ca",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791431597.128341,
+      "end_unix": 1791431818.4737573
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.453218090170902,
+    "score": 0.575499768221648,
+    "quality_gates_passed": true,
+    "method_sha256": "ab5e02b05357c34a57916a6b0c7a9fb5bc2b36e3957e28ec2ec037e02a1eb1ca",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791431933.5387454,
+    "end_unix": 1791432187.1104696
+  },
+  "model_final_decision": {
+    "policy_name": "length_aware_norm_selection",
+    "method_summary": "Use direct Gram norm contractions for length-128 cases and retain shared Cholesky contractions from length 256 onward. Protected evaluation passed with raw relative CPU time 0.4170385833 and maximum error 5.01e-6.",
+    "next_direction": "Retain; investigate adaptive direct-versus-Cholesky selection for hidden shapes."
+  },
+  "original_controller_decision": {
+    "round": 8,
+    "policy_name": "length_aware_norm_selection",
+    "method_summary": "Use direct Gram norm contractions for length-128 cases and retain shared Cholesky contractions from length 256 onward. Protected evaluation passed with raw relative CPU time 0.4170385833 and maximum error 5.01e-6.",
+    "status": "ok",
+    "score": 0.453218090170902,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 12:03:08"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791429374.1730745,
+    "ended_unix": 1791431930.1723416,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 8,
+    "start_unix": 1791429373.965472,
+    "end_unix": 1791432188.289543,
+    "observed_seconds": 1293.5417585000396,
+    "effective_seconds": 1293.5417585000396,
+    "model_seconds": 1035.5351442091633,
+    "model_completed": true,
+    "successful_command_tools": 16,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "model_transport_failed": false,
+    "method_sha256": "ab5e02b05357c34a57916a6b0c7a9fb5bc2b36e3957e28ec2ec037e02a1eb1ca",
+    "public_result": "round_00008.grader.log",
+    "events": "round_00008.events.jsonl",
+    "next_direction": "Retain; investigate adaptive direct-versus-Cholesky selection for hidden shapes."
+  },
+  "original_events": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00008.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/resume-provenance.json"
+}

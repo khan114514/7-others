@@ -1,0 +1,26 @@
+{
+  "stage": "student_training",
+  "command": [
+    "historical-resources/venvs/dd1/bin/python",
+    "-B",
+    "-u",
+    "historical-codex-models/framework/train_student.py",
+    "--method",
+    "historical-codex-workspace/agent-output/rounds/round17/method.py",
+    "--pairs",
+    "historical-codex-models/round17/pairs",
+    "--out",
+    "historical-codex-models/round17/training",
+    "--deadline",
+    "1791075169.4729586"
+  ],
+  "cwd": "historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR",
+  "started_at": "2026-10-04T07:58:25.382930+08:00",
+  "finished_at": "2026-10-04T08:03:00.017867+08:00",
+  "exit_code": 0,
+  "deadline_unix": 1791075169.4729586,
+  "pid": 212415,
+  "elapsed_seconds": 274.6348509378731,
+  "termination": null,
+  "peak_observed_gpu_mib": null
+}

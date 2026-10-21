@@ -1,0 +1,41 @@
+{
+  "role": "seed",
+  "model_requested": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "upstream": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+  "started_epoch": 1791319338.8455622,
+  "billing_mode": "coding_plan",
+  "wire_translation": "Chat Completions upstream / native Responses CLI downstream",
+  "credential_visible_to_candidate": false,
+  "configuration_source": "host-only authorized shared Ark configuration",
+  "unavailable_responses_only_tool_types": [
+    "namespace",
+    "web_search"
+  ],
+  "request_sha256": "0e82476dade4d95894832cec7007ecee6880f8af58687bf18aee8921ddc65764",
+  "http_status": 200,
+  "first_header_epoch": 1791319351.4281971,
+  "actor_deadline_epoch": 1791319668.8455622,
+  "first_chunk_epoch": 1791319351.428576,
+  "last_chunk_epoch": 1791319352.424309,
+  "model_response_completed": true,
+  "status": "RESPONSE_FINISHED",
+  "model_identifiers_in_provider_response": [
+    "doubao-seed-2-1-turbo-260628"
+  ],
+  "served_identifier_matches_requested": true,
+  "provider_completion_id": "021791319340098ec6553b2bbb2bcb1bdf9627ab55f9f643ca573",
+  "provider_finish_reason": "tool_calls",
+  "usage": {
+    "input_tokens": 62962,
+    "output_tokens": 69,
+    "total_tokens": 63031,
+    "output_tokens_details": {
+      "reasoning_tokens": 1
+    }
+  },
+  "response_sha256": "85a921cd38a70b0872d65134d5dd90fbdfe8f9338e081b0a43e9b09fb1f6206f",
+  "response_bytes": 5969,
+  "tool_calls_returned": 1,
+  "completed_epoch": 1791319352.4278631
+}

@@ -1,0 +1,20 @@
+{
+  "status": "ONLY_BOOT_TRANSPORT_CHANGED",
+  "changed_task_files": [
+    "environment/Dockerfile",
+    "environment/public_eval/dev_client.py"
+  ],
+  "added_task_files": [
+    "environment/public_eval/entrypoint.py"
+  ],
+  "removed_task_files": [],
+  "unchanged_frozen_files": 144,
+  "numerical_inputs_targets_baseline_reference_evaluator_worker_seeds_quality_gates_and_anchors_unchanged": true,
+  "prior_nop_trial_id": "1f74fedc-4c18-40fb-ab74-a12ec6e3b65b",
+  "current_boot_actor_image_id": "sha256:a2e3b84c5f0019c336ccdefb6304d35a1a9c3777201f1df1602b37740cd45311",
+  "purpose": "Make full Public/Dev available at stock container startup and wait for readiness; no new numerical algorithm or score rule. Long actors already ran this same protected service through their adapter.",
+  "stock_dev_proof": "expert_evidence/boot_transport/stock_dev/execution.json",
+  "current_version_requires_fresh_nop": true,
+  "evidence_role": "HISTORICAL_BOOT_V3; superseded by runtime_repairs/current_binding.json",
+  "current_final_version": false
+}

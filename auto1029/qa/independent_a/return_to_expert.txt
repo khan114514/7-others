@@ -1,0 +1,19 @@
+本次只读复核结论：NOT READY。公开Dev正式B/R五组证据和提升通过；Baseline在已交范围内合理，双轨保守有效时长各≥10h。请处理以下核心问题：
+
+C01：正式运行依赖 Compose、两个额外 broker 容器和 SSH 外部 GPU 后端；task.toml 却声明 gpus=0，不符合每 sandbox 单容器并直接使用自身 GPU 的当前合同。
+证据：workspace/harbor_task/environment/docker-compose.yaml:1；workspace/harbor_task/tests/docker-compose.yaml:1；workspace/host_adapter/heima_harbor_environment.py:217；workspace/host_adapter/heima_harbor_environment.py:223；workspace/host_adapter/heima_harbor_environment.py:228；workspace/host_adapter/evaluator_bridge.py:39；workspace/host_adapter/host_paths.py#gpu_command；workspace/harbor_task/task.toml:24
+修改：删除 environment/ 和 tests/ 直属 Compose 文件及外部 GPU/额外 broker 容器依赖；将可信推理、私有评分及候选隔离部署进各自单容器，用本 sandbox 分配的 GPU。
+验收：重交完整三目录包；给出单容器 Dockerfile、直接 GPU 配置、公开 Dev/私有 Verifier 实际调用、候选移交和有限 reward 记录。
+
+C02：任务声明并强制 no-network，配置 storage_mb=512；这些是当前内场明确不声明的约束，且适配器仅接受禁网策略。
+证据：workspace/harbor_task/task.toml:12；workspace/harbor_task/task.toml:18；workspace/harbor_task/task.toml:23；workspace/harbor_task/task.toml:27；workspace/host_adapter/heima_harbor_environment.py:74
+修改：移除 task.toml 的 storage_mb 与 no-network 声明，并按内场实际联网/资源能力同步题面、镜像和约束实现。
+验收：更新后的 TOML、题面和约束执行点；真实格式/GPU 脚本检查结果，以及目标平台接受的资源配置。
+
+C03：完整私有协议现有 NOP 的 GPU 活动为64740.009秒，独立 Verifier为66585.789秒；支持入口明确取消外层超时。该实际运行设计尚未满足完整单轮≤7200秒。
+证据：expert_evidence/native_harbor/current-nop/scorer-result.json#gpu_started_epoch,completed_epoch；expert_evidence/native_harbor/current-nop/result.json#verifier；expert_evidence/supported_invocation/README.md:17；workspace/operator/run_recover_private_native.py:173；workspace/harbor_task/task.toml:17
+修改：将完整评分设计纳入单轮≤7200秒预算并保留可中断的总超时；不要用 NoWallPrivateTrial 取消时限作为正常入口。若无法满足，向平台提交实测与明确例外申请。
+验收：同一最终入口的完整训练/推理、重载和评分耗时范围与资源说明；可中断时限配置及完整有限 reward。仅补换卡计时不要求当前自动重跑。
+
+非阻断待补：官方四项指纹、A100向H20/L20迁移影响及目标耗时、NOP文档/默认入口版本关联可后补；不单凭这些要求全量重跑。实际额外容器/远程GPU和取消时限的问题不属于放宽范围。
+本机无真实官方0.3.10工具；内容复核不冒称官方新版自检或平台通过。静态材料一致不等于独立复现；本次未运行提交代码、模型、Docker或训练。

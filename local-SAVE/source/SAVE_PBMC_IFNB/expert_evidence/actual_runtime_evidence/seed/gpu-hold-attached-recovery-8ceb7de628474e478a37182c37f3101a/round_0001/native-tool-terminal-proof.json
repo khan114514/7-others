@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "b160b7e859f043ade8a21458a1f1652bc3f6da8d99bc5e52b905b0d76b18f628",
+  "original_receipt_sha256": "6858a48fe776d6d70154c47566359703519988da3910a23d6d7a1647339f92f9",
+  "original_event_last_write_epoch": 1791773061.2464054,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"cat /workspace/solution/dev_result.json | python3 -c \\\"import sys,json; d=json.load(sys.stdin); print(f'MSE={d[\\\\\\\"raw_metric\\\\\\\"]:.6f}, Score={d[\\\\\\\"score\\\\\\\"]:.4f}')\\\"\"",
+      "original_command_sha256": "d95fc12de09738c708f9640a657431aec64c597a69951f8405a49aa97b06bb0b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "dba6d03f54ac4034d95d05ebb50172d0e2eae62eef1343a1362958a9a979bd8b",
+      "output_characters": 27
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v59_confirmed_best.py\ncp /workspace/solution/method.py /workspace/solution/method_v61_test.py'",
+      "original_command_sha256": "cc073814af106f16d31aa30f965fb705b7fde933ceb68f4eed4c039d730fe729",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 40744389,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1020676,
+        "reasoning_output_tokens": 133485
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

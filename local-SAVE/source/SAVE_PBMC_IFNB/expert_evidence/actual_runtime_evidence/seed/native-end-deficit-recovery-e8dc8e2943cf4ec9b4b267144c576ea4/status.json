@@ -1,0 +1,150 @@
+{
+  "lane": "seed",
+  "model": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "status": "FORMAL_RESEARCH_FAILED",
+  "preflight_only": false,
+  "effective_research_seconds": 33660.73937177658,
+  "preparation_time_reused": false,
+  "rounds": [
+    {
+      "index": 1,
+      "started_epoch": 1791736008.007628,
+      "completed_epoch": 1791736029.386983,
+      "elapsed_seconds": 21.37932012503734,
+      "native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+      "exit_code": 1,
+      "native_turn_closed": false,
+      "successful_command_count": 0,
+      "completed_command_count": 0,
+      "method_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+      "artifact_transfer": {
+        "bytes": 7820,
+        "sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9"
+      },
+      "effective_research_seconds": 0
+    }
+  ],
+  "container_stability_seconds": 7.949076707998756,
+  "stability_passed": false,
+  "environment_binding": {
+    "environment_id": "4c762958375f467e8dd637a1b5a36d0a",
+    "physical_role": "seed",
+    "session_id": "save-clock-deficit-seed-e8dc8e2943cf__env",
+    "container_id": "0a49660abeff9c348345b048a084c5e4c0e7e3d29c7575b240ff333c70605af7",
+    "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+    "queue_volume": "save-harbor-q-4c762958375f467e8dd637a1b5a36d0a",
+    "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+    "Agent_uses_private_verifier_log_shadow": true,
+    "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+    "declared_remote_gpus": 1,
+    "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+    "portable_runtime_sources": {
+      "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+      "seed_transport.py": "0011fc0e49aefb6f8e3a7e08f39ac2f7f092aa91cbe902c4f3363aafe1af6afa",
+      "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+      "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+      "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+      "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+      "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+      "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+    },
+    "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+    "author_oracle": false,
+    "native_container_GPU": false,
+    "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+    "trusted_read_only_cli_runtime": {
+      "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+      "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+      "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+      "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+      "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+    }
+  },
+  "runtime_files": {
+    "setup.py": "2f0330ce1af82f1180f0b782c7917799b6e7ae61cd8efba37b7a09fb48d2aa2c",
+    "config.toml": "77ac123fbe48df819e55f1e82d9ae529169d1cd76a5f3e4d15fe2853632ceae4"
+  },
+  "neutral_native_tool_protocol_sha256": "894f7d3f3496c7a3f0edf67cc26c001af846520b8d4ffe8940b54f21468cc595",
+  "previous_observed_12h_container_stability_proofs": [
+    {
+      "status_source": "<TASK_ROOT>/private/track-recovery-attached/4bf1320b1f0846af9607ca2dac841c43/seed-research-evidence/status.json",
+      "seconds": 43213.8560234278,
+      "environment_binding": {
+        "environment_id": "0fd2a9167d4e4b548d7bbd86fb226769",
+        "physical_role": "seed",
+        "session_id": "save-user-balance-seed-8f17436f163c__env",
+        "container_id": "bc38873a7e5b219ab22a6195c1984b1ed394f9f18f4c47fe21402e4c6250f7f5",
+        "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+        "queue_volume": "save-harbor-q-0fd2a9167d4e4b548d7bbd86fb226769",
+        "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+        "Agent_uses_private_verifier_log_shadow": true,
+        "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+        "declared_remote_gpus": 1,
+        "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+        "portable_runtime_sources": {
+          "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+          "seed_transport.py": "7725c1226401c45f3d9a5002fa40d30f60cbdf01cb4b7458ff95dd88046253e8",
+          "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+          "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+          "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+          "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+          "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+          "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+          "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+        },
+        "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+        "author_oracle": false,
+        "native_container_GPU": false,
+        "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+        "trusted_read_only_cli_runtime": {
+          "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+          "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+          "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+          "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+          "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+        }
+      }
+    }
+  ],
+  "best_valid_dev": {
+    "score": 0.5604382503275445,
+    "raw_metric": 0.0016073981951842792,
+    "method_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+    "source": "<TASK_ROOT>/private/native-end-deficit-recovery/e8dc8e2943cf4ec9b4b267144c576ea4/seed-research-evidence/recovered-own-evidence/method.py",
+    "evaluation_run_id": "f42be27c85964d2b84b1a19a065c9135"
+  },
+  "own_recovery": {
+    "previous_native_session": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+    "previous_failed_turn_credit_seconds": 0,
+    "native_session_lossless_resume": true,
+    "public_evaluation_run_id": "f42be27c85964d2b84b1a19a065c9135",
+    "method_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+    "container_stability_restarts_at_zero": true
+  },
+  "previous_raw_controller_effective_seconds_preserved": 36113.69209766388,
+  "prior_effective_research_seconds": 33660.73937177658,
+  "prior_state_source": "<TASK_ROOT>/private/track-closure-recovery/d9833a32c52c4647bc5cef08f3f1c82c/seed-research-evidence/status.json",
+  "restored_actual_native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+  "restored_actual_history": [
+    {
+      "path": "sessions/2026/10/10/rollout-2026-10-10T07-03-12-01a1249f-7656-7ca1-8889-a4c3070059a8.jsonl",
+      "sha256": "533d52c094f3c14d29bf650064423073f729a9612a814e7b90b45b53618d1d59",
+      "bytes": 49337516
+    }
+  ],
+  "native_session_lossless_resume": true,
+  "bounded_continuation_limits": {
+    "maximum_native_turns": 24,
+    "maximum_wall_seconds": 10800,
+    "automatic_retry_after_failed_native_turn": false
+  },
+  "started_epoch": 1791736006.687816,
+  "research_time_policy": "User 2026-10-10: normal actual development; exclude downloads, actual transport/queue stalls and idle stability waits; no AST-change or command-count prerequisite",
+  "independently_verified_effective_seconds": 33660.73937177658,
+  "failure_type": "ValueError",
+  "failure_reason": "Bounded clock-deficit native turn failed; retained evidence requires inspection"
+}

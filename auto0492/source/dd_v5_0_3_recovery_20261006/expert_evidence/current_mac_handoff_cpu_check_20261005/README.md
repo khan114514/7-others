@@ -1,0 +1,1 @@
+This is a source-transfer CPU diagnostic, not a NOP score or QA PASS. Stock Harbor 0.23.0 used separate containers. The diagnostic deliberately generated no reward or GPU evaluation; its preserved Trial terminates with RewardFileNotFoundError after the real source-transfer check succeeded. The full native original Trial is retained privately.

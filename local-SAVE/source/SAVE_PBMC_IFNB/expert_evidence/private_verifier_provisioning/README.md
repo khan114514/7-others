@@ -1,0 +1,1 @@
+可信 Verifier 私有注入材料。不得挂载或复制进 Agent context。其 SHA 与实际同版本 NOP 的安全注入相同；仅为专家本地校准 context，不声称平台官方 Hidden 已验收。使用 platform_adapter/inject_private_assets.py 注入新 native task 的 tests/，并核对 Actor environment 哈希不变。

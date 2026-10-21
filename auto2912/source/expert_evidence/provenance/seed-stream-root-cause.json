@@ -1,0 +1,16 @@
+{
+  "observed_iso": "2026-10-07T03:50:46.571330+08:00",
+  "failed_runtime": "forecast-research-seed-9d7a92d6__env",
+  "actual_orphan_request": "harbor-runtime/forecast-research-seed-9d7a92d6__env/routes/seed-bfd2d278c6414ecd93afd6bf88af0b64-route.json",
+  "cause": "Expired Actor request continued upstream streaming for1200s while holding per-lane lock; broker expiry prevented storage exhaustion but did not cancel its upstream connection",
+  "actual_queue_observation": {
+    "files": 0,
+    "available_bytes": 134217728
+  },
+  "repair": "330-second total host upstream budget; shutdown only owned response socket on expiry; reject already expired queued calls before opening API; preserve successful short stream events and honest errors",
+  "synthetic_deadline_test": "seed-stream-deadline-tests.json",
+  "actual_native_recovery": "seed-stream-repair-verified.json",
+  "metered_api_fallback": false,
+  "normal_work_or_task_anchors_reset": false,
+  "controller_probe_time_credit": 0
+}

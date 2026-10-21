@@ -1,0 +1,168 @@
+{
+  "schema_version": "autoresearch-run-result.v2",
+  "status": "VALID",
+  "role": "baseline",
+  "seed": 404,
+  "task_type": "non_training",
+  "formal": true,
+  "method": {
+    "source_path": "workspace/harbor_task/environment/starter/method.py",
+    "sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+  },
+  "protocol": {
+    "id": "hierarchical-valuation-cpu-v1",
+    "formal_seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "metric": "mean_case_method_seconds",
+    "direction": "minimize",
+    "repeats": 9,
+    "case_count": 6,
+    "quality_gates": {
+      "max_case_normalized_rmse": 0.01,
+      "min_case_spearman": 0.999,
+      "min_case_top_quartile_overlap": 0.98,
+      "finite_values": true
+    },
+    "resources": {
+      "cpus": 2,
+      "memory_mb": 2048,
+      "gpus": 0,
+      "candidate_case_timeout_sec": 60,
+      "total_public_eval_timeout_sec": 7200,
+      "submission_bytes": 1048576
+    },
+    "frozen_protocol_sha256": "032b884e3ba39ec42ced7b7eaba3ccb57220b549f0305b9978453ce0d56ce1f5"
+  },
+  "training": {
+    "status": "NOT_APPLICABLE",
+    "reason": "fixed embeddings; numerical valuation only"
+  },
+  "execution": {
+    "command": [
+      "docker",
+      "exec",
+      "--user",
+      "root",
+      "sava-authoring-baseline-1f81b778e297",
+      "python",
+      "-I",
+      "/opt/public_eval/evaluator.py",
+      "--method",
+      "/tmp/expert-method.py",
+      "--cases",
+      "/workspace/environment/public_assets/dev",
+      "--targets",
+      "/opt/public_eval/targets",
+      "--protocol",
+      "/opt/public_eval/protocol.json",
+      "--worker",
+      "/opt/public_eval/candidate_worker.py",
+      "--out",
+      "/opt/public_eval/results/authoring.json",
+      "--seed",
+      "404",
+      "--repeats",
+      "9"
+    ],
+    "commands": [
+      [
+        "docker",
+        "image",
+        "inspect",
+        "sava-actor:v1",
+        "--format",
+        "{{.Id}}"
+      ],
+      [
+        "docker",
+        "create",
+        "--name",
+        "sava-authoring-baseline-1f81b778e297",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "2g",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "SETUID",
+        "--cap-add",
+        "SETGID",
+        "--user",
+        "root",
+        "sava-actor:v1"
+      ],
+      [
+        "docker",
+        "cp",
+        "workspace/harbor_task/environment/starter/method.py",
+        "sava-authoring-baseline-1f81b778e297:/tmp/expert-method.py"
+      ],
+      [
+        "docker",
+        "start",
+        "sava-authoring-baseline-1f81b778e297"
+      ],
+      [
+        "docker",
+        "exec",
+        "--user",
+        "root",
+        "sava-authoring-baseline-1f81b778e297",
+        "python",
+        "-I",
+        "/opt/public_eval/evaluator.py",
+        "--method",
+        "/tmp/expert-method.py",
+        "--cases",
+        "/workspace/environment/public_assets/dev",
+        "--targets",
+        "/opt/public_eval/targets",
+        "--protocol",
+        "/opt/public_eval/protocol.json",
+        "--worker",
+        "/opt/public_eval/candidate_worker.py",
+        "--out",
+        "/opt/public_eval/results/authoring.json",
+        "--seed",
+        "404",
+        "--repeats",
+        "9"
+      ],
+      [
+        "docker",
+        "cp",
+        "sava-authoring-baseline-1f81b778e297:/opt/public_eval/results/authoring.json",
+        "optimization_evidence/baseline_runs/seed_404/measurement.json"
+      ]
+    ],
+    "started_at": "2026-10-09T11:08:06.809847+00:00",
+    "ended_at": "2026-10-09T11:09:12.157344+00:00",
+    "exit_code": 0,
+    "elapsed_seconds": 65.34752916700381,
+    "image_id": "sha256:dc79b3ac9f95bb7242fff42ffda63d92e7c78a3e1e4ee1b5b3d0c9043c11726d",
+    "cpus": 2,
+    "memory_mb": 2048,
+    "gpus": 0
+  },
+  "metrics": {
+    "mean_case_method_seconds": 0.523678173830073
+  },
+  "quality_gate": {
+    "passed": true,
+    "measurement_status": "ok"
+  },
+  "artifacts": {
+    "model": "NOT_APPLICABLE",
+    "measurement": "optimization_evidence/baseline_runs/seed_404/measurement.json",
+    "run_log_sha256": "816a1664e9df40749523b029bd3987afa0145768ee8b631f5de67ed54b38f54d"
+  },
+  "failure_reason": null
+}

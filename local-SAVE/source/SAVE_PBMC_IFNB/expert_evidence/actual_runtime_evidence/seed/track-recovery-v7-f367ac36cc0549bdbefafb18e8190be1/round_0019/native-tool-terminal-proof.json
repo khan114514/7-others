@@ -1,0 +1,97 @@
+{
+  "original_event_sha256": "ae3042ae6caebcbb0b20a0a552e389ef789244757092413ab9fabceb4160df38",
+  "original_receipt_sha256": "f66c96c783669391204f9305fc6705a510684e8a47376daa3084bf70eed37335",
+  "original_event_last_write_epoch": 1791672802.4995544,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5f9bb1986df6d9eb4a328d415bd1b9a9932c0d048945c9133418097ae4450727",
+      "output_characters": 5670
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md'",
+      "original_command_sha256": "efd671e59f5c8de5dda39f72671e3a2e4597a0f03af3ed277868f73124dbb9c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b017c014b2b21b019bbbf72316e0818192c26fc1339aac1e908e65b6f26dd745",
+      "output_characters": 2297
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /workspace/tests/anchors.json'",
+      "original_command_sha256": "e4bb87f08d05c4c98cd8e518edb9f2c159f3285d90c8e971f745ddbeb2390832",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "1dd4eeeb616d0e04a10ef09d0f6728417dc9dad6c9ce2b44126ed326058274ca",
+      "output_characters": 62
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'ls /workspace/tests/'",
+      "original_command_sha256": "c19f972905af54aec60b8ac2de3b5644856dc83ae59922d638d0d9604de8f702",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 2,
+      "output_sha256": "27074f3245d621fc1c7b85ccc7f72997ed3bf2f20d5cceeb1c0f2d1cbe7ab130",
+      "output_characters": 65
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'find / -name \"anchors.json\" 2>/dev/null; find / -name \"protocol.json\" 2>/dev/null'",
+      "original_command_sha256": "ac62982c009f96a19bae762ae72eed72c1db1ef9437cf910da01a1f6480b5b76",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "55ac9b14df9f67c7acec533eaeb1e994d82cf051cebd4c0f618ebf409690ebfd",
+      "output_characters": 41
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'cat /tests/anchors.json; echo \"---\"; cat /tests/protocol.json'",
+      "original_command_sha256": "1abb23dcec02fa560007931da802db5e2a844b05ba05b4534977334e949c6a33",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ff1cf0c23eacce16adbedf1b5df59a0367f9fc5a3faf3591deaf8948adb3ecee",
+      "output_characters": 529
+    },
+    {
+      "id": "item_12",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method_v20_best.py'",
+      "original_command_sha256": "9e5bbbcdbfbad096421d72f4d86304ab8b99d29088bbe2fef6cf1781503a2909",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4ec872b0a2ce359b55308d9540682d9a250f8a90f4032d87af0d8976ac1a2dde",
+      "output_characters": 5181
+    },
+    {
+      "id": "item_14",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method_v29_best.py'",
+      "original_command_sha256": "8eb63931b1609813c1570e45ded999bf723210de68d1837781b654e997521983",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a59b8bb7aea5548ac5ae4a993ef9cfab5f42994a7a9a52b2f1968ec25fd79252",
+      "output_characters": 5442
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 23577361,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 720140,
+        "reasoning_output_tokens": 84559
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

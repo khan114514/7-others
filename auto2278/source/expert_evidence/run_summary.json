@@ -1,0 +1,167 @@
+{
+  "task_id": null,
+  "status": "COMPLETE_RESEARCH_CLEAN_VERIFICATION_READY_FOR_INDEPENDENT_ZIP_QA",
+  "agent_execution": [
+    {
+      "runtime": "Codex",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh",
+      "duration_hours": 10.102225980594339,
+      "effective_rounds": 59,
+      "status": "complete_with_actual_separate_Harbor_verifier",
+      "target_duration_hours": 10,
+      "duration_precision": "auditable_lower_bound; separate relaxed total retains historical estimates",
+      "current_campaign_best_raw": 0.40776985324241416,
+      "current_campaign_best_normalized": 0.6180682082916052,
+      "current_checkpoint_sha256": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0",
+      "auditable_lower_bound_hours": 10.102225980594339,
+      "relaxed_total_estimate_hours": 14.650887705150591,
+      "relaxed_total_precision": "estimate: old partial CLI logs were discarded; any unobserved stall cannot be precisely deducted; native GPT network errors observed without per-event timestamps, stall durations remain unquantified",
+      "final_harbor_reward": 0.618516165628315,
+      "completed_trial_evidence": "raw_evidence/campaigns/asd-research-1791486012/harbor_task__VqWxhgD/result.json"
+    },
+    {
+      "runtime": "Codex",
+      "model": "doubao-seed-2-1-turbo-260628",
+      "reasoning_effort": "high",
+      "duration_hours": 10.007259767538834,
+      "effective_rounds": 8,
+      "status": "complete_with_actual_separate_Harbor_verifier",
+      "provider": "Volcano Coding Plan",
+      "upstream_credential_in_actor": false,
+      "target_duration_hours": 10,
+      "duration_precision": "auditable_lower_bound; separate relaxed total retains historical estimates",
+      "dev_best_normalized": 0.5776887967309667,
+      "current_campaign_best_raw": 0.4585268656136524,
+      "current_checkpoint_sha256": "f9c50ae82fa78fec20154e6e7653e43127b8376bddc73a4b3a85c238ee960602",
+      "current_campaign_best_normalized": 0.570527379751768,
+      "final_harbor_reward": 0.571517183527042,
+      "completed_trial_evidence": "raw_evidence/campaigns/asd-research-1791486043/harbor_task__5USBxwx/result.json",
+      "completed_round29_evidence": "raw_evidence/preflight/seed-round29-completed-method-evidence.json",
+      "auditable_lower_bound_hours": 10.007259767538834,
+      "relaxed_total_estimate_hours": 18.061537755899547,
+      "relaxed_total_precision": "estimate: old partial CLI logs were discarded; any unobserved stall cannot be precisely deducted; failed-request ordinary waiting included by relaxed user policy, no assertion that every included second is model computation"
+    }
+  ],
+  "fast_iteration_exception": {
+    "used": false,
+    "non_training": true,
+    "evidence": "Default ten-hour gate used; earlier seven-hour delivery shortcut superseded by the latest direct request for full Skill PASS."
+  },
+  "validation": {
+    "baseline_passed": true,
+    "reference_passed": true,
+    "optimization_evidence_complete": true,
+    "best_method_rerun_passed": true,
+    "public_dev_nonroot_passed": true,
+    "nop_current_version_passed": true,
+    "stability_observed_hours": 12.002824878439998,
+    "stability_12h_passed": true,
+    "stability_evidence": "stability_v023/result.json",
+    "seed_protocol_recovery_evidence": "raw_evidence/preflight/seed-actual-orphan-recovery-round18.json"
+  },
+  "image": "asd-attention-agent:v023",
+  "campaign_source": "campaigns/asd-research-1791425440",
+  "time_accounting_policy": "user_amended_active_execution_v2_relaxed",
+  "time_accounting_evidence": "active_time_recalculation.json",
+  "time_accounting_cutoff": "2026-10-09 08:39:21",
+  "monitor_automation_id": "autoresearch",
+  "delivery_deadline": {
+    "local": "2026-10-08 20:00:00",
+    "timezone": "Asia/Shanghai",
+    "utc": "2026-10-08T12:00:00Z",
+    "quality_gates_preserved": true
+  },
+  "campaign_sources": {
+    "gpt": "campaigns/asd-research-1791486012",
+    "seed": "campaigns/asd-research-1791486043"
+  },
+  "time_accounting_controller_cache_caveat": "Historical controllers cached v1 labels are preserved. Current GPT continuation loads authoritative v2 at its completed round boundary; new runtime initial zeros do not erase prior own-history time.",
+  "trajectory_status": {
+    "gpt": "FINAL_RECORDED_TRAJECTORY",
+    "seed": "FINAL_RECORDED_TRAJECTORY"
+  },
+  "seed_original_evidence_manifest": "raw_evidence/manifest_seed.json",
+  "current_best_observation_caveat": "Unique winner chosen by all frozen public seeds in fresh serial containers; both historical and new noisy observations preserved.",
+  "guard_repair_evidence": "../../preflight/gpt-reverted-candidate-guard-regression-20261008.json",
+  "current_gpt_controller_timing": "new controller imports v2 relaxed accounting; prior original v1 label preserved",
+  "user_duration_amendment": {
+    "requested_unix": 1791452422.59916,
+    "requested_hours": 7,
+    "source": "direct human request: 你直接质检吧，就说7小时就够",
+    "actual_duration_records_preserved": true,
+    "qa_exception_eligibility_to_be_independently_reviewed": true,
+    "superseded_by_latest_full_qa_request": true
+  },
+  "auditable_time_evidence": "auditable_time_lower_bound.json",
+  "primary_relaxed_policy_unchanged": true,
+  "user_requested_research_budget_hours": 10,
+  "duration_reporting_note": "duration_hours is the completed-session auditable lower bound. relaxed_total_estimate_hours preserves the user-amended primary estimate. Historical uncertainty is withheld only from the secondary floor; it is not declared to be a stall. QA sessions and stopped gaps are not research time.",
+  "delivery_best_method": {
+    "status": "CLEAN_BEST_METHOD_VERIFIED",
+    "metric": "relative_process_cpu_time",
+    "seed_set": [
+      17,
+      29,
+      43,
+      71,
+      101
+    ],
+    "all_raw_results": {
+      "gpt": [
+        0.4368340479330334,
+        0.41881910989256516,
+        0.4360539741274183,
+        0.42135780553900937,
+        0.42676843583456575
+      ],
+      "seed": [
+        0.43297756806782406,
+        0.4601873802077222,
+        0.5371541151745391,
+        0.4548448424879079,
+        0.5163461617313083
+      ]
+    },
+    "mean_raw_results": {
+      "gpt": 0.4279666746653184,
+      "seed": 0.4803020135338603
+    },
+    "selected_track": "gpt",
+    "source_sha256": {
+      "gpt": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0",
+      "seed": "f9c50ae82fa78fec20154e6e7653e43127b8376bddc73a4b3a85c238ee960602"
+    },
+    "source_provenance": {
+      "gpt": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/best_method.py",
+      "seed": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/best_method.py"
+    },
+    "selection_rule": "Lowest mean public ratio across all frozen seeds; Hidden not used to choose the winner.",
+    "trajectory_gates": {
+      "gpt": {
+        "effective_hours": 14.650887705150591,
+        "completed_method_cycles": 59
+      },
+      "seed": {
+        "effective_hours": 18.061537755899547,
+        "completed_method_cycles": 8
+      }
+    },
+    "best_method": "expert_evidence/best_method/method.py",
+    "clean_dev_raw": 0.4187087604867304,
+    "clean_dev_score": 0.607822437521813,
+    "clean_hidden_raw": 0.40314299028368433,
+    "clean_hidden_score": 0.6214121096023081,
+    "public_image": "sha256:e4fcf15ac3eb2f802ad27febeb4159866df1ca4dc94b11c4ee2e7178277bb90b",
+    "hidden_image": "sha256:b38da4ae2936b563cbcec0f5a75ad1fb487518b7c8f0afe947e09f805da92fc7",
+    "final_method_sha256": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0",
+    "portable_method_sha256": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0",
+    "original_source_sha256": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0"
+  },
+  "independent_zip_qa": {
+    "status": "pending_report_attachment",
+    "completed_fresh_ai_sessions": 0
+  },
+  "delivery_note": "Actual completed research and fresh best-method verification. This exact ZIP still requires two independent fresh release reviews; no QA PASS or platform acceptance is claimed here.",
+  "real_receipt_validation_evidence": "raw_evidence/preflight/trusted-receipts-real-rounds26-27.json"
+}

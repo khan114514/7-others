@@ -1,0 +1,234 @@
+{
+  "type": "result",
+  "execution_status": "COMPLETED",
+  "profile": "dev",
+  "is_formal_protocol": false,
+  "layer_count": 28,
+  "dtype": "bfloat16",
+  "steps": 32,
+  "records": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 6869.2623291015625,
+      "candidate_total_ms": 1836.6351470947266,
+      "worst_relative_rmse": 0.11247575283050537,
+      "worst_scaled_max_abs": 0.15469858050346375
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 6911.381484985352,
+      "candidate_total_ms": 1865.0675201416016,
+      "worst_relative_rmse": 0.009991548024117947,
+      "worst_scaled_max_abs": 0.013812154531478882
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 6936.6517333984375,
+      "candidate_total_ms": 1852.5460510253906,
+      "worst_relative_rmse": 0.010102914646267891,
+      "worst_scaled_max_abs": 0.015463917516171932
+    }
+  ],
+  "per_case": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "baseline_ms": 6869.2623291015625,
+      "candidate_ms": 1836.6351470947266
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "baseline_ms": 6911.381484985352,
+      "candidate_ms": 1865.0675201416016
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "baseline_ms": 6936.6517333984375,
+      "candidate_ms": 1852.5460510253906
+    }
+  ],
+  "per_seed": [
+    {
+      "sampling_seed": 101,
+      "case_count": 1,
+      "baseline_ms": 6869.2623291015625,
+      "candidate_ms": 1836.6351470947266
+    },
+    {
+      "sampling_seed": 202,
+      "case_count": 1,
+      "baseline_ms": 6911.381484985352,
+      "candidate_ms": 1865.0675201416016
+    },
+    {
+      "sampling_seed": 303,
+      "case_count": 1,
+      "baseline_ms": 6936.6517333984375,
+      "candidate_ms": 1852.5460510253906
+    }
+  ],
+  "final_quality": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "relative_rmse": 1.2238649129867554,
+      "scaled_max_abs": 0.6930969953536987
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "relative_rmse": 0.07857152819633484,
+      "scaled_max_abs": 0.08104395866394043
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "relative_rmse": 0.11424568295478821,
+      "scaled_max_abs": 0.13611111044883728
+    }
+  ],
+  "source_alignment": [
+    {
+      "case": 0,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 1,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 2,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    }
+  ],
+  "quality_pass": false,
+  "baseline_identity": false,
+  "reward": -1.0,
+  "baseline_mean_ms": 6905.765182495117,
+  "candidate_mean_ms": 1851.416239420573,
+  "baseline_sample_sd_ms": 34.04394356002663,
+  "latency_improvement_ms": 5054.348943074544,
+  "noise_3sigma_pass": true,
+  "peak_cuda_allocated_bytes": 29575910912,
+  "gpu_uuid": "<assigned-accelerator>",
+  "torch_version": "2.5.1+cu121",
+  "compilation_observations": {
+    "schema": "bifrost-tensor-dag/2",
+    "region_count": 3,
+    "compiled_variant_count": 3,
+    "first_invocations": [
+      {
+        "region": "frequency_prefix_compiled",
+        "first_invocation_wall_seconds": 4.787715604994446,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      },
+      {
+        "region": "image_qk_projection_rotary_compiled",
+        "first_invocation_wall_seconds": 1.0777710671536624,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      },
+      {
+        "region": "image_mlp_compiled",
+        "first_invocation_wall_seconds": 0.5180444219149649,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      }
+    ],
+    "first_invocation_wall_is_not_net_research_credit": true
+  },
+  "compilation_disposable_warmup_observations": [
+    {
+      "case": 0,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [
+        {
+          "region": "frequency_prefix_compiled",
+          "first_invocation_wall_seconds": 4.787715604994446,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        },
+        {
+          "region": "image_qk_projection_rotary_compiled",
+          "first_invocation_wall_seconds": 1.0777710671536624,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        },
+        {
+          "region": "image_mlp_compiled",
+          "first_invocation_wall_seconds": 0.5180444219149649,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        }
+      ],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    },
+    {
+      "case": 1,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    },
+    {
+      "case": 2,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    }
+  ],
+  "compilation_preparation_not_research_credit": true,
+  "queue_seconds": 0.08453124389052391,
+  "cuda_weight_load_seconds": 25.092485253699124,
+  "active_evaluation_seconds": 41.223130523227155,
+  "input_sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+  "formal_trajectory_effective_seconds": 0,
+  "timing_scope": "Sum of256 decoder forward events:28 layers, final norm and head. Frozen CFG/reveal/input preparation, quality diagnostics, loading and queueing are excluded equally.",
+  "canonical_semantics": "cosine reveal and per-patch CFG4; shared-oracle paired prediction replay plus autonomous candidate final-latent check; no FLUX renderer claim",
+  "run_id": "af36fb95b28941838bfedb9c822f4e93",
+  "worker_id": "8548637e319c40d1abd10c0a82648495",
+  "artifact_sha256": "2da4ecea7b2ca82dd7c672bca484f08c86badc5af150f56b5161a983ad655524",
+  "started_epoch": 1791769783.8001473,
+  "completed_epoch": 1791769851.5328453,
+  "source_binding_sha256": "6e2468b39aeadcd07e4bdae64218d187bc4be1fee61d7990ed6dddcdb4b878fb",
+  "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+  "gpu_after_release": "<assigned-accelerator>, 0",
+  "child_pid": 1325,
+  "child_exit_code": 0,
+  "parent_cuda_context_initialized": false
+}

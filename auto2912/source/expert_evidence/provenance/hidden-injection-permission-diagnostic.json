@@ -1,0 +1,94 @@
+{
+  "observed_epoch": 1791334064.9560719,
+  "prior_native_digest_probe_retained_in_tool_record": true,
+  "results": [
+    {
+      "operation": "run fixed base image with actual cap restrictions",
+      "returncode": 0,
+      "stdout": "5a45683e155277df2d7a37eb89b5152a809a3d17838ba4a78f45c36919ad43be\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "exec",
+        "-u",
+        "root",
+        "forecast-hidden-permission-diagnostic-2912",
+        "mkdir",
+        "-p",
+        "/tests/hidden_assets"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "cp",
+        "<TASK_SOURCE_ROOT>/private/post-selection-hidden-kit/protocol.json",
+        "forecast-hidden-permission-diagnostic-2912:/tests/hidden_assets/protocol.json"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "exec",
+        "-u",
+        "root",
+        "forecast-hidden-permission-diagnostic-2912",
+        "stat",
+        "-c",
+        "%u %g %a %n",
+        "/tests/hidden_assets/protocol.json"
+      ],
+      "returncode": 0,
+      "stdout": "501 20 644 /tests/hidden_assets/protocol.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "exec",
+        "-u",
+        "root",
+        "forecast-hidden-permission-diagnostic-2912",
+        "chmod",
+        "600",
+        "/tests/hidden_assets/protocol.json"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "chmod: changing permissions of '/tests/hidden_assets/protocol.json': Operation not permitted\n"
+    },
+    {
+      "argv": [
+        "exec",
+        "-u",
+        "root",
+        "forecast-hidden-permission-diagnostic-2912",
+        "chown",
+        "0:0",
+        "/tests/hidden_assets/protocol.json"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "exec",
+        "-u",
+        "root",
+        "forecast-hidden-permission-diagnostic-2912",
+        "chmod",
+        "600",
+        "/tests/hidden_assets/protocol.json"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "model_seconds_added": 0
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "entrypoint": "method.py:draft(state)",
+  "algorithm": {
+    "name": "Question-independent verified structural drafting, cap8",
+    "source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "interface": "Public committed integer history; bounded by min(8,32,remaining_tokens,maximum_draft_tokens). Malformed states abstain.",
+    "strategy": "Exact 36-ID opening match; no semantic conclusion prediction; complete observed closing after two committed closing IDs. Stateless across questions.",
+    "provenance": "Invariant markup fit only to own real observations0..11; no question/label/answer lookup. Trusted target verifies every ID."
+  },
+  "retained_evidence": {
+    "job_id": "c3f9b592af3f4292b966d62e92c9f19e",
+    "protocol": "96 public Dev questions x seeds17,29,43,71,101",
+    "latency_ratio": 0.42642933194274285,
+    "development_normalized_score": 0.5736291212273931,
+    "token_agreement_each_seed": 1,
+    "answer_agreement_each_seed": 1,
+    "all_quality_gates_pass": true,
+    "candidate_forward_calls": 7754,
+    "calibration_forward_calls": 20480,
+    "candidate_guard_replays": 58,
+    "candidate_extra_sampled_ids": 1964,
+    "acceptance_fraction": null,
+    "acceptance_limit": "Per-proposal acceptance and guard positions are not exported. Work counts cannot identify an acceptance rate.",
+    "analysis": "gpu_live_research/structure8_refreshed_analysis.json",
+    "raw_result": "evaluation-c3f9b592af3f4292b966d62e92c9f19e.json",
+    "refreshed_raw_sha256": "01956b78d70c81623cde14f312fd458422e150f20bd87b8370ede31d3932b314",
+    "restored_bundle_sha256": "db85929d3147b4057d213cb4ef0c4d9a29897939bd72d618f75fd1690a1c2b36",
+    "independent_final_verifier_score": null
+  },
+  "history": {
+    "exact_original_metadata_archive": "gpu_live_research/method_notes_before_boundary_experiment.json",
+    "original_metadata_bytes": 68068,
+    "original_sha256": "e33c8a2296f256a0b592bc516991611103b443dbfe67e3e823964a355dc6e87d",
+    "journal": "research_journal.md",
+    "slower_valid_reuse": "real_prefix_gpu_preparation/candidates/incumbent/method.py",
+    "slower_valid_reuse_full_ratio": 1.000535779857341,
+    "unscored_rejected_ablations": "Opening-only cap8 and cap4 sources, tickets and rejections remain preserved. No target scores exist for rejected submissions.",
+    "cpu_evidence": "Authored streams and counterfactual schedules are simulations, never target-model outputs or scores."
+  },
+  "current_experiment": {
+    "hypothesis": "Block verification crossing observed placeholder IDs may contribute to replay overhead. Ending drafts before those IDs and requesting ordinary steps there trades extra calls against possible fewer guards.",
+    "variant": "boundary_ordinary8",
+    "source": "gpu_live_research/boundary_ordinary8.py.source",
+    "source_sha256": "4bfa3798010493e92e121890f808f26a2fc0bb4cffe3fee1fa85eae97fb284e5",
+    "job_id": "9c21b590fa414714b23fb6738c93d9ed",
+    "status": "Quick submission and saved-ticket status query rejected before target execution.",
+    "actual_feedback": "Evaluator request rejected; check your own job ticket and public submission contract",
+    "target_acceptance": null,
+    "target_latency_ratio": null,
+    "target_quality": null,
+    "target_score": null,
+    "validation": "gpu_live_research/boundary_validation.json:5321 checks passed; real-prefix agreement is not target acceptance.",
+    "logs": "gpu_live_research/boundary_quick_submit.stdout/.stderr and boundary_quick_status.stdout/.stderr",
+    "sensitivity": "gpu_live_research/boundary_mask_sensitivity.json: authored schedules over own24 real outputs. All-three boundaries add120 calls without bonus or48 with bonus; middle-only adds24 or0. Not measured GPU latency.",
+    "revision": "gpu_live_research/boundary_caption_only8.py.source: isolate only observed middle placeholder at position15;5321 contract checks pass. SHA256 ab9bb52738aad0184d370a00f09012bacdaca00642817f61c437e85ab1b1388f. Unsubmitted and unscored.",
+    "decision": "Restore exact full-validated structure8 and its evaluated63-file bundle. Preserve rejected all-boundaries variant; prioritize narrower middle-only hypothesis after service recovery. No promotion from simulations.",
+    "next_experiment": "First python /opt/latentcli/evaluate.py --status 9c21b590fa414714b23fb6738c93d9ed. If an accepted job exists, finish it without duplicate submission. Only after submission recovery and no unfinished owned job: python gpu_live_research/boundary_experiment.py.source stage gpu_live_research/boundary_caption_only8.py.source; python /opt/latentcli/evaluate.py --quick. Save receipt/ticket, query owned job, analyze real result with boundary_experiment.py.source analyze RESULT; restore via boundary_experiment.py.source restore. Compare seed17 normalized ratio, guards, forwards, extra sampled IDs and quality; require full fixed seeds17,29,43,71,101 before any promotion."
+  },
+  "campaign": {
+    "status": "Continuing; this turn is a checkpoint.",
+    "required_effective_seconds_per_track": 36000,
+    "duration_authority": "Trusted external CLI activity ledger only. Local historical hour estimates are unverified. GPU queues, provider errors, stalls and infrastructure recovery excluded."
+  }
+}

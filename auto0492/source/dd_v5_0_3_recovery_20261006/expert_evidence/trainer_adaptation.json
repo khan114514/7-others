@@ -1,0 +1,72 @@
+{
+  "protocol": "dd-selfproto-v1.3",
+  "official_training_code": false,
+  "note": "Independently reimplemented trainer. The FM RNG now uses the documented CPU stream; old scores are historical only.",
+  "files": [
+    {
+      "file": "generate_pairs.py",
+      "original_sha256": "88b0b0a191e6e504db466fbe5e631d330ac24956d80112c95d579caaf10594e5",
+      "adapted_sha256": "068158b640d80c52afca9f7bac24cc2f1c179566af842e870279339164519ce3",
+      "changes": [
+        "accept supported custom weighting alongside uniform"
+      ]
+    },
+    {
+      "file": "teacher_filter.py",
+      "original_sha256": "e9361018ec5b5c3caf93a1d6389d3e21c5a70bf1b149820ed805597128676272",
+      "adapted_sha256": "093732abe7fd0a9a114a4a78cbf876df71e78f44d1fa06e4015e124378c6dd0e",
+      "changes": [
+        "read-only perceptual cache"
+      ]
+    },
+    {
+      "file": "exact_state_storage.py",
+      "original_sha256": "fa2b196c417aa8a7f748f502a67949b43acffb0dd771edf9de6423ef8088302e",
+      "adapted_sha256": "e7e5e7e728513e04c0104394b40b5bd700f901773cc00565764ec33c422b364c",
+      "changes": [
+        "correct budget attribution metadata; supervisor includes the whole stage wall time"
+      ]
+    },
+    {
+      "file": "common.py",
+      "original_sha256": "3a43e26ea612a64738ac284dc99ccab4be4c36aaead9ef9d8e94ebe15965cd65",
+      "adapted_sha256": "19fa18ae67870a6a493521fada7665731609bf48eda9431e09a9f82d083722c2",
+      "changes": [
+        "deployment paths",
+        "supervisor preflight",
+        "isolated method RPC",
+        "read-only cache"
+      ]
+    },
+    {
+      "file": "rectified_categorical.py",
+      "original_sha256": "21da7273fe07fff33f7a45044da84d438e2a3911d7203d4eeb2571a25c741d87",
+      "adapted_sha256": "21da7273fe07fff33f7a45044da84d438e2a3911d7203d4eeb2571a25c741d87",
+      "changes": []
+    },
+    {
+      "file": "train_student.py",
+      "original_sha256": "3e9c3720685c400f71fec6a4870930ad7a65cfba3d8c9e25f78e6a8f74d4647d",
+      "adapted_sha256": "14659dc06abfe2156b9f92c03f92b9d0fd294aa649f4ba39e6c0c82cc71781ea",
+      "changes": [
+        "deployment paths",
+        "frozen warm initialization",
+        "CPU FM random stream",
+        "source-relative provenance",
+        "checked relative teacher weighting; uniform path preserves original loss operations"
+      ]
+    },
+    {
+      "file": "vendor/LICENSE",
+      "original_sha256": "693378843155d13360f60d83cbcca16c8c032a391c46e66ce67c5562191bea83",
+      "adapted_sha256": "693378843155d13360f60d83cbcca16c8c032a391c46e66ce67c5562191bea83",
+      "changes": []
+    },
+    {
+      "file": "vendor/dpm_solver_pytorch.py",
+      "original_sha256": "673c59fd6ec4ce40f339d7335bc00711552cf87ea15acfa3548f5dcca026d9d2",
+      "adapted_sha256": "673c59fd6ec4ce40f339d7335bc00711552cf87ea15acfa3548f5dcca026d9d2",
+      "changes": []
+    }
+  ]
+}

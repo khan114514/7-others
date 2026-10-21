@@ -1,0 +1,50 @@
+{
+  "checked_unix": 1791425676.5917408,
+  "track": "gpt",
+  "round": 4,
+  "type": "independent completed method cycle",
+  "own_resume_evidence": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/resume-provenance.json",
+  "method_change": "shared Cholesky exact norm contractions with triangular blocks, batch-contiguous projections and direct norm fallback",
+  "candidate_sha256": "97bac75f416830f9f95313a56403522023695546c9ee82b59f9057fc99a7a20b",
+  "candidate_source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/private_candidate_sources/round_00004.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.44605655275163075,
+      "score": 0.5822075196558937,
+      "quality_gates_passed": true,
+      "method_sha256": "97bac75f416830f9f95313a56403522023695546c9ee82b59f9057fc99a7a20b",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791424835.9415019,
+      "end_unix": 1791425084.0133526
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.4453050286907332,
+    "score": 0.5829114239018997,
+    "quality_gates_passed": true,
+    "method_sha256": "97bac75f416830f9f95313a56403522023695546c9ee82b59f9057fc99a7a20b",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791425243.5672104,
+    "end_unix": 1791425482.2168043
+  },
+  "model_final_decision": {
+    "policy_name": "shared_cholesky_norms_batched_projection",
+    "method_summary": "Implemented shared Cholesky norm calculations with triangular blocks, batch-contiguous projections and a direct fallback for failed factorization. Protected Dev evaluation passed all gates with raw CPU ratio 0.446056553, score 0.582207520 and maximum error 5.01e-6; retained over the previous ratio 0.568607093.",
+    "next_direction": "Optimize norm contractions for moderate head counts, which remain the slowest public case."
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791424462.411615,
+    "ended_unix": 1791425240.460765,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "original_events": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00004.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": true,
+  "performance_caveat": "Improved over this continuation initial ratio0.56860709; old own best observation0.42985759 was on a different method/run. Unique final best still needs clean repeat comparison."
+}

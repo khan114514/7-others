@@ -1,0 +1,129 @@
+Round 4: t0-importance time sampling + level balanced loss
+Start: 2026-10-03 05:52:11
+Teacher samples: reused from round03 (50k, cfg=1.5)
+
+=== Training: t0_importance time sampling ===
+Start: 2026-10-03 05:53:26
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:3E:00.0 Off |                    0 |
+| N/A   46C    P0            266W /  250W |    7993MiB /  40960MiB |     38%      Default |
+|    0   N/A  N/A           94989      C   ...ind-data/venvs/dd1/bin/python          0MiB |
+[train_dd] Loading teacher samples...
+[train_dd] Loaded 50000 teacher samples from 10 shards
+[train_dd] Sequence shape: torch.Size([50000, 680, 32]), patch_nums: (1, 2, 3, 4, 5, 6, 8, 10, 13, 16)
+[train_dd] Building DD model (depth=16)...
+
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+[init_weights] DD_Model with init_std=0.0180422
+[train_dd] Initializing DD from teacher weights...
+
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+[init_weights] VAR with init_std=0.0180422
+[train_dd] Loaded teacher state dict directly
+[train_dd] 10 time levels, t in 0..9
+[train_dd] Level token counts: [680, 679, 675, 666, 650, 625, 589, 525, 425, 256]
+[train_dd] Moving teacher data to GPU...
+[train_dd] Starting training for 30000 steps (budget 2.7h)...
+[train_dd] bs=8, lr=0.0001, time_sampler=t0_importance, loss=mse_ce, ce_w=0.1
+historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR/models/dd.py:109: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=False):
+[train_dd] step     0/30000 | loss=1.4547 (mse=0.3954, ce=10.5927) | avg_t=2.1 | 0.2min
+[train_dd] step   100/30000 | loss=0.8486 (mse=0.0221, ce=8.1773) | avg_t=0.1 | 0.7min
+[train_dd] step   200/30000 | loss=0.8304 (mse=0.0219, ce=8.0552) | avg_t=0.5 | 1.2min
+[train_dd] step   300/30000 | loss=0.8282 (mse=0.0223, ce=8.0708) | avg_t=0.6 | 1.7min
+[train_dd] step   400/30000 | loss=0.8272 (mse=0.0210, ce=8.0379) | avg_t=0.6 | 2.2min
+[train_dd] step   500/30000 | loss=0.8263 (mse=0.0203, ce=7.9931) | avg_t=0.5 | 2.7min
+[train_dd] step   600/30000 | loss=0.8257 (mse=0.0215, ce=8.0465) | avg_t=2.6 | 3.2min
+[train_dd] step   700/30000 | loss=0.8254 (mse=0.0205, ce=8.0010) | avg_t=2.5 | 3.7min
+[train_dd] step   800/30000 | loss=0.8254 (mse=0.0205, ce=8.0777) | avg_t=0.2 | 4.2min
+[train_dd] step   900/30000 | loss=0.8244 (mse=0.0213, ce=8.0705) | avg_t=0.4 | 4.7min
+[train_dd] step  1000/30000 | loss=0.8245 (mse=0.0223, ce=8.0860) | avg_t=2.4 | 5.2min
+[train_dd] step  1100/30000 | loss=0.8245 (mse=0.0208, ce=8.0495) | avg_t=2.0 | 5.7min
+[train_dd] step  1200/30000 | loss=0.8242 (mse=0.0218, ce=8.0425) | avg_t=4.1 | 6.2min
+[train_dd] step  1300/30000 | loss=0.8238 (mse=0.0210, ce=8.0304) | avg_t=1.1 | 6.7min
+[train_dd] step  1400/30000 | loss=0.8232 (mse=0.0205, ce=8.0221) | avg_t=1.0 | 7.2min
+[train_dd] step  1500/30000 | loss=0.8235 (mse=0.0203, ce=8.0813) | avg_t=2.1 | 7.7min
+[train_dd] step  1600/30000 | loss=0.8231 (mse=0.0214, ce=8.0605) | avg_t=2.0 | 8.2min
+[train_dd] step  1700/30000 | loss=0.8228 (mse=0.0211, ce=8.0253) | avg_t=1.8 | 8.6min
+[train_dd] step  1800/30000 | loss=0.8228 (mse=0.0206, ce=7.9859) | avg_t=1.8 | 9.2min
+[train_dd] step  1900/30000 | loss=0.8227 (mse=0.0208, ce=8.0553) | avg_t=1.0 | 9.8min
+[train_dd] step  2000/30000 | loss=0.8224 (mse=0.0199, ce=8.0067) | avg_t=1.5 | 10.5min
+[train_dd] step  2100/30000 | loss=0.8220 (mse=0.0195, ce=7.9981) | avg_t=0.4 | 11.1min
+[train_dd] step  2200/30000 | loss=0.8220 (mse=0.0209, ce=8.0107) | avg_t=3.6 | 11.7min
+[train_dd] step  2300/30000 | loss=0.8219 (mse=0.0195, ce=7.9922) | avg_t=0.5 | 12.3min
+[train_dd] step  2400/30000 | loss=0.8211 (mse=0.0190, ce=8.0078) | avg_t=1.5 | 12.9min
+[train_dd] step  2500/30000 | loss=0.8209 (mse=0.0205, ce=8.0130) | avg_t=1.6 | 13.3min
+[train_dd] step  2600/30000 | loss=0.8212 (mse=0.0205, ce=8.0299) | avg_t=1.1 | 14.0min
+[train_dd] step  2700/30000 | loss=0.8215 (mse=0.0206, ce=8.0546) | avg_t=0.5 | 14.6min
+[train_dd] step  2800/30000 | loss=0.8202 (mse=0.0199, ce=7.9420) | avg_t=1.5 | 15.2min
+[train_dd] step  2900/30000 | loss=0.8201 (mse=0.0209, ce=8.0095) | avg_t=0.1 | 15.8min
+[train_dd] step  3000/30000 | loss=0.8208 (mse=0.0213, ce=8.0118) | avg_t=2.0 | 16.5min
+[train_dd] step  3100/30000 | loss=0.8200 (mse=0.0200, ce=7.9791) | avg_t=2.1 | 17.1min
+[train_dd] step  3200/30000 | loss=0.8208 (mse=0.0208, ce=8.0338) | avg_t=0.5 | 17.6min
+[train_dd] step  3300/30000 | loss=0.8199 (mse=0.0206, ce=8.0565) | avg_t=2.0 | 18.1min
+[train_dd] step  3400/30000 | loss=0.8205 (mse=0.0206, ce=7.9921) | avg_t=2.2 | 18.7min
+[train_dd] step  3500/30000 | loss=0.8201 (mse=0.0204, ce=8.0314) | avg_t=0.4 | 19.4min
+[train_dd] step  3600/30000 | loss=0.8205 (mse=0.0214, ce=8.0371) | avg_t=1.9 | 20.0min
+[train_dd] step  3700/30000 | loss=0.8202 (mse=0.0210, ce=8.0132) | avg_t=1.1 | 20.6min
+[train_dd] step  3800/30000 | loss=0.8199 (mse=0.0205, ce=8.0282) | avg_t=0.5 | 21.2min
+[train_dd] step  3900/30000 | loss=0.8196 (mse=0.0203, ce=7.9543) | avg_t=2.4 | 21.9min
+[train_dd] step  4000/30000 | loss=0.8201 (mse=0.0208, ce=8.0167) | avg_t=1.4 | 22.3min
+[train_dd] step  4100/30000 | loss=0.8198 (mse=0.0201, ce=7.9399) | avg_t=1.8 | 22.9min
+[train_dd] step  4200/30000 | loss=0.8193 (mse=0.0203, ce=7.9047) | avg_t=2.0 | 23.5min
+[train_dd] step  4300/30000 | loss=0.8203 (mse=0.0209, ce=7.9793) | avg_t=1.8 | 24.1min
+[train_dd] step  4400/30000 | loss=0.8194 (mse=0.0206, ce=8.0220) | avg_t=0.2 | 24.7min
+[train_dd] step  4500/30000 | loss=0.8198 (mse=0.0208, ce=8.0214) | avg_t=0.0 | 25.4min
+[train_dd] step  4600/30000 | loss=0.8198 (mse=0.0211, ce=8.0305) | avg_t=1.1 | 26.0min
+[train_dd] step  4700/30000 | loss=0.8196 (mse=0.0202, ce=7.9795) | avg_t=1.8 | 26.6min
+[train_dd] step  4800/30000 | loss=0.8195 (mse=0.0201, ce=8.0584) | avg_t=0.0 | 27.0min
+[train_dd] step  4900/30000 | loss=0.8178 (mse=0.0193, ce=7.9684) | avg_t=1.1 | 27.6min
+[train_dd] step  5000/30000 | loss=0.8185 (mse=0.0183, ce=7.9431) | avg_t=1.0 | 28.2min
+[train_dd] step  5100/30000 | loss=0.8191 (mse=0.0197, ce=7.9625) | avg_t=0.6 | 28.8min
+[train_dd] step  5200/30000 | loss=0.8193 (mse=0.0207, ce=8.0249) | avg_t=1.8 | 29.4min
+[train_dd] step  5300/30000 | loss=0.8192 (mse=0.0202, ce=8.0461) | avg_t=0.8 | 30.1min
+[train_dd] step  5400/30000 | loss=0.8192 (mse=0.0200, ce=7.9467) | avg_t=2.2 | 30.7min
+[train_dd] step  5500/30000 | loss=0.8186 (mse=0.0196, ce=7.8827) | avg_t=2.6 | 31.3min
+[train_dd] step  5600/30000 | loss=0.8182 (mse=0.0197, ce=7.9830) | avg_t=0.2 | 31.8min
+[train_dd] step  5700/30000 | loss=0.8188 (mse=0.0203, ce=7.9743) | avg_t=1.1 | 32.3min
+[train_dd] step  5800/30000 | loss=0.8190 (mse=0.0198, ce=7.9957) | avg_t=0.0 | 32.9min
+[train_dd] step  5900/30000 | loss=0.8190 (mse=0.0202, ce=7.9963) | avg_t=1.0 | 33.6min
+[train_dd] step  6000/30000 | loss=0.8190 (mse=0.0214, ce=7.9849) | avg_t=1.5 | 34.2min
+[train_dd] step  6100/30000 | loss=0.8193 (mse=0.0208, ce=7.9499) | avg_t=2.6 | 34.8min
+[train_dd] step  6200/30000 | loss=0.8187 (mse=0.0203, ce=7.9666) | avg_t=2.0 | 35.4min
+[train_dd] step  6300/30000 | loss=0.8191 (mse=0.0206, ce=7.9328) | avg_t=2.1 | 36.0min
+[train_dd] step  6400/30000 | loss=0.8187 (mse=0.0191, ce=7.9945) | avg_t=1.5 | 36.5min
+[train_dd] step  6500/30000 | loss=0.8181 (mse=0.0200, ce=7.9673) | avg_t=2.2 | 37.1min
+[train_dd] step  6600/30000 | loss=0.8192 (mse=0.0202, ce=7.9999) | avg_t=0.0 | 37.7min
+[train_dd] step  6700/30000 | loss=0.8182 (mse=0.0216, ce=7.9309) | avg_t=3.5 | 38.3min
+[train_dd] step  6800/30000 | loss=0.8188 (mse=0.0194, ce=7.9855) | avg_t=0.0 | 38.9min
+[train_dd] step  6900/30000 | loss=0.8191 (mse=0.0210, ce=8.0154) | avg_t=1.0 | 39.5min
+[train_dd] step  7000/30000 | loss=0.8183 (mse=0.0204, ce=8.0364) | avg_t=0.0 | 40.1min
+[train_dd] step  7100/30000 | loss=0.8181 (mse=0.0205, ce=8.0269) | avg_t=0.0 | 40.7min
+[train_dd] step  7200/30000 | loss=0.8184 (mse=0.0204, ce=7.9901) | avg_t=1.8 | 41.2min
+[train_dd] step  7300/30000 | loss=0.8181 (mse=0.0213, ce=8.0069) | avg_t=3.2 | 41.7min
+[train_dd] step  7400/30000 | loss=0.8182 (mse=0.0205, ce=7.9679) | avg_t=2.8 | 42.4min
+[train_dd] step  7500/30000 | loss=0.8185 (mse=0.0197, ce=7.9478) | avg_t=2.4 | 43.0min
+[train_dd] step  7600/30000 | loss=0.8174 (mse=0.0201, ce=7.9462) | avg_t=0.6 | 43.6min
+[train_dd] step  7700/30000 | loss=0.8181 (mse=0.0201, ce=7.9881) | avg_t=0.0 | 44.2min
+[train_dd] step  7800/30000 | loss=0.8176 (mse=0.0189, ce=7.9665) | avg_t=0.8 | 44.8min
+[train_dd] step  7900/30000 | loss=0.8176 (mse=0.0209, ce=7.9643) | avg_t=1.9 | 45.5min
+[train_dd] step  8000/30000 | loss=0.8183 (mse=0.0205, ce=7.9512) | avg_t=3.0 | 45.9min
+[train_dd] step  8100/30000 | loss=0.8173 (mse=0.0209, ce=8.0393) | avg_t=0.4 | 46.5min
+[train_dd] step  8200/30000 | loss=0.8187 (mse=0.0203, ce=7.9651) | avg_t=3.0 | 47.1min
+[train_dd] step  8300/30000 | loss=0.8182 (mse=0.0202, ce=8.0076) | avg_t=1.2 | 47.7min
+[train_dd] step  8400/30000 | loss=0.8176 (mse=0.0194, ce=7.9394) | avg_t=2.9 | 48.4min
+[train_dd] step  8500/30000 | loss=0.8182 (mse=0.0200, ce=8.0033) | avg_t=0.8 | 49.0min
+[train_dd] step  8600/30000 | loss=0.8173 (mse=0.0203, ce=8.0138) | avg_t=1.0 | 49.6min
+[train_dd] step  8700/30000 | loss=0.8184 (mse=0.0209, ce=8.0084) | avg_t=0.5 | 50.2min
+[train_dd] step  8800/30000 | loss=0.8180 (mse=0.0192, ce=8.0001) | avg_t=0.8 | 50.6min
+[train_dd] step  8900/30000 | loss=0.8180 (mse=0.0198, ce=7.9374) | avg_t=1.9 | 51.3min
+[train_dd] step  9000/30000 | loss=0.8179 (mse=0.0207, ce=7.9687) | avg_t=2.4 | 51.9min
+[train_dd] step  9100/30000 | loss=0.8172 (mse=0.0204, ce=7.9789) | avg_t=3.0 | 52.5min
+[train_dd] step  9200/30000 | loss=0.8178 (mse=0.0203, ce=7.9891) | avg_t=1.1 | 53.1min

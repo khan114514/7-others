@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "task": {
+    "name": "frozen-task",
+    "version": "0.2.0",
+    "type": "local",
+    "digest": "sha256:e9a08ba1d7df2b95a13c220467d81024382e7ed80c989ecfc55aee51b6511231",
+    "path": "Task"
+  },
+  "install_only": false,
+  "timeout_multiplier": 1.0,
+  "agent": {
+    "name": "nop",
+    "skills": [],
+    "resume_trajectory": false,
+    "extra_allowed_hosts": [],
+    "kwargs": {},
+    "mcp_servers": []
+  },
+  "bridge_inputs": {},
+  "skills": [],
+  "environment": {
+    "import_path": "hybrid_harbor_environment:HybridDockerEnvironment",
+    "force_build": false,
+    "delete": true,
+    "cpu_enforcement_policy": "auto",
+    "memory_enforcement_policy": "auto",
+    "extra_docker_compose": [],
+    "kwargs": {
+      "lane": "gpt",
+      "numerical_status": "<trusted-numerical-status>",
+      "runtime_root": "<trusted-runtime-state>"
+    },
+    "extra_allowed_hosts": []
+  },
+  "verifier": {
+    "disable": false,
+    "environment_mode": "separate"
+  }
+}

@@ -1,0 +1,16 @@
+"""Pure read-only normalization replay of safe supplied numeric projection."""
+import hashlib,json,math,statistics,sys
+from pathlib import Path
+p=Path(sys.argv[1]);d=json.loads(p.read_bytes());seeds=[17,29,43,71,101]
+assert d['seeds']==seeds and d['samples_per_seed']==1380 and len(d['rows'])==6900 and d['U']==0
+out=[]
+for seed in seeds:
+ rows=[r for r in d['rows'] if r['seed']==seed]
+ assert len(rows)==1380 and [r['ordinal_in_original_seed_file'] for r in rows]==list(range(1,1381))
+ assert all(math.isfinite(r[k]) and r[k]>0 for r in rows for k in ['calibration','baseline','candidate'])
+ out.append({'seed':seed,'samples':len(rows),'B_s':statistics.mean(r['baseline']/r['calibration'] for r in rows),'M_s':statistics.mean(r['candidate']/r['calibration'] for r in rows)})
+B=statistics.mean(r['B_s'] for r in out);M=statistics.mean(r['M_s'] for r in out);U=d['U'];score=(B-M)/(B-U)
+assert B>U
+for k,v in [('B',B),('measured_metric',M),('normalized_score',score)]:assert abs(v-d['original_recorded_metrics'][k])<=1e-12
+assert (B-B)/(B-U)==0 and (B-U)/(B-U)==1
+print(json.dumps({'projection_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'rows':6900,'seed_metrics':out,'B':B,'U':U,'M':M,'normalized_score':score,'baseline_control_score':0,'lower_bound_score':1,'d_score_d_M':-1/(B-U),'score_clipped':False,'scope':'Original recorded private paired-control arithmetic only; no fixed numerical private anchor introduced, no independent quality rerun, no new method evaluation.'},indent=2))

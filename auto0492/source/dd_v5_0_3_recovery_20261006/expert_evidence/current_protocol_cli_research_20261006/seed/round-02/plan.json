@@ -1,0 +1,61 @@
+{
+  "round": "round-02",
+  "policy_name": "min_disagree_uniform_time",
+  "method_summary": "Easy-example proposal selection (min LPIPS disagreement per class group) paired with uniform time sampling. 256 samples x 4 proposals = 1024 generated, 256 selected. Uniform weighting. This is the exact opposite joint configuration of round-01 (max-LPIPS + early-scale bias).",
+  "status": "PREPARED_NOT_EVALUATED",
+  "score": null,
+  "failure_reason": null,
+  "retained_best": false,
+  "time": "2026-10-06T03:43:10.921072+00:00",
+  "causal_hypothesis": {
+    "proposal_selection": "Among multiple teacher proposals per class, samples with MINIMUM LPIPS distance from the initialized student provide the cleanest, most stable gradient signals. Hard-example selection (round-01, max-LPIPS) picks outlier or noisy teacher proposals that cause destructive overfitting gradients at the 256-sample budget. Easy examples represent the typical teacher distribution, giving reliable gradients that don't mislead the student.",
+    "time_distribution": "Uniform time sampling across all 10 FM scales provides balanced gradient coverage. Early-scale power-law bias (round-01) concentrated ~52.5% of mass in scales 0-1, starving mid-to-late refinement scales. One-step generation must produce both global structure and fine details simultaneously, so all scales need adequate gradient signal.",
+    "rationale": "Round-01's joint strategy (max-LPIPS + early-bias) underperformed baseline by +0.46 FID at 256 samples. Because both factors changed simultaneously, we cannot isolate which caused the harm. Testing the exact opposite joint configuration (min-LPIPS + uniform) is the most informative diagnostic: if it improves over round-01, at least one factor was harmful; if it beats baseline, the opposite joint is genuinely effective; if it similarly underperforms, 256 samples may be insufficient regardless of strategy.",
+    "attribution_note": "This is a joint two-factor comparison with round-01. The result alone cannot decompose individual factor contributions. A minimum of two more single-factor perturbation runs would be needed for full isolation, which may not be budget-justified."
+  },
+  "next_step_decision_rule": {
+    "if_improved_vs_r01_and_baseline": "If FID < round-01 (10.127) AND FID < baseline (9.663): the opposite joint strategy works. Next step: scale to 1024 samples with same min-LPIPS + uniform strategy to see if improvement scales with data.",
+    "if_improved_vs_r01_not_baseline": "If FID < round-01 (10.127) but FID >= baseline (9.663): the direction change helps but isn't enough at 256 samples. Next step: increase to 1024+ samples with this strategy, or test a single-factor isolation run.",
+    "if_same_as_r01": "If FID ≈ round-01 (within ~0.3): both selection direction and time distribution are similarly ineffective at 256 samples. The problem is likely sample count, not strategy. Next step: jump to 1024+ samples with default/uniform strategy.",
+    "if_worse_than_r01": "If FID > round-01 (10.127): round-01 strategy was actually better, meaning hard-example mining has value but early-bias time may have been the culprit. Next step: test max-LPIPS + uniform time to isolate the time factor."
+  },
+  "configuration": {
+    "num_samples": 256,
+    "proposal_multiplier": 4,
+    "total_proposals": 1024,
+    "reuse": 1,
+    "filter_rule": "student_agreement_per_label",
+    "weighting": "uniform",
+    "time_sampler": "uniform",
+    "selection_strategy": "min_lpips_disagreement",
+    "teacher_steps": 10,
+    "guidance": 2.0,
+    "ode_nfe": 32,
+    "ode_grid": "logSNR",
+    "top_k": 900,
+    "top_p": 0.95
+  },
+  "differences_from_round_01": {
+    "changed": [
+      "selection_strategy: max_lpips -> min_lpips",
+      "time_sampler: power_law_alpha_2.5 -> uniform"
+    ],
+    "held_constant": [
+      "num_samples: 256",
+      "proposal_multiplier: 4",
+      "reuse: 1",
+      "filter_rule: student_agreement_per_label",
+      "weighting: uniform",
+      "all training hyperparameters (fixed by protocol)"
+    ],
+    "comparison_type": "Joint two-factor flip. Does NOT isolate individual factor contributions."
+  },
+  "round_01_reference": {
+    "round_01_policy": "max_disagree_early_scale",
+    "round_01_fid": 10.126636628087738,
+    "baseline_fid": 9.663262058820692,
+    "round_01_method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c"
+  },
+  "source_sha256": "6e770e3ad3b38700f56b337ade61a6be69350879d4c47f26f31d9d3a1bdef208",
+  "protocol": "dd-selfproto-v1.3"
+}

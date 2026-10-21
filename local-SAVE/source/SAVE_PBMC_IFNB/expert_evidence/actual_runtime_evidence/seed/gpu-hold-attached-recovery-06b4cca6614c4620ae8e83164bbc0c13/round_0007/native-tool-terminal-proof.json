@@ -1,0 +1,79 @@
+{
+  "original_event_sha256": "bebacb20a6d74815c5cb9c6c257850def06dee22f099aff0c0c822152fd5b8c1",
+  "original_receipt_sha256": "dc513c97193a26e0106e6cbe423b2d904e2caa7e4569a007dff683f4f58f463a",
+  "original_event_last_write_epoch": 1791783476.8770225,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"cat /workspace/solution/dev_result.json | python3 -c \\\"import sys,json; d=json.load(sys.stdin); print('status:', d.get('status')); print('raw_metric:', d.get('raw_metric')); print('method_sha256:', d.get('method_sha256')); print('completed:', d.get('completed_epoch_local'))\\\"\"",
+      "original_command_sha256": "74c7b3664c1396ed03c9f91b5f25afc63f35e65937c3f283850213c0c1e264df",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a6dacc8230d15f96fa84247bff7420f34de4e86b4a65213b9028c0b75fecacb0",
+      "output_characters": 160
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -5'",
+      "original_command_sha256": "5b2bf75c4fc799ca051c87838a79795684b2e85c4199b8659cbe067bd1136420",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e9f65c8e8e7319db7e3e780ddcd0b9de602b0fb11bcc1411d871a2e5e8e5188f",
+      "output_characters": 424
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'cat /tests/queue_client.py'",
+      "original_command_sha256": "2c1991eb7543b68485a67487ec25f262e79cdff26a561e95b6a176b7e4d2fae5",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+      "output_characters": 2413
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'ls -la /run/bifrost/queue/ 2>/dev/null | head -30'",
+      "original_command_sha256": "e1e762da0e596883890e8d1465f30a061e46bffc4ac760bcd6b9157a0abaeb44",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "98c428bdcc336f597b60bfee40c4df846717939583b99360c7b54b3543074a9e",
+      "output_characters": 386
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc '# These are stale response files from a prior session, not pending requests\n# Check for .req files (pending requests to the evaluator)\nls -la /run/bifrost/queue/*.req 2>/dev/null; echo \"---\"; ls -la /run/bifrost/queue/*.pending 2>/dev/null; echo \"---all files---\"; ls /run/bifrost/queue/'",
+      "original_command_sha256": "390038ff1f8990fd54da5fb0244992306507aea9a4c412a901647b7af15cfec2",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2fb8deb99c337108daa20d42552868d33e7e0eeb5c78cfd4c2ba5a441355dfcc",
+      "output_characters": 137
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc '# Clean up stale response files and try again\nrm /run/bifrost/queue/86863320764348dab1aa2938f815fc32.*.res\necho \"Cleaned up stale files\"\nls /run/bifrost/queue/\necho \"---\"\ncd /workspace/solution && bash solve.sh 2>&1 | tail -3'",
+      "original_command_sha256": "44cb422e1fcfcfcaf42f5aacad08c694c67a3e229deeff1dec6c752f5fcd4738",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "52ded1442207ffb10ee0f01a3f1eec031600662260f771fd7e3faef434f8a644",
+      "output_characters": 334
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 46500125,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1071160,
+        "reasoning_output_tokens": 145481
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

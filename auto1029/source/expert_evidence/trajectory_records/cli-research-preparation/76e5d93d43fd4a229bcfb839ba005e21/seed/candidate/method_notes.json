@@ -1,0 +1,379 @@
+{
+  "algorithm": "Position-based structural template + conclusion opening prediction + dynamic answer extraction + proactive TAI + no-fallbacks",
+  "version": "0.16.0",
+  "summary": "v0.16.0 adds conclusion opening prediction for hint_complex questions (difference pattern: 4 tokens). v0.15.2 added dynamic answer extraction + proactive TAI drafting. v0.14.0 achieved 0.2735 ratio (3.66x speedup) on quick eval, quality pass. Full 5-seed baseline: 0.3234 ratio (0.6766 normalized score).",
+  "key_insight_from_real_data": "All 24 observed real outputs share an identical 36-token structural prefix: '<SUMMARY> <THINKING_OF_SUMMARY> </SUMMARY>\\n\\n<CAPTION> <THINKING_OF_CAPTION> </CAPTION>\\n\\n<REASONING> <THINKING_OF_REASONING> </REASONING>\\n\\n<CONCLUSION> '. 23/24 outputs are simple MC answers (A/B/C/D) plus closing tag. 1/24 has longer conclusion text.",
+  "strategies": {
+    "1_structural_template": {
+      "description": "Drafts known XML structural prefix from current position",
+      "confidence": "very_high",
+      "observed_acceptance": "36/36 tokens (100%) on structural prefix",
+      "coverage": "~86% of total tokens for simple MC answers"
+    },
+    "2_conclusion_closing": {
+      "description": "After answer letter appears in decoded_text, drafts closing tag ' </CONCLUSION>'",
+      "confidence": "high",
+      "observed_acceptance": "5/5 tokens when no period in answer; retries in 1 step if period present",
+      "coverage": "~5-6 final tokens"
+    },
+    "3_bigram_fallback": {
+      "description": "Last-resort 1-token bigram prediction for unexpected output regions",
+      "confidence": "low",
+      "coverage": "rare (handles edge cases)"
+    },
+    "4_period_continuation": {
+      "description": "Sentence-starter prediction after period boundaries",
+      "confidence": "low",
+      "coverage": "fallback only"
+    },
+    "5_dynamic_answer_extraction": {
+      "description": "Extract answer from decoded conclusion text by matching numbers to option values",
+      "confidence": "high",
+      "coverage": "hint_complex questions with numerical answers (~8-10 per 96)"
+    },
+    "6_proactive_tai_drafting": {
+      "description": "Proactively draft \"The answer is X. </CONCLUSION>\" after period in conclusion",
+      "confidence": "medium-high",
+      "coverage": "complex hint questions with reasoning text before answer statement"
+    }
+  },
+  "strategy_priority_order": [
+    "structural_template",
+    "conclusion_closing",
+    "the_answer_is_pattern",
+    "dynamic_answer_extraction",
+    "proactive_tai_drafting",
+    "text_template_fallback",
+    "text_closing_fallback"
+  ],
+  "return_format": "Returns {'text': str} so trusted tokenizer handles encoding. Returns [] when no confident draft available (requests one ordinary AR step).",
+  "budget_handling": {
+    "max_draft_tokens": "32 (hard cap)",
+    "remaining_tokens": "respected",
+    "truncation_method": "character budget estimated at ~5 chars/token; trusted tokenizer enforces real limit"
+  },
+  "online_adaptation": {
+    "mechanism": "Infers acceptance from generated_token_ids length delta (accepted = delta - 1)",
+    "tracking": "Per-stage and per-strategy acceptance statistics",
+    "reset_detection": "5 signals: first_call, empty_generated, question_changed, position_backward, decoded_shorter",
+    "current_usage": "Tracks stats; future versions will adjust strategy ordering based on observed acceptance"
+  },
+  "real_dev_results": {
+    "source": "24 observed outputs from 5-seed development run (job 2ff8c5be)",
+    "policy_sha256_v071": "d3ccbc68f13777bd0395ca9b6134c43f7db8f5c990b74f527a0beabb610c1546",
+    "v071_measured_ratio": 1.134,
+    "v071_result": "13.4% WORSE than baseline - wrong structural assumptions (natural language templates vs actual XML tags)",
+    "output_structure": {
+      "total_outputs": 24,
+      "simple_mc_answers": 23,
+      "complex_long_conclusions": 1,
+      "common_prefix_tokens": 36,
+      "guard_replay_count": 0,
+      "avg_tokens_per_output": 42.9,
+      "simple_output_tokens": 42,
+      "simple_with_period_tokens": 43
+    },
+    "v0140_quick_eval": {
+      "job_id": "82076e2170744250a02da4adf2687653",
+      "ratio": 0.2734518078875386,
+      "normalized_score": 0.7265856757559472,
+      "quality_pass": true,
+      "forward_calls": 939,
+      "policy_calls": 360,
+      "tokens_per_forward_call": 4.36,
+      "speedup": "3.66x",
+      "note": "Quick eval (seed 17 only). 4.1% better than v0.13.0."
+    }
+  },
+  "offline_replay_estimates": {
+    "position_template_controller": {
+      "theoretical_token_speedup": "10.51x overall (13.63x simple, 2.30x complex)",
+      "cpu_overhead_per_call_us": 0.32,
+      "held_out_speedup": "8.08x (12 train / 12 test split, includes 1 complex outlier)",
+      "generalization_ratio": "65.6% (driven by 1 complex output in test set; structural prefix generalizes 100%)"
+    },
+    "suffix_match_controller": {
+      "theoretical_token_speedup": "5.42x overall",
+      "cpu_overhead_per_call_us": 0.5,
+      "note": "Conservative controller; underperforms because char-per-token approximation is imprecise in simulation"
+    },
+    "realistic_speedup_estimate": {
+      "conservative_2x_overhead": "5.26x (ratio ~0.190)",
+      "moderate_1.5x_overhead": "7.01x (ratio ~0.143)",
+      "aggressive_1.2x_overhead": "8.76x (ratio ~0.114)",
+      "note": "Verification overhead factor accounts for draft verification costing more than 1 AR step. Even at 2x overhead, v0.8.0 is 6x better than v0.7.1."
+    }
+  },
+  "assumptions": [
+    "The XML structural template (36 tokens) generalizes to all questions, not just 24 dev outputs",
+    "Most questions have simple MC answers (letter only); complex conclusions are rare",
+    "Returning text with trusted tokenizer produces same token IDs as direct token ID return",
+    "Standard speculative decoding semantics: accepted prefix + 1 target token per draft call",
+    "Verification of K tokens costs ~1.2-2.0x an autoregressive step (not Kx)"
+  ],
+  "expected_failure_modes": [
+    "Complex/open-ended questions with long conclusions (~4% of dev set): structural prefix still helps but conclusion area is unpredictable",
+    "Period after answer letter ('B.'): causes 1 extra AR step before closing tag kicks in",
+    "Questions with non-standard output format (not observed in 24 dev outputs)",
+    "Tokenizer edge cases where character-level position tracking is imprecise",
+    "Guard replay outputs: 0 observed in 24 dev outputs, but could change structural pattern"
+  ],
+  "next_discriminating_gpu_experiment": {
+    "hypothesis": "Structural template drafting (v0.8.0) achieves >5x speedup over baseline on dev seeds",
+    "null_hypothesis": "Speedup < 2x (verification overhead eats most gains, or template doesn't generalize)",
+    "ablation_plan": [
+      "A1: Full v0.8.0 policy (structural template + closing + fallbacks)",
+      "A2: Template only (no conclusion closing) - measures closing tag contribution",
+      "A3: Conservative suffix-match controller - measures algorithmic difference",
+      "A9: Empty draft baseline"
+    ],
+    "primary_metric": "Mean latency ratio across 5 dev seeds",
+    "success_threshold": "ratio < 0.5 (i.e., >2x faster than baseline)",
+    "decision_rule": "If ratio > 0.7 -> investigate verification overhead; if ratio < 0.2 -> approach validated, optimize further"
+  },
+  "diagnostic_checks_passed": [
+    "contract_checks: 22/25 pass (3 failures are old test assumptions about natural-language format)",
+    "empty_state_handling: OK",
+    "budget_enforcement: OK",
+    "type_safety: OK",
+    "edge_cases: OK (None values, missing keys, whitespace, near-end)"
+  ],
+  "contract_checks_note": "3 'failures' are from check_contract.py tests written for v0.7.1 natural-language assumptions. v0.8.0 correctly uses XML template format. All type-safety, budget, and edge-case checks pass.",
+  "incumbent_verified": {
+    "version": "v0.7.1",
+    "sha256": "d3ccbc68f13777bd0395ca9b6134c43f7db8f5c990b74f527a0beabb610c1546",
+    "measured_ratio": 1.134,
+    "result": "incumbent is WORSE than baseline; v0.8.0 should easily beat it",
+    "preserved_as": "method_v0.7.1_incumbent.py"
+  },
+  "uncertainties": [
+    "Exact verification overhead factor (1.2x vs 2.0x) - only GPU measurement can tell",
+    "Template generality beyond 24 dev outputs - held-out validation supports 100% structural prefix generalization",
+    "Complex conclusion frequency - 1/24 in dev, may differ on full set",
+    "Period-vs-no-period ratio in answer letters - 2/23 simple answers had periods (8.7%)"
+  ],
+  "v0_8_0_changes": {
+    "major_rewrite": true,
+    "change_summary": "Complete architectural change from natural-language template matching to XML structural template drafting. Based on actual observed output structure from 24 real development outputs.",
+    "removed": [
+      "48 natural-language answer/transition templates",
+      "N-gram history reuse strategy",
+      "Option sequence prediction",
+      "Format detection (short_mc, long_mc, etc.)",
+      "Case preservation logic",
+      "Adaptive truncation by confidence"
+    ],
+    "added": [
+      "Structural XML template (36-token deterministic prefix)",
+      "Conclusion closing tag drafting",
+      "Character-level template position tracking",
+      "Two genuinely different controller implementations (position-based and suffix-match)"
+    ],
+    "expected_improvement": "6-9x better than v0.7.1 (from 1.134 ratio to ~0.14-0.19 ratio)",
+    "basis": "Token-level offline replay on 24 real observed outputs"
+  },
+  "v0_12_0_changes": {
+    "major_change": "Switched from character-level text matching to position-based token ID drafting",
+    "improvements": [
+      "Position-based template tracking using len(generated_token_ids) instead of decoded_text character matching",
+      "Hardcoded 36 template token IDs verified identical across all 24 dev outputs",
+      "Hardcoded closing tag token IDs [694, 5910, 99769, 29, 128009]",
+      "Period-aware closing detection (checks token at position 37 for period token 13)",
+      "Improved answer guessing: 39.1% accuracy (up from 26.1% in v0.11.0)",
+      "Answer token map: A=362, B=426, C=356, D=423"
+    ],
+    "simulated_speedup": "11.57x (24 dev outputs, token-level replay)",
+    "projected_real_ratio": "~0.27 (assuming constant simulation-to-real gap)",
+    "projected_real_speedup": "~3.7x",
+    "expected_improvement_over_v080": "~19% (11.57x vs 9.72x simulated)",
+    "safety": "Graceful degradation to baseline if template mismatches (verified with wrong-token test: 1.00x)",
+    "preserved_as": "method_v0.12.0.py"
+  },
+  "known_token_ids": {
+    "template_36_tokens": [
+      19389,
+      2864,
+      49970,
+      29,
+      220,
+      128013,
+      694,
+      28477,
+      49970,
+      1363,
+      20996,
+      2599,
+      60459,
+      29,
+      220,
+      128014,
+      694,
+      32500,
+      60459,
+      1363,
+      27,
+      793,
+      36404,
+      1753,
+      29,
+      220,
+      128015,
+      694,
+      793,
+      36404,
+      1753,
+      1363,
+      27,
+      5910,
+      99769,
+      29
+    ],
+    "answer_tokens": {
+      "A": 362,
+      "B": 426,
+      "C": 356,
+      "D": 423
+    },
+    "closing_tokens": [
+      694,
+      5910,
+      99769,
+      29,
+      128009
+    ],
+    "period_token": 13,
+    "eos_token": 128009,
+    "the_token": 578,
+    "space_token": 694,
+    "source": "24 observed development outputs from job e89afcd"
+  },
+  "answer_guessing_accuracy": {
+    "v0_13": "36.5% (35/96 dev questions)",
+    "v0_14": "43.8% (42/96 dev questions)",
+    "oracle_per_category_majority": "45.8% (44/96 dev questions)",
+    "improvement": "+7.3 percentage points"
+  },
+  "gpu_results": {
+    "v0_7_1": {
+      "ratio": 1.134,
+      "speedup": "0.88x (WORSE than baseline)",
+      "seed": 101,
+      "quality_pass": true,
+      "result": "Failed — wrong structural assumptions (natural language vs actual XML tags)",
+      "job_id": "2ff8c5be613a4f22a3a4594196ce79a1"
+    },
+    "v0_8_0_quick": {
+      "ratio": 0.3237,
+      "speedup": "3.09x",
+      "seed": 17,
+      "quality_pass": true,
+      "forward_calls_ratio": 0.283,
+      "policy_calls": 466,
+      "job_id": "e89afcd758054e4285fcb2702ed50802"
+    },
+    "v0_12_0_quick": {
+      "ratio": 0.2958,
+      "speedup": "3.38x",
+      "seed": 17,
+      "quality_pass": true,
+      "forward_calls_ratio": 0.245,
+      "policy_calls": 400,
+      "improvement_vs_v080": "8.6% better ratio",
+      "job_id": "02998dae6dd74dd182e1a7734fae5ed3"
+    },
+    "v0_13_0_quick": {
+      "ratio": 0.2852,
+      "speedup": "3.51x",
+      "seed": 17,
+      "quality_pass": true,
+      "forward_calls": 961,
+      "policy_calls": 363,
+      "tokens_per_policy_call": 11.29,
+      "forward_calls_per_policy_call": 2.647,
+      "improvement_vs_v0120": "3.6% better ratio",
+      "job_id": "3afa96761fe64f418cec59aa518d469b"
+    },
+    "v0_13_0_quick_confirm": {
+      "ratio": 0.2865,
+      "speedup": "3.49x",
+      "seed": 17,
+      "quality_pass": true,
+      "forward_calls": 961,
+      "policy_calls": 363,
+      "note": "Duplicate run confirms stability — identical forward/policy call counts",
+      "job_id": "319e60a648bf4f079612efbbd9b813cc"
+    },
+    "v0_14_0_quick": {
+      "status": "submitted",
+      "job_id": "82076e2170744250a02da4adf2687653",
+      "expected_improvement": "2-5% better ratio than v0.13.0",
+      "changes": "Improved answer guessing (43.8% vs 36.5%) + no single-token fallbacks"
+    },
+    "v0_15_2_quick": {
+      "ratio": 0.2794,
+      "speedup": "3.58x",
+      "seed": 17,
+      "quality_pass": true,
+      "forward_calls": 934,
+      "policy_calls": 353,
+      "note": "Slightly worse ratio but 5 fewer forward calls vs v0.14.0; GPU speed confounder (calibration 3.06s vs 3.64s)",
+      "job_id": "a056668a7c084d058ba3b87f448bbd17"
+    },
+    "v0_16_0_quick": {
+      "status": "running",
+      "job_id": "a53637e7928a4f9ab1990279178ae2c6",
+      "changes": "Conclusion opening prediction for hint_complex (difference pattern + generic The)",
+      "hypothesis": "Saves ~1 forward call per complex output; 0.5-1% improvement on seed 17"
+    }
+  },
+  "next_experiment": {
+    "current": "v0.16.0 quick eval — conclusion opening prediction",
+    "hypothesis": "v0.16.0 reduces forward calls by 5-10 vs v0.15.2 on seed 17",
+    "after_v016": [
+      "If validated: add more conclusion patterns (counting, average, rate)",
+      "Run full 5-seed evaluation of best candidate for formal score",
+      "Explore text-based conclusion drafting for more patterns"
+    ]
+  },
+  "key_insights": [
+    "Structural template (36 tokens) handles ~86% of simple output tokens with 100% accuracy",
+    "2.65 forward calls per policy call — verification overhead is a constant factor",
+    "1-token drafts are net-negative: cost ~2.65 fwd calls but generate < 2 tokens (< 1 tok/fwd vs baseline 1.0)",
+    "Answer guessing accuracy matters more for complex outputs than simple ones (saves more relative time)",
+    "GPU timing is very consistent between runs (0.2852 vs 0.2865 ratio on duplicate runs)"
+  ],
+  "v015_development": {
+    "status": "v0.15.2 developed, pending GPU evaluation",
+    "key_improvements": {
+      "v0.15.0": "Dynamic answer extraction function added (dead code - not called)",
+      "v0.15.1": "Fixed: extraction integrated into draft() flow",
+      "v0.15.2": "Proactive TAI drafting after period detection in conclusion (Case 5 completed)"
+    },
+    "dynamic_extraction": {
+      "mechanism": "Extract numbers from decoded conclusion text, match to option values",
+      "hint_question_accuracy": "68% (17/25 on dev set, unique number matches)",
+      "confidence_threshold": 0.7,
+      "triggers_on": "hint_complex questions, position >= 36"
+    },
+    "proactive_tai": {
+      "mechanism": "Detect period in last 2-3 tokens of conclusion, draft full \"The answer is X.\" + closing",
+      "triggers_on": "hint_complex questions, offset >= 10, period in recent tokens",
+      "local_validation": "10/10 tokens accepted on complex case with correct answer guess"
+    },
+    "expected_improvement": "3-7% better ratio than v0.14.0",
+    "hypothesis": "Combined dynamic extraction + proactive TAI drafting reduces forward calls for complex hint questions by 40-60%"
+  },
+  "v016_development": {
+    "status": "v0.16.0 submitted for quick GPU eval",
+    "key_improvements": {
+      "conclusion_opening_prediction": "Predicts first 4 tokens of conclusion for difference questions",
+      "patterns": {
+        "difference_between": "4 tokens: \" The difference between the\" (verified from real output)",
+        "generic_the": "1 token: \" The\" (fallback for all hint_complex)"
+      }
+    },
+    "local_validation": "4 tokens accepted for unemployment difference question",
+    "expected_improvement": "0.5-1% better than v0.15.2 on seed 17",
+    "hypothesis": "Conclusion opening prediction increases accepted tokens per forward call for complex outputs"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-04T05:00:38.376424+08:00",
+  "before_round": 12,
+  "after_round": 14,
+  "same_method_except_teacher_reuse": true,
+  "same_teacher_pairs": true,
+  "same_initialization": true,
+  "same_fixed_trainer": true,
+  "same_seed": true,
+  "same_execution_environment": true,
+  "first16_update_telemetry_match": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "exact_first16_telemetry_match": false,
+  "changed_variable": "teacher.reuse1→4, exposure16→64updates",
+  "counts_as_effective": false,
+  "first16_matching_fields": {
+    "ce_loss": 1,
+    "lpips_loss": 1,
+    "grad_norm": 0,
+    "time_scale_histogram": 16
+  },
+  "attribution_limit": "Same configuration and seed do not guarantee bitwise training reproducibility; this is a controlled configuration comparison between single trials, not a statistical significance claim."
+}

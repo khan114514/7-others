@@ -1,0 +1,27 @@
+{
+  "base": "experiments/53_compiled_image_rotary/method.py",
+  "candidate_canonical_sha256": "54c851bbf8add36f84af29eb530ac123bbdd6238eeda018ed9c15b9dd5af4ffb",
+  "all_nodes_identical_by_id": true,
+  "reorder": "Independent prefix image_attention_mask moves before image_scores to make three stage nodes contiguous.",
+  "new_region_inputs": [
+    "image_query",
+    "key_transpose",
+    "image_attention_mask"
+  ],
+  "new_region_outputs": [
+    "image_masked"
+  ],
+  "sole_consumer_chain": {
+    "image_scores": [
+      "image_scaled"
+    ],
+    "image_scaled": [
+      "image_masked"
+    ],
+    "image_masked": [
+      "image_prob_fp32"
+    ]
+  },
+  "precision_argument": "No arithmetic replacement: original rounded matmul, rounded BF16 scale, rounded BF16 add. Fixed compiler precision emulation plus actual Dev gates; no bias/addmm folding.",
+  "distinct_from": "54 compiled only scale/mask with score returned eager; 57 and68 use different K and consumers; 55/65 compile softmax and are excluded."
+}

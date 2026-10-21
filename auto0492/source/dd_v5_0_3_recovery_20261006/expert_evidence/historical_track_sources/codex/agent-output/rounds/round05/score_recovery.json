@@ -1,0 +1,81 @@
+{
+  "recorded_at": "2026-10-03T16:37:18.316270+08:00",
+  "round": 5,
+  "protocol_version": "dd-selfproto-v1.1",
+  "runner_pid": 141292,
+  "original_failed_execution": {
+    "stage": "evaluation",
+    "command": [
+      "historical-resources/venvs/dd1/bin/python",
+      "-B",
+      "-u",
+      "historical-codex-workspace/official_entry.py",
+      "--ckpt_path",
+      "historical-codex-models/round05/training/checkpoint.pth",
+      "--vae_ckpt",
+      "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+      "--sample_dir",
+      "historical-codex-models/round05/evaluation",
+      "--sample_num",
+      "50000",
+      "--t_list",
+      "0",
+      "--loss_split_t",
+      "5",
+      "--depth",
+      "16",
+      "--bs",
+      "8",
+      "--seed",
+      "0",
+      "--fid_statistic",
+      "historical-resources/models/dd1/fid_stats",
+      "--local_out_dir_path",
+      "historical-codex-models/round05/official_runtime"
+    ],
+    "cwd": "historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR",
+    "started_at": "2026-10-03T15:19:14.736204+08:00",
+    "finished_at": "2026-10-03T16:19:39.363999+08:00",
+    "exit_code": -11,
+    "deadline_unix": null,
+    "pid": 137760,
+    "elapsed_seconds": 3624.6276673367247,
+    "termination": null,
+    "peak_observed_gpu_mib": null
+  },
+  "original_failed_execution_sha256": "8291d8ac14a65beffd6d4deb5bef5a99f7dde086712f4d592fb6a42b2e25f7e4",
+  "checkpoint_sha256": "03c5cd55eaed01a3361940c54515081cc4a153f3175c8d7c0609662ad2ae0fbb",
+  "sample_count": 50000,
+  "scorer_sha256": "bce8e2205defd99b4e6b9f3e31bb35c6ab4946aed445ce0179cf2db595382ad4",
+  "entry_sha256": "f86acf3da29e8f8041570246b8c7e32454f5ce0b52e41ad7af2ab5202e5db5af",
+  "original_failed_process_confirmed_absent": true,
+  "decision": "Retry FID only on original complete images; no new training or sampling.",
+  "protected_before": [
+    {
+      "path": "historical-resources/models/dd1/VAR-DD/var-d16.pth",
+      "expected": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "actual": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+      "expected": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+      "actual": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/fid_stats/statistic.pth",
+      "expected": "a9a689ae306a6e76b1485cbd4448dc82db4b119e177dddb68e0d54d33fc9f7c8",
+      "actual": "a9a689ae306a6e76b1485cbd4448dc82db4b119e177dddb68e0d54d33fc9f7c8",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/VAR-teacher/var_d16.pth",
+      "expected": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+      "actual": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+      "matches": true
+    }
+  ],
+  "finished_at": "2026-10-03T16:40:15.469923+08:00",
+  "result_sha256": "c551131854448fda3dfbaeab9e6962c8c2592232238fe0dff75fdce895e45a65"
+}

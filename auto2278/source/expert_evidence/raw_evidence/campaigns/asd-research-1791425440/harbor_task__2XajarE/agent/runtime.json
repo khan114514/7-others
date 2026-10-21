@@ -1,0 +1,33 @@
+{
+  "status": "complete",
+  "runtime": "Codex",
+  "model": "doubao-seed-2-1-turbo-260628",
+  "provider": "Volcano Coding Plan",
+  "reasoning_effort": "high",
+  "effective_seconds": 45869.94604792446,
+  "effective_rounds": 4,
+  "target_effective_seconds": 36000,
+  "raw_best": 0.46101432691657757,
+  "sessions": [
+    {
+      "round": 29,
+      "start_unix": 1791425751.287696,
+      "end_unix": 1791436606.771888,
+      "observed_seconds": 7330.588475624798,
+      "effective_seconds": 7330.588475624798,
+      "model_seconds": 7094.9539425408,
+      "model_completed": true,
+      "successful_command_tools": 75,
+      "semantic_method_changed": true,
+      "exit_code": 0,
+      "genuine_method_cycle": true,
+      "model_transport_failed": true,
+      "method_sha256": "b4b8eca451f1a62874a425e05acc2fcff52107e15f49845e9639dbf65f4c6cc4",
+      "public_result": "round_00029.grader.log",
+      "events": "round_00029.events.jsonl",
+      "next_direction": "Try fused q+k weight projection to reduce weight-matrix memory reads from 3x to 1x, though torch.cat overhead may negate gains for smaller cases. Also worth exploring: pre-expanded G in BH-batched form for bmm, and reordering p@G calls to maximize cache reuse of the small L\u00d7L Gram matrix."
+    }
+  ],
+  "time_accounting_policy": "user_amended_active_execution_v1",
+  "time_precision": "estimate: old partial CLI logs were discarded; any unobserved stall cannot be precisely deducted; failed-request ordinary waiting included by relaxed user policy, no assertion that every included second is model computation"
+}

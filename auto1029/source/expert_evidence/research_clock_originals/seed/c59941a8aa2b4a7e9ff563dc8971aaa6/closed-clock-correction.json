@@ -1,0 +1,66 @@
+{
+  "phase": "ACTUAL_CLOSED_OWNED_ASYNC_COMPLETION_CLOCK_AUDIT_PASS",
+  "role": "seed",
+  "run_id": "c59941a8aa2b4a7e9ff563dc8971aaa6",
+  "original_effective_seconds": 1778.8968980312347,
+  "audited_effective_seconds": 1778.8968980312347,
+  "changed_effective_seconds": 0.0,
+  "source_execution_sha256": "8ac6a484335529324a9096ad3a5d62a848c638eb51773b3b3c9756fcc2cb056c",
+  "original_journal_hashes": {
+    "harbor-runtime/heima-research-seed-c59941a8aa2b__env/evaluation/seed-gpu-activity.jsonl": "cdde2c335efa2e35d997670ab2a08b1513242cdb08f636c2db1d31d91e3bd0ac",
+    "harbor-runtime/heima-research-seed-c59941a8aa2b__verifier__trial/verifier-evaluation/seed-gpu-activity.jsonl": "c80381019de0edf0eb06d7eb6f5e874c239d53e003b0ffebad74b5e2434fd086"
+  },
+  "recovered_receipt_hashes": {
+    "fc65ce14708b4c0f9eebfb532990c194": "cc346f6201d88bb4c660d626020d8424dba89dd0763fc5cbc3ee55b8eb7db28e"
+  },
+  "jobs": [
+    {
+      "job_id": "e89afcd758054e4285fcb2702ed50802",
+      "phase": "COMPLETE",
+      "policy_sha256": "44ee70724e853bc0dd51146794873c08a284bc8c9bbc795a3714312593f8f8df",
+      "original_owned_ticket_observed_epoch": 1791241048.946632,
+      "recovered": false,
+      "credited_gpu_interval": [
+        1791241453.8329573,
+        1791241948.1576145
+      ],
+      "transport_uncertainty_seconds": 0.2231919765472412
+    },
+    {
+      "job_id": "fc65ce14708b4c0f9eebfb532990c194",
+      "phase": "FAILED",
+      "policy_sha256": "e95a62e8e1ce75e5c12c6c429ca031ef7b91e946867f263c5ab730287b46214e",
+      "original_owned_ticket_observed_epoch": 1791242289.8432992,
+      "recovered": true,
+      "credited_gpu_interval": null,
+      "transport_uncertainty_seconds": 0.05964946746826172
+    }
+  ],
+  "queue_intervals_excluded": [],
+  "cli_gpu_union_no_doublecount": true,
+  "current_round_bounds_enforced": true,
+  "original_execution_and_ledgers_preserved": true,
+  "root_query_time_credited": false,
+  "correction_row": {
+    "phase": "NATIVE_FORMAL_CLI_RESEARCH",
+    "start_epoch": 1791240817.1841369,
+    "end_epoch": 1791245379.015056,
+    "effective_seconds": 1778.8968980312347,
+    "excluded_seconds": 2782.9340209960938,
+    "included_intervals": [
+      [
+        1791240817.1841369,
+        1791242596.081035
+      ],
+      [
+        1791241453.8329573,
+        1791241948.1576145
+      ]
+    ],
+    "minimum_effective_seconds": 36000,
+    "evidence": "cli-research-preparation/c59941a8aa2b4a7e9ff563dc8971aaa6/seed/execution.json",
+    "audit_override": "OWNED_ASYNC_GPU_COMPLETION_CLOCK_V1:c59941a8aa2b4a7e9ff563dc8971aaa6",
+    "audit_evidence": "owned-experiment-recovery/seed/c59941a8aa2b4a7e9ff563dc8971aaa6/closed-clock-correction.json"
+  },
+  "recorded_epoch": 1791250010.304228
+}

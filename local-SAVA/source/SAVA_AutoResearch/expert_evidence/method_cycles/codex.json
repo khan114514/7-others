@@ -1,0 +1,213 @@
+{
+  "state": "AUTHOR_VERIFIED_SOURCE_BOUND_METHOD_CYCLES",
+  "exact_model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "author_only_not_seed_input": true,
+  "cycles": [
+    {
+      "name": "001_cross_only",
+      "source_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504",
+      "protected_report": "expert_evidence/native_records/codex/protected_reports/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+      "protected_report_sha256": "e3b975f7cb20c93b4246be2d92665b6a706017b2235ca77dcb9bb032cf67fac5",
+      "score": -0.0061206209469174,
+      "quality_valid": true,
+      "links": {
+        "proposal": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:21:08.572Z",
+          "call_id": "call_c065b448e8e940c5aea5d5c58782b82b",
+          "payload_type": "custom_tool_call",
+          "text_sha256": "c177696b431fb15ee0cbeebfefeb47c266729e41bdb562ea5711646f0004020a",
+          "verbatim": "text(await tools.exec_command({cmd:\"cat > /tmp/research_notes.md <<'EOF'\\n# Hierarchical transport research, episode 1\\n\\nRead /workspace/instruction.md, method.py, solve.sh and all public metadata/NPZ array schemas. No earlier history existed. Submission consists solely of method.py and frozen solve.sh. No protected targets or evaluator code inspected.\\n\\nLauncher is read-only mode 0444, so ./solve.sh directly fails permission denied. Invoke `sh ./solve.sh` (exact same unchanged script). Launcher SHA256: bca6ef61c3a1bc0ded2aa6b2da4734b62072846def679d12a2d7ae669fc88bd1.\\n\\nBaseline source copied to /tmp/research_history/000_baseline/method.py, SHA256 92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993. Full evaluator started; log /tmp/research_history/000_baseline/evaluator.log. Results pending.\\n\\nCanonical: W computes 190 pairwise class OT values but value uses ONLY W[:10,10:20] (100 costs). Main batches contiguous 1024 (N=3000 gives 3; M=2000 gives 2). Each pair uses cost C=||a-b||²/2+W/2. Batch expectation uses POT reg .1 on C/C.max(). Point potentials use GeomLoss blur sqrt(.1), debias=False, p=2, with symmetric epsilon scaling .5 and final extrapolation; potentials centered and scaled n/(n-1). Outer Q uses POT reg .01 on batchcost/batchcost.max().\\n\\nHypotheses queued:\\n1. Eliminate unused within-candidate and within-reference W solves, maintaining exact cross costs.\\n2. Replace GeomLoss dense implementation with precomputed symmetric costs, matching its finite epsilon annealing schedule. Potential acceleration: at very low epsilon, logsumexp is effectively hard min, sparse top-k or late-stage min transforms. Need ablate carefully as targets are the finite-iteration canonical algorithm rather than exact converged OT.\\n3. Vectorize class-conditional solves with padding and masks / grouped same schedules.\\n4. Separate batch coupling expectation from potentials; high-reg normalized C may allow approximate couplings or low-rank kernels, subject to strict value gates.\\n\\nResearch records must preserve all tried variants (including failures) and exact evaluator-reported source hashes. Every retained candidate needs full actual Public/Dev evaluation.\\nEOF\\ncat /tmp/research_history/000_baseline/evaluator.log\",max_output_tokens:3000}));\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "c177696b431fb15ee0cbeebfefeb47c266729e41bdb562ea5711646f0004020a"
+        },
+        "implementation": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:21:57.285Z",
+          "call_id": "call_2f595b0b200f4f4792fe5db5044cefd1",
+          "payload_type": "custom_tool_call",
+          "text_sha256": "3afe00f153ff5bd25b4caec0bdaef3f3fac3124eb35333a2ff18aafb5a81e66f",
+          "verbatim": "text(await tools.exec_command({cmd:\"mkdir -p /tmp/research_history/001_cross_only\\npython - <<'PY'\\nfrom pathlib import Path\\ns=Path('/tmp/research_history/000_baseline/method.py').read_text()\\ns=s.replace('for i in range(20):\\\\n            for j in range(i+1,20):','for i in range(10):\\\\n            for j in range(10,20):')\\nPath('/tmp/research_history/001_cross_only/method.py').write_text(s)\\nPY\\ncat > /tmp/research_history/profile_method.py <<'PY'\\nimport sys, time, cProfile, pstats, importlib.util\\nimport numpy as np\\nmethod_path=sys.argv[1]\\ncase=sys.argv[2] if len(sys.argv)>2 else 'seed_101_gaussian_008'\\nspec=importlib.util.spec_from_file_location('research_method',method_path)\\nmethod=importlib.util.module_from_spec(spec); spec.loader.exec_module(method)\\nz=np.load('/workspace/environment/public_assets/dev/'+case+'.npz')\\np=cProfile.Profile(); start=time.perf_counter()\\np.enable(); out=method.value(z['x'],z['y'],z['r'],z['ry'],int(z['seed'])); p.disable()\\nprint('time',time.perf_counter()-start,'mean',out.mean(),'std',out.std(), 'range',out.min(),out.max())\\npstats.Stats(p).strip_dirs().sort_stats('cumtime').print_stats(35)\\nnp.save('/tmp/research_history/'+case+'_canonical.npy',out)\\nPY\\ncat /tmp/research_history/000_baseline/evaluator.log\",max_output_tokens:3000}));\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "3afe00f153ff5bd25b4caec0bdaef3f3fac3124eb35333a2ff18aafb5a81e66f"
+        },
+        "score_conclusion": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:35:24.869Z",
+          "call_id": null,
+          "payload_type": "message",
+          "text_sha256": "1b2262818a471d5740ab938048243fd3e88637d7cadbb8d4a7414ee08e1d6057",
+          "verbatim": "Removing the unused class solves passed all 30 cases and reduced the reported raw time to **0.524686 seconds**. Local checks across all public inputs also passed for hard-minimum updates below epsilon 8 and two sparse variants. The later 8-neighbor variant had the best accuracy margin, with worst normalized RMSE **0.00226**. I’m comparing their runtimes before the next full evaluation.\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "1b2262818a471d5740ab938048243fd3e88637d7cadbb8d4a7414ee08e1d6057"
+        },
+        "next_decision": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:38:00.920Z",
+          "call_id": null,
+          "payload_type": "message",
+          "text_sha256": "d7b59918a06097edab33ce47bc86dea30da9db3a338cbd97682bbae8a7139729",
+          "verbatim": "The high-temperature Gibbs-kernel variant was fastest in the local comparison and is now in full evaluation. It uses matrix-vector products when the numerical range permits, falls back to log-domain updates when needed, and retains the tested low-temperature approximation. I’m checking whether the same approach helps the batched class solves.\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "d7b59918a06097edab33ce47bc86dea30da9db3a338cbd97682bbae8a7139729"
+        }
+      },
+      "proposal_to_next_decision_wall_seconds": 1012.348,
+      "overlapping_research_windows_not_additive_effective_time": true,
+      "proposal_scope": "Explicit queued hypothesis or concrete implemented algorithm plan; Gibbs plan is embedded in its native implementation call.",
+      "historical_protected_report_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+      "historical_implemented_source_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/research_history/001_cross_only/method.py"
+    },
+    {
+      "name": "009_gibbs_early",
+      "source_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5",
+      "protected_report": "expert_evidence/native_records/codex/protected_reports/4ebb4ee52d1243e58ad9f451389e89ce.json",
+      "protected_report_sha256": "8a17413273a2ce7f02e0739a358f5ca749a5acc2606c53bc9d8dca21d0bb7fc8",
+      "score": 0.4792228641581371,
+      "quality_valid": true,
+      "links": {
+        "proposal": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:29:06.458Z",
+          "call_id": "call_d40915f0c7e14b1b96a4e2eb8a0b7b6e",
+          "payload_type": "custom_tool_call",
+          "text_sha256": "e8c73b8c80724b25547c1039f541a7bd81cd19397a6b7b7cf0a034b7df202a33",
+          "verbatim": "text(await tools.exec_command({cmd:\"mkdir -p /tmp/research_history/009_gibbs_early\\npython - <<'PY'\\nfrom pathlib import Path\\ns=Path('/tmp/research_history/006_min_8/method.py').read_text()\\na=s.index('def _dual(');b=s.index('\\\\n\\\\ndef _label_cost(',a)\\nnew='''def _dual(C, schedule):\\n    D=C.T.contiguous()\\n    n,m=C.shape\\n    la=float(np.log(np.float32(1./n)))\\n    lb=float(np.log(np.float32(1./m)))\\n    cmin=float(C.min()); span=float(C.max())-cmin\\n    def lse(T,h,eps,lw):\\n        return -eps*(h[None,:]/eps+lw-T/eps).logsumexp(1)\\n    def transforms(f,g,eps):\\n        if eps<=8.:\\n            return (C-g[None,:]).amin(1)-eps*lb, (D-f[None,:]).amin(1)-eps*la\\n        if span/eps<60.:\\n            K=torch.exp((cmin-C)/eps)\\n            fm=float(f.max());gm=float(g.max())\\n            ft=cmin-gm-eps*((K @ torch.exp((g-gm)/eps)).log()+lb)\\n            gt=cmin-fm-eps*((K.T @ torch.exp((f-fm)/eps)).log()+la)\\n            if bool(torch.isfinite(ft).all()) and bool(torch.isfinite(gt).all()):\\n                return ft,gt\\n        return lse(C,g,eps,lb),lse(D,f,eps,la)\\n    eps=schedule[0]\\n    f,g=transforms(torch.zeros(n),torch.zeros(m),eps)\\n    for eps in schedule:\\n        ft,gt=transforms(f,g,eps)\\n        f,g=(f+ft)*.5,(g+gt)*.5\\n    return transforms(f,g,eps)\\n'''\\ns=s[:a]+new+s[b:]\\nPath('/tmp/research_history/009_gibbs_early/method.py').write_text(s)\\nPY\\nOPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 python /tmp/research_history/screen.py /tmp/research_history/000_baseline/method.py /tmp/research_history/009_gibbs_early/method.py > /tmp/research_history/screen_009.log 2>&1\",yield_time_ms:1000,max_output_tokens:1500}));\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "46ca6ae7df72885d34dcb93dd2c6fba28b4502ea08019b0a0e0997ad436fc507"
+        },
+        "implementation": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:29:06.458Z",
+          "call_id": "call_d40915f0c7e14b1b96a4e2eb8a0b7b6e",
+          "payload_type": "custom_tool_call",
+          "text_sha256": "e8c73b8c80724b25547c1039f541a7bd81cd19397a6b7b7cf0a034b7df202a33",
+          "verbatim": "text(await tools.exec_command({cmd:\"mkdir -p /tmp/research_history/009_gibbs_early\\npython - <<'PY'\\nfrom pathlib import Path\\ns=Path('/tmp/research_history/006_min_8/method.py').read_text()\\na=s.index('def _dual(');b=s.index('\\\\n\\\\ndef _label_cost(',a)\\nnew='''def _dual(C, schedule):\\n    D=C.T.contiguous()\\n    n,m=C.shape\\n    la=float(np.log(np.float32(1./n)))\\n    lb=float(np.log(np.float32(1./m)))\\n    cmin=float(C.min()); span=float(C.max())-cmin\\n    def lse(T,h,eps,lw):\\n        return -eps*(h[None,:]/eps+lw-T/eps).logsumexp(1)\\n    def transforms(f,g,eps):\\n        if eps<=8.:\\n            return (C-g[None,:]).amin(1)-eps*lb, (D-f[None,:]).amin(1)-eps*la\\n        if span/eps<60.:\\n            K=torch.exp((cmin-C)/eps)\\n            fm=float(f.max());gm=float(g.max())\\n            ft=cmin-gm-eps*((K @ torch.exp((g-gm)/eps)).log()+lb)\\n            gt=cmin-fm-eps*((K.T @ torch.exp((f-fm)/eps)).log()+la)\\n            if bool(torch.isfinite(ft).all()) and bool(torch.isfinite(gt).all()):\\n                return ft,gt\\n        return lse(C,g,eps,lb),lse(D,f,eps,la)\\n    eps=schedule[0]\\n    f,g=transforms(torch.zeros(n),torch.zeros(m),eps)\\n    for eps in schedule:\\n        ft,gt=transforms(f,g,eps)\\n        f,g=(f+ft)*.5,(g+gt)*.5\\n    return transforms(f,g,eps)\\n'''\\ns=s[:a]+new+s[b:]\\nPath('/tmp/research_history/009_gibbs_early/method.py').write_text(s)\\nPY\\nOPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 python /tmp/research_history/screen.py /tmp/research_history/000_baseline/method.py /tmp/research_history/009_gibbs_early/method.py > /tmp/research_history/screen_009.log 2>&1\",yield_time_ms:1000,max_output_tokens:1500}));\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "46ca6ae7df72885d34dcb93dd2c6fba28b4502ea08019b0a0e0997ad436fc507"
+        },
+        "score_conclusion": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:42:07.837Z",
+          "call_id": null,
+          "payload_type": "message",
+          "text_sha256": "a5b0db39973200eeba80f9184224ab203930c77d22cbee0de44d9aaa45fa7bc3",
+          "verbatim": "The Gibbs-kernel variant passed the full evaluator with raw time **0.271582 seconds** and score **0.479223**. Across all 30 cases, worst normalized RMSE was **0.005724**, minimum Spearman **0.999978**, and minimum top-quarter overlap **0.993333**. It is now the best fully evaluated method; I’ve preserved its exact hash and report.\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "a5b0db39973200eeba80f9184224ab203930c77d22cbee0de44d9aaa45fa7bc3"
+        },
+        "next_decision": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:42:15.140Z",
+          "call_id": "call_78f16039f55a4aa887f294befc88b54e",
+          "payload_type": "custom_tool_call",
+          "text_sha256": "2ff2379749d86843b35698aa6d21109736aa10707477e597ddf57be88bf75b6a",
+          "verbatim": "text(await tools.exec_command({cmd:\"cp /tmp/research_history/015_sparse_8_later/method.py /workspace/solution/method.py\\nsh ./solve.sh > /tmp/research_history/015_sparse_8_later/evaluator.log 2>&1\",yield_time_ms:1000,max_output_tokens:1000}));\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "2ff2379749d86843b35698aa6d21109736aa10707477e597ddf57be88bf75b6a"
+        }
+      },
+      "proposal_to_next_decision_wall_seconds": 788.682,
+      "overlapping_research_windows_not_additive_effective_time": true,
+      "proposal_scope": "Explicit queued hypothesis or concrete implemented algorithm plan; Gibbs plan is embedded in its native implementation call.",
+      "historical_protected_report_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+      "historical_implemented_source_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/research_history/009_gibbs_early/method.py"
+    },
+    {
+      "name": "015_sparse_8_later",
+      "source_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e",
+      "protected_report": "expert_evidence/native_records/codex/protected_reports/0bf919dc187c44b2af3a7da7fb133ca9.json",
+      "protected_report_sha256": "46a63828769f06deecb5ee6d3d4e99d2a3ea6912331996bf11fc7bb078c3583d",
+      "score": 0.41672057372136356,
+      "quality_valid": true,
+      "links": {
+        "proposal": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:32:14.415Z",
+          "call_id": null,
+          "payload_type": "message",
+          "text_sha256": "5e4ff77941639bfc91c9d23991c0da4b6171578bf2803730cee8eb0e0cb573dd",
+          "verbatim": "A sparse-neighbor variant improves the screened RMSE to about 0.0014. It retains entropy over 32 selected neighbors during the final annealing stages. Reducing that graph to 8 or 4 neighbors causes quality failures on some cases, so I’ve archived those attempts and will test larger graphs or later graph construction.\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "5e4ff77941639bfc91c9d23991c0da4b6171578bf2803730cee8eb0e0cb573dd"
+        },
+        "implementation": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:32:14.451Z",
+          "call_id": "call_03332aa9ab3d4f7fb5ac4bb16f70cb48",
+          "payload_type": "custom_tool_call",
+          "text_sha256": "702ca2edab9073097584c55f0ce7c0d83263d756be484e58d97b3750eb20d3eb",
+          "verbatim": "text(await tools.exec_command({cmd:\"python - <<'PY'\\nfrom pathlib import Path\\ns=Path('/tmp/research_history/011_sparse_labels/method.py').read_text()\\nvariants=[('014_sparse_16',16,32),('015_sparse_8_later',8,8),('016_sparse_4_later',4,2)]\\nfor name,k,entry in variants:\\n d=Path('/tmp/research_history/'+name);d.mkdir(exist_ok=True)\\n t=s.replace('min(32,m)',f'min({k},m)').replace('min(32,n)',f'min({k},n)').replace('min(32,h.shape[1])',f'min({k},h.shape[1])')\\n t=t.replace('eps<=32.:',f'eps<={entry}.:').replace('float(eps.max())<=32.:',f'float(eps.max())<={entry}.:')\\n (d/'method.py').write_text(t)\\nPY\\nOPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 python /tmp/research_history/screen.py /tmp/research_history/000_baseline/method.py /tmp/research_history/014_sparse_16/method.py /tmp/research_history/015_sparse_8_later/method.py /tmp/research_history/016_sparse_4_later/method.py > /tmp/research_history/screen_014_016.log 2>&1\",yield_time_ms:1000,max_output_tokens:1000}));\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "702ca2edab9073097584c55f0ce7c0d83263d756be484e58d97b3750eb20d3eb"
+        },
+        "score_conclusion": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:48:53.516Z",
+          "call_id": "call_95a837f0d9394a16b5aba7b50f69b2a2",
+          "payload_type": "custom_tool_call",
+          "text_sha256": "00baa1be80f50ff832f10c2585abc65fff086da7f2dfc909a85c9f888ae37717",
+          "verbatim": "text(await tools.exec_command({cmd:\"cat /tmp/research_history/bench_round_3.log\\ncat >> /tmp/research_notes.md <<'EOF'\\n\\n015 full evaluation quality valid, but slower than009: raw .3041770834014945, score .41672057372136356, exact source hash 494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e. Quality extrema nrmse .00225998745, rank .99999596267, overlap .9973333. Archived complete report result015. Reverted method.py to009 immediately after this worse aggregate. The graph method provides extra accuracy but does not improve speed enough. Bench_round_3 comparing21/22/23/25/26/27/28 runs without evaluator concurrency.\\n\\n027 and028 all30 local screens valid; max RMSE ~.0057230 and .0057227 respectively, min rho .99997830/.99997833, min overlap .9933333. They adapt every-step checks and avoid redundant K.T @ u; possible more robust alternatives to fixed3 inner scaling if comparable time.\\nEOF\",max_output_tokens:3000}));\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "8bbc4590459a73a631d9cf3b5dea425ea65d945c1d7d74957aec5829355cc90c"
+        },
+        "next_decision": {
+          "native_session": "expert_evidence/native_records/codex/native_sessions/episode_0001/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "native_session_sha256": "cc2a92738a48935912b6cb6b149aabeff5734b70cdebc6e4ba015e773caf3cd4",
+          "timestamp": "2026-10-09T12:49:06.719Z",
+          "call_id": "call_b3dc24cb959e428fa9f81196ea7c55bb",
+          "payload_type": "custom_tool_call",
+          "text_sha256": "c623044b06c774e826b7e21450d3638f2dfba2fc0c851096c9403dc537c79f1c",
+          "verbatim": "text(await tools.exec_command({cmd:\"cp /tmp/research_history/023_coupling_3/method.py /workspace/solution/method.py\\nsh ./solve.sh > /tmp/research_history/023_coupling_3/evaluator.log 2>&1\",yield_time_ms:1000,max_output_tokens:1000}));\n",
+          "historical_native_session_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/sessions/2026/10/09/rollout-2026-10-09T12-19-32-01a1209a-b716-7d61-a52c-1da0a8091271.jsonl",
+          "published_native_session_sha256": "e77ee92d813dfb597934d65a06d251dea39fc47e8e693f14481c58ed12df81bc",
+          "published_text_sha256": "c623044b06c774e826b7e21450d3638f2dfba2fc0c851096c9403dc537c79f1c"
+        }
+      },
+      "proposal_to_next_decision_wall_seconds": 1012.304,
+      "overlapping_research_windows_not_additive_effective_time": true,
+      "proposal_scope": "Explicit queued hypothesis or concrete implemented algorithm plan; Gibbs plan is embedded in its native implementation call.",
+      "historical_protected_report_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+      "historical_implemented_source_identifier": "private/harbor_jobs/gpt_long_v1_004/harbor_task__9bqESGc/agent/episode_0001/research_history/015_sparse_8_later/method.py"
+    }
+  ],
+  "representative_whole_iteration_wall_seconds": [
+    1012.348,
+    788.682,
+    1012.304
+  ],
+  "scope": "Actual proposal/implementation through observed result and next decision; includes planning/tool/evaluation overhead, not worker duration sums. Overlapping windows are not additive effective time. Excludes future uncollected work.",
+  "seven_hour_exception_qualified": true,
+  "created_at": "2026-10-10T15:37:35.468788+00:00",
+  "original_cycle_audit_sha256": "a52720b8e7a26b6fe10aaf6c23e2e3c386dce9a49ae1356c22ff6098bc449fad",
+  "publication_scope": "Internal report/session references resolve in this package. Original private payload/session/source hashes remain provenance; published transcript hashes bind privacy-only home/@ transformations. Historical solver sources are not separately delivered.",
+  "full_release_status": "PENDING_STABILITY_AND_TWO_INDEPENDENT_QA",
+  "ending_future_direction_evidence": "expert_evidence/method_cycles/ending_directions.json",
+  "effective_seconds": 31751.36391291509,
+  "best_method_revalidated": true,
+  "clean_evidence": "expert_evidence/best_method_clean_rerun/execution.json",
+  "final_author_qualification_at": "2026-10-10T16:51:44.635979+00:00"
+}

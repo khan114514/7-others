@@ -1,0 +1,14 @@
+{
+  "base": "53_compiled_image_rotary",
+  "changed_existing_nodes": [
+    "image_attention_mask"
+  ],
+  "no_added_or_removed_nodes": true,
+  "all_other_existing_nodes_and_regions_equal": true,
+  "mask_consumer_same_eager_ordered_add": true,
+  "raw_attention_mask_not_modified_or_replaced": true,
+  "unchanged_all_score_value_softmax_norm_MLP_projection_precision": true,
+  "general_equivalence_condition": "All image-query mask rows equal row300; verified bitwise on disclosed inputs, not universally guaranteed by operator shapes.",
+  "source_argument": "research-diagnostics/diagnostic-image-query-broadcast.json",
+  "canonical_sha256": "50d9fb7daea4828c884394928bbd5ace4523b654acd971b0cad3d3d180ea33f0"
+}

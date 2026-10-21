@@ -1,0 +1,36 @@
+{
+  "hypothesis": "Make repeated keys internal to their original canonical56-batch score consumer; allow compiler to handle producer layout and score epilogue together.",
+  "same_every_node_object": true,
+  "same_other_relative_node_order_and_three_regions": true,
+  "region": {
+    "id": "key_score_producer_consumer_compiled",
+    "inputs": [
+      "text_key_rotary",
+      "image_key",
+      "image_query",
+      "image_attention_mask"
+    ],
+    "outputs": [
+      "image_masked"
+    ],
+    "prefix": false
+  },
+  "repeated_key_source_coordinates_checked": 3985408,
+  "score_geometry": [
+    56,
+    256,
+    556,
+    128
+  ],
+  "ordered_reduction_terms": 128,
+  "scale_mask_nodes_unchanged_BF16_boundaries": true,
+  "softmax_and_probability_cast": "unchanged eager",
+  "historical_distinction": "60 only compiled key producer;73 only score/epilogue;99 changed GEMM grouping. None measured this unchanged-dimension producer/consumer boundary.",
+  "declared_repeat_result_bytes": 7970816,
+  "benefit_limits": [
+    "No total FLOP reduction. Compiler may still materialize all repeated keys or use same bmm.",
+    "No current compiled109 kernel profile; cannot attribute prior time to materialization.",
+    "Combining previously nonselected regions need not improve performance; exact numerics and resource gates still mandatory."
+  ],
+  "canonical_sha256": "a7c66b88bb6f11803621db159ed569ed5d82716e0d6fa9948dca0bd8c21d872d"
+}

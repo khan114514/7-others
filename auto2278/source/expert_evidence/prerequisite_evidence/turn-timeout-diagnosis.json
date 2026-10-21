@@ -1,0 +1,25 @@
+{
+  "fact": "Previous two tracks each attempted five turns under a 480-second CLI limit; no qualified method cycle.",
+  "prior_campaign": "campaigns/asd-research-1791372018",
+  "unmet_requirement": "completed independent model-method-scoring-decision loops and separately sufficient effective durations",
+  "root_cause_evidence": [
+    "tools/memory_codex_agent.py before repair: timeout_sec=480",
+    "Harbor Docker buffered collector terminates compose client and raises without returning partial stdout",
+    "old independent scoring logs show 335-1021 seconds after CLI timeout",
+    "Seed audit includes upstream completions after the corresponding host CLI deadline"
+  ],
+  "repair": [
+    "stream original CLI events through native scoped_output_callback",
+    "Linux subreaper supervisor terminates and reaps descendants before any subsequent scoring or turn",
+    "2400-second in-container deadline; host deadline +60 seconds",
+    "abort on timeout or unverifiable cleanup; do not repeat unchanged failed scoring",
+    "each track default >=10h, no preclaimed 7h exception"
+  ],
+  "acceptance_evidence": [
+    "preflight/supervisor-process-cleanup.json",
+    "preflight/harbor-supervisor-smoke/supervisor-smoke-1791382445"
+  ],
+  "complete_model_loop_verified": false,
+  "old_effective_seconds_relabelled": false,
+  "current_campaign": "campaigns/asd-research-1791382557"
+}

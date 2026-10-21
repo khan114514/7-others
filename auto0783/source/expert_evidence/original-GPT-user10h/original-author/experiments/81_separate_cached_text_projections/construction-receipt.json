@@ -1,0 +1,22 @@
+{
+  "base": "53_compiled_image_rotary",
+  "changed_existing_nodes": [
+    "text_k_rows",
+    "text_q_rows",
+    "text_v_rows"
+  ],
+  "removed_nodes": [
+    "text_flat_qkv",
+    "text_qkv",
+    "text_qkv_bias",
+    "text_qkv_weight"
+  ],
+  "added_nodes": [
+    "text_k_flat",
+    "text_q_flat",
+    "text_v_flat"
+  ],
+  "all_other_nodes_equal": true,
+  "all_compile_regions_equal": true,
+  "original600flat_text_input_equal": true
+}

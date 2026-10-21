@@ -1,0 +1,50 @@
+{
+  "checked_unix": 1791412351.2606468,
+  "track": "seed",
+  "round": 17,
+  "type": "independent completed method cycle",
+  "own_resume_evidence": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/resume-provenance.json",
+  "method_change": "same exact attention with contiguous logits flattened to 2D softmax and restored shape",
+  "candidate_sha256": "716190a7f54019c22ae3a6ac6259bfa4cf367bc6e6033fbd98c6f2d2ef1a5ff6",
+  "candidate_source": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/private_candidate_sources/round_00017.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.46286319684897,
+      "score": 0.5664658172184501,
+      "quality_gates_passed": true,
+      "method_sha256": "716190a7f54019c22ae3a6ac6259bfa4cf367bc6e6033fbd98c6f2d2ef1a5ff6",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791411715.180453,
+      "end_unix": 1791411875.867225
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.4550455594842856,
+    "score": 0.5737880952678904,
+    "quality_gates_passed": true,
+    "method_sha256": "716190a7f54019c22ae3a6ac6259bfa4cf367bc6e6033fbd98c6f2d2ef1a5ff6",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791412062.2707853,
+    "end_unix": 1791412215.2456143
+  },
+  "model_final_decision": {
+    "policy_name": "observed-candidate-17",
+    "method_summary": "Optimized v-space multihead retrieval with 2D-view softmax, Gram-matrix norm computation, 4D broadcast p@G, in-place ops, and alpha=1.0 shortcut. Raw ratio improved from 0.491 to 0.463 (~5.7% faster). Key wins: 2D-view softmax dispatch and Gram norm approach.",
+    "next_direction": "Projections are the largest remaining cost (~40-50%). Next could explore fused projection layouts, better memory reuse, or stacked p@G approaches for high-L cases. Could also investigate PyTorch's linear vs matmul performance difference."
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791409486.28571,
+    "ended_unix": 1791412059.9634674,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "original_events": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/round_00017.events.jsonl",
+  "model_and_billing_audit": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/coding-plan.audit.jsonl",
+  "genuine_method_cycle": true,
+  "performance_caveat": "Current initial recheck raw 0.4909365 and this method raw 0.4550456; previous same-track other-method observation 0.450881 is lower. Cross-run timing is noisy; no claim of unique global best or private clean revalidation."
+}

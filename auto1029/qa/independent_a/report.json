@@ -1,0 +1,1584 @@
+{
+  "schema": "local-v4-content-review",
+  "schema_version": 1,
+  "reviewer": {
+    "provider": "OpenAI",
+    "configured_model": "gpt-6.1-sol",
+    "configured_reasoning_effort": "high",
+    "configuration_basis": "Trusted parent spawn receipt states explicit model/high/fork_turns=none accepted by host",
+    "runtime_reported_model": "GPT-6 (Codex)",
+    "runtime_version": "not_exposed",
+    "session_id": "heima_a",
+    "clean_context": true,
+    "input_contract": "Only complete ZIP and review instructions; no external or packaged prior QA conclusions used"
+  },
+  "artifact": {
+    "logical_name": "heima-submission.zip",
+    "sha256": "ce7d24591a81f080954e9910b1e02d77e093260ba205fa3a524fbfb693dcf017",
+    "zip_members": 3054,
+    "uncompressed_bytes": 63863550
+  },
+  "review": {
+    "completed": true,
+    "status": "FAIL",
+    "user_policy_conclusion": "NOT READY — 核心运行架构、内场配置与完整单轮预算不符合当前V4",
+    "scope": "只读ZIP文本/JSON/日志/元数据/原始逐样本数据；标准库统计、哈希和区间算术。未执行/导入提交代码、Docker、Verifier、模型、训练、权重反序列化；未解压题包。",
+    "policy": "V4 + 用户2026-10-21五类非阻断待补",
+    "prior_reports_used": false
+  },
+  "overview": {
+    "optimization_surface": {
+      "summary": "冻结视觉推理目标的推理时草稿策略优化，降低端到端latency ratio；不是训练任务。",
+      "modifiable": [
+        "draft(state)及支持标准库Python源码",
+        "结构/历史/置信策略与草稿长度/内容"
+      ],
+      "fixed": [
+        "目标权重、tokenizer、图像处理、采样、每位置RNG",
+        "数据划分、五seed、质量门、token/forward预算"
+      ],
+      "metric_and_gate": "minimize每题与同批AR校准延迟比的seed均值；tokens≥.99/answer≥.99/accuracy drop≤.01/parsed≥.90",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:5",
+        "workspace/harbor_task/instruction.md:13",
+        "workspace/harbor_task/instruction.md:30",
+        "workspace/harbor_task/instruction.md:36"
+      ]
+    },
+    "baseline_reference": {
+      "baseline_method": "普通AR；draft返回[]，目标逐token采样与forward。Starter=正式Baseline=Dev归一化锚点B；独立calibration为另一个普通AR测量角色。",
+      "reference_method": "预先从固定tokenizer取得36 token结构前缀，精确匹配已生成前缀后每次最多提议16 token；不匹配或越过前缀则退回AR。目标验证所有提议，R非最终Agent最佳。",
+      "metric": "paired_latency_ratio",
+      "direction": "minimize",
+      "paired_runs": [
+        {
+          "seed": 17,
+          "baseline": 1.0001033801765729,
+          "reference": 0.37345663611559754,
+          "improvement": 0.6266467440609753,
+          "baseline_valid": true,
+          "reference_valid": true
+        },
+        {
+          "seed": 29,
+          "baseline": 0.9999248674843658,
+          "reference": 0.40700602100748673,
+          "improvement": 0.5929188464768791,
+          "baseline_valid": true,
+          "reference_valid": true
+        },
+        {
+          "seed": 43,
+          "baseline": 1.000907990960543,
+          "reference": 0.4125853968175743,
+          "improvement": 0.5883225941429686,
+          "baseline_valid": true,
+          "reference_valid": true
+        },
+        {
+          "seed": 71,
+          "baseline": 0.999648023906308,
+          "reference": 0.38972927789058653,
+          "improvement": 0.6099187460157215,
+          "baseline_valid": true,
+          "reference_valid": true
+        },
+        {
+          "seed": 101,
+          "baseline": 1.000101210766072,
+          "reference": 0.3984332847797394,
+          "improvement": 0.6016679259863327,
+          "baseline_valid": true,
+          "reference_valid": true
+        }
+      ],
+      "computed": {
+        "baseline_mean": 1.0001370946587724,
+        "baseline_sample_std": 0.00046929095522433943,
+        "reference_mean": 0.3962421233221969,
+        "reference_sample_std": 0.015405849970995297,
+        "mean_improvement": 0.6038949713365755,
+        "relative_improvement": 0.603812191910163,
+        "normalized_reference": 0.603812191910163,
+        "three_sigma_B": 0.0014078728656730182,
+        "improvement_sigma_multiple": 1286.8242283678578,
+        "remaining_headroom": 0.3962421233221969,
+        "remaining_headroom_sigma_multiple": 844.3421270132463,
+        "n": 5,
+        "std_denominator": 4,
+        "U": 0
+      },
+      "formal_result_details": [
+        {
+          "seed": 17,
+          "role": "baseline",
+          "result": "optimization_evidence/baseline_runs/seed_17/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/baseline_runs/seed_17/per-sample.jsonl",
+          "run_log": "optimization_evidence/baseline_runs/seed_17/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 1,
+          "accuracy": 0.46875,
+          "recomputed_primary": 1.0001033801765729,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 17,
+          "role": "reference",
+          "result": "optimization_evidence/reference_runs/seed_17/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/reference_runs/seed_17/per-sample.jsonl",
+          "run_log": "optimization_evidence/reference_runs/seed_17/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 1,
+          "accuracy": 0.46875,
+          "recomputed_primary": 0.37345663611559754,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 29,
+          "role": "baseline",
+          "result": "optimization_evidence/baseline_runs/seed_29/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/baseline_runs/seed_29/per-sample.jsonl",
+          "run_log": "optimization_evidence/baseline_runs/seed_29/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 1,
+          "accuracy": 0.4166666666666667,
+          "recomputed_primary": 0.9999248674843658,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 29,
+          "role": "reference",
+          "result": "optimization_evidence/reference_runs/seed_29/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/reference_runs/seed_29/per-sample.jsonl",
+          "run_log": "optimization_evidence/reference_runs/seed_29/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 1,
+          "accuracy": 0.4166666666666667,
+          "recomputed_primary": 0.40700602100748673,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 43,
+          "role": "baseline",
+          "result": "optimization_evidence/baseline_runs/seed_43/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/baseline_runs/seed_43/per-sample.jsonl",
+          "run_log": "optimization_evidence/baseline_runs/seed_43/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 0.9895833333333334,
+          "accuracy": 0.3958333333333333,
+          "recomputed_primary": 1.000907990960543,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 43,
+          "role": "reference",
+          "result": "optimization_evidence/reference_runs/seed_43/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/reference_runs/seed_43/per-sample.jsonl",
+          "run_log": "optimization_evidence/reference_runs/seed_43/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 0.9895833333333334,
+          "accuracy": 0.3958333333333333,
+          "recomputed_primary": 0.4125853968175743,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 71,
+          "role": "baseline",
+          "result": "optimization_evidence/baseline_runs/seed_71/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/baseline_runs/seed_71/per-sample.jsonl",
+          "run_log": "optimization_evidence/baseline_runs/seed_71/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 1,
+          "accuracy": 0.4270833333333333,
+          "recomputed_primary": 0.999648023906308,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 71,
+          "role": "reference",
+          "result": "optimization_evidence/reference_runs/seed_71/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/reference_runs/seed_71/per-sample.jsonl",
+          "run_log": "optimization_evidence/reference_runs/seed_71/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 1,
+          "accuracy": 0.4270833333333333,
+          "recomputed_primary": 0.38972927789058653,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 101,
+          "role": "baseline",
+          "result": "optimization_evidence/baseline_runs/seed_101/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/baseline_runs/seed_101/per-sample.jsonl",
+          "run_log": "optimization_evidence/baseline_runs/seed_101/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 1,
+          "accuracy": 0.4166666666666667,
+          "recomputed_primary": 1.000101210766072,
+          "method_and_log_and_raw_hashes_match": true
+        },
+        {
+          "seed": 101,
+          "role": "reference",
+          "result": "optimization_evidence/reference_runs/seed_101/result.json#metrics.primary.value",
+          "raw": "optimization_evidence/reference_runs/seed_101/per-sample.jsonl",
+          "run_log": "optimization_evidence/reference_runs/seed_101/run.log",
+          "raw_rows": 96,
+          "parsed_rate": 1,
+          "accuracy": 0.4166666666666667,
+          "recomputed_primary": 0.3984332847797394,
+          "method_and_log_and_raw_hashes_match": true
+        }
+      ],
+      "quality_gate_summary": "480/480 B/R整段tokens和answer一致，准确率相同；seed43 parsed=95/96，其余1.0，均≥.90。",
+      "shared_log_scope": "十个run.log是同一完整五seed三角色进程stdout/stderr的已披露副本，非十次独立训练",
+      "evidence": [
+        "optimization_evidence/训练证据说明.md",
+        "optimization_evidence/baseline_runs/method.py",
+        "optimization_evidence/reference_runs/method.py",
+        "optimization_evidence/comparison_summary.json"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "gpt",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "packaged_rounds": 19,
+        "valid_full_rounds": 5,
+        "failed_rounds": 14,
+        "best_raw_dev": 0.42313584376338575,
+        "best_normalized_dev": 0.5769221579490044,
+        "best_policy": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+        "rounds": [
+          {
+            "round": 1,
+            "policy_name": "e222177fce41a0cb306b7a9e2a3836b551e8d5c7280e35404d40aeaf67845f4e",
+            "method_summary": "Match the longest 4..8-token suffix against earlier nonoverlapping occurrences in the last 96 public generated token IDs. Copy up to four following IDs only while every occurrence agrees, requiring at least two proposed tokens. The complete five-seed measured Dev metric was 1.000535779857341 and this valid method was retained.",
+            "status": "ok",
+            "score": 1.000535779857341,
+            "failure_reason": null,
+            "retained_best": true,
+            "time": "2026-10-05 20:37:53"
+          },
+          {
+            "round": 2,
+            "policy_name": "e222177fce41a0cb306b7a9e2a3836b551e8d5c7280e35404d40aeaf67845f4e",
+            "method_summary": "Match the longest 4..8-token suffix against earlier nonoverlapping occurrences in the last 96 public generated token IDs. Copy up to four following IDs only while every occurrence agrees, requiring at least two proposed tokens. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-06 00:11:34"
+          },
+          {
+            "round": 3,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. Submitted method metadata exceeded the existing 65536-byte contract; no Native reward returned.",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Submitted method metadata exceeded the existing 65536-byte contract; no Native reward returned",
+            "retained_best": false,
+            "time": "2026-10-06 00:19:49"
+          },
+          {
+            "round": 4,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. Submitted method metadata exceeded the existing 65536-byte contract; no Native reward returned.",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Submitted method metadata exceeded the existing 65536-byte contract; no Native reward returned",
+            "retained_best": false,
+            "time": "2026-10-06 00:26:35"
+          },
+          {
+            "round": 5,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. Provider/CLI failure without verified specified-model research; no formal score or effective time credited.",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Provider/CLI failure without verified specified-model research; no formal score or effective time credited",
+            "retained_best": false,
+            "time": "2026-10-06 00:27:44"
+          },
+          {
+            "round": 6,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. Provider/CLI failure without verified specified-model research; no formal score or effective time credited.",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Provider/CLI failure without verified specified-model research; no formal score or effective time credited",
+            "retained_best": false,
+            "time": "2026-10-06 00:29:25"
+          },
+          {
+            "round": 7,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. Submitted method metadata exceeded the existing 65536-byte contract; no Native reward returned.",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Submitted method metadata exceeded the existing 65536-byte contract; no Native reward returned",
+            "retained_best": false,
+            "time": "2026-10-06 00:34:01"
+          },
+          {
+            "round": 8,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. Provider/CLI failure without verified specified-model research; no formal score or effective time credited.",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Provider/CLI failure without verified specified-model research; no formal score or effective time credited",
+            "retained_best": false,
+            "time": "2026-10-06 00:35:12"
+          },
+          {
+            "round": 9,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. Submitted method metadata exceeded the existing 65536-byte contract; no Native reward returned.",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Submitted method metadata exceeded the existing 65536-byte contract; no Native reward returned",
+            "retained_best": false,
+            "time": "2026-10-06 00:42:05"
+          },
+          {
+            "round": 10,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact 36-ID opening match; no semantic conclusion prediction; complete observed closing after two committed closing IDs. Stateless across questions. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-06 02:50:30"
+          },
+          {
+            "round": 11,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification. The complete five-seed measured Dev metric was 0.42313584376338575 and this valid method was retained.",
+            "status": "ok",
+            "score": 0.42313584376338575,
+            "failure_reason": null,
+            "retained_best": true,
+            "time": "2026-10-06 05:05:44"
+          },
+          {
+            "round": 12,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification. The complete five-seed measured Dev metric was 0.4256499469793962 and this method did not replace the valid incumbent.",
+            "status": "ok",
+            "score": 0.4256499469793962,
+            "failure_reason": null,
+            "retained_best": false,
+            "time": "2026-10-06 06:29:07"
+          },
+          {
+            "round": 13,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification. The complete five-seed measured Dev metric was 0.4271419731863058 and this method did not replace the valid incumbent.",
+            "status": "ok",
+            "score": 0.4271419731863058,
+            "failure_reason": null,
+            "retained_best": false,
+            "time": "2026-10-06 07:49:44"
+          },
+          {
+            "round": 14,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification. The complete five-seed measured Dev metric was 0.4261381272788273 and this method did not replace the valid incumbent.",
+            "status": "ok",
+            "score": 0.4261381272788273,
+            "failure_reason": null,
+            "retained_best": false,
+            "time": "2026-10-06 09:13:30"
+          },
+          {
+            "round": 15,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-07 08:13:44"
+          },
+          {
+            "round": 16,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-07 15:10:18"
+          },
+          {
+            "round": 17,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-07 15:14:56"
+          },
+          {
+            "round": 18,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-07 15:23:33"
+          },
+          {
+            "round": 19,
+            "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+            "method_summary": "Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-07 15:27:14"
+          }
+        ],
+        "effective_seconds": 36749.336764097214,
+        "duration_hours": 10.208149101138115,
+        "timezone": "UTC (score-and-time-derivation.json#time_semantics)",
+        "status": "complete"
+      },
+      {
+        "name": "seed",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "packaged_rounds": 8,
+        "valid_full_rounds": 5,
+        "failed_rounds": 3,
+        "best_raw_dev": 0.32156455143955986,
+        "best_normalized_dev": 0.6784795272999333,
+        "best_policy": "a0a4bb2d8a059009673ebfac97e2d47dc6d5a845b63db30a0155b1c0e542934c",
+        "rounds": [
+          {
+            "round": 1,
+            "policy_name": "771c92d712940d715c01ccdeee977152c9de3a9701be8afd843feaed9736be66",
+            "method_summary": "hybrid structural speculative drafting with format aware adaptation. The complete five-seed measured Dev metric was 1.133775606615257 and this valid method was retained.",
+            "status": "ok",
+            "score": 1.133775606615257,
+            "failure_reason": null,
+            "retained_best": true,
+            "time": "2026-10-05 21:29:54"
+          },
+          {
+            "round": 2,
+            "policy_name": "4f926aca6604d65019499682014a3de0fa311e1714f95d56a7d1e7c9e5c8ee8a",
+            "method_summary": "Structural template speculative drafting with XML tag prediction. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-06 00:09:38"
+          },
+          {
+            "round": 3,
+            "policy_name": "4f926aca6604d65019499682014a3de0fa311e1714f95d56a7d1e7c9e5c8ee8a",
+            "method_summary": "Position-based token-ID structural template speculative drafting. Native scoring did not return a valid reward (RewardFileNotFoundError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (RewardFileNotFoundError)",
+            "retained_best": false,
+            "time": "2026-10-06 03:18:29"
+          },
+          {
+            "round": 4,
+            "policy_name": "a640b46f885b2bab17f747e06f63caedce98d0bf68e89fbf0864ed66446e1d2d",
+            "method_summary": "Position-based token-ID structural template + \"The answer is\" pattern + improved answer guessing. Native scoring did not return a valid reward (VerifierTimeoutError).",
+            "status": "failed",
+            "score": null,
+            "failure_reason": "Native scoring did not return a valid reward (VerifierTimeoutError)",
+            "retained_best": false,
+            "time": "2026-10-06 06:50:03"
+          },
+          {
+            "round": 5,
+            "policy_name": "a0a4bb2d8a059009673ebfac97e2d47dc6d5a845b63db30a0155b1c0e542934c",
+            "method_summary": "Position-based token-ID structural template + answer guessing + no-single-token-fallbacks. The complete five-seed measured Dev metric was 0.3229393446639769 and this valid method was retained.",
+            "status": "ok",
+            "score": 0.3229393446639769,
+            "failure_reason": null,
+            "retained_best": true,
+            "time": "2026-10-06 08:38:11"
+          },
+          {
+            "round": 6,
+            "policy_name": "ce248e196f19176228cb8ee5ff789b14ab75cd05fc643c2f826d29aed40a27b3",
+            "method_summary": "Position-based token-ID structural template + dynamic answer extraction + proactive TAI drafting + answer guessing + no-single-token-fallbacks. The complete five-seed measured Dev metric was 0.32344762189048565 and this method did not replace the valid incumbent.",
+            "status": "ok",
+            "score": 0.32344762189048565,
+            "failure_reason": null,
+            "retained_best": false,
+            "time": "2026-10-06 11:49:48"
+          },
+          {
+            "round": 7,
+            "policy_name": "4e8db17aac42d02b4ff34e7b0d8cb145d6ba9e9db19b6dd4e0ad4d889d7ba969",
+            "method_summary": "Position-based structural template + conclusion opening prediction + dynamic answer extraction + proactive TAI + no-fallbacks. The complete five-seed measured Dev metric was 0.32477878609652305 and this method did not replace the valid incumbent.",
+            "status": "ok",
+            "score": 0.32477878609652305,
+            "failure_reason": null,
+            "retained_best": false,
+            "time": "2026-10-06 13:03:54"
+          },
+          {
+            "round": 8,
+            "policy_name": "a0a4bb2d8a059009673ebfac97e2d47dc6d5a845b63db30a0155b1c0e542934c",
+            "method_summary": "Position-based token-ID structural template + answer guessing + no-single-token-fallbacks. The complete five-seed measured Dev metric was 0.32156455143955986 and this valid method was retained.",
+            "status": "ok",
+            "score": 0.32156455143955986,
+            "failure_reason": null,
+            "retained_best": true,
+            "time": "2026-10-06 14:36:01"
+          }
+        ],
+        "effective_seconds": 41497.01806259155,
+        "duration_hours": 11.526949461830986,
+        "timezone": "UTC (score-and-time-derivation.json#time_semantics)",
+        "status": "complete"
+      }
+    ]
+  },
+  "baseline_quality": {
+    "overall": "合理（包内既有Dev协议范围）",
+    "roles": "Starter=空草稿普通AR；正式Baseline=同实现；评分B=全部五seed正式均值；calibration=独立普通AR角色",
+    "checks": [
+      {
+        "id": "B01",
+        "status": "pass",
+        "summary": "普通 AR 是合法目标推理的基准，并兼任 Starter 与主评分 B；选择理由明确。",
+        "evidence": [
+          "optimization_evidence/训练证据说明.md:5",
+          "optimization_evidence/baseline_runs/method.py"
+        ]
+      },
+      {
+        "id": "B02",
+        "status": "pass",
+        "summary": "不训练；目标输入、采样和forward路径存在且原始tokens/质量一致，未见功能故障。",
+        "evidence": [
+          "workspace/backend/policy_decoder_v1.py:16",
+          "workspace/backend/policy_decoder_v1.py:97"
+        ]
+      },
+      {
+        "id": "B03",
+        "status": "pass",
+        "summary": "成对数据、目标与预算相同，三角色反平衡且计启动/IPC；平台资源设计另见C01/C03。",
+        "evidence": [
+          "workspace/backend/run_policy_score_v2.py:104",
+          "workspace/backend/run_policy_score_v2.py:136"
+        ]
+      },
+      {
+        "id": "B04",
+        "status": "pass",
+        "summary": "Baseline无异常学习率等训练参数；R研究草稿生成策略，固定采样配置与选择协议披露。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/seed_17/result.json#protocol",
+          "optimization_evidence/reference_runs/method.py"
+        ]
+      },
+      {
+        "id": "B05",
+        "status": "pass",
+        "summary": "全部五个evaluation seed成对，真实seed经hash转入torch RNG；不宣称独立训练。",
+        "evidence": [
+          "workspace/backend/run_policy_score_v2.py:105",
+          "workspace/backend/policy_decoder_v1.py:17"
+        ]
+      },
+      {
+        "id": "B06",
+        "status": "pass",
+        "summary": "普通AR即适用基本锚点；无需编造随机输出对照，无包内简单锚点直接优于它的反证。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/method.py",
+          "workspace/harbor_task/environment/starter.py"
+        ]
+      },
+      {
+        "id": "B07",
+        "status": "pass",
+        "summary": "两侧除草稿方法外固定；原始480对整段token相同，改进归因于减少forward及策略开销。",
+        "evidence": [
+          "optimization_evidence/reference_runs/method.py:5",
+          "workspace/backend/policy_decoder_v1.py:105"
+        ]
+      },
+      {
+        "id": "B08",
+        "status": "pass",
+        "summary": "来源、方法、冻结权重、协议、五seed及历史漂移修正规则有披露。",
+        "evidence": [
+          "optimization_evidence/训练证据说明.md:3",
+          "optimization_evidence/训练证据说明.md:9"
+        ]
+      }
+    ],
+    "dimensions": {
+      "training_sufficiency": {
+        "status": "not_applicable",
+        "facts": "冻结模型推理；seed为evaluation_seed，不冒充独立训练。",
+        "evidence": [
+          "optimization_evidence/训练证据说明.md:3",
+          "optimization_evidence/baseline_runs/seed_17/result.json:7"
+        ]
+      },
+      "method_representativeness": {
+        "status": "pass",
+        "facts": "普通AR是无需草稿策略的直接对照，并非随机/常数预测；返回空草稿仍真实目标逐token推理。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/method.py:4",
+          "workspace/backend/policy_decoder_v1.py:97"
+        ]
+      },
+      "budget_comparability": {
+        "status": "pass",
+        "facts": "同批反平衡顺序、同每位置RNG、相同冻结模型与128/256预算，启动和IPC计入；整体平台资源违规另列。",
+        "evidence": [
+          "workspace/backend/run_policy_score_v2.py:104",
+          "workspace/backend/policy_decoder_v1.py:16",
+          "workspace/backend/policy_decoder_v1.py:147"
+        ]
+      },
+      "implementation_correctness": {
+        "status": "pass",
+        "facts": "AR真实执行目标forward和采样；五个seed两侧480条整段token相同、准确率相同；未发现对照关闭关键输入。",
+        "evidence": [
+          "workspace/backend/policy_decoder_v1.py:21",
+          "workspace/backend/policy_decoder_v1.py:51",
+          "workspace/backend/policy_decoder_v1.py:97"
+        ]
+      },
+      "selection_integrity": {
+        "status": "pass",
+        "facts": "五个正式seed全交，均在一个声明的三角色进程测量；完整日志重复存于各角色/seed是已披露共享进程，不是五次训练。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/seed_17/result.json:84",
+          "optimization_evidence/comparison_summary.json:10"
+        ]
+      }
+    },
+    "direct_red_flags": "未发现直接不公平反证；平台架构/预算问题不倒推Baseline造假"
+  },
+  "content_gates": [
+    {
+      "id": "G01",
+      "status": "pass",
+      "summary": "draft(state) 可执行任意合法标准库策略，真实调用进入独立候选进程；Reference 实现结构前缀提议，属于方法而非仅常量搜索。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:17",
+        "workspace/backend/policy_jail_runner.py:38",
+        "workspace/backend/policy_decoder_v1.py:80",
+        "optimization_evidence/reference_runs/method.py:5"
+      ],
+      "reason_code": "OPEN_EXECUTABLE_METHOD"
+    },
+    {
+      "id": "G02",
+      "status": "pass",
+      "summary": "在包内既有公开 Dev 协议范围内 Baseline 合理：普通 AR 与校准独立测量；与 R 同模型、数据、seed、采样及预算，不训练，无实现故障或挑 seed 直接反证。",
+      "evidence": [
+        "optimization_evidence/baseline_runs/method.py:4",
+        "optimization_evidence/训练证据说明.md:3",
+        "workspace/backend/run_policy_score_v2.py:96",
+        "optimization_evidence/baseline_runs/seed_17/result.json#protocol"
+      ],
+      "reason_code": "REASONABLE_BASELINE_WITHIN_STATIC_EVIDENCE",
+      "dimensions": {
+        "training_sufficiency": {
+          "status": "not_applicable",
+          "facts": "冻结模型推理；seed为evaluation_seed，不冒充独立训练。",
+          "evidence": [
+            "optimization_evidence/训练证据说明.md:3",
+            "optimization_evidence/baseline_runs/seed_17/result.json:7"
+          ]
+        },
+        "method_representativeness": {
+          "status": "pass",
+          "facts": "普通AR是无需草稿策略的直接对照，并非随机/常数预测；返回空草稿仍真实目标逐token推理。",
+          "evidence": [
+            "optimization_evidence/baseline_runs/method.py:4",
+            "workspace/backend/policy_decoder_v1.py:97"
+          ]
+        },
+        "budget_comparability": {
+          "status": "pass",
+          "facts": "同批反平衡顺序、同每位置RNG、相同冻结模型与128/256预算，启动和IPC计入；整体平台资源违规另列。",
+          "evidence": [
+            "workspace/backend/run_policy_score_v2.py:104",
+            "workspace/backend/policy_decoder_v1.py:16",
+            "workspace/backend/policy_decoder_v1.py:147"
+          ]
+        },
+        "implementation_correctness": {
+          "status": "pass",
+          "facts": "AR真实执行目标forward和采样；五个seed两侧480条整段token相同、准确率相同；未发现对照关闭关键输入。",
+          "evidence": [
+            "workspace/backend/policy_decoder_v1.py:21",
+            "workspace/backend/policy_decoder_v1.py:51",
+            "workspace/backend/policy_decoder_v1.py:97"
+          ]
+        },
+        "selection_integrity": {
+          "status": "pass",
+          "facts": "五个正式seed全交，均在一个声明的三角色进程测量；完整日志重复存于各角色/seed是已披露共享进程，不是五次训练。",
+          "evidence": [
+            "optimization_evidence/baseline_runs/seed_17/result.json:84",
+            "optimization_evidence/comparison_summary.json:10"
+          ]
+        }
+      }
+    },
+    {
+      "id": "G03",
+      "status": "pass",
+      "summary": "全部五组原始逐样本与 result 一致；R归一化0.603812191910，改善1286.824σ_B，所有质量门通过，剩余空间充足。A100迁移影响另列待补。",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json:17",
+        "optimization_evidence/baseline_runs/seed_17/per-sample.jsonl",
+        "optimization_evidence/reference_runs/seed_17/per-sample.jsonl"
+      ],
+      "reason_code": "SUFFICIENT_PAIRED_GAIN",
+      "assessment": {
+        "direction": "minimize",
+        "formal_seeds": [
+          17,
+          29,
+          43,
+          71,
+          101
+        ],
+        "evaluation_mode": "stochastic_fixed_model_evaluation",
+        "same_protocol": true,
+        "quality_valid": true,
+        "upper_bound": 0,
+        "threshold_basis": "V4: normalized R in [0.15,0.8], improvement >=3 sample sigma_B"
+      },
+      "computed": {
+        "baseline_mean": 1.0001370946587724,
+        "baseline_sample_std": 0.00046929095522433943,
+        "reference_mean": 0.3962421233221969,
+        "reference_sample_std": 0.015405849970995297,
+        "mean_improvement": 0.6038949713365755,
+        "relative_improvement": 0.603812191910163,
+        "normalized_reference": 0.603812191910163,
+        "three_sigma_B": 0.0014078728656730182,
+        "improvement_sigma_multiple": 1286.8242283678578,
+        "remaining_headroom": 0.3962421233221969,
+        "remaining_headroom_sigma_multiple": 844.3421270132463,
+        "n": 5,
+        "std_denominator": 4,
+        "U": 0
+      }
+    }
+  ],
+  "runtime_review": {
+    "trajectories": {
+      "gpt": {
+        "effective_seconds": 36749.336764097214,
+        "hours": 10.208149101138115,
+        "projected_events_checked": 2816,
+        "unmatched_events": 0,
+        "route_mismatches": 0,
+        "missing_journal_intervals_excluded": 3,
+        "per_interval": [
+          {
+            "run_id": "b04522d98c8042d0878790322847a652",
+            "effective_seconds": 0,
+            "missing_excluded": true
+          },
+          {
+            "run_id": "7f6c54bf115c47cb9819f4d8cc2cfe9c",
+            "effective_seconds": 0,
+            "missing_excluded": true
+          },
+          {
+            "run_id": "e6547da9845a443ba7850f5ca25ad6c4",
+            "effective_seconds": 0,
+            "missing_excluded": true
+          },
+          {
+            "run_id": "74a7e7efb28947d6b8e5ccadb58c53fe",
+            "effective_seconds": 1757.356929063797,
+            "queue_seconds": 0,
+            "failure_seconds": 42.73433208465576
+          },
+          {
+            "run_id": "e449946f84084e22b370fcd9624220fa",
+            "effective_seconds": 910.2242841720581,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "65c7fc7426754dc5a3cd5e2e4b9ef67f",
+            "effective_seconds": 1726.2911639213562,
+            "queue_seconds": 0,
+            "failure_seconds": 73.82844972610474
+          },
+          {
+            "run_id": "619189526f114bee9198c369a750255f",
+            "effective_seconds": 1126.0441620349884,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "f77a67a370ca458fbe223ae6f97176bd",
+            "effective_seconds": 816.6236259937286,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "09890f3b00a2457984580be1ebb2815d",
+            "effective_seconds": 897.9146120548248,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "1e6dc78295df44bb9359454bc2543778",
+            "effective_seconds": 1142.5268461704254,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "1bdd4dfb181f44ecbe80ac3726483f98",
+            "effective_seconds": 370.1480178833008,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "cc0eefd6bcf14bbca976581d7d07c1c2",
+            "effective_seconds": 1294.807636976242,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "18d3cb654654487385f392c4e5d4dd47",
+            "effective_seconds": 1480.3961069583893,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "f946b057eb84411285e5c29bbd03e681",
+            "effective_seconds": 4165.3399357795715,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "7ac50be1a69b40c5917751866cfbbbd1",
+            "effective_seconds": 756.2536890506744,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "0b9e237fad164e73a0a16d67fb2d20a2",
+            "effective_seconds": 2949.4944813251495,
+            "queue_seconds": 0.35335493087768555,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "968a81a893204cab866032a3c15d99c1",
+            "effective_seconds": 463.23935294151306,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "1c06d05a1b6742dea089d493d4527aa1",
+            "effective_seconds": 373.0637061595917,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "bee9f71f8bb445c9b58b0605e63dbd51",
+            "effective_seconds": 183.40546798706055,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "759dcd348d644635ab65eda89a2bdc43",
+            "effective_seconds": 351.1512219905853,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "2151eaa75c354a76af758e37ff0bc865",
+            "effective_seconds": 2538.662753343582,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "15b7720ed59644f38955a5b363e3a736",
+            "effective_seconds": 3232.837247610092,
+            "queue_seconds": 0.04695916175842285,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "d6eb94afa82a42c29e26f12d7b6792d0",
+            "effective_seconds": 3036.233110189438,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "983bb314f8224aa1846c5998528d6ecb",
+            "effective_seconds": 2653.553531885147,
+            "queue_seconds": 775.5870978832245,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "b0b54d564ab0433eb6956b2f0303602a",
+            "effective_seconds": 2929.918506860733,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "a3438cc67c294eebb9dd597145023b09",
+            "effective_seconds": 442.45095920562744,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "0c3505aec8494633b970f0e5777bcde8",
+            "effective_seconds": 423.37943029403687,
+            "queue_seconds": 0,
+            "failure_seconds": 6036.876707792282
+          },
+          {
+            "run_id": "9a275948c70247baa5eda3532c319074",
+            "effective_seconds": 228.30605173110962,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "438a080a2ae046d6a5965acc38b734a2",
+            "effective_seconds": 315.51482486724854,
+            "queue_seconds": 0,
+            "failure_seconds": 161.40234112739563
+          },
+          {
+            "run_id": "02357815f0f743a19f7c1a950e74952d",
+            "effective_seconds": 184.19910764694214,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          }
+        ]
+      },
+      "seed": {
+        "effective_seconds": 41497.01806259155,
+        "hours": 11.526949461830986,
+        "projected_events_checked": 3510,
+        "unmatched_events": 0,
+        "route_mismatches": 0,
+        "missing_journal_intervals_excluded": 2,
+        "per_interval": [
+          {
+            "run_id": "b04522d98c8042d0878790322847a652",
+            "effective_seconds": 0,
+            "missing_excluded": true
+          },
+          {
+            "run_id": "269f3e89020e41c2b25f8d19c07530dc",
+            "effective_seconds": 0,
+            "missing_excluded": true
+          },
+          {
+            "run_id": "f5bf616fc8c345e698ea4548e3b6e278",
+            "effective_seconds": 1064.753695011139,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "74753cc5aee948c0a527fed8ae89c8e5",
+            "effective_seconds": 1392.6691279411316,
+            "queue_seconds": 0,
+            "failure_seconds": 39.373218059539795
+          },
+          {
+            "run_id": "68c513d404294e4daee5daf3f94d14eb",
+            "effective_seconds": 1066.975081205368,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "7cbeceb152c04472a3ae5159c35046b0",
+            "effective_seconds": 1101.100328207016,
+            "queue_seconds": 0,
+            "failure_seconds": 136.74506783485413
+          },
+          {
+            "run_id": "52c2a3a63cdc4ebfb54d2e7f6daeec45",
+            "effective_seconds": 1791.9950799942017,
+            "queue_seconds": 0,
+            "failure_seconds": 7.789740085601807
+          },
+          {
+            "run_id": "9f5349e7e86f41799ac1415e74a945ac",
+            "effective_seconds": 1118.959636926651,
+            "queue_seconds": 0,
+            "failure_seconds": 3.9516818523406982
+          },
+          {
+            "run_id": "123ff8bb2d56408e9682328320ce6343",
+            "effective_seconds": 1776.0983729362488,
+            "queue_seconds": 0,
+            "failure_seconds": 23.7517511844635
+          },
+          {
+            "run_id": "b643e76bcff445d6bc375dc7428fadc7",
+            "effective_seconds": 1468.188318014145,
+            "queue_seconds": 0,
+            "failure_seconds": 12.130791902542114
+          },
+          {
+            "run_id": "f1feda0e55e5410c9f234414b2d5ed99",
+            "effective_seconds": 1528.9230301380157,
+            "queue_seconds": 0,
+            "failure_seconds": 14.025341987609863
+          },
+          {
+            "run_id": "658dcc9ee1044ac382a18ffb6cfa4689",
+            "effective_seconds": 828.0990958213806,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "146a072f494a4dad8f2fd8e4d1f770ca",
+            "effective_seconds": 4820.2165858745575,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "b66424ce2ba84bd2a23680e3b21e294e",
+            "effective_seconds": 1037.25674533844,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "c59941a8aa2b4a7e9ff563dc8971aaa6",
+            "effective_seconds": 1778.8968980312347,
+            "queue_seconds": 0,
+            "failure_seconds": 21.65141010284424
+          },
+          {
+            "run_id": "90bae37bd760402ba1006f44b4893975",
+            "effective_seconds": 1765.797138929367,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "ff8729ce966c43f3a57cbe03075385c2",
+            "effective_seconds": 2164.689999818802,
+            "queue_seconds": 0,
+            "failure_seconds": 31.943860054016113
+          },
+          {
+            "run_id": "d09822ea1f944d0eaf038fd557a0d729",
+            "effective_seconds": 4121.505862951279,
+            "queue_seconds": 0,
+            "failure_seconds": 152.1932237148285
+          },
+          {
+            "run_id": "ea88e9edb6974166afa6d5cb514730c9",
+            "effective_seconds": 3739.2736806869507,
+            "queue_seconds": 0,
+            "failure_seconds": 0
+          },
+          {
+            "run_id": "76e5d93d43fd4a229bcfb839ba005e21",
+            "effective_seconds": 3924.451020717621,
+            "queue_seconds": 7.5390625,
+            "failure_seconds": 35.94400978088379
+          },
+          {
+            "run_id": "8eb7c3cfcd6a46df931822e5487b3f75",
+            "effective_seconds": 5007.168364048004,
+            "queue_seconds": 4.607008695602417,
+            "failure_seconds": 0
+          }
+        ]
+      }
+    },
+    "exception_used": false,
+    "clock_arithmetic": "独立编写区间并/差/交逻辑重算全部51段；核对6326投影事件均与包内活动节选时间/类型/item ID吻合；模型/档位投影无不一致。排除5段缺日志、失败退避、队列及后补完成扩展。",
+    "evidence": [
+      "expert_evidence/clock_proof/clock-source-projections.json",
+      "expert_evidence/clock_proof/README.md",
+      "expert_evidence/research_activity_originals/"
+    ],
+    "native_nop_gpu_active_seconds": 64740.009402275085,
+    "native_nop_verifier_seconds": 66585.788957,
+    "independence_review": {
+      "status": "static_support_with_observation_limits",
+      "facts": "Agent镜像只COPY公开Dev/Starter/CLI；Reference/专家证据在构建context之外。host adapter按gpt/seed独立队列路由，评分API绑定物理lane且不接受候选指定Hidden。包内模型路由投影和轨迹与各自角色一致。",
+      "evidence": [
+        "workspace/harbor_task/environment/Dockerfile:3",
+        "workspace/host_adapter/heima_harbor_environment.py:32",
+        "workspace/host_adapter/heima_harbor_environment.py:253",
+        "workspace/backend/gpu_evaluator_service.py",
+        "expert_evidence/clock_proof/clock-source-projections.json#roles"
+      ],
+      "limit": "公开活动是节选；本次未获得完整原始CLI会话，不能独立认证每条未公开提示及整个历史不存在交叉可见。未发现包内直接泄露反证；不是本次物理隔离实测。"
+    }
+  },
+  "format_review": {
+    "status": "deviations",
+    "summary": "三顶层职责齐全；轻量题包不内嵌巨型模型，外部资产有repository revision/size/hash及安装/私有注入路径。两直属Compose与资源配置是实质不兼容，不只是格式建议。",
+    "additional_suggestions": [
+      {
+        "path": "expert_evidence/historical_dev_anchors/",
+        "classification": "merge_candidate",
+        "recommendation": "与optimization_evidence重复的历史Dev证据可通过明确索引/哈希引用减重；不得删除原始证据唯一副本。"
+      },
+      {
+        "path": "workspace/backend/",
+        "classification": "extra_allowed",
+        "recommendation": "保留可信评分源码/资产索引，但按C01合入目标sandbox执行路径；目录多交本身不扣错。"
+      },
+      {
+        "path": "expert_evidence/clock_proof/",
+        "classification": "extra_allowed",
+        "recommendation": "保留区间投影和出处，明确节选并非完整原始会话。"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "QA01",
+      "status": "pass",
+      "summary": "八部分齐全，无论文标题、arXiv、参考源码或作者机器路径直接泄露。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:1",
+        "workspace/harbor_task/instruction.md:3",
+        "workspace/harbor_task/instruction.md:44"
+      ]
+    },
+    {
+      "id": "QA02",
+      "status": "pass",
+      "summary": "Dev与私有评分均为(B-M)/(B-U)，U=0，未clip；质量无效另返-1。",
+      "evidence": [
+        "workspace/backend/run_policy_score_v2.py:147",
+        "workspace/backend/run_policy_score_v2.py:154",
+        "workspace/backend/run_private_hidden_score_v2.py:186"
+      ]
+    },
+    {
+      "id": "QA03",
+      "status": "pass",
+      "summary": "Reference源码与入口、五个正式result/log/per-sample齐全，归一化0.603812满足范围；非训练不需新训练模型。",
+      "evidence": [
+        "optimization_evidence/reference_runs/method.py",
+        "optimization_evidence/comparison_summary.json:71",
+        "optimization_evidence/reference_runs/seed_17/result.json:84"
+      ]
+    },
+    {
+      "id": "QA04",
+      "status": "pass",
+      "summary": "按全部五组原始值复算n-1标准差；Δ=0.603894971337 ≥3σ=0.001407872866。",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json:44",
+        "workspace/backend/run_policy_score_v2.py:149"
+      ]
+    },
+    {
+      "id": "QA05",
+      "status": "fail",
+      "summary": "token/forward/候选大小和IPC等有真实限制；正式环境仍依赖额外容器/外部GPU且强制当前内场不接受的禁网/磁盘配置。",
+      "evidence": [
+        "workspace/backend/isolated_policy.py:16",
+        "workspace/backend/policy_decoder_v1.py:169",
+        "workspace/harbor_task/task.toml:12",
+        "workspace/host_adapter/heima_harbor_environment.py:217"
+      ],
+      "remediation": "删除 environment/ 和 tests/ 直属 Compose 文件及外部 GPU/额外 broker 容器依赖；将可信推理、私有评分及候选隔离部署进各自单容器，用本 sandbox 分配的 GPU。 移除 task.toml 的 storage_mb 与 no-network 声明，并按内场实际联网/资源能力同步题面、镜像和约束实现。",
+      "acceptance_evidence": "重交完整三目录包；给出单容器 Dockerfile、直接 GPU 配置、公开 Dev/私有 Verifier 实际调用、候选移交和有限 reward 记录。 更新后的 TOML、题面和约束执行点；真实格式/GPU 脚本检查结果，以及目标平台接受的资源配置。"
+    },
+    {
+      "id": "QA06",
+      "status": "pass",
+      "summary": "test.sh单命令调用grade，有限标量写Harness reward，基础设施错误退出不伪装正常0分。",
+      "evidence": [
+        "workspace/harbor_task/tests/test.sh:3",
+        "workspace/harbor_task/tests/grade.py:111",
+        "workspace/harbor_task/tests/grade.py:125",
+        "workspace/harbor_task/tests/grade.py:131"
+      ]
+    },
+    {
+      "id": "QA07",
+      "status": "pass",
+      "summary": "仅检查题面：提及Hidden边界和样本量，无私有样本、标签或可恢复答案。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:9",
+        "workspace/harbor_task/instruction.md:32",
+        "workspace/harbor_task/instruction.md:46"
+      ]
+    },
+    {
+      "id": "QA08",
+      "status": "pass",
+      "summary": "仅检查题面：未给Reference代码/配置/得分或具体答案；Devσ阈值属于公开评价协议。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:13",
+        "workspace/harbor_task/instruction.md:15",
+        "workspace/harbor_task/instruction.md:36"
+      ]
+    },
+    {
+      "id": "QA09",
+      "status": "pass",
+      "summary": "评分前删除reward.txt/json及pending，可信最终值通过pending.replace原子写入。",
+      "evidence": [
+        "workspace/harbor_task/tests/grade.py:54",
+        "workspace/harbor_task/tests/grade.py:131"
+      ]
+    },
+    {
+      "id": "QA10",
+      "status": "pass",
+      "summary": "候选在chroot降权/seccomp进程，可信源码/私有数据以独立不可变清单核验，候选分数不被采信。静态内容不等于本次物理认证。",
+      "evidence": [
+        "workspace/backend/policy_jail_launcher.py:10",
+        "workspace/backend/policy_jail_runner.py:21",
+        "workspace/backend/trusted_private_backend_support.py:59",
+        "workspace/harbor_task/tests/grade.py:111"
+      ]
+    },
+    {
+      "id": "QA11",
+      "status": "pass",
+      "summary": "目标、环境、公式、可改范围、边界、提交格式、迭代与完成条件均有实质内容。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:3",
+        "workspace/harbor_task/instruction.md:7",
+        "workspace/harbor_task/instruction.md:11",
+        "workspace/harbor_task/instruction.md:17",
+        "workspace/harbor_task/instruction.md:28",
+        "workspace/harbor_task/instruction.md:34",
+        "workspace/harbor_task/instruction.md:40",
+        "workspace/harbor_task/instruction.md:44"
+      ]
+    },
+    {
+      "id": "QA12",
+      "status": "pass",
+      "summary": "ZIP清点无.git目录或Git历史；未以私有报告替代核验。",
+      "evidence": [
+        "@inventory:3054_members_no_.git"
+      ]
+    },
+    {
+      "id": "QA13",
+      "status": "pass",
+      "summary": "全部正式五seed成对有效、每seed同向改善；原始ratio、质量门、日志与method hash复算一致。",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json:17",
+        "optimization_evidence/训练证据说明.md:5",
+        "optimization_evidence/baseline_runs/seed_17/result.json#artifacts"
+      ]
+    },
+    {
+      "id": "QA14",
+      "status": "pass",
+      "summary": "代码级策略空间开放；可研究基于实测提议成本和接受概率的动态预算控制等未规定具体实现，R尚余0.39624到U。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:36",
+        "workspace/backend/policy_decoder_v1.py:80",
+        "expert_evidence/best_method/method.py:583"
+      ]
+    },
+    {
+      "id": "QA15",
+      "status": "fail",
+      "summary": "当前完整私有单轮实测GPU64740秒、Verifier66586秒，支持入口取消外层超时，尚无≤7200秒完整方案。A100→H20/L20迁移计时单独待补。",
+      "evidence": [
+        "expert_evidence/native_harbor/current-nop/scorer-result.json:10",
+        "expert_evidence/native_harbor/current-nop/result.json:112",
+        "expert_evidence/supported_invocation/README.md:17",
+        "workspace/operator/run_recover_private_native.py:173"
+      ],
+      "remediation": "将完整评分设计纳入单轮≤7200秒预算并保留可中断的总超时；不要用 NoWallPrivateTrial 取消时限作为正常入口。若无法满足，向平台提交实测与明确例外申请。",
+      "acceptance_evidence": "同一最终入口的完整训练/推理、重载和评分耗时范围与资源说明；可中断时限配置及完整有限 reward。仅补换卡计时不要求当前自动重跑。"
+    },
+    {
+      "id": "QA16",
+      "status": "pass",
+      "summary": "独立复算起止、失败退避/队列扣除、GPU/CLI并集及原时段上限：GPT36749.337秒、Seed41497.018秒，各≥10h；五条缺日志全排除。",
+      "evidence": [
+        "expert_evidence/clock_proof/clock-source-projections.json#roles",
+        "expert_evidence/research_activity_originals/",
+        "expert_evidence/clock_proof/README.md:10"
+      ]
+    },
+    {
+      "id": "QA17",
+      "status": "fail",
+      "summary": "separate、artifacts及可信reward实现存在；H02/H03/H05受C01-C03核心不兼容阻断。H06版本关联单列非阻断。",
+      "evidence": [
+        "workspace/harbor_task/task.toml:2",
+        "workspace/harbor_task/task.toml:15",
+        "workspace/host_adapter/heima_harbor_environment.py:217",
+        "workspace/operator/run_recover_private_native.py:173"
+      ],
+      "remediation": "删除 environment/ 和 tests/ 直属 Compose 文件及外部 GPU/额外 broker 容器依赖；将可信推理、私有评分及候选隔离部署进各自单容器，用本 sandbox 分配的 GPU。 移除 task.toml 的 storage_mb 与 no-network 声明，并按内场实际联网/资源能力同步题面、镜像和约束实现。 将完整评分设计纳入单轮≤7200秒预算并保留可中断的总超时；不要用 NoWallPrivateTrial 取消时限作为正常入口。若无法满足，向平台提交实测与明确例外申请。",
+      "acceptance_evidence": "重交完整三目录包；给出单容器 Dockerfile、直接 GPU 配置、公开 Dev/私有 Verifier 实际调用、候选移交和有限 reward 记录。 更新后的 TOML、题面和约束执行点；真实格式/GPU 脚本检查结果，以及目标平台接受的资源配置。 同一最终入口的完整训练/推理、重载和评分耗时范围与资源说明；可中断时限配置及完整有限 reward。仅补换卡计时不要求当前自动重跑。"
+    },
+    {
+      "id": "QA18",
+      "status": "pass",
+      "summary": "两轨19/8轮，每轮恰八字段、时间可解析；成功各5轮。全部score与声明转换记录代数一致，失败为null，保留标记顺序一致；Seed最佳源码hash吻合。",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json#rounds",
+        "expert_evidence/trajectory_seed.json#rounds",
+        "expert_evidence/score-and-time-derivation.json",
+        "expert_evidence/best_method/method.py"
+      ]
+    },
+    {
+      "id": "QA19",
+      "status": "pass",
+      "summary": "明确随机评估、五个固定seed、n-1σ及3σ有效提升阈值；非确定性不豁免。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:13",
+        "workspace/harbor_task/instruction.md:15",
+        "workspace/harbor_task/instruction.md:26"
+      ]
+    },
+    {
+      "id": "QA20",
+      "status": "pass",
+      "summary": "题面明确可改solution、工具实际命令、标准库及网络规则。网络规则与内场不符另在QA05退回。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:17",
+        "workspace/harbor_task/instruction.md:21",
+        "workspace/harbor_task/instruction.md:30",
+        "workspace/harbor_task/instruction.md:32"
+      ]
+    },
+    {
+      "id": "QA21",
+      "status": "non_blocking_pending",
+      "summary": "run_summary缺task_binding.hash_profile/task_content_sha256；不自创官方四项指纹算法，不单独判退。",
+      "evidence": [
+        "expert_evidence/run_summary.json"
+      ],
+      "remediation": "取得真实官方task_fingerprint.py后补四项全递归指纹、profile及对应最终任务版本，保留历史值。",
+      "acceptance_evidence": "真实工具版本/源码SHA与输出；最终run_summary.task_binding及指纹覆盖明细。"
+    }
+  ],
+  "harbor": {
+    "task_root": "workspace/harbor_task",
+    "target_version": "0.23.0 (package declaration)",
+    "provider": "custom HeimaDockerEnvironment extending DockerEnvironment",
+    "version_basis": "包内workspace/host_adapter/README.md及harbor-0.23.0-native-schema.json作为待核版本记录；TOML仅可信标准库语法解析，无原生Harbor schema加载。当前用户V4合同优先。",
+    "checks": [
+      {
+        "id": "H01",
+        "status": "pass",
+        "summary": "真实根、两Dockerfile和test.sh齐全；私有1380行走root-only注入，按固定样本/图像hash校验并由私有评分实际读取，非空目录占位。",
+        "evidence": [
+          "workspace/harbor_task/task.toml",
+          "workspace/backend/trusted_private_backend_support.py:91",
+          "workspace/backend/run_private_hidden_score_v2.py:77",
+          "expert_evidence/native_harbor/current-nop/scorer-result.json"
+        ]
+      },
+      {
+        "id": "H02",
+        "status": "fail",
+        "summary": "TOML语法可解析、声明Harbor0.23.0与separate；storage_mb/no-network违反当前内场配置合同。包内schema仅作待核版本证据，不冒称原生加载。",
+        "evidence": [
+          "workspace/harbor_task/task.toml:12",
+          "workspace/harbor_task/task.toml:23",
+          "expert_evidence/harbor-0.23.0-native-schema.json"
+        ],
+        "remediation": "移除 task.toml 的 storage_mb 与 no-network 声明，并按内场实际联网/资源能力同步题面、镜像和约束实现。",
+        "acceptance_evidence": "更新后的 TOML、题面和约束执行点；真实格式/GPU 脚本检查结果，以及目标平台接受的资源配置。"
+      },
+      {
+        "id": "H03",
+        "status": "fail",
+        "summary": "COPY均相对正确context、入口/移交一致且不复制私有材料；实际运行依赖Compose、额外broker和SSH外部GPU，违反单容器自身GPU边界。",
+        "evidence": [
+          "workspace/harbor_task/environment/Dockerfile",
+          "workspace/harbor_task/tests/Dockerfile",
+          "workspace/host_adapter/heima_harbor_environment.py:217",
+          "workspace/host_adapter/evaluator_bridge.py:51"
+        ],
+        "remediation": "删除 environment/ 和 tests/ 直属 Compose 文件及外部 GPU/额外 broker 容器依赖；将可信推理、私有评分及候选隔离部署进各自单容器，用本 sandbox 分配的 GPU。",
+        "acceptance_evidence": "重交完整三目录包；给出单容器 Dockerfile、直接 GPU 配置、公开 Dev/私有 Verifier 实际调用、候选移交和有限 reward 记录。"
+      },
+      {
+        "id": "H04",
+        "status": "pass",
+        "summary": "grade清理旧分数、核验全私有协议/源hash与有限值，可信原子写reward；已有NOP的result/scorer/reward一致。",
+        "evidence": [
+          "workspace/harbor_task/tests/grade.py:54",
+          "workspace/harbor_task/tests/grade.py:111",
+          "workspace/harbor_task/tests/grade.py:131",
+          "expert_evidence/native_harbor/current-nop/reward.txt"
+        ]
+      },
+      {
+        "id": "H05",
+        "status": "fail",
+        "summary": "所交实际支持入口NoWallPrivateTrial覆盖外层超时为None，完整私有约18h；普通10800秒配置本身也高于7200秒单轮预算，无法按当前预算宣称可用。",
+        "evidence": [
+          "workspace/operator/run_recover_private_native.py:173",
+          "workspace/operator/run_recover_private_native.py:205",
+          "workspace/harbor_task/task.toml:17",
+          "expert_evidence/supported_invocation/README.md:17"
+        ],
+        "remediation": "将完整评分设计纳入单轮≤7200秒预算并保留可中断的总超时；不要用 NoWallPrivateTrial 取消时限作为正常入口。若无法满足，向平台提交实测与明确例外申请。",
+        "acceptance_evidence": "同一最终入口的完整训练/推理、重载和评分耗时范围与资源说明；可中断时限配置及完整有限 reward。仅补换卡计时不要求当前自动重跑。"
+      },
+      {
+        "id": "H06",
+        "status": "non_blocking_pending",
+        "summary": "已有同一Trial NOP配置/结果/reward/log、separate及完整6900对，支持其无外层时限调用；题面文档后改，普通默认入口同版本链路待核，不因NOP版本缺口单独阻断。",
+        "evidence": [
+          "expert_evidence/native_harbor/current-nop/config.json",
+          "expert_evidence/native_harbor/current-nop/result.json",
+          "expert_evidence/native_harbor/current-nop/reward.txt",
+          "expert_evidence/native_harbor/current-nop/trial.log",
+          "expert_evidence/supported_invocation/README.md:22"
+        ],
+        "remediation": "保留现有真实NOP范围；完成核心改造后可由授权目标环境补同版本普通入口NOP或平台已有记录。",
+        "acceptance_evidence": "同一次Trial配置、result、reward、日志与版本关联；不得把无时限旧记录改写为新普通入口验证。"
+      }
+    ],
+    "path_contract": {
+      "profile": "harbor-environment-v1",
+      "agent_context": "workspace/harbor_task/environment",
+      "verifier_context": "workspace/harbor_task/tests",
+      "submission_paths": [
+        "/workspace/solution"
+      ],
+      "copy_path_review": "所读COPY源均存在于正确context；未复制backend/reference/expert_evidence给Agent；入口路径一致。",
+      "status": "fail",
+      "findings": [
+        "C01额外容器/远程评分依赖",
+        "C02内场约束配置",
+        "C03无外层时限与完整私有耗时"
+      ]
+    },
+    "hidden_review": {
+      "mode": "injected",
+      "summary": "root-only hidden-injected-v1，固定samples/image hash和1380行校验；GPU私有API仅trusted路由可选Hidden，候选只接收公开state。该设计存在实现和历史完整NOP，但平台部署仍需C01改造。",
+      "evidence": [
+        "workspace/backend/trusted_private_backend_support.py:91",
+        "workspace/backend/run_private_hidden_score_v2.py:77",
+        "workspace/backend/private_verifier_service.py",
+        "expert_evidence/native_harbor/current-nop/scorer-result.json"
+      ]
+    },
+    "runtime_status": "not_run_by_this_reviewer; packaged NOP evidence inspected"
+  },
+  "core_issues": [
+    {
+      "id": "C01",
+      "status": "fail",
+      "summary": "正式运行依赖 Compose、两个额外 broker 容器和 SSH 外部 GPU 后端；task.toml 却声明 gpus=0，不符合每 sandbox 单容器并直接使用自身 GPU 的当前合同。",
+      "evidence": [
+        "workspace/harbor_task/environment/docker-compose.yaml:1",
+        "workspace/harbor_task/tests/docker-compose.yaml:1",
+        "workspace/host_adapter/heima_harbor_environment.py:217",
+        "workspace/host_adapter/heima_harbor_environment.py:223",
+        "workspace/host_adapter/heima_harbor_environment.py:228",
+        "workspace/host_adapter/evaluator_bridge.py:39",
+        "workspace/host_adapter/host_paths.py#gpu_command",
+        "workspace/harbor_task/task.toml:24"
+      ],
+      "remediation": "删除 environment/ 和 tests/ 直属 Compose 文件及外部 GPU/额外 broker 容器依赖；将可信推理、私有评分及候选隔离部署进各自单容器，用本 sandbox 分配的 GPU。",
+      "acceptance_evidence": "重交完整三目录包；给出单容器 Dockerfile、直接 GPU 配置、公开 Dev/私有 Verifier 实际调用、候选移交和有限 reward 记录。"
+    },
+    {
+      "id": "C02",
+      "status": "fail",
+      "summary": "任务声明并强制 no-network，配置 storage_mb=512；这些是当前内场明确不声明的约束，且适配器仅接受禁网策略。",
+      "evidence": [
+        "workspace/harbor_task/task.toml:12",
+        "workspace/harbor_task/task.toml:18",
+        "workspace/harbor_task/task.toml:23",
+        "workspace/harbor_task/task.toml:27",
+        "workspace/host_adapter/heima_harbor_environment.py:74"
+      ],
+      "remediation": "移除 task.toml 的 storage_mb 与 no-network 声明，并按内场实际联网/资源能力同步题面、镜像和约束实现。",
+      "acceptance_evidence": "更新后的 TOML、题面和约束执行点；真实格式/GPU 脚本检查结果，以及目标平台接受的资源配置。"
+    },
+    {
+      "id": "C03",
+      "status": "fail",
+      "summary": "完整私有协议现有 NOP 的 GPU 活动为64740.009秒，独立 Verifier为66585.789秒；支持入口明确取消外层超时。该实际运行设计尚未满足完整单轮≤7200秒。",
+      "evidence": [
+        "expert_evidence/native_harbor/current-nop/scorer-result.json#gpu_started_epoch,completed_epoch",
+        "expert_evidence/native_harbor/current-nop/result.json#verifier",
+        "expert_evidence/supported_invocation/README.md:17",
+        "workspace/operator/run_recover_private_native.py:173",
+        "workspace/harbor_task/task.toml:17"
+      ],
+      "remediation": "将完整评分设计纳入单轮≤7200秒预算并保留可中断的总超时；不要用 NoWallPrivateTrial 取消时限作为正常入口。若无法满足，向平台提交实测与明确例外申请。",
+      "acceptance_evidence": "同一最终入口的完整训练/推理、重载和评分耗时范围与资源说明；可中断时限配置及完整有限 reward。仅补换卡计时不要求当前自动重跑。"
+    }
+  ],
+  "non_blocking_pending": [
+    {
+      "scope": "QA21",
+      "fact": "task_binding四项官方指纹缺失",
+      "existing_basis": "ZIP整体SHA已独立计算；包内有多种源码清单，但不冒充官方四项指纹",
+      "recommended_evidence": "真实工具版本/源码SHA与输出；最终run_summary.task_binding及指纹覆盖明细。"
+    },
+    {
+      "scope": "G02/G03/QA03/QA13/QA15",
+      "fact": "现有实测GPU为A100，未提供H20/L20上的分数/耗时重新核验",
+      "existing_basis": "expert_evidence/current-runtime-anchor-source-binding.json#actual_gpu；保留正式Dev五组真实原数",
+      "recommended_evidence": "后续需要时提交真实目标设备与资源配置、迁移影响说明；不以换卡补跑作为本次核心结论前提。C01/C03实质架构/预算问题另列。"
+    },
+    {
+      "scope": "H06/QA17",
+      "fact": "NOP支持无外层时限入口，文档后改；普通默认入口同版本链路尚未本次验证",
+      "existing_basis": "expert_evidence/supported_invocation/README.md:17-32",
+      "recommended_evidence": "同一次Trial配置、result、reward、日志与版本关联；不得把无时限旧记录改写为新普通入口验证。"
+    }
+  ],
+  "tool_gaps": [
+    {
+      "tool": "official QA Skill 0.3.10/check_submission.py/GPU precheck/task_fingerprint.py",
+      "status": "unavailable",
+      "action": "取得真实发布包后按真实CLI验收并记录工具SHA；本报告不冒充其输出。"
+    },
+    {
+      "tool": "strict privacy-check",
+      "status": "not_run",
+      "action": "本次完成本地只读定向安全复核；公开发布前由可信安装的privacy-check --strict逐件扫描主ZIP和报告附件。本包内release_tools未执行。"
+    }
+  ],
+  "target_environment_not_run": [
+    "未构建镜像或原生Harbor加载/Trial",
+    "未实跑H20/L20与完整Public/Hidden",
+    "未对候选进行本次动态攻击/物理隔离认证",
+    "未做本次12小时稳定性压测，包内既有43233秒713观测仅保留其历史范围"
+  ],
+  "privacy_review": {
+    "status": "limited_static_no_confirmed_sensitive_findings",
+    "coverage": "遍历3054个成员和元数据，针对作者home/邮箱/私网IP/常见凭据定向检查；无作者home/私网IP/常见真实凭据命中，文本邮箱为example保留域，图像随机二进制regex命中不作为邮箱证据；无绝对/..成员或symlink。",
+    "limitations": "不是官方严格扫描；未认证二进制全部编码/嵌套对象与许可，公开发布须独立严格门禁。",
+    "report_paths": "Only archive-relative evidence paths and logical artifact name are persisted."
+  },
+  "risk_notes": [
+    "当前的separate与候选jail设计有静态保护依据，但正式架构依赖外部GPU和额外容器。",
+    "无时限完整私有NOP的成功不能证明普通10800秒入口或≤7200秒完整单轮。",
+    "活动公开节选保留事件元数据但省略部分源码行，时长结论限定于保守区间证据，不认证日志外部真实性。"
+  ],
+  "counts": {
+    "pass": 17,
+    "fail": 3,
+    "non_blocking_pending": 1
+  }
+}

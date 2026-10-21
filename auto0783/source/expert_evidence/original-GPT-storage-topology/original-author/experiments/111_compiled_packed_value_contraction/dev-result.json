@@ -1,0 +1,270 @@
+{
+  "type": "result",
+  "execution_status": "COMPLETED",
+  "profile": "dev",
+  "is_formal_protocol": false,
+  "layer_count": 28,
+  "dtype": "bfloat16",
+  "steps": 32,
+  "records": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 6871.801834106445,
+      "candidate_total_ms": 1909.7538414001465,
+      "worst_relative_rmse": 0.0,
+      "worst_scaled_max_abs": 0.0
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 6900.581359863281,
+      "candidate_total_ms": 1915.1319046020508,
+      "worst_relative_rmse": 0.0,
+      "worst_scaled_max_abs": 0.0
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 6931.821563720703,
+      "candidate_total_ms": 1924.2096557617188,
+      "worst_relative_rmse": 0.0,
+      "worst_scaled_max_abs": 0.0
+    }
+  ],
+  "per_case": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "baseline_ms": 6871.801834106445,
+      "candidate_ms": 1909.7538414001465
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "baseline_ms": 6900.581359863281,
+      "candidate_ms": 1915.1319046020508
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "baseline_ms": 6931.821563720703,
+      "candidate_ms": 1924.2096557617188
+    }
+  ],
+  "per_seed": [
+    {
+      "sampling_seed": 101,
+      "case_count": 1,
+      "baseline_ms": 6871.801834106445,
+      "candidate_ms": 1909.7538414001465
+    },
+    {
+      "sampling_seed": 202,
+      "case_count": 1,
+      "baseline_ms": 6900.581359863281,
+      "candidate_ms": 1915.1319046020508
+    },
+    {
+      "sampling_seed": 303,
+      "case_count": 1,
+      "baseline_ms": 6931.821563720703,
+      "candidate_ms": 1924.2096557617188
+    }
+  ],
+  "final_quality": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    }
+  ],
+  "source_alignment": [
+    {
+      "case": 0,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 1,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 2,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    }
+  ],
+  "quality_pass": true,
+  "baseline_identity": false,
+  "reward": 0.7223223268390225,
+  "baseline_mean_ms": 6901.40158589681,
+  "candidate_mean_ms": 1916.3651339213054,
+  "baseline_sample_sd_ms": 30.01827049984247,
+  "latency_improvement_ms": 4985.036451975504,
+  "noise_3sigma_pass": true,
+  "peak_cuda_allocated_bytes": 29692024320,
+  "gpu_uuid": "<assigned-accelerator>",
+  "torch_version": "2.5.1+cu121",
+  "compilation_observations": {
+    "schema": "bifrost-tensor-dag/2",
+    "region_count": 5,
+    "compiled_variant_count": 5,
+    "first_invocations": [
+      {
+        "region": "frequency_prefix_compiled",
+        "first_invocation_wall_seconds": 4.5498276320286095,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      },
+      {
+        "region": "image_packed_projection_rotary_compiled",
+        "first_invocation_wall_seconds": 1.3014609492383897,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      },
+      {
+        "region": "key_score_producer_consumer_compiled",
+        "first_invocation_wall_seconds": 1.406238422729075,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      },
+      {
+        "region": "packed_value_producer_consumer_compiled",
+        "first_invocation_wall_seconds": 1.1412720452062786,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      },
+      {
+        "region": "image_mlp_compiled",
+        "first_invocation_wall_seconds": 0.5171590759418905,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      }
+    ],
+    "first_invocation_wall_is_not_net_research_credit": true
+  },
+  "compilation_disposable_warmup_observations": [
+    {
+      "case": 0,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [
+        {
+          "region": "frequency_prefix_compiled",
+          "first_invocation_wall_seconds": 4.5498276320286095,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        },
+        {
+          "region": "image_packed_projection_rotary_compiled",
+          "first_invocation_wall_seconds": 1.3014609492383897,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        },
+        {
+          "region": "key_score_producer_consumer_compiled",
+          "first_invocation_wall_seconds": 1.406238422729075,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        },
+        {
+          "region": "packed_value_producer_consumer_compiled",
+          "first_invocation_wall_seconds": 1.1412720452062786,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        },
+        {
+          "region": "image_mlp_compiled",
+          "first_invocation_wall_seconds": 0.5171590759418905,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        }
+      ],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    },
+    {
+      "case": 1,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    },
+    {
+      "case": 2,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    }
+  ],
+  "compilation_preparation_not_research_credit": true,
+  "queue_seconds": 0.038209246937185526,
+  "cuda_weight_load_seconds": 9.623746533878148,
+  "active_evaluation_seconds": 43.95072048297152,
+  "input_sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+  "formal_trajectory_effective_seconds": 0,
+  "timing_scope": "Sum of256 decoder forward events:28 layers, final norm and head. Frozen CFG/reveal/input preparation, quality diagnostics, loading and queueing are excluded equally.",
+  "canonical_semantics": "cosine reveal and per-patch CFG4; shared-oracle paired prediction replay plus autonomous candidate final-latent check; no FLUX renderer claim",
+  "run_id": "ffea805fe34b4385af5b1d2bf11804ec",
+  "worker_id": "8548637e319c40d1abd10c0a82648495",
+  "artifact_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df",
+  "started_epoch": 1791770631.868071,
+  "completed_epoch": 1791770687.316102,
+  "source_binding_sha256": "6e2468b39aeadcd07e4bdae64218d187bc4be1fee61d7990ed6dddcdb4b878fb",
+  "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+  "gpu_after_release": "<assigned-accelerator>, 0",
+  "child_pid": 6780,
+  "child_exit_code": 0,
+  "parent_cuda_context_initialized": false
+}

@@ -1,0 +1,79 @@
+{
+  "checked_unix": 1791452829.741601,
+  "track": "gpt",
+  "round": 24,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "fdc5e337a27d47760829affaaf8a0777363a225c22231aab63f7e87d5e82d28a",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00024.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.49403493213659083,
+      "score": 0.5372692578985458,
+      "quality_gates_passed": true,
+      "method_sha256": "fdc5e337a27d47760829affaaf8a0777363a225c22231aab63f7e87d5e82d28a",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791452171.2097,
+      "end_unix": 1791452365.947018
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.4575434849486212,
+    "score": 0.5714484491646741,
+    "quality_gates_passed": true,
+    "method_sha256": "fdc5e337a27d47760829affaaf8a0777363a225c22231aab63f7e87d5e82d28a",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791452396.3558056,
+    "end_unix": 1791452580.5430546
+  },
+  "model_final_decision": {
+    "policy_name": "triangular_inverse_solve_norms",
+    "method_summary": "Replaced panel norm contractions with a triangular-factor inverse and one triangular solve. Full protected Dev passed all gates with raw CPU ratio 0.494034932, score 0.537269258, and maximum error 4.65e-6; the evaluated candidate remains in place.",
+    "next_direction": "Reject against the verified best ratio 0.397143907. Next test batched smaller triangular GEMM blocks to reduce multiplication by zeros without inverse-and-solve overhead."
+  },
+  "original_controller_decision": {
+    "round": 24,
+    "policy_name": "triangular_inverse_solve_norms",
+    "method_summary": "Replaced panel norm contractions with a triangular-factor inverse and one triangular solve. Full protected Dev passed all gates with raw CPU ratio 0.494034932, score 0.537269258, and maximum error 4.65e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.4575434849486212,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 17:43:01"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791451787.496569,
+    "ended_unix": 1791452393.8893366,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 24,
+    "start_unix": 1791451787.220337,
+    "end_unix": 1791452581.332292,
+    "observed_seconds": 672.2490098748822,
+    "effective_seconds": 672.2490098748822,
+    "model_seconds": 484.9239476248622,
+    "model_completed": true,
+    "successful_command_tools": 11,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": false,
+    "method_sha256": "fdc5e337a27d47760829affaaf8a0777363a225c22231aab63f7e87d5e82d28a",
+    "public_result": "round_00024.grader.log",
+    "events": "round_00024.events.jsonl",
+    "next_direction": "Reject against the verified best ratio 0.397143907. Next test batched smaller triangular GEMM blocks to reduce multiplication by zeros without inverse-and-solve overhead."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00024.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

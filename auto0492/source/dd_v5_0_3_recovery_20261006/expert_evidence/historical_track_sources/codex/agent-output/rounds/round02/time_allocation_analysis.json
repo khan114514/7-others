@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-10-03T01:02:33.058920+08:00",
+  "round": 2,
+  "checkpoint_next_diagnostic": "At >=1000 updates, inspect actual EMA checkpoint with the same four teacher/noise pairs and prefixes0,5,9.",
+  "observation": "Uniform time sampling has given only roughly one tenth of examples to the exact prefix0 used by formal one-step evaluation. Prior step100 grid did not reconstruct subjects at prefix0.",
+  "potential_followup": "After final round2 score/review, consider a mixture allocating half the training probability to prefix0 and half across other prefixes, changing only fm_time_sampler. Keep teacher configuration and engineering fixed to isolate allocation.",
+  "not_a_decision": "Candidate not selected or started; final scoring and later diagnostic can change the hypothesis.",
+  "observed_histogram": [
+    946,
+    903,
+    883,
+    907,
+    880,
+    908,
+    875,
+    858,
+    839,
+    897
+  ],
+  "updates": 556,
+  "score": null
+}

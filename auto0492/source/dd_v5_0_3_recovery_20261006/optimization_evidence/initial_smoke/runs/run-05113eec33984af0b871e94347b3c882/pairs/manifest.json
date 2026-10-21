@@ -1,0 +1,45 @@
+{
+  "protocol": "dd-selfproto-v1.3",
+  "reimplementation": true,
+  "method": {
+    "name": "training_interface_smoke",
+    "protocol_version": "dd-selfproto-v1.3",
+    "initialization": "warmstart_official_dd_ema",
+    "teacher": {
+      "num_samples": 16,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "none",
+      "weighting": "uniform",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 1
+    },
+    "time_sampler_note": "Uniform U(0,1) if adaptation is enabled.",
+    "train_notes": "Released DD EMA initialization; no adaptation by default."
+  },
+  "method_sha256": "21370e50d7359dd4852410d6553b3f87387bf52045631dec63f9b08ca3ac9387",
+  "teacher_sha256": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+  "vae_sha256": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+  "seed": 1001,
+  "sample_count": 16,
+  "shards": [
+    {
+      "file": "pairs_00000.pt",
+      "count": 16,
+      "sha256": "cd00d34288c38de1814a34cc71fe7c41b55968987c41741fa6045496cb1b28c8"
+    }
+  ],
+  "noise_dtype": "float32",
+  "token_dtype": "int16",
+  "guidance_interpretation": "VAR ramp: (1+cfg*scale/9)*conditional - (cfg*scale/9)*unconditional",
+  "ode_nfe_per_scale": 32,
+  "ode_grid": "logSNR",
+  "boundary_epsilon": 0.001,
+  "elapsed_seconds": 7.724567174911499,
+  "peak_torch_allocated_mib": 3398.74853515625,
+  "peak_torch_reserved_mib": 7078.0
+}

@@ -1,0 +1,279 @@
+{
+  "generated_at": "2026-10-03T12:43:26.876171+08:00",
+  "protocol": "dd-selfproto-v1.0",
+  "accounting": "Conservative process-only evidence; method design and CPU analysis are not added. Operator verification remains separate.",
+  "intervals": [
+    {
+      "round": 1,
+      "stage": "official_baseline_sampling_and_fid",
+      "start": "2026-10-02T23:15:22.115917+08:00",
+      "end": "2026-10-03T00:10:22.138633+08:00",
+      "effective_seconds": 3300.022716,
+      "evidence": [
+        "rounds/round01/attempt03/execution.json",
+        "rounds/round01/attempt03/run.log",
+        "rounds/round01/attempt03/gpu_process.jsonl"
+      ],
+      "end_basis": "Actual child completion marker, removing outer poll/reaping slack",
+      "interruption_overlap_seconds_excluded": 0
+    },
+    {
+      "round": 2,
+      "stage": "teacher_generation",
+      "start": "2026-10-03T00:15:19.249909+08:00",
+      "end": "2026-10-03T00:33:11.848139+08:00",
+      "effective_seconds": 1072.59823,
+      "evidence": [
+        "rounds/round02/teacher_generation_execution.json",
+        "rounds/round02/run.log",
+        "rounds/round02/teacher_generation_gpu.jsonl",
+        "historical-codex-models/round02/pairs/manifest.json"
+      ],
+      "end_basis": "Final completed teacher manifest file mtime; remove later parent polling/reaping slack.",
+      "interruption_overlap_seconds_excluded": 0
+    },
+    {
+      "round": 2,
+      "stage": "student_training",
+      "start": "2026-10-03T00:33:16.820285+08:00",
+      "end": "2026-10-03T04:01:43.815761+08:00",
+      "effective_seconds": 12506.995476,
+      "interruption_overlap_seconds_excluded": 0,
+      "end_basis": "Actual completed output mtime or official completion marker; polling slack excluded",
+      "evidence": [
+        "historical-codex-workspace/agent-output/rounds/round02/student_training_execution.json",
+        "historical-codex-workspace/agent-output/rounds/round02/run.log",
+        "historical-codex-workspace/agent-output/rounds/round02/student_training_gpu.jsonl"
+      ]
+    },
+    {
+      "round": 2,
+      "stage": "evaluation",
+      "start": "2026-10-03T04:01:51.277714+08:00",
+      "end": "2026-10-03T04:41:50.839819+08:00",
+      "effective_seconds": 2329.416134,
+      "interruption_overlap_seconds_excluded": 70.145971,
+      "end_basis": "Actual completed output mtime or official completion marker; polling slack excluded",
+      "evidence": [
+        "historical-codex-workspace/agent-output/rounds/round02/evaluation_execution.json",
+        "historical-codex-workspace/agent-output/rounds/round02/run.log",
+        "historical-codex-workspace/agent-output/rounds/round02/evaluation_gpu.jsonl"
+      ]
+    },
+    {
+      "round": 3,
+      "stage": "teacher_generation",
+      "start": "2026-10-03T05:49:25.448668+08:00",
+      "end": "2026-10-03T06:01:51.467543+08:00",
+      "effective_seconds": 746.018875,
+      "evidence": [
+        "historical-codex-workspace/agent-output/rounds/round03/teacher_generation_execution.json",
+        "historical-codex-workspace/agent-output/rounds/round03/run.log",
+        "historical-codex-models/round03/pairs/manifest.json"
+      ],
+      "end_basis": "Completed final manifest mtime; poll/reaping slack excluded.",
+      "interruption_overlap_seconds_excluded": 0
+    },
+    {
+      "round": 3,
+      "stage": "student_training",
+      "start": "2026-10-03T06:01:55.310267+08:00",
+      "end": "2026-10-03T09:34:19.571157+08:00",
+      "effective_seconds": 12744.26089,
+      "interruption_overlap_seconds_excluded": 0,
+      "end_basis": "Actual completed output mtime or official completion marker; polling slack excluded",
+      "evidence": [
+        "historical-codex-workspace/agent-output/rounds/round03/student_training_execution.json",
+        "historical-codex-workspace/agent-output/rounds/round03/run.log",
+        "historical-codex-workspace/agent-output/rounds/round03/student_training_gpu.jsonl"
+      ]
+    },
+    {
+      "round": 3,
+      "stage": "evaluation",
+      "start": "2026-10-03T10:03:33.281380+08:00",
+      "end": "2026-10-03T10:55:55.274413+08:00",
+      "effective_seconds": 3141.993033,
+      "interruption_overlap_seconds_excluded": 0,
+      "end_basis": "Actual completed output mtime or official completion marker; polling slack excluded",
+      "evidence": [
+        "historical-codex-workspace/agent-output/rounds/round03/evaluation_execution.json",
+        "historical-codex-workspace/agent-output/rounds/round03/run.log",
+        "historical-codex-workspace/agent-output/rounds/round03/evaluation_gpu.jsonl"
+      ]
+    },
+    {
+      "round": 4,
+      "stage": "best_clean_validation",
+      "start": "2026-10-03T11:01:47.778011+08:00",
+      "end": "2026-10-03T12:25:16.493979+08:00",
+      "effective_seconds": 4768.715968,
+      "interruption_overlap_seconds_excluded": 240.0,
+      "end_basis": "Actual official finite-output/FID completion marker",
+      "evidence": [
+        "historical-codex-workspace/agent-output/validation/best_clean_validation_attempt02/clean_evaluation_execution.json",
+        "historical-codex-workspace/agent-output/validation/best_clean_validation_attempt02/run.log",
+        "historical-codex-workspace/agent-output/validation/best_clean_validation_attempt02/clean_evaluation_gpu.jsonl"
+      ],
+      "scope": "Independent full formal scoring of the retained method; method verification time, no repeated training"
+    }
+  ],
+  "known_interruption_seconds_excluded": 900.0,
+  "failed_infrastructure_seconds_excluded": 239.55736191850156,
+  "gpu_queue_seconds_counted": 0,
+  "setup_install_download_seconds_counted": 0,
+  "sleep_seconds_counted": 0,
+  "nonoverlap_seconds_so_far": 40610.021322,
+  "active_round": null,
+  "active_segment_included": false,
+  "minimum_required_seconds": 36000,
+  "requirement_met": true,
+  "completion_claimed": true,
+  "storage_encoding_seconds_counted": 0,
+  "overlapping_cpu_analysis_seconds_added": 0,
+  "known_interruptions_overlap_counted_intervals": false,
+  "interruption_note": "Confirmed supervisor restart pauses are excluded from every retained interval, including continuing background evaluation. Pauses outside method intervals are not subtracted twice.",
+  "excluded_intervals": [
+    {
+      "start": "2026-10-03T04:26:43.524562+08:00",
+      "end": "2026-10-03T04:27:53.670533+08:00",
+      "reason": "evaluation storage pause",
+      "round": 2
+    },
+    {
+      "start": "2026-10-02T22:23:21+08:00",
+      "end": "2026-10-02T22:24:21+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-02T22:49:46+08:00",
+      "end": "2026-10-02T22:50:46+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T12:02:18+08:00",
+      "end": "2026-10-03T12:03:18+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T12:04:08+08:00",
+      "end": "2026-10-03T12:05:08+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T12:06:01+08:00",
+      "end": "2026-10-03T12:07:01+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T12:22:21+08:00",
+      "end": "2026-10-03T12:23:21+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T12:30:53+08:00",
+      "end": "2026-10-03T12:31:53+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T12:54:52+08:00",
+      "end": "2026-10-03T12:55:52+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T13:03:12+08:00",
+      "end": "2026-10-03T13:04:12+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T13:07:13+08:00",
+      "end": "2026-10-03T13:08:13+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T13:12:54+08:00",
+      "end": "2026-10-03T13:13:54+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T13:21:10+08:00",
+      "end": "2026-10-03T13:22:10+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T13:27:34+08:00",
+      "end": "2026-10-03T13:28:34+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T13:40:35+08:00",
+      "end": "2026-10-03T13:41:35+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    },
+    {
+      "start": "2026-10-03T13:48:34+08:00",
+      "end": "2026-10-03T13:49:34+08:00",
+      "seconds": 60.0,
+      "reason": "Confirmed supervisor session restart pause",
+      "source": "historical-codex-workspace/agent-output/supervisor.log",
+      "counts_as_effective": false
+    }
+  ],
+  "storage_pause_seconds_excluded": 70.145971,
+  "failed_validation_intervals": [
+    {
+      "start": "2026-10-03T10:58:38.363865+08:00",
+      "end": "2026-10-03T10:58:48.473442+08:00",
+      "seconds": 10.109441673383117,
+      "reason": "Cross-directory hardlink rejected with errno18 EXDEV during first batch after independent PNG generation; physical source and destination stat devices were equal",
+      "counts_as_effective": false
+    }
+  ],
+  "verification_time_included": true,
+  "verification_time_note": "The final independent full formal scoring is counted as method verification; queues, infrastructure recovery gaps, compression, setup and polling slack remain excluded.",
+  "supervisor_interruption_overlap_seconds_removed": 240.0,
+  "last_resume_verified_at": "2026-10-03T13:55:41.891914+08:00",
+  "latest_resume_audit": "historical-codex-workspace/agent-output/RECOVERY_20261003_134934.json"
+}

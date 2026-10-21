@@ -1,0 +1,89 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "case": "wrong_output",
+      "passed": true,
+      "result": {
+        "status": "hard_gate",
+        "failure_reason": "Numerical correctness failed; max abs error=1.0688272.",
+        "score": -1,
+        "start_unix": 1791368756.4177423,
+        "end_unix": 1791368761.835037
+      },
+      "exit_code": 0,
+      "stdout": "{\"status\": \"hard_gate\", \"failure_reason\": \"Numerical correctness failed; max abs error=1.0688272.\", \"score\": -1, \"start_unix\": 1791368756.4177423, \"end_unix\": 1791368761.835037}\n",
+      "stderr": ""
+    },
+    {
+      "case": "forbidden_import",
+      "passed": true,
+      "result": {
+        "status": "hard_gate",
+        "failure_reason": "Imports are limited to torch and math.",
+        "score": -1,
+        "start_unix": 1791368767.0138426,
+        "end_unix": 1791368767.0142725
+      },
+      "exit_code": 0,
+      "stdout": "{\"status\": \"hard_gate\", \"failure_reason\": \"Imports are limited to torch and math.\", \"score\": -1, \"start_unix\": 1791368767.0138426, \"end_unix\": 1791368767.0142725}\n",
+      "stderr": ""
+    },
+    {
+      "case": "missing_interface",
+      "passed": true,
+      "result": {
+        "status": "format_error",
+        "failure_reason": "Define attention(x, wq, wk, wv, alpha, beta).",
+        "score": null,
+        "start_unix": 1791368769.5185883,
+        "end_unix": 1791368769.519038
+      },
+      "exit_code": 1,
+      "stdout": "{\"status\": \"format_error\", \"failure_reason\": \"Define attention(x, wq, wk, wv, alpha, beta).\", \"score\": null, \"start_unix\": 1791368769.5185883, \"end_unix\": 1791368769.519038}\n",
+      "stderr": ""
+    },
+    {
+      "case": "input_mutation",
+      "passed": true,
+      "result": {
+        "status": "hard_gate",
+        "failure_reason": "Candidate modified input tensors.",
+        "score": -1,
+        "start_unix": 1791368773.7802978,
+        "end_unix": 1791368777.4354606
+      },
+      "exit_code": 0,
+      "stdout": "{\"status\": \"hard_gate\", \"failure_reason\": \"Candidate modified input tensors.\", \"score\": -1, \"start_unix\": 1791368773.7802978, \"end_unix\": 1791368777.4354606}\n",
+      "stderr": ""
+    },
+    {
+      "case": "wrong_dtype",
+      "passed": true,
+      "result": {
+        "status": "hard_gate",
+        "failure_reason": "output must remain float32 CPU",
+        "score": -1,
+        "start_unix": 1791368781.6650343,
+        "end_unix": 1791368786.2523632
+      },
+      "exit_code": 0,
+      "stdout": "{\"status\": \"hard_gate\", \"failure_reason\": \"output must remain float32 CPU\", \"score\": -1, \"start_unix\": 1791368781.6650343, \"end_unix\": 1791368786.2523632}\n",
+      "stderr": ""
+    },
+    {
+      "case": "closure_cache",
+      "passed": true,
+      "result": {
+        "status": "hard_gate",
+        "failure_reason": "Custom stateful decorators are forbidden; use ordinary pure helpers.",
+        "score": -1,
+        "start_unix": 1791368791.3358774,
+        "end_unix": 1791368791.3366146
+      },
+      "exit_code": 0,
+      "stdout": "{\"status\": \"hard_gate\", \"failure_reason\": \"Custom stateful decorators are forbidden; use ordinary pure helpers.\", \"score\": -1, \"start_unix\": 1791368791.3358774, \"end_unix\": 1791368791.3366146}\n",
+      "stderr": ""
+    }
+  ]
+}

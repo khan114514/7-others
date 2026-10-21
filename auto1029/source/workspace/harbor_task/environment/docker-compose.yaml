@@ -1,0 +1,19 @@
+services:
+  main:
+    network_mode: none
+    read_only: true
+    user: "1000:1000"
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges=true
+      - seccomp=unconfined
+      - systempaths=unconfined
+    tmpfs:
+      - /workspace/solution:rw,nosuid,nodev,size=128m,uid=1000,gid=1000,mode=0755
+      - /tmp:rw,nosuid,nodev,size=128m,uid=1000,gid=1000,mode=1770
+      - /home/candidate:rw,nosuid,nodev,size=128m,uid=1000,gid=1000,mode=0700
+      - /tests:rw,exec,nosuid,nodev,size=16m,uid=0,gid=0,mode=0700
+      - /solution:rw,nosuid,nodev,size=16m,uid=0,gid=0,mode=0700
+      - /logs/agent:rw,nosuid,nodev,size=32m,uid=1000,gid=1000,mode=0700
+      - /logs/verifier:rw,nosuid,nodev,size=16m,uid=0,gid=0,mode=0700
+      - /logs/artifacts:rw,nosuid,nodev,size=32m,uid=0,gid=0,mode=0700

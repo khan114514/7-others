@@ -1,0 +1,256 @@
+{
+  "status": "ok",
+  "metric": "mean_process_cpu_ms",
+  "direction": "minimize",
+  "raw_value": 108.97090233333333,
+  "score": null,
+  "records": [
+    {
+      "seed": 17,
+      "latency_ms": 108.97090233333333,
+      "cases": [
+        {
+          "latency_ms": 12.999958,
+          "samples_ms": [
+            11.94,
+            12.999708,
+            12.00075,
+            11.996625,
+            20.003292,
+            12.999958,
+            16.0015,
+            14.986791,
+            16.999375,
+            62.001333,
+            9.738875
+          ],
+          "wall_latency_ms": 14.378708,
+          "wall_samples_ms": [
+            11.574125,
+            12.900416,
+            11.978958,
+            12.754542,
+            20.025125,
+            12.782541,
+            16.039875,
+            14.378708,
+            17.100417,
+            61.948042,
+            19.106
+          ],
+          "max_abs_error": 0.0,
+          "case_index": 0
+        },
+        {
+          "latency_ms": 36.264667,
+          "samples_ms": [
+            38.861292,
+            35.910457,
+            33.985709,
+            31.000917,
+            24.999875,
+            32.019541,
+            44.975834,
+            37.001374,
+            36.264667,
+            42.159499,
+            38.959417
+          ],
+          "wall_latency_ms": 37.247959,
+          "wall_samples_ms": [
+            39.261833,
+            35.742791,
+            33.883334,
+            30.581083,
+            24.815583,
+            32.635584,
+            45.024083,
+            37.247959,
+            38.951041,
+            41.816042,
+            38.485458
+          ],
+          "max_abs_error": 0.0,
+          "case_index": 1
+        },
+        {
+          "latency_ms": 164.692041,
+          "samples_ms": [
+            144.948916,
+            105.002166,
+            164.692041,
+            308.605955,
+            165.014083,
+            682.98704,
+            250.791665,
+            165.206666,
+            145.993957,
+            129.92125,
+            100.618166
+          ],
+          "wall_latency_ms": 165.446583,
+          "wall_samples_ms": [
+            144.69375,
+            104.918875,
+            165.446583,
+            349.935834,
+            165.976958,
+            776.7225,
+            252.168542,
+            171.607625,
+            146.051959,
+            130.405125,
+            101.828125
+          ],
+          "max_abs_error": 0.0,
+          "case_index": 2
+        },
+        {
+          "latency_ms": 326.943374,
+          "samples_ms": [
+            298.977625,
+            307.986416,
+            352.976498,
+            762.026499,
+            326.943374,
+            263.946458,
+            454.985956,
+            420.985957,
+            518.221498,
+            287.986415,
+            235.962957
+          ],
+          "wall_latency_ms": 326.856,
+          "wall_samples_ms": [
+            298.849375,
+            307.875667,
+            352.900375,
+            763.3475,
+            326.856,
+            264.166291,
+            454.739667,
+            420.670709,
+            520.438917,
+            287.531959,
+            236.348
+          ],
+          "max_abs_error": 0.0,
+          "case_index": 3
+        },
+        {
+          "latency_ms": 71.97,
+          "samples_ms": [
+            128.010209,
+            141.977166,
+            87.00375,
+            59.992999,
+            60.994459,
+            73.999333,
+            71.97,
+            57.942207,
+            68.999791,
+            67.991792,
+            91.999956
+          ],
+          "wall_latency_ms": 71.117084,
+          "wall_samples_ms": [
+            128.957166,
+            142.600709,
+            87.063458,
+            59.582167,
+            61.326417,
+            74.324292,
+            71.117084,
+            58.169291,
+            68.811125,
+            68.456084,
+            92.233917
+          ],
+          "max_abs_error": 0.0,
+          "case_index": 4
+        },
+        {
+          "latency_ms": 40.955374,
+          "samples_ms": [
+            53.870249,
+            45.996917,
+            38.999334,
+            32.998583,
+            32.152249,
+            27.996917,
+            32.001041,
+            55.994583,
+            51.286709,
+            47.975375,
+            40.955374
+          ],
+          "wall_latency_ms": 41.4225,
+          "wall_samples_ms": [
+            54.108209,
+            46.020709,
+            39.476125,
+            32.534375,
+            33.673708,
+            28.593541,
+            31.660667,
+            56.198958,
+            82.772917,
+            47.981625,
+            41.4225
+          ],
+          "max_abs_error": 0.0,
+          "case_index": 5
+        }
+      ]
+    }
+  ],
+  "quality_gates_passed": true,
+  "method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+  "protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+  "protocol": "attention-exact-cpu-v1",
+  "torch": "2.5.1",
+  "start_unix": 1791358752.6428134,
+  "end_unix": 1791358782.6174011,
+  "training": "NOT_APPLICABLE",
+  "role": "baseline",
+  "seed": 17,
+  "split": "dev",
+  "execution": {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "2g",
+      "--mount",
+      "type=bind,src=<SUBMISSION_ROOT>,dst=/author,readonly",
+      "asd-attention-base:torch251",
+      "python",
+      "/author/workspace/harbor_task/environment/public_eval/grader.py",
+      "--method",
+      "/author/workspace/harbor_task/environment/starter/method.py",
+      "--protocol",
+      "/author/workspace/harbor_task/environment/public_assets/dev/protocol.json",
+      "--output",
+      "/tmp/result.json",
+      "--seeds",
+      "17",
+      "--raw-only"
+    ],
+    "exit_code": 0,
+    "start_unix": 1791358749.14117,
+    "end_unix": 1791358783.885967,
+    "observed_seconds": 34.74479699134827,
+    "cpus": 1,
+    "memory_mb": 2048,
+    "network": "none"
+  },
+  "model_artifact": {
+    "status": "NOT_APPLICABLE",
+    "reason": "No training or model checkpoint."
+  }
+}

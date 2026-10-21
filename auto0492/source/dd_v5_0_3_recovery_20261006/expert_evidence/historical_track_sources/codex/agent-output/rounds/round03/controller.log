@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "historical-codex-workspace/candidate_runner.py", line 290, in <module>
+    main()
+  File "historical-codex-workspace/candidate_runner.py", line 213, in main
+    run_stage([PY,'-B','-u',str(FRAMEWORK/'train_student.py'),'--method',str(method),
+  File "historical-codex-workspace/candidate_runner.py", line 140, in run_stage
+    raise RuntimeError(f'{stage} failed: exit={code}, termination={termination}')
+RuntimeError: student_training failed: exit=1, termination=None

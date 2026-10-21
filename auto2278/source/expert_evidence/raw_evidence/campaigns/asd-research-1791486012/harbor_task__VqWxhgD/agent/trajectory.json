@@ -1,0 +1,394 @@
+{
+  "rounds": [
+    {
+      "round": 26,
+      "policy_name": "dyadic_grouped_triangular_norms",
+      "method_summary": "Grouped long-sequence Cholesky contractions into batched dyadic blocks. Full protected Dev passed all gates with raw CPU ratio 0.467827406, score 0.561816162, and maximum error 4.53e-6; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.47298432618632297,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 02:13:22"
+    },
+    {
+      "round": 27,
+      "policy_name": "joint_factor_panel_value_contraction",
+      "method_summary": "Fused the first Cholesky-panel norm contraction with projected-value retrieval. Full protected Dev passed all gates with CPU ratio 0.465868561, score 0.563650886, and maximum error 4.95e-6; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4603612135915283,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 02:23:38"
+    },
+    {
+      "round": 28,
+      "policy_name": "linalg_vector_norm_reduction",
+      "method_summary": "Replaced Cholesky norm reductions’ `norm(...).square_()` with `torch.linalg.vector_norm(...).square_()`. Full Dev evaluation passed correctness, with raw CPU ratio 0.436133883, slightly worse than the current best 0.433928156.",
+      "status": "ok",
+      "score": 0.43592996930646566,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 03:12:15"
+    },
+    {
+      "round": 29,
+      "policy_name": "shared_probability_workspace",
+      "method_summary": "Packed both distributions into one workspace, using in-place softmax and blending to eliminate probability concatenation. Full protected Dev passed all gates: raw CPU ratio 0.432845245, score 0.594581701, maximum error 4.95e-6; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4353493942192382,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 03:16:16"
+    },
+    {
+      "round": 30,
+      "policy_name": "left_oriented_long_projection",
+      "method_summary": "Removed the right-oriented projection special case for B=1,L>=256,H>=20, using the existing left-oriented multiply. Protected Dev passed correctness with maximum error 4.95e-6, but raw CPU ratio was 0.4405434256, worse than the current best.",
+      "status": "ok",
+      "score": 0.4262535839442847,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 03:25:17"
+    },
+    {
+      "round": 31,
+      "policy_name": "fused_scaled_logits_baddbmm",
+      "method_summary": "Fused logit scaling into batched GEMM, eliminating a separate tensor pass. Full protected Dev passed all gates with raw CPU ratio 0.438320735, score 0.589453162, and maximum error 4.95e-6; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.43877161331941494,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 03:33:05"
+    },
+    {
+      "round": 32,
+      "policy_name": "split_gemm_shared_projection_buffer",
+      "method_summary": "Projected Q, K, V and Gram directly into a shared buffer, eliminating concatenated-weight copies for single-batch inputs. Full protected Dev passed all gates with raw CPU ratio 0.433300319, score 0.594155463 and maximum error 4.95e-6; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.43023456493128276,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 03:38:14"
+    },
+    {
+      "round": 33,
+      "policy_name": "triangular_panel_48",
+      "method_summary": "Changed long-sequence Cholesky norm contractions from 64-column to 48-column panels. Protected Dev passed all gates with raw CPU ratio 0.427934131 and maximum error 4.89e-6.",
+      "status": "ok",
+      "score": 0.4340235773275879,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 03:59:35"
+    },
+    {
+      "round": 34,
+      "policy_name": "equality_inclusive_gram_path",
+      "method_summary": "Enabled the factored Gram/Cholesky retrieval path when its heuristic is exactly equal, improving the isolated case timing while preserving correctness. Full Dev passed with raw CPU ratio 0.433706837 and maximum error 4.95e-6; candidate remains in place.",
+      "status": "ok",
+      "score": 0.4356083363701957,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 04:04:15"
+    },
+    {
+      "round": 35,
+      "policy_name": "row_tiled_cholesky_workspace",
+      "method_summary": "Tiled large Cholesky norm contractions into 1024-row groups with a reusable panel buffer. Full protected Dev passed all gates with raw CPU ratio 0.426801109 and maximum error 4.95e-6, slightly worse than the verified best; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.43384169747210116,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 04:12:07"
+    },
+    {
+      "round": 36,
+      "policy_name": "left_oriented_batched_alpha1_projection",
+      "method_summary": "Changed the alpha=1 packed projection to multiply maps by xᵀ, preserving correctness and reducing the Dev raw CPU ratio to 0.428449689. All quality gates passed.",
+      "status": "ok",
+      "score": 0.43196701208060356,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 04:20:40"
+    },
+    {
+      "round": 37,
+      "policy_name": "direct_squared_norm_accumulation",
+      "method_summary": "Replaced Cholesky-panel norm-then-square operations with direct squared accumulation. Protected Dev passed all gates with raw CPU ratio 0.4248743775, score 0.6020475, and maximum error 5.01e-6.",
+      "status": "ok",
+      "score": 0.4360645105108134,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 04:24:59"
+    },
+    {
+      "round": 38,
+      "policy_name": "adaptive_factored_panel_48",
+      "method_summary": "Used 48-column Cholesky norm panels for long general paths while retaining 64-column panels for the large-head path. Protected Dev passed all quality gates with raw CPU ratio 0.4300661 and maximum error 4.95e-6.",
+      "status": "ok",
+      "score": 0.43309786710826953,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 04:32:28"
+    },
+    {
+      "round": 39,
+      "policy_name": "adaptive_factored_panel_48_general",
+      "method_summary": "Used 48-column Cholesky norm panels for single-batch paths with fewer than 20 heads, retaining 64-column panels for large-head paths. Full protected Dev passed all quality gates with raw CPU ratio 0.4222926575 and maximum error 4.95e-6.",
+      "status": "ok",
+      "score": 0.42541495126867995,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 04:41:36"
+    },
+    {
+      "round": 40,
+      "policy_name": "shared_softmax_contraction_workspace",
+      "method_summary": "Writes both softmax results directly into the Cholesky contraction workspace, eliminating the concatenation copy. Full protected Dev passed all gates with raw CPU ratio 0.422025127, score 0.604716210, and maximum error 4.95e-6; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.42040527602411115,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 04:49:33"
+    },
+    {
+      "round": 41,
+      "policy_name": "singleton_batch_factored_mm",
+      "method_summary": "Changed singleton batch factored norm contractions to 2-D matmul with 48-column panels. Protected Dev passed all gates with raw CPU ratio 0.4171804654 and maximum error 4.95e-6.",
+      "status": "ok",
+      "score": 0.4209300414968674,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 04:59:19"
+    },
+    {
+      "round": 42,
+      "policy_name": "singleton_batch_factored_mm_h10",
+      "method_summary": "Extended the singleton-batch factored norm path to H=10 with 48-column panels. Dev passed numerically but worsened raw CPU ratio to 0.4311136774.",
+      "status": "ok",
+      "score": 0.4187777944834791,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 05:02:27"
+    },
+    {
+      "round": 43,
+      "policy_name": "singleton_h10_bmm_projection",
+      "method_summary": "Specialized the final probability/value contraction for batch-1, 10-head, length-256 inputs using flattened batched matrix multiplication. Protected Dev passed all quality gates with raw CPU ratio 0.4196493135, slightly worse than the current best.",
+      "status": "ok",
+      "score": 0.4241467772777966,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 05:19:12"
+    },
+    {
+      "round": 44,
+      "policy_name": "wide_long_projection_orientation",
+      "method_summary": "Added a wide-output projection branch for single-batch long sequences with at least 20 heads. Quality gates passed, but raw CPU ratio worsened to 0.4289241144 from the best 0.418777794.",
+      "status": "ok",
+      "score": 0.4378989936815706,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 05:22:45"
+    },
+    {
+      "round": 45,
+      "policy_name": "cholesky_panel64_all_long_paths",
+      "method_summary": "Expanded the factorized norm reduction to 64-column panels for ten-head long sequences, reducing GEMM dispatches while preserving exact results. Protected Dev passed all quality gates with raw CPU ratio 0.4310226335, worse than the current best.",
+      "status": "ok",
+      "score": 0.4320206458439146,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 05:28:37"
+    },
+    {
+      "round": 46,
+      "policy_name": "adaptive_panel48_largehead_short",
+      "method_summary": "Used 48-column Cholesky norm panels for singleton-batch, 20-plus-head sequences of length 128. Protected Dev passed all gates with raw CPU ratio 0.4197481912 and maximum error 4.95e-6, slightly worse than the verified best; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4208195592072146,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 05:42:25"
+    },
+    {
+      "round": 47,
+      "policy_name": "unpacked_short_wide_qkv_projections",
+      "method_summary": "Used separate Q/K/V and Gram products for short or wide singleton batches, eliminating packed-weight copies. Full protected Dev passed all gates with raw CPU ratio 0.4159925364, score 0.610366550, and maximum error 4.95e-6; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4199290231881144,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 05:46:50"
+    },
+    {
+      "round": 48,
+      "policy_name": "cache_friendly_panel32",
+      "method_summary": "Changed singleton long-sequence Cholesky norm reductions to 32-column panels. Protected Dev passed all quality gates with raw CPU ratio 0.4010200844 and maximum error 4.89e-6.",
+      "status": "ok",
+      "score": 0.42087554695267654,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 05:53:59"
+    },
+    {
+      "round": 49,
+      "policy_name": "large_head_panel32",
+      "method_summary": "Changed singleton long sequence Cholesky norm reductions for 20-head cases from 64-column to 32-column panels. Protected Dev passed all quality gates; raw CPU ratio was 0.4200727 with maximum error 4.89e-6.",
+      "status": "ok",
+      "score": 0.4204419587066345,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 05:59:27"
+    },
+    {
+      "round": 50,
+      "policy_name": "grouped_heads4_cholesky_retrieval",
+      "method_summary": "Processed large singleton batches in four-head groups while sharing projections and the Cholesky factor. Protected Dev passed all quality gates with maximum error 4.95e-6, but raw CPU ratio 0.424074458 was worse than the verified best 0.418777794; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4231301922726691,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 06:05:36"
+    },
+    {
+      "round": 51,
+      "policy_name": "direct_long_singleton_qkv_gram",
+      "method_summary": "Added separate long singleton Q/K/V and token Gram GEMMs; quality gates passed, but protected Dev raw CPU ratio worsened to 0.4319788751.",
+      "status": "ok",
+      "score": 0.42499903671268785,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 06:10:48"
+    },
+    {
+      "round": 52,
+      "policy_name": "unpacked_qkv_gram_shared_workspace",
+      "method_summary": "Wrote separate Q/K/V and Gram products directly into one workspace for short or wide singleton inputs, avoiding packed-weight copies. Full protected Dev passed all gates with maximum error 4.95e-6 and raw CPU ratio 0.421919084, worse than the verified best 0.418777794; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.40776985324241416,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 06:21:03"
+    },
+    {
+      "round": 53,
+      "policy_name": "fused_scaled_scores_direct_output_workspace",
+      "method_summary": "Fused logit scaling into baddbmm and wrote singleton Gram-path outputs directly into the final layout. Protected Dev passed all gates with maximum error 4.95e-6, but raw CPU ratio 0.437879373 was worse than the verified best 0.407769853.",
+      "status": "ok",
+      "score": 0.4385716793748536,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 06:27:34"
+    },
+    {
+      "round": 54,
+      "policy_name": "direct_gram_norm_for_10head_long",
+      "method_summary": "Used direct Gram quadratic-form norms for singleton 10-head length-256 inputs while retaining Cholesky panels elsewhere; protected evaluation passed with raw CPU ratio 0.4282564767 and max error 4.95e-6.",
+      "status": "ok",
+      "score": 0.4156444036040341,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 06:36:09"
+    },
+    {
+      "round": 55,
+      "policy_name": "length128_cache_blocked_norms",
+      "method_summary": "Applied 2048-row coefficient blocking to the singleton length-128 Cholesky norm path. Protected Dev passed with max error 4.95e-6, but raw CPU ratio worsened to 0.417215455.",
+      "status": "ok",
+      "score": 0.42844809486041086,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 06:40:44"
+    },
+    {
+      "round": 56,
+      "policy_name": "fused_inplace_dual_softmax",
+      "method_summary": "Built both logit matrices in the coefficient workspace and normalized them with one in-place softmax call. Protected Dev passed all gates with maximum error 4.95e-6 and raw CPU ratio 0.4078794503; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4194190345977372,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 06:46:01"
+    },
+    {
+      "round": 57,
+      "policy_name": "unpacked_native_attention_projections",
+      "method_summary": "Replaced packed-weight projection for alpha == 1 with three GEMMs writing into one shared workspace. Protected Dev passed all gates with maximum error 4.95e-6, but raw CPU ratio 0.428639390 was worse than the verified best 0.407769853; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4293625605824266,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 06:51:12"
+    },
+    {
+      "round": 58,
+      "policy_name": "triangular32_shared_norm_workspace",
+      "method_summary": "Used 32-column triangular contractions with a shared projection buffer and one final norm reduction. Protected Dev passed all gates with maximum error 4.89e-6, but raw CPU ratio 0.442292619 was worse than the verified best 0.407769853; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4431511842649042,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 06:55:54"
+    },
+    {
+      "round": 59,
+      "policy_name": "fused_batched_panel_squared_norms",
+      "method_summary": "Replaced long singleton Cholesky-panel norm reductions with batched dot-product accumulation. Protected Dev passed all gates with maximum error 5.13e-6, but raw CPU ratio worsened to 0.466683273 versus the verified best 0.407769853; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4605921655226306,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 07:01:52"
+    },
+    {
+      "round": 60,
+      "policy_name": "token_major_long_wide_qkv",
+      "method_summary": "Added token-major Q/K/V projections for long, wide singleton Gram paths. Full protected Dev passed all gates with maximum error 4.95e-6 and raw CPU ratio 0.434059706, worse than the verified best 0.407769853; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.42511559152114564,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 07:09:01"
+    },
+    {
+      "round": 61,
+      "policy_name": "long_sequence_row_blocked_cholesky_norms",
+      "method_summary": "Processed long-sequence Cholesky norms in 1024-row blocks with a shared contraction buffer. Full protected Dev passed all gates with maximum error 4.95e-6, but raw CPU ratio 0.420866325 was worse than verified best 0.407769853; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.42561993739175813,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 07:14:38"
+    },
+    {
+      "round": 62,
+      "policy_name": "long_wide_shared_strassen_projections",
+      "method_summary": "Implemented one-level Strassen Q/K/V projections with shared scratch buffers for long, wide singleton inputs. Protected Dev passed all gates with maximum error 5.25e-6 and raw CPU ratio 0.426718685, worse than the verified best 0.407769853; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.4250573406965196,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 07:21:54"
+    },
+    {
+      "round": 63,
+      "policy_name": "stacked_short_sequence_gram_norms",
+      "method_summary": "Combined both short-sequence squared norms into one shared Gram contraction. Protected Dev passed all gates with maximum error 4.95e-6, but raw CPU ratio 0.422666413 was worse than the verified best 0.407769853; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.42219980455391115,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 07:28:35"
+    },
+    {
+      "round": 64,
+      "policy_name": "shared_winograd_qkv_projections",
+      "method_summary": "Implemented Strassen–Winograd Q/K/V projections with shared token sums and direct output accumulation for long, wide singleton inputs. Protected Dev passed all gates with maximum error 5.96e-6, but raw CPU ratio 0.437759081 was 7.35% worse than verified best 0.407769853; the evaluated candidate remains in place.",
+      "status": "ok",
+      "score": 0.437522608981026,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 07:35:02"
+    }
+  ]
+}

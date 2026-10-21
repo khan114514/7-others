@@ -1,0 +1,52 @@
+{
+  "legacy": {
+    "before": {
+      "1": "sh -c sleep infinity ",
+      "7": "sleep infinity ",
+      "8": "/opt/runtime/bin/python /opt/save-cli/local_model_proxy.py ",
+      "14": "/opt/runtime/bin/python -I -c from pathlib import Path; import json;print(json.dumps({p.name:(p/'cmdline').read_bytes().decode(errors='replace').replace(chr(0),' ') for p in Path('/proc').glob('[0-9]*') if (p/'cmdline').exists()})) "
+    },
+    "shutdown_exit": 137,
+    "shutdown_stdout": "",
+    "shutdown_stderr": "",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 137,
+      "Error": "",
+      "StartedAt": "2026-10-11T14:49:05.021849427Z",
+      "FinishedAt": "2026-10-11T14:49:07.376032261Z"
+    },
+    "artifact_exec_exit": null
+  },
+  "fixed": {
+    "before": {
+      "1": "sh -c sleep infinity ",
+      "7": "sleep infinity ",
+      "8": "/opt/runtime/bin/python /opt/save-cli/local_model_proxy.py ",
+      "14": "/opt/runtime/bin/python -I -c from pathlib import Path; import json;print(json.dumps({p.name:(p/'cmdline').read_bytes().decode(errors='replace').replace(chr(0),' ') for p in Path('/proc').glob('[0-9]*') if (p/'cmdline').exists()})) "
+    },
+    "shutdown_exit": 0,
+    "shutdown_stdout": "{\"roots\": [8], \"stopped\": [8], \"container_keepalive_preserved\": true}\n",
+    "shutdown_stderr": "",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 90658,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-11T14:49:08.102724137Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "artifact_exec_exit": 0
+  }
+}

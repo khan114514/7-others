@@ -1,0 +1,29 @@
+{
+  "base": "53_compiled_image_rotary",
+  "all_original_node_objects_equal": true,
+  "only_reordered_four_independent_weight_only_nodes": true,
+  "all_other_node_order_and_original_regions_equal": true,
+  "public_region_validator_source_sha256": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619",
+  "new_prefix_region_inputs": [
+    "w:self_attn.q_proj.weight",
+    "w:self_attn.k_proj.weight",
+    "w:self_attn.v_proj.weight",
+    "w:self_attn.q_proj.bias",
+    "w:self_attn.k_proj.bias",
+    "w:self_attn.v_proj.bias",
+    "w:self_attn.vision_branch_q_proj.weight",
+    "w:self_attn.vision_branch_k_proj.weight",
+    "w:self_attn.vision_branch_v_proj.weight",
+    "w:self_attn.vision_branch_q_proj.bias",
+    "w:self_attn.vision_branch_k_proj.bias",
+    "w:self_attn.vision_branch_v_proj.bias"
+  ],
+  "new_prefix_region_outputs": [
+    "text_qkv_weight",
+    "text_qkv_bias",
+    "vision_qkv_weight",
+    "vision_qkv_bias"
+  ],
+  "no_numerical_arithmetic_introduced": true,
+  "cache_budget_and_reset_semantics_unchanged": true
+}

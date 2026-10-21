@@ -1,0 +1,23 @@
+{
+    "task": {
+        "path": "<TASK_ROOT>/private/native_task_v7"
+    },
+    "trial_name": "save-final-revalidate-gpt",
+    "trials_dir": "<TASK_ROOT>/private/final-revalidation/ad722004d9d14bc0b7be4369df1bac22",
+    "agent": {
+        "import_path": "save_artifact_validation_agent:SaveArtifactValidationAgent",
+        "model_name": "gpt-6.1-sol",
+        "kwargs": {
+            "method_source": "<TASK_ROOT>/private/track-recovery-v6/bc79a88037234e9e979f667fa35864ca/gpt-research-evidence/recovered-own-evidence/method.py",
+            "method_sha256": "4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4"
+        }
+    },
+    "environment": {
+        "import_path": "portable_runtime_v4.environment:SaveHybridDockerEnvironment",
+        "kwargs": {
+            "lane": "gpt",
+            "numerical_status": "<TASK_ROOT>/private/no_numerical_controller.json",
+            "runtime_root": "<TASK_ROOT>/private/final-revalidation/ad722004d9d14bc0b7be4369df1bac22/gpt"
+        }
+    }
+}

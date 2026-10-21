@@ -1,0 +1,26 @@
+{
+  "status": "CONTROL_STOP_IDENTIFIED_NO_GPU_RERUN",
+  "original_state": {
+    "phase": "RECOVERY_RESEARCH_STOPPED_ORIGINAL_EVIDENCE_PRESERVED",
+    "pid": 12907,
+    "observed_utc": "2026-10-06T03:19:56.365525+00:00",
+    "bounded_rounds_per_track": 2,
+    "recurring_monitoring": false,
+    "qa_pass_claimed": false,
+    "reference_and_private_policy_unchanged": true,
+    "error_type": "StopIteration",
+    "error": "",
+    "duplicate_post_allowed": false
+  },
+  "root_cause": "Controller expected str(round)==1 while model produced round-01; trusted result and successful real CLI receipt remain valid",
+  "original_model_round": "round-01",
+  "accepted_job_id": "ac0a9b573f454d4d927af858dad4ebe8",
+  "score": 10.126636628087738,
+  "controller_fix": "Recognize existing int/string labels and require canonical corrected integer and Asia/Shanghai time before writing marker",
+  "accepted_job_post_repeated": false,
+  "repeated_training": false,
+  "original_model_analysis_sha256": "597fad890dad7bdb0f9c60bcc1a69f7d3b6969a04f7555dd58110d20ba1e4c6e",
+  "resume_helper_sha256": "58343680757e9b6e7f0da630322a538233e99ff5b93a0d29e57ab27784d6f8cd",
+  "correction_cli_pending": true,
+  "qa_pass_claimed": false
+}

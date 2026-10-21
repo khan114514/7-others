@@ -1,0 +1,197 @@
+{
+  "execution_status": "COMPLETED",
+  "profile": "dev",
+  "is_formal_protocol": false,
+  "layer_count": 28,
+  "dtype": "bfloat16",
+  "steps": 32,
+  "records": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 7235.2451171875,
+      "candidate_total_ms": 1618.094081878662,
+      "worst_relative_rmse": 0.08704057335853577,
+      "worst_scaled_max_abs": 0.13182824850082397
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 7081.416687011719,
+      "candidate_total_ms": 1639.2417297363281,
+      "worst_relative_rmse": 0.010176904499530792,
+      "worst_scaled_max_abs": 0.0191256832331419
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 7093.503982543945,
+      "candidate_total_ms": 1655.2570762634277,
+      "worst_relative_rmse": 0.01012454368174076,
+      "worst_scaled_max_abs": 0.014705882407724857
+    }
+  ],
+  "per_case": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "baseline_ms": 7235.2451171875,
+      "candidate_ms": 1618.094081878662
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "baseline_ms": 7081.416687011719,
+      "candidate_ms": 1639.2417297363281
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "baseline_ms": 7093.503982543945,
+      "candidate_ms": 1655.2570762634277
+    }
+  ],
+  "per_seed": [
+    {
+      "sampling_seed": 101,
+      "case_count": 1,
+      "baseline_ms": 7235.2451171875,
+      "candidate_ms": 1618.094081878662
+    },
+    {
+      "sampling_seed": 202,
+      "case_count": 1,
+      "baseline_ms": 7081.416687011719,
+      "candidate_ms": 1639.2417297363281
+    },
+    {
+      "sampling_seed": 303,
+      "case_count": 1,
+      "baseline_ms": 7093.503982543945,
+      "candidate_ms": 1655.2570762634277
+    }
+  ],
+  "final_quality": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "relative_rmse": 1.386055827140808,
+      "scaled_max_abs": 0.9538246393203735
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "relative_rmse": 0.07823736220598221,
+      "scaled_max_abs": 0.09065934270620346
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "relative_rmse": 0.13491632044315338,
+      "scaled_max_abs": 0.23888888955116272
+    }
+  ],
+  "source_alignment": [
+    {
+      "case": 0,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 1,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 2,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    }
+  ],
+  "quality_pass": false,
+  "baseline_identity": false,
+  "reward": -1.0,
+  "baseline_mean_ms": 7136.721928914388,
+  "candidate_mean_ms": 1637.5309626261394,
+  "baseline_sample_sd_ms": 85.53735820648863,
+  "latency_improvement_ms": 5499.190966288248,
+  "noise_3sigma_pass": true,
+  "peak_cuda_allocated_bytes": 29599462912,
+  "gpu_uuid": "<assigned-accelerator>",
+  "torch_version": "2.5.1+cu121",
+  "compilation_observations": {
+    "schema": "bifrost-tensor-dag/2",
+    "region_count": 1,
+    "compiled_variant_count": 1,
+    "first_invocations": [
+      {
+        "region": "stage_main",
+        "first_invocation_wall_seconds": 8.113352587912232,
+        "includes_compilation_and_first_execution": true,
+        "compiler_backend": "inductor",
+        "fullgraph": true,
+        "CUDA_graphs": false,
+        "tensor_results_retained_by_compiler_wrapper": false
+      }
+    ],
+    "first_invocation_wall_is_not_net_research_credit": true
+  },
+  "compilation_disposable_warmup_observations": [
+    {
+      "case": 0,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [
+        {
+          "region": "stage_main",
+          "first_invocation_wall_seconds": 8.113352587912232,
+          "includes_compilation_and_first_execution": true,
+          "compiler_backend": "inductor",
+          "fullgraph": true,
+          "CUDA_graphs": false,
+          "tensor_results_retained_by_compiler_wrapper": false
+        }
+      ],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    },
+    {
+      "case": 1,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    },
+    {
+      "case": 2,
+      "phase": "original_disposable_warmup",
+      "first_invocations": [],
+      "wall_seconds_include_compilation_and_first_execution": true,
+      "numerical_prefix_values_reset_before_timing": true
+    }
+  ],
+  "compilation_preparation_not_research_credit": true,
+  "queue_seconds": 0.06758160190656781,
+  "cuda_weight_load_seconds": 16.672025272157043,
+  "active_evaluation_seconds": 42.47247801022604,
+  "input_sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+  "formal_trajectory_effective_seconds": 0,
+  "timing_scope": "Sum of256 decoder forward events:28 layers, final norm and head. Frozen CFG/reveal/input preparation, quality diagnostics, loading and queueing are excluded equally.",
+  "canonical_semantics": "cosine reveal and per-patch CFG4; shared-oracle paired prediction replay plus autonomous candidate final-latent check; no FLUX renderer claim",
+  "run_id": "fcbf4bc05aae4759ad74d051d735a1a8",
+  "worker_id": "1b29986ac88a47eca003af4d8a6467fe",
+  "artifact_sha256": "0a383b94d9a3fca0037ea4fa89ebe9535c6d87bc6459e274acf1727b6f350b45",
+  "started_epoch": 1791538498.4173446,
+  "completed_epoch": 1791538559.136153,
+  "source_binding_sha256": "9b084125be78d1a01830c6bed0d66044f77987bfe24417ffd84db291476197c9",
+  "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+  "gpu_after_release": "<assigned-accelerator>, 0",
+  "child_pid": 362778,
+  "child_exit_code": 0,
+  "parent_cuda_context_initialized": false
+}

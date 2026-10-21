@@ -1,0 +1,1106 @@
+{
+  "schema": "local-v4-content-review",
+  "schema_version": 4,
+  "report_type": "local-v4-content-review",
+  "policy": {
+    "revision": "research-quality-v3",
+    "tutorial": "phase3 V4",
+    "local_user_adjustment": "2026-10-21 five nonblocking categories"
+  },
+  "status": "FAIL",
+  "release_readiness": "NOT READY",
+  "core_conclusion": "当前完整ZIP不通过：两条当前独立轨迹为空，且没有可验收有效时长；部署基镜像/权重入口与Harbor版本仍未核验。方法空间与历史B/R对照本身可接受。",
+  "review": {
+    "completed": true,
+    "scope": "完整ZIP安全静态内容复核完成；可访问现存材料已核对，未提供/未运行事项分别列出",
+    "independent_session_id": "rf_a",
+    "only_submission_input": "auto0505-uploaded-source-snapshot.zip",
+    "historical_qa_reports_read": false,
+    "submission_code_executed": false
+  },
+  "qa_run": {
+    "mode": "local-v4-content-review",
+    "zip_sha256": "afa8cc2bfa825049b87ca3bd73909ba76d4300441638a865d72bcc0a6cfcfc77",
+    "input_type": "zip",
+    "configured_model": "gpt-6.1-sol",
+    "runtime_reported_model": "not_exposed",
+    "runtime_version": "not_exposed",
+    "session_id": "rf_a",
+    "clean_context": true,
+    "clean_context_basis": "由主控派发该完整ZIP和通用合同，未读包外历史QA、同伴报告或父级总结；包内历史QA仅清点名称未打开。",
+    "official_tool_status": "not_available_not_run",
+    "official_release_version": null,
+    "legacy_tool_used": false
+  },
+  "overview": {
+    "optimization_surface": {
+      "summary": "冻结模型和二阶数值更新，只改变get_timesteps产生的26节点；实际worker调用完整函数，guard只限制合法节点与资源/来源边界，不限制函数算法为常量参数。",
+      "modifiable": [
+        "/workspace/solution/method.py 的 get_timesteps(num_steps,image_seq_len) 算法及26节点分配"
+      ],
+      "fixed": [
+        "flux-dev冻结权重及数值评分器",
+        "25步/方向、每步2NFE，双向100NFE/图",
+        "512×512、空提示词、guidance=1、inject=0",
+        "Public12图、Hidden4图及指标/锚点",
+        "标准库和候选限额/隔离"
+      ],
+      "metric_and_gate": "平均PSNR最大化；26有限节点、首尾1/0、[0,1]、非增；非作弊Hard Gate=-1，其他错误无正常分数。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:4-25",
+        "workspace/harbor_task/tests/candidate_worker.py:149-161",
+        "workspace/harbor_task/tests/evaluate_candidate.py:67-78"
+      ]
+    },
+    "baseline_reference": {
+      "baseline_method": "非训练的默认time_shift schedule：mu=0.5+(1024−256)/(4096−256)×0.65=0.63，均匀t经exp(mu)/(exp(mu)+1/t−1)映射；两方向共享。Starter、正式B、评分锚点同角色。",
+      "reference_method": "非训练正弦节点t=sin((1−i/25)π/2)，高t端更密、低t端更疏；只改变节点分配，模型、更新式、数据和NFE不变。",
+      "metric": "mean per-image PSNR (dB)",
+      "direction": "maximize",
+      "paired_runs": [
+        {
+          "seed": null,
+          "run_id": "deterministic_actual_v341",
+          "baseline": 19.528882409499996,
+          "reference": 20.45734928422148,
+          "baseline_valid": true,
+          "reference_valid": true,
+          "baseline_result_path": "optimization_evidence/baseline_runs/actual_v341/harbor-job/rfsteps-v341-build-check-2026100__QTvtVoh/result.json",
+          "reference_result_path": "optimization_evidence/reference_runs/actual_v341/harbor-job/rfsteps-v341-build-check-2026100__DcGEtFn/result.json",
+          "baseline_metric_path": "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json#overall.psnr",
+          "reference_metric_path": "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json#overall.psnr",
+          "training_seed": null,
+          "evaluation_replicate": "one deterministic complete evaluation"
+        }
+      ],
+      "baseline_mean": 19.528882409499996,
+      "baseline_sample_std": null,
+      "reference_mean": 20.45734928422148,
+      "reference_sample_std": null,
+      "improvement_summary": "完整集+0.928466874721483 dB；Public+0.8632544282336845 dB，归一化0.4645734022278672。单次确定性正式运行的n−1重复运行标准差不可估计，不填0。",
+      "quality_gate_summary": "已有receipt.status=COMPLETE、evaluation_completed=true、exit_code=0；两组26合法节点、同16图/100NFE。未在本次执行或加载模型。",
+      "evidence": [
+        "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json",
+        "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json",
+        "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/schedule.json",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/schedule.json"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "Codex",
+        "status": "missing",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "packaged_rounds": 0,
+        "reported_effective_rounds": 0,
+        "duration_hours": null,
+        "summary": "JSON语法可读但rounds为空；当前独立run未启动。",
+        "final_result": null,
+        "evidence": [
+          "expert_evidence/trajectory_codex.json",
+          "expert_evidence/run_summary.json:10-31"
+        ]
+      },
+      {
+        "name": "Seed agent model",
+        "status": "missing",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "packaged_rounds": 0,
+        "reported_effective_rounds": 0,
+        "duration_hours": null,
+        "summary": "JSON语法可读但rounds为空；当前独立run未启动。",
+        "final_result": null,
+        "evidence": [
+          "expert_evidence/trajectory_seed.json",
+          "expert_evidence/run_summary.json:10-31"
+        ]
+      }
+    ]
+  },
+  "baseline_review": {
+    "overall": "合理（在已提供历史同协议材料范围内）",
+    "roles": {
+      "starter": "默认time_shift",
+      "formal_baseline": "同Starter默认映射",
+      "normalization_B": "该正式历史B聚合值",
+      "sanity": "anchors列uniform/square但未将其自述当独立原始验证"
+    },
+    "checks": [
+      {
+        "id": "B01",
+        "status": "通过",
+        "summary": "Starter=正式Baseline=评分B，基于包内默认time_shift实现，有任务适配性；不要求换SOTA。",
+        "evidence": [
+          "workspace/harbor_task/environment/starter/method.py:16-28",
+          "expert_evidence/deployment_source/runtime-image/repo/RF-Solver-Edit/FLUX_Image_Edit/src/flux/sampling.py:46-74",
+          "workspace/harbor_task/tests/anchors.json:9-19"
+        ]
+      },
+      {
+        "id": "B02",
+        "status": "通过",
+        "summary": "非训练固定模型；编码返回mean，没有采样噪声；已有原始加载和逐图结果，无实现故障反证。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/scorer-stdout.txt:4-24",
+          "expert_evidence/deployment_source/runtime-image/repo/RF-Solver-Edit/FLUX_Image_Edit/src/flux/modules/autoencoder.py:268-275"
+        ]
+      },
+      {
+        "id": "B03",
+        "status": "通过",
+        "summary": "B/R同模型/数据/评分器/100 NFE，历史同A100-40GB、8核，数值成本约308/309秒。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json#receipt",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json#receipt"
+        ]
+      },
+      {
+        "id": "B04",
+        "status": "通过",
+        "summary": "默认偏移映射固定，Reference换节点生成；共同冻结设置一致。未见只对B异常配置或不同选择集反证；不将Agent搜索时长等同单次B/R预算。",
+        "evidence": [
+          "workspace/harbor_task/environment/starter/method.py:18-28",
+          "workspace/reference/method.py:9-13",
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json#receipt.protocol",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json#receipt.protocol"
+        ]
+      },
+      {
+        "id": "B05",
+        "status": "不适用",
+        "summary": "无训练seed或随机评价重复；固定模型确定性单次正式测量合法，不虚构五seed或把16图当重复。",
+        "evidence": [
+          "workspace/harbor_task/tests/run_eval.py:196-239",
+          "expert_evidence/deployment_source/runtime-image/repo/RF-Solver-Edit/FLUX_Image_Edit/src/flux/modules/autoencoder.py:268-275"
+        ]
+      },
+      {
+        "id": "B06",
+        "status": "通过",
+        "summary": "正式B就是官方Starter角色；anchors另列uniform=17.8567344417，低于B，但无原始同协议uniform记录，不把该自述当独立验证。",
+        "evidence": [
+          "workspace/harbor_task/tests/anchors.json:49-55",
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json#overall",
+          "workspace/harbor_task/environment/starter/method.py"
+        ]
+      },
+      {
+        "id": "B07",
+        "status": "通过",
+        "summary": "对比只改变26节点；固定模型、数据、指标、NFE一致，实际节点JSON可读；未见额外训练数据或资源反证。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/schedule.json",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/schedule.json",
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json#receipt.protocol",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json#receipt.protocol"
+        ]
+      },
+      {
+        "id": "B08",
+        "status": "通过",
+        "summary": "说明披露默认偏移B、正弦R及固定模型/100 NFE；锚点有角色映射。当前大模型获取和镜像仍待交付闭环，属于部署限制。",
+        "evidence": [
+          "expert_evidence/专家作业说明文档.md:3-7",
+          "workspace/harbor_task/tests/anchors.json:9-45"
+        ]
+      }
+    ],
+    "dimensions": {
+      "training_sufficiency": {
+        "status": "not_applicable",
+        "facts": "固定模型非训练推理，无epochs/updates/checkpoint选择或重训要求；不是少训练问题。",
+        "evidence": [
+          "workspace/harbor_task/instruction.md:7",
+          "workspace/harbor_task/tests/run_eval.py:164-239"
+        ]
+      },
+      "method_representativeness": {
+        "status": "pass",
+        "facts": "默认time_shift作为合理朴素基线与该任务匹配；源码含相同默认mu映射，未见必须替换它的可比更强锚点证据。",
+        "evidence": [
+          "workspace/harbor_task/environment/starter/method.py:16-28",
+          "expert_evidence/deployment_source/runtime-image/repo/RF-Solver-Edit/FLUX_Image_Edit/src/flux/sampling.py:46-74"
+        ]
+      },
+      "budget_comparability": {
+        "status": "pass",
+        "facts": "同16图、512²、空提示、bf16、25步双向100NFE、同A100与8核；历史数值评分308.0607/309.2354秒。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json#receipt",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json#receipt"
+        ]
+      },
+      "implementation_correctness": {
+        "status": "pass",
+        "facts": "正常加载与16图原始指标；可信数值层只接收节点；静态检查无直接实现故障反证，非本次动态复现。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/scorer-stdout.txt",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/scorer-stdout.txt",
+          "workspace/harbor_task/tests/local_backend.py:80-88"
+        ]
+      },
+      "selection_integrity": {
+        "status": "pass",
+        "facts": "确定性正式B/R单次完整集均有保存，没有挑训练seed；历史探索不作当前独立轨迹认可。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json",
+          "expert_evidence/run_summary.json:26-31"
+        ]
+      }
+    },
+    "red_flags": [
+      "未发现Baseline故障、无依据少训练或挑seed的直接红旗。"
+    ],
+    "boundary": "不涉及训练，不能要求伪造训练checkpoint；现有固定权重只列哈希和准备脚本，获取闭环仍见部署待核。"
+  },
+  "content_gates": {
+    "schema_version": 1,
+    "checks": [
+      {
+        "id": "G01",
+        "status": "pass",
+        "summary": "函数接口与guard允许任意确定性26节点算法；Reference将默认偏移映射改为正弦映射，属于方法变化。",
+        "evidence": [
+          "workspace/harbor_task/instruction.md:4,13,20",
+          "workspace/harbor_task/tests/candidate_worker.py:149-158",
+          "workspace/harbor_task/tests/evaluate_candidate.py:67-78",
+          "workspace/reference/method.py:9-13"
+        ],
+        "reason_code": "OPEN_EXECUTABLE_METHOD_SURFACE"
+      },
+      {
+        "id": "G02",
+        "status": "pass",
+        "summary": "在现有历史同协议材料范围内合理：正式B沿用Starter默认偏移节点，固定模型非训练、同100 NFE及同16图；未发现故障基线或不公平削弱的直接反证。",
+        "evidence": [
+          "workspace/harbor_task/environment/starter/method.py:16-28",
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json#receipt.protocol",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json#receipt.protocol",
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/schedule.json",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/schedule.json"
+        ],
+        "reason_code": "REASONABLE_BASELINE_IN_PROVIDED_EVIDENCE",
+        "dimensions": {
+          "training_sufficiency": {
+            "status": "not_applicable",
+            "facts": "固定模型非训练推理，无epochs/updates/checkpoint选择或重训要求；不是少训练问题。",
+            "evidence": [
+              "workspace/harbor_task/instruction.md:7",
+              "workspace/harbor_task/tests/run_eval.py:164-239"
+            ]
+          },
+          "method_representativeness": {
+            "status": "pass",
+            "facts": "默认time_shift作为合理朴素基线与该任务匹配；源码含相同默认mu映射，未见必须替换它的可比更强锚点证据。",
+            "evidence": [
+              "workspace/harbor_task/environment/starter/method.py:16-28",
+              "expert_evidence/deployment_source/runtime-image/repo/RF-Solver-Edit/FLUX_Image_Edit/src/flux/sampling.py:46-74"
+            ]
+          },
+          "budget_comparability": {
+            "status": "pass",
+            "facts": "同16图、512²、空提示、bf16、25步双向100NFE、同A100与8核；历史数值评分308.0607/309.2354秒。",
+            "evidence": [
+              "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json#receipt",
+              "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json#receipt"
+            ]
+          },
+          "implementation_correctness": {
+            "status": "pass",
+            "facts": "正常加载与16图原始指标；可信数值层只接收节点；静态检查无直接实现故障反证，非本次动态复现。",
+            "evidence": [
+              "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/scorer-stdout.txt",
+              "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/scorer-stdout.txt",
+              "workspace/harbor_task/tests/local_backend.py:80-88"
+            ]
+          },
+          "selection_integrity": {
+            "status": "pass",
+            "facts": "确定性正式B/R单次完整集均有保存，没有挑训练seed；历史探索不作当前独立轨迹认可。",
+            "evidence": [
+              "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json",
+              "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json",
+              "expert_evidence/run_summary.json:26-31"
+            ]
+          }
+        }
+      },
+      {
+        "id": "G03",
+        "status": "pass",
+        "summary": "历史Public/Dev改善0.8632544282 dB，归一化0.4645734022在范围内；完整集改善0.9284668747 dB。确定性评估不套3σ或统一5%门槛。",
+        "evidence": [
+          "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json#public",
+          "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json#public",
+          "expert_evidence/historical_v341/final-method-clean/gpt-historical-metrics.json#overall",
+          "workspace/harbor_task/tests/anchors.json:33-45"
+        ],
+        "reason_code": "POSITIVE_DETERMINISTIC_PUBLIC_GAIN",
+        "assessment": {
+          "direction": "maximize",
+          "formal_seeds": [],
+          "declared_run_count": 1,
+          "evaluation_mode": "deterministic",
+          "same_protocol": true,
+          "quality_valid": true,
+          "upper_bound": 21.21974298189495,
+          "threshold_basis": "当前V4：Public/Dev归一化[0.15,0.8]，确定性评价真实正向改善；无额外预先声明容差",
+          "absolute_min_improvement": null,
+          "absolute_threshold_source": ""
+        },
+        "computed": {
+          "overall": {
+            "n_images": 16,
+            "n_formal_runs": 1,
+            "baseline_mean": 19.528882409499996,
+            "baseline_sample_std": null,
+            "reference_mean": 20.45734928422148,
+            "reference_sample_std": null,
+            "improvement": 0.928466874721483,
+            "relative_improvement": 0.04754326721071464,
+            "upper_bound": 21.535623309030747,
+            "normalized_reference": 0.46267401782591483,
+            "remaining_headroom": 1.078274024809268,
+            "three_sigma": "not_applicable_deterministic",
+            "image_level_descriptive_sample_std": {
+              "baseline": 4.337975741375893,
+              "reference": 3.2262582889456204
+            }
+          },
+          "public": {
+            "n_images": 12,
+            "n_formal_runs": 1,
+            "baseline_mean": 19.361577137501065,
+            "baseline_sample_std": null,
+            "reference_mean": 20.22483156573475,
+            "reference_sample_std": null,
+            "improvement": 0.8632544282336845,
+            "relative_improvement": 0.044585956097639566,
+            "upper_bound": 21.21974298189495,
+            "normalized_reference": 0.4645734022278672,
+            "remaining_headroom": 0.9949114161601997,
+            "three_sigma": "not_applicable_deterministic",
+            "image_level_descriptive_sample_std": {
+              "baseline": 4.085203401927032,
+              "reference": 3.5181808653605784
+            }
+          },
+          "hidden": {
+            "n_images": 4,
+            "n_formal_runs": 1,
+            "baseline_mean": 20.030798225496785,
+            "baseline_sample_std": null,
+            "reference_mean": 21.15490243968167,
+            "reference_sample_std": null,
+            "improvement": 1.1241042141848858,
+            "relative_improvement": 0.05611879274756196,
+            "upper_bound": 22.483264290438154,
+            "normalized_reference": 0.45835668442236316,
+            "remaining_headroom": 1.3283618507564832,
+            "three_sigma": "not_applicable_deterministic",
+            "image_level_descriptive_sample_std": {
+              "baseline": 5.696466074428756,
+              "reference": 2.407106153169489
+            }
+          }
+        }
+      }
+    ]
+  },
+  "runtime_review": {
+    "exception_reason": "尚未主张7h例外",
+    "exception_eligibility": {
+      "non_training": true,
+      "short_iterations": null,
+      "basis": "任务非训练；历史GPU数值链约5分钟，不足以代替当前两轨例外全部条件。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:7",
+        "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json#elapsed_sec",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json#elapsed_sec"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "Codex",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "effective_seconds": null,
+        "evidence": [
+          "expert_evidence/trajectory_codex.json",
+          "expert_evidence/run_summary.json:10-31"
+        ],
+        "time_accounting": "当前未启动；无起止/扣除区间可核算，不将总时限或历史墙钟折算。",
+        "effective_method_cycles": 0,
+        "next_direction": "未交当前轨迹和下一方向；方法空间允许分段或量化感知节点研究。",
+        "best_method_revalidated": false,
+        "best_method_evidence": []
+      },
+      {
+        "name": "Seed agent model",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "effective_seconds": null,
+        "evidence": [
+          "expert_evidence/trajectory_seed.json",
+          "expert_evidence/run_summary.json:10-31"
+        ],
+        "time_accounting": "当前未启动；无起止/扣除区间可核算，不将总时限或历史墙钟折算。",
+        "effective_method_cycles": 0,
+        "next_direction": "未交当前轨迹和下一方向；方法空间允许分段或量化感知节点研究。",
+        "best_method_revalidated": false,
+        "best_method_evidence": []
+      }
+    ],
+    "current_status": "not_started",
+    "historical_context": {
+      "codex_packaged_rounds": 102,
+      "seed_agent_packaged_rounds": 47,
+      "sources": [
+        "expert_evidence/historical_v341/trajectory_codex.json",
+        "expert_evidence/historical_v341/trajectory_seed.json"
+      ],
+      "acceptance": "仅为历史；未核历史有效秒数，且专家说明披露历史Seed访问pilot/Reference，不能作为合格独立当前两轨。"
+    },
+    "stability_12h": "NOT_RUN_CURRENT_VERSION；独立于有效研究时长，未在本次压力测试。"
+  },
+  "format_review": {
+    "status": "deviations",
+    "summary": "三顶层齐全，当前轨迹空且无best_method；optimization_evidence使用actual_v341历史原始等价结构，有真实Trial result与stdout，但缺当前规范的训练证据说明及comparison_summary。非训练不造model/。",
+    "additional_suggestions": [
+      {
+        "path": "expert_evidence/historical_v341/",
+        "classification": "extra_allowed",
+        "recommendation": "历史原件可保留；与当前证据清楚分层，历史QA不作为新审结论。"
+      },
+      {
+        "path": "optimization_evidence/*_runs/actual_v341/",
+        "classification": "obsolete_layout",
+        "recommendation": "保留原始历史记录，新增非训练适用性/方法/协议/实际成本说明和comparison_summary.json，逐一引用真实Trial result及metrics，seed填不适用。"
+      },
+      {
+        "path": "expert_evidence/deployment_source/README.md:12-15",
+        "classification": "obsolete_layout",
+        "recommendation": "构建示例中的deployment/和package/不是ZIP内真实位置，改为expert_evidence/deployment_source/与workspace/，或明确创建这些映射的前置步骤。"
+      },
+      {
+        "path": "workspace/harbor_task/environment/public_assets/eval_public/",
+        "classification": "merge_candidate",
+        "recommendation": "与public_eval/assets/public图像重复；可保留便于Agent查看，若精简须同步实际路径。"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "QA01",
+      "status": "pass",
+      "summary": "题面八部分齐全；没有论文标题、论文编号、解法仓库或参考方法提示。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:1-33"
+      ]
+    },
+    {
+      "id": "QA02",
+      "status": "pass",
+      "summary": "主分数为未裁剪(PSNR-B)/(U-B)，B映射0、U映射1；score_clipped仅展示，reward使用score。",
+      "evidence": [
+        "workspace/harbor_task/tests/run_eval.py:255-269",
+        "workspace/harbor_task/tests/local_backend.py:127-133",
+        "workspace/harbor_task/tests/evaluate_candidate.py:265-270"
+      ]
+    },
+    {
+      "id": "QA03",
+      "status": "pass",
+      "summary": "Reference源码及入口存在；已有确定性历史正式结果、原始stdout和Trial result，Public归一化0.4645734022。目录为等价actual_v341，不虚构训练seed。",
+      "evidence": [
+        "workspace/reference/method.py",
+        "workspace/reference/solve.sh",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/scorer-stdout.txt",
+        "optimization_evidence/reference_runs/actual_v341/harbor-job/rfsteps-v341-build-check-2026100__DcGEtFn/result.json"
+      ]
+    },
+    {
+      "id": "QA04",
+      "status": "not_applicable",
+      "summary": "固定模型、均值编码、无采样噪声的确定性评估；单次正式运行的样本标准差不可估计，不将图片方差或锚点重复数当作σ_B。",
+      "evidence": [
+        "expert_evidence/deployment_source/runtime-image/repo/RF-Solver-Edit/FLUX_Image_Edit/src/flux/modules/autoencoder.py:268-275",
+        "workspace/harbor_task/tests/run_eval.py:196-239"
+      ]
+    },
+    {
+      "id": "QA05",
+      "status": "pass",
+      "summary": "节点形状/端点/范围/顺序、标准库来源、CPU/内存/墙钟与文件/网络/子进程限制均有生效调用实现；未支持内核隔离时失败关闭。",
+      "evidence": [
+        "workspace/harbor_task/tests/evaluate_candidate.py:67-95,122-224",
+        "workspace/harbor_task/tests/candidate_worker.py:139-174",
+        "workspace/harbor_task/tests/isolation.py:28-106"
+      ]
+    },
+    {
+      "id": "QA06",
+      "status": "pass",
+      "summary": "单命令test.sh调用可信入口；正常有限标量写reward.json；Hard Gate与格式/超时/资源/基础设施分类清楚。",
+      "evidence": [
+        "workspace/harbor_task/tests/test.sh:1-4",
+        "workspace/harbor_task/tests/evaluate_candidate.py:44-64,265-283"
+      ]
+    },
+    {
+      "id": "QA07",
+      "status": "pass",
+      "summary": "仅题面检查：没有Hidden样本、标签或可恢复答案。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:1-33"
+      ]
+    },
+    {
+      "id": "QA08",
+      "status": "pass",
+      "summary": "仅题面检查：没有Reference代码、具体参考配置或参考分数。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:1-33"
+      ]
+    },
+    {
+      "id": "QA09",
+      "status": "pass",
+      "summary": "入口清理旧reward/metrics；可信侧用同目录临时文件os.replace写最终结果。",
+      "evidence": [
+        "workspace/harbor_task/tests/evaluate_candidate.py:20-25,237-240,268-270"
+      ]
+    },
+    {
+      "id": "QA10",
+      "status": "pass",
+      "summary": "Agent为普通UID、冻结目录去写；Verifier的/tests为root私有；数值侧验证评分器、资产和权重清单哈希，候选只移交节点。",
+      "evidence": [
+        "workspace/harbor_task/environment/Dockerfile:10-18",
+        "workspace/harbor_task/tests/Dockerfile:3-5",
+        "workspace/harbor_task/tests/local_backend.py:22-58,80-88"
+      ]
+    },
+    {
+      "id": "QA11",
+      "status": "pass",
+      "summary": "目标、环境、指标、可改范围、硬边界、提交、迭代与完成条件均有实质内容。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:3-33"
+      ]
+    },
+    {
+      "id": "QA12",
+      "status": "pass",
+      "summary": "ZIP成员清点无.git元数据；不声称做过不可达Git对象分析。",
+      "evidence": [
+        "@inventory"
+      ]
+    },
+    {
+      "id": "QA13",
+      "status": "pass",
+      "summary": "已有B/R完整确定性同协议16图正式原值及有效状态；同100 NFE、同评分器/模型/数据哈希，正向改善。没有训练seed，不要求重复训练。",
+      "evidence": [
+        "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json#receipt",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json#receipt",
+        "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json"
+      ]
+    },
+    {
+      "id": "QA14",
+      "status": "pass",
+      "summary": "26节点非均匀分配可表达分段/误差平衡/嵌入量化感知等题面未提示方向；公开Reference归一化约0.465，仍有空间。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:13-22",
+        "workspace/harbor_task/tests/candidate_worker.py:149-158",
+        "workspace/reference/method.py:9-13",
+        "workspace/harbor_task/tests/anchors.json:33-45"
+      ]
+    },
+    {
+      "id": "QA15",
+      "status": "manual",
+      "summary": "历史A100完整Trial约428/431秒、8核1卡；当前配置仍A100，目标H20/L20耗时未实测且包内说明已暂缓。未发现已证实超限。",
+      "evidence": [
+        "workspace/harbor_task/task.toml:10-28",
+        "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/receipt.json#receipt.scoring_seconds",
+        "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/receipt.json#receipt.scoring_seconds",
+        "expert_evidence/run_summary.json:5-9"
+      ],
+      "remediation": "保留A100历史设备与时间；后续平台确认硬件配置，需迁移时补H20/L20估算或已有计时，不将旧卡改标新卡。",
+      "acceptance_evidence": "平台卡型确认，或后续H20/L20设备/资源、完整单轮计时范围和日志。",
+      "nonblocking": true
+    },
+    {
+      "id": "QA16",
+      "status": "fail",
+      "summary": "当前两轨rounds均为空，摘要明确current isolated run not started、有效秒数null；没有满足各10h或7h例外的运行。历史墙钟不能替代当前独立有效时长。",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json:2",
+        "expert_evidence/trajectory_seed.json:2",
+        "expert_evidence/run_summary.json:10-31"
+      ],
+      "remediation": "在不接触Reference、Hidden、pilot和另一轨的独立上下文中，从同一冻结题包各自启动两组模型；保存真实公开方法→评分→保留/回退闭环，按起止及扣除区间核算有效时长。",
+      "acceptance_evidence": "两份非空八字段轨迹、实际模型/档位、起止和排队/安装/故障扣除记录、各轨最终方法和干净公开复验。默认各≥10h；使用各≥7h例外时补齐非训练、迭代很短、各≥3闭环、后续方向和最佳方法复验全部依据。"
+    },
+    {
+      "id": "QA17",
+      "status": "manual",
+      "summary": "separate、公开Dev、Hidden、artifacts和reward静态链路存在；当前不可变镜像/权重入口及目标Harbor schema仍未核验。NOP缺口单列非阻断。",
+      "evidence": [
+        "workspace/harbor_task/task.toml",
+        "workspace/harbor_task/tests/test.sh",
+        "expert_evidence/deployment_source/README.md:7-20,34-42"
+      ],
+      "remediation": "补平台可读取的不可变运行镜像入口/digest或合法模型资产入口；按包内实际目录修正文档构建命令，锁定目标Harbor版本，完成原生配置解析与单容器GPU评分验证。",
+      "acceptance_evidence": "镜像版本/digest及可获取依据、权重提供方/精确安全入口/版本/大小/SHA256、实际Harbor版本和配置解析输出、公开Dev及有效候选独立Verifier原始日志/结果/reward。无需向候选提供秘密。"
+    },
+    {
+      "id": "QA18",
+      "status": "fail",
+      "summary": "当前两条轨迹0轮，未交当前best_method；历史轨迹不能替代，专家说明承认历史Seed访问pilot和正弦Reference。缺合格独立方法演进证据。",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json:2",
+        "expert_evidence/trajectory_seed.json:2",
+        "expert_evidence/run_summary.json:14-23,38",
+        "expert_evidence/专家作业说明文档.md:9"
+      ],
+      "remediation": "在不接触Reference、Hidden、pilot和另一轨的独立上下文中，从同一冻结题包各自启动两组模型；保存真实公开方法→评分→保留/回退闭环，按起止及扣除区间核算有效时长。",
+      "acceptance_evidence": "两份非空八字段轨迹、实际模型/档位、起止和排队/安装/故障扣除记录、各轨最终方法和干净公开复验。默认各≥10h；使用各≥7h例外时补齐非训练、迭代很短、各≥3闭环、后续方向和最佳方法复验全部依据。"
+    },
+    {
+      "id": "QA19",
+      "status": "not_applicable",
+      "summary": "确定性评价，无训练随机seed或随机评估有效提升阈值需要在题面说明。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:4,7",
+        "expert_evidence/deployment_source/runtime-image/repo/RF-Solver-Edit/FLUX_Image_Edit/src/flux/modules/autoencoder.py:268-275"
+      ]
+    },
+    {
+      "id": "QA20",
+      "status": "pass",
+      "summary": "可改method.py、可查公开文献；候选禁止联网/子进程，公开迭代在自己的单容器/GPU内，工具边界清楚。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:13-22"
+      ]
+    },
+    {
+      "id": "QA21",
+      "status": "manual",
+      "summary": "task_binding有profile但task_content_sha256=null；官方指纹工具未取得。不猜算法、不为历史结果补造当前指纹。",
+      "evidence": [
+        "expert_evidence/run_summary.json:33-37"
+      ],
+      "remediation": "获得真实发布task_fingerprint.py后，对四项完整范围生成指纹，输出置于四项之外，保留历史版本原值。",
+      "acceptance_evidence": "真实脚本版本/哈希、运行输出及当前run_summary.task_binding；仅此缺口不阻断当前内容结论。",
+      "nonblocking": true
+    }
+  ],
+  "harbor": {
+    "task_root": "workspace/harbor_task",
+    "target_version": "not_exposed",
+    "provider": "unknown",
+    "version_basis": "ZIP未锁定当前目标Harbor版本/provider；历史Trial属于v3.4.1任务，并非当前原生schema验收。未读外部平台资料或执行原生加载。",
+    "checks": [
+      {
+        "id": "H01",
+        "status": "pass",
+        "summary": "任务三目录清楚；正式/tests包含4张私有图和12张公开图，评分走full；Agent context只含公开材料，不含Reference或专家证据。",
+        "evidence": [
+          "workspace/harbor_task/task.toml",
+          "workspace/harbor_task/tests/asset_manifest.json#images",
+          "workspace/harbor_task/tests/local_backend.py:116-124",
+          "workspace/harbor_task/environment/Dockerfile:4-9"
+        ]
+      },
+      {
+        "id": "H02",
+        "status": "manual",
+        "summary": "显式separate与artifacts存在；包内未锁定目标Harbor版本，也无当前原生schema加载记录。未将TOML文本可读当作平台接受。",
+        "evidence": [
+          "workspace/harbor_task/task.toml:1-28",
+          "expert_evidence/deployment_source/README.md:34"
+        ],
+        "remediation": "锁定实际Harbor版本/provider，按该版本原生配置解析核对schema_version、verifier.environment和GPU字段。",
+        "acceptance_evidence": "目标Harbor版本/provider、当前task.toml的原生解析输出或同版本成功Trial配置。"
+      },
+      {
+        "id": "H03",
+        "status": "manual",
+        "summary": "双Dockerfile COPY均在各自context内，候选路径移交一致；共同基镜像仅本地tag，源码COPY weights所需文件不在ZIP，也没有平台不可变资产入口，部署依赖不闭环。",
+        "evidence": [
+          "workspace/harbor_task/environment/Dockerfile:1-9",
+          "workspace/harbor_task/tests/Dockerfile:1-7",
+          "workspace/harbor_task/task.toml:2",
+          "expert_evidence/deployment_source/runtime-image/Dockerfile:13-16",
+          "expert_evidence/deployment_source/README.md:9-20"
+        ],
+        "remediation": "补平台可读取的不可变运行镜像入口/digest或合法模型资产入口；按包内实际目录修正文档构建命令，锁定目标Harbor版本，完成原生配置解析与单容器GPU评分验证。",
+        "acceptance_evidence": "镜像版本/digest及可获取依据、权重提供方/精确安全入口/版本/大小/SHA256、实际Harbor版本和配置解析输出、公开Dev及有效候选独立Verifier原始日志/结果/reward。无需向候选提供秘密。"
+      },
+      {
+        "id": "H04",
+        "status": "pass",
+        "summary": "正式入口使用绝对/tests路径；可信输出写/logs/verifier/reward.json数值对象；清理、原子写和失败分类可识别。",
+        "evidence": [
+          "workspace/harbor_task/tests/test.sh:1-4",
+          "workspace/harbor_task/tests/evaluate_candidate.py:20-25,44-64,237-240,265-270"
+        ]
+      },
+      {
+        "id": "H05",
+        "status": "not_applicable",
+        "summary": "当前版本未交Job/Trial调用配置；历史v3.4.1配置仅作历史评分来源，不充当当前部署覆盖。",
+        "evidence": [
+          "expert_evidence/run_summary.json:39-43"
+        ]
+      },
+      {
+        "id": "H06",
+        "status": "manual",
+        "summary": "当前版本明确NOT_RUN_CURRENT_VERSION；已有历史v3.4.1 NOP与本版不同，不能当作本版验收；依当前口径非阻断待补。",
+        "evidence": [
+          "expert_evidence/run_summary.json:39",
+          "optimization_evidence/baseline_runs/actual_v341/harbor-job/rfsteps-v341-build-check-2026100__QTvtVoh/result.json"
+        ],
+        "remediation": "后续具备授权目标环境时复用同版本已有记录或跑NOP；保持未运行声明，不自动启动。",
+        "acceptance_evidence": "同一当前Trial的config/result、reward、非空日志、任务版本和separate/实际移交对应依据。",
+        "nonblocking": true,
+        "runtime_status": "not_run"
+      }
+    ],
+    "path_contract": {
+      "profile": "harbor-environment-v1",
+      "profile_basis": "task.toml显式separate，Agent context为environment/、Verifier context为tests/；各COPY静态可解析。",
+      "status": "manual",
+      "dockerfile": "workspace/harbor_task/environment/Dockerfile",
+      "build_context": "workspace/harbor_task/environment",
+      "runtime_task_root": "/workspace",
+      "test_entry": "/tests/test.sh",
+      "observed_workdir": "/workspace",
+      "verifier_dockerfile": "workspace/harbor_task/tests/Dockerfile",
+      "verifier_build_context": "workspace/harbor_task/tests",
+      "findings": [
+        {
+          "code": "LOCAL_RUNTIME_IMAGE_AND_ASSET_ACCESS_UNVERIFIED",
+          "status": "manual",
+          "message": "父镜像仅本地tag；源码weights context不在ZIP，缺平台镜像入口/digest或模型不可变安全访问入口。",
+          "evidence": [
+            "expert_evidence/deployment_source/README.md:9-20",
+            "expert_evidence/deployment_source/runtime-image/Dockerfile:14"
+          ]
+        }
+      ]
+    },
+    "hidden_review": {
+      "mode": "prebuilt",
+      "summary": "tests内预置4张私有图与12张公开图，正式backend校验清单并走full；Agent只COPY公开材料。受限候选Landlock不允许私有目录，可信数值进程独立读取。静态通过不认证平台物理边界。",
+      "evidence": [
+        "workspace/harbor_task/tests/Dockerfile:4-5",
+        "workspace/harbor_task/tests/asset_manifest.json",
+        "workspace/harbor_task/tests/local_backend.py:46-58,116-124",
+        "workspace/harbor_task/tests/isolation.py:49-70"
+      ],
+      "asset_paths": [
+        "workspace/harbor_task/tests/assets/hidden/coco_000000000802.png",
+        "workspace/harbor_task/tests/assets/hidden/coco_000000001296.png",
+        "workspace/harbor_task/tests/assets/hidden/repo_cartoon.png",
+        "workspace/harbor_task/tests/assets/hidden/repo_hiking.png"
+      ]
+    },
+    "submission_paths": [
+      "/workspace/solution"
+    ],
+    "runtime_status": "not_run_current_version",
+    "current_nop": "not_run_nonblocking"
+  },
+  "numeric_recalculation": {
+    "split_statistics": {
+      "overall": {
+        "n_images": 16,
+        "n_formal_runs": 1,
+        "baseline_mean": 19.528882409499996,
+        "baseline_sample_std": null,
+        "reference_mean": 20.45734928422148,
+        "reference_sample_std": null,
+        "improvement": 0.928466874721483,
+        "relative_improvement": 0.04754326721071464,
+        "upper_bound": 21.535623309030747,
+        "normalized_reference": 0.46267401782591483,
+        "remaining_headroom": 1.078274024809268,
+        "three_sigma": "not_applicable_deterministic",
+        "image_level_descriptive_sample_std": {
+          "baseline": 4.337975741375893,
+          "reference": 3.2262582889456204
+        }
+      },
+      "public": {
+        "n_images": 12,
+        "n_formal_runs": 1,
+        "baseline_mean": 19.361577137501065,
+        "baseline_sample_std": null,
+        "reference_mean": 20.22483156573475,
+        "reference_sample_std": null,
+        "improvement": 0.8632544282336845,
+        "relative_improvement": 0.044585956097639566,
+        "upper_bound": 21.21974298189495,
+        "normalized_reference": 0.4645734022278672,
+        "remaining_headroom": 0.9949114161601997,
+        "three_sigma": "not_applicable_deterministic",
+        "image_level_descriptive_sample_std": {
+          "baseline": 4.085203401927032,
+          "reference": 3.5181808653605784
+        }
+      },
+      "hidden": {
+        "n_images": 4,
+        "n_formal_runs": 1,
+        "baseline_mean": 20.030798225496785,
+        "baseline_sample_std": null,
+        "reference_mean": 21.15490243968167,
+        "reference_sample_std": null,
+        "improvement": 1.1241042141848858,
+        "relative_improvement": 0.05611879274756196,
+        "upper_bound": 22.483264290438154,
+        "normalized_reference": 0.45835668442236316,
+        "remaining_headroom": 1.3283618507564832,
+        "three_sigma": "not_applicable_deterministic",
+        "image_level_descriptive_sample_std": {
+          "baseline": 5.696466074428756,
+          "reference": 2.407106153169489
+        }
+      }
+    },
+    "per_image_pairs": [
+      {
+        "split": "public",
+        "image": "coco_000000000139",
+        "baseline": 19.62636292709934,
+        "reference": 19.324647205501165,
+        "improvement": -0.3017157215981747
+      },
+      {
+        "split": "public",
+        "image": "coco_000000000285",
+        "baseline": 23.328605655904973,
+        "reference": 23.916923693262472,
+        "improvement": 0.5883180373574994
+      },
+      {
+        "split": "public",
+        "image": "coco_000000000632",
+        "baseline": 14.754113107331609,
+        "reference": 15.14518343235521,
+        "improvement": 0.39107032502360184
+      },
+      {
+        "split": "public",
+        "image": "coco_000000001000",
+        "baseline": 18.865758651111598,
+        "reference": 15.950041962397508,
+        "improvement": -2.91571668871409
+      },
+      {
+        "split": "public",
+        "image": "coco_000000001268",
+        "baseline": 16.612960469778905,
+        "reference": 16.66736941477066,
+        "improvement": 0.054408944991756414
+      },
+      {
+        "split": "public",
+        "image": "coco_000000001425",
+        "baseline": 20.513255551978787,
+        "reference": 20.233424527321795,
+        "improvement": -0.2798310246569926
+      },
+      {
+        "split": "public",
+        "image": "coco_000000001490",
+        "baseline": 18.435977062104364,
+        "reference": 19.451136176093982,
+        "improvement": 1.0151591139896183
+      },
+      {
+        "split": "public",
+        "image": "coco_000000039769",
+        "baseline": 17.28340529299807,
+        "reference": 17.22906433298442,
+        "improvement": -0.05434096001364708
+      },
+      {
+        "split": "public",
+        "image": "repo_art",
+        "baseline": 27.04654857978757,
+        "reference": 24.148688219129237,
+        "improvement": -2.8978603606583313
+      },
+      {
+        "split": "public",
+        "image": "repo_boy",
+        "baseline": 17.67913042447747,
+        "reference": 23.819904315462537,
+        "improvement": 6.140773890985066
+      },
+      {
+        "split": "public",
+        "image": "repo_horse",
+        "baseline": 25.021306095354866,
+        "reference": 25.256190628713643,
+        "improvement": 0.2348845333587768
+      },
+      {
+        "split": "public",
+        "image": "repo_nobel",
+        "baseline": 13.171501832085234,
+        "reference": 21.55540488082434,
+        "improvement": 8.383903048739107
+      },
+      {
+        "split": "hidden",
+        "image": "coco_000000000802",
+        "baseline": 16.95575608450997,
+        "reference": 18.57757462642744,
+        "improvement": 1.6218185419174702
+      },
+      {
+        "split": "hidden",
+        "image": "coco_000000001296",
+        "baseline": 19.804178024296476,
+        "reference": 19.63220961421799,
+        "improvement": -0.17196841007848462
+      },
+      {
+        "split": "hidden",
+        "image": "repo_cartoon",
+        "baseline": 15.26323983159789,
+        "reference": 23.114958934134485,
+        "improvement": 7.851719102536595
+      },
+      {
+        "split": "hidden",
+        "image": "repo_hiking",
+        "baseline": 28.100018961582805,
+        "reference": 23.294866583946757,
+        "improvement": -4.805152377636048
+      }
+    ],
+    "seed_interpretation": "formal training/evaluation seed未声明且不适用；单次确定性actual_v341 B/R，不制造seed_0；16张图是样本，不是16次训练或随机重复。",
+    "result_sources": [
+      {
+        "seed": null,
+        "run_id": "deterministic_actual_v341",
+        "baseline": 19.528882409499996,
+        "reference": 20.45734928422148,
+        "baseline_valid": true,
+        "reference_valid": true,
+        "baseline_result_path": "optimization_evidence/baseline_runs/actual_v341/harbor-job/rfsteps-v341-build-check-2026100__QTvtVoh/result.json",
+        "reference_result_path": "optimization_evidence/reference_runs/actual_v341/harbor-job/rfsteps-v341-build-check-2026100__DcGEtFn/result.json",
+        "baseline_metric_path": "optimization_evidence/baseline_runs/actual_v341/gpu-owned-job/output/metrics.json#overall.psnr",
+        "reference_metric_path": "optimization_evidence/reference_runs/actual_v341/gpu-owned-job/output/metrics.json#overall.psnr",
+        "training_seed": null,
+        "evaluation_replicate": "one deterministic complete evaluation"
+      }
+    ],
+    "normalization_provenance": {
+      "public_U": "expert_evidence/historical_v341/final-method-clean/gpt-historical-metrics.json#overall.psnr 与tests/anchors.json相符",
+      "full_U": "tests/anchors.json#upper_bound.full.psnr有声明，但其source引用expert_evidence/final_verify_codex_metrics.json不在ZIP；全量U原始出处仍待补，未用它替代Public合规判定。",
+      "full_U_remediation": "补已有的独立上限full原始指标/方法/协议关联，或更正为包内真实来源；不得倒推U凑范围。",
+      "full_U_acceptance": "能对应21.535623309030747的已有原始full评分记录及同协议方法标识。"
+    },
+    "identity_note": "历史metrics.method_sha256对应validated schedule bridge，不等于当前method.py文件哈希。两个原始schedule与当前B/R公式吻合；保留原hash，不据此推断损坏/伪造。"
+  },
+  "nonblocking_followups": [
+    {
+      "category": "fingerprint_hash",
+      "items": [
+        "QA21"
+      ],
+      "facts": "当前task_content_sha256=null；官方工具未取得；历史bridge/source哈希角色不同保留原值。",
+      "action": "真实指纹工具到位后补四项范围指纹，不编造当前哈希。"
+    },
+    {
+      "category": "G02_G03_card_migration",
+      "items": [
+        "G02",
+        "G03"
+      ],
+      "facts": "历史真实卡型A100；当前包继续请求A100，H20/L20补证暂缓。",
+      "action": "后续迁移如影响数值，补已有可比性/锚点证据；不把换卡补跑作为当前内容通过的唯一门槛。"
+    },
+    {
+      "category": "QA15_target_card_timing",
+      "items": [
+        "QA15"
+      ],
+      "facts": "历史A100耗时存在，H20/L20耗时未测。",
+      "action": "后续据实际卡型补计时/估算来源。"
+    },
+    {
+      "category": "NOP",
+      "items": [
+        "H06",
+        "QA17"
+      ],
+      "facts": "本版NOP未运行；历史版本NOP不替代当前。",
+      "action": "目标环境具备后补同版本同Trial链路记录；仅此缺口非阻断。"
+    },
+    {
+      "category": "QA03_QA13_card_rescore",
+      "items": [
+        "QA03",
+        "QA13"
+      ],
+      "facts": "新部署/迁移未重算，历史同协议原始B/R可追溯。",
+      "action": "保留历史分数和真实设备，后续迁移补证不强制当前全seed重跑。"
+    }
+  ],
+  "tool_gaps": {
+    "official_0_3_10": "未取得/未运行，不能声称官方工具PASS",
+    "check_submission_gpu_fingerprint": "对应独立正式工具未运行；本次没有自写替代官方算法",
+    "native_harbor_schema": "当前版本与provider未知，未加载提交配置",
+    "remediation": "取得真实官方发布包后记录版本及SHA256，按真实CLI完成格式/GPU/指纹验收；不能改旧版本字符串。",
+    "acceptance_evidence": "真实工具包标识、哈希和原始输出，平台结果另列。"
+  },
+  "execution_boundary": {
+    "read_only": true,
+    "zip_read": "zipfile读取源码/文本/元数据和指标；可信自写统计程序只解析数据、算术与哈希；未导入提交模块。",
+    "not_run": [
+      "Docker或提交安装脚本",
+      "Verifier/候选函数/训练/外部模型",
+      "GPU推理与权重反序列化",
+      "当前Harbor构建、artifacts移交及reward收集",
+      "12h稳定性压力测试",
+      "完整二进制严格隐私扫描（由主控独立执行）"
+    ],
+    "static_manifest_check": "当前public/formal manifest中所有runtime_files、worker_files、repo_files与images均找到且SHA256匹配；weight_files仅有清单，实际权重不在ZIP。",
+    "visible_privacy": "当前workspace与deployment_source可读文本未见作者home、邮箱、私网地址；未据此宣称完整附件隐私门禁通过。"
+  },
+  "risk_notes": [
+    "两条当前轨迹完全空，历史Seed访问pilot/Reference的披露意味着旧轨不能证明独立探索。",
+    "运行基镜像与权重缺可用不可变入口；源码和CPU回归日志不能证明GPU部署已可用。",
+    "full上限U的source原始路径不在ZIP；应补已有原始来源，避免将可复算分数误当成锚点已完整核验。"
+  ],
+  "counts": {
+    "pass": 14,
+    "fail": 2,
+    "manual": 3,
+    "not_applicable": 2
+  },
+  "gate_counts": {
+    "pass": 3,
+    "fail": 0,
+    "manual": 0
+  },
+  "harbor_counts": {
+    "pass": 2,
+    "fail": 0,
+    "manual": 3,
+    "not_applicable": 1
+  }
+}

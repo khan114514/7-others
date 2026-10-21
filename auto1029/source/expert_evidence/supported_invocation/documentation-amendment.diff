@@ -1,0 +1,72 @@
+--- recorded-runtime/workspace/harbor_task/environment/instruction.md
++++ documented-runtime/workspace/harbor_task/environment/instruction.md
+@@ -10,9 +10,9 @@
+ 
+ ## Objective and Metrics
+ 
+-Metric: mean per-question end-to-end latency ratio to a fresh ordinary autoregressive calibration in the same batch, minimize. Each question runs both methods with counterbalanced order and the same per-position RNG; full evaluation averages the96 ratios per seed and then all five seed means. Calibration also runs for independent Baseline and Reference anchor measurements. This controls observed GPU speed drift. Raw times are retained. B is the frozen mean independent Baseline ratio; U=0 is the frozen mathematical lower bound. Score=(B-M)/(B-U), continuous and unclipped; scores may be negative or greater than1. Any failed per-seed quality gate invalidates the improvement and returns-1: whole-token-sequence agreement>=.99 with ordinary Baseline, answer agreement>=.99, accuracy drop<=.01, parsed-answer rate>=.90. Full fixed-seed evaluation is required for a formal score. Keep genuine failed/worse attempts and their actual scores; do not report quick feedback as a full score.
++Metric: mean per-question end-to-end latency ratio to a fresh ordinary autoregressive calibration in the same batch, minimize. Each question runs both methods with counterbalanced order and the same per-position RNG; full evaluation averages the96 ratios per seed and then all five seed means. Calibration also runs for independent Baseline and Reference anchor measurements. This controls observed GPU speed drift. Raw times are retained. For public Dev candidate scoring, B is the fixed independent ordinary-Baseline anchor mean measured on the 96-question Dev protocol before candidate evaluation. The final private protocol has its own predeclared paired-control normalization: on each of its five seeds, run separate ordinary calibration, ordinary baseline and candidate roles on every private question, average per-question baseline/calibration ratios into B_s and candidate/calibration ratios into M_s, then B=mean(B_s) and M=mean(M_s) over the five seeds. The ordinary baseline implementation, data, seeds, counterbalanced role order and this computation rule are frozen; the private B is a same-batch measured control, not a fixed numerical Dev anchor reused on private rows. It is computed solely from ordinary baseline/calibration observations, independently of candidate output or latency values. U=0 is the frozen mathematical lower bound. Score=(B-M)/(B-U), continuous and unclipped; scores may be negative or greater than1. Any failed per-seed quality gate invalidates the improvement and returns-1: whole-token-sequence agreement>=.99 with ordinary Baseline, answer agreement>=.99, accuracy drop<=.01, parsed-answer rate>=.90. Full fixed-seed evaluation is required for a formal score. Keep genuine failed/worse attempts and their actual scores; do not report quick feedback as a full score.
+ 
+-Evaluation is stochastic. A statistically distinguishable improvement requires B-M >= 3*sigma_B, where sigma_B is the sample standard deviation (n-1 denominator) of the five independent Baseline anchor ratios under the same fixed protocol. The frozen sigma_B is 0.00046929095522433943; the raw-ratio improvement threshold is 0.0014078728656730182. This is an evidence threshold, not a reward cutoff: smaller valid improvements and worse results retain their actual continuous scores. The quality gates and scoring formula above are unchanged.
++Evaluation is stochastic. On the public Dev protocol, a statistically distinguishable improvement requires B-M >= 3*sigma_B, where sigma_B is the sample standard deviation (n-1 denominator) of the five independent Baseline anchor ratios under the same fixed protocol. The frozen sigma_B is 0.00046929095522433943; the raw-ratio improvement threshold is 0.0014078728656730182. This is an evidence threshold, not a reward cutoff: smaller valid improvements and worse results retain their actual continuous scores. The quality gates and scoring formula above are unchanged. These Dev sigma and evidence-threshold values are not a private numerical Baseline anchor or a private 3-sigma certification. Complete private reward uses its own same-batch B as defined above; no private Reference improvement is inferred from public Dev evidence.
+ 
+ ## Allowed Scope
+ 
+@@ -39,7 +39,7 @@
+ 
+ ## Workflow & Iteration
+ 
+-Read the Starter and interface with actual tools, develop and verify a method, request real GPU feedback, analyze it, revise the method and retain the best valid candidate. Write a compact research_journal.md recording hypotheses, actual evidence, decisions and next experiments. Continue the implement, evaluate, analyze and revise loop; restore the best valid Dev submission before ending. Keep current best source and metadata in /workspace/solution. A single CLI turn ending does not end iterative research; per-turn and verifier budgets are in task.toml.
++Read the Starter and interface with actual tools, develop and verify a method, request real GPU feedback, analyze it, revise the method and retain the best valid candidate. Write a compact research_journal.md recording hypotheses, actual evidence, decisions and next experiments. Continue the implement, evaluate, analyze and revise loop; restore the best valid Dev submission before ending. Keep current best source and metadata in /workspace/solution. A single CLI turn ending does not end iterative research. The ordinary Harbor Trial defaults in task.toml are an 1800-second Agent turn and a 10800-second Verifier timeout. Complete private scoring of 1380 questions at five seeds uses the supported operator entry workspace/operator/run_recover_private_native.py, which explicitly selects NoWallPrivateTrial and overrides only the outer Verifier timeout to None. It does not validate completion within the ordinary 10800-second default. This override preserves the full private protocol, all inference/token/forward-call budgets, quality gates, latency accounting and the 0.5-second policy IPC cap. The supported complete-private invocation is documented in workspace/operator/README.md and expert_evidence/supported_invocation/README.md. An ordinary configured Trial is a different invocation and has no supplied complete-private NOP proof under its default timeout.
+ 
+ ## Completion Criteria
+ 
+--- recorded-runtime/workspace/harbor_task/instruction.md
++++ documented-runtime/workspace/harbor_task/instruction.md
+@@ -10,9 +10,9 @@
+ 
+ ## Objective and Metrics
+ 
+-Metric: mean per-question end-to-end latency ratio to a fresh ordinary autoregressive calibration in the same batch, minimize. Each question runs both methods with counterbalanced order and the same per-position RNG; full evaluation averages the96 ratios per seed and then all five seed means. Calibration also runs for independent Baseline and Reference anchor measurements. This controls observed GPU speed drift. Raw times are retained. B is the frozen mean independent Baseline ratio; U=0 is the frozen mathematical lower bound. Score=(B-M)/(B-U), continuous and unclipped; scores may be negative or greater than1. Any failed per-seed quality gate invalidates the improvement and returns-1: whole-token-sequence agreement>=.99 with ordinary Baseline, answer agreement>=.99, accuracy drop<=.01, parsed-answer rate>=.90. Full fixed-seed evaluation is required for a formal score. Keep genuine failed/worse attempts and their actual scores; do not report quick feedback as a full score.
++Metric: mean per-question end-to-end latency ratio to a fresh ordinary autoregressive calibration in the same batch, minimize. Each question runs both methods with counterbalanced order and the same per-position RNG; full evaluation averages the96 ratios per seed and then all five seed means. Calibration also runs for independent Baseline and Reference anchor measurements. This controls observed GPU speed drift. Raw times are retained. For public Dev candidate scoring, B is the fixed independent ordinary-Baseline anchor mean measured on the 96-question Dev protocol before candidate evaluation. The final private protocol has its own predeclared paired-control normalization: on each of its five seeds, run separate ordinary calibration, ordinary baseline and candidate roles on every private question, average per-question baseline/calibration ratios into B_s and candidate/calibration ratios into M_s, then B=mean(B_s) and M=mean(M_s) over the five seeds. The ordinary baseline implementation, data, seeds, counterbalanced role order and this computation rule are frozen; the private B is a same-batch measured control, not a fixed numerical Dev anchor reused on private rows. It is computed solely from ordinary baseline/calibration observations, independently of candidate output or latency values. U=0 is the frozen mathematical lower bound. Score=(B-M)/(B-U), continuous and unclipped; scores may be negative or greater than1. Any failed per-seed quality gate invalidates the improvement and returns-1: whole-token-sequence agreement>=.99 with ordinary Baseline, answer agreement>=.99, accuracy drop<=.01, parsed-answer rate>=.90. Full fixed-seed evaluation is required for a formal score. Keep genuine failed/worse attempts and their actual scores; do not report quick feedback as a full score.
+ 
+-Evaluation is stochastic. A statistically distinguishable improvement requires B-M >= 3*sigma_B, where sigma_B is the sample standard deviation (n-1 denominator) of the five independent Baseline anchor ratios under the same fixed protocol. The frozen sigma_B is 0.00046929095522433943; the raw-ratio improvement threshold is 0.0014078728656730182. This is an evidence threshold, not a reward cutoff: smaller valid improvements and worse results retain their actual continuous scores. The quality gates and scoring formula above are unchanged.
++Evaluation is stochastic. On the public Dev protocol, a statistically distinguishable improvement requires B-M >= 3*sigma_B, where sigma_B is the sample standard deviation (n-1 denominator) of the five independent Baseline anchor ratios under the same fixed protocol. The frozen sigma_B is 0.00046929095522433943; the raw-ratio improvement threshold is 0.0014078728656730182. This is an evidence threshold, not a reward cutoff: smaller valid improvements and worse results retain their actual continuous scores. The quality gates and scoring formula above are unchanged. These Dev sigma and evidence-threshold values are not a private numerical Baseline anchor or a private 3-sigma certification. Complete private reward uses its own same-batch B as defined above; no private Reference improvement is inferred from public Dev evidence.
+ 
+ ## Allowed Scope
+ 
+@@ -39,7 +39,7 @@
+ 
+ ## Workflow & Iteration
+ 
+-Read the Starter and interface with actual tools, develop and verify a method, request real GPU feedback, analyze it, revise the method and retain the best valid candidate. Write a compact research_journal.md recording hypotheses, actual evidence, decisions and next experiments. Continue the implement, evaluate, analyze and revise loop; restore the best valid Dev submission before ending. Keep current best source and metadata in /workspace/solution. A single CLI turn ending does not end iterative research; per-turn and verifier budgets are in task.toml.
++Read the Starter and interface with actual tools, develop and verify a method, request real GPU feedback, analyze it, revise the method and retain the best valid candidate. Write a compact research_journal.md recording hypotheses, actual evidence, decisions and next experiments. Continue the implement, evaluate, analyze and revise loop; restore the best valid Dev submission before ending. Keep current best source and metadata in /workspace/solution. A single CLI turn ending does not end iterative research. The ordinary Harbor Trial defaults in task.toml are an 1800-second Agent turn and a 10800-second Verifier timeout. Complete private scoring of 1380 questions at five seeds uses the supported operator entry workspace/operator/run_recover_private_native.py, which explicitly selects NoWallPrivateTrial and overrides only the outer Verifier timeout to None. It does not validate completion within the ordinary 10800-second default. This override preserves the full private protocol, all inference/token/forward-call budgets, quality gates, latency accounting and the 0.5-second policy IPC cap. The supported complete-private invocation is documented in workspace/operator/README.md and expert_evidence/supported_invocation/README.md. An ordinary configured Trial is a different invocation and has no supplied complete-private NOP proof under its default timeout.
+ 
+ ## Completion Criteria
+ 
+--- recorded-runtime/workspace/operator/README.md
++++ documented-runtime/workspace/operator/README.md
+@@ -63,7 +63,11 @@
+ ```
+ 
+ 移除模式参数后才执行完整 1380×5 的 separate Verifier。使用实际
+-NoWallPrivateTrial，Verifier timeout 为 null；不得用墙钟提前终止完整评分。
++NoWallPrivateTrial，显式覆盖外层 Verifier timeout 为 null。task.toml 中 10800 秒是
++普通 Harbor Trial 的默认总时限；上述完整私有入口不使用该默认时限，也不证明
++普通 Trial 能在 10800 秒内完成。受支持的完整私有模式保留全部 6900 对、冻结
++质量条件、推理预算及 0.5 秒 policy IPC 限额，评分协议未缩减。当前记录的
++有效配置与源码对应关系见 ../../expert_evidence/supported_invocation/。
+ `baseline` 使用 Starter，`best` 默认读 `expert_evidence/best_method`，`reference`
+ 默认读 `workspace/reference`；后两者需要完整可运行源码，best 还需非空最多
+ 65536 字节 method_notes.json。显式 `--task`、`--adapter`、`--method-dir` 可选。
+@@ -75,8 +79,8 @@
+ 失败保留原始记录，不补写分数。完整逐题重算及数值汇总发布另设门槛，私有
+ 原始载荷只保留于主控侧。未变任务与容器已完成单次 43233 秒、713 次观察的稳定性验证；宿主 SSH
+ 传输重试修复另有实际回归证据。范围见 current_source_stability/，不声称新宿主
+-适配器已跑满 12 小时。当前真实评分终态及同一新 ZIP 的独立双模型 HIGH
+-0.3.2 QA 仍须完成。
++适配器已跑满 12 小时。当前已有同一可执行运行版本的完整 NOP 终态；文档修订对应关系见
++supported_invocation。独立双模型 HIGH 0.3.2 QA 与共识仍须真实完成。
+ 
+ 交付目录还包含未变的独立 base_image/provision.py，用于基础镜像供给。
+ 它不在当前在途评分使用的 11 文件运行适配器中。干净目录静态预检分别记录

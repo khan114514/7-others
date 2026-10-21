@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "scope": "fresh release Baseline/author Reference paired inference only",
+  "sampling_seeds": [
+    101,
+    202,
+    303
+  ],
+  "training_seeds": [],
+  "paired_runs": [
+    {
+      "sampling_seed": 101,
+      "training_seed": null,
+      "baseline_ms": 58263.6082611084,
+      "reference_ms": 33606.80603027344,
+      "paired_improvement_ms": 24656.80223083496,
+      "relative_improvement": 0.4231938763616473,
+      "quality_pass": true,
+      "source_result_paths": {
+        "baseline": "optimization_evidence/baseline_runs/seed_101/result.json",
+        "reference": "optimization_evidence/reference_runs/seed_101/result.json"
+      }
+    },
+    {
+      "sampling_seed": 202,
+      "training_seed": null,
+      "baseline_ms": 58411.00238800049,
+      "reference_ms": 33728.2001953125,
+      "paired_improvement_ms": 24682.80219268799,
+      "relative_improvement": 0.4225711113247157,
+      "quality_pass": true,
+      "source_result_paths": {
+        "baseline": "optimization_evidence/baseline_runs/seed_202/result.json",
+        "reference": "optimization_evidence/reference_runs/seed_202/result.json"
+      }
+    },
+    {
+      "sampling_seed": 303,
+      "training_seed": null,
+      "baseline_ms": 58622.83100128174,
+      "reference_ms": 33852.496841430664,
+      "paired_improvement_ms": 24770.334159851074,
+      "relative_improvement": 0.42253732439686326,
+      "quality_pass": true,
+      "source_result_paths": {
+        "baseline": "optimization_evidence/baseline_runs/seed_303/result.json",
+        "reference": "optimization_evidence/reference_runs/seed_303/result.json"
+      }
+    }
+  ],
+  "task_source_manifest_sha256": "2abb0bb70731458dbf320b26be53b0f219a1f3807838d73201219e83333f386e",
+  "native_run_id": "bbb85cb671004296b05e77b20af17068",
+  "native_trial_id": "c2b4fee1-0fed-4713-85b4-601b0fbc6c1c",
+  "numerical_run_id": "59dabefa65e54a73ab111830079d7d97",
+  "baseline_mean_ms": 58432.48055013021,
+  "reference_mean_ms": 33729.16768900553,
+  "baseline_sample_sd_ms": 180.57194646667463,
+  "reference_sample_sd_ms": 122.8482629295528,
+  "absolute_improvement_ms": 24703.31286112468,
+  "relative_improvement": 0.422766800733905,
+  "normalization": "(B-T)/B, unclipped; hard quality/protocol failure maps separately to -1",
+  "baseline_normalized_score": 0.0,
+  "reference_normalized_score": 0.422766800733905,
+  "significance_rule": "predeclared improvement greater than 3 * sample SD of the 3 per-seed Baseline means",
+  "noise_3sigma_pass": true,
+  "additional_all_repetition_baseline_sd_ms": 334.8037135239518,
+  "additional_all_repetition_noise_3sigma_pass": true,
+  "quality_pass": true,
+  "model_integrity": "NOT_APPLICABLE; no training; immutable published checkpoint descriptor",
+  "raw_stage_count": 4608,
+  "paired_repetitions": 18,
+  "final_latents": 6,
+  "original_independent_CPU_auditor_sha256": "cbc682a293258a68e65bfeeb8a1f2e41efeea8366c827b6ea5e25028fc6543c9",
+  "shared_measured_job": true,
+  "new_GPU_CPU_model_or_candidate_execution": false,
+  "whole_release_complete_or_final_QA_PASS": false,
+  "original_native_result_id": "c2b4fee1-0fed-4713-85b4-601b0fbc6c1c",
+  "measured_starter_reward": -0.000337629593978607
+}

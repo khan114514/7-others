@@ -1,0 +1,27 @@
+{
+  "status": "CPU_DOCKER_AGENT_BOUNDARY_PASS",
+  "does_not_establish_nop": true,
+  "checks": {
+    "public_health": {
+      "status": "OK",
+      "mode": "restricted-dd-gateway"
+    },
+    "formal_socket_absent": true,
+    "trusted_engine_absent": true,
+    "reference_absent": true,
+    "ssh_key_absent": true,
+    "rootfs_readonly": true,
+    "solution_writable": true,
+    "starter_matches_initialized_submission": true,
+    "torch_cpu_only": true
+  },
+  "torch_version": "2.5.1+cpu",
+  "starter_sha256": "bc4ac6b53af961775c669bca498d0f03d5ea26e484a1c6aa3e4b32a42a3c8fca",
+  "image_id": "sha256:493c958ffb627b618a85c79da3f8cf3f523e916b20bedeb22d5bebc68765c6eb",
+  "memory_bytes": 2147483648,
+  "nano_cpus": 2000000000,
+  "read_only_rootfs": true,
+  "cap_drop": [
+    "ALL"
+  ]
+}

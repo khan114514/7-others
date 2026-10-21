@@ -1,0 +1,35 @@
+{
+  "hypothesis": "Let one region jointly lower packedV row restoration, concatenation, repetition and its original reversed value consumer; eliminate exposed intermediate boundaries, not mathematically required work.",
+  "same_every_node_object": true,
+  "same_other_relative_order_and_four_regions": true,
+  "region": {
+    "id": "packed_value_producer_consumer_compiled",
+    "inputs": [
+      "image_packed_qkv",
+      "text_v_rows",
+      "image_prob"
+    ],
+    "outputs": [
+      "channel_query_output"
+    ],
+    "prefix": false
+  },
+  "value_source_indices_checked": 3985408,
+  "contraction_geometry": [
+    56,
+    128,
+    256,
+    556
+  ],
+  "ordered_reduction_terms": 556,
+  "score_softmax_probability_and_output_projection": "unchanged from actual valid110, eager softmax/cast/linear",
+  "logical_repeated_value_bytes": 7970816,
+  "packedV_source": "four last heads in image_packed_qkv; original coefficient order, no extra arithmetic",
+  "limitations": [
+    "No current compiled109/110 storage strides or kernels are measured. Region may still copy and repeat.",
+    "Original56-batch GEMM is preserved; dimensions not changed to grouped98.",
+    "Region excludes original output projection unlike57, retaining its existing eager boundary.",
+    "All numerical/resource gates remain decisive despite unchanged node objects."
+  ],
+  "canonical_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df"
+}

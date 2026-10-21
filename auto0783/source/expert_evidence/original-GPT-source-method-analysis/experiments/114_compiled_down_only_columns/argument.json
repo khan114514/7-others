@@ -1,0 +1,43 @@
+{
+  "hypothesis": "Keep gate/up original row-oriented geometry while compile SiLU/gating with isolated column-oriented down GEMM. Compiler can choose activation producer layout without a retained weight copy.",
+  "correction": "80already uses a single mergedCFG512-column matrix for ALL three projections, contrary to initial spoken two-batch premise. That unchanged geometry is not resubmitted.",
+  "every_unrelated112node_unchanged": true,
+  "all_MLPnode_objects_match_actual_historical_eager39": true,
+  "MLP_geometry": {
+    "gate_up_M_N_K": [
+      512,
+      18944,
+      3584
+    ],
+    "down_M_N_K": [
+      3584,
+      512,
+      18944
+    ]
+  },
+  "canonical_output_coordinates_checked": 1835008,
+  "ordered_down_features": 18944,
+  "real_equivalence": "output[b,t,f]=sum_j down[f,j]*(silu(gate[b,t,j])*up[b,t,j]); completefeatureorder retained",
+  "region": {
+    "id": "image_mlp_compiled",
+    "inputs": [
+      "image_post_norm",
+      "w:vision_branch_mlp.gate_proj.weight",
+      "w:vision_branch_mlp.up_proj.weight",
+      "w:vision_branch_mlp.down_proj.weight"
+    ],
+    "outputs": [
+      "image_mlp"
+    ],
+    "prefix": false
+  },
+  "prefix_additions": 0,
+  "historical_distinction": "39was eager only;80reorients gate/up as well as down;84copies transposed down weights but retains original row-oriented contraction.",
+  "counterarguments": [
+    "39eager and80fully-feature-leading compiler were slower; this is not a predicted benefit from historical data.",
+    "No actual compiledproducer stride/fusion is measured; down GEMM tiling may be worse.",
+    "Different FP32accumulation can change BF16outputs, as scalar dot-tree counterexample demonstrates.",
+    "Tensor limits, precision, backend, all gates unchanged."
+  ],
+  "canonical_sha256": "37ca0a9ddf4da8eecf2ce78f450f2e15627f8ecec17d0b8520916f1bad2f81af"
+}

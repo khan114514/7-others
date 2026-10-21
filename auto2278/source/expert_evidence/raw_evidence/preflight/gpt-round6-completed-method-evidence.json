@@ -1,0 +1,66 @@
+{
+  "checked_unix": 1791428612.904526,
+  "track": "gpt",
+  "round": 6,
+  "type": "independent completed method cycle",
+  "own_resume_evidence": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/resume-provenance.json",
+  "candidate_sha256": "4482cea2e357fe4dbd02bfd979ae8efa7338f9dfaea6fe21d6e68fbef931639a",
+  "candidate_source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/private_candidate_sources/round_00006.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.42000233249113267,
+      "score": 0.6066108318343972,
+      "quality_gates_passed": true,
+      "method_sha256": "4482cea2e357fe4dbd02bfd979ae8efa7338f9dfaea6fe21d6e68fbef931639a",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791427971.523187,
+      "end_unix": 1791428164.1676176
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.42548940004899133,
+    "score": 0.601471448608948,
+    "quality_gates_passed": true,
+    "method_sha256": "4482cea2e357fe4dbd02bfd979ae8efa7338f9dfaea6fe21d6e68fbef931639a",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791428204.697821,
+    "end_unix": 1791428413.6815712
+  },
+  "model_final_decision": {
+    "policy_name": "fused_qkv_shared_triangular_norms",
+    "method_summary": "Fused query, key and value projections into one matrix multiplication while preserving shared triangular norm calculations. Full protected Dev evaluation passed all gates with raw CPU ratio 0.420002332, score 0.606610832 and maximum error 5.01e-6; retained as the lowest observed result.",
+    "next_direction": "Tune fusion by tensor shape to reduce weight-packing costs, especially for 1280-channel cases, and check gains against timing noise."
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791426519.3809435,
+    "ended_unix": 1791428201.9401793,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 6,
+    "start_unix": 1791426519.081381,
+    "end_unix": 1791428414.076983,
+    "observed_seconds": 637.3690172499046,
+    "effective_seconds": 637.3690172499046,
+    "model_seconds": 425.3430284159258,
+    "model_completed": true,
+    "successful_command_tools": 15,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "model_transport_failed": false,
+    "method_sha256": "4482cea2e357fe4dbd02bfd979ae8efa7338f9dfaea6fe21d6e68fbef931639a",
+    "public_result": "round_00006.grader.log",
+    "events": "round_00006.events.jsonl",
+    "next_direction": "Tune fusion by tensor shape to reduce weight-packing costs, especially for 1280-channel cases, and check gains against timing noise."
+  },
+  "original_events": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00006.events.jsonl",
+  "genuine_method_cycle": true,
+  "performance_caveat": "Observed score includes host timing variability; unique final best requires clean repeat comparison."
+}

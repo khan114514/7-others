@@ -1,0 +1,34 @@
+{
+  "scope": "Constructive scalar arithmetic counterexample using BF16 operands, exact products, FP32 additions and RNE BF16 conversion. No CUDA measurements.",
+  "dot_features": 3584,
+  "ordered_a_first_five": [
+    "1",
+    "1/256",
+    "1/2^25",
+    "1/2^25",
+    "1/2^25"
+  ],
+  "remaining_a": "3579zeros",
+  "b": "3584ones",
+  "all_inputs_exactly_BF16": true,
+  "all_products_exactly_FP32": true,
+  "real_dot": "33685507/33554432",
+  "left_associative_FP32": 1.00390625,
+  "two_segment_FP32_preserving_global_operand_order": 1.0039063692092896,
+  "BF16_outputs": [
+    1.0,
+    1.0078125
+  ],
+  "BF16_bits": [
+    "0x3f80",
+    "0x3f81"
+  ],
+  "only_changed_operation": "parenthesization/partial accumulation, not operand order/coefficients/bias",
+  "conclusion": "Same coefficients and ordered features do not guarantee same BF16 output when GEMM tiling/tree changes. A smallFP32delta can become a fullBF16ULP, then propagate through all28layers/CFG/reveal.",
+  "relevance_to_108": "108changed QK/V widths and compiler boundary; the counterexample supplies a possible numerical mechanism, not an actual cause. No observed108kernel tree or error localization is available.",
+  "limits": [
+    "Scalar IEEE model does not represent tensorcore scheduling/partial blocks or flush modes.",
+    "Nothing here claims actual checkpoint operands contain this constructed pattern.",
+    "Dev validation remains decisive; do not revise weights, backend flags or tolerance."
+  ]
+}

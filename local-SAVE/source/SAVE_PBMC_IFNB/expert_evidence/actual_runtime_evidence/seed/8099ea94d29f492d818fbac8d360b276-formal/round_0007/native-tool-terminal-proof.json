@@ -1,0 +1,34 @@
+{
+  "original_event_sha256": "31a6f5e51c6e2b482e49631c213cc45020024832f34570604a0b7a8b51bba8f6",
+  "original_receipt_sha256": "e6b772e53c8dc566816b9554b1a9573d51c625c37e6709d4bbb6cedb4289a0de",
+  "original_event_last_write_epoch": 1791565603.0547807,
+  "original_native_session_ids": [
+    "01a12188-e1ec-75c1-9992-dee7c9424cbf"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python3 -c \\\"\nimport anndata as ad\nimport numpy as np\nfrom sklearn.preprocessing import MaxAbsScaler\n\ntrain = ad.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = ad.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_tgt = ad.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ntrain_X = train.X.toarray() if hasattr(train.X, 'toarray') else np.asarray(train.X)\ndev_ctrl_X = dev_ctrl.X.toarray() if hasattr(dev_ctrl.X, 'toarray') else np.asarray(dev_ctrl.X)\ndev_tgt_X = dev_tgt.X.toarray() if hasattr(dev_tgt.X, 'toarray') else np.asarray(dev_tgt.X)\n\nscaler = MaxAbsScaler()\nscaler.fit(train_X)\ntrain_scaled = scaler.transform(train_X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_X)\ndev_tgt_mean = dev_tgt_X.mean(axis=0)\ndev_ctrl_mean_orig = dev_ctrl_X.mean(axis=0)\n\ncell_types = sorted(train.obs['cell_type'].unique())\nctrl_means = {}\nstim_means = {}\nfor ct in cell_types:\n    mask = train.obs['cell_type'] == ct\n    ctrl = train_scaled[(mask.values) & (train.obs['condition'] == 'control').values]\n    stim = train_scaled[(mask.values) & (train.obs['condition'] == 'stimulated').values]\n    ctrl_means[ct] = ctrl.mean(axis=0)\n    stim_means[ct] = stim.mean(axis=0)\n\nctrl_mat = np.stack([ctrl_means[ct] for ct in cell_types])\nstim_mat = np.stack([stim_means[ct] for ct in cell_types])\ndiff_mat = stim_mat - ctrl_mat\ncd4_idx = cell_types.index('CD4 T cells')\ncd4_diff = diff_mat[cd4_idx]\ncd4_ctrl_orig = scaler.inverse_transform(ctrl_mat[cd4_idx].reshape(1, -1)).flatten()\ndev_ctrl_mean_scaled = dev_ctrl_scaled.mean(axis=0)\n\nratio = np.where(cd4_ctrl_orig > 1e-6,\n                 dev_ctrl_mean_orig / np.maximum(cd4_ctrl_orig, 1e-6),\n                 1.0)\nratio = np.clip(ratio, 0.1, 10.0)\n\n# Baseline\nbase_pred = scaler.inverse_transform(np.clip(dev_ctrl_mean_scaled + cd4_diff, 0, 1).reshape(1, -1)).flatten()\nprint(f'Baseline (no scaling): MSE = {np.mean((dev_tgt_mean - base_pred)**2):.8f}')\n\n# Uniform pow=0.22\nscaled_022 = cd4_diff * (ratio ** 0.22)\npred_022 = scaler.inverse_transform(np.clip(dev_ctrl_mean_scaled + scaled_022, 0, 1).reshape(1, -1)).flatten()\nprint(f'Uniform pow=0.22: MSE = {np.mean((dev_tgt_mean - pred_022)**2):.8f}')\n\n# Sign-aware with quick scan\nup_m = cd4_diff > 0\ndn_m = cd4_diff < 0\nprint(f'Up genes: {up_m.sum()}, Down genes: {dn_m.sum()}')\n\nbest = 1e9\nbu = bd = 0\nfor up in np.arange(0, 0.51, 0.02):\n    for dn in np.arange(0, 0.81, 0.02):\n        sd = np.zeros(2000)\n        sd[up_m] = cd4_diff[up_m] * (ratio[up_m] ** up)\n        sd[dn_m] = cd4_diff[dn_m] * (ratio[dn_m] ** dn)\n        pred = scaler.inverse_transform(np.clip(dev_ctrl_mean_scaled + sd, 0, 1).reshape(1, -1)).flatten()\n        m = np.mean((dev_tgt_mean - pred)**2)\n        if m < best:\n            best = m\n            bu = up\n            bd = dn\n\nprint(f'Best sign-aware on dev: up={bu:.2f}, dn={bd:.2f}, MSE={best:.8f}')\n\\\" 2>&1\n\"",
+      "original_command_sha256": "f02a971f186f55fdbab9194d0ab3d84af096fd9b66575d3426e056be2b4cd421",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "abfe63ca1d87ce5587f8696d0bad859b874bcda42229df82cd4bf971925f73af",
+      "output_characters": 164
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 2170302,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 61854,
+        "reasoning_output_tokens": 2556
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

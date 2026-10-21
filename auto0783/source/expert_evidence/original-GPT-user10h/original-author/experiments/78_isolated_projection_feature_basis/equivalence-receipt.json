@@ -1,0 +1,29 @@
+{
+  "base": "experiments/53_compiled_image_rotary/method.py",
+  "candidate_canonical_sha256": "7b614935d9c7b647b401501adec386d2018c753a9c5cbf9d70746fbbe47f4e3d",
+  "changed_existing_nodes": [
+    "image_attended_rows",
+    "image_attention_out"
+  ],
+  "added_nodes": [
+    "image_channel_groups",
+    "image_group_columns",
+    "image_head_groups",
+    "output_weight_channel_first",
+    "output_weight_group_basis",
+    "output_weight_group_shape"
+  ],
+  "removed_nodes": [
+    "image_output_heads",
+    "image_output_rows"
+  ],
+  "entire_graph_through_value_product_identical": true,
+  "selected_rotary_and_MLP_regions_identical": true,
+  "paired_weight_permutation_nodes_identical_to77": [
+    "output_weight_group_shape",
+    "output_weight_channel_first",
+    "output_weight_group_basis"
+  ],
+  "argument": "Pure output feature copy KV,H,D -> KV,D,H, paired with identical frozen weight-column copy. Same projection products in changed order; no guarantee for BF16 reduction.",
+  "diagnostic_goal": "Test whether paired projection basis fails on unchanged selected53 value GEMM, removing grouped-GEMM interaction. Added stage copy means no expected direct speed gain."
+}

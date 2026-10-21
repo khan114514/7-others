@@ -1,0 +1,59 @@
+"""Derive blocking sleep/poll intervals from retained native timestamps.
+
+No assistant reasoning or terminal output is exported. A polling loop's
+maximum configured sleep is not evidence that it actually slept that long.
+"""
+import datetime
+import hashlib
+import json
+import re
+
+
+def witnessed_waits(source):
+    calls = {}
+    sessions = {}
+    proof = []
+    for line in source.open():
+        row = json.loads(line)
+        payload = row.get('payload', {})
+        timestamp = row.get('timestamp')
+        if not timestamp:
+            continue
+        epoch = datetime.datetime.fromisoformat(timestamp.replace('Z', '+00:00')).timestamp()
+        call_id = payload.get('call_id')
+        if payload.get('type') == 'function_call':
+            try:
+                arguments = json.loads(payload['arguments'])
+            except (KeyError, ValueError):
+                continue
+            name = payload.get('name')
+            command = arguments.get('cmd', '')
+            if name == 'exec_command' and re.search(r'\bsleep\s+\d|time\.sleep\s*\(', command):
+                calls[call_id] = (epoch, arguments, None)
+            elif name == 'write_stdin' and not arguments.get('chars') and arguments.get('session_id') in sessions:
+                calls[call_id] = (epoch, arguments, sessions[arguments['session_id']])
+        elif payload.get('type') == 'function_call_output' and call_id in calls:
+            started, arguments, parent = calls.pop(call_id)
+            output = str(payload.get('output', ''))
+            command_hash = parent or hashlib.sha256(arguments['cmd'].encode()).hexdigest()
+            value = {'call_id': call_id, 'command_sha256': command_hash,
+                     'started_epoch': started, 'completed_epoch': epoch,
+                     'kind': 'BLOCKING_WAIT_SESSION_POLL' if parent else 'WAIT_BEARING_EXEC_CALL',
+                     'intervals': [[started, epoch]], 'raw_content_exported': False}
+            match = re.search(r'Process running with session ID (\d+)', output)
+            if not parent and match:
+                sessions[int(match[1])] = command_hash
+            # A leading unconditional sleep has a witnessed lower bound even
+            # when exec yields its process session before the sleep finishes.
+            # Cap it at the actual terminal observation when synchronous.
+            if not parent:
+                leading = re.match(r'\s*sleep\s+(\d+(?:\.\d+)?)\s*(?:&&|;)', arguments['cmd'])
+                if leading:
+                    seconds = float(leading[1])
+                    value['unconditional_leading_sleep_seconds'] = seconds
+                    value['intervals'].append([started, started + seconds if match else min(started + seconds, epoch)])
+            proof.append(value)
+    history_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+    for value in proof:
+        value['original_native_history_sha256'] = history_sha
+    return proof

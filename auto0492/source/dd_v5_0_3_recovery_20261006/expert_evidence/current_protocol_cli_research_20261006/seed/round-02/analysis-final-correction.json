@@ -1,0 +1,114 @@
+{
+  "correction_of": "agent-output/round-02/analysis-correction.json",
+  "correction_level": "final (third level)",
+  "original_analysis_sha256": "774f44b7ec50e3034c2bc4fa67b7f5468e42de24e7492fabedac471c7cda5bc9",
+  "second_level_correction_sha256": "3abc6e41adda0f099d45cf045c10cd98ac8a7bf38a7524ae0d8dd6622549490e",
+  "correction_date_utc": "2026-10-06T05:47:34.198386+00:00",
+  "correction_scope": "Further correction of remaining over-reach in causal and interpretive claims. Preserves all original analysis bytes and second-level correction bytes unchanged \u2014 both prior files are referenced by SHA only. No changes to method source, scores, plan, checkpoints, best_method flag (corrected separately in selection.json), timestamps, or trajectory.",
+  "all_prior_files_preserved_by_sha": {
+    "agent-output/round-02/analysis.json": "774f44b7ec50e3034c2bc4fa67b7f5468e42de24e7492fabedac471c7cda5bc9",
+    "agent-output/round-02/analysis-correction.json": "3abc6e41adda0f099d45cf045c10cd98ac8a7bf38a7524ae0d8dd6622549490e",
+    "agent-output/round-02/method.py": "6e770e3ad3b38700f56b337ade61a6be69350879d4c47f26f31d9d3a1bdef208",
+    "agent-output/round-02/plan.json": "b7ee9bb6bde5cf657575638361e8e98d43bd46c4f82cbf2ee8969067b52c9e1d",
+    "agent-output/round-02/evaluation/result.json": "0082a66ca1c8000ddb8d10e8557173725434553c0f82629dadb9c538c68a2499",
+    "agent-output/round-01/analysis.json": "verified_preserved",
+    "agent-output/round-01/method.py": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c",
+    "agent-output/round-01/evaluation/recovery-20261006/result.json": "verified_preserved"
+  },
+  "factual_values_still_correct": {
+    "round02_fid": 9.784449511236346,
+    "round01_fid": 10.126636628087738,
+    "public_baseline_fid": 9.663262058820692,
+    "round02_training_samples": 256,
+    "round01_training_samples": 256,
+    "evaluation_sample_count": 50000,
+    "protocol": "dd-selfproto-v1.3",
+    "evaluation_seed": 0,
+    "round02_better_than_round01": true,
+    "round02_better_than_baseline": false,
+    "baseline_best_known": true
+  },
+  "additional_correction_1_joint_comparison_on_fixed_public_stream": {
+    "issue": "Both prior analyses frame the round-01 vs round-02 comparison as testing a 'joint hypothesis' about selection and time factors. This under-states the full set of confounds: the comparison is a single pair of runs on a fixed public evaluation stream with a single teacher/training seed pair.",
+    "what_is_actually_observed": "Round-02 (min-LPIPS + uniform) scored FID 9.784 and round-01 (max-LPIPS + early-bias) scored FID 10.127 under the same public protocol, evaluation seed 0, 50k evaluation samples, teacher seed 1001, training seed 2001.",
+    "what_cannot_be_concluded": [
+      "Cannot prove either factor (selection direction, time distribution) independently improves FID \u2014 both changed simultaneously.",
+      "Cannot prove the joint configuration is stably better \u2014 only one run per condition, on one evaluation stream, with one training seed.",
+      "Cannot prove the improvement would generalize to different teacher seeds, training seeds, or evaluation seeds.",
+      "Cannot prove the improvement is caused by the algorithmic changes rather than interaction with the specific random streams (teacher proposals, training order, evaluation samples)."
+    ],
+    "minimal_valid_claim": "On this specific public evaluation stream (seed 0, 50k samples) with these specific teacher/training seeds, the round-02 joint configuration achieved a lower FID than the round-01 joint configuration."
+  },
+  "additional_correction_2_sample_count_bottleneck_not_proven": {
+    "issue": "The second-level correction already downgraded 'dominant bottleneck' to 'working hypothesis', but residual phrasing in the recommended directions still implies shared sample count explains the baseline gap and is the primary lever. The second-level correction also retained the framing that scaling tests whether sample count is limiting.",
+    "further_correction": "Two data points at the same sample count (256), both worse than baseline, with different strategy configurations, provide zero evidence about sample-count effects. The baseline gap could be entirely due to strategy quality, not data volume.",
+    "what_cannot_be_concluded_from_current_data": [
+      "Cannot conclude sample count is the main reason both rounds underperform baseline \u2014 strategy quality may be equally or more important.",
+      "Cannot conclude that increasing sample count will help \u2014 a bad strategy at larger scale could still be worse than baseline, or even degrade further.",
+      "Cannot conclude that 'more data = better FID' for this distillation setup \u2014 we have no scaling curve."
+    ],
+    "why_common_sample_count_does_not_imply_bottleneck": "Both rounds share 256 samples, but they also share many other properties (same protocol, same teacher model, same guidance, same ODE settings, same proposal_multiplier=4, same weighting=uniform, same top-k/p). Any of these could be the limiting factor. The fact that sample count is the most obvious knob to turn does not make it the dominant bottleneck."
+  },
+  "additional_correction_3_1024_sample_trial_interpretation_limits": {
+    "issue": "The planned round-03 (1024 samples) changes more than just sample count. The original and second-level analyses do not fully enumerate the confounds, leaving room for misinterpretation of whatever result round-03 produces.",
+    "what_1024_samples_actually_changes": [
+      "Number of training pairs: 256 -> 1024 (raw data volume)",
+      "Number of gradient updates: increases proportionally (more optimization steps)",
+      "Set of target images / class labels: changes because more samples cover more of the dataset",
+      "Teacher proposal set: 1024 selected from 4096 proposals vs 256 selected from 1024 \u2014 the selection pool and selected set are different",
+      "Effective diversity of training signal: increases with more unique targets",
+      "Training time / wall-clock: increases (~4x more teacher generation + more training)"
+    ],
+    "what_a_1024_result_cannot_prove_by_itself": [
+      "If 1024 beats baseline: cannot prove 'pure data volume' was the cause \u2014 could be more updates, more diverse targets, better selection from larger pool, or any combination.",
+      "If 1024 still fails: cannot prove 'all proposal selection is invalid' \u2014 it only tests this specific selection rule (min-LPIPS per label) at this specific scale with these specific hyperparameters.",
+      "If 1024 still fails: cannot prove 'sample count doesn't matter' \u2014 maybe 4096 or 16384 samples would work, or maybe the strategy is the problem.",
+      "A single 1024-sample run cannot establish a scaling law or isolate the data-volume effect."
+    ],
+    "what_a_1024_result_can_show": [
+      "Whether this specific algorithm (min-LPIPS + uniform time + current hyperparameters) is competitive with baseline at the 1024-sample budget on the public seed-0 evaluation stream.",
+      "Directionally, whether the method improves or degrades with more samples under this configuration (one data point each way)."
+    ]
+  },
+  "additional_correction_4_anchors_protocol_and_random_streams": {
+    "issue": "The second-level correction includes a note: 'Whether the baseline FID would be the same if re-evaluated with the same evaluation seed/setup.' This implies the anchor baseline may not match our evaluation conditions, potentially casting unwarranted doubt on the anchor comparison.",
+    "what_anchors_actually_state": {
+      "protocol": "dd-selfproto-v1.3",
+      "evaluation_seed": 0,
+      "sample_count": 50000,
+      "scope": "PUBLIC_SEED_ZERO_ONLY",
+      "note": "Both anchors actually re-evaluated under the current frozen numerical protocol. Upper calibration model was selected before current Reference outcomes. Formal held-out anchors require independent same-private-seed calibration; these public values never replace it."
+    },
+    "corrected_interpretation": [
+      "The public baseline anchor uses the same protocol (dd-selfproto-v1.3) and same evaluation seed (0) and same sample count (50000) as both of my own evaluation runs.",
+      "The anchor explicitly states it was re-evaluated under the current frozen numerical protocol.",
+      "There is no evidence of random stream mismatch \u2014 the protocol and seed match. The baseline score should be interpreted as the result of running num_samples=0 (no training) under the same public evaluation conditions.",
+      "This does not guarantee identical bit-level reproducibility (floating-point non-determinism, hardware differences, etc.), but the FID comparison is apples-to-apples in protocol and seed.",
+      "The anchor's note about 'PUBLIC_SEED_ZERO_ONLY' and 'formal held-out anchors require independent same-private-seed calibration' means these public anchors are for public-seed calibration use only \u2014 they are not a substitute for private held-out evaluation. This is about evaluation scope, not about random stream mismatch with our runs."
+    ],
+    "what_is_still_uncertain": [
+      "We have not independently re-run the baseline ourselves to verify the anchor value numerically.",
+      "The anchor baseline was produced by the platform, not by our method code \u2014 we trust the platform's evaluation pipeline.",
+      "FID variance on 50k samples means a re-run could differ by some amount even with the same seed if any non-determinism exists."
+    ]
+  },
+  "summary_of_minimal_valid_conclusions": [
+    "On the public seed-0 evaluation stream, round-02 (min-LPIPS + uniform, 256 samples) achieved FID 9.784 and round-01 (max-LPIPS + early-bias, 256 samples) achieved FID 10.127.",
+    "Both method rounds underperform the published public baseline (FID 9.663) on the same evaluation stream.",
+    "The baseline anchor (num_samples=0, no training) is the best known result on the public seed-0 evaluation stream.",
+    "The round-02 joint configuration beats the round-01 joint configuration in this single pairwise comparison; the factor-level cause is not isolable.",
+    "Sample count as a bottleneck is an untested hypothesis; the 1024-sample trial will provide one additional data point but will not isolate pure data-volume effects.",
+    "The 1024-sample trial, whatever its result, will not prove or disprove all proposal selection approaches in general."
+  ],
+  "best_method_binding_correction_note": "The best_method/method.py source binding has been corrected to the published baseline starter in a separate file (agent-output/best_method/selection.json). That correction is administrative (fixing which source file is labeled 'best') and does not change any scores, evaluations, or method round artifacts.",
+  "retention_and_preservation": {
+    "all_original_files_preserved": true,
+    "solution_method_py_not_modified": true,
+    "no_new_method_rounds_added": true,
+    "no_new_gpu_jobs_run": true,
+    "no_research_time_claimed": true,
+    "qa_pass_not_claimed": true,
+    "trajectory_not_modified": true,
+    "original_best_method_backup": "agent-output/best_method_before_binding_correction/method.py"
+  }
+}

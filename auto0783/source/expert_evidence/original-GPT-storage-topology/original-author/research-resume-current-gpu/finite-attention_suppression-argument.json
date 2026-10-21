@@ -1,0 +1,43 @@
+{
+  "scope": "IEEEscalarRNE/FP32exp reasoning, conditional on finite scaled-logit bound. No actualscorebounds/CUDAmeasurements.",
+  "BF16_mask_bits": "0xff7f",
+  "finite_mask_magnitude": "338953138925153547590470800371487866880",
+  "sufficient_scaled_logit_absolute_bound": "332306998946228968225951765070086144",
+  "strict_half_ulp_limit": "664613997892457936451903530140172288",
+  "mask_addition_preserved_for_entire_interval": "nearestBF16sentinel unchanged by all |s|<=2^118 because interval lies strictly inside its rounding cell",
+  "selected_scalar_examples": [
+    {
+      "score": "-332306998946228968225951765070086144",
+      "masked_BF16": -3.3895313892515355e+38
+    },
+    {
+      "score": "-1",
+      "masked_BF16": -3.3895313892515355e+38
+    },
+    {
+      "score": "0",
+      "masked_BF16": -3.3895313892515355e+38
+    },
+    {
+      "score": "1",
+      "masked_BF16": -3.3895313892515355e+38
+    },
+    {
+      "score": "332306998946228968225951765070086144",
+      "masked_BF16": -3.3895313892515355e+38
+    }
+  ],
+  "masked_minus_max_allowed_upper_bound": "-338620831926207318622244848606417780736",
+  "FP32_exp_rounded_zero_at_minus104": true,
+  "fully_masked_query": "allfinite-min logits become equal, FP32softmaxuniform over all556columns; candidate text-only attention uniform over300columns. Padding rows can legitimately differ.",
+  "uniform_full556": 0.0017985611921176314,
+  "uniform_text300": 0.0033333334140479565,
+  "actual_checkpoint_bound_established": false,
+  "manifest_limit": "Published tensor manifest has shapes/dtypes/digests/offsets, no numerical coefficient maxima; do not invent a loadedweight/statistical bound.",
+  "next_decisions": [
+    "Public-maskv3 graph includes dense influence edges for fully finite-min padding queries; those never appear as readablekeys to validtext/images.",
+    "Zero-errorDevsupports actual disclosed prediction preservation but not a formal allinputlogit bound or universal bitwiseequivalence.",
+    "Do not hardcode public25/32visible text counts: hidden lengths unknown; catalog has no data-dependent gather/compaction/slice bounds.",
+    "A new graph numerical cache optimization needs an independent structural/numerical argument and unchanged gates, not this publicpaddingpattern alone."
+  ]
+}

@@ -1,0 +1,948 @@
+{
+  "schema_version": "sava-time-reconciliation.v2",
+  "track": "seed_continuation_v3",
+  "state": "COLLECTED_EPISODES_ONLY_NOT_TRACK_COMPLETION",
+  "accounting_basis": "Successful API segments plus completed native tool durations, bounded by episode wall; failed requests, verified repetitive stalls, setup-only episodes, and uncollected episodes excluded.",
+  "effective_seconds": 8764.780300675033,
+  "episodes": [
+    {
+      "episode": 1,
+      "started_at": "2026-10-10T07:07:20.900059+00:00",
+      "ended_at": "2026-10-10T07:14:13.493865+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 412.2772328330029,
+      "successful_api_seconds": 74.57857120598783,
+      "completed_tool_seconds": 330.012,
+      "effective_seconds": 404.5905712059878,
+      "cumulative_effective_seconds": 404.5905712059878,
+      "actual_completed_command_tools": 16,
+      "valid_episode": true,
+      "before_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "after_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "evaluator_observations": [],
+      "request_slice": [
+        21,
+        35
+      ],
+      "original_effective_seconds": 404.5905712059878,
+      "original_cumulative_effective_seconds": 404.5905712059878,
+      "counted_successful_api_seconds": 74.57857120598783,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 7.6866616270150985
+    },
+    {
+      "episode": 2,
+      "started_at": "2026-10-10T07:14:13.816445+00:00",
+      "ended_at": "2026-10-10T07:19:50.502221+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 336.2094214580138,
+      "successful_api_seconds": 242.98906691605225,
+      "completed_tool_seconds": 83.88980000000001,
+      "effective_seconds": 326.8788669160523,
+      "cumulative_effective_seconds": 731.4694381220402,
+      "actual_completed_command_tools": 17,
+      "valid_episode": true,
+      "before_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "after_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        }
+      ],
+      "request_slice": [
+        35,
+        46
+      ],
+      "original_effective_seconds": 326.8788669160523,
+      "original_cumulative_effective_seconds": 731.4694381220402,
+      "counted_successful_api_seconds": 242.98906691605225,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 9.330554541961533
+    },
+    {
+      "episode": 3,
+      "started_at": "2026-10-10T07:19:50.783119+00:00",
+      "ended_at": "2026-10-10T07:34:17.628019+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 866.5999972920108,
+      "successful_api_seconds": 588.1546892890765,
+      "completed_tool_seconds": 265.4056,
+      "effective_seconds": 853.5602892890765,
+      "cumulative_effective_seconds": 1585.0297274111167,
+      "actual_completed_command_tools": 32,
+      "valid_episode": true,
+      "before_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "after_sha256": "5e36e5c4b084df73b6331f913d3ae2428a0680d9e060947093655c8cd28b47ed",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        }
+      ],
+      "request_slice": [
+        46,
+        74
+      ],
+      "original_effective_seconds": 853.5602892890765,
+      "original_cumulative_effective_seconds": 1585.0297274111167,
+      "counted_successful_api_seconds": 588.1546892890765,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 13.039708002934276
+    },
+    {
+      "episode": 4,
+      "started_at": "2026-10-10T07:34:17.813559+00:00",
+      "ended_at": "2026-10-10T07:34:43.257998+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 25.107726124988403,
+      "successful_api_seconds": 19.328494418034097,
+      "completed_tool_seconds": 0.0,
+      "effective_seconds": 0.0,
+      "cumulative_effective_seconds": 1585.0297274111167,
+      "actual_completed_command_tools": 5,
+      "valid_episode": true,
+      "before_sha256": "5e36e5c4b084df73b6331f913d3ae2428a0680d9e060947093655c8cd28b47ed",
+      "after_sha256": "5e36e5c4b084df73b6331f913d3ae2428a0680d9e060947093655c8cd28b47ed",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        }
+      ],
+      "request_slice": [
+        74,
+        77
+      ],
+      "original_effective_seconds": 19.328494418034097,
+      "original_cumulative_effective_seconds": 1604.3582218291508,
+      "counted_successful_api_seconds": 19.328494418034097,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": true,
+      "excluded_seconds": 25.107726124988403
+    },
+    {
+      "episode": 5,
+      "started_at": "2026-10-10T07:34:43.658328+00:00",
+      "ended_at": "2026-10-10T07:40:14.267749+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 330.30484675001935,
+      "successful_api_seconds": 261.0425341659284,
+      "completed_tool_seconds": 60.930099999999996,
+      "effective_seconds": 321.97263416592835,
+      "cumulative_effective_seconds": 1907.0023615770451,
+      "actual_completed_command_tools": 24,
+      "valid_episode": true,
+      "before_sha256": "5e36e5c4b084df73b6331f913d3ae2428a0680d9e060947093655c8cd28b47ed",
+      "after_sha256": "5e36e5c4b084df73b6331f913d3ae2428a0680d9e060947093655c8cd28b47ed",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        }
+      ],
+      "request_slice": [
+        77,
+        97
+      ],
+      "original_effective_seconds": 321.97263416592835,
+      "original_cumulative_effective_seconds": 1926.3308559950792,
+      "counted_successful_api_seconds": 261.0425341659284,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 8.332212584090996
+    },
+    {
+      "episode": 6,
+      "started_at": "2026-10-10T07:40:14.407952+00:00",
+      "ended_at": "2026-10-10T08:38:28.624236+00:00",
+      "exit_code": 1,
+      "interruption": null,
+      "wall_seconds": 3493.9191426670004,
+      "successful_api_seconds": 2176.0327701701317,
+      "completed_tool_seconds": 99.37450000000001,
+      "effective_seconds": 660.2801564611674,
+      "cumulative_effective_seconds": 2567.2825180382124,
+      "actual_completed_command_tools": 41,
+      "valid_episode": false,
+      "before_sha256": "5e36e5c4b084df73b6331f913d3ae2428a0680d9e060947093655c8cd28b47ed",
+      "after_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        }
+      ],
+      "request_slice": [
+        97,
+        144
+      ],
+      "original_effective_seconds": 2275.4072701701316,
+      "original_cumulative_effective_seconds": 4201.738126165211,
+      "counted_successful_api_seconds": 560.9056564611674,
+      "excluded_stall_request_indices": [
+        132,
+        133,
+        137,
+        139,
+        140,
+        141,
+        142,
+        143
+      ],
+      "excluded_stall_api_seconds": 1615.1271137089643,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 2833.638986205833
+    },
+    {
+      "episode": 7,
+      "started_at": "2026-10-10T08:38:28.796241+00:00",
+      "ended_at": "2026-10-10T08:45:11.685340+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 402.4834363750124,
+      "successful_api_seconds": 65.45479087601416,
+      "completed_tool_seconds": 330.0369,
+      "effective_seconds": 395.49169087601416,
+      "cumulative_effective_seconds": 2962.7742089142266,
+      "actual_completed_command_tools": 12,
+      "valid_episode": true,
+      "before_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f",
+      "after_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        }
+      ],
+      "request_slice": [
+        144,
+        154
+      ],
+      "original_effective_seconds": 395.49169087601416,
+      "original_cumulative_effective_seconds": 4597.229817041225,
+      "counted_successful_api_seconds": 65.45479087601416,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 6.9917454989982275
+    },
+    {
+      "episode": 8,
+      "started_at": "2026-10-10T08:45:11.927331+00:00",
+      "ended_at": "2026-10-10T08:53:36.426141+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 504.2526507919829,
+      "successful_api_seconds": 476.7224037089909,
+      "completed_tool_seconds": 16.9393,
+      "effective_seconds": 493.6617037089909,
+      "cumulative_effective_seconds": 3456.4359126232175,
+      "actual_completed_command_tools": 40,
+      "valid_episode": true,
+      "before_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f",
+      "after_sha256": "04d8173f3a5000818daeecb48cc4951119233935fbd58271f98d08650eb059a4",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        }
+      ],
+      "request_slice": [
+        154,
+        182
+      ],
+      "original_effective_seconds": 493.6617037089909,
+      "original_cumulative_effective_seconds": 5090.891520750216,
+      "counted_successful_api_seconds": 476.7224037089909,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 10.590947082991988
+    },
+    {
+      "episode": 9,
+      "started_at": "2026-10-10T08:53:36.622270+00:00",
+      "ended_at": "2026-10-10T08:56:58.518689+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 201.6048158329795,
+      "successful_api_seconds": 153.9531706669659,
+      "completed_tool_seconds": 40.0503,
+      "effective_seconds": 194.00347066696588,
+      "cumulative_effective_seconds": 3650.4393832901833,
+      "actual_completed_command_tools": 22,
+      "valid_episode": true,
+      "before_sha256": "04d8173f3a5000818daeecb48cc4951119233935fbd58271f98d08650eb059a4",
+      "after_sha256": "04d8173f3a5000818daeecb48cc4951119233935fbd58271f98d08650eb059a4",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        }
+      ],
+      "request_slice": [
+        182,
+        198
+      ],
+      "original_effective_seconds": 194.00347066696588,
+      "original_cumulative_effective_seconds": 5284.894991417182,
+      "counted_successful_api_seconds": 153.9531706669659,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 7.60134516601363
+    },
+    {
+      "episode": 10,
+      "started_at": "2026-10-10T08:56:58.719989+00:00",
+      "ended_at": "2026-10-10T08:57:29.129574+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 30.196505500003695,
+      "successful_api_seconds": 24.519928832974983,
+      "completed_tool_seconds": 0.0,
+      "effective_seconds": 0.0,
+      "cumulative_effective_seconds": 3650.4393832901833,
+      "actual_completed_command_tools": 9,
+      "valid_episode": true,
+      "before_sha256": "04d8173f3a5000818daeecb48cc4951119233935fbd58271f98d08650eb059a4",
+      "after_sha256": "04d8173f3a5000818daeecb48cc4951119233935fbd58271f98d08650eb059a4",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        }
+      ],
+      "request_slice": [
+        198,
+        202
+      ],
+      "original_effective_seconds": 24.519928832974983,
+      "original_cumulative_effective_seconds": 5309.414920250157,
+      "counted_successful_api_seconds": 24.519928832974983,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": true,
+      "excluded_seconds": 30.196505500003695
+    },
+    {
+      "episode": 11,
+      "started_at": "2026-10-10T08:57:29.289055+00:00",
+      "ended_at": "2026-10-10T09:13:31.650061+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 962.0976518749958,
+      "successful_api_seconds": 828.3788908779097,
+      "completed_tool_seconds": 121.0538,
+      "effective_seconds": 949.4326908779097,
+      "cumulative_effective_seconds": 4599.872074168093,
+      "actual_completed_command_tools": 52,
+      "valid_episode": true,
+      "before_sha256": "04d8173f3a5000818daeecb48cc4951119233935fbd58271f98d08650eb059a4",
+      "after_sha256": "04d8173f3a5000818daeecb48cc4951119233935fbd58271f98d08650eb059a4",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        }
+      ],
+      "request_slice": [
+        202,
+        249
+      ],
+      "original_effective_seconds": 949.4326908779097,
+      "original_cumulative_effective_seconds": 6258.847611128066,
+      "counted_successful_api_seconds": 828.3788908779097,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 12.664960997086041
+    },
+    {
+      "episode": 12,
+      "started_at": "2026-10-10T09:13:31.794018+00:00",
+      "ended_at": "2026-10-10T10:01:51.453628+00:00",
+      "exit_code": 1,
+      "interruption": null,
+      "wall_seconds": 2899.344324916019,
+      "successful_api_seconds": 2517.405715418892,
+      "completed_tool_seconds": 368.1501999999999,
+      "effective_seconds": 1560.2615576268836,
+      "cumulative_effective_seconds": 6160.133631794976,
+      "actual_completed_command_tools": 44,
+      "valid_episode": false,
+      "before_sha256": "04d8173f3a5000818daeecb48cc4951119233935fbd58271f98d08650eb059a4",
+      "after_sha256": "18a9579468fff62be6fcdcbea1fb7a87a7d89803d6d8dad537a131c2b2f5dd88",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/ed406708374f49eda60462869862aa7d.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.4520313696998831,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "18a9579468fff62be6fcdcbea1fb7a87a7d89803d6d8dad537a131c2b2f5dd88"
+        }
+      ],
+      "request_slice": [
+        249,
+        294
+      ],
+      "original_effective_seconds": 2885.5559154188923,
+      "original_cumulative_effective_seconds": 9144.403526546957,
+      "counted_successful_api_seconds": 1192.1113576268835,
+      "excluded_stall_request_indices": [
+        288,
+        289,
+        290,
+        291,
+        292,
+        293
+      ],
+      "excluded_stall_api_seconds": 1325.2943577920087,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 1339.0827672891355
+    },
+    {
+      "episode": 13,
+      "started_at": "2026-10-10T10:01:51.615640+00:00",
+      "ended_at": "2026-10-10T11:23:20.110376+00:00",
+      "exit_code": 1,
+      "interruption": null,
+      "wall_seconds": 4887.614335249993,
+      "successful_api_seconds": 2211.201398627978,
+      "completed_tool_seconds": 2499.7089999999994,
+      "effective_seconds": 2604.6466688800574,
+      "cumulative_effective_seconds": 8764.780300675033,
+      "actual_completed_command_tools": 95,
+      "valid_episode": false,
+      "before_sha256": "18a9579468fff62be6fcdcbea1fb7a87a7d89803d6d8dad537a131c2b2f5dd88",
+      "after_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0013/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0013/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        },
+        {
+          "report_file": "episode_0013/trusted_evaluator_results/ed406708374f49eda60462869862aa7d.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.4520313696998831,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "18a9579468fff62be6fcdcbea1fb7a87a7d89803d6d8dad537a131c2b2f5dd88"
+        }
+      ],
+      "request_slice": [
+        294,
+        432
+      ],
+      "original_effective_seconds": 4710.910398627977,
+      "original_cumulative_effective_seconds": 13855.313925174934,
+      "counted_successful_api_seconds": 1913.3375688800588,
+      "excluded_stall_request_indices": [
+        347,
+        348,
+        349,
+        350,
+        353,
+        354,
+        357,
+        358,
+        367,
+        368,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401
+      ],
+      "excluded_stall_api_seconds": 297.8638297479192,
+      "excluded_blocked_or_infrastructure_tool_seconds": 1808.3999000000001,
+      "manual_episode_review": "private/recovery_20261010/seed_episode13_review/review.json",
+      "manual_episode_review_sha256": "479bb0e2c18dcdba6c60066748056b2af9cbbed0ba42403c9c7fe6ba10d5a455",
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 2282.9676663699356
+    },
+    {
+      "episode": 14,
+      "started_at": "2026-10-10T11:23:20.563847+00:00",
+      "ended_at": "2026-10-10T11:23:53.790639+00:00",
+      "exit_code": 1,
+      "interruption": null,
+      "wall_seconds": 32.91419116698671,
+      "successful_api_seconds": 0,
+      "completed_tool_seconds": 0.0,
+      "effective_seconds": 0.0,
+      "cumulative_effective_seconds": 8764.780300675033,
+      "actual_completed_command_tools": 0,
+      "valid_episode": false,
+      "before_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "after_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0014/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0014/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        },
+        {
+          "report_file": "episode_0014/trusted_evaluator_results/ed406708374f49eda60462869862aa7d.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.4520313696998831,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "18a9579468fff62be6fcdcbea1fb7a87a7d89803d6d8dad537a131c2b2f5dd88"
+        }
+      ],
+      "request_slice": [
+        432,
+        462
+      ],
+      "original_effective_seconds": 0.0,
+      "original_cumulative_effective_seconds": 13855.313925174934,
+      "counted_successful_api_seconds": 0,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 32.91419116698671
+    },
+    {
+      "episode": 15,
+      "started_at": "2026-10-10T11:23:54.103426+00:00",
+      "ended_at": "2026-10-10T11:24:26.346833+00:00",
+      "exit_code": 1,
+      "interruption": null,
+      "wall_seconds": 31.919147459004307,
+      "successful_api_seconds": 0,
+      "completed_tool_seconds": 0.0,
+      "effective_seconds": 0.0,
+      "cumulative_effective_seconds": 8764.780300675033,
+      "actual_completed_command_tools": 0,
+      "valid_episode": false,
+      "before_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "after_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0015/trusted_evaluator_results/0b23b98ef1b94727976508d11d794828.json",
+          "status": "ok",
+          "raw_metric": 1.0395813088000447,
+          "score": -0.993465065106561,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0015/trusted_evaluator_results/6504d9f4272549dc841c63ef3edfdf16.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.33083131546663935,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "f6339acd0d16d9c49fbf51bbbd5e6d8c3fecba2f6702fecaf94a2635b601777f"
+        },
+        {
+          "report_file": "episode_0015/trusted_evaluator_results/ed406708374f49eda60462869862aa7d.json",
+          "status": "HARD_GATE",
+          "raw_metric": 0.4520313696998831,
+          "score": -1,
+          "quality_valid": false,
+          "method_sha256": "18a9579468fff62be6fcdcbea1fb7a87a7d89803d6d8dad537a131c2b2f5dd88"
+        }
+      ],
+      "request_slice": [
+        462,
+        492
+      ],
+      "original_effective_seconds": 0.0,
+      "original_cumulative_effective_seconds": 13855.313925174934,
+      "counted_successful_api_seconds": 0,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 31.919147459004307
+    }
+  ],
+  "repeat_stall_proofs": [
+    {
+      "episode": 6,
+      "timestamp": "2026-10-10T08:02:54.729Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0006/sessions/2026/10/10/rollout-2026-10-10T07-40-14-01a124c1-5d8d-70b3-9901-5566adf7b7f2.jsonl",
+      "native_message_sha256": "99d04f86ee09b8fc719c53d652aae9ed3ea356dd563e64938d03c36ada42718a",
+      "characters": 40652,
+      "repeated_phrase": "let me write v8 now br",
+      "phrase_count": 589,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        132
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 6,
+      "timestamp": "2026-10-10T08:04:16.832Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0006/sessions/2026/10/10/rollout-2026-10-10T07-40-14-01a124c1-5d8d-70b3-9901-5566adf7b7f2.jsonl",
+      "native_message_sha256": "f387b0478edbe336f05fdad69b03c78a6476ff9b5536f0afecad31db0cd9c17f",
+      "characters": 11152,
+      "repeated_phrase": "let me write v8 now br",
+      "phrase_count": 105,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        133
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 6,
+      "timestamp": "2026-10-10T08:16:21.852Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0006/sessions/2026/10/10/rollout-2026-10-10T07-40-14-01a124c1-5d8d-70b3-9901-5566adf7b7f2.jsonl",
+      "native_message_sha256": "1b02e4740b279dcd48c8d27afa39aaef140e2eb464ace63eb42bdc233ae15da3",
+      "characters": 49810,
+      "repeated_phrase": "br let me run solve sh",
+      "phrase_count": 426,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        137
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 6,
+      "timestamp": "2026-10-10T08:23:46.818Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0006/sessions/2026/10/10/rollout-2026-10-10T07-40-14-01a124c1-5d8d-70b3-9901-5566adf7b7f2.jsonl",
+      "native_message_sha256": "59be0a1ba572443c1774662aa2c4098892f80e8abe5be24e90910d7c7aa58f79",
+      "characters": 48143,
+      "repeated_phrase": "br let me run solve sh",
+      "phrase_count": 639,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        139
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 6,
+      "timestamp": "2026-10-10T08:27:20.829Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0006/sessions/2026/10/10/rollout-2026-10-10T07-40-14-01a124c1-5d8d-70b3-9901-5566adf7b7f2.jsonl",
+      "native_message_sha256": "19308aa8f15c0c3445ef47b45d4c08aad487126a69f37bf622e0bc5cbb85b7e7",
+      "characters": 48321,
+      "repeated_phrase": "br let me run solve sh",
+      "phrase_count": 598,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        140
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 6,
+      "timestamp": "2026-10-10T08:31:07.290Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0006/sessions/2026/10/10/rollout-2026-10-10T07-40-14-01a124c1-5d8d-70b3-9901-5566adf7b7f2.jsonl",
+      "native_message_sha256": "b3834c5c3bcaba27c25f636e61dabb5b41f24c407fe5bde21bc68f90f2da60f5",
+      "characters": 48510,
+      "repeated_phrase": "br let me run solve sh",
+      "phrase_count": 611,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        141
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 6,
+      "timestamp": "2026-10-10T08:34:39.201Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0006/sessions/2026/10/10/rollout-2026-10-10T07-40-14-01a124c1-5d8d-70b3-9901-5566adf7b7f2.jsonl",
+      "native_message_sha256": "913412e5a43c6f8eaff1a07903a07814bf9027094d4f6f2c3903c3e5caf6c33f",
+      "characters": 48582,
+      "repeated_phrase": "br let me run solve sh",
+      "phrase_count": 609,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        142
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 6,
+      "timestamp": "2026-10-10T08:38:28.146Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0006/sessions/2026/10/10/rollout-2026-10-10T07-40-14-01a124c1-5d8d-70b3-9901-5566adf7b7f2.jsonl",
+      "native_message_sha256": "ca5898c0fc2c3cd546a057cb2c85ed8e1365ea3c839a056302504a1e12f4732e",
+      "characters": 48735,
+      "repeated_phrase": "br let me run solve sh",
+      "phrase_count": 604,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        143
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 12,
+      "timestamp": "2026-10-10T09:43:17.472Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0012/sessions/2026/10/10/rollout-2026-10-10T09-13-32-01a12516-c6ae-7693-ab58-8ee7d809b773.jsonl",
+      "native_message_sha256": "9b2459b66b603b0ccc23c4d2385d73661b6713f1a21bb340a2ce8113d3a2ea5b",
+      "characters": 36953,
+      "repeated_phrase": "think think think think think think",
+      "phrase_count": 4077,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        288
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 12,
+      "timestamp": "2026-10-10T09:46:53.884Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0012/sessions/2026/10/10/rollout-2026-10-10T09-13-32-01a12516-c6ae-7693-ab58-8ee7d809b773.jsonl",
+      "native_message_sha256": "425e6077d0ce9d52ffbd981f35c1f889bbee5671209395162fadcd2f479ceef3",
+      "characters": 36864,
+      "repeated_phrase": "think think think think think think",
+      "phrase_count": 4091,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        289
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 12,
+      "timestamp": "2026-10-10T09:50:39.006Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0012/sessions/2026/10/10/rollout-2026-10-10T09-13-32-01a12516-c6ae-7693-ab58-8ee7d809b773.jsonl",
+      "native_message_sha256": "425e6077d0ce9d52ffbd981f35c1f889bbee5671209395162fadcd2f479ceef3",
+      "characters": 36864,
+      "repeated_phrase": "think think think think think think",
+      "phrase_count": 4091,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        290
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 12,
+      "timestamp": "2026-10-10T09:54:14.654Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0012/sessions/2026/10/10/rollout-2026-10-10T09-13-32-01a12516-c6ae-7693-ab58-8ee7d809b773.jsonl",
+      "native_message_sha256": "425e6077d0ce9d52ffbd981f35c1f889bbee5671209395162fadcd2f479ceef3",
+      "characters": 36864,
+      "repeated_phrase": "think think think think think think",
+      "phrase_count": 4091,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        291
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 12,
+      "timestamp": "2026-10-10T09:57:55.669Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0012/sessions/2026/10/10/rollout-2026-10-10T09-13-32-01a12516-c6ae-7693-ab58-8ee7d809b773.jsonl",
+      "native_message_sha256": "425e6077d0ce9d52ffbd981f35c1f889bbee5671209395162fadcd2f479ceef3",
+      "characters": 36864,
+      "repeated_phrase": "think think think think think think",
+      "phrase_count": 4091,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        292
+      ],
+      "reviewed_stall": true
+    },
+    {
+      "episode": 12,
+      "timestamp": "2026-10-10T10:01:50.931Z",
+      "native_session": "private/harbor_jobs/seed_resume_20261010_v3/harbor_task__kTdaeoM/agent/episode_0012/sessions/2026/10/10/rollout-2026-10-10T09-13-32-01a12516-c6ae-7693-ab58-8ee7d809b773.jsonl",
+      "native_message_sha256": "425e6077d0ce9d52ffbd981f35c1f889bbee5671209395162fadcd2f479ceef3",
+      "characters": 36864,
+      "repeated_phrase": "think think think think think think",
+      "phrase_count": 4091,
+      "punctuation_dominated": false,
+      "matching_request_indices": [
+        293
+      ],
+      "reviewed_stall": true
+    }
+  ],
+  "unreviewed_repeat_matches": [],
+  "original_ledger_sha256": "9ce720b938bd5eea2d4371aa12c4c52f5bfe08319761806b3b2c7d1f13864a00",
+  "request_log_snapshot_sha256": "3d3ae365f32912339a56b2917d78d24120876f18b87931cf5de1952a9050788a",
+  "request_count_at_snapshot": 507,
+  "created_at": "2026-10-10T16:39:56.923737+00:00"
+}

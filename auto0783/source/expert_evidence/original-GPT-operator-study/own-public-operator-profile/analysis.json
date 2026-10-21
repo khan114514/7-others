@@ -1,0 +1,173 @@
+{
+  "source_index": "own-public-operator-profile/source-index.json",
+  "artifact_sha256": "6a9a696f1debd902737f957e9ed31430d827c7cffc1181b353412e0d9133b723",
+  "scope": "Own experiment 41, one public case, first and next forward. Original source profiles and prior stopping records retained unchanged.",
+  "annotation_handling": "CPU-side and device-only annotation rows are summarized separately, avoiding double-counting matching inclusive GPU ranges. Inclusive times are perturbed by instrumentation and not wall times or new scores.",
+  "profiles": {
+    "first-prefix-construction-operators.json": {
+      "sha256_matches_source": true,
+      "annotation_count": 4200,
+      "step": 0,
+      "zero_quality_error": true,
+      "top_nodes_by_cpu_side_inclusive_cuda": [
+        {
+          "node": "text_mlp/mlp",
+          "cpu_side_inclusive_CUDA_us": 35602.83400000006,
+          "CPU_self_us": 2142.762999999686,
+          "device_only_inclusive_CUDA_us": 35721.74300000008
+        },
+        {
+          "node": "image_mlp/mlp",
+          "cpu_side_inclusive_CUDA_us": 30839.170000000104,
+          "CPU_self_us": 1998.979000000083,
+          "device_only_inclusive_CUDA_us": 30957.66599999996
+        },
+        {
+          "node": "text_attended/attention_eager",
+          "cpu_side_inclusive_CUDA_us": 9988.553999999867,
+          "CPU_self_us": 18292.3260000002,
+          "device_only_inclusive_CUDA_us": 43502.34900000002
+        },
+        {
+          "node": "image_prob_fp32/softmax",
+          "cpu_side_inclusive_CUDA_us": 2785.672000000017,
+          "CPU_self_us": 1015.1149999999179,
+          "device_only_inclusive_CUDA_us": 3261.0600000000522
+        },
+        {
+          "node": "image_attention_out/linear",
+          "cpu_side_inclusive_CUDA_us": 2750.14799999995,
+          "CPU_self_us": 901.0979999998417,
+          "device_only_inclusive_CUDA_us": 2750.14799999995
+        },
+        {
+          "node": "text_flat_qkv/linear",
+          "cpu_side_inclusive_CUDA_us": 2654.9509999998936,
+          "CPU_self_us": 959.6660000000629,
+          "device_only_inclusive_CUDA_us": 2654.9509999998936
+        },
+        {
+          "node": "image_qkv/linear",
+          "cpu_side_inclusive_CUDA_us": 2648.231999999978,
+          "CPU_self_us": 887.7770000000874,
+          "device_only_inclusive_CUDA_us": 2648.231999999978
+        },
+        {
+          "node": "text_attention_out/linear",
+          "cpu_side_inclusive_CUDA_us": 2600.9360000000306,
+          "CPU_self_us": 1226.49599999993,
+          "device_only_inclusive_CUDA_us": 2600.9360000000306
+        },
+        {
+          "node": "text_qkv_weight/concat",
+          "cpu_side_inclusive_CUDA_us": 2500.329000000109,
+          "CPU_self_us": 1104.6659999998938,
+          "device_only_inclusive_CUDA_us": 2500.329000000109
+        },
+        {
+          "node": "vision_qkv_weight/concat",
+          "cpu_side_inclusive_CUDA_us": 2324.9410000000116,
+          "CPU_self_us": 877.2469999997975,
+          "device_only_inclusive_CUDA_us": 2324.9410000000116
+        },
+        {
+          "node": "text_input_norm/rms_norm",
+          "cpu_side_inclusive_CUDA_us": 1953.8689999995267,
+          "CPU_self_us": 3514.8749999995744,
+          "device_only_inclusive_CUDA_us": 2985.0300000000007
+        },
+        {
+          "node": "text_post_norm/rms_norm",
+          "cpu_side_inclusive_CUDA_us": 1913.4219999998313,
+          "CPU_self_us": 2535.42099999982,
+          "device_only_inclusive_CUDA_us": 6402.405999999952
+        }
+      ]
+    },
+    "next-stage-prefix-reuse-operators.json": {
+      "sha256_matches_source": true,
+      "annotation_count": 3612,
+      "step": 1,
+      "zero_quality_error": true,
+      "top_nodes_by_cpu_side_inclusive_cuda": [
+        {
+          "node": "image_mlp/mlp",
+          "cpu_side_inclusive_CUDA_us": 31434.970000000052,
+          "CPU_self_us": 1523.0229999999738,
+          "device_only_inclusive_CUDA_us": 31557.946000000025
+        },
+        {
+          "node": "image_prob_fp32/softmax",
+          "cpu_side_inclusive_CUDA_us": 2825.54000000005,
+          "CPU_self_us": 788.953000000025,
+          "device_only_inclusive_CUDA_us": 2856.324000000055
+        },
+        {
+          "node": "image_attention_out/linear",
+          "cpu_side_inclusive_CUDA_us": 2817.0290000000296,
+          "CPU_self_us": 775.7820000000283,
+          "device_only_inclusive_CUDA_us": 2817.0290000000296
+        },
+        {
+          "node": "image_qkv/linear",
+          "cpu_side_inclusive_CUDA_us": 2736.2940000000144,
+          "CPU_self_us": 714.7680000000082,
+          "device_only_inclusive_CUDA_us": 2736.2940000000144
+        },
+        {
+          "node": "image_input_norm/rms_norm",
+          "cpu_side_inclusive_CUDA_us": 1857.9659999999985,
+          "CPU_self_us": 1883.062000000018,
+          "device_only_inclusive_CUDA_us": 2181.962999999956
+        },
+        {
+          "node": "image_scores/matmul",
+          "cpu_side_inclusive_CUDA_us": 1804.04499999996,
+          "CPU_self_us": 918.2830000000049,
+          "device_only_inclusive_CUDA_us": 2706.05399999997
+        },
+        {
+          "node": "image_post_norm/rms_norm",
+          "cpu_side_inclusive_CUDA_us": 1800.7589999999782,
+          "CPU_self_us": 1975.484999999996,
+          "device_only_inclusive_CUDA_us": 4922.1329999999825
+        },
+        {
+          "node": "image_prob/cast",
+          "cpu_side_inclusive_CUDA_us": 1410.7729999999765,
+          "CPU_self_us": 762.2449999999681,
+          "device_only_inclusive_CUDA_us": 1410.7729999999765
+        },
+        {
+          "node": "image_masked/add",
+          "cpu_side_inclusive_CUDA_us": 1179.7640000000147,
+          "CPU_self_us": 678.2079999999769,
+          "device_only_inclusive_CUDA_us": 1179.7640000000147
+        },
+        {
+          "node": "channel_query_output/matmul",
+          "cpu_side_inclusive_CUDA_us": 1065.8480000000018,
+          "CPU_self_us": 732.5389999999707,
+          "device_only_inclusive_CUDA_us": 1065.8480000000018
+        },
+        {
+          "node": "value_repeat/repeat_heads",
+          "cpu_side_inclusive_CUDA_us": 603.7409999999927,
+          "CPU_self_us": 1128.642000000128,
+          "device_only_inclusive_CUDA_us": 603.7409999999927
+        },
+        {
+          "node": "image_qk_rotary_half/concat",
+          "cpu_side_inclusive_CUDA_us": 566.6820000000025,
+          "CPU_self_us": 662.2970000000851,
+          "device_only_inclusive_CUDA_us": 566.6820000000025
+        }
+      ]
+    }
+  },
+  "hypothesis": "Largest recurring image MLP annotation motivates a focused two-CFG-batch row partition to reduce per-call activation storage while retaining complete dot-product reductions. Extra launches and weight rereads may outweigh this.",
+  "experiment": "experiments/49_batch_partition_image_mlp",
+  "outcome": "Actual foreground Dev completed with zero error, but candidate mean 2503.3639195760093 ms and reward 0.6479712186197056 are worse than best experiment 41. Peak CUDA allocation also did not improve.",
+  "decision": "Reject partitioned MLP and stop finer row splits without new kernel-level evidence. Restore experiment 41.",
+  "new_gpu_evaluations": 1
+}

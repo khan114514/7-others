@@ -1,0 +1,67 @@
+{
+  "policy": "user-normal-work-clock-20261006",
+  "elapsed_seconds": 62.862557888031006,
+  "effective_seconds": 0,
+  "excluded_seconds": 62.862557888031006,
+  "excluded_intervals": [
+    [
+      1791306706.932773,
+      1791306769.795331
+    ]
+  ],
+  "exclusion_evidence": [
+    {
+      "start_epoch": 1791306707.7627861,
+      "end_epoch": 1791306710.418816,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-3e7d5d7bcb7f4dfab1a9dee3d79af3e4-route.json"
+    },
+    {
+      "start_epoch": 1791306740.0504901,
+      "end_epoch": 1791306740.3829389,
+      "reason": "Observed transport failure after last normal progress; normal preceding reasoning retained",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-9d8b1f621cb74dda9e9abdd41a2a2875-route.json"
+    },
+    {
+      "start_epoch": 1791306740.3829389,
+      "end_epoch": 1791306744.830805,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-9a244a2a729a478497d1971201f64856-route.json"
+    },
+    {
+      "start_epoch": 1791306744.830805,
+      "end_epoch": 1791306747.5637581,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-2f76824fc29842f481f6c989cf48db9d-route.json"
+    },
+    {
+      "start_epoch": 1791306747.5637581,
+      "end_epoch": 1791306750.789234,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-a7afac69c24e415e973971f19bdf7d6d-route.json"
+    },
+    {
+      "start_epoch": 1791306750.789234,
+      "end_epoch": 1791306755.8570461,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-03d8b4e26cee4b66b4ab8358043d2e53-route.json"
+    },
+    {
+      "start_epoch": 1791306755.8570461,
+      "end_epoch": 1791306759.3725262,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-fc90027f4f724d09beb63cfca8b206d5-route.json"
+    },
+    {
+      "start_epoch": 1791306706.932773,
+      "end_epoch": 1791306769.795331,
+      "reason": "Observed backend/startup block without model work in this turn; unrelated repetition of old scoring cannot fill research time",
+      "evidence": "campaign/seed/round_0014/stdout.jsonl"
+    }
+  ],
+  "score_success_used_for_time": false,
+  "role": "seed",
+  "round": 14,
+  "cli_exit_code": 1,
+  "actual_model_completion_observed": true
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "autoresearch-comparison-summary.v2",
+  "status": "COMPLETE",
+  "metric": {
+    "name": "mean_process_cpu_ms",
+    "direction": "minimize"
+  },
+  "split": "dev",
+  "seeds": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "paired_results": {
+    "17": {
+      "baseline": 108.97090233333333,
+      "reference": 50.31555533333333
+    },
+    "29": {
+      "reference": 53.88231233333333,
+      "baseline": 121.7637145
+    },
+    "43": {
+      "baseline": 106.0392705,
+      "reference": 51.05426383333333
+    },
+    "71": {
+      "reference": 48.175444166666665,
+      "baseline": 105.81106166666667
+    },
+    "101": {
+      "baseline": 113.95777033333333,
+      "reference": 53.525603833333335
+    }
+  },
+  "statistics": {
+    "paired_run_count": 5,
+    "baseline_mean": 111.30854386666667,
+    "reference_mean": 51.3906359,
+    "baseline_sample_std": 6.704123994493006,
+    "reference_sample_std": 2.3650022092454415,
+    "mean_paired_improvement": 59.91790796666667,
+    "baseline_sigma_multiple": 8.937470132695228
+  },
+  "score_contract": {
+    "baseline": 111.30854386666667,
+    "reference": 51.3906359,
+    "upper_bound": 0.0,
+    "reference_normalized": 0.5383046609471472,
+    "upper_bound_source": "metric_ceiling_zero_latency"
+  },
+  "significance_rule": {
+    "required_baseline_sigma_multiple": 3.0,
+    "passed": true
+  },
+  "validity": {
+    "same_protocol": true,
+    "same_seed_set": true,
+    "all_quality_gates_passed": true,
+    "all_checkpoints_reload_and_rescore_passed": "NOT_APPLICABLE"
+  }
+}

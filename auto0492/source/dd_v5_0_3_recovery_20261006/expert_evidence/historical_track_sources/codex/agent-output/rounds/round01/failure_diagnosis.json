@@ -1,0 +1,25 @@
+{
+  "kind": "baseline_attempt_failure_diagnosis",
+  "recorded_at": "2026-10-02T23:06:34.644917+08:00",
+  "round": 1,
+  "attempt": "legacy",
+  "status": "unclosed_baseline_attempt",
+  "exit_code": -11,
+  "raw_log": "rounds/round01/run.log",
+  "execution": "rounds/round01/execution.json",
+  "saved_images": 784,
+  "score": null,
+  "failure_reason": "SIGSEGV without Python traceback; not yet attributed to a method. Existing images and logs preserved.",
+  "resource_limitation": "NVML per-process memory reports zero despite nonzero aggregate GPU use; not treated as proof of zero usage.",
+  "excluded_seconds": 60.49443141743541,
+  "exclusion_reason": "Unresolved execution/infrastructure failure; no effective duration claimed.",
+  "recovery_changes": [
+    "redirect Torch generated-kernel cache to own writable work area",
+    "enable Python fatal signal traceback",
+    "store retry in separate attempt directory",
+    "report CUDA allocator observations every25 decoded batches"
+  ],
+  "method_changed": false,
+  "scorer_changed": false,
+  "round_closed": false
+}

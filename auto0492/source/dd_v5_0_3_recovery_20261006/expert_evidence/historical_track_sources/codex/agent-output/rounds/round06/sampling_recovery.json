@@ -1,0 +1,92 @@
+{
+  "recorded_at": "2026-10-03T17:02:41.337448+08:00",
+  "round": 6,
+  "protocol_version": "dd-selfproto-v1.1",
+  "runner_pid": 143062,
+  "original_failed_execution": {
+    "stage": "evaluation",
+    "command": [
+      "historical-resources/venvs/dd1/bin/python",
+      "-B",
+      "-u",
+      "historical-codex-workspace/official_entry.py",
+      "--ckpt_path",
+      "historical-codex-models/round06/training/checkpoint.pth",
+      "--vae_ckpt",
+      "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+      "--sample_dir",
+      "historical-codex-models/round06/evaluation",
+      "--sample_num",
+      "50000",
+      "--t_list",
+      "0",
+      "--loss_split_t",
+      "5",
+      "--depth",
+      "16",
+      "--bs",
+      "8",
+      "--seed",
+      "0",
+      "--fid_statistic",
+      "historical-resources/models/dd1/fid_stats",
+      "--local_out_dir_path",
+      "historical-codex-models/round06/official_runtime"
+    ],
+    "cwd": "historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR",
+    "started_at": "2026-10-03T16:42:35.607557+08:00",
+    "finished_at": "2026-10-03T16:50:13.979597+08:00",
+    "exit_code": 1,
+    "deadline_unix": null,
+    "pid": 142206,
+    "elapsed_seconds": 458.3719108598307,
+    "termination": null,
+    "peak_observed_gpu_mib": null
+  },
+  "original_failed_execution_sha256": "20be98026843e6787804ec93d8ab1cd1c0622579407d1619d8351a1a8236a0c5",
+  "checkpoint_sha256": "96882834015746b051ea2435b349fe464629e739a11187820bd6f77def3954bc",
+  "existing_complete_png_count": 6288,
+  "existing_complete_png_bytes": 696499482,
+  "corrupt_pngs": [
+    {
+      "file": "6288.png",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "preserved_at": "historical-codex-models/round06/failed_partial_pngs/6288.png"
+    }
+  ],
+  "scorer_sha256": "bce8e2205defd99b4e6b9f3e31bb35c6ab4946aed445ce0179cf2db595382ad4",
+  "entry_sha256": "440e0f7f2e84c4acf0ae3b292419cb52d4c5948c7078262269786359b2adda9a",
+  "free_bytes_before": 8517730304,
+  "required_free_bytes": 6819693286,
+  "gpu_before": "2026/10/03 17:02:31.014, 25245, 15197, 87",
+  "protected_before": [
+    {
+      "path": "historical-resources/models/dd1/VAR-DD/var-d16.pth",
+      "expected": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "actual": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+      "expected": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+      "actual": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/fid_stats/statistic.pth",
+      "expected": "a9a689ae306a6e76b1485cbd4448dc82db4b119e177dddb68e0d54d33fc9f7c8",
+      "actual": "a9a689ae306a6e76b1485cbd4448dc82db4b119e177dddb68e0d54d33fc9f7c8",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/VAR-teacher/var_d16.pth",
+      "expected": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+      "actual": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+      "matches": true
+    }
+  ],
+  "decision": "Replay seed0 and batch8; reuse PNGs only after exact new PNG byte comparison. Continue to 50000 and score with official sample.py.",
+  "finished_at": "2026-10-03T18:03:43.185716+08:00",
+  "result_sha256": "0c644814342c2f3fe9d69d0b2aa6079ef7dd1569eaa1677090b731eacff36cc5"
+}

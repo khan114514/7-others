@@ -1,0 +1,33 @@
+{
+  "configuration": {
+    "name": "calibration_full_time1024",
+    "protocol_version": "dd-selfproto-v1.3",
+    "initialization": "warmstart_official_dd_ema",
+    "teacher": {
+      "num_samples": 1024,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "student_agreement_per_label",
+      "weighting": "uniform",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 8
+    },
+    "time_sampler_note": "Uniform FM training times on [0,1), covering all ten classifier-prefix stages.",
+    "train_notes": "Released DD EMA initialization; 1024 selected genuine teacher pairs, eight proposals per label, one training pass. Cover all FM stages rather than a single atom; fixed losses, optimizer, initialization and inference are unchanged."
+  },
+  "worker_guard": {
+    "landlock_abi": 1,
+    "filesystem_enforced": true,
+    "network_denied": true,
+    "unix_sockets_denied": true,
+    "cross_process_signals_denied": true,
+    "new_processes_denied": true,
+    "device_creation_denied": true,
+    "gpu_devices_denied": true,
+    "system_private_files_denied": true
+  }
+}

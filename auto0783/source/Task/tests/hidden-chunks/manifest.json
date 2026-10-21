@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "bytes": 40912872,
+  "sha256": "db9c6aab916da4b5914a96a642169fd122a67e8b15fbb16628ad90dc240e40e5",
+  "targets": [
+    "tests/hidden/hidden-decoder-inputs-v1.safetensors",
+    "trusted/data/hidden-decoder-inputs-v1.safetensors"
+  ],
+  "chunks": [
+    {
+      "path": "hidden-input.part-01.bin",
+      "bytes": 16777216,
+      "sha256": "c1241c3236610188fc2a1f937f3e0dc0aef4aa879f8dbb98cb06ce7ad211e3be"
+    },
+    {
+      "path": "hidden-input.part-02.bin",
+      "bytes": 16777216,
+      "sha256": "42d3c0c3288f911c5c1c7517b297d9b50f31fe0cb348182fdf6a4264f96dfd52"
+    },
+    {
+      "path": "hidden-input.part-03.bin",
+      "bytes": 7358440,
+      "sha256": "b53c4a34fedadf4ee0cd9d4c92551c6d322f0dd7f29d6e380679d2f696e3ed0e"
+    }
+  ],
+  "scope": "Deduplicated packaging only. Restore both declared Verifier/trusted targets before build; hidden inputs are not included in the ordinary Agent image."
+}

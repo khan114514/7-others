@@ -1,0 +1,160 @@
+{
+  "original_event_sha256": "767dfbf7284e953a5f6a27f83c97dd82ff0ba216c6b5a33ef0fbb1f8bf69ed2c",
+  "original_receipt_sha256": "a0b3130ec56a96a8f19d7c08fd79fee6d7da075846bf7cf162cb42dfa2ad6da4",
+  "original_event_last_write_epoch": 1791674966.6958437,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/exp_target_quantile.py << 'PYEOF'\n\\\"\\\"\\\"Experiment: target-aware quantiles for power adjustment.\n\nHypothesis: Using target_ctrl quantiles (instead of ref_ctrl quantiles)\nfor the power adjustment generalizes better because the biological\nresponse magnitude depends on expression level in the target context.\n\\\"\\\"\\\"\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import mean_squared_error\n\ndef to_dense(arr):\n    if hasattr(arr, 'toarray'):\n        return np.asarray(arr.toarray(), dtype=np.float64)\n    return np.asarray(arr, dtype=np.float64)\n\ntrain = sc.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_stim = sc.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ncell_types = sorted(train.obs['cell_type'].unique())\nn_genes = train.shape[1]\n\ntrain_dense = to_dense(train.X)\nscaler = MaxAbsScaler()\ntrain_scaled = scaler.fit_transform(train_dense)\n\nctrl_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nstim_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nn_cells_stim = np.zeros(len(cell_types), dtype=int)\nn_cells_ctrl = np.zeros(len(cell_types), dtype=int)\n\nfor i, ct in enumerate(cell_types):\n    mask_ct = (train.obs['cell_type'] == ct).values\n    ctrl_mask = mask_ct & (train.obs['condition'] == 'control').values\n    stim_mask = mask_ct & (train.obs['condition'] == 'stimulated').values\n    ctrl_means[i] = train_scaled[ctrl_mask].mean(axis=0)\n    stim_means[i] = train_scaled[stim_mask].mean(axis=0)\n    n_cells_stim[i] = stim_mask.sum()\n    n_cells_ctrl[i] = ctrl_mask.sum()\n\nstim_diffs = stim_means - ctrl_means\nB = 0.0036568199948745547\n\n\ndef predict_variant(target_ctrl, ref_ctrl, ref_diff,\n                    temperature=0.07,\n                    base_up_pow=0.75, slope_up_pow=-0.60,\n                    base_down_pow=1.40, slope_down_pow=-0.75,\n                    ratio_clip_max=60.0, up_shrink=0.5, down_shrink=0.0,\n                    quantile_source='ref'):\n    \\\"\\\"\\\"quantile_source: 'ref' (v29), 'target', or 'avg' (blend)\\\"\\\"\\\"\n    n_ct = ref_ctrl.shape[0]\n    n_genes = ref_ctrl.shape[1]\n    corrs = np.zeros(n_ct)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl, ref_ctrl[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n    ref_ctrl_w = (weights.reshape(-1,1) * ref_ctrl).sum(axis=0)\n    ref_diff_w = (weights.reshape(-1,1) * ref_diff).sum(axis=0)\n    \n    w = weights.reshape(-1, 1)\n    wmean = (w * ref_diff).sum(axis=0)\n    wvar = (w * (ref_diff - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(ref_diff)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n    shrink = np.ones_like(w_ratio)\n    up_m = ref_diff_w > 0\n    down_m = ref_diff_w < 0\n    shrink[up_m] = 1.0 / (1.0 + up_shrink * w_ratio[up_m])\n    shrink[down_m] = 1.0 / (1.0 + down_shrink * w_ratio[down_m])\n    ref_diff_w = ref_diff_w * shrink\n    \n    ratio = np.where(ref_ctrl_w > 1e-8, target_ctrl / np.maximum(ref_ctrl_w, 1e-8), 1.0)\n    ratio = np.clip(ratio, 1.0/ratio_clip_max, ratio_clip_max)\n    \n    # Choose quantile source\n    if quantile_source == 'ref':\n        qvec = ref_ctrl_w\n    elif quantile_source == 'target':\n        qvec = target_ctrl\n    elif quantile_source == 'avg':\n        qvec = 0.5 * ref_ctrl_w + 0.5 * target_ctrl\n    elif quantile_source.startswith('blend'):\n        alpha = float(quantile_source.split('_')[1])\n        qvec = alpha * target_ctrl + (1 - alpha) * ref_ctrl_w\n    else:\n        raise ValueError(f\\\"Unknown quantile_source: {quantile_source}\\\")\n    \n    sorted_vals = np.sort(qvec)\n    ranks = np.searchsorted(sorted_vals, qvec)\n    quantile = ranks / (n_genes - 1)\n    \n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n    down_pow_gene = base_down_pow + slope_down_pow * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n    \n    up_mask = ref_diff_w > 0\n    down_mask = ref_diff_w < 0\n    scaled_diff = np.zeros_like(ref_diff_w)\n    scaled_diff[up_mask] = ref_diff_w[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff_w[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n    \n    pred = target_ctrl + scaled_diff\n    return np.clip(pred, 0, 1)\n\n\ndef mse_from_pred(pred_scaled, true_stim_scaled, n_c):\n    pred_mat = np.tile(pred_scaled.reshape(1, -1), (n_c, 1))\n    pred_unscaled = scaler.inverse_transform(pred_mat)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n    pred_mean = pred_unscaled.mean(axis=0)\n    \n    true_mat = np.tile(true_stim_scaled.reshape(1, -1), (n_c, 1))\n    true_unscaled = scaler.inverse_transform(true_mat)\n    true_mean = true_unscaled.mean(axis=0)\n    \n    return mean_squared_error(true_mean, pred_mean)\n\n\ndef loo_eval(params, label):\n    mses = []\n    for test_i in range(len(cell_types)):\n        ref_ctrl = np.delete(ctrl_means, test_i, axis=0)\n        ref_diff = np.delete(stim_diffs, test_i, axis=0)\n        target_ctrl = ctrl_means[test_i]\n        true_stim_scaled = stim_means[test_i]\n        pred_scaled = predict_variant(target_ctrl, ref_ctrl, ref_diff, **params)\n        mse = mse_from_pred(pred_scaled, true_stim_scaled, max(n_cells_stim[test_i], 1))\n        mses.append(mse)\n    avg = np.mean(mses)\n    print(f\\\"  {label}: avg MSE={avg:.6f}, Score={((B-avg)/B):.4f}\\\")\n    return avg, mses\n\n\n# Dev evaluation\ndev_ctrl_dense = to_dense(dev_ctrl.X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_dense)\ndev_ctrl_mean = dev_ctrl_scaled.mean(axis=0)\ndev_stim_dense = to_dense(dev_stim.X)\ndev_stim_scaled = scaler.transform(dev_stim_dense)\ndev_stim_mean = dev_stim_scaled.mean(axis=0)\n\ndef dev_eval(params, label):\n    pred_scaled = predict_variant(dev_ctrl_mean, ctrl_means, stim_diffs, **params)\n    mse = mse_from_pred(pred_scaled, dev_stim_mean, 810)\n    print(f\\\"  {label}: Dev MSE={mse:.6f}, Score={((B-mse)/B):.4f}\\\")\n    return mse\n\n\nbase_params = dict(temperature=0.07, base_up_pow=0.75, slope_up_pow=-0.60,\n                   base_down_pow=1.40, slope_down_pow=-0.75,\n                   up_shrink=0.5, down_shrink=0.0)\n\nprint(\\\"=== LOO Cross-Validation ===\\\")\nprint()\np = dict(base_params, quantile_source='ref')\nloo_eval(p, \\\"v29 ref quantiles\\\")\n\np = dict(base_params, quantile_source='target')\nloo_eval(p, \\\"v33 target quantiles\\\")\n\np = dict(base_params, quantile_source='avg')\nloo_eval(p, \\\"v33b avg quantiles\\\")\n\np = dict(base_params, quantile_source='blend_0.25')\nloo_eval(p, \\\"v33c blend 0.25 target\\\")\n\np = dict(base_params, quantile_source='blend_0.5')\nloo_eval(p, \\\"v33d blend 0.5 target\\\")\n\np = dict(base_params, quantile_source='blend_0.75')\nloo_eval(p, \\\"v33e blend 0.75 target\\\")\n\nprint()\nprint(\\\"=== Dev Set Evaluation ===\\\")\nprint()\np = dict(base_params, quantile_source='ref')\ndev_eval(p, \\\"v29 ref quantiles\\\")\n\np = dict(base_params, quantile_source='target')\ndev_eval(p, \\\"v33 target quantiles\\\")\n\np = dict(base_params, quantile_source='avg')\ndev_eval(p, \\\"v33b avg quantiles\\\")\n\np = dict(base_params, quantile_source='blend_0.25')\ndev_eval(p, \\\"v33c blend 0.25 target\\\")\n\np = dict(base_params, quantile_source='blend_0.5')\ndev_eval(p, \\\"v33d blend 0.5 target\\\")\n\np = dict(base_params, quantile_source='blend_0.75')\ndev_eval(p, \\\"v33e blend 0.75 target\\\")\nPYEOF\n/opt/runtime/bin/python /workspace/solution/exp_target_quantile.py\"",
+      "original_command_sha256": "f7126be1a5a03cb8daba0027ac154a00d29162fb119ad788fa8e98baf4204a8f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8381bf12212eb0055b823813aac46bfaf83872c93bfffe54a8fed680eff1af82",
+      "output_characters": 725
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/exp_sep_quantile.py << 'PYEOF'\n\\\"\\\"\\\"Experiment: separate quantiles for up vs down genes.\n\nHypothesis: power should depend on rank within the up-regulated or\ndown-regulated gene set, not all 2000 genes (most of which are\nnear-zero and not differentially expressed).\n\\\"\\\"\\\"\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import mean_squared_error\n\ndef to_dense(arr):\n    if hasattr(arr, 'toarray'):\n        return np.asarray(arr.toarray(), dtype=np.float64)\n    return np.asarray(arr, dtype=np.float64)\n\ntrain = sc.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_stim = sc.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ncell_types = sorted(train.obs['cell_type'].unique())\nn_genes = train.shape[1]\n\ntrain_dense = to_dense(train.X)\nscaler = MaxAbsScaler()\ntrain_scaled = scaler.fit_transform(train_dense)\n\nctrl_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nstim_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nn_cells_stim = np.zeros(len(cell_types), dtype=int)\n\nfor i, ct in enumerate(cell_types):\n    mask_ct = (train.obs['cell_type'] == ct).values\n    ctrl_mask = mask_ct & (train.obs['condition'] == 'control').values\n    stim_mask = mask_ct & (train.obs['condition'] == 'stimulated').values\n    ctrl_means[i] = train_scaled[ctrl_mask].mean(axis=0)\n    stim_means[i] = train_scaled[stim_mask].mean(axis=0)\n    n_cells_stim[i] = stim_mask.sum()\n\nstim_diffs = stim_means - ctrl_means\nB = 0.0036568199948745547\n\n\ndef compute_quantiles(vals):\n    n = len(vals)\n    sv = np.sort(vals)\n    rk = np.searchsorted(sv, vals)\n    return rk / max(n - 1, 1)\n\n\ndef predict_variant(target_ctrl, ref_ctrl, ref_diff,\n                    temperature=0.07,\n                    base_up_pow=0.75, slope_up_pow=-0.60,\n                    base_down_pow=1.40, slope_down_pow=-0.75,\n                    ratio_clip_max=60.0, up_shrink=0.5, down_shrink=0.0,\n                    q_mode='global'):\n    \\\"\\\"\\\"q_mode: 'global' (v29), 'separate' (per-direction), or 'signif' (by magnitude of diff)\\\"\\\"\\\"\n    n_ct = ref_ctrl.shape[0]\n    n_genes = ref_ctrl.shape[1]\n    corrs = np.zeros(n_ct)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl, ref_ctrl[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n    ref_ctrl_w = (weights.reshape(-1,1) * ref_ctrl).sum(axis=0)\n    ref_diff_w = (weights.reshape(-1,1) * ref_diff).sum(axis=0)\n    \n    w = weights.reshape(-1, 1)\n    wmean = (w * ref_diff).sum(axis=0)\n    wvar = (w * (ref_diff - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(ref_diff)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n    shrink = np.ones_like(w_ratio)\n    up_m = ref_diff_w > 0\n    down_m = ref_diff_w < 0\n    shrink[up_m] = 1.0 / (1.0 + up_shrink * w_ratio[up_m])\n    shrink[down_m] = 1.0 / (1.0 + down_shrink * w_ratio[down_m])\n    ref_diff_w = ref_diff_w * shrink\n    \n    ratio = np.where(ref_ctrl_w > 1e-8, target_ctrl / np.maximum(ref_ctrl_w, 1e-8), 1.0)\n    ratio = np.clip(ratio, 1.0/ratio_clip_max, ratio_clip_max)\n    \n    # Quantile computation\n    if q_mode == 'global':\n        quantile = compute_quantiles(ref_ctrl_w)\n        up_q = quantile\n        down_q = quantile\n    elif q_mode == 'separate':\n        # Quantile of ref_ctrl within up genes only, and within down genes only\n        up_q = np.zeros(n_genes)\n        down_q = np.zeros(n_genes)\n        if up_m.sum() > 1:\n            up_q[up_m] = compute_quantiles(ref_ctrl_w[up_m])\n        if down_m.sum() > 1:\n            down_q[down_m] = compute_quantiles(ref_ctrl_w[down_m])\n    elif q_mode == 'separate_target':\n        # Quantile of target_ctrl within up/down gene sets\n        up_q = np.zeros(n_genes)\n        down_q = np.zeros(n_genes)\n        if up_m.sum() > 1:\n            up_q[up_m] = compute_quantiles(target_ctrl[up_m])\n        if down_m.sum() > 1:\n            down_q[down_m] = compute_quantiles(target_ctrl[down_m])\n    elif q_mode == 'diff_magnitude':\n        # Quantile by magnitude of stim diff (separate for up/down)\n        up_q = np.zeros(n_genes)\n        down_q = np.zeros(n_genes)\n        if up_m.sum() > 1:\n            up_q[up_m] = compute_quantiles(ref_diff_w[up_m])\n        if down_m.sum() > 1:\n            down_q[down_m] = compute_quantiles(-ref_diff_w[down_m])\n    else:\n        raise ValueError(f\\\"Unknown q_mode: {q_mode}\\\")\n    \n    up_pow_gene = base_up_pow + slope_up_pow * up_q\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n    down_pow_gene = base_down_pow + slope_down_pow * down_q\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n    \n    up_mask = ref_diff_w > 0\n    down_mask = ref_diff_w < 0\n    scaled_diff = np.zeros_like(ref_diff_w)\n    scaled_diff[up_mask] = ref_diff_w[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff_w[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n    \n    pred = target_ctrl + scaled_diff\n    return np.clip(pred, 0, 1)\n\n\ndef mse_from_pred(pred_scaled, true_stim_scaled, n_c):\n    pred_mat = np.tile(pred_scaled.reshape(1, -1), (n_c, 1))\n    pred_unscaled = scaler.inverse_transform(pred_mat)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n    pred_mean = pred_unscaled.mean(axis=0)\n    \n    true_mat = np.tile(true_stim_scaled.reshape(1, -1), (n_c, 1))\n    true_unscaled = scaler.inverse_transform(true_mat)\n    true_mean = true_unscaled.mean(axis=0)\n    \n    return mean_squared_error(true_mean, pred_mean)\n\n\ndef loo_eval(params, label):\n    mses = []\n    for test_i in range(len(cell_types)):\n        ref_ctrl = np.delete(ctrl_means, test_i, axis=0)\n        ref_diff = np.delete(stim_diffs, test_i, axis=0)\n        target_ctrl = ctrl_means[test_i]\n        true_stim_scaled = stim_means[test_i]\n        pred_scaled = predict_variant(target_ctrl, ref_ctrl, ref_diff, **params)\n        mse = mse_from_pred(pred_scaled, true_stim_scaled, max(n_cells_stim[test_i], 1))\n        mses.append(mse)\n    avg = np.mean(mses)\n    print(f\\\"  {label}: avg MSE={avg:.6f}, Score={((B-avg)/B):.4f}\\\")\n    return avg, mses\n\n\ndev_ctrl_dense = to_dense(dev_ctrl.X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_dense)\ndev_ctrl_mean = dev_ctrl_scaled.mean(axis=0)\ndev_stim_dense = to_dense(dev_stim.X)\ndev_stim_scaled = scaler.transform(dev_stim_dense)\ndev_stim_mean = dev_stim_scaled.mean(axis=0)\n\ndef dev_eval(params, label):\n    pred_scaled = predict_variant(dev_ctrl_mean, ctrl_means, stim_diffs, **params)\n    mse = mse_from_pred(pred_scaled, dev_stim_mean, 810)\n    print(f\\\"  {label}: Dev MSE={mse:.6f}, Score={((B-mse)/B):.4f}\\\")\n    return mse\n\n\nbase_params = dict(temperature=0.07, base_up_pow=0.75, slope_up_pow=-0.60,\n                   base_down_pow=1.40, slope_down_pow=-0.75,\n                   up_shrink=0.5, down_shrink=0.0)\n\nprint(\\\"=== LOO Cross-Validation ===\\\")\nprint()\nfor mode in ['global', 'separate', 'separate_target', 'diff_magnitude']:\n    loo_eval(dict(base_params, q_mode=mode), f\\\"q_mode={mode:20s}\\\")\n\nprint()\nprint(\\\"=== Dev Set Evaluation ===\\\")\nprint()\nfor mode in ['global', 'separate', 'separate_target', 'diff_magnitude']:\n    dev_eval(dict(base_params, q_mode=mode), f\\\"q_mode={mode:20s}\\\")\nPYEOF\n/opt/runtime/bin/python /workspace/solution/exp_sep_quantile.py\"",
+      "original_command_sha256": "23b0b7a5adda86f223e4a901395ab26d141ba55493798b3d75f6759b580dfa74",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "9fe22a2fc00801ad7e770e2f50195f19a82b40ebc618f2c212c8496b9ee7f325",
+      "output_characters": 559
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/exp_shrink_sweep.py << 'PYEOF'\n\\\"\\\"\\\"Sweep shrinkage + temperature in LOO and Dev.\\\"\\\"\\\"\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import mean_squared_error\n\ndef to_dense(arr):\n    if hasattr(arr, 'toarray'):\n        return np.asarray(arr.toarray(), dtype=np.float64)\n    return np.asarray(arr, dtype=np.float64)\n\ntrain = sc.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_stim = sc.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ncell_types = sorted(train.obs['cell_type'].unique())\nn_genes = train.shape[1]\n\ntrain_dense = to_dense(train.X)\nscaler = MaxAbsScaler()\ntrain_scaled = scaler.fit_transform(train_dense)\n\nctrl_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nstim_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nn_cells_stim = np.zeros(len(cell_types), dtype=int)\n\nfor i, ct in enumerate(cell_types):\n    mask_ct = (train.obs['cell_type'] == ct).values\n    ctrl_mask = mask_ct & (train.obs['condition'] == 'control').values\n    stim_mask = mask_ct & (train.obs['condition'] == 'stimulated').values\n    ctrl_means[i] = train_scaled[ctrl_mask].mean(axis=0)\n    stim_means[i] = train_scaled[stim_mask].mean(axis=0)\n    n_cells_stim[i] = stim_mask.sum()\n\nstim_diffs = stim_means - ctrl_means\nB = 0.0036568199948745547\n\n\ndef predict_v29(target_ctrl, ref_ctrl, ref_diff,\n                temperature=0.07,\n                base_up_pow=0.75, slope_up_pow=-0.60,\n                base_down_pow=1.40, slope_down_pow=-0.75,\n                ratio_clip_max=60.0, up_shrink=0.5, down_shrink=0.0):\n    n_ct = ref_ctrl.shape[0]\n    n_genes = ref_ctrl.shape[1]\n    corrs = np.zeros(n_ct)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl, ref_ctrl[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n    ref_ctrl_w = (weights.reshape(-1,1) * ref_ctrl).sum(axis=0)\n    ref_diff_w = (weights.reshape(-1,1) * ref_diff).sum(axis=0)\n    \n    w = weights.reshape(-1, 1)\n    wmean = (w * ref_diff).sum(axis=0)\n    wvar = (w * (ref_diff - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(ref_diff)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n    shrink = np.ones_like(w_ratio)\n    up_m = ref_diff_w > 0\n    down_m = ref_diff_w < 0\n    shrink[up_m] = 1.0 / (1.0 + up_shrink * w_ratio[up_m])\n    shrink[down_m] = 1.0 / (1.0 + down_shrink * w_ratio[down_m])\n    ref_diff_w = ref_diff_w * shrink\n    \n    ratio = np.where(ref_ctrl_w > 1e-8, target_ctrl / np.maximum(ref_ctrl_w, 1e-8), 1.0)\n    ratio = np.clip(ratio, 1.0/ratio_clip_max, ratio_clip_max)\n    \n    sorted_vals = np.sort(ref_ctrl_w)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl_w)\n    quantile = ranks / (n_genes - 1)\n    \n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n    down_pow_gene = base_down_pow + slope_down_pow * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n    \n    up_mask = ref_diff_w > 0\n    down_mask = ref_diff_w < 0\n    scaled_diff = np.zeros_like(ref_diff_w)\n    scaled_diff[up_mask] = ref_diff_w[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff_w[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n    \n    pred = target_ctrl + scaled_diff\n    return np.clip(pred, 0, 1)\n\n\ndef mse_from_pred(pred_scaled, true_stim_scaled, n_c):\n    pred_mat = np.tile(pred_scaled.reshape(1, -1), (n_c, 1))\n    pred_unscaled = scaler.inverse_transform(pred_mat)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n    pred_mean = pred_unscaled.mean(axis=0)\n    \n    true_mat = np.tile(true_stim_scaled.reshape(1, -1), (n_c, 1))\n    true_unscaled = scaler.inverse_transform(true_mat)\n    true_mean = true_unscaled.mean(axis=0)\n    \n    return mean_squared_error(true_mean, pred_mean)\n\n\ndef loo_mse(params):\n    mses = []\n    for test_i in range(len(cell_types)):\n        ref_ctrl = np.delete(ctrl_means, test_i, axis=0)\n        ref_diff = np.delete(stim_diffs, test_i, axis=0)\n        target_ctrl = ctrl_means[test_i]\n        true_stim_scaled = stim_means[test_i]\n        pred_scaled = predict_v29(target_ctrl, ref_ctrl, ref_diff, **params)\n        mse = mse_from_pred(pred_scaled, true_stim_scaled, max(n_cells_stim[test_i], 1))\n        mses.append(mse)\n    return np.mean(mses)\n\n\ndev_ctrl_dense = to_dense(dev_ctrl.X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_dense)\ndev_ctrl_mean = dev_ctrl_scaled.mean(axis=0)\ndev_stim_dense = to_dense(dev_stim.X)\ndev_stim_scaled = scaler.transform(dev_stim_dense)\ndev_stim_mean = dev_stim_scaled.mean(axis=0)\n\ndef dev_mse(params):\n    pred_scaled = predict_v29(dev_ctrl_mean, ctrl_means, stim_diffs, **params)\n    return mse_from_pred(pred_scaled, dev_stim_mean, 810)\n\n\n# Sweep: temperature vs up_shrink\nprint(\\\"=== Temperature x up_shrink sweep ===\\\")\nprint(f\\\"{'temp':>6s} {'up_sh':>6s} {'dn_sh':>6s} {'LOO MSE':>10s} {'Dev MSE':>10s} {'Dev Score':>10s}\\\")\nbest_dev = 1e9\nbest_loo = 1e9\nbest_dev_cfg = None\nbest_loo_cfg = None\n\nfor temp in [0.03, 0.05, 0.07, 0.10, 0.15, 0.20]:\n    for up_sh in [0.0, 0.2, 0.35, 0.5, 0.7, 1.0, 1.5, 2.0]:\n        for dn_sh in [0.0, 0.2, 0.5, 1.0]:\n            p = dict(temperature=temp, base_up_pow=0.75, slope_up_pow=-0.60,\n                     base_down_pow=1.40, slope_down_pow=-0.75,\n                     up_shrink=up_sh, down_shrink=dn_sh)\n            lm = loo_mse(p)\n            dm = dev_mse(p)\n            if dm < best_dev:\n                best_dev = dm\n                best_dev_cfg = p\n            if lm < best_loo:\n                best_loo = lm\n                best_loo_cfg = p\n            if abs(dm - 0.002439) < 0.0001 or abs(lm - 0.008173) < 0.0001:\n                sc = (B - dm) / B\n                print(f\\\"{temp:6.3f} {up_sh:6.2f} {dn_sh:6.2f} {lm:10.6f} {dm:10.6f} {sc:10.4f}\\\")\n\nprint()\nprint(f\\\"Best Dev: MSE={best_dev:.6f}, Score={((B-best_dev)/B):.4f}\\\")\nprint(f\\\"  Config: {best_dev_cfg}\\\")\nprint(f\\\"Best LOO: MSE={best_loo:.6f}\\\")\nprint(f\\\"  Config: {best_loo_cfg}\\\")\n\n# v29 reference\nv29_p = dict(temperature=0.07, base_up_pow=0.75, slope_up_pow=-0.60,\n             base_down_pow=1.40, slope_down_pow=-0.75,\n             up_shrink=0.5, down_shrink=0.0)\nprint(f\\\"\\\\nv29 ref: LOO={loo_mse(v29_p):.6f}, Dev={dev_mse(v29_p):.6f}\\\")\nPYEOF\n/opt/runtime/bin/python /workspace/solution/exp_shrink_sweep.py\"",
+      "original_command_sha256": "a21a95e3ebca94bb2ee367814a41535b4e01bf72e283b7d0f94a0924ffdf909d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "1401630a08bb6a55daf5b33e475b704ae53f00608a316872f7ffb14a304bc60c",
+      "output_characters": 2777
+    },
+    {
+      "id": "item_14",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py | head -100'",
+      "original_command_sha256": "62ee4113ac6e909e4d795a1c3f3c47c5a60fbb038717383837e85d33637cac97",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "0c68f22d1aae365b1feee11abfb488663bd6434309ee5f10385ad661ccabdc0c",
+      "output_characters": 3279
+    },
+    {
+      "id": "item_15",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md 2>/dev/null | tail -80'",
+      "original_command_sha256": "9f2ca4cf73a317659a3aaeef4e016dd5fa94fdcf2a52e40cf824a075494e2f87",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b017c014b2b21b019bbbf72316e0818192c26fc1339aac1e908e65b6f26dd745",
+      "output_characters": 2297
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json 2>/dev/null | head -30'",
+      "original_command_sha256": "7842b6c2099cfa4935562bb758c0d88e86426913bf6dd2123fec3654d7576453",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ea61a0ffafd78ee7f72f08ec534ee89a610523791b03a6da9eec85c088551fce",
+      "output_characters": 613
+    },
+    {
+      "id": "item_20",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py | tail -120'",
+      "original_command_sha256": "887f1935a2a809005d59908c57f507782260d7b253f10cf818a26497655be100",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a327e808c8eb95d34a7f26e0a9d35b6fbeac7835134504b51ac32d850ca20e13",
+      "output_characters": 4440
+    },
+    {
+      "id": "item_19",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json 2>/dev/null'",
+      "original_command_sha256": "02748ab15fc707167b344b85761b9da99a3130ce1eccc40908f49f0f02cb59a5",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "acb14b93b0871cf93acab1db99dd0b8fce37e2985139b7cbb7f1f81610c7f9de",
+      "output_characters": 3107
+    },
+    {
+      "id": "item_18",
+      "command": "/bin/sh -lc 'wc -l /workspace/solution/method.py'",
+      "original_command_sha256": "ccf824f7e70b2e0929a2059662e4b9ca5dedc0abe86357cdd95461da4ecff8cf",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a10a0db5949bf9180441008dfe80b9c9f1e7206bf6c5f089d950cef02be2fe30",
+      "output_characters": 34
+    },
+    {
+      "id": "item_21",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "909513ebef6ad29fc4fae1885dc1b869ba7bdbc3afdf96f861252a4208edcd7e",
+      "output_characters": 3937
+    },
+    {
+      "id": "item_23",
+      "command": "/bin/sh -lc 'cat /workspace/solution/exp_shrink_sweep.py'",
+      "original_command_sha256": "2bdf12a1dc3997dc3c49965b01cebaba2b5b5e71c2ffae0fc50fdc3ea76975c7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "9f68ccacc490311fc44ef2712b84fffff955d20fee2b1d0b91a71d4ed543f388",
+      "output_characters": 6473
+    },
+    {
+      "id": "item_25",
+      "command": "/bin/sh -lc 'cd /workspace/solution && /opt/runtime/bin/python exp_shrink_sweep.py 2>&1 | tail -30'",
+      "original_command_sha256": "7de91f5c813b074e1b249ccb71e3074d2d6e483b4df8b37f71e4d8f86b577898",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e54dfde3168af850dd6c0322e18ea9f0f30609fa5041fb70ef7178b585c79354",
+      "output_characters": 1659
+    },
+    {
+      "id": "item_27",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v29_best_confirmed.py'",
+      "original_command_sha256": "5b720e381da448357ba8eb0b3959910206b8964cd515d21420afe068d505679f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_29",
+      "command": "/bin/sh -lc \"cd /workspace/solution && sed 's/\"'^TEMPERATURE = 0.07/TEMPERATURE = 0.10/'\"' method.py > method_v30_temp010.py && cp method_v30_temp010.py method.py\"",
+      "original_command_sha256": "d757a124030cb302500f5b66137770cfef94ca08c29b7c3529dd87f638a8628d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_30",
+      "command": "/bin/sh -lc 'head -15 /workspace/solution/method.py'",
+      "original_command_sha256": "50a5304bb80959caf17549c2404a3f446675c96d0992dd7a8cbc7035047d22c8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ec4314601f53be194f69d26e258f2a9f4d017472b86c07178728b947b104f28b",
+      "output_characters": 392
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 26249795,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 785855,
+        "reasoning_output_tokens": 94114
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

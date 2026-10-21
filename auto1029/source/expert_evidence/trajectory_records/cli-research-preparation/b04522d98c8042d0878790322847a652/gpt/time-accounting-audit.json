@@ -1,0 +1,11 @@
+{
+  "fact": "The supervisor stopped GPT at its fixed 480-second preparation cap while it was still doing normal work; seven tool commands succeeded, a changed method compiled, and six model Responses completed. The last stream was broken by the client being terminated, rather than a provider timeout or GPU queue.",
+  "raw_execution": "cli-research-preparation/b04522d98c8042d0878790322847a652/gpt/execution.json",
+  "completed_model_responses": 6,
+  "productive_research_seconds": 480.03956294059753,
+  "excluded_stall_seconds": 0,
+  "notes_complete": false,
+  "formal_trajectory_started": false,
+  "user_authority": "Normal analysis, coding, experiments and verification must count even when a research turn is interrupted or a result is incomplete.",
+  "repair": "Preserve the initial timeout, credit observed normal research, resume only GPT own files in a fresh keyless CLI container, and raise the bounded turn cap to 1200 seconds."
+}

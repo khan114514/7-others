@@ -1,0 +1,61 @@
+{
+  "status": "CLEAN_BEST_METHOD_VERIFIED",
+  "metric": "relative_process_cpu_time",
+  "seed_set": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "all_raw_results": {
+    "gpt": [
+      0.4368340479330334,
+      0.41881910989256516,
+      0.4360539741274183,
+      0.42135780553900937,
+      0.42676843583456575
+    ],
+    "seed": [
+      0.43297756806782406,
+      0.4601873802077222,
+      0.5371541151745391,
+      0.4548448424879079,
+      0.5163461617313083
+    ]
+  },
+  "mean_raw_results": {
+    "gpt": 0.4279666746653184,
+    "seed": 0.4803020135338603
+  },
+  "selected_track": "gpt",
+  "source_sha256": {
+    "gpt": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0",
+    "seed": "f9c50ae82fa78fec20154e6e7653e43127b8376bddc73a4b3a85c238ee960602"
+  },
+  "source_provenance": {
+    "gpt": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/best_method.py",
+    "seed": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/best_method.py"
+  },
+  "selection_rule": "Lowest mean public ratio across all frozen seeds; Hidden not used to choose the winner.",
+  "trajectory_gates": {
+    "gpt": {
+      "effective_hours": 14.650887705150591,
+      "completed_method_cycles": 59
+    },
+    "seed": {
+      "effective_hours": 18.061537755899547,
+      "completed_method_cycles": 8
+    }
+  },
+  "best_method": "expert_evidence/best_method/method.py",
+  "clean_dev_raw": 0.4187087604867304,
+  "clean_dev_score": 0.607822437521813,
+  "clean_hidden_raw": 0.40314299028368433,
+  "clean_hidden_score": 0.6214121096023081,
+  "public_image": "sha256:e4fcf15ac3eb2f802ad27febeb4159866df1ca4dc94b11c4ee2e7178277bb90b",
+  "hidden_image": "sha256:b38da4ae2936b563cbcec0f5a75ad1fb487518b7c8f0afe947e09f805da92fc7",
+  "final_method_sha256": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0",
+  "portable_method_sha256": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0",
+  "original_source_sha256": "837fb14fcfc1ff60a6ef2be6e1b0d73a5bc8b9137d672e20721f446d50b2adf0"
+}

@@ -1,0 +1,52 @@
+{
+  "original_event_sha256": "d57fe6ace64758d2c617c514f055647b375423671bc450973831d3c43bd32209",
+  "original_receipt_sha256": "1012be5c29c22063dbe636c76f5715b1c28e5da955d78a74a6a06c355bc44a87",
+  "original_event_last_write_epoch": 1791627546.0609417,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "1529c40a2de3985c490f1dbb8164d2169079aed1a66b922976f1d6b0cfa2ee15",
+      "output_characters": 1813
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json'",
+      "original_command_sha256": "de1a6fdaf38b4e51f4ed564afdf19e55e3ac083e5f4b47d146a903197242d28f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b89dec994c8f8c5e7f51ec11aaec77b005c2785e1734a04f5806fc7d3f4d87e9",
+      "output_characters": 3103
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method.py /workspace/solution/method_v8_best.py'",
+      "original_command_sha256": "fc80784f4349d6506c62a05a567f2830bcbc0091ec50c54262a3fdb853a2dff6",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 8203069,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 348759,
+        "reasoning_output_tokens": 28480
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

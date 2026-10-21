@@ -1,0 +1,65 @@
+{
+  "status": "ACTUAL_CURRENT_PUBLIC_MODEL_METHOD_SCORE_DECISION_LOOP_COMPLETED",
+  "track": "seed",
+  "round": 1,
+  "model": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "source_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c",
+  "job_id": "ac0a9b573f454d4d927af858dad4ebe8",
+  "result": {
+    "job_id": "ac0a9b573f454d4d927af858dad4ebe8",
+    "scope": "dd-final-track-seed-calibration",
+    "status": "SUCCESS",
+    "returncode": 0,
+    "finished_unix": 1791256165.7016556,
+    "method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c",
+    "run_id": "run-66363f0280074de3a5b6dbf607fd3ade",
+    "protocol": "dd-selfproto-v1.3",
+    "kind": "CALIBRATION",
+    "metric": 10.126636628087738,
+    "sample_count": 50000,
+    "checkpoint_sha256": "0fb4df696934f252bbeb3eda0ccd4f40436ab5b6836c403450b1106d28a0aea9",
+    "sample_manifest_sha256": "93c31c28036137f037232d4e98e78079e4cf8a3b38758e433de1c81b7ab82bde",
+    "teacher_and_training_seconds": 393.4369866847992,
+    "teacher_seed": 1001,
+    "training_seed": 2001,
+    "evaluation_seed": 0,
+    "frozen_manifest_sha256": "b366ba329b015bbae3f6d2027d9004c3aea71f6116b3d84e1fab0927af0b0924",
+    "evaluation_recovery": true,
+    "original_failure_preserved": true,
+    "original_checkpoint_reused": true
+  },
+  "archive": {
+    "status": "ALL_ORIGINAL_RUN_FILE_BYTES_ARCHIVED_AND_VERIFIED",
+    "run_id": "run-66363f0280074de3a5b6dbf607fd3ade",
+    "observed_utc": "2026-10-06T03:16:19.622226+00:00",
+    "archive_sha256": "b1cd5a2e44f3435c78e81140efaa07f574b1a2e4faac63a4b025c9cf4b4b61c1",
+    "archive_bytes": 4939796480,
+    "verified_files": 178,
+    "large_files": [
+      {
+        "path": "training/checkpoint.pth",
+        "bytes": 2625476334,
+        "sha256": "0fb4df696934f252bbeb3eda0ccd4f40436ab5b6836c403450b1106d28a0aea9",
+        "local_archive_member": "run-66363f0280074de3a5b6dbf607fd3ade/training/checkpoint.pth"
+      },
+      {
+        "path": "training/training_state.pth.exactzip",
+        "bytes": 2169519383,
+        "sha256": "8daa62dba2df1847213f84f6cc60ee8610c9b09668220abf915686cd33278b1e",
+        "local_archive_member": "run-66363f0280074de3a5b6dbf607fd3ade/training/training_state.pth.exactzip"
+      }
+    ]
+  },
+  "cli_receipts": [
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/seed/03-prepare-r01/receipt.json",
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/seed/r01-review-recovery-20261006/receipt.json",
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/seed/r01-analysis-correction-20261006/receipt.json"
+  ],
+  "protocol": "dd-selfproto-v1.3",
+  "original_infrastructure_failure_preserved": true,
+  "training_repeated": false,
+  "post_repeated": false,
+  "not_native_harbor_atif": true,
+  "qa_pass_claimed": false
+}

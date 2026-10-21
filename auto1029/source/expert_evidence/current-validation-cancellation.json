@@ -1,0 +1,77 @@
+{
+  "runtime_status": "INCOMPLETE_CANCELLED_BY_USER",
+  "current_full_private_validation_passed": false,
+  "current_full_native_reward_available": false,
+  "cancelled_runs": {
+    "primary": {
+      "job_id": "475ed80ed687433a9cfa06dafc77192c",
+      "phase": "CANCELLED_BY_USER_INCOMPLETE",
+      "last_observed_seed": 29,
+      "last_observed_questions_in_seed": 130,
+      "completed_seed_17_questions": 1380,
+      "full_required_pairs": 6900,
+      "full_private_score": null,
+      "full_native_reward": null,
+      "complete_private_protocol": false,
+      "GPU_worker_stopped": true,
+      "raw_private_results_preserved": true,
+      "original_cancellation_receipt_sha256": "fbcfcca3393a246eec459244d0c48a27d8226de91c9a63b3ee903db458ecb5a6",
+      "original_stop_verification_sha256": "5339058e675122d0545fa5fa6483b60639e5553be233b9818944a14606aa37a1"
+    },
+    "best": {
+      "job_id": "8242d74be4c94c00b4b18bcc181b83bb",
+      "phase": "CANCELLED_BY_USER_INCOMPLETE",
+      "last_observed_seed": 29,
+      "last_observed_questions_in_seed": 226,
+      "completed_seed_17_questions": 1380,
+      "full_required_pairs": 6900,
+      "full_private_score": null,
+      "full_native_reward": null,
+      "complete_private_protocol": false,
+      "GPU_worker_stopped": true,
+      "raw_private_results_preserved": true,
+      "original_cancellation_receipt_sha256": "68b4f4d294dc0bbdaf7dcc2d2206690f4da84afaa56d456337e70a262362b93b",
+      "original_stop_verification_sha256": "d4f1bb332ec5db7a0ec18831a2b64cfbfc09c44ea51c1d9d3614c5e7452ec739"
+    }
+  },
+  "historical_evidence_scopes": [
+    {
+      "folder": "expert_evidence/native_harbor/final-portable-nop/72b966a062264f9687f82919b6312c49",
+      "scope": "Original completed evidence; not assigned to cancelled current trials",
+      "task_exact_match_current": false,
+      "task_manifest_differences": [
+        "environment/grade.py",
+        "tests/grade.py"
+      ]
+    },
+    {
+      "folder": "expert_evidence/native_harbor/final-portable-reference/f2a56ae8ffdb47548d1f1d523ef37a9d",
+      "scope": "Original completed evidence; not assigned to cancelled current trials",
+      "task_exact_match_current": false,
+      "task_manifest_differences": [
+        "environment/evaluate.py",
+        "environment/grade.py",
+        "environment/instruction.md",
+        "instruction.md",
+        "tests/grade.py"
+      ]
+    },
+    {
+      "folder": "expert_evidence/native_harbor/final-clean/772cc84b6ace4ec4b376af870192e5e7",
+      "scope": "Original completed evidence; not assigned to cancelled current trials",
+      "task_exact_match_current": false,
+      "task_manifest_differences": [
+        "environment/grade.py",
+        "tests/grade.py"
+      ]
+    },
+    {
+      "folder": "expert_evidence/private_validation/final-full/4c193d320fe74d6ca8fc96953da5262a",
+      "scope": "Original completed evidence; not assigned to cancelled current trials"
+    }
+  ],
+  "historical_scores_reassigned_to_current": false,
+  "new_GPU_validation_authorized": true,
+  "scope": "Only the original two cancelled tickets; current separate NOP is recorded elsewhere",
+  "current_separate_NOP_evidence": "native_harbor/current-nop/"
+}

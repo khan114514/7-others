@@ -1,0 +1,28 @@
+{
+  "track": "codex",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "xhigh",
+  "completed_current_rounds": 2,
+  "historical_effective_seconds_lower_bound": 36431.318982,
+  "current_completed_research_cli_wall_seconds": 1047.178266563009,
+  "current_successful_teacher_and_training_seconds": 653.2071454524994,
+  "observed_completed_model_cli_seconds": 1047.178266563009,
+  "counted_current_cli_seconds_for_conservative_lower_bound": 0,
+  "new_effective_research_seconds_conservative_lower_bound": 653.2071454524994,
+  "overall_effective_research_seconds_lower_bound": 37084.5261274525,
+  "excluded": "Container sleep, queue/poll/wait, probes, setup, infra repair/replay, CLI failures, all current CLI walltime and all new evaluation time (conservative exclusion; CLI elapsed retained as observed only)",
+  "completed_research_cli_labels": [
+    "06-prepare-r01-proxy-completion",
+    "r01-launch-public-socket-fixed",
+    "r01-review",
+    "r02-launch-public-socket-fixed",
+    "r02-prepare",
+    "r02-review",
+    "r02-review-short-closeout-20261006"
+  ],
+  "two_rounds_do_not_imply_qa_pass": true,
+  "qa_pass_claimed": false,
+  "duration_hours": 10.301257257625693,
+  "retained_best_scope": "Original model-recorded retention within its own visible successful current rounds; does not assert global best or superiority to an unavailable paired baseline",
+  "duration_kind": "Effective research conservative lower bound; verified disjoint historical/current work, no wall span or idle"
+}

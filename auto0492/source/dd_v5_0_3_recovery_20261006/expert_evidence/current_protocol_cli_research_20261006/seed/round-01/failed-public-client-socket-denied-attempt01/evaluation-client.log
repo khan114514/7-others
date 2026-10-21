@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/workspace/environment/public_eval/runtime_client.py", line 172, in <module>
+    main()
+  File "/workspace/environment/public_eval/runtime_client.py", line 148, in main
+    accepted = request(args.socket, 'POST', '/jobs', {'source': source})
+  File "/workspace/environment/public_eval/runtime_client.py", line 51, in request
+    connection.request(verb, path, body, headers)
+  File "/usr/lib/python3.10/http/client.py", line 1312, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1358, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1307, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1067, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.10/http/client.py", line 1005, in send
+    self.connect()
+  File "/workspace/environment/public_eval/runtime_client.py", line 43, in connect
+    self.sock.connect(self.socket_file)
+PermissionError: [Errno 1] Operation not permitted

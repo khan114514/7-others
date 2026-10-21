@@ -1,0 +1,37 @@
+schema_version = "1.4"
+artifacts = ["/workspace/solution", "/opt/public_eval/results"]
+
+[task]
+name = "autoresearch/hierarchical-transport-valuation"
+version = "0.1.0"
+description = "Accelerate numerical data valuation under a fixed fidelity requirement."
+
+[metadata]
+category = "numerical-inference/optimal-transport"
+
+[environment]
+cpus = 2
+memory_mb = 2048
+storage_mb = 8192
+gpus = 0
+workdir = "/workspace"
+build_timeout_sec = 1800
+network_mode = "no-network"
+
+[agent]
+timeout_sec = 43200
+user = "actor"
+
+[verifier]
+timeout_sec = 7200
+environment_mode = "separate"
+user = "root"
+
+[verifier.environment]
+cpus = 2
+memory_mb = 2048
+storage_mb = 8192
+gpus = 0
+workdir = "/workspace"
+build_timeout_sec = 1800
+network_mode = "no-network"

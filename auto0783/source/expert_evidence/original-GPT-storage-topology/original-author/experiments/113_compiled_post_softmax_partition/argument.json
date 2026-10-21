@@ -1,0 +1,33 @@
+{
+  "hypothesis": "Keep sensitive FP32 softmax eager, but hide BF16probabilitycast and value preparation/transposedcontraction behind one canonical attended-row output. Compiler may jointly handle cast/packing and consumer layout.",
+  "all_original112node_objects_equal": true,
+  "all_other_relative_order_and_three_regions_equal": true,
+  "region": {
+    "id": "image_post_softmax_compiled",
+    "inputs": [
+      "image_prob_fp32",
+      "text_v_rows",
+      "image_v"
+    ],
+    "outputs": [
+      "image_attended_rows"
+    ],
+    "prefix": false
+  },
+  "contraction_geometry_batch_M_N_K": [
+    56,
+    128,
+    256,
+    556
+  ],
+  "BF16_probability_conversion": "Original cast node intact under fixed emulate_precision_casts policy; GEMM still requires BF16 operands.",
+  "output_feature_order": "Original28heads*128features in canonical batch/token/feature order",
+  "eager_operators": [
+    "FP32softmax",
+    "image output projection",
+    "both RMS norms"
+  ],
+  "historical_distinction": "55/65compiled softmax failed; this does not compile softmax.57consumed alreadyBF16probabilities and included outputprojection, whereas this includes cast and originalvalueproducer but excludes projection.111returned channel layout from packedV; this consumes originalrawV and returns canonical rows.",
+  "no_asserted_buffer_elimination": "Compiler may still allocateBF16 probabilities and repeated values; no code/profile supplied.",
+  "canonical_sha256": "51bb6cd234a228102bf52b6d5093e2cf442de649bc0703c83ebe73bd29b27500"
+}

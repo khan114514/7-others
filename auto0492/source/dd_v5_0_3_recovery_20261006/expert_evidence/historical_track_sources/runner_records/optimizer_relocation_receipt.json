@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-10-04T04:09:03.840377+00:00",
+  "reason": "Free shared data volume for the already running seed round13; only closed non-best-round optimizer states, model checkpoints retained. Data preserved byte-for-byte in same container root volume.",
+  "records": [
+    {
+      "round": 14,
+      "original_path": "historical-codex-models/round14/training/training_state.pth.exactzip",
+      "storage_path": "runtime:historical_continuation/relocated_optimizer_states/round14/training_state.pth.exactzip",
+      "bytes": 2162286121,
+      "sha256": "e71b9df6d587ea6bcf676647d2a4e12756a493b9c4349659653e44695af4bd07",
+      "original_path_preserved_by_symlink": true,
+      "checkpoint_model_moved": false
+    },
+    {
+      "round": 17,
+      "original_path": "historical-codex-models/round17/training/training_state.pth.exactzip",
+      "storage_path": "runtime:historical_continuation/relocated_optimizer_states/round17/training_state.pth.exactzip",
+      "bytes": 2175155121,
+      "sha256": "6de517c6df6a5574c017ffe4662278a0e5dee91b70c55647230b21fe6a210afd",
+      "original_path_preserved_by_symlink": true,
+      "checkpoint_model_moved": false
+    }
+  ],
+  "reversal": "Remove each original symlink, then move verified storage_path bytes back to original_path after data volume has space."
+}

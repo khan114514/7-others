@@ -1,0 +1,28 @@
+{
+  "track": "codex",
+  "protocol": "dd-selfproto-v1.3",
+  "rounds": [
+    {
+      "round": 1,
+      "policy_name": "dd_median3_paired_anchor128",
+      "method_summary": "从官方 DD EMA 初始化，以每个原标签三个提案的 LPIPS 距离稳定中位数筛选 128 个教师目标；每对训练时间为 0.1u 与 0.1+0.9(1-u)，随机交换方向；单次复用、均匀损失权重，训练和评测设置冻结。",
+      "status": "SUCCESS",
+      "score": 9.730977102619079,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-06 12:21:41"
+    },
+    {
+      "round": 2,
+      "policy_name": "dd_median3_paired_uniform128",
+      "method_summary": "从官方 DD EMA 初始化，以每个原标签三个提案的 LPIPS 距离稳定中位数筛选 128 个教师目标；时间对改为 (0.5u, 1-0.5u)，随机交换方向，名义时间边际均匀；单次复用、均匀损失权重，其余教师、训练和评测设置冻结。",
+      "status": "SUCCESS",
+      "score": 9.627520442260902,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-06 14:29:25"
+    }
+  ],
+  "time_normalization": "Trusted result finished_unix converted to Asia/Shanghai; raw model output retained",
+  "not_native_harbor_atif": true
+}

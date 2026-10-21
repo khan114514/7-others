@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "agent_visible_paths": [
+    "harbor_task/instruction.md",
+    "harbor_task/task.toml",
+    "harbor_task/environment/starter",
+    "harbor_task/environment/public_assets",
+    "harbor_task/environment/public_eval/candidate_worker.py",
+    "harbor_task/environment/public_eval/dev_client.py",
+    "harbor_task/environment/public_eval/dev_service.py",
+    "harbor_task/environment/public_eval/evaluate",
+    "harbor_task/environment/public_eval/evaluator.py",
+    "harbor_task/environment/public_eval/protocol.json"
+  ],
+  "agent_writable_paths": [
+    "/workspace/solution",
+    "/tmp"
+  ],
+  "trusted_only_paths": [
+    "harbor_task/tests",
+    "reference",
+    "expert_evidence",
+    "optimization_evidence"
+  ],
+  "protected_public_gold": "harbor_task/environment/public_eval/targets is in Actor image, root700/600, used only by protected Dev service; it is Public/Dev gold, not final Hidden",
+  "final_image_digest": "sha256:9748671d23f9b6b6763f1f95385d9f643e75875601fdc1e3a78c4f58a7844931",
+  "verifier_image_digest": "sha256:1ba970b789b3d11bcc15f852f35dacb295e9317d381d1ba8a17f1d100b83c3a2",
+  "generated_agent_view_manifest": "expert_evidence/runtime_view/final_agent_view.json",
+  "evidence_path_base": "submission_root",
+  "verified_as_uid": 1000,
+  "actual_mounts_and_model_networks": "expert_evidence/runtime_view/gpt_identity.json and seed_identity.json; only per-trial log mounts; no reference, author home, credentials, Docker socket or Hidden dataset mounts",
+  "native_actor_material_equivalence": "expert_evidence/runtime_view/static_content_and_network_attestation.json",
+  "final_private_assets": "Only tests/private_cases and tests/private_targets in separate Verifier context",
+  "numerical_and_identifier_migration": "expert_evidence/privacy_representation_migration.json; exact values unchanged, random handshake variable renamed; live model images precede this privacy-only representation patch"
+}

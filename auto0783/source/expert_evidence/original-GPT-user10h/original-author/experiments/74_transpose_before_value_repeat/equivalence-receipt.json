@@ -1,0 +1,36 @@
+{
+  "base": "experiments/53_compiled_image_rotary/method.py",
+  "candidate_canonical_sha256": "6fd7608224a4990421f3cad5ddb892bebf0a198604095647e7ab59d6ef7c494c",
+  "changed_existing_nodes": [
+    "value_transpose"
+  ],
+  "removed_nodes": [
+    "value_repeat"
+  ],
+  "added_nodes": [
+    "value_head_channels"
+  ],
+  "compile_regions_identical": true,
+  "coordinate_equalities_checked_both_batches": 3985408,
+  "index_argument": "For output[b,h,d,t], both paths select original value_heads[b,floor(h/7),t,d]. Transpose and repetition are exact copies/views and commute.",
+  "arithmetic_preservation": "All score/mask/softmax/probability nodes and original value-left matmul/weights/norm/MLP/residual stay unchanged. No dot-product partition or extra rounding. GEMM memory layout can alter kernel dispatch, so actual Dev required.",
+  "logical_left_operand_shape": [
+    2,
+    28,
+    128,
+    556
+  ],
+  "expected_eager_left_operand_strides_old": [
+    1992704,
+    71168,
+    1,
+    128
+  ],
+  "expected_eager_left_operand_strides_new": [
+    1992704,
+    71168,
+    556,
+    1
+  ],
+  "source_evidence_scope": "Original own eager41 value_repeat has 28 copy kernels; both contraction transposes have no kernels. Does not profile selected compiled53."
+}

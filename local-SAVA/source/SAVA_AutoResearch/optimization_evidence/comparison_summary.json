@@ -1,0 +1,86 @@
+{
+  "schema_version": "autoresearch-comparison-summary.v2",
+  "status": "COMPLETE",
+  "metric": {
+    "name": "mean_case_method_seconds",
+    "direction": "minimize"
+  },
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "paired_results": {
+    "101": {
+      "baseline": 0.5309270903332314,
+      "reference": 0.38039675033360254,
+      "paired_improvement": 0.15053033999962884
+    },
+    "202": {
+      "baseline": 0.5180353616645638,
+      "reference": 0.37820853483087075,
+      "paired_improvement": 0.13982682683369302
+    },
+    "303": {
+      "baseline": 0.5196528819991121,
+      "reference": 0.3829074791695651,
+      "paired_improvement": 0.136745402829547
+    },
+    "404": {
+      "baseline": 0.523678173830073,
+      "reference": 0.3841831811684339,
+      "paired_improvement": 0.13949499266163906
+    },
+    "505": {
+      "baseline": 0.5151795976635185,
+      "reference": 0.3763024723327059,
+      "paired_improvement": 0.1388771253308126
+    }
+  },
+  "statistics": {
+    "paired_run_count": 5,
+    "baseline_mean": 0.5214946210980997,
+    "baseline_sample_std": 0.006102814476157093,
+    "reference_mean": 0.38039968356703563,
+    "reference_sample_std": 0.003247775168112226,
+    "mean_paired_improvement": 0.1410949375310641,
+    "relative_improvement": 0.27055875904139454,
+    "baseline_sigma_multiple": 23.11965046329096
+  },
+  "score_contract": {
+    "B": 0.5214946210980997,
+    "R": 0.38039968356703563,
+    "U": 0.0,
+    "reference_normalized_score": 0.27055875904139454,
+    "upper_bound_source": "metric_ceiling, nonnegative elapsed time"
+  },
+  "significance_rule": {
+    "required_baseline_sigma_multiple": 3.0,
+    "passed": true
+  },
+  "validity": {
+    "same_protocol": true,
+    "same_seed_set": true,
+    "all_quality_gates_passed": true,
+    "all_checkpoints_reload_and_rescore_passed": "NOT_APPLICABLE"
+  },
+  "quality_summary": {
+    "max_normalized_rmse": 0.007341078344218985,
+    "min_spearman": 0.9999418075490896,
+    "min_top_quartile_overlap": 0.9933333333333333
+  },
+  "source_results": [
+    "optimization_evidence/baseline_runs/seed_101/result.json",
+    "optimization_evidence/reference_runs/seed_101/result.json",
+    "optimization_evidence/baseline_runs/seed_202/result.json",
+    "optimization_evidence/reference_runs/seed_202/result.json",
+    "optimization_evidence/baseline_runs/seed_303/result.json",
+    "optimization_evidence/reference_runs/seed_303/result.json",
+    "optimization_evidence/baseline_runs/seed_404/result.json",
+    "optimization_evidence/reference_runs/seed_404/result.json",
+    "optimization_evidence/baseline_runs/seed_505/result.json",
+    "optimization_evidence/reference_runs/seed_505/result.json"
+  ]
+}

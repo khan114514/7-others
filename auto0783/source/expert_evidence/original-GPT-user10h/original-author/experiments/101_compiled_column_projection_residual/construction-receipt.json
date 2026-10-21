@@ -1,0 +1,27 @@
+{
+  "base": "97_compiled_frequency_prefix",
+  "removed_nodes": [
+    "image_attended_rows",
+    "image_output_heads",
+    "image_output_rows"
+  ],
+  "added_nodes": [
+    "image_attended_columns",
+    "image_projected_columns"
+  ],
+  "changed_original_node": "image_attention_out",
+  "original_residual_add_moved_adjacent_without_expression_change": true,
+  "all_other_node_objects_relative_order_lifetimes_equal": true,
+  "three_original_regions_equal": true,
+  "new_stage_region_nodes": [
+    "image_attended_columns",
+    "image_projected_columns",
+    "image_attention_out",
+    "image_residual_rows"
+  ],
+  "projection_uses_exact_original_unpermuted_checkpoint_weight": true,
+  "full_original3584_reduction_order_and_KV_G_D_basis_preserved": true,
+  "probability_value_GEMM_remains_outside_unchanged": true,
+  "no_new_prefix_values_or_GEMM_input_packing_claim": true,
+  "column_GEMM_dispatch_transpose_residual_lowering_numerics_latency_and_peak_unmeasured": true
+}

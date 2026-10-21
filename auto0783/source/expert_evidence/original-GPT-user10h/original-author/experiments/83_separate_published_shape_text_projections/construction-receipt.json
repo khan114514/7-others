@@ -1,0 +1,28 @@
+{
+  "base": "53_compiled_image_rotary",
+  "changed_existing_nodes": [
+    "text_k_rows",
+    "text_q_rows",
+    "text_v_rows"
+  ],
+  "removed_nodes": [
+    "text_flat_qkv",
+    "text_input_flat",
+    "text_qkv",
+    "text_qkv_bias",
+    "text_qkv_weight"
+  ],
+  "added_nodes": [
+    "text_k_full",
+    "text_projection_input",
+    "text_q_full",
+    "text_v_full"
+  ],
+  "all_other_existing_nodes_and_compile_regions_equal": true,
+  "separate_text_linear_input_shape": [
+    2,
+    556,
+    3584
+  ],
+  "cache_safety_argument_requires_all_auxiliary_image_rows_discarded": true
+}

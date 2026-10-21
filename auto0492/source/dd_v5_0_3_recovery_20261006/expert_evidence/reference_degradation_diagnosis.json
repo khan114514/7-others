@@ -1,0 +1,188 @@
+{
+  "assessment": "NOT_READY",
+  "scope": "Author diagnosis; not clean-context independent release QA",
+  "observed_at": "2026-10-05 06:35:14",
+  "timezone": "Asia/Shanghai",
+  "qa_skill_version": "autoresearch-qa-skills/0.3.2",
+  "baseline_calibration": {
+    "evaluation_seeds": [
+      0,
+      1,
+      2
+    ],
+    "fid_values": [
+      9.663262058820692,
+      9.799929104416378,
+      9.759412334388799
+    ],
+    "mean": 9.740867832541957,
+    "sample_standard_deviation_n_minus_1": 0.07019540048695508,
+    "three_sigma": 0.21058620146086524,
+    "reference_mean_needed_for_three_sigma": 9.530281631081092,
+    "published_frozen_model_not_independent_retraining": true,
+    "frozen_manifest_sha256": "d69fa87bc503cf12a33f32a718c313557a88e579d2fa8678f2f50bdaeb99b7a4",
+    "raw_evidence": [
+      "optimization_evidence/terminal_records/run-8e110f726b6b4c3aaebdde21dd0dfe77/result.json",
+      "optimization_evidence/terminal_records/run-ff6fad3514114789b25ff2614771fdf8/result.json",
+      "optimization_evidence/terminal_records/run-2925dc632c94404f9da74569dd465363/result.json"
+    ]
+  },
+  "pilot": {
+    "run_id": "run-f94c8acbaf4a4bd6945443476e38311b",
+    "kind": "CALIBRATION",
+    "fid": 12.362871219708097,
+    "matched_baseline_fid": 9.663262058820692,
+    "improvement": -2.6996091608874053,
+    "can_serve_as_valid_improved_reference": false,
+    "updates": 256,
+    "seen_pairs": 4096,
+    "terminal_reason": "teacher_reuse_limit",
+    "time_scale_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      846,
+      835,
+      791,
+      778,
+      846
+    ],
+    "curves": [
+      {
+        "update": 1,
+        "seen_pairs": 16,
+        "ce_loss": 4.0513094663619995,
+        "lpips_loss": 0.2216796875,
+        "grad_norm": 1.8611347675323486
+      },
+      {
+        "update": 10,
+        "seen_pairs": 160,
+        "ce_loss": 4.33741420507431,
+        "lpips_loss": 0.18157958984375,
+        "grad_norm": 1.583912968635559
+      },
+      {
+        "update": 100,
+        "seen_pairs": 1600,
+        "ce_loss": 4.041132777929306,
+        "lpips_loss": 0.1845703125,
+        "grad_norm": 0.8512269258499146
+      },
+      {
+        "update": 256,
+        "seen_pairs": 4096,
+        "ce_loss": 4.008560657501221,
+        "lpips_loss": 0.18218994140625,
+        "grad_norm": 0.677160382270813
+      }
+    ]
+  },
+  "diagnosis": {
+    "confirmed_observation": "No k0..4 training exposure. All 55 early logits consumed by the frozen inference are excluded from direct CE supervision during this pilot.",
+    "early_inference_logits": 55,
+    "samples_with_early_logits_ce_supervision": 0,
+    "hypothesis": "Training only late-prefix stages may cause drift at the frozen k0 inference. The existing atom/late mixture changes only the time distribution to test this; causality and quality improvement remain unproven.",
+    "other_hypothesis": "Increasing from the historical 16 updates to 256 may amplify warm-start drift; the historical v1.1 score is design context only, not current acceptance.",
+    "framework_change_required_by_current_evidence": false,
+    "control_to_observe": "All completed atom/late and antithetic controls are retained; the next source-only fresh port experiment uses the verified historical CUDA time stream through CPU RPC. Numerical match is verified, final quality remains pending.",
+    "paper_context": {
+      "url": "https://arxiv.org/html/2412.17153v3",
+      "sections": [
+        "3.3",
+        "Appendix B",
+        "Appendix C"
+      ],
+      "interpretation": "The paper samples the beginning and intermediate trajectory positions, and has CE and LPIPS heads. The task uses a disclosed fixed independent training reimplementation rather than official training code."
+    },
+    "latest_confirmed_time_stream_observation": {
+      "status": "ACTUAL_CPU_AND_CUDA_SAMPLER_STREAMS_EXACTLY_MATCH_IN_COMPARISON",
+      "evidence": "expert_evidence/portable_philox_actual_cuda_comparison_20261005.json",
+      "current_training_histogram": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        52,
+        55,
+        53,
+        49,
+        47
+      ],
+      "historical_best_histogram_identical": true,
+      "full_quality_causality_claimed": false
+    }
+  },
+  "reproducibility": {
+    "matched_weighted_smoke_teacher_shard_hashes": true,
+    "matched_weighted_smoke_method_hashes": true,
+    "checkpoint_hashes_match": false,
+    "first_gradient_norms": [
+      2.0303869247436523,
+      2.0290348529815674
+    ],
+    "fid64": [
+      217.31413760721355,
+      217.25222520744842
+    ],
+    "conclusion": "Teacher data match. Training is not demonstrated bitwise deterministic; first-update gradient norm already differs. The specific kernel/RNG source remains unlocalized. These smoke FIDs are not quality scores."
+  },
+  "storage_failure": {
+    "run_id": "run-d824955fa1fb4627a11eeb25816fd4b9",
+    "status": "FAILED",
+    "kind": "SMOKE_ONLY",
+    "quality_metric": null,
+    "classification": "INFRASTRUCTURE_ENOSPC_DURING_OPTIMIZER_SAVE",
+    "evidence": "optimization_evidence/terminal_records/run-d824955fa1fb4627a11eeb25816fd4b9/training.log",
+    "driver_status_warning": "The old owner status can remain SMOKE_RUNNING after failed atomic status writes. Check actual PID and terminal run record before any launch.",
+    "clean_retry": {
+      "run_id": "run-0e9aa26813274b5e8f4462e51bea00ef",
+      "execution_status": "SUCCESS",
+      "kind": "SMOKE_ONLY",
+      "metric_is_quality_evidence": false,
+      "evidence": "optimization_evidence/terminal_records/run-0e9aa26813274b5e8f4462e51bea00ef/result.json"
+    },
+    "failed_training_state_zip": {
+      "file": "training/training_state.pth.exactzip.tmp",
+      "zip_directory_readable": false,
+      "retained": true,
+      "resumable": false,
+      "source": "original local verified backup; static ZIP parse only, no pickle/model load"
+    }
+  },
+  "collection": {
+    "terminal_runs": 18,
+    "all_original_metadata_archives_preserved": true,
+    "all_remote_metadata_hashes_verified": true
+  },
+  "remaining": [
+    "Final current Reference selection from complete public results only, preserved best model and full source formal verification",
+    "Real paired same-held-out-seed calibration then current final Harbor NOP",
+    "Accurate historical model trajectory identity and research time, separate final-image actual12h stability",
+    "Complete evidence/model ZIP and two clean-context independent AI current QA reports"
+  ],
+  "running_correction_calibration": {
+    "run_id": "run-28023296fd1e4df5b8c0cc2592665c0b",
+    "status": "SUCCESS_EXECUTION_QUALITY_REGRESSION_NOT_SELECTED",
+    "phase": "COMPLETED",
+    "confirmed_generated_proposals": 32768,
+    "total_proposals": 32768,
+    "full_metric": 20.80963698475614,
+    "teacher_stage_completed": true,
+    "teacher_shards_exact_match": true,
+    "teacher_stage_control": "expert_evidence/atom4096_teacher_stage_control.json"
+  },
+  "completed_current_source": {
+    "native_run_id": "run-ce4a1f085109444db98092784acda4a9",
+    "fid_50k": 9.656579371679868,
+    "saved_model_repeat_run_id": "run-de404dc7e56443d7a56dc8cd51ab339b",
+    "saved_model_repeat_fid_50k": 9.656579371679868,
+    "all_50000_png_hashes_identical": true,
+    "not_independent_retraining": true,
+    "evidence": "expert_evidence/current_saved_model_full_repeat_20261005.json"
+  },
+  "author_relaxed_quality_policy": "expert_evidence/author_acceptance_revision_20261005.json"
+}

@@ -1,0 +1,121 @@
+{
+  "id": "92fe96de-9c35-4a8c-bd96-e9b9e5d67831",
+  "task_name": "final-portable-task",
+  "trial_name": "heima-clean-final-e7dea707bb1e",
+  "trial_uri": "file://${SOURCE_PROJECT}/private/final-backend-host-proof/clean-final-native/e7dea707bb1e4191a1ce7fdf93844c79/heima-clean-final-e7dea707bb1e",
+  "task_id": {
+    "path": "${SOURCE_PROJECT}/private/portable-public-staging/final-portable-task"
+  },
+  "source": null,
+  "task_checksum": "a9cd5d9da5f6743989c78f6f56017e75dbbfe2f13e974924ae2997045244c43a",
+  "config": {
+    "task": {
+      "path": "${SOURCE_PROJECT}/private/portable-public-staging/final-portable-task",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "heima-clean-final-e7dea707bb1e",
+    "trials_dir": "${SOURCE_PROJECT}/private/final-backend-host-proof/clean-final-native/e7dea707bb1e4191a1ce7fdf93844c79",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": null,
+      "import_path": "frozen_method_install_agent:FrozenMethodInstallAgent",
+      "model_name": null,
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {
+        "selection_folder": "${SOURCE_PROJECT}/private/final-method-selection/239684420c584448be6899280328d9cc",
+        "request_sha256": "dc988fe0eaf0584c344674bae6e5943bb42d83446dd3d8620f05ca9db66034f3",
+        "policy_sha256": "ddbdac98e3e0230f4d95603b7c9edc6f2adc11caa4a4cbf4d580291aa603cccb"
+      },
+      "mcp_servers": []
+    },
+    "user_agent": null,
+    "environment": {
+      "type": null,
+      "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+      "force_build": true,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {
+        "role": "seed"
+      },
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": 10800.0,
+      "max_timeout_sec": null,
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "extra_instructions": [],
+    "job_id": null,
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "heima-frozen-method-install",
+    "version": "1.0.0",
+    "model_info": null
+  },
+  "agent_result": {
+    "n_input_tokens": null,
+    "n_cache_tokens": null,
+    "n_output_tokens": null,
+    "cost_usd": null,
+    "model_usage": null,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.6757268117526485
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-10-06T14:38:01.034648Z",
+  "finished_at": "2026-10-06T15:11:32.751606Z",
+  "environment_setup": {
+    "started_at": "2026-10-06T14:38:01.145693Z",
+    "finished_at": "2026-10-06T14:38:13.441807Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-10-06T14:38:13.442165Z",
+    "finished_at": "2026-10-06T14:38:13.442338Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-10-06T14:38:13.443603Z",
+    "finished_at": "2026-10-06T14:38:15.234158Z"
+  },
+  "verifier": {
+    "started_at": "2026-10-06T14:38:24.054913Z",
+    "finished_at": "2026-10-06T15:11:32.750346Z"
+  },
+  "step_results": null
+}

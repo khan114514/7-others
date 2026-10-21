@@ -1,0 +1,20 @@
+{
+  "status": "PUBLIC_AND_SEPARATE_VERIFIER_DOCKER_BUILD_SUCCEEDED",
+  "agent": {
+    "chunk_id": "ef78bf",
+    "wall_time_seconds": 0.000009291,
+    "exit_code": 0,
+    "original_token_count": 738,
+    "output": "#2 ...\n\n#3 [auth] library/ubuntu:pull token for registry-1.docker.io\n#3 DONE 0.0s\n\n#4 [auth] library/node:pull token for registry-1.docker.io\n#4 DONE 0.0s\n\n#5 [internal] load metadata for docker.io/library/ubuntu:22.04\n#5 DONE 2.9s\n\n#2 [internal] load metadata for docker.io/library/node:22.16.0-bookworm-slim\n#2 DONE 3.0s\n\n#6 [internal] load .dockerignore\n#6 transferring context: 2B done\n#6 DONE 0.0s\n\n#7 [stage-1  1/12] FROM docker.io/library/ubuntu:22.04@sha256:5ec03bb3441e8b0bf3b4f9cd4629a1ae763010dc3035bb8da3ae6cf026486401\n#7 resolve docker.io/library/ubuntu:22.04@sha256:5ec03bb3441e8b0bf3b4f9cd4629a1ae763010dc3035bb8da3ae6cf026486401 0.0s done\n#7 DONE 0.0s\n\n#8 [node_runtime 1/1] FROM docker.io/library/node:22.16.0-bookworm-slim@sha256:048ed02c5fd52e86fda6fbd2f6a76cf0d4492fd6c6fee9e2c463ed5108da0e34\n#8 resolve docker.io/library/node:22.16.0-bookworm-slim@sha256:048ed02c5fd52e86fda6fbd2f6a76cf0d4492fd6c6fee9e2c463ed5108da0e34 0.0s done\n#8 DONE 0.0s\n\n#9 [internal] load build context\n#9 transferring context: 354.84kB 0.0s done\n#9 DONE 0.0s\n\n#10 [stage-1  4/12] COPY --from=node_runtime /usr/local/bin/node /usr/local/bin/node\n#10 CACHED\n\n#11 [stage-1  7/12] WORKDIR /workspace\n#11 CACHED\n\n#12 [stage-1  5/12] COPY --from=node_runtime /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/npm\n#12 CACHED\n\n#13 [stage-1  3/12] RUN python3 -m pip install --no-cache-dir torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu\n#13 CACHED\n\n#14 [stage-1  6/12] RUN node /usr/local/lib/node_modules/npm/bin/npm-cli.js install -g @openai/codex@0.160.0 && codex --version\n#14 CACHED\n\n#15 [stage-1  8/12] COPY instruction.md /workspace/instruction.md\n#15 CACHED\n\n#16 [stage-1  2/12] RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-pip ca-certificates curl git ripgrep && rm -rf /var/lib/apt/lists/*\n#16 CACHED\n\n#17 [stage-1  9/12] COPY starter /workspace/environment/starter\n#17 CACHED\n\n#18 [stage-1 10/12] COPY public_eval /workspace/environment/public_eval\n#18 DONE 0.0s\n\n#19 [stage-1 11/12] RUN mkdir -p /workspace/solution /workspace/agent-output /installed-agent && chmod +x /workspace/environment/public_eval/solve.sh\n#19 DONE 0.4s\n\n#20 [stage-1 12/12] COPY bootstrap.sh /usr/local/bin/dd-bootstrap\n#20 DONE 0.2s\n\n#21 exporting to image\n#21 exporting layers\n#21 exporting layers 0.2s done\n#21 exporting manifest sha256:eeff7dee28007c6bb0f923e1c10b21219c5af2aa0a8d2de38c1ae65e7e19427e done\n#21 exporting config sha256:df78df6b2f7444db586f50f2976bcd494c447a9cd83040e08dc0aae4e9b355b9 done\n#21 exporting attestation manifest sha256:8105b43f57e0c81b16c69d603669dd90aee5ab628bbcfc1ecfdc82417c1b8096 0.0s done\n#21 exporting manifest list sha256:8578bde5054f46ca6d74f59a45a32c2cc5ad6df9427abf2377bb56e54dec1828 0.0s done\n#21 naming to docker.io/library/dd-current-agent-recovery-20261006:latest done\n#21 unpacking to docker.io/library/dd-current-agent-recovery-20261006:latest 0.1s done\n#21 DONE 0.4s\n"
+  },
+  "verifier": {
+    "chunk_id": "1dde8c",
+    "wall_time_seconds": 0.000009334,
+    "exit_code": 0,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "task_version": "5.0.3-recovery-candidate",
+  "native_nop_completed": false,
+  "qa_pass_claimed": false
+}

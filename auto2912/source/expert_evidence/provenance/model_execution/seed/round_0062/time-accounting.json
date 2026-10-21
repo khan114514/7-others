@@ -1,0 +1,25 @@
+{
+  "policy": "user-normal-work-clock-20261006",
+  "elapsed_seconds": 36.72581624984741,
+  "effective_seconds": 0,
+  "excluded_seconds": 36.72581624984741,
+  "excluded_intervals": [
+    [
+      1791313497.075949,
+      1791313533.8017652
+    ]
+  ],
+  "exclusion_evidence": [
+    {
+      "start_epoch": 1791313497.075949,
+      "end_epoch": 1791313533.8017652,
+      "reason": "Observed backend/startup block without model work in this turn; unrelated repetition of old scoring cannot fill research time",
+      "evidence": "campaign/seed/round_0062/stdout.jsonl"
+    }
+  ],
+  "score_success_used_for_time": false,
+  "role": "seed",
+  "round": 62,
+  "cli_exit_code": 1,
+  "actual_model_completion_observed": true
+}

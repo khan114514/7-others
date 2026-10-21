@@ -1,0 +1,1264 @@
+{
+  "schema": "bifrost-tensor-dag/2",
+  "layer_body": [
+    {
+      "id": "input_text_rows",
+      "op": "slice",
+      "inputs": [
+        "state"
+      ],
+      "dim": 1,
+      "start": 0,
+      "stop": 300
+    },
+    {
+      "id": "text_input_norm",
+      "op": "rms_norm",
+      "inputs": [
+        "input_text_rows",
+        "w:input_layernorm.weight"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_input_norm_rows",
+      "op": "slice",
+      "inputs": [
+        "text_input_norm"
+      ],
+      "dim": 1,
+      "start": 0,
+      "stop": 300,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_input_rows",
+      "op": "slice",
+      "inputs": [
+        "state"
+      ],
+      "dim": 1,
+      "start": 300,
+      "stop": 556
+    },
+    {
+      "id": "image_input_norm",
+      "op": "rms_norm",
+      "inputs": [
+        "image_input_rows",
+        "w:vision_branch_input_layernorm.weight"
+      ]
+    },
+    {
+      "id": "text_qkv_weight",
+      "op": "concat",
+      "inputs": [
+        "w:self_attn.q_proj.weight",
+        "w:self_attn.k_proj.weight",
+        "w:self_attn.v_proj.weight"
+      ],
+      "dim": 0,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_qkv_bias",
+      "op": "concat",
+      "inputs": [
+        "w:self_attn.q_proj.bias",
+        "w:self_attn.k_proj.bias",
+        "w:self_attn.v_proj.bias"
+      ],
+      "dim": 0,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_input_flat",
+      "op": "reshape",
+      "inputs": [
+        "text_input_norm_rows"
+      ],
+      "shape": [
+        600,
+        3584
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_flat_qkv",
+      "op": "linear",
+      "inputs": [
+        "text_input_flat",
+        "text_qkv_weight",
+        "text_qkv_bias"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_qkv",
+      "op": "reshape",
+      "inputs": [
+        "text_flat_qkv"
+      ],
+      "shape": [
+        2,
+        300,
+        4608
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "vision_qkv_weight",
+      "op": "concat",
+      "inputs": [
+        "w:self_attn.vision_branch_q_proj.weight",
+        "w:self_attn.vision_branch_k_proj.weight",
+        "w:self_attn.vision_branch_v_proj.weight"
+      ],
+      "dim": 0,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "vision_qkv_bias",
+      "op": "concat",
+      "inputs": [
+        "w:self_attn.vision_branch_q_proj.bias",
+        "w:self_attn.vision_branch_k_proj.bias",
+        "w:self_attn.vision_branch_v_proj.bias"
+      ],
+      "dim": 0,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_qkv",
+      "op": "linear",
+      "inputs": [
+        "image_input_norm",
+        "vision_qkv_weight",
+        "vision_qkv_bias"
+      ]
+    },
+    {
+      "id": "text_q_rows",
+      "op": "slice",
+      "inputs": [
+        "text_qkv"
+      ],
+      "dim": 2,
+      "start": 0,
+      "stop": 3584,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_k_rows",
+      "op": "slice",
+      "inputs": [
+        "text_qkv"
+      ],
+      "dim": 2,
+      "start": 3584,
+      "stop": 4096,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_v_rows",
+      "op": "slice",
+      "inputs": [
+        "text_qkv"
+      ],
+      "dim": 2,
+      "start": 4096,
+      "stop": 4608,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_v",
+      "op": "slice",
+      "inputs": [
+        "image_qkv"
+      ],
+      "dim": 2,
+      "start": 4096,
+      "stop": 4608
+    },
+    {
+      "id": "v",
+      "op": "concat",
+      "inputs": [
+        "text_v_rows",
+        "image_v"
+      ],
+      "dim": 1
+    },
+    {
+      "id": "text_mask_rows",
+      "op": "slice",
+      "inputs": [
+        "attention_mask"
+      ],
+      "dim": 2,
+      "start": 0,
+      "stop": 300,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_attention_mask",
+      "op": "slice",
+      "inputs": [
+        "text_mask_rows"
+      ],
+      "dim": 3,
+      "start": 0,
+      "stop": 300,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_cos",
+      "op": "slice",
+      "inputs": [
+        "cos"
+      ],
+      "dim": 2,
+      "start": 0,
+      "stop": 300,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_sin",
+      "op": "slice",
+      "inputs": [
+        "sin"
+      ],
+      "dim": 2,
+      "start": 0,
+      "stop": 300,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_attended",
+      "op": "attention_eager",
+      "inputs": [
+        "text_q_rows",
+        "text_k_rows",
+        "text_v_rows",
+        "text_attention_mask",
+        "text_cos",
+        "text_sin"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_attention_out",
+      "op": "linear",
+      "inputs": [
+        "text_attended",
+        "w:self_attn.o_proj.weight"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_qk",
+      "op": "slice",
+      "inputs": [
+        "image_qkv"
+      ],
+      "dim": 2,
+      "start": 0,
+      "stop": 4096
+    },
+    {
+      "id": "image_qk_shape",
+      "op": "reshape",
+      "inputs": [
+        "image_qk"
+      ],
+      "shape": [
+        2,
+        256,
+        32,
+        128
+      ]
+    },
+    {
+      "id": "image_qk_heads",
+      "op": "transpose",
+      "inputs": [
+        "image_qk_shape"
+      ],
+      "dim0": 1,
+      "dim1": 2
+    },
+    {
+      "id": "cos_axis_0",
+      "op": "slice",
+      "inputs": [
+        "cos"
+      ],
+      "dim": 0,
+      "start": 0,
+      "stop": 1,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_axis_shape_0",
+      "op": "reshape",
+      "inputs": [
+        "cos_axis_0"
+      ],
+      "shape": [
+        2,
+        1,
+        556,
+        128
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_axis_1",
+      "op": "slice",
+      "inputs": [
+        "cos"
+      ],
+      "dim": 0,
+      "start": 1,
+      "stop": 2,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_axis_shape_1",
+      "op": "reshape",
+      "inputs": [
+        "cos_axis_1"
+      ],
+      "shape": [
+        2,
+        1,
+        556,
+        128
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_axis_2",
+      "op": "slice",
+      "inputs": [
+        "cos"
+      ],
+      "dim": 0,
+      "start": 2,
+      "stop": 3,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_axis_shape_2",
+      "op": "reshape",
+      "inputs": [
+        "cos_axis_2"
+      ],
+      "shape": [
+        2,
+        1,
+        556,
+        128
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_section_0",
+      "op": "slice",
+      "inputs": [
+        "cos_axis_shape_0"
+      ],
+      "dim": 3,
+      "start": 0,
+      "stop": 16,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_section_1",
+      "op": "slice",
+      "inputs": [
+        "cos_axis_shape_1"
+      ],
+      "dim": 3,
+      "start": 16,
+      "stop": 40,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_section_2",
+      "op": "slice",
+      "inputs": [
+        "cos_axis_shape_2"
+      ],
+      "dim": 3,
+      "start": 40,
+      "stop": 64,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_section_3",
+      "op": "slice",
+      "inputs": [
+        "cos_axis_shape_0"
+      ],
+      "dim": 3,
+      "start": 64,
+      "stop": 80,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_section_4",
+      "op": "slice",
+      "inputs": [
+        "cos_axis_shape_1"
+      ],
+      "dim": 3,
+      "start": 80,
+      "stop": 104,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_section_5",
+      "op": "slice",
+      "inputs": [
+        "cos_axis_shape_2"
+      ],
+      "dim": 3,
+      "start": 104,
+      "stop": 128,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "cos_layout",
+      "op": "concat",
+      "inputs": [
+        "cos_section_0",
+        "cos_section_1",
+        "cos_section_2",
+        "cos_section_3",
+        "cos_section_4",
+        "cos_section_5"
+      ],
+      "dim": 3,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_axis_0",
+      "op": "slice",
+      "inputs": [
+        "sin"
+      ],
+      "dim": 0,
+      "start": 0,
+      "stop": 1,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_axis_shape_0",
+      "op": "reshape",
+      "inputs": [
+        "sin_axis_0"
+      ],
+      "shape": [
+        2,
+        1,
+        556,
+        128
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_axis_1",
+      "op": "slice",
+      "inputs": [
+        "sin"
+      ],
+      "dim": 0,
+      "start": 1,
+      "stop": 2,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_axis_shape_1",
+      "op": "reshape",
+      "inputs": [
+        "sin_axis_1"
+      ],
+      "shape": [
+        2,
+        1,
+        556,
+        128
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_axis_2",
+      "op": "slice",
+      "inputs": [
+        "sin"
+      ],
+      "dim": 0,
+      "start": 2,
+      "stop": 3,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_axis_shape_2",
+      "op": "reshape",
+      "inputs": [
+        "sin_axis_2"
+      ],
+      "shape": [
+        2,
+        1,
+        556,
+        128
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_section_0",
+      "op": "slice",
+      "inputs": [
+        "sin_axis_shape_0"
+      ],
+      "dim": 3,
+      "start": 0,
+      "stop": 16,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_section_1",
+      "op": "slice",
+      "inputs": [
+        "sin_axis_shape_1"
+      ],
+      "dim": 3,
+      "start": 16,
+      "stop": 40,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_section_2",
+      "op": "slice",
+      "inputs": [
+        "sin_axis_shape_2"
+      ],
+      "dim": 3,
+      "start": 40,
+      "stop": 64,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_section_3",
+      "op": "slice",
+      "inputs": [
+        "sin_axis_shape_0"
+      ],
+      "dim": 3,
+      "start": 64,
+      "stop": 80,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_section_4",
+      "op": "slice",
+      "inputs": [
+        "sin_axis_shape_1"
+      ],
+      "dim": 3,
+      "start": 80,
+      "stop": 104,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_section_5",
+      "op": "slice",
+      "inputs": [
+        "sin_axis_shape_2"
+      ],
+      "dim": 3,
+      "start": 104,
+      "stop": 128,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "sin_layout",
+      "op": "concat",
+      "inputs": [
+        "sin_section_0",
+        "sin_section_1",
+        "sin_section_2",
+        "sin_section_3",
+        "sin_section_4",
+        "sin_section_5"
+      ],
+      "dim": 3,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_cos",
+      "op": "slice",
+      "inputs": [
+        "cos_layout"
+      ],
+      "dim": 2,
+      "start": 300,
+      "stop": 556,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_sin",
+      "op": "slice",
+      "inputs": [
+        "sin_layout"
+      ],
+      "dim": 2,
+      "start": 300,
+      "stop": 556,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_sin_first",
+      "op": "slice",
+      "inputs": [
+        "image_sin"
+      ],
+      "dim": 3,
+      "start": 0,
+      "stop": 64,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_sin_negative",
+      "op": "scale",
+      "inputs": [
+        "image_sin_first"
+      ],
+      "factor": -1.0,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_sin_second",
+      "op": "slice",
+      "inputs": [
+        "image_sin"
+      ],
+      "dim": 3,
+      "start": 64,
+      "stop": 128,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_signed_sin",
+      "op": "concat",
+      "inputs": [
+        "image_sin_negative",
+        "image_sin_second"
+      ],
+      "dim": 3,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_qk_rotary_first",
+      "op": "slice",
+      "inputs": [
+        "image_qk_heads"
+      ],
+      "dim": 3,
+      "start": 0,
+      "stop": 64
+    },
+    {
+      "id": "image_qk_rotary_second",
+      "op": "slice",
+      "inputs": [
+        "image_qk_heads"
+      ],
+      "dim": 3,
+      "start": 64,
+      "stop": 128
+    },
+    {
+      "id": "image_qk_rotary_half",
+      "op": "concat",
+      "inputs": [
+        "image_qk_rotary_second",
+        "image_qk_rotary_first"
+      ],
+      "dim": 3
+    },
+    {
+      "id": "image_qk_rotary_direct",
+      "op": "mul",
+      "inputs": [
+        "image_qk_heads",
+        "image_cos"
+      ]
+    },
+    {
+      "id": "image_qk_rotary_rotated",
+      "op": "mul",
+      "inputs": [
+        "image_qk_rotary_half",
+        "image_signed_sin"
+      ]
+    },
+    {
+      "id": "image_qk_rotary",
+      "op": "add",
+      "inputs": [
+        "image_qk_rotary_direct",
+        "image_qk_rotary_rotated"
+      ]
+    },
+    {
+      "id": "image_query",
+      "op": "slice",
+      "inputs": [
+        "image_qk_rotary"
+      ],
+      "dim": 1,
+      "start": 0,
+      "stop": 28
+    },
+    {
+      "id": "image_key",
+      "op": "slice",
+      "inputs": [
+        "image_qk_rotary"
+      ],
+      "dim": 1,
+      "start": 28,
+      "stop": 32
+    },
+    {
+      "id": "text_key_shape",
+      "op": "reshape",
+      "inputs": [
+        "text_k_rows"
+      ],
+      "shape": [
+        2,
+        300,
+        4,
+        128
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_heads",
+      "op": "transpose",
+      "inputs": [
+        "text_key_shape"
+      ],
+      "dim0": 1,
+      "dim1": 2,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_cos",
+      "op": "slice",
+      "inputs": [
+        "cos_layout"
+      ],
+      "dim": 2,
+      "start": 0,
+      "stop": 300,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_sin",
+      "op": "slice",
+      "inputs": [
+        "sin_layout"
+      ],
+      "dim": 2,
+      "start": 0,
+      "stop": 300,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_rotary_first",
+      "op": "slice",
+      "inputs": [
+        "text_key_heads"
+      ],
+      "dim": 3,
+      "start": 0,
+      "stop": 64,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_rotary_second",
+      "op": "slice",
+      "inputs": [
+        "text_key_heads"
+      ],
+      "dim": 3,
+      "start": 64,
+      "stop": 128,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_rotary_negative",
+      "op": "scale",
+      "inputs": [
+        "text_key_rotary_second"
+      ],
+      "factor": -1.0,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_rotary_half",
+      "op": "concat",
+      "inputs": [
+        "text_key_rotary_negative",
+        "text_key_rotary_first"
+      ],
+      "dim": 3,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_rotary_direct",
+      "op": "mul",
+      "inputs": [
+        "text_key_heads",
+        "text_key_cos"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_rotary_rotated",
+      "op": "mul",
+      "inputs": [
+        "text_key_rotary_half",
+        "text_key_sin"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_key_rotary",
+      "op": "add",
+      "inputs": [
+        "text_key_rotary_direct",
+        "text_key_rotary_rotated"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "key_rotary",
+      "op": "concat",
+      "inputs": [
+        "text_key_rotary",
+        "image_key"
+      ],
+      "dim": 2
+    },
+    {
+      "id": "key_repeat",
+      "op": "repeat_heads",
+      "inputs": [
+        "key_rotary"
+      ],
+      "count": 7
+    },
+    {
+      "id": "key_transpose",
+      "op": "transpose",
+      "inputs": [
+        "key_repeat"
+      ],
+      "dim0": 2,
+      "dim1": 3
+    },
+    {
+      "id": "value_shape",
+      "op": "reshape",
+      "inputs": [
+        "v"
+      ],
+      "shape": [
+        2,
+        556,
+        4,
+        128
+      ]
+    },
+    {
+      "id": "value_heads",
+      "op": "transpose",
+      "inputs": [
+        "value_shape"
+      ],
+      "dim0": 1,
+      "dim1": 2
+    },
+    {
+      "id": "value_repeat",
+      "op": "repeat_heads",
+      "inputs": [
+        "value_heads"
+      ],
+      "count": 7
+    },
+    {
+      "id": "image_scores",
+      "op": "matmul",
+      "inputs": [
+        "image_query",
+        "key_transpose"
+      ]
+    },
+    {
+      "id": "image_scaled",
+      "op": "scale",
+      "inputs": [
+        "image_scores"
+      ],
+      "factor": 0.08838834764831845
+    },
+    {
+      "id": "image_attention_mask",
+      "op": "slice",
+      "inputs": [
+        "attention_mask"
+      ],
+      "dim": 2,
+      "start": 300,
+      "stop": 556,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_masked",
+      "op": "add",
+      "inputs": [
+        "image_scaled",
+        "image_attention_mask"
+      ]
+    },
+    {
+      "id": "image_prob_fp32",
+      "op": "softmax",
+      "inputs": [
+        "image_masked"
+      ],
+      "dim": -1
+    },
+    {
+      "id": "image_prob",
+      "op": "cast",
+      "inputs": [
+        "image_prob_fp32"
+      ],
+      "dtype": "bf16"
+    },
+    {
+      "id": "value_transpose",
+      "op": "transpose",
+      "inputs": [
+        "value_repeat"
+      ],
+      "dim0": 2,
+      "dim1": 3
+    },
+    {
+      "id": "probability_transpose",
+      "op": "transpose",
+      "inputs": [
+        "image_prob"
+      ],
+      "dim0": 2,
+      "dim1": 3
+    },
+    {
+      "id": "channel_query_output",
+      "op": "matmul",
+      "inputs": [
+        "value_transpose",
+        "probability_transpose"
+      ]
+    },
+    {
+      "id": "image_output_heads",
+      "op": "transpose",
+      "inputs": [
+        "channel_query_output"
+      ],
+      "dim0": 2,
+      "dim1": 3
+    },
+    {
+      "id": "image_output_rows",
+      "op": "transpose",
+      "inputs": [
+        "image_output_heads"
+      ],
+      "dim0": 1,
+      "dim1": 2
+    },
+    {
+      "id": "image_attended_rows",
+      "op": "reshape",
+      "inputs": [
+        "image_output_rows"
+      ],
+      "shape": [
+        2,
+        256,
+        3584
+      ]
+    },
+    {
+      "id": "image_attention_out",
+      "op": "linear",
+      "inputs": [
+        "image_attended_rows",
+        "w:self_attn.vision_branch_o_proj.weight"
+      ]
+    },
+    {
+      "id": "text_state_rows",
+      "op": "slice",
+      "inputs": [
+        "state"
+      ],
+      "dim": 1,
+      "start": 0,
+      "stop": 300,
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_residual_rows",
+      "op": "add",
+      "inputs": [
+        "text_state_rows",
+        "text_attention_out"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "text_post_norm",
+      "op": "rms_norm",
+      "inputs": [
+        "text_residual_rows",
+        "w:post_attention_layernorm.weight"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_residual_rows",
+      "op": "add",
+      "inputs": [
+        "image_input_rows",
+        "image_attention_out"
+      ]
+    },
+    {
+      "id": "image_post_norm",
+      "op": "rms_norm",
+      "inputs": [
+        "image_residual_rows",
+        "w:vision_branch_post_attention_layernorm.weight"
+      ]
+    },
+    {
+      "id": "text_mlp",
+      "op": "mlp",
+      "inputs": [
+        "text_post_norm",
+        "w:mlp.gate_proj.weight",
+        "w:mlp.up_proj.weight",
+        "w:mlp.down_proj.weight"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_mlp_batch_0_rows",
+      "op": "slice",
+      "inputs": [
+        "image_post_norm"
+      ],
+      "dim": 0,
+      "start": 0,
+      "stop": 1
+    },
+    {
+      "id": "image_mlp_batch_0_flat",
+      "op": "reshape",
+      "inputs": [
+        "image_mlp_batch_0_rows"
+      ],
+      "shape": [
+        256,
+        3584
+      ]
+    },
+    {
+      "id": "image_mlp_batch_0",
+      "op": "mlp",
+      "inputs": [
+        "image_mlp_batch_0_flat",
+        "w:vision_branch_mlp.gate_proj.weight",
+        "w:vision_branch_mlp.up_proj.weight",
+        "w:vision_branch_mlp.down_proj.weight"
+      ]
+    },
+    {
+      "id": "image_mlp_batch_0_shape",
+      "op": "reshape",
+      "inputs": [
+        "image_mlp_batch_0"
+      ],
+      "shape": [
+        1,
+        256,
+        3584
+      ]
+    },
+    {
+      "id": "image_mlp_batch_1_rows",
+      "op": "slice",
+      "inputs": [
+        "image_post_norm"
+      ],
+      "dim": 0,
+      "start": 1,
+      "stop": 2
+    },
+    {
+      "id": "image_mlp_batch_1_flat",
+      "op": "reshape",
+      "inputs": [
+        "image_mlp_batch_1_rows"
+      ],
+      "shape": [
+        256,
+        3584
+      ]
+    },
+    {
+      "id": "image_mlp_batch_1",
+      "op": "mlp",
+      "inputs": [
+        "image_mlp_batch_1_flat",
+        "w:vision_branch_mlp.gate_proj.weight",
+        "w:vision_branch_mlp.up_proj.weight",
+        "w:vision_branch_mlp.down_proj.weight"
+      ]
+    },
+    {
+      "id": "image_mlp_batch_1_shape",
+      "op": "reshape",
+      "inputs": [
+        "image_mlp_batch_1"
+      ],
+      "shape": [
+        1,
+        256,
+        3584
+      ]
+    },
+    {
+      "id": "image_mlp",
+      "op": "concat",
+      "inputs": [
+        "image_mlp_batch_0_shape",
+        "image_mlp_batch_1_shape"
+      ],
+      "dim": 0
+    },
+    {
+      "id": "text_output",
+      "op": "add",
+      "inputs": [
+        "text_residual_rows",
+        "text_mlp"
+      ],
+      "lifetime": "prefix"
+    },
+    {
+      "id": "image_output",
+      "op": "add",
+      "inputs": [
+        "image_residual_rows",
+        "image_mlp"
+      ]
+    },
+    {
+      "id": "output",
+      "op": "concat",
+      "inputs": [
+        "text_output",
+        "image_output"
+      ],
+      "dim": 1
+    }
+  ],
+  "layer_output": "output",
+  "compile_regions": [
+    {
+      "id": "image_rotary_compiled",
+      "nodes": [
+        "image_qk_rotary_first",
+        "image_qk_rotary_second",
+        "image_qk_rotary_half",
+        "image_qk_rotary_direct",
+        "image_qk_rotary_rotated",
+        "image_qk_rotary"
+      ]
+    },
+    {
+      "id": "image_mlp_compiled",
+      "nodes": [
+        "image_mlp_batch_0_rows",
+        "image_mlp_batch_0_flat",
+        "image_mlp_batch_0",
+        "image_mlp_batch_0_shape",
+        "image_mlp_batch_1_rows",
+        "image_mlp_batch_1_flat",
+        "image_mlp_batch_1",
+        "image_mlp_batch_1_shape",
+        "image_mlp"
+      ]
+    },
+    {
+      "id": "frequency_prefix_compiled",
+      "nodes": [
+        "cos_axis_0",
+        "cos_axis_shape_0",
+        "cos_axis_1",
+        "cos_axis_shape_1",
+        "cos_axis_2",
+        "cos_axis_shape_2",
+        "cos_section_0",
+        "cos_section_1",
+        "cos_section_2",
+        "cos_section_3",
+        "cos_section_4",
+        "cos_section_5",
+        "cos_layout",
+        "sin_axis_0",
+        "sin_axis_shape_0",
+        "sin_axis_1",
+        "sin_axis_shape_1",
+        "sin_axis_2",
+        "sin_axis_shape_2",
+        "sin_section_0",
+        "sin_section_1",
+        "sin_section_2",
+        "sin_section_3",
+        "sin_section_4",
+        "sin_section_5",
+        "sin_layout",
+        "image_cos",
+        "image_sin",
+        "image_sin_first",
+        "image_sin_negative",
+        "image_sin_second",
+        "image_signed_sin"
+      ]
+    }
+  ]
+}

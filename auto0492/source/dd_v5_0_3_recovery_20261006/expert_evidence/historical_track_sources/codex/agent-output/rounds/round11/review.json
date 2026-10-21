@@ -1,0 +1,18 @@
+{
+  "reviewed_at": "2026-10-04T02:25:59.566526+08:00",
+  "round": 11,
+  "quality_gate_passed": false,
+  "manually_inspected_grid": false,
+  "visual_review": "No formal grid; partial unscored evaluation stopped for disk safety.",
+  "result": null,
+  "row": {
+    "round": 11,
+    "policy_name": "warmstart_official_dd_reuse256_agreement2x_latehalf",
+    "method_summary": "dd-selfproto-v1.1; warmstart_official_dd_ema; 256 verified teacher pairs reused with full generation charge 152.158s; one shuffled pass completed 16 updates; FM time sampler U(0.5,1) covered native prefixes5..9 only. Training budget 212.965s was eligible. Evaluation generated 18,967 finite samples before disk safety stop; no complete FID-50k and no formal score. Partial unscored images were deleted after preserving process and failure receipts. This paired time-sampling candidate remains unclosed and cannot be compared as a formal score.",
+    "status": "quality_gate_failed",
+    "score": null,
+    "failure_reason": "disk_safety_stop_before_50000; evaluation stopped at 18,967 samples to avoid exhausting shared work-disk; no FID-50k",
+    "retained_best": false,
+    "time": "2026-10-04 02:25:59"
+  }
+}

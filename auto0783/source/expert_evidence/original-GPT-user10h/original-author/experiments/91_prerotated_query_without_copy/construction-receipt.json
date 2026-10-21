@@ -1,0 +1,16 @@
+{
+  "base": "90_prerotated_opaque_text_attention",
+  "changed_existing_nodes": [
+    "text_query_rotated"
+  ],
+  "removed_nodes": [
+    "text_query_rotated_view"
+  ],
+  "all_other_existing_node_objects_and_regions_equal": true,
+  "removed_copy_original_sole_consumer": [
+    "text_prerotated_query_heads_to_rows"
+  ],
+  "direct_query_slice_metadata_equals_original_view": true,
+  "row_reshape_may_copy_or_alias_actual_layout_unmeasured": true,
+  "no_GEMM_reduction_constant_attention_norm_or_precision_change": true
+}

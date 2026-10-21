@@ -1,0 +1,72 @@
+{
+  "schema_version": "dd-run-index-1.0",
+  "status": "SUCCESS",
+  "role": "reference",
+  "seed": 0,
+  "seed_namespace": "public_evaluation_seed",
+  "task_type": "training",
+  "scope": "PUBLIC_DEV_EVIDENCE; NOT_PRIVATE_FORMAL_ACCEPTANCE",
+  "run_id": "run-390fddf193f5436c91f4c7a0a1bed55a",
+  "method": {
+    "source": "workspace/reference/method.py",
+    "sha256": "69db146f135ccc6ff9a6dc57f2aa99af51602993cddf2a75951851e64005798f"
+  },
+  "protocol": {
+    "id": "dd-selfproto-v1.3",
+    "evaluation_seed": 0,
+    "sample_count": 50000,
+    "batch_size": 8,
+    "direction": "minimize",
+    "metric": "FID",
+    "actual_frozen_manifest_sha256": "2fa5d65fbef7bc5b47b9d54ebba3e4120bfc065b9914f3bad4ddf402bc30f0b0",
+    "baseline_and_reference_manifest_identities_not_relabelled": true,
+    "current_formal_pair_required": true,
+    "teacher_and_training_budget_seconds": 14400,
+    "resources": "same author-owned A100-40GB; public same evaluation stream"
+  },
+  "training": {
+    "adaptation": true,
+    "initialization_checkpoint_sha256": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+    "teacher_seed": 1001,
+    "training_seed": 2001,
+    "teacher_and_training_seconds": 478.14304399490356,
+    "teacher_pair_count": 256,
+    "student_updates": 16,
+    "baseline_training_note": null,
+    "reimplementation_not_official_training_code": true
+  },
+  "execution": {
+    "command": null,
+    "unavailable_command_reason": "Terminal native receipt stores stage/process records but does not contain the original complete launch argv; not reconstructed as an observed command",
+    "started_unix": 1791152120.8431046,
+    "finished_unix": 1791155263.1541798,
+    "elapsed_seconds": 3142.3110752105713,
+    "exit_code": null,
+    "exit_code_evidence_note": "Native SUCCESS observed; explicit original returncode absent from this receipt; not invented",
+    "source_native_receipt": "optimization_evidence/terminal_records/run-390fddf193f5436c91f4c7a0a1bed55a/result.json",
+    "source_native_receipt_sha256": "7a465a623d8914b82af3c1e78532da85cfe9e10160d660765bea9553f0aab180"
+  },
+  "metrics": {
+    "fid_50k": 9.511905516911611,
+    "public_normalized_score": 0.9109287080939392,
+    "primary": {
+      "name": "FID",
+      "direction": "minimize",
+      "value": 9.511905516911611
+    }
+  },
+  "quality_gate": {
+    "full_finite_metric_observed": true,
+    "user_scoped_public_reference_interval_pass": true,
+    "default_public_reference_interval_pass": false,
+    "release_qa_pass_claimed": false
+  },
+  "artifacts": {
+    "model_index": "optimization_evidence/reference_runs/seed_0/model/artifact.json",
+    "original_checkpoint_sha256": "0705cab2761652d088380eaf3347df89c47b1a223e653ffd6565f8e205659356",
+    "sample_manifest": "optimization_evidence/terminal_records/run-390fddf193f5436c91f4c7a0a1bed55a/evaluation/sample_manifest.jsonl",
+    "sample_manifest_sha256": "7da935cdf1e9cf096220ae0443abc583c73b536bb5f8d54465a13acdd8fb0492",
+    "terminal_record_directory": "optimization_evidence/terminal_records/run-390fddf193f5436c91f4c7a0a1bed55a",
+    "run_log": "optimization_evidence/reference_runs/seed_0/run.log"
+  }
+}

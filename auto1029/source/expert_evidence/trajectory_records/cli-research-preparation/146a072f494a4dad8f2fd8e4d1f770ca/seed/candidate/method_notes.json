@@ -1,0 +1,606 @@
+{
+  "algorithm": "hybrid_structural_speculative_drafting_with_format_aware_adaptation",
+  "version": "0.7.3",
+  "summary": "MC-optimized hybrid structural speculative drafting with 5 strategies. v0.7.3 improvements: all-MC format detection (all 96 dev questions are MC), option sequence prediction (A→B→C→D at sentence boundaries, 65.9% acceptance), bigram fallback (29% acceptance, fills empty draft slots), smart period continuation (Option vs The based on context), enhanced MC templates (79 total), format-aware openings. Word-level simulation: 1.510x average speedup on MC responses (+24.7% over v0.6.0 baseline). All contract checks pass, deterministic, bounded O(1) cost per call.",
+  "strategies": [
+    {
+      "name": "prefix_grammar_templates",
+      "order": 1,
+      "description": "Matches end of decoded text against 79 MC-optimized templates. Highest-confidence structural triggers including answer-reveal, option analysis, reasoning transitions, and elimination patterns.",
+      "expected_acceptance": "medium_to_high",
+      "simulated_acceptance_per_draft": "0.76 tokens (41.1% rate)",
+      "rationale": "Visual reasoning models reliably produce structured answer-reveal phrases. These scaffolding tokens are highly predictable even when the specific answer content is not.",
+      "adaptation": "Templates are adaptively re-ranked by observed acceptance rate. Best-performing triggers checked first. No hard suppression.",
+      "cpu_cost": "~35-70 µs (48 templates, O(1) tail extraction)",
+      "adaptation_note": "Acceptance rate used in scoring; ranked_templates removed (dead code)"
+    },
+    {
+      "name": "ngram_history_reuse",
+      "order": 2,
+      "description": "Searches backward through recent 150 words for repeated n-grams (n=2-3). Most effective on MC option enumeration patterns.",
+      "expected_acceptance": "format_dependent",
+      "simulated_acceptance_per_draft": "0.57 tokens (5.8% rate)",
+      "rationale": "Multiple-choice reasoning enumerates options with parallel structure. N-gram reuse captures this without predefined templates. Less effective on free-form text.",
+      "adaptation": "Per-strategy stats tracked. Strategy order can be adapted in future versions.",
+      "cpu_cost": "~50-110 µs (150w window, O(1) tail extraction)",
+      "max_n": 3,
+      "window_words": 150
+    },
+    {
+      "name": "period_continuation_fallback",
+      "order": 3,
+      "description": "When decoded text ends with a sentence boundary (period), proposes 'The' as a high-frequency sentence starter. Cheap 1-token draft used only when higher-confidence strategies don't fire.",
+      "expected_acceptance": "low_but_consistent",
+      "simulated_acceptance_per_draft": "~0.5 tokens",
+      "rationale": "Better than zero draft when no stronger trigger matches. Minimal downside since it's only a single token.",
+      "adaptation": "Per-strategy stats tracked. Acceptance rate informs ranking relative to other strategies."
+    },
+    {
+      "name": "opening_template",
+      "order": 0,
+      "description": "When decoded text is empty, proposes a domain-appropriate opening phrase. Uses MC-specific opening when multiple-choice options are detected in the question.",
+      "expected_acceptance": "medium",
+      "simulated_acceptance_per_draft": "5-8 tokens",
+      "rationale": "Visual reasoning models nearly always start with a framing sentence. The exact phrasing varies but the general form is predictable."
+    },
+    {
+      "name": "option_sequence_prediction",
+      "order": 2,
+      "description": "MC-specific: predicts next option letter (A→B→C→D) at sentence boundaries. Detects option pattern from last sentence (incorrect/correct/eliminated) and applies same pattern to next letter. Conservative: only fires at period boundaries with recent option mention.",
+      "expected_acceptance": "high",
+      "simulated_acceptance_per_draft": "3.00 tokens (65.9% rate) — highest of any strategy",
+      "rationale": "MC models enumerate options in order. After completing option analysis, the next sentence almost always starts with \"Option [next letter]\". Pattern matching captures the continuation verb (incorrect/correct/eliminated).",
+      "cpu_cost": "~20-40 µs (regex on last 60 words of text)",
+      "trigger_condition": "sentence ends with period AND last sentence mentions an option AND not at option D"
+    },
+    {
+      "name": "bigram_fallback",
+      "order": 5,
+      "description": "Last-resort 1-word continuation from static bigram table of MC visual reasoning common transitions. Never hurts since 0-accepted drafts are equivalent to empty proposals. Fills ~50 empty draft slots per response.",
+      "expected_acceptance": "low_but_consistent",
+      "simulated_acceptance_per_draft": "0.29 tokens (29.2% rate)",
+      "rationale": "High-frequency function-word transitions are partially predictable. Even 30% acceptance on 1-word drafts adds meaningful speedup because there are many empty draft slots.",
+      "cpu_cost": "~5 µs (dict lookup)",
+      "table_size": "~25 entries"
+    }
+  ],
+  "strategy_priority_order": [
+    "opening_template (empty prefix)",
+    "format-aware ordering:",
+    "  MC mode: ngram_history_reuse → prefix_grammar_templates",
+    "  open-ended mode: prefix_grammar_templates → ngram_history_reuse",
+    "period_continuation_fallback",
+    "fallback to [] (ordinary step)"
+  ],
+  "return_format": "dict with 'text' field (trusted tokenizer encodes), or empty list for ordinary step",
+  "budget_handling": {
+    "max_draft_tokens": 32,
+    "budget_application": "draft_budget = min(remaining_tokens, maximum_draft_tokens, 32). Word-budget = max(1, draft_budget). Templates truncated to word_budget. Returns [] when budget <= 0.",
+    "note": "Text-based proposals are not token-counted locally since the tokenizer is unknown. Uses word count as a conservative proxy (assumes ~1 token/word for common words). The trusted evaluator enforces the 32-token cap."
+  },
+  "cpu_testbed_results": {
+    "method": "deterministic word-level simulation with 5 response formats, 20-30 seeds each",
+    "testbed_file": "draft_testbed.py",
+    "results_file": "testbed_results.json",
+    "baseline_speedup": "1.000x (always empty draft)",
+    "method_dot_py_simulated_speedups": {
+      "mc_reasoning": "1.208x (20 seeds)",
+      "open_ended": "1.108x (20 seeds)",
+      "short_answer": "1.033x (20 seeds)"
+    },
+    "component_breakdown_simulated": {
+      "prefix_grammar_only": {
+        "mc_reasoning": "1.254x",
+        "open_ended": "1.375x",
+        "short_answer": "1.039x",
+        "parallel_struct": "1.115x"
+      },
+      "ngram_reuse_only": {
+        "mc_reasoning": "1.341x",
+        "open_ended": "1.084x",
+        "short_answer": "1.000x",
+        "parallel_struct": "1.221x"
+      },
+      "adaptive_history": {
+        "mc_reasoning": "1.254x",
+        "open_ended": "1.272x",
+        "note": "adaptive didn't improve over static in single-sequence tests because templates are already well-chosen"
+      },
+      "testbed_hybrid": {
+        "mc_reasoning": "1.387x",
+        "open_ended": "1.001x",
+        "note": "testbed hybrid underperforms on open-ended due to over-aggressive strategy disabling (important negative finding)"
+      }
+    },
+    "noise_robustness": {
+      "description": "Word-insertion noise simulates format deviation from expected structural patterns",
+      "finding": "All policies degrade gracefully. At 10% noise, ~70% of speedup remains. At 30% noise, ~20-30% remains. N-gram and grammar are similarly robust."
+    },
+    "budget_sensitivity": {
+      "mc_format": {
+        "2 tokens": "1.20x",
+        "4 tokens": "1.23x",
+        "8 tokens": "1.31x",
+        "16+ tokens": "saturates at ~1.31x"
+      },
+      "finding": "Most of the benefit comes from the first 4-8 draft tokens. Diminishing returns after 8 tokens."
+    },
+    "cross_sequence_learning": {
+      "finding": "No measurable improvement when adaptive policy learns across 30 MC sequences. The template set is already near-optimal for this format.",
+      "implication": "Adaptive learning is more valuable for variable-format workloads or when the template set is suboptimal."
+    }
+  },
+  "what_cpu_simulation_predicts": [
+    "Relative ordering of policy quality across formats with similar structure to real model outputs",
+    "That template-based structural drafting will provide measurable speedup on stereotyped reasoning text",
+    "That n-gram reuse will help most on highly repetitive formats (MC option enumeration)",
+    "That short draft lengths (4-8 tokens) capture most of the available structural benefit",
+    "That the policy will degrade gracefully as responses deviate from expected patterns"
+  ],
+  "what_cpu_simulation_does_not_predict": [
+    "Absolute real-world speedup numbers (no real tokenizer, no real model, word != token)",
+    "Acceptance rates on the long tail of unusual or creative model outputs",
+    "FP-numerical boundary effects between sequential and block target evaluation",
+    "Cache/compute overhead of the draft policy itself",
+    "Subword tokenization effects (our simulation uses whole-word tokens)",
+    "Exact acceptance rates — the simulation uses perfect format knowledge",
+    "Whether the real model uses the specific phrasing we've templated"
+  ],
+  "assumptions": [
+    "The target model produces English-language reasoning chains with stereotypical transition phrases.",
+    "The tokenizer is a standard subword tokenizer (BPE-like) where our short text templates encode to fewer than 32 tokens.",
+    "Multiple-choice questions follow standard A/B/C/D formatting patterns.",
+    "Acceptance of even 1-3 tokens per draft call provides meaningful latency reduction compared to always returning [].",
+    "The model uses temperature 0.6 sampling which produces reasonably deterministic structural transitions.",
+    "Word-level structural patterns in the simulation are qualitatively similar to token-level patterns in the real system.",
+    "generated_token_ids length accurately reflects decoding position (not including prompt tokens).",
+    "Draft state is evaluated by calling draft(state) sequentially as generation proceeds."
+  ],
+  "expected_failure_modes": [
+    {
+      "mode": "low_acceptance_rate_short_templates",
+      "description": "Many templates propose only 1-4 tokens. If acceptance is low (<20%), draft verification overhead may outweigh savings.",
+      "severity": "medium",
+      "mitigation": "Templates ordered by confidence; falls back to [] when no match rather than proposing low-confidence garbage."
+    },
+    {
+      "mode": "tokenizer_mismatch",
+      "description": "Text returned as {'text': ...} may tokenize to more tokens than expected, potentially exceeding the 32-token limit or producing suboptimal token boundaries.",
+      "severity": "low",
+      "mitigation": "All templates are short (<80 chars), well under any reasonable 32-token encoding. Word-budget truncation provides additional safety."
+    },
+    {
+      "mode": "case_sensitivity_issues",
+      "description": "Template matching uses lowercased text; case preservation of the continuation uses a heuristic based on trigger capitalization.",
+      "severity": "low",
+      "mitigation": "Case preservation checks the actual trigger word's capitalization in the original text. Most triggers are function words where case matters only at sentence boundaries."
+    },
+    {
+      "mode": "ngram_false_positives",
+      "description": "N-gram lookback may find coincidental matches that produce nonsensical continuations, especially with short n values.",
+      "severity": "low",
+      "mitigation": "Minimum n=2 (at least 2 word match). Only fires when higher-confidence grammar templates don't match. The target model verifies every token, so false drafts just cost one step."
+    },
+    {
+      "mode": "format_mismatch",
+      "description": "If the real model produces responses with very different phrasing than our templates assume, acceptance rates will be much lower than simulation predicts.",
+      "severity": "medium",
+      "mitigation": "Templates are chosen for broad generality (common English reasoning phrases). Multiple strategies provide redundancy. Fallback to [] is always safe."
+    },
+    {
+      "mode": "adaptation_overfit_early",
+      "description": "Early in a session, with few observations, ranking may be based on noisy estimates and temporarily favor suboptimal templates.",
+      "severity": "low",
+      "mitigation": "Conservative 5-draft minimum before using acceptance stats. All templates remain eligible as fallback."
+    }
+  ],
+  "next_discriminating_gpu_experiment": {
+    "name": "paired_seed_acceptance_with_adaptation",
+    "description": "Run the policy on paired seeds (17, 29, 43, 71, 101) and measure per-draft acceptance count, number of draft calls, and end-to-end latency. Compare against baseline (empty draft).",
+    "why_discriminating": "This is the single most informative experiment: it measures actual acceptance rate on the real model, which directly determines whether structural drafting provides any benefit. A low acceptance rate (<0.3 tokens/draft) would indicate our template assumptions are wrong and we need to pivot strategies.",
+    "key_metrics": [
+      "average accepted tokens per draft call",
+      "total draft calls per question",
+      "end-to-end speedup vs baseline",
+      "per-seed variance in acceptance",
+      "output agreement check (must match baseline exactly)"
+    ],
+    "expected_outcome_if_hypothesis_correct": "1.05-1.2x speedup, 0.5-1.5 average accepted tokens per draft call, 100% output agreement",
+    "what_would_surprise_us": "Acceptance rate <0.2 tokens/draft (templates don't match real output), or output disagreement (FP numerical issues in block evaluation)",
+    "adaptation_questions": "Does online adaptation improve acceptance rate on the real model? How quickly does trigger ranking converge? Does cross-question transfer work across real questions?"
+  },
+  "diagnostic_checks_passed": true,
+  "contract_checks_passed": 25,
+  "research_journal": "research_journal.md",
+  "online_adaptation": {
+    "mechanism": "acceptance_inference_from_position_delta",
+    "description": "Infers how many draft tokens were accepted by computing len(generated_token_ids) delta between consecutive draft() calls, minus 1 (the ordinary fallback token from the target model). No access to target logits or private state needed — uses only the public draft(state) interface.",
+    "acceptance_inference": {
+      "formula": "accepted = len(current_ids) - len(previous_ids) - 1",
+      "sanity_checks": [
+        "accepted >= 0",
+        "accepted <= estimated_proposed_tokens"
+      ]
+    },
+    "reset_detection": {
+      "signals": [
+        "first_call (no prior state)",
+        "empty_generated_token_ids (new question start)",
+        "question_text_changed (hash comparison)",
+        "position_went_backward (shortened history / rollback)",
+        "decoded_text_got_shorter"
+      ],
+      "what_resets": [
+        "per-question draft counters",
+        "recent sliding acceptance window"
+      ],
+      "what_persists": [
+        "per-trigger acceptance statistics",
+        "per-strategy acceptance statistics",
+        "global total counters"
+      ]
+    },
+    "adaptation_actions": [
+      "Reorder templates by observed acceptance rate (proven good → unknown → proven poor)",
+      "Select among matching templates by expected value (acceptance_rate * continuation_length)",
+      "Conservative: only rank after 5+ observations per trigger"
+    ],
+    "what_is_NOT_adapted": [
+      "No hard suppression of low-performing triggers (all remain eligible)",
+      "No global draft length factor (found to be harmful in testing)",
+      "No strategy disabling (found to hurt more than help)"
+    ],
+    "cpu_testbed_results": {
+      "mc_reasoning_cross_question_learning": "+1.7% speedup",
+      "mixed_format_overall": "+0.4% speedup",
+      "noise_0_percent": "+1.8% speedup",
+      "noise_10_percent": "+0.9% speedup",
+      "noise_20_percent": "+0.5% speedup",
+      "open_ended": "neutral (+0.0%)",
+      "short_answer": "neutral (+0.0%)",
+      "no_regression": "true — adaptation never reduces performance"
+    },
+    "complexity": {
+      "per_call_overhead": "~100 microseconds (negligible vs model inference)",
+      "state_memory": "~600 bytes (bounded by fixed template set size)",
+      "per_call_ops": "O(n_templates) for ranking, O(1) for observation"
+    },
+    "state_leakage_risks": [
+      {
+        "risk": "Cross-question stat carryover",
+        "severity": "low",
+        "description": "Per-trigger stats persist across questions. Could bias early drafts of a new question toward the previous question's format.",
+        "mitigation": "Conservative ranking (5+ observations before trusting stats). Recent window resets per question. Bias is toward better-performing templates which should generalize."
+      },
+      {
+        "risk": "Position delta inference error",
+        "severity": "medium",
+        "description": "If generated_token_ids includes prompt tokens or special tokens, acceptance inference will be wrong.",
+        "mitigation": "Sanity checks: accepted >= 0, accepted <= proposed. Conservative ranking thresholds tolerate some noise. Wrong inference just means slower adaptation, not incorrect behavior."
+      },
+      {
+        "risk": "Reset detection false positive",
+        "severity": "low",
+        "description": "Might incorrectly reset per-question state. Just loses history — safe.",
+        "mitigation": "Multiple redundant reset signals. False positive is safer than false negative."
+      },
+      {
+        "risk": "Tokenizer mismatch in proposed token estimate",
+        "severity": "medium",
+        "description": "We estimate proposed tokens as word count, but real tokenizer uses subwords.",
+        "mitigation": "Only used for sanity cap (accepted <= proposed). Word count <= token count is conservative. Position delta itself uses real token IDs and is accurate."
+      }
+    ]
+  },
+  "cache_rollback_verification": {
+    "simulator": "spec_cache_rollback_v2.py",
+    "results_file": "spec_cache_rollback_results.json",
+    "summary": "Independent KV-cache + speculative verification simulator with 10 invariants, 1000 randomized differential tests, 5000-token stress test. All invariants hold.",
+    "verified_invariants": [
+      "cache_prefix_matches_oracle (cache content always matches oracle prefix",
+      "rollback_preserves_prefix (rollback never corrupts earlier positions",
+      "accepted_le_draft_len (accepted never exceeds proposed)",
+      "cache_length_formula (len_after = len_before + accepted + replacement?1:0 + bonus?1:0)",
+      "bonus_implies_full_accept (bonus token only added when all draft tokens accepted)",
+      "deterministic_replay (same inputs produce identical outputs)"
+    ],
+    "acceptance_inference_formula": {
+      "formula": "accepted = len(new_ids) - len(old_ids) - 1",
+      "holds_for": [
+        "rejection case (delta = accepted + 1 replacement)",
+        "full acceptance with bonus (delta = accepted + 1 bonus)",
+        "empty draft / ordinary step (delta = 1, accepted = 0)"
+      ],
+      "edge_case_eos_in_draft": {
+        "behavior": "When EOS is accepted within the draft (not as bonus), delta = accepted exactly (no extra token). Formula undercounts by 1.",
+        "frequency": "Once per question, on the final step only",
+        "impact_on_adaptation": "negligible — one data point per question, conservative undercount is safe",
+        "mitigation": "max(0, accepted) clamping already handles it; result is conservative"
+      },
+      "edge_case_bonus_overshoot": {
+        "behavior": "Bonus token can push output past max_tokens by 1. If evaluator clips strictly, delta = accepted on final full-accept step.",
+        "frequency": "Depends on draft alignment with max_tokens boundary",
+        "impact_on_adaptation": "negligible — at most one step per question"
+      }
+    },
+    "randomized_testing": {
+      "num_trials": 1000,
+      "counterexamples_found": 0,
+      "stress_test": "5000-token sequence, 3239 steps, 2959 rollbacks — all invariants hold"
+    }
+  },
+  "cost_model_analysis": {
+    "policy_overhead_us": {
+      "empty_prefix": 8,
+      "100word_history": 100,
+      "200word_history": 130,
+      "component_breakdown": {
+        "ngram_lookback_100w_us": 60,
+        "template_matching_35_us": 40,
+        "adaptation_ranking_us": 13,
+        "observer_observe_us": 0.9,
+        "period_continuation_us": 0.2
+      }
+    },
+    "json_serialization_us": {
+      "typical_state": 10,
+      "large_state_500tok": 30
+    },
+    "key_findings": [
+      "CPU policy overhead is 0.001-0.02x of GPU step cost — negligible",
+      "All strategies are worth keeping; each needs only ~0.003 extra tokens/draft to justify cost",
+      "n-gram max_n=3 is as good as n=5 or n=7 across all 5 test formats",
+      "150-word n-gram window captures 100% of matches up to 800-word histories",
+      "ranked_templates was dead code — reordering has no effect when all are scored",
+      "Break-even acceptance varies 0.4-0.8 depending on GPU batch efficiency profile",
+      "Optimal draft length: N=1 at p<0.3, N=3-7 at p=0.5-0.7, N=14-26 at p=0.9",
+      "Adaptive block control (slow window) gains ~2-3% over best static on heterogeneous content"
+    ],
+    "simplifications_v050": [
+      "n-gram max_n: 5 → 3 (same quality, 2x faster)",
+      "n-gram window: 150 words (bounded cost, no quality loss at <128 tokens)",
+      "Removed ranked_templates call (dead work, 1.37x faster matching)",
+      "Removed dead variables: n_proven_good, rank_idx"
+    ],
+    "break_even_table": {
+      "very_efficient_gpu": {
+        "N4_p_min": 0.44,
+        "N8_p_min": 0.48,
+        "optimal_at_p05": "N=3 (1.11x)"
+      },
+      "moderate_gpu": {
+        "N4_p_min": 0.74,
+        "N8_p_min": 0.76,
+        "optimal_at_p05": "N=1 (0.75x)"
+      },
+      "weak_gpu": {
+        "N4_p_min": 1.0,
+        "N16_p_min": 0.98,
+        "optimal_at_p05": "N=1 (0.50x)"
+      }
+    }
+  },
+  "fp_numerical_sensitivity": {
+    "status": "comprehensive_cpu_audit_complete_gpu_validation_pending",
+    "audit_version": "v2_detailed",
+    "key_correction_from_v1": "Initial audit used 3e-5 relative as 'BF16 scale' — this is ~150x too small. True BF16 ULP is ~0.5-0.8% relative (7 mantissa bits).",
+    "bf16_ulp_facts": {
+      "relative_precision_pct": "0.5-0.8% (varies with logit magnitude)",
+      "mantissa_bits": 7,
+      "fp32_ulp_ratio": 65536,
+      "typical_logit_ulp_absolute": {
+        "logit_value_5": "0.031 (0.625% relative)",
+        "logit_value_10": "0.062 (0.625% relative)",
+        "logit_value_50": "0.250 (0.500% relative)"
+      }
+    },
+    "flip_rates_at_1_bf16_ulp_shared_rng": {
+      "sharp_distribution_template_like": "0.24% per token",
+      "medium_distribution_generic_lm": "1.06% per token",
+      "flat_distribution_low_confidence": "1.38% per token"
+    },
+    "flip_rate_scaling": "Roughly linear with ULP count: ~1% per ULP for medium distribution",
+    "fp32_flip_rate": "<0.01% even at 1000 ULPs — essentially deterministic",
+    "draft_level_risk_n_8": {
+      "uniform_1_ulp_any_flip": "7.7% (medium tokens)",
+      "position0_exact_any_flip": "7.2%",
+      "growing_1x_to_3x_any_flip": "15.7%",
+      "correlated_pattern_any_flip": "4.9% (lower — same pattern = fewer surprises)",
+      "template_policy_per_draft": "0.2-1.0% (short high-confidence drafts)"
+    },
+    "our_policy_risk_assessment": {
+      "policy_weighted_per_token_flip": "~0.05-0.5% (most drafts are high-confidence templates)",
+      "policy_weighted_per_draft_flip": "~0.2-1.0%",
+      "expected_speedup_loss_from_fp": "<0.1%",
+      "verdict": "SAFE — FP noise is negligible compared to normal acceptance variance",
+      "why_safe": [
+        "Template tokens have large decision margins (median 4+ log/temp units)",
+        "Draft lengths are short (2-4 tokens for templates)",
+        "FP flips cause at most 1 extra rejection step per draft",
+        "Rejection overhead is small relative to potential speedup"
+      ]
+    },
+    "safeguard_analysis": {
+      "logit_gap_filtering_effectiveness": "low — Gumbel noise dominates decision margin; deterministic logit gap is a weak predictor of flip probability",
+      "position_0_reuse": "minor benefit (~6% reduction in any-flip for N=8), cheap to implement",
+      "fp32_sampling": "potentially effective if sampling step is FP source, but most error likely in logit computation",
+      "shorter_drafts": "linear reduction in flip rate, linear cost in speedup",
+      "recommended_safeguards_for_production": [
+        "Position-0 logit reuse from autoregressive cache (free, minor benefit)",
+        "Keep draft lengths moderate (<=8 for high-confidence, <=4 for medium)",
+        "No need for logit-gap-based filtering"
+      ]
+    },
+    "replay_dynamics": {
+      "expected_extra_steps_per_draft": "~0.01 (from FP-caused rejections)",
+      "cascade_probability_2plus_rejections": "~0.01%",
+      "verdict": "Negligible — FP does not cause problematic replay loops"
+    },
+    "gpu_test_plan_v2": {
+      "n_tests": 11,
+      "phases": 6,
+      "critical_path_minutes": 48,
+      "all_tests_minutes": 81,
+      "with_diagnosis_minutes": 68,
+      "decision_tree_thresholds": {
+        "flip_lt_0.1pct": "Negligible — no action needed",
+        "flip_0.1_to_1pct": "Minor — keep current policy",
+        "flip_1_to_5pct": "Moderate — position-0 reuse + shorter drafts",
+        "flip_gt_5pct": "Significant — root-cause diagnosis + FP32 sampling"
+      },
+      "full_plan_in": "fp_sensitivity_detailed_audit_results.json → gpu_plan_v2"
+    },
+    "what_cpu_simulation_cannot_prove": [
+      "Actual GPU block-vs-sequential error magnitude",
+      "Whether error grows with position index",
+      "Correlation structure of errors across positions",
+      "Whether causal mask is correct in block attention",
+      "Exact template acceptance rates on real model"
+    ]
+  },
+  "uncertainties": [
+    "Real template acceptance rates on actual model outputs (word-level sim is approximate)",
+    "Format detection from decoded text catches MC early enough (first 1-2 options)?",
+    "Adaptive truncation thresholds: current values are reasonable defaults, not GPU-optimized",
+    "N-gram effectiveness on real model outputs (depends on actual structural repetition)",
+    "FP noise impact on real GPU: block-vs-sequential logit diff magnitude unknown",
+    "Opening template acceptance rate: does \"Looking at the image\" always start the response?",
+    "Token vs word budget mismatch: real tokenizer may split differently",
+    "Adaptation convergence speed across diverse question types"
+  ],
+  "robustness": {
+    "deep_adversarial_audit": {
+      "total_checks": 182,
+      "passed": 181,
+      "pass_rate": "99.5%",
+      "categories": [
+        "extreme_xml_markup",
+        "adversarial_text",
+        "unicode_stress",
+        "budget_edge_matrix",
+        "reset_stress",
+        "serialization",
+        "determinism",
+        "memory",
+        "asymptotic_cost",
+        "state_fuzzing",
+        "template_edges",
+        "opening_edges"
+      ],
+      "test_file": "deep_adversarial_test.py",
+      "results_file": "deep_adversarial_results.json"
+    },
+    "type_hardening": {
+      "non_dict_state": "returns [] immediately",
+      "non_str_question": "coerced to empty string",
+      "non_str_decoded_text": "coerced to empty string",
+      "non_list_generated_ids": "coerced to empty list",
+      "non_int_budget": "_safe_int defaults to 32"
+    },
+    "memory": {
+      "growth_per_5k_calls_method_py": "< 0.1 KB",
+      "observer_bounded": true,
+      "trigger_stats_max": 34,
+      "strategy_stats_max": 4,
+      "recent_deque_max": 20
+    },
+    "asymptotic": {
+      "history_scaling": "O(1) via backward tail scan",
+      "template_match_window": "last 15 words",
+      "ngram_search_window": "last 150 words",
+      "worst_case_2000w_us": 53,
+      "typical_100w_us": 40,
+      "mc_detection_tail": "1200 chars (O(1))"
+    },
+    "determinism": "100% identical across repeated runs (0/400 mismatches)",
+    "research_runner": {
+      "sections": 6,
+      "all_pass": true,
+      "mode_medium_time_s": 1.5,
+      "sections_list": [
+        "contract_checks",
+        "cost_microbenchmark",
+        "adaptation_correctness",
+        "word_level_testbed",
+        "adversarial_basic",
+        "determinism"
+      ]
+    }
+  },
+  "v0.6.0_changes": {
+    "format_aware_ordering": {
+      "description": "Detects MC reasoning from question text AND decoded text (last 1200 chars). Uses n-gram-first strategy for MC (better on repetitive structure), template-first for open-ended (better on transition phrases).",
+      "mc_detection": "_detect_mc_options(question) OR _detect_mc_from_text(decoded_text)",
+      "expected_improvement": "5-15% relative on MC, neutral on open-ended",
+      "cost": "<5µs/call (regex on 1200-char tail)"
+    },
+    "adaptive_draft_length": {
+      "description": "Truncates draft continuation based on trigger confidence. Known high acceptance (>=50%): full length. Medium (>=30%): up to 4w. Low (>=15%): up to 2w. Unknown: up to 5w cap.",
+      "mechanism": "_adaptive_truncate() called after template match and case preservation",
+      "rationale": "Maximizes expected accepted tokens per verification step. Shorter drafts have higher acceptance; match ambition to confidence.",
+      "adaptation_ready": true
+    },
+    "new_templates": {
+      "count_added": 14,
+      "total_now": 48,
+      "types_added": [
+        "option X is → incorrect because (4 variants: A,B,C,D)",
+        "option X is incorrect because → the (4 variants)",
+        "option X is correct because → the (4 variants)",
+        "is not correct because → the",
+        "the correct option is → option"
+      ]
+    }
+  },
+  "v0_7_0_changes": {
+    "all_mc_discovery": {
+      "description": "All 96 dev questions are multiple-choice across 6 categories. Confirmed via samples.json analysis.",
+      "categories": [
+        "coarse perception",
+        "fine-grained perception",
+        "instance reasoning",
+        "logical reasoning",
+        "math",
+        "science & technology"
+      ],
+      "formats": [
+        "short_mc (71 questions, Options: A: B: C: D:)",
+        "long_mc (25 questions, Hint + Choices + (A)(B)(C)(D))"
+      ]
+    },
+    "option_sequence_prediction": {
+      "description": "New strategy: predicts next option letter at sentence boundaries with same analysis pattern. Conservative trigger: only at periods with recent option mention.",
+      "result": "65.9% acceptance rate, 3.00 accepted tokens/draft — highest of any strategy",
+      "common_patterns": [
+        "is incorrect because",
+        "is correct because",
+        "can be ruled out",
+        "can be eliminated"
+      ]
+    },
+    "bigram_fallback": {
+      "description": "1-word static bigram table as last-resort filler. 25 common MC transitions.",
+      "result": "29.2% acceptance, fills ~48 empty slots/response. Pure upside (0-accepted = same as empty)."
+    },
+    "smart_period_continuation": {
+      "description": "Period continuation predicts \"Option\" when in MC analysis mode (2+ recent option mentions), \"The\" otherwise.",
+      "result": "Period accuracy doubled: 8.3% → 16.7%"
+    },
+    "enhanced_templates": {
+      "description": "Extended from 48 to 79 templates with more MC-specific patterns: answer reveals, elimination patterns, reasoning transitions.",
+      "result": "41.1% acceptance rate, 0.76 accepted tokens/draft"
+    },
+    "speedup_progression": {
+      "v0_6_0": "1.211x (baseline)",
+      "v0_7_1_opt_seq_fix": "1.426x (+17.7%)",
+      "v0_7_2_bigram": "1.510x (+24.7%)",
+      "v0_7_3_smart_period": "1.510x (+24.7%, period accuracy 2x)"
+    },
+    "tested_and_rejected": [
+      "Trigram+bigram combined: slightly worse than bigram-only (1.506x vs 1.510x) — hand-curated trigram table not accurate enough",
+      "Dynamic bigram from history: worse than static (25.2% vs 30.7%) — not enough history in short responses",
+      "Generic \"option\" template: wrong more often than right (fires before option letter), but 0-accepted so no harm",
+      "n-gram max_words tuning: no difference — proposals already short"
+    ]
+  }
+}

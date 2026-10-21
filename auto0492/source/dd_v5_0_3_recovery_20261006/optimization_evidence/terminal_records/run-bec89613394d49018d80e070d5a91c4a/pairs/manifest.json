@@ -1,0 +1,83 @@
+{
+  "protocol": "dd-selfproto-v1.3",
+  "reimplementation": true,
+  "method": {
+    "name": "weighted_filtered_interface_smoke",
+    "protocol_version": "dd-selfproto-v1.3",
+    "initialization": "warmstart_official_dd_ema",
+    "teacher": {
+      "num_samples": 16,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "student_agreement_per_label",
+      "weighting": "custom",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 2
+    },
+    "time_sampler_note": "Uniform U(0,1) if adaptation is enabled.",
+    "train_notes": "Released DD EMA initialization; no adaptation by default."
+  },
+  "method_sha256": "4982f172e4e8933e62a1dc8d1cc6e44e5bd1916db8dbe35ba0f95a9759af7e56",
+  "teacher_sha256": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+  "vae_sha256": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+  "seed": 1001,
+  "sample_count": 16,
+  "shards": [
+    {
+      "file": "pairs_00000.pt",
+      "count": 16,
+      "sha256": "f79f04c95cbd2ff399124d5e807da4843843fd3f4aaba192d2814c335809dfaf"
+    }
+  ],
+  "noise_dtype": "float32",
+  "token_dtype": "int16",
+  "guidance_interpretation": "VAR ramp: (1+cfg*scale/9)*conditional - (cfg*scale/9)*unconditional",
+  "ode_nfe_per_scale": 32,
+  "ode_grid": "logSNR",
+  "boundary_epsilon": 0.001,
+  "elapsed_seconds": 20.324193239212036,
+  "peak_torch_allocated_mib": 5078.3974609375,
+  "peak_torch_reserved_mib": 8814.0,
+  "filter_evidence": {
+    "proposal_count": 32,
+    "selected_count": 16,
+    "proposal_multiplier": 2,
+    "metric": "LPIPS-alex-v0.1 between initialized student single-step output and fixed VAR teacher target",
+    "unfiltered_proposals": "unfiltered_proposals.pt",
+    "unfiltered_proposals_sha256": "d3c19d3e47a8ad188a0934470a5cbd1a85d5d38a463daab473f33bca4b605144",
+    "selected_indices": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30
+    ],
+    "labels_preserved_exact": true,
+    "mean_proposal_distance": 0.5336160063743591,
+    "mean_selected_distance": 0.5323655009269714,
+    "student_filter_initialization": {
+      "source": "warmstart_official_dd_ema",
+      "checkpoint_asset": "VAR-DD/var-d16.pth",
+      "checkpoint_sha256": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "parameter_key_count": 240,
+      "parameter_values_verified_exact": true,
+      "matches_baseline_initialization": true
+    },
+    "training_targets": "Only VAR-teacher token IDs; student output is used solely to select noise/target proposals."
+  }
+}

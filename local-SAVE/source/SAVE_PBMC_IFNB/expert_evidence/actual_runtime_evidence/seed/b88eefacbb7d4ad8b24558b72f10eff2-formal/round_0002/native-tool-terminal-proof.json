@@ -1,0 +1,34 @@
+{
+  "original_event_sha256": "e97f9dc4aeb7f54f29b7f8597d46cd2cc799f4cbbdc19039736effdd47b41dec",
+  "original_receipt_sha256": "fba1a46992c599057cfb6a1603b533d62bb72a42a1b4060c15c8c59c85a15670",
+  "original_event_last_write_epoch": 1791569386.7367413,
+  "original_native_session_ids": [
+    "01a12188-e1ec-75c1-9992-dee7c9424cbf"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'PYEOF'\n\\\"\\\"\\\"Method v3: Sign-aware scaled nearest-cell-type stimulation shift.\n\nKey insight: stimulation response scales with baseline expression via a power law,\nbut up- and down-regulated genes have different exponents.\n  - Up-regulated genes: pow = 0.15 (weaker baseline dependence)\n  - Down-regulated genes: pow = 0.80 (stronger baseline dependence, floor effect)\n\nOptimal pows found via LOO-CV across 6 training cell types on original-scale MSE.\nLOO improvement: 3.88% over uniform pow=0.22.\nLocal dev improvement: ~4%.\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\n\nMODEL_CONFIG = {\n    'kl_scale': 0.5, 'hidden_dim': 64, 'enc_dim': 64, 'expand_dim': 512,\n    'enc_num_heads': 4, 'dec_num_heads': 4, 'enc_depth': 3, 'dec_depth': 3,\n    'enc_affine': True, 'enc_norm_type': 'ln', 'dec_norm_init': True,\n    'dec_blk_type': 'adaLN', 'gene_block_size': 400, 'latent_block_size': 400,\n    'is_flash_attn': False,\n}\n\nUP_POW = 0.15\nDOWN_POW = 0.80\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\nclass SignAwareShiftModel(nn.Module):\n    \\\"\\\"\\\"Buffers for cell type means and stim diffs (state_dict persistence).\\\"\\\"\\\"\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass SignAwareShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n\n        self.model = SignAwareShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        \\\"\\\"\\\"Compute per-cell-type control means and stimulation differences.\\\"\\\"\\\"\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return SignAwareShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef predict(model, controls, scaler, inference_seed):\n    \\\"\\\"\\\"Predict stimulated expression with sign-aware scaled nearest-cell-type shift.\\\"\\\"\\\"\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    corrs = []\n    for i in range(ctrl_means_np.shape[0]):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs.append(c if np.isfinite(c) else -1.0)\n    nearest_idx = int(np.argmax(corrs))\n\n    nearest_ctrl = ctrl_means_np[nearest_idx]\n    ratio = np.where(\n        nearest_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(nearest_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 0.1, 10.0)\n\n    nearest_diff = stim_diffs_np[nearest_idx]\n    up_mask = nearest_diff > 0\n    down_mask = nearest_diff < 0\n\n    scaled_diff = np.zeros_like(nearest_diff)\n    scaled_diff[up_mask] = nearest_diff[up_mask] * (ratio[up_mask] ** UP_POW)\n    scaled_diff[down_mask] = nearest_diff[down_mask] * (ratio[down_mask] ** DOWN_POW)\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(pred_mean_scaled.reshape(1, -1), (n_cells, 1))\n\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nPYEOF\necho \\\"Method v3 written.\\\"\nsha256sum /workspace/solution/method.py\"",
+      "original_command_sha256": "1eddcf5ce76d904b44640fc6cda935987dc0323c5ab96d8201bbb497cd498e27",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "58d8dcecb6aea081593d757f002fc64d4c650f305b1ccc3450de1a999e90b4d5",
+      "output_characters": 115
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 5732050,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 88381,
+        "reasoning_output_tokens": 2658
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

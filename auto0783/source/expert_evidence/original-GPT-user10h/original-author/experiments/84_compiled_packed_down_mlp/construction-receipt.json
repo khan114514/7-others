@@ -1,0 +1,16 @@
+{
+  "base": "83_separate_published_shape_text_projections",
+  "only_changed_existing_node": "image_mlp",
+  "all_other_nodes_and_original_rotary_region_equal": true,
+  "new_dynamic_region_nodes": [
+    "image_gate",
+    "image_gate_silu",
+    "image_up",
+    "image_gated",
+    "image_mlp"
+  ],
+  "canonical_sha256": "0d4a74edf8d43dd7616c3f6159429c33d80d2fdba92e20a87cd45ec72fc60d3c",
+  "matches_preceding_static_proposal_digest": true,
+  "new_prefix_copy_bytes_all28layers": 3802136576,
+  "old_prefix_lifetimes_preserved": true
+}

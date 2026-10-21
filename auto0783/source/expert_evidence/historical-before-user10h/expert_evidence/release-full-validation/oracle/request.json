@@ -1,0 +1,232 @@
+{
+  "action": "evaluate",
+  "run_id": "dd8f420fd90d427f83c4abbb7148642b",
+  "profile": "formal",
+  "program": {
+    "schema": "bifrost-tensor-dag/1",
+    "layer_body": [
+      {
+        "id": "text_input_norm",
+        "op": "rms_norm",
+        "inputs": [
+          "state",
+          "w:input_layernorm.weight"
+        ],
+        "lifetime": "prefix"
+      },
+      {
+        "id": "image_input_norm",
+        "op": "rms_norm",
+        "inputs": [
+          "state",
+          "w:vision_branch_input_layernorm.weight"
+        ]
+      },
+      {
+        "id": "normalized",
+        "op": "mix",
+        "inputs": [
+          "text_input_norm",
+          "image_input_norm",
+          "image_mask"
+        ]
+      },
+      {
+        "id": "text_q",
+        "op": "linear",
+        "inputs": [
+          "normalized",
+          "w:self_attn.q_proj.weight",
+          "w:self_attn.q_proj.bias"
+        ],
+        "lifetime": "prefix"
+      },
+      {
+        "id": "image_q",
+        "op": "linear",
+        "inputs": [
+          "normalized",
+          "w:self_attn.vision_branch_q_proj.weight",
+          "w:self_attn.vision_branch_q_proj.bias"
+        ]
+      },
+      {
+        "id": "q",
+        "op": "mix",
+        "inputs": [
+          "text_q",
+          "image_q",
+          "image_mask"
+        ]
+      },
+      {
+        "id": "text_k",
+        "op": "linear",
+        "inputs": [
+          "normalized",
+          "w:self_attn.k_proj.weight",
+          "w:self_attn.k_proj.bias"
+        ],
+        "lifetime": "prefix"
+      },
+      {
+        "id": "image_k",
+        "op": "linear",
+        "inputs": [
+          "normalized",
+          "w:self_attn.vision_branch_k_proj.weight",
+          "w:self_attn.vision_branch_k_proj.bias"
+        ]
+      },
+      {
+        "id": "k",
+        "op": "mix",
+        "inputs": [
+          "text_k",
+          "image_k",
+          "image_mask"
+        ]
+      },
+      {
+        "id": "text_v",
+        "op": "linear",
+        "inputs": [
+          "normalized",
+          "w:self_attn.v_proj.weight",
+          "w:self_attn.v_proj.bias"
+        ],
+        "lifetime": "prefix"
+      },
+      {
+        "id": "image_v",
+        "op": "linear",
+        "inputs": [
+          "normalized",
+          "w:self_attn.vision_branch_v_proj.weight",
+          "w:self_attn.vision_branch_v_proj.bias"
+        ]
+      },
+      {
+        "id": "v",
+        "op": "mix",
+        "inputs": [
+          "text_v",
+          "image_v",
+          "image_mask"
+        ]
+      },
+      {
+        "id": "attended",
+        "op": "attention_eager",
+        "inputs": [
+          "q",
+          "k",
+          "v",
+          "attention_mask",
+          "cos",
+          "sin"
+        ]
+      },
+      {
+        "id": "text_attention_out",
+        "op": "linear",
+        "inputs": [
+          "attended",
+          "w:self_attn.o_proj.weight"
+        ],
+        "lifetime": "prefix"
+      },
+      {
+        "id": "image_attention_out",
+        "op": "linear",
+        "inputs": [
+          "attended",
+          "w:self_attn.vision_branch_o_proj.weight"
+        ]
+      },
+      {
+        "id": "attention_out",
+        "op": "mix",
+        "inputs": [
+          "text_attention_out",
+          "image_attention_out",
+          "image_mask"
+        ]
+      },
+      {
+        "id": "attention_residual",
+        "op": "add",
+        "inputs": [
+          "state",
+          "attention_out"
+        ]
+      },
+      {
+        "id": "text_post_norm",
+        "op": "rms_norm",
+        "inputs": [
+          "attention_residual",
+          "w:post_attention_layernorm.weight"
+        ],
+        "lifetime": "prefix"
+      },
+      {
+        "id": "image_post_norm",
+        "op": "rms_norm",
+        "inputs": [
+          "attention_residual",
+          "w:vision_branch_post_attention_layernorm.weight"
+        ]
+      },
+      {
+        "id": "normalized_post",
+        "op": "mix",
+        "inputs": [
+          "text_post_norm",
+          "image_post_norm",
+          "image_mask"
+        ]
+      },
+      {
+        "id": "text_mlp",
+        "op": "mlp",
+        "inputs": [
+          "normalized_post",
+          "w:mlp.gate_proj.weight",
+          "w:mlp.up_proj.weight",
+          "w:mlp.down_proj.weight"
+        ],
+        "lifetime": "prefix"
+      },
+      {
+        "id": "image_mlp",
+        "op": "mlp",
+        "inputs": [
+          "normalized_post",
+          "w:vision_branch_mlp.gate_proj.weight",
+          "w:vision_branch_mlp.up_proj.weight",
+          "w:vision_branch_mlp.down_proj.weight"
+        ]
+      },
+      {
+        "id": "mlp_out",
+        "op": "mix",
+        "inputs": [
+          "text_mlp",
+          "image_mlp",
+          "image_mask"
+        ]
+      },
+      {
+        "id": "output",
+        "op": "add",
+        "inputs": [
+          "attention_residual",
+          "mlp_out"
+        ]
+      }
+    ],
+    "layer_output": "output"
+  },
+  "artifact_sha256": "4c051f10ad664d9fbe423752a3d15ed058c4b33e00e13c582fc7958111a5391e"
+}

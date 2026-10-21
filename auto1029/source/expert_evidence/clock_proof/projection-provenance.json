@@ -1,0 +1,59 @@
+{
+  "original_host_accounting_source_sha256": "d450f8ff30ee2a898bb38c980a88768c605c584968211e258a3aad65877fdda8",
+  "original_host_GPU_interval_source_sha256": "f0716e3487de4156131fb823dd58c4ffc2fd6c4dbdc20fd5fe4c2a0e6cd8a6cb",
+  "clock_arithmetic_source_sha256": "bd0c330b08c3b839f4b61a2e495b157b84171bb6dd65f25dbcf61c12f4fc3888",
+  "projections_sha256": "c9e22dc8c26749415cd8633de48d9c425d8ace15ec8516472b939ee64a077f94",
+  "projection_fields": {
+    "observed": [
+      "observed_epoch",
+      "event.type",
+      "event.item.id",
+      "event.item.type"
+    ],
+    "provider_route": [
+      "role",
+      "model_requested",
+      "reasoning_effort",
+      "started_epoch",
+      "completed_epoch",
+      "model_response_completed",
+      "status",
+      "http_status",
+      "credential_visible_to_candidate",
+      "served_identifier_matches_requested",
+      "model_identifiers_in_provider_response"
+    ],
+    "GPU_result": [
+      "job_id",
+      "role",
+      "phase",
+      "submitted_epoch",
+      "gpu_started_epoch",
+      "completed_epoch",
+      "policy_sha256",
+      "remote_observed_epoch",
+      "exit_code"
+    ]
+  },
+  "fields_are_exact_original_values": true,
+  "derived_fields": [
+    "evaluation_wait_command",
+    "included_intervals",
+    "credited_seconds",
+    "excluded_seconds_in_outer_bounds"
+  ],
+  "omitted_fields": [
+    "CLI command text, outputs, message/reasoning content",
+    "provider request/response bodies and upstream endpoints",
+    "nested scientific GPU scoring result"
+  ],
+  "omissions_do_not_change_original_scientific_or_token_values": true,
+  "private_original_SHA_bound_by_each_projection": true,
+  "new_model_requests": 0,
+  "new_GPU_jobs": 0,
+  "new_designated_model_research_seconds": 0,
+  "QA_PASS_claim": false,
+  "readable_standalone_verifier_sha256": "56e15c876c9b9aedf4c57cb8df7275acda1a5f355096989bd39b1d48745ee5c3",
+  "actual_conservative_result_sha256": "0cdbe591d68b181ff9924e3727edd271b1b5760d2b3ee7334ae6511448efbb96",
+  "all_clock_inputs_and_result_numeric_fields_preserved": true
+}

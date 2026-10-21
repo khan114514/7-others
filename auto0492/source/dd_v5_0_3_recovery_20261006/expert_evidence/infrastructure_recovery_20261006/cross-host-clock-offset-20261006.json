@@ -1,0 +1,43 @@
+{
+  "status": "READ_ONLY_CROSS_HOST_CLOCK_OFFSET_OBSERVED",
+  "observed_utc": "2026-10-06T03:41:25.117550+00:00",
+  "probes": [
+    {
+      "probe": 1,
+      "local_before_unix": 1791258083.931993,
+      "local_after_unix": 1791258084.37168,
+      "remote_unix": 1791258019.0902352,
+      "roundtrip_seconds": 0.43968701362609863,
+      "remote_minus_local_offset_bounds_seconds": [
+        -65.28144478797913,
+        -64.84175777435303
+      ]
+    },
+    {
+      "probe": 2,
+      "local_before_unix": 1791258084.371694,
+      "local_after_unix": 1791258084.744189,
+      "remote_unix": 1791258019.462951,
+      "roundtrip_seconds": 0.3724949359893799,
+      "remote_minus_local_offset_bounds_seconds": [
+        -65.28123807907104,
+        -64.90874314308167
+      ]
+    },
+    {
+      "probe": 3,
+      "local_before_unix": 1791258084.7442,
+      "local_after_unix": 1791258085.117527,
+      "remote_unix": 1791258019.836316,
+      "roundtrip_seconds": 0.37332701683044434,
+      "remote_minus_local_offset_bounds_seconds": [
+        -65.28121089935303,
+        -64.90788388252258
+      ]
+    }
+  ],
+  "remote_clock_modified": false,
+  "duration_audit_rule": "Use within-host elapsed stage timers; never subtract timestamps across hosts or add wallclock gaps",
+  "raw_receipt_timestamps_preserved": true,
+  "qa_pass_claimed": false
+}

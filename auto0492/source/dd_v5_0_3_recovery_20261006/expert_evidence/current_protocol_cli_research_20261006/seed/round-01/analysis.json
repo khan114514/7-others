@@ -1,0 +1,77 @@
+{
+  "round": "round-01",
+  "policy_name": "max_disagree_early_scale",
+  "actual_fid": 10.126636628087738,
+  "baseline_fid": 9.663262058820692,
+  "delta_vs_baseline": 0.4633745692670459,
+  "normalized_score": -2.788787272898779,
+  "sample_count": 50000,
+  "protocol": "dd-selfproto-v1.3",
+
+  "causal_hypothesis_holds": false,
+  "causal_hypothesis_verdict": "Both sub-hypotheses are rejected by the measured result. The combined strategy of max-LPIPS hard-example proposal selection and early-scale-biased time sampling produced a worse FID (10.127) than the no-training baseline (9.663), indicating the training actively degraded generation quality under the 256-sample budget.",
+
+  "hypothesis_breakdown": {
+    "proposal_selection_max_lpips": {
+      "holds": false,
+      "reasoning": "Hard-example mining (max LPIPS disagreement) at 256 samples likely selected outlier or noisy teacher proposals rather than information-dense samples. With such a small budget, the selected hard examples may contain spurious patterns that the student overfits to, producing destructive gradients that worsen generalization rather than improving it."
+    },
+    "time_sampling_early_scale_bias": {
+      "holds": false,
+      "reasoning": "Power-law early-scale bias (alpha=2.5, ~61.5% mass in scale 0-1) concentrated training on global structure prediction but starved later scales of gradient signal. The baseline initialization already has reasonable global structure; neglecting refinement scales may have degraded fine details enough to raise FID."
+    }
+  },
+
+  "retained_best": false,
+  "retention_reason": "Not retained. The method's FID (10.127) is worse than the published baseline (9.663) by +0.463. Training with this strategy actively hurts quality. The baseline (num_samples=0, no training) is the current best known result for this track. The shared-memory infrastructure repair that enabled recovery is not a method innovation and does not count toward method quality.",
+
+  "evidence_paths": {
+    "original_failure": {
+      "file": "agent-output/round-01/evaluation/failure.json",
+      "failure_category": "INFRASTRUCTURE_RUNTIME",
+      "job_id": "ac0a9b573f454d4d927af858dad4ebe8",
+      "run_id": "run-66363f0280074de3a5b6dbf607fd3ade",
+      "method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c"
+    },
+    "recovery_result": {
+      "file": "agent-output/round-01/evaluation/recovery-20261006/result.json",
+      "status": "SUCCESS",
+      "returncode": 0,
+      "finished_unix": 1791256165.7016556,
+      "finished_asia_shanghai": "2026-10-06 03:09:25",
+      "checkpoint_sha256": "0fb4df696934f252bbeb3eda0ccd4f40436ab5b6836c403450b1106d28a0aea9",
+      "sample_manifest_sha256": "93c31c28036137f037232d4e98e78079e4cf8a3b38758e433de1c81b7ab82bde",
+      "frozen_manifest_sha256": "b366ba329b015bbae3f6d2027d9004c3aea71f6116b3d84e1fab0927af0b0924",
+      "evaluation_recovery": true,
+      "original_failure_preserved": true,
+      "original_checkpoint_reused": true,
+      "method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c"
+    },
+    "recovery_evidence_chain": "Trusted backend reused the original frozen checkpoint (sha256 0fb4df69...) to regenerate all 50000 samples. The sample manifest hash (93c31c28...) and frozen manifest hash (b366ba32...) confirm full sample set regeneration and independent FID computation. Original failure record (INFRASTRUCTURE_RUNTIME) is preserved; this is evaluation recovery, not a new method round.",
+    "anchors_file": "environment/anchors.json"
+  },
+
+  "next_round_algorithm_change": {
+    "round": "round-02",
+    "policy_name": "min_disagree_uniform_time",
+    "change_description": "Flip both design choices: (1) min-LPIPS easy-example proposal selection instead of max-LPIPS hard-example selection, (2) uniform time sampling instead of early-scale power-law bias. Keep 256 samples and proposal_multiplier=4 for a controlled comparison.",
+    "rationale": "Round-01 showed that hard-example + early-scale bias is actively harmful at 256 samples. The most direct diagnostic test is to reverse both hypotheses: clean/easy teacher proposals (min LPIPS disagreement from initialized student) should provide stable, low-noise gradient signals that don't cause overfitting; uniform time sampling ensures balanced coverage across all 10 denoising scales so neither global structure nor fine detail is starved. This isolates whether the degradation came from the selection direction, the time bias, or both. If this also underperforms baseline, the next step is to scale up sample count with default/uniform strategy rather than sophisticated selection.",
+    "configuration": {
+      "num_samples": 256,
+      "proposal_multiplier": 4,
+      "filter_rule": "student_agreement_per_label",
+      "selection_strategy": "min_lpips_disagreement",
+      "time_sampler": "uniform",
+      "weighting": "uniform"
+    },
+    "why_not_other_options": {
+      "not_more_samples_yet": "Scaling to 1024 samples without fixing the selection strategy would waste budget on the same harmful pattern. First confirm whether the selection direction is wrong, then scale.",
+      "not_custom_weighting_yet": "Soft weighting across proposals is a more complex variant; the binary selection comparison (max vs min) gives cleaner signal about which direction is correct.",
+      "not_shared_memory_fix_as_innovation": "The infrastructure recovery was a runtime repair, not an algorithmic contribution. It does not change method quality."
+    }
+  },
+
+  "method_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c",
+  "checkpoint_sha256": "0fb4df696934f252bbeb3eda0ccd4f40436ab5b6836c403450b1106d28a0aea9",
+  "teacher_and_training_seconds": 393.4369866847992
+}

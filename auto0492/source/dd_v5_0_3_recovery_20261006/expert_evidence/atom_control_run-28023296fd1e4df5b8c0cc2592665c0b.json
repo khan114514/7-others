@@ -1,0 +1,68 @@
+{
+  "scope": "Author single-seed controlled calibration, not final independent QA",
+  "created_at": "2026-10-04T15:28:28.695925+00:00",
+  "formal_qa": "NOT_READY",
+  "run_id": "run-28023296fd1e4df5b8c0cc2592665c0b",
+  "quality": {
+    "baseline_same_eval_seed": 9.663262058820692,
+    "late_half_4096_fid": 12.362871219708097,
+    "atom_4096_fid": 20.80963698475614,
+    "improvement_vs_same_seed_baseline": -11.146374925935447,
+    "improvement_vs_late_half_pilot": -8.446765765048042,
+    "improved_over_baseline_this_single_seed": false,
+    "baseline_calibration_mean": 9.740867832541957,
+    "baseline_sample_sigma_n_minus_1": 0.07019540048695508,
+    "reference_mean_three_sigma_threshold": 9.530281631081092,
+    "paired_reference_mean": null,
+    "formal_normalized_score": null,
+    "cannot_assert_three_sigma_from_single_reference_seed": true
+  },
+  "control": {
+    "same_teacher_configuration": true,
+    "same_train_configuration": true,
+    "excluded_train_config_provenance_fields": [
+      "deadline_unix",
+      "method",
+      "method_sha256",
+      "pair_manifest_sha256",
+      "start_unix"
+    ],
+    "same_teacher_shard_hashes": true,
+    "same_selected_proposal_indices": true,
+    "same_unfiltered_proposals_hash": true,
+    "old_frozen_manifest_sha256": "2ea116dc058d40dac05639934f5082ebdd3928933bda5642aa09d2bdd0ce8a31",
+    "new_frozen_manifest_sha256": "d69fa87bc503cf12a33f32a718c313557a88e579d2fa8678f2f50bdaeb99b7a4",
+    "runtime_revision_disclosure": "attempt03 to attempt04 changed guard and formal preflight, not teacher/training/evaluation kernels; original hashes retained",
+    "bitwise_training_determinism_proven": false,
+    "claim_limit": "Time exposure is the intended method change. If teacher hashes differ, it is not a fixed-data controlled ablation."
+  },
+  "training": {
+    "updates": 256,
+    "seen_pairs": 4096,
+    "terminal_reason": "teacher_reuse_limit",
+    "time_scale_histogram": [
+      2072,
+      0,
+      0,
+      0,
+      0,
+      400,
+      415,
+      363,
+      429,
+      417
+    ],
+    "samples_supervising_all_first_55_inference_logits": 2072,
+    "samples_supervising_any_first_55_inference_logits": 2072,
+    "checkpoint_sha256": "762d969c040cc484e0936ca796382050350d209dd2377eb3c9291ce30520d1ba",
+    "independent_reload_rescore": "NOT_YET_RUN"
+  },
+  "evidence": [
+    "optimization_evidence/terminal_records/run-f94c8acbaf4a4bd6945443476e38311b/result.json",
+    "optimization_evidence/terminal_records/run-28023296fd1e4df5b8c0cc2592665c0b/result.json",
+    "optimization_evidence/terminal_records/run-8e110f726b6b4c3aaebdde21dd0dfe77/result.json",
+    "optimization_evidence/terminal_records/run-ff6fad3514114789b25ff2614771fdf8/result.json",
+    "optimization_evidence/terminal_records/run-2925dc632c94404f9da74569dd465363/result.json"
+  ],
+  "next_gate": "Keep all failures and worse runs. Improved single seed needs complete paired independent retraining, private protocol/anchors, model reloads and current NOP before formal qualification."
+}

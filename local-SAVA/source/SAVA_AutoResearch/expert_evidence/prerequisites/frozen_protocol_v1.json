@@ -1,0 +1,87 @@
+{
+  "id": "hierarchical-valuation-cpu-v1",
+  "status": "PREREGISTERED_BEFORE_FORMAL_RUNS",
+  "created_at": "2026-10-09T10:09:07.092093+00:00",
+  "task_type": "non-training numerical inference",
+  "formal_dev_seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "hidden_seeds": [
+    601,
+    702,
+    803,
+    904,
+    1005
+  ],
+  "case_types": [
+    "uniform_labels",
+    "asymmetric_labels",
+    "gaussian_008",
+    "gaussian_016",
+    "gaussian_024",
+    "mixed"
+  ],
+  "corruption_fraction": 0.3,
+  "dev_count": 3000,
+  "reference_count": 2000,
+  "hidden_count": 5000,
+  "source_split": "CIFAR10 test only; no candidate or reference from CIFAR10 train",
+  "partition_rule": "existing reference + first 1000 of predeclared shuffled Dev form new reference; remaining Dev stays Dev; Hidden unchanged",
+  "fixed_representation": "official checkpoint logits, no further training or representation change",
+  "teacher": "healthy official SAVA practical operator with common feature caching; default batch 1024, empirical Sinkhorn label geometry, within-point potential epsilon .1, normalized coupling regularization .1, normalized batch coupling regularization .01",
+  "common_repairs": [
+    "batch masses normalized to equal total",
+    "primal/dual feature geometry identical",
+    "feature extraction shared by all methods",
+    "stable vectorized gradient calibration"
+  ],
+  "quality_gates": {
+    "max_case_normalized_rmse": 0.01,
+    "min_case_spearman": 0.999,
+    "min_case_top_quartile_overlap": 0.98,
+    "finite_values": true
+  },
+  "quality_basis": "Numerical valuation task requires <=1% error in valuation dispersion, >=.999 rank agreement and >=98% retention of the canonical selected prefix. These are task accuracy requirements, not fitted to Reference. Existing k=8/16/32 probes are diagnostic only; several do not satisfy this contract. New Reference must meet these fixed gates without relaxation.",
+  "primary_metric": {
+    "name": "mean_case_method_seconds",
+    "direction": "minimize",
+    "aggregation": "median of 9 independent fresh method invocations per case; mean of six cases per seed; arithmetic mean over all five seeds"
+  },
+  "timing_scope": "method invocation including all label geometry, couplings, potentials and aggregation; excludes common feature extraction, input deserialization and dependency import; process and end-to-end wall times separately logged",
+  "score": {
+    "formula": "(B - x) / (B - U)",
+    "B": "all formal Baseline seed mean, to be calibrated from real Docker runs",
+    "U": 0.0,
+    "upper_bound_source": "metric_ceiling: nonnegative elapsed method time has mathematical infimum zero; not derived from R; no clipping"
+  },
+  "significance_rule": "R positive improvement >=3 times Baseline n-1 sample standard deviation across all formal seeds; R score in [.15,.8]",
+  "resources": {
+    "cpus": 2,
+    "memory_mb": 2048,
+    "gpus": 0,
+    "candidate_case_timeout_sec": 60,
+    "total_public_eval_timeout_sec": 7200,
+    "submission_bytes": 1048576
+  },
+  "reference_selection_split": "Public/Dev only; no Hidden method comparisons before best selection",
+  "trajectory_requirements": {
+    "models": [
+      "gpt-6.1-sol",
+      "doubao-seed-2-1-turbo-260628"
+    ],
+    "efforts": [
+      "xhigh",
+      "high"
+    ],
+    "default_effective_seconds_each": 36000,
+    "exception_not_yet_claimed": true
+  },
+  "implementation_hashes": {
+    "official_checkpoint": "953a618a0a229240bcd29f67809f68432861dd209df8fc08d0041b4817444e2f",
+    "shared_prototype": "46764fd8e634e2fa13285674882ca6476d20bbf151c47d09fd19c6a11236f943"
+  }
+}

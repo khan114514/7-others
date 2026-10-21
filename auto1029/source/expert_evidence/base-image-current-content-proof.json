@@ -1,0 +1,89 @@
+{
+  "actual_base_tag": "heima-agent-base:20261005",
+  "actual_base_image_digest": "sha256:a25561cb00697b13692b63f8f553e820ec1af58fad5833a7712b9701afba7c0f",
+  "rootfs_layer_digests": [
+    "sha256:8227a1264c7ff2f8bd125b585e62c1cec77dd2099c985c33e08d34292d06144f",
+    "sha256:8e2be503717272d4f4f0e02e726fa56ede53bceb1951faa0a968b4a7a64b56e3",
+    "sha256:fcda622f7893cdd820b98f1cc0bd608bf43a10bb9bfc9bc09a71033d64c68944",
+    "sha256:3171a6e7233900b64eba1aeb29207d880671af8cee44163aa9f97331b3821b61",
+    "sha256:ee4242349a4e614454afb455c176a635cd35db28f47efa4b687e916fbcbc123b",
+    "sha256:d075d38e6140a1bcaaf6660ca4875d57af9f720b3bfe8f894c6ef79898afb21e",
+    "sha256:468ab4d7eb2c9c9e8e646cdcc15e3f7996d727ca63d33b3ed6dd1a90b5ae7509",
+    "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+  ],
+  "observed_base_contents": {
+    "uid": 1000,
+    "python_version": "3.12.15",
+    "files": [
+      {
+        "path": "/bin/bash",
+        "resolved_path": "/usr/bin/bash",
+        "sha256": "ccbd5106945d1095474e5ee47317266f5918aa37fc671829192a007918b1413a",
+        "bytes": 1412096,
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "readable": true
+      },
+      {
+        "path": "/bin/sh",
+        "resolved_path": "/usr/bin/dash",
+        "sha256": "367967c823a0c391e5049b15a67c6a0a629c88b9b6dcdca75ef13ac9d65334b1",
+        "bytes": 199256,
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "readable": true
+      },
+      {
+        "path": "/etc/os-release",
+        "resolved_path": "/usr/lib/os-release",
+        "sha256": "e249e69c32d81350fdd6b05ac5575255f14e380ba14b8454acea14e49f088bfa",
+        "bytes": 286,
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o644",
+        "readable": true
+      },
+      {
+        "path": "/usr/local/bin/codex",
+        "resolved_path": "/usr/local/bin/codex",
+        "sha256": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+        "bytes": 248966648,
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "readable": true
+      },
+      {
+        "path": "/usr/local/bin/python3.12",
+        "resolved_path": "/usr/local/bin/python3.12",
+        "sha256": "36727872f3be3469d83c23705431d90ab2b408a0ba1e3008ba3d4dd337b7f481",
+        "bytes": 67680,
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "readable": true
+      }
+    ],
+    "candidate_code_imported": false,
+    "model_requests": 0,
+    "new_GPU_work": 0,
+    "credential_environment_present": false
+  },
+  "original_stdout_sha256": "e3c32fae28e45ece92c9ca1da567d5b2f7b14f757d87d933e0a4dbb9e1e2d39d",
+  "inspection_source_sha256": "e7572ee5f634771e72ac2ff07f0a124bf0142f41eedc0a3b764f1d6516ad0511",
+  "expected_Dockerfile": "workspace/host_adapter/base_image/Dockerfile",
+  "actual_directory_inventory_scope": [
+    "/opt/latentcli"
+  ],
+  "essential_binary_inventory_scope": [
+    "/usr/local/bin/python3.12",
+    "/usr/local/bin/codex",
+    "/bin/bash",
+    "/bin/sh"
+  ],
+  "runtime_profile": "Readonly UID1000, no network or capabilities; no submission code imported",
+  "scope": "Base-image contents and interpreter proof; no scoring or QA verdict",
+  "model_research_seconds": 0
+}

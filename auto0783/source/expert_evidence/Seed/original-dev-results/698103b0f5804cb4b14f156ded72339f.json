@@ -1,0 +1,147 @@
+{
+  "type": "result",
+  "execution_status": "COMPLETED",
+  "profile": "dev",
+  "is_formal_protocol": false,
+  "layer_count": 28,
+  "dtype": "bfloat16",
+  "steps": 32,
+  "records": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 7118.871520996094,
+      "candidate_total_ms": 2474.0157318115234,
+      "worst_relative_rmse": 0.0,
+      "worst_scaled_max_abs": 0.0
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 7178.73356628418,
+      "candidate_total_ms": 2498.690040588379,
+      "worst_relative_rmse": 0.0,
+      "worst_scaled_max_abs": 0.0
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "repetition": 0,
+      "steps": 32,
+      "baseline_total_ms": 7206.337509155273,
+      "candidate_total_ms": 2515.5010528564453,
+      "worst_relative_rmse": 0.0,
+      "worst_scaled_max_abs": 0.0
+    }
+  ],
+  "per_case": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "baseline_ms": 7118.871520996094,
+      "candidate_ms": 2474.0157318115234
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "baseline_ms": 7178.73356628418,
+      "candidate_ms": 2498.690040588379
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "baseline_ms": 7206.337509155273,
+      "candidate_ms": 2515.5010528564453
+    }
+  ],
+  "per_seed": [
+    {
+      "sampling_seed": 101,
+      "case_count": 1,
+      "baseline_ms": 7118.871520996094,
+      "candidate_ms": 2474.0157318115234
+    },
+    {
+      "sampling_seed": 202,
+      "case_count": 1,
+      "baseline_ms": 7178.73356628418,
+      "candidate_ms": 2498.690040588379
+    },
+    {
+      "sampling_seed": 303,
+      "case_count": 1,
+      "baseline_ms": 7206.337509155273,
+      "candidate_ms": 2515.5010528564453
+    }
+  ],
+  "final_quality": [
+    {
+      "case": 0,
+      "sampling_seed": 101,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 1,
+      "sampling_seed": 202,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 2,
+      "sampling_seed": 303,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    }
+  ],
+  "source_alignment": [
+    {
+      "case": 0,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 1,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    },
+    {
+      "case": 2,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0
+    }
+  ],
+  "quality_pass": true,
+  "baseline_identity": false,
+  "reward": 0.651775166731631,
+  "baseline_mean_ms": 7167.980865478516,
+  "candidate_mean_ms": 2496.0689417521157,
+  "baseline_sample_sd_ms": 44.71342306430516,
+  "latency_improvement_ms": 4671.9119237264,
+  "noise_3sigma_pass": true,
+  "peak_cuda_allocated_bytes": 28105947136,
+  "gpu_uuid": "<assigned-accelerator>",
+  "torch_version": "2.5.1+cu121",
+  "queue_seconds": 0.04322807025164366,
+  "cuda_weight_load_seconds": 9.504022238776088,
+  "active_evaluation_seconds": 38.91051663085818,
+  "input_sha256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+  "formal_trajectory_effective_seconds": 0,
+  "timing_scope": "Sum of256 decoder forward events:28 layers, final norm and head. Frozen CFG/reveal/input preparation, quality diagnostics, loading and queueing are excluded equally.",
+  "canonical_semantics": "cosine reveal and per-patch CFG4; shared-oracle paired prediction replay plus autonomous candidate final-latent check; no FLUX renderer claim",
+  "run_id": "698103b0f5804cb4b14f156ded72339f",
+  "worker_id": "aedbe0fe045b4b6fa736ce28896c9277",
+  "artifact_sha256": "1cb248abad94780da21e309085ee06a0de46d014efbd8b0b3977392407a41be2",
+  "started_epoch": 1791216798.500705,
+  "completed_epoch": 1791216848.6734939,
+  "source_binding_sha256": "2b896098811397cc8a5d4c0572990906eb49bfe446b7e6c30d15cc768fce0cff",
+  "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+  "gpu_after_release": "<assigned-accelerator>, 0",
+  "child_pid": 608487,
+  "child_exit_code": 0,
+  "parent_cuda_context_initialized": false
+}

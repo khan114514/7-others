@@ -1,0 +1,60 @@
+{
+  "schema_version": "dd-paired-comparison-1.0",
+  "status": "COMPLETE_NUMERICAL_EVIDENCE_INDEPENDENT_CURRENT_ZIP_QA_PENDING",
+  "public_pair_status": "COMPLETE_ACTUAL_FULL_50000_PUBLIC_PAIR",
+  "scope": "PUBLIC_DEV_PAIR_PLUS_CURRENT_PRIVATE_FORMAL_AND_DELIVERED_SAVED_EMA_REPEAT",
+  "evaluation_seeds": [
+    0
+  ],
+  "independent_training_replicates_claimed": false,
+  "pairs": [
+    {
+      "evaluation_seed": 0,
+      "baseline": 9.663262058820692,
+      "reference": 9.511905516911611,
+      "paired_improvement": 0.151356541909081,
+      "baseline_result": "optimization_evidence/baseline_runs/seed_0/result.json",
+      "reference_result": "optimization_evidence/reference_runs/seed_0/result.json"
+    }
+  ],
+  "baseline_mean": 9.663262058820692,
+  "reference_mean": 9.511905516911611,
+  "baseline_sample_standard_deviation": null,
+  "reference_sample_standard_deviation": null,
+  "sample_standard_deviation_reason": "One paired public evaluation stream; n=1 has no sample standard deviation",
+  "absolute_improvement": 0.151356541909081,
+  "relative_improvement": 0.015663089853898943,
+  "public_upper_bound": 9.497105760787463,
+  "public_normalized_reference_score": 0.9109287080939392,
+  "significance": {
+    "three_sigma_requirement_waived_by_user": true,
+    "statistical_stability_from_single_pair_claimed": false,
+    "policy": "expert_evidence/author_acceptance_revision_20261005.json"
+  },
+  "model_integrity": "Actual delivered EMA SHA verified, original inference tensors identical and CPU-reloaded",
+  "pending": [
+    "Independent current ZIP QA under disclosed user acceptance revision"
+  ],
+  "release_qa_pass_claimed": false,
+  "created_epoch": 1791159217.046109,
+  "current_native_nop": {
+    "status": "SUCCESS",
+    "task_version": "5.0.2-candidate",
+    "native_trial": "expert_evidence/current_native_nop_20261005_mac/native-trial-result.json",
+    "receipt": "expert_evidence/current_native_nop_20261005_mac/verifier/result.json",
+    "reward_file": "expert_evidence/current_native_nop_20261005_mac/verifier/reward.txt",
+    "sample_count": 50000,
+    "reward": 0.0
+  },
+  "last_updated_epoch": 1791181126.810261,
+  "current_formal_reference": {
+    "status": "SUCCESS",
+    "fid": 9.74957468191576,
+    "normalized_reward": 0.3279633701145659,
+    "sample_count": 50000,
+    "receipt": "expert_evidence/current_formal_reference_20261005/result.json",
+    "delivery_model": "optimization_evidence/current_formal_reference/model/ema_inference_checkpoint.pth",
+    "full_saved_model_reload_pending": false,
+    "full_saved_model_reload_comparison": "expert_evidence/current_saved_formal_ema_reload_20261005/comparison.json"
+  }
+}

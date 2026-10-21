@@ -1,0 +1,24 @@
+--- official/api.py
++++ healthy/api.py
+@@ -164,8 +164,8 @@
+                 dual_sol_dict[i][j] = dual_sol
+ 
+     # line 7: compute dual sol on \bar{C}
+-    a = np.ones(costs_bar.shape[0]) # vector 1, dimension = row of barC
+-    b = np.ones(costs_bar.shape[1]) # vector 1, dimension = column of barC
++    a = np.ones(costs_bar.shape[0]) / costs_bar.shape[0] # vector 1, dimension = row of barC
++    b = np.ones(costs_bar.shape[1]) / costs_bar.shape[1] # vector 1, dimension = column of barC
+     eps = np.max(costs_bar)
+     #f_bar, g_bar = lava.dual_lp(a, b, costs_bar / eps) # (num_train_batches, ) (num_val_batces, )
+     #plan_bar = (np.eye(costs_bar.shape[0]) * np.squeeze(f_bar)) @ np.exp(-costs_bar / eps) @ (np.eye(costs_bar.shape[1]) * np.squeeze(g_bar)) # (num_tr_batches, num_val_batches)
+--- official/otdd/pytorch/distance_fast.py
++++ healthy/otdd/pytorch/distance_fast.py
+@@ -1335,7 +1335,7 @@
+         b = ot.unif(Z2.shape[0])
+         W = self._get_label_distances().to(device)
+ 
+-        C = batch_augmented_cost(Z1.unsqueeze(0), Z2.unsqueeze(0), W=W).squeeze()
++        C = batch_augmented_cost(Z1.unsqueeze(0), Z2.unsqueeze(0), W=W, feature_cost=self.feature_cost, λ_x=self.λ_x, λ_y=self.λ_y).squeeze()
+         C = C.cpu().numpy()
+         if gpu is None:
+             gpu = self.device != torch.device("cpu")

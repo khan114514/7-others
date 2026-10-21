@@ -1,0 +1,24 @@
+{
+  "stage": "teacher_generation",
+  "command": [
+    "runtime:data_root/venvs/dd1/bin/python",
+    "-B",
+    "-u",
+    "runtime:historical_dd/framework/generate_pairs.py",
+    "--method",
+    "runtime:historical_research/agent-output/rounds/round15/method.py",
+    "--out",
+    "runtime:historical_dd/round15/pairs",
+    "--deadline",
+    "1791068315.7710352"
+  ],
+  "cwd": "runtime:data_root/autoresearch_tasks/repos/distilled_decoding/VAR",
+  "started_at": "2026-10-04T05:58:35.771254+08:00",
+  "finished_at": "2026-10-04T06:04:11.680830+08:00",
+  "exit_code": 0,
+  "deadline_unix": 1791068315.7710352,
+  "pid": 204528,
+  "elapsed_seconds": 335.90947787463665,
+  "termination": null,
+  "peak_observed_gpu_mib": null
+}

@@ -1,0 +1,95 @@
+{
+  "lane": "seed",
+  "model": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "status": "BOUNDED_REVIEW_FAILED_REQUIRES_INSPECTION",
+  "preflight_only": false,
+  "effective_research_seconds": 0,
+  "preparation_time_reused": false,
+  "rounds": [
+    {
+      "index": 1,
+      "started_epoch": 1791699541.013568,
+      "completed_epoch": 1791699991.8094678,
+      "elapsed_seconds": 450.8005597500014,
+      "native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+      "exit_code": 0,
+      "native_turn_closed": true,
+      "successful_command_count": 4,
+      "completed_command_count": 4,
+      "method_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+      "artifact_transfer": {
+        "bytes": 7820,
+        "sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9"
+      },
+      "effective_research_seconds": 0
+    },
+    {
+      "index": 2,
+      "started_epoch": 1791699995.185587,
+      "completed_epoch": 1791700055.358041,
+      "elapsed_seconds": 60.17307449999498,
+      "native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+      "exit_code": 0,
+      "native_turn_closed": true,
+      "successful_command_count": 1,
+      "completed_command_count": 1,
+      "method_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+      "artifact_transfer": {
+        "bytes": 7820,
+        "sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9"
+      },
+      "effective_research_seconds": 0
+    }
+  ],
+  "container_stability_seconds": 14460.031902597926,
+  "stability_passed": false,
+  "environment_binding": {
+    "environment_id": "0fd2a9167d4e4b548d7bbd86fb226769",
+    "physical_role": "seed",
+    "session_id": "save-user-balance-seed-8f17436f163c__env",
+    "container_id": "bc38873a7e5b219ab22a6195c1984b1ed394f9f18f4c47fe21402e4c6250f7f5",
+    "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+    "queue_volume": "save-harbor-q-0fd2a9167d4e4b548d7bbd86fb226769",
+    "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+    "Agent_uses_private_verifier_log_shadow": true,
+    "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+    "declared_remote_gpus": 1,
+    "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+    "portable_runtime_sources": {
+      "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+      "seed_transport.py": "7725c1226401c45f3d9a5002fa40d30f60cbdf01cb4b7458ff95dd88046253e8",
+      "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+      "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+      "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+      "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+      "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+      "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+    },
+    "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+    "author_oracle": false,
+    "native_container_GPU": false,
+    "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+    "trusted_read_only_cli_runtime": {
+      "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+      "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+      "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+      "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+      "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+    }
+  },
+  "same_owned_parent_status": "<TASK_ROOT>/private/track-recovery-balance/8f17436f163c4025a1ebf72c700f0efd/seed-research-evidence/status.json",
+  "same_owned_relay_dir": "<TASK_ROOT>/private/track-recovery-balance/8f17436f163c4025a1ebf72c700f0efd/seed/hybrid-harbor-runtime/0fd2a9167d4e4b548d7bbd86fb226769/relay",
+  "restored_actual_native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+  "review_only_source_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+  "controller_pid": 64455,
+  "started_epoch": 1791699541.012813,
+  "environment_restarted": false,
+  "peer_or_author_material_added": false,
+  "method_selection_changed": false,
+  "independently_verified_effective_seconds": 35721.051790714264,
+  "error_type": "TimeoutError",
+  "completed_epoch": 1791700658.7842739
+}

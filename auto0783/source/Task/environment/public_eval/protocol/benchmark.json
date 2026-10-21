@@ -1,0 +1,112 @@
+{
+  "task_name": "bifrost-patch-latent-decoder",
+  "paper": "Bifrost-1: Bridging Multimodal LLMs and Diffusion Models with Patch-level CLIP Latents",
+  "paper_revision": "2508.05954v1",
+  "upstream_commit": "3047de271b54dbd37228b038cc1f949899b0f1a8",
+  "checkpoint_revision": "60bbb8b163827b9324d72bd84d6ddc75ebb902bb",
+  "scope": "Optimize the pretrained 28-layer patch-latent decoder execution graph and tensor lifetimes. No retraining, FLUX renderer or full-paper image-quality claim.",
+  "candidate_interface": {
+    "files": [
+      "method.py",
+      "program.json"
+    ],
+    "method_py_execution": "Local network-none Docker only; emits a bounded tensor-computation DAG.",
+    "program_json_execution": "Validated data-only DAG interpreted or explicitly bounded-region compiled by the trusted CUDA worker; no candidate Python imports.",
+    "allowed_changes": [
+      "graph factoring",
+      "tensor partition and recombination",
+      "attention implementation",
+      "intermediate lifetime and reuse",
+      "equivalent operator composition",
+      "bounded contiguous compile region grouping with the fixed trusted Inductor backend"
+    ],
+    "forbidden": [
+      "arbitrary remote code",
+      "remote module imports",
+      "filesystem paths",
+      "network URLs",
+      "changing checkpoint weights",
+      "altering hidden inputs or quality rules",
+      "candidate-provided reward"
+    ],
+    "supported_graph_schemas": [
+      "bifrost-tensor-dag/1",
+      "bifrost-tensor-dag/2"
+    ],
+    "compilation_limits": {
+      "regions_max": 16,
+      "shape_variants_per_region_max": 4,
+      "fullgraph": true,
+      "CUDA_graphs": false,
+      "maximum_autotuning": false,
+      "mixed_prefix_stage_regions": false,
+      "arbitrary_candidate_code_or_backend_flags": false,
+      "silent_fallback": false,
+      "compiler_worker_threads": 2,
+      "executable_cache_scope": "one trusted short-lived CUDA job; no cross-job or cross-role reuse",
+      "numerical_target": "trusted CUDA A100 executor",
+      "emulate_precision_casts": true,
+      "CPU_numerical_compilation_qualification": false
+    }
+  },
+  "baseline": {
+    "algorithm": "Published eager dense dual-branch decoder with pretrained BF16 weights, all28 layers, unchanged row dimensions and use_cache=false.",
+    "role": "Runnable Starter, formal paired Baseline and normalization anchor0 share the same semantics."
+  },
+  "protocol": {
+    "steps": 256,
+    "image_tokens": 256,
+    "cfg_batch_size": 2,
+    "text_prefix_max_length": 300,
+    "cfg_weight": 4.0,
+    "sampling_order": "Fixed seeded torch.randperm; cosine reveal schedule; per-patch CFG.",
+    "semantics_disclosure": "This is a canonical decoder benchmark. The published multi-patch CFG indexing is not claimed to be reproduced unchanged.",
+    "quality_plan": "Check every full-decoder prediction on the shared Baseline replay; additionally run an autonomous candidate rollout and compare final latent tokens. Both reset all per-prefix mutable state.",
+    "warmup": "For each case, one untimed source-alignment/Starter/candidate warmup; reset every prefix cache before each timed repetition.",
+    "cost_inclusion": "Sum of256 CUDA-event decoder forwards per rollout:28 layers, final vision RMS norm and projection head, including first-step cache construction and tensor operations. CFG/reveal/input concatenation/rotary setup, quality diagnostics, loading, queueing and authenticated transport are excluded equally and disclosed.",
+    "timing_order": "Alternate Baseline/candidate order by (step+repetition) parity.",
+    "sampling_seeds": [
+      101,
+      202,
+      303
+    ],
+    "repeats_per_seed": 3,
+    "seed_type": "Inference sampling seed; no independent training or retraining claim.",
+    "raw_data": "Retain each stage timing/delta, independent final latent tensors, source alignment, source/checkpoint/input/config hashes, CUDA-child exit and post-job GPU idle receipt.",
+    "hidden_cases": 6,
+    "cases_per_sampling_seed": 2,
+    "public_dev_cases": 3,
+    "public_dev_steps": 32
+  },
+  "quality_gate_proposed_before_formal_B_R": {
+    "finite_outputs": true,
+    "per_stage_relative_rmse_max": 0.001,
+    "per_stage_scaled_max_abs_error_max": 0.001,
+    "final_latent_relative_rmse_max": 0.001,
+    "scaled_max_abs_definition": "max(abs(candidate-baseline))/(1+max(abs(baseline)))",
+    "peak_cuda_allocated_bytes_max": 36507222016,
+    "all_cases_required": true,
+    "final_latent_scaled_max_abs_error_max": 0.001
+  },
+  "metric": {
+    "name": "mean_total256_decoder_forward_cuda_event_latency_ms",
+    "direction": "minimize",
+    "aggregation": "Median of3 paired repetitions per prompt; arithmetic mean of2 prompts per sampling seed; arithmetic mean of the3 per-seed means. Sample SD uses n-1 across the3 Baseline per-seed means.",
+    "natural_upper_anchor_latency_ms": 0,
+    "upper_anchor_basis": "Nonnegative elapsed time has the universal ideal lower bound0ms; this anchor is not fitted to Reference outcomes.",
+    "normalized_reward": "(B-T)/(B-U), U=0ms, without clipping or baseline identity override for valid quality/resource runs. Hard-gate invalid score=-1, excluded from valid ranking.",
+    "reference_required_interval": [
+      0.15,
+      0.8
+    ],
+    "noise_requirement": "Paired mean latency reduction >=3 times the sample standard deviation of all Baseline per-seed raw aggregate latencies."
+  },
+  "runtime": {
+    "agent": "Local Docker Desktop Linux ARM64, keyless native Codex, networknone, separate role volume and workspace.",
+    "verifier": "Separate local Docker image; consumes data-only candidate artifact and a physically separate trusted queue.",
+    "compute": "Trusted A100 worker with frozen engine and weights; no candidate shell or Python imports.",
+    "target_harness": "Harbor0.23.0 Docker with explicit remote-compute adapter; no claim of native Docker GPU passthrough on macOS.",
+    "native_NOP": "Required on the frozen current task and actual separate Verifier; generic CUDA or model preflight does not count."
+  },
+  "task_version": "0.2.0"
+}

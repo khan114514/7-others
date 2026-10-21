@@ -1,0 +1,98 @@
+{
+  "phase": "ACTUAL_CLOSED_OWNED_ASYNC_COMPLETION_CLOCK_AUDIT_PASS",
+  "role": "seed",
+  "run_id": "ff8729ce966c43f3a57cbe03075385c2",
+  "original_effective_seconds": 2164.689999818802,
+  "audited_effective_seconds": 3430.8571197986603,
+  "changed_effective_seconds": 1266.1671199798584,
+  "source_execution_sha256": "20b11eb034c3abdd7b8ea2e21efb0fd0fb11a925a40e77766df540e86f028443",
+  "original_journal_hashes": {
+    "harbor-runtime/heima-research-seed-ff8729ce966c__env/evaluation/seed-gpu-activity.jsonl": "a1430640b5184acca93c1d44674eb30b2d458d4b11e18e6a6978b3fe70208e4b",
+    "harbor-runtime/heima-research-seed-ff8729ce966c__verifier__trial/verifier-evaluation/seed-gpu-activity.jsonl": "5ed5c6743730354c2ed6361962885edafecc1fe145fbada9a4c3197f4ed68265"
+  },
+  "recovered_receipt_hashes": {
+    "795ee46f66ec4806a1a7a06b338e2d84": "3b7283409a95cdee65df124b8eccbcf0380666ebec1497452ef18bbb018a3e9b"
+  },
+  "jobs": [
+    {
+      "job_id": "fc65ce14708b4c0f9eebfb532990c194",
+      "phase": "FAILED",
+      "policy_sha256": "e95a62e8e1ce75e5c12c6c429ca031ef7b91e946867f263c5ab730287b46214e",
+      "original_owned_ticket_observed_epoch": 1791256806.951421,
+      "recovered": false,
+      "credited_gpu_interval": null,
+      "transport_uncertainty_seconds": 0.05903351306915283
+    },
+    {
+      "job_id": "02998dae6dd74dd182e1a7734fae5ed3",
+      "phase": "COMPLETE",
+      "policy_sha256": "1a5e456b29df80ccf040b1ffc047f4c725ecdd71036a97b061102c5a872ac713",
+      "original_owned_ticket_observed_epoch": 1791256949.999341,
+      "recovered": false,
+      "credited_gpu_interval": [
+        1791257094.4020715,
+        1791257488.3085184
+      ],
+      "transport_uncertainty_seconds": 0.06553447246551514
+    },
+    {
+      "job_id": "3afa96761fe64f418cec59aa518d469b",
+      "phase": "COMPLETE",
+      "policy_sha256": "75445a7a760ad9b3fe262f654e2937a9e6209d74c10390ff0c1a5763f8958524",
+      "original_owned_ticket_observed_epoch": 1791258086.125945,
+      "recovered": false,
+      "credited_gpu_interval": [
+        1791263141.053465,
+        1791263537.4132867
+      ],
+      "transport_uncertainty_seconds": 0.06623852252960205
+    },
+    {
+      "job_id": "795ee46f66ec4806a1a7a06b338e2d84",
+      "phase": "COMPLETE",
+      "policy_sha256": "dd00cdf6ba66ec444c75e7a1d1f3ac1e55cfd2e790acc706082b7e33815a3b59",
+      "original_owned_ticket_observed_epoch": 1791263542.104824,
+      "recovered": true,
+      "credited_gpu_interval": [
+        1791268137.163136,
+        1791269403.330256
+      ],
+      "transport_uncertainty_seconds": 0.06785356998443604
+    }
+  ],
+  "queue_intervals_excluded": [],
+  "cli_gpu_union_no_doublecount": true,
+  "current_round_bounds_enforced": true,
+  "original_execution_and_ledgers_preserved": true,
+  "root_query_time_credited": false,
+  "correction_row": {
+    "phase": "NATIVE_FORMAL_CLI_RESEARCH",
+    "start_epoch": 1791256778.701586,
+    "end_epoch": 1791269403.330256,
+    "effective_seconds": 3430.8571197986603,
+    "excluded_seconds": 9193.771550178528,
+    "included_intervals": [
+      [
+        1791256778.701586,
+        1791258547.031764
+      ],
+      [
+        1791257094.4020715,
+        1791257488.3085184
+      ],
+      [
+        1791263141.053465,
+        1791263537.4132867
+      ],
+      [
+        1791268137.163136,
+        1791269403.330256
+      ]
+    ],
+    "minimum_effective_seconds": 36000,
+    "evidence": "cli-research-preparation/ff8729ce966c43f3a57cbe03075385c2/seed/execution.json",
+    "audit_override": "OWNED_ASYNC_GPU_COMPLETION_CLOCK_V1:ff8729ce966c43f3a57cbe03075385c2",
+    "audit_evidence": "owned-experiment-recovery/seed/ff8729ce966c43f3a57cbe03075385c2/closed-clock-correction.json"
+  },
+  "recorded_epoch": 1791270548.3675148
+}

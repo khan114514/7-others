@@ -1,0 +1,93 @@
+{
+  "recorded_at": "2026-10-03T22:43:56.536681+08:00",
+  "round": 9,
+  "protocol_version": "dd-selfproto-v1.1",
+  "runner_pid": 165055,
+  "original_failed_execution": {
+    "stage": "evaluation",
+    "command": [
+      "historical-resources/venvs/dd1/bin/python",
+      "-B",
+      "-u",
+      "historical-codex-workspace/official_entry.py",
+      "--ckpt_path",
+      "historical-codex-models/round09/training/checkpoint.pth",
+      "--vae_ckpt",
+      "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+      "--sample_dir",
+      "historical-codex-models/round09/evaluation",
+      "--sample_num",
+      "50000",
+      "--t_list",
+      "0",
+      "--loss_split_t",
+      "5",
+      "--depth",
+      "16",
+      "--bs",
+      "8",
+      "--seed",
+      "0",
+      "--fid_statistic",
+      "historical-resources/models/dd1/fid_stats",
+      "--local_out_dir_path",
+      "historical-codex-models/round09/official_runtime"
+    ],
+    "cwd": "historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR",
+    "started_at": "2026-10-03T22:27:38.803087+08:00",
+    "finished_at": "2026-10-03T22:33:56.078224+08:00",
+    "exit_code": 1,
+    "deadline_unix": null,
+    "pid": 164182,
+    "elapsed_seconds": 377.27501531504095,
+    "termination": null,
+    "peak_observed_gpu_mib": null
+  },
+  "original_failed_execution_sha256": "bf3e1f74231772c7711ab708e3fe5999246b338eb561896878d3e8cfba0bb7c6",
+  "checkpoint_sha256": "ae5e2c703883c6f466b87902a95366b0362a2bb6ff495ae5eda667a32a782839",
+  "existing_complete_png_count": 6958,
+  "existing_complete_png_bytes": 774892810,
+  "corrupt_pngs": [
+    {
+      "file": "6958.png",
+      "bytes": 65536,
+      "sha256": "9a4976d110832af155e98bc16cc4724c89bdbdb022ddb26984d8173f197cc5c3",
+      "preserved_at": "historical-codex-models/round09/failed_partial_pngs/6958.png"
+    }
+  ],
+  "scorer_sha256": "bce8e2205defd99b4e6b9f3e31bb35c6ab4946aed445ce0179cf2db595382ad4",
+  "entry_sha256": "440e0f7f2e84c4acf0ae3b292419cb52d4c5948c7078262269786359b2adda9a",
+  "free_bytes_before": 23441379328,
+  "required_free_bytes": 6741299958,
+  "gpu_before": "2026/10/03 22:43:46.198, 0, 40442, 0",
+  "protected_before": [
+    {
+      "path": "historical-resources/models/dd1/VAR-DD/var-d16.pth",
+      "expected": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "actual": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+      "expected": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+      "actual": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/fid_stats/statistic.pth",
+      "expected": "a9a689ae306a6e76b1485cbd4448dc82db4b119e177dddb68e0d54d33fc9f7c8",
+      "actual": "a9a689ae306a6e76b1485cbd4448dc82db4b119e177dddb68e0d54d33fc9f7c8",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/VAR-teacher/var_d16.pth",
+      "expected": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+      "actual": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+      "matches": true
+    }
+  ],
+  "new_training_seconds": 0,
+  "decision": "Replay seed0/batch8; reuse existing images only after exact new PNG hash comparison. Finish official50000 scoring. No concurrent large encodes.",
+  "finished_at": "2026-10-03T23:36:59.783644+08:00",
+  "result_sha256": "84e0d8d79a98d691fa46d7a58b875081bd86b2a6d4dbaf79a4c5f3b9755e0845"
+}

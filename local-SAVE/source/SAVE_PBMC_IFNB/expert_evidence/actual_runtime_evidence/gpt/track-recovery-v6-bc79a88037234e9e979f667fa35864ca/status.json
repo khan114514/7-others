@@ -1,0 +1,118 @@
+{
+  "lane": "gpt",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "xhigh",
+  "status": "FORMAL_RESEARCH_COMPLETE",
+  "preflight_only": false,
+  "effective_research_seconds": 37303.662194252014,
+  "preparation_time_reused": false,
+  "rounds": [],
+  "container_stability_seconds": 0,
+  "stability_passed": false,
+  "environment_binding": {
+    "environment_id": "1790dcfa0eda4a2293e33ea82bdfa851",
+    "physical_role": "gpt",
+    "session_id": "save-audited-recovery-gpt__env",
+    "container_id": "be48e6eb27e886beb62c8e5751a97e0e70253b3b3c3a49f1caf50195a08272db",
+    "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+    "queue_volume": "save-harbor-q-1790dcfa0eda4a2293e33ea82bdfa851",
+    "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+    "Agent_uses_private_verifier_log_shadow": true,
+    "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+    "declared_remote_gpus": 1,
+    "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+    "portable_runtime_sources": {
+      "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+      "seed_transport.py": "7725c1226401c45f3d9a5002fa40d30f60cbdf01cb4b7458ff95dd88046253e8",
+      "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+      "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+      "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+      "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+      "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+      "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+    },
+    "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+    "author_oracle": false,
+    "native_container_GPU": false,
+    "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+    "trusted_read_only_cli_runtime": {
+      "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+      "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+      "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+      "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+      "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+    }
+  },
+  "runtime_files": {
+    "setup.py": "2f0330ce1af82f1180f0b782c7917799b6e7ae61cd8efba37b7a09fb48d2aa2c",
+    "config.toml": "b27ff332584bcef852a8beb8d5f805a92a5ead3cac295b938cfb11a666d805cf"
+  },
+  "neutral_native_tool_protocol_sha256": "894f7d3f3496c7a3f0edf67cc26c001af846520b8d4ffe8940b54f21468cc595",
+  "previous_observed_12h_container_stability_proofs": [
+    {
+      "status_source": "<TASK_ROOT>/private/formal-dual-cli/a1426b9ec8a34e798a93fddd65ff31e7/gpt-research-evidence/status.json",
+      "seconds": 43215.91387654199,
+      "environment_binding": {
+        "environment_id": "c86f13601a2f40bda44f2aaecf5f6307",
+        "physical_role": "gpt",
+        "session_id": "save-formal-gpt__env",
+        "container_id": "5064974d56e8b15161c9c068be1db5bac3bf2594ab376e64360c538a15bf9452",
+        "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+        "queue_volume": "save-harbor-q-c86f13601a2f40bda44f2aaecf5f6307",
+        "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+        "Agent_uses_private_verifier_log_shadow": true,
+        "adapter_sha256": "95a868de93fa3ea436d28766c7fa40f95826d60c6d879e146cd7ef15aee2fbb0",
+        "declared_remote_gpus": 1,
+        "relay_sha256": "25957b73741feee86f8ce9f825fd5cba8b2f6ccc27a0a32fb45cc872ec83dae5",
+        "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+        "author_oracle": false,
+        "native_container_GPU": false,
+        "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+        "trusted_read_only_cli_runtime": {
+          "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+          "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+          "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+          "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+          "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+        }
+      }
+    }
+  ],
+  "best_valid_dev": {
+    "score": 0.6303036221128062,
+    "raw_metric": 0.001351913106690589,
+    "method_sha256": "4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4",
+    "source": "<TASK_ROOT>/private/track-recovery-v6/bc79a88037234e9e979f667fa35864ca/gpt-research-evidence/recovered-own-evidence/method.py",
+    "evaluation_run_id": "b5295190a0b04c40bd5cb73520d56cae"
+  },
+  "own_recovery": {
+    "previous_native_session": "01a12103-abe0-7ec0-b92f-6231dde78c2d",
+    "previous_failed_turn_credit_seconds": 0,
+    "native_session_lossless_resume": true,
+    "public_evaluation_run_id": "b5295190a0b04c40bd5cb73520d56cae",
+    "method_sha256": "4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4",
+    "container_stability_restarts_at_zero": true
+  },
+  "prior_effective_research_seconds": 37303.50576962887,
+  "prior_state_source": "<TASK_ROOT>/private/track-recovery-v5/4a212dc87fc34844ab3d15a0d45e2ff9/gpt-research-evidence/status.json",
+  "restored_actual_native_session_id": "01a12103-abe0-7ec0-b92f-6231dde78c2d",
+  "restored_actual_history": [
+    {
+      "path": "sessions/2026/10/09/rollout-2026-10-09T14-14-11-01a12103-abe0-7ec0-b92f-6231dde78c2d.jsonl",
+      "sha256": "b2664a11e1a94abfe147ae665de55a2ed0d347ea30233195e502d141f3bbb35d",
+      "bytes": 34718123
+    }
+  ],
+  "native_session_lossless_resume": true,
+  "started_epoch": 1791615681.4958441,
+  "research_time_policy": "User 2026-10-10: normal actual development; exclude downloads, actual transport/queue stalls and idle stability waits; no AST-change or command-count prerequisite",
+  "independently_verified_effective_seconds": 37303.662194252014,
+  "native_shutdown_note": "No native turn was launched in this recovery; no native process was stopped.",
+  "raw_controller_effective_seconds": 37303.50576962887,
+  "completed_epoch": 1791615682.1324852,
+  "final_method_sha256": "4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4",
+  "qualified_stability_passed": true,
+  "qualified_stability_basis": "Retained actual previous same-track 12h stability proof; current container uptime is reported separately"
+}

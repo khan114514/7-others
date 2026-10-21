@@ -1,0 +1,79 @@
+{
+  "original_event_sha256": "bbaba931a602f073f40d19643a893dbc23708983628a05c7d2b629a8423b14bf",
+  "original_receipt_sha256": "1ac52b3b3fd94961ac4c76a78c916e1e5b1c01ad451da06325f050eb943b722f",
+  "original_event_last_write_epoch": 1791795084.0277433,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"sed -n '100,233p' /workspace/solution/method.py\"",
+      "original_command_sha256": "31697d03aaf4bf12f26e9998e452aa6e26c901b155a702b665bac3059e970183",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "522f3b79b7223940b09517319496bc3de6a84bc51fa3834781a8030e3281abf5",
+      "output_characters": 5106
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'ls /tests/'",
+      "original_command_sha256": "717410514b4f326360ffc6e8b38f7a92cbba7336e745375c263498e501d44dd1",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "83e94ac0abacde78d6c24cb397b19ca04eb584145c087d9dce0849a855044e81",
+      "output_characters": 165
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /tests/grader.py'",
+      "original_command_sha256": "163069874fafda45799644a640d041034a341e9ade622c88cd96f5d2e192e484",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "aa412adc490632dfb43502970452c73007ca6d496ba135426c8278ebb760a4a1",
+      "output_characters": 2087
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'cat /tests/anchors.json'",
+      "original_command_sha256": "ebdcdae17a6f12d7a859aac00045eaa0a16417514d78df4d224afad9e0a0a12e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "f834ef9e3cdd621f8b9b10b4c52eba1622a077c07d5ac75404a295c6fcc55625",
+      "output_characters": 385
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'cat /tests/protocol.json'",
+      "original_command_sha256": "c436fcc4c5cd9dcbae44e828d43ffa11f94d2e77c4e829b952d1e51f4b416d70",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e9812224869edef4dff8493af0a39e27911935e55d2637cf40859ba7552d803c",
+      "output_characters": 140
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /tests/isolated_executor.py'",
+      "original_command_sha256": "bee57438b2358568b077a717f6bcb3cb6db5dc9008abed4e23ae264af8f530b5",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "24f78f79a3ea55283e273e20a8472de93f56dfa6ff93768ed7dedd5ce5a60cc5",
+      "output_characters": 3150
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 49038124,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1090320,
+        "reasoning_output_tokens": 149172
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

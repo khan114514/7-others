@@ -1,0 +1,320 @@
+{
+  "status": "bounded_interval_completed_research_target_controller_accounted",
+  "latest_controller_remaining_seconds_at_message": 165,
+  "remaining_seconds_at_boundary": "not inferred; trusted controller to report",
+  "selected_current_GPU": {
+    "experiment": "115_compiled_complete_post_softmax",
+    "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+    "run_id": "68cd3ef41d364183a1c4a57ed27a7227",
+    "gpu_uuid": "<assigned-accelerator>",
+    "execution_status": "COMPLETED",
+    "quality_pass": true,
+    "reward": 0.7394114531950514,
+    "baseline_mean_ms": 6923.771565755208,
+    "candidate_mean_ms": 1804.2555707295735,
+    "baseline_sample_sd_ms": 33.525361141117465,
+    "peak_cuda_allocated_bytes": 29701087232,
+    "noise_3sigma_pass": true,
+    "feedback": "experiments/115_compiled_complete_post_softmax/dev-result.json",
+    "foreground_exit_code": null,
+    "worker_child_exit_code": 0,
+    "CLI_clocks": {
+      "started": null,
+      "finished": null
+    },
+    "worker_clocks": [
+      1791773069.3908827,
+      1791773130.5371976
+    ],
+    "compiled_variant_count": 4,
+    "full_console_equals_result": null,
+    "console_limit": "115clienthandle/exit/console unavailable at steering; actual complete worker JSON preserved",
+    "classification": "eligible_current_GPU_Dev"
+  },
+  "historical_selected_method": "97_compiled_frequency_prefix, reward0.7388630857582987, priorGPU; all artifacts retained",
+  "selection_rule": "highest eligible actual own Dev reward in eight changed currentGPU jobs; historical rewards excluded from this comparison",
+  "cross_candidate_paired_gain_established": false,
+  "global_optimum_established": false,
+  "formal_QA_claimed": false,
+  "results": [
+    {
+      "experiment": "108_isolated_v_compiled_qk",
+      "artifact_sha256": "2da4ecea7b2ca82dd7c672bca484f08c86badc5af150f56b5161a983ad655524",
+      "run_id": "af36fb95b28941838bfedb9c822f4e93",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": false,
+      "reward": -1.0,
+      "baseline_mean_ms": 6905.765182495117,
+      "candidate_mean_ms": 1851.416239420573,
+      "baseline_sample_sd_ms": 34.04394356002663,
+      "peak_cuda_allocated_bytes": 29575910912,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/108_isolated_v_compiled_qk/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:48:40 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:50:15 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791769783.8001473,
+        1791769851.5328453
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "numerical_hard_gate_failure_ineligible"
+    },
+    {
+      "experiment": "109_packed_compiled_qkv",
+      "artifact_sha256": "d5b9a87326b6a65b2c62869b984de4e04175494cbd4b5356c161df7b086e2438",
+      "run_id": "c8061fcc697d45c6bd289129521391e9",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7310286687003699,
+      "baseline_mean_ms": 6917.560323079427,
+      "candidate_mean_ms": 1860.625409444173,
+      "baseline_sample_sd_ms": 35.31029885503257,
+      "peak_cuda_allocated_bytes": 29693445632,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/109_packed_compiled_qkv/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:52:51 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:54:29 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770035.2730837,
+        1791770086.9967687
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": null,
+      "console_limit": "109console tool-truncated; full evaluator JSON preserved",
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "110_compiled_key_score_composition",
+      "artifact_sha256": "a7c66b88bb6f11803621db159ed569ed5d82716e0d6fa9948dca0bd8c21d872d",
+      "run_id": "809cbe77816544d4b406ee5b80ec77df",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7329098294615983,
+      "baseline_mean_ms": 6923.715225219727,
+      "candidate_mean_ms": 1849.256280263265,
+      "baseline_sample_sd_ms": 48.354855047763245,
+      "peak_cuda_allocated_bytes": 29697115648,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/110_compiled_key_score_composition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:56:57 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:58:53 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770281.6031754,
+        1791770336.2134743
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "111_compiled_packed_value_contraction",
+      "artifact_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df",
+      "run_id": "ffea805fe34b4385af5b1d2bf11804ec",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7223223268390225,
+      "baseline_mean_ms": 6901.40158589681,
+      "candidate_mean_ms": 1916.3651339213054,
+      "baseline_sample_sd_ms": 30.01827049984247,
+      "peak_cuda_allocated_bytes": 29692024320,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/111_compiled_packed_value_contraction/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:02:48 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:05:36 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770631.868071,
+        1791770687.316102
+      ],
+      "compiled_variant_count": 5,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "112_compiled_pre_softmax_partition",
+      "artifact_sha256": "a0cd0fe9d47bdbf332fb21a6c81ce19725ce3417167cf2e4bec02ab2283e064d",
+      "run_id": "b0371b39559f424d8b59d71711ae7669",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7362187238426451,
+      "baseline_mean_ms": 6927.787012736003,
+      "candidate_mean_ms": 1827.4204991658528,
+      "baseline_sample_sd_ms": 34.92967802125154,
+      "peak_cuda_allocated_bytes": 29697435136,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/112_compiled_pre_softmax_partition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:06:40 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:09:01 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770863.82342,
+        1791770918.0922863
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "113_compiled_post_softmax_partition",
+      "artifact_sha256": "51bb6cd234a228102bf52b6d5093e2cf442de649bc0703c83ebe73bd29b27500",
+      "run_id": "449cb834cfb741998c7e8ccd44fba70d",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7265904332200679,
+      "baseline_mean_ms": 6920.140121459961,
+      "candidate_mean_ms": 1892.032512664795,
+      "baseline_sample_sd_ms": 39.380079624286694,
+      "peak_cuda_allocated_bytes": 29696278528,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/113_compiled_post_softmax_partition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:18:25 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:24:03 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791771568.981742,
+        1791771629.7919757
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "114_compiled_down_only_columns",
+      "artifact_sha256": "37ca0a9ddf4da8eecf2ce78f450f2e15627f8ecec17d0b8520916f1bad2f81af",
+      "run_id": "1e68372e99d54d0bbed4e4dc7526c785",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7231010053081304,
+      "baseline_mean_ms": 6918.536229451497,
+      "candidate_mean_ms": 1915.7357266743977,
+      "baseline_sample_sd_ms": 41.93575125706979,
+      "peak_cuda_allocated_bytes": 29697435136,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/114_compiled_down_only_columns/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:27:03 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:33:22 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791772087.3741276,
+        1791772141.5116308
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "115_compiled_complete_post_softmax",
+      "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "run_id": "68cd3ef41d364183a1c4a57ed27a7227",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7394114531950514,
+      "baseline_mean_ms": 6923.771565755208,
+      "candidate_mean_ms": 1804.2555707295735,
+      "baseline_sample_sd_ms": 33.525361141117465,
+      "peak_cuda_allocated_bytes": 29701087232,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/115_compiled_complete_post_softmax/dev-result.json",
+      "foreground_exit_code": null,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": null,
+        "finished": null
+      },
+      "worker_clocks": [
+        1791773069.3908827,
+        1791773130.5371976
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": null,
+      "console_limit": "115clienthandle/exit/console unavailable at steering; actual complete worker JSON preserved",
+      "classification": "eligible_current_GPU_Dev"
+    }
+  ],
+  "limits": [
+    "Every actual result is public3case32stage1repetition Dev; final withheld256stage3repeat evaluation remains untested.",
+    "Separate Baseline-paired jobs do not establish candidate-paired incremental improvement.",
+    "Current compiled selected method has no supplied generatedcode/operator/kernelprofile; mechanisms remain hypotheses.",
+    "Historical eager41profiles and priorGPU scores cannot identify current compiled execution costs.",
+    "Finite-min mask topology lemma is conditional on scaled-logit bounds, not established universally from tensor manifest.",
+    "Originalround14fullnativeexportgap remains preserved unchanged in research-closure/actual-own-last-interval."
+  ],
+  "diagnostics": [
+    "research-resume-current-gpu/bf16-dot-tree-argument.json",
+    "research-resume-current-gpu/public-attention_dependency-audit-v3.json",
+    "research-resume-current-gpu/finite-attention_suppression-argument.json"
+  ],
+  "next_decisions": [
+    "Do not sweep/repeat failed splitwidth108 or valid slower value/down orientations and fragment boundaries unchanged.",
+    "Do not use public25/32textlengths as fixed unseenprefix lengths; catalog has no dynamiccompaction.",
+    "Any subsequent method must supply a new preserving producer/consumer or resource argument under unchanged precision/cache/backend guards; actual compiled layout and universal finite-mask bound remain open source/diagnostic questions."
+  ],
+  "ordinary_work_credit": "Controller only; no local sum or invented clock/credit."
+}

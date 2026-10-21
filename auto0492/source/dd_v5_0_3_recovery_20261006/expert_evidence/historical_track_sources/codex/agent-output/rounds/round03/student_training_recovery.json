@@ -1,0 +1,72 @@
+{
+  "verified_at": "2026-10-03T09:53:17.273183+08:00",
+  "original_training_exit_code": 1,
+  "checkpoint_update": 6100,
+  "optimizer_update": 6100,
+  "checkpoint_seen_pairs": 97600,
+  "last_attempted_update": 6200,
+  "last_successful_update_at": "2026-10-03T09:34:19.571157+08:00",
+  "last_checkpoint_published_at": "2026-10-03T09:30:57.427163+08:00",
+  "checkpoint_sha256": "502a402b2db21dedf5380e635d9930f6c2f429696effde51ec9d08cd941008c4",
+  "optimizer_sha256": "c1ccf013362da05443417cf9239ee1231389d7fdf01ea12c64cb39d1abd62101",
+  "method_sha256": "45c73e8ce2b0f06feadde9551aad0729f3843888313c51df0c08e2638c398250",
+  "weights_and_ema_all_finite": true,
+  "saved_update_record": {
+    "update": 6100,
+    "seen_pairs": 97600,
+    "stream_epoch": 11,
+    "ce_loss": 4.14590984582901,
+    "lpips_loss": 0.354248046875,
+    "grad_norm": 3.552323818206787,
+    "elapsed_seconds": 12528.533373117447,
+    "time_scale_histogram": [
+      48741,
+      5502,
+      5473,
+      5265,
+      5456,
+      5494,
+      5272,
+      5356,
+      5406,
+      5635
+    ],
+    "peak_torch_allocated_mib": 8847.859375,
+    "peak_torch_reserved_mib": 9008.0
+  },
+  "attempted_last_record": {
+    "update": 6200,
+    "seen_pairs": 99200,
+    "stream_epoch": 12,
+    "ce_loss": 4.06635507941246,
+    "lpips_loss": 0.374267578125,
+    "grad_norm": 2.6313774585723877,
+    "elapsed_seconds": 12738.737083435059,
+    "time_scale_histogram": [
+      49534,
+      5577,
+      5558,
+      5355,
+      5562,
+      5596,
+      5353,
+      5449,
+      5497,
+      5719
+    ],
+    "peak_torch_allocated_mib": 8847.859375,
+    "peak_torch_reserved_mib": 9008.0
+  },
+  "original_execution_sha256": "ac4e8a3929d01304fe769d5efe3c362457ee7c7fa9822013e63e5c3b4ede51bf",
+  "recovery_scope": "Use last complete matched model/EMA/optimizer snapshot for formal fixed evaluation; no new teacher generation or training",
+  "training_failure_retained": true,
+  "new_gpu_training_seconds": 0,
+  "counts_as_effective": false,
+  "failed_atomic_temporary": {
+    "path": "historical-codex-models/round03/training/checkpoint.pth.tmp",
+    "bytes": 2113716480,
+    "sha256": "3c65fb8f4e5693d6cd2251241408f2e394be6b1733f92c8677a5700ff9626957",
+    "valid_zip": false,
+    "retained": true
+  }
+}

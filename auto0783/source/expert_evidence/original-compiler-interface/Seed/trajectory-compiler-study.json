@@ -1,0 +1,104 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "Compiled region must be contiguous and ordered",
+      "status": "failed",
+      "score": 0.0,
+      "failure_reason": "Compiled region must be contiguous and ordered",
+      "retained_best": false,
+      "time": "2026-10-09 17:32:02.800574+08:00"
+    },
+    {
+      "round": 2,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp110: Full per-stage region (42 nodes): FAILS quality\n- **77.1% raw speedup, but quality FAILS** — reward -1\n- Candidate: ~1638ms vs baseline ~7137ms — massive raw speedup potential\n- Per-stage RMSE: 8.7% (case 0), 1.0% (case 1), 1.0% (case 2)\n- Final autonomous RMSE: 138.6% (case 0), 7.8% (case 1), 13.5% (case 2)\n- Compilation time: ~8.1s for the region\n- Cause: Inductor uses bf16 matmul reduction precision internally\n  (eager path has allow_bf16_reduced_precision_reduction=False)\n- Rejected: quality failure",
+      "status": "failed",
+      "score": -1.0,
+      "failure_reason": "quality_pass=false",
+      "retained_best": false,
+      "time": "2026-10-09 17:34:58.479479+08:00"
+    },
+    {
+      "round": 3,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp111: MLP + O-proj region (10 nodes): FAILS quality\n- **72.8% raw speedup, but quality FAILS** — reward -1\n- Region: O-projection linear + residual + post-norm + MLP op + residual\n- Per-stage RMSE: 6.2% (case 0), 1.0% (case 1), 1.0% (case 2)\n- Final RMSE: 92.9% (case 0), 7.2% (case 1), 11.9% (case 2)\n- Compilation time: ~5.0s\n- Even just mlp op + linear fails — linears inside Inductor use bf16 reduction\n- Rejected: quality failure",
+      "status": "failed",
+      "score": -1.0,
+      "failure_reason": "quality_pass=false",
+      "retained_best": false,
+      "time": "2026-10-09 17:37:14.822108+08:00"
+    },
+    {
+      "round": 4,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp112: Softmax block region (4 nodes: scale+add+softmax+cast): FAILS quality\n- **73.1% raw speedup, but quality FAILS** — reward -1\n- Region: scale → add → softmax → cast\n- Per-stage RMSE: 6.0% (case 0), 1.0% (case 1), 1.0% (case 2)\n- Final RMSE: 97.7% (case 0), 7.9% (case 1), 10.5% (case 2)\n- Compilation time: ~3.2s\n- Softmax with fp32 dtype still has precision differences in Inductor\n- Rejected: quality failure",
+      "status": "failed",
+      "score": -1.0,
+      "failure_reason": "quality_pass=false",
+      "retained_best": false,
+      "time": "2026-10-09 17:39:44.211431+08:00"
+    },
+    {
+      "round": 5,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp113: Single reshape view op (1 node): PASSES quality, same speed\n- **72.0% speedup, 0 RMSE**, 29.6 GB peak memory — PASSES\n- Region: single `reshape` op — pure view, no computation\n- Numerically exact (0 RMSE, 0 max error)\n- Compilation time: ~2.5s\n- Same speed as best within noise (72.0% vs 71.9%)\n- Confirms: Inductor compilation of view ops is correct\n- Baseline for understanding what compiles correctly\n- Accepted: correct, but no speedup from one view op",
+      "status": "ok",
+      "score": 0.7202500120648534,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 17:42:21.675936+08:00"
+    },
+    {
+      "round": 6,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp115: MLP SiLU*mul elementwise fusion (2 nodes): PASSES quality, same speed\n- **71.9% speedup, 0 RMSE**, 29.6 GB peak memory — PASSES\n- Region: `silu(gate_linear_output) * up_linear_output` — 2 bf16 elementwise ops\n- Manual MLP with eager gate/up/down linears, compiled SiLU+mul middle\n- Numerically exact (0 RMSE, 0 max error)\n- Compilation time: ~3.3s\n- Same speed as best within noise (71.91% vs 71.90%)\n- **Key finding**: bf16 elementwise ops compiled with Inductor are numerically exact!\n- The SiLU+mul fusion alone doesn't move the needle (too small), but this\n  opens the door to compiling ALL bf16 elementwise ops together\n- Accepted: correct, proves bf16 elementwise compilation is safe",
+      "status": "ok",
+      "score": 0.719115601521231,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 17:45:37.059667+08:00"
+    },
+    {
+      "round": 7,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp116: 8 small compiled regions (views + bf16 elementwise): PASS quality, SLOWER\n- **66.5% speedup, 0 RMSE**, 29.6 GB peak memory\n- 69 nodes (23 prefix, 46 per-stage), 8 compile regions, 24 compiled nodes total\n- Quality: 0 RMSE, 0 max error — numerically exact!\n- BUT ~5.4% SLOWER than pure eager exp91 (66.5% vs 71.9%)\n- Cause: too many small regions create overhead\n  - Each region boundary = interpreter dispatch + kernel launch boundary\n  - View-only regions (reshape/transpose/slice) add overhead for trivial ops\n  - Manual MLP (3 linears + silu + mul) vs `mlp` op adds more dispatch\n  - Small elementwise regions don't fuse enough to offset overhead\n- Key insight: need FEWER, LARGER regions with meaningful fusion\n- Rejected: slower than eager baseline",
+      "status": "ok",
+      "score": 0.6652969456051582,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 17:49:37.048406+08:00"
+    },
+    {
+      "round": 8,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp117: repeat_heads in compiled region: PASS, same speed\n- **71.83% speedup, 0 RMSE**, 29.6 GB\n- Single `repeat_heads` op compiled\n- Numerically exact — `repeat_heads` is safe to compile\n- Same speed as eager (as expected for single small op)\n- Expands set of safe ops to include `repeat_heads`",
+      "status": "ok",
+      "score": 0.7182720818299869,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 17:53:27.402668+08:00"
+    },
+    {
+      "round": 9,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp118: 7-node KV pre-processing region (views + repeat_heads): PASS, same speed\n- **71.89% speedup, 0 RMSE**, 29.6 GB\n- Region: k_rep + v_reshaped + v_t + v_rep + q_flat + k_rep_t + k_flat_t\n- 7 nodes, all view/repeat_heads ops\n- Numerically exact\n- Same speed as eager — view ops are already free\n- Confirms: view/repeat fusion gives no speedup (already optimal in eager)",
+      "status": "ok",
+      "score": 0.7188847118402181,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 17:55:29.715451+08:00"
+    },
+    {
+      "round": 10,
+      "policy_name": "native-ccagent1.0 / doubao-seed-2-1-turbo-260628/high migrated original compiler-interface Dev",
+      "method_summary": "### exp119: 6 regions with mlp op intact: PASS, SLOWER\n- **69.68% speedup, 0 RMSE**, 29.6 GB\n- 6 regions, 26 compiled nodes total\n- Uses `mlp` op (not manual MLP)\n- ~2.2% SLOWER than pure eager exp91 (69.7% vs 71.9%)\n- Even with `mlp` op, 6 region boundaries add too much overhead\n- Region dispatch + kernel launch overhead > fusion benefit",
+      "status": "ok",
+      "score": 0.6968353407812362,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 17:58:07.840619+08:00"
+    }
+  ]
+}

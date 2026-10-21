@@ -1,0 +1,31 @@
+{
+  "version": "forecast-conditional-calibration-v1",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "prediction_shape": [
+    297,
+    12,
+    170
+  ],
+  "metric": "mae",
+  "direction": "minimize",
+  "baseline_mae": 14.833871695733032,
+  "estimated_attainable_mae": 14.378580816776678,
+  "shared_backbone_sha256": "71eeb60fa52b2ee141f8c860920857edd434f259d7b5016efaea24b298817b2d",
+  "shared_initialization": "one official backbone, sufficient declared training; never counted as independent neural seed fits",
+  "normalized_formula": "(baseline_mae - raw_mae)/(baseline_mae - estimated_attainable_mae)",
+  "score_clipped": false,
+  "upper_estimation_rule": "preregistered expert-only pilot estimate frozen before formal Reference evaluation",
+  "fit_cpu_seconds_per_seed": 180,
+  "fit_wall_seconds_per_seed": 180,
+  "reload_wall_seconds_per_seed": 60,
+  "source_max_bytes": 1572864,
+  "checkpoint_max_bytes": 67108864,
+  "dev_target_sha256": "643947aa0c424355cd7915520dd2ca53c8cd37affb9ecdacc6fd1d36db829b19",
+  "solve_sha256": "d6e0c77a5c20b1afee86cdc5576402b45fea48f5623a0729b3c748d2ee5b4a4a",
+  "upper_estimation_source": "same independent pilot reduction fraction, frozen before formal Reference; no held-out Reference used",
+  "evaluation_split": "externally_injected_hidden"
+}

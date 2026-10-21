@@ -1,0 +1,22 @@
+fatal: not a git repository (or any of the parent directories): .git
+Traceback (most recent call last):
+  File "runtime:initial_deployment/workspace/harbor_task/environment/engine/ram_png_entry.py", line 142, in <module>
+    main()
+  File "runtime:initial_deployment/workspace/harbor_task/environment/engine/ram_png_entry.py", line 135, in main
+    runpy.run_path(str(Path(DEPLOYMENT['repo']) / 'sample.py'), run_name='__main__')
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "runtime:initial_deployment/workspace/harbor_task/environment/vendor/var/sample.py", line 9, in <module>
+    from utils import arg_util
+  File "runtime:initial_deployment/workspace/harbor_task/environment/vendor/var/utils/arg_util.py", line 25, in <module>
+    class Args(Tap):
+  File "runtime:initial_deployment/workspace/harbor_task/environment/vendor/var/utils/arg_util.py", line 102, in Args
+    branch: str = subprocess.check_output(f'git symbolic-ref --short HEAD 2>/dev/null || git rev-parse HEAD', shell=True).decode('utf-8').strip() or '[unknown]' # [automatically set; don't specify this]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.12/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command 'git symbolic-ref --short HEAD 2>/dev/null || git rev-parse HEAD' returned non-zero exit status 128.

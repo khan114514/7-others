@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-10-04T04:08:28.308522+08:00",
+  "round": 12,
+  "quality_gate_passed": true,
+  "manually_inspected_grid": true,
+  "visual_review": "Formal64 grid retains diverse recognizable objects and scenes, with blur and ghosting but no all-black, identical-image or repetitive-texture collapse. Full FID9.576185738625782 is0.087076320194910 below B (0.9011 percent), and0.120682196212783 below the same-teacher uniform-time round10. All50000 outputs are finite and exact PNG byte hashes retained. Teacher reuse generation charged152.158s; total233.078s. Same-method round11 remains failed and its parameter bytes differ from this independent same-seed retraining, so this score is a new trial, not recovered round11 weights. RAM PNG path passed exact64-image disk/FID equivalence, official scorer and frozenseed0 unchanged. Best updates to round12, pending independent saved-weight50k revalidation; no3-sigma claim.",
+  "grid_sha256": "7b6428ea5e714acf90417fef0302ebe1130e624e46648d733070d81d51dff4cb",
+  "result_sha256": "4c68499d723ac3f589a6450dfc6052e14167e737abd65459b0033dce964ca129",
+  "score": 9.576185738625782,
+  "fid_minus_baseline": -0.0870763201949103,
+  "training_budget_seconds": 233.0775803057477,
+  "updates": 16,
+  "row": {
+    "round": 12,
+    "policy_name": "warmstart_official_dd_reuse256_agreement2x_latehalf",
+    "method_summary": "dd-selfproto-v1.1; warmstart_official_dd_ema; 256 verified teacher pairs reused with full generation charge 152.158s; one shuffled pass, 16 updates; uniform U(0.5,1); P(prefix5..9)=0.2 each; frozen floor(10*t) prefix mapping; fixed full FID-50k=9.576185739, delta to B=-0.087076320. Independent training reimplementation. Visual review: Formal64 grid retains diverse recognizable objects and scenes, with blur and ghosting but no all-black, identical-image or repetitive-texture collapse. Full FID9.576185738625782 is0.087076320194910 below B (0.9011 percent), and0.120682196212783 below the same-teacher uniform-time round10. All50000 outputs are finite and exact PNG byte hashes retained. Teacher reuse generation charged152.158s; total233.078s. Same-method round11 remains failed and its parameter bytes differ from this independent same-seed retraining, so this score is a new trial, not recovered round11 weights. RAM PNG path passed exact64-image disk/FID equivalence, official scorer and frozenseed0 unchanged. Best updates to round12, pending independent saved-weight50k revalidation; no3-sigma claim.",
+    "status": "ok",
+    "score": 9.576185738625782,
+    "failure_reason": null,
+    "retained_best": true,
+    "time": "2026-10-04 04:08:28"
+  }
+}

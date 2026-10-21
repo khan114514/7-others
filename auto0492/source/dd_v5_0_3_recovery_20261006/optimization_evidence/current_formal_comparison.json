@@ -1,0 +1,52 @@
+{
+  "status": "CURRENT_FORMAL_PAIR_AND_DELIVERED_SAVED_EMA_FULL_RELOAD_COMPLETE",
+  "protocol": "dd-selfproto-v1.3",
+  "task_version": "5.0.2-candidate",
+  "direction": "minimize",
+  "metric": "FID-50000",
+  "formal_stream_commitment": "private-eval-policy-sha256:7a90461aea0505e33ffcbd7f27d70b461b548f9c33a9950d7b0d63d24bfa0a60",
+  "opaque_stream_identifier_is_not_a_new_or_fabricated_seed": true,
+  "seed_scope": "One actual frozen private evaluation seed, identified by its predeclared policy commitment; numeric seed intentionally withheld from portable expert copies. Public evaluation stream0 remains separately indexed.",
+  "declared_run_count": 1,
+  "paired_runs": [
+    {
+      "seed": "private-eval-policy-sha256:7a90461aea0505e33ffcbd7f27d70b461b548f9c33a9950d7b0d63d24bfa0a60",
+      "baseline": 9.800031891769606,
+      "reference": 9.74957468191576,
+      "baseline_valid": true,
+      "reference_valid": true,
+      "baseline_result": "expert_evidence/current_native_nop_20261005_mac/verifier/result.json",
+      "reference_result": "expert_evidence/current_formal_reference_20261005/result.json"
+    }
+  ],
+  "baseline_mean": 9.800031891769606,
+  "reference_mean": 9.74957468191576,
+  "baseline_sample_std": null,
+  "reference_sample_std": null,
+  "sample_std_reason": "One actual paired stream; no sample standard deviation is estimated or invented.",
+  "upper_bound": 9.646181753456233,
+  "upper_bound_calibration_status": "FROZEN_BEFORE_CURRENT_FORMAL_SUBMISSION",
+  "normalized_reference_score": 0.3279633701145659,
+  "paired_improvement": 0.05045720985384605,
+  "baseline_model": "optimization_evidence/baseline_runs/seed_0/model/ema_inference_checkpoint.pth",
+  "baseline_model_source_checkpoint_sha256": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+  "baseline_model_identity_same_for_public_and_formal_streams": true,
+  "reference_model": "optimization_evidence/current_formal_reference/model/ema_inference_checkpoint.pth",
+  "reference_full_checkpoint_sha256": "652fd18e2a6c74da51689117fb02ade2fb884fc81904783eceba757ed5d5e7ec",
+  "teacher_and_training_budget_seconds": 14400,
+  "reference_actual_teacher_and_training_seconds": 484.11931562423706,
+  "baseline_is_healthy_official_pretrained_decoder_no_new_adaptation": true,
+  "acceptance_profile": "dd-user-20261005",
+  "author_acceptance_policy": "expert_evidence/author_acceptance_revision_20261005.json",
+  "three_sigma_independent_training_requirement_waived_by_user_before_private_scores": true,
+  "stochastic_training_variance_claimed_zero": false,
+  "full_saved_current_ema_reload_complete": true,
+  "independent_qa_pass_claimed": false,
+  "anchor_calibration_receipts": {
+    "baseline": "expert_evidence/current_formal_anchor_calibration/baseline-actual-50000-receipt.json",
+    "upper_bound": "expert_evidence/current_formal_anchor_calibration/upper_bound-actual-50000-receipt.json"
+  },
+  "saved_ema_reload_receipt": "expert_evidence/current_saved_formal_ema_reload_20261005/result.json",
+  "saved_ema_reload_comparison": "expert_evidence/current_saved_formal_ema_reload_20261005/comparison.json",
+  "all_50000_saved_model_png_hashes_and_fid_identical": true
+}

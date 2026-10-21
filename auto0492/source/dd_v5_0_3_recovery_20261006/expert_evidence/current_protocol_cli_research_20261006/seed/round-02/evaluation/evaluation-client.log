@@ -1,0 +1,10 @@
+=== STDOUT ===
+{"status": "ACCEPTED", "job_id": "6507ee6fc047461c93b9bde1c88dad34"}
+
+=== STDERR ===
+Traceback (most recent call last):
+  File "/workspace/environment/public_eval/runtime_client.py", line 172, in <module>
+    main()
+  File "/workspace/environment/public_eval/runtime_client.py", line 168, in main
+    raise TimeoutError('Runtime job has not completed; retain its invocation receipt before retrying')
+TimeoutError: Runtime job has not completed; retain its invocation receipt before retrying

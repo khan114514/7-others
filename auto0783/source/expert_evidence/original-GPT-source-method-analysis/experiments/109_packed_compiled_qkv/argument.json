@@ -1,0 +1,39 @@
+{
+  "hypothesis": "Keep published matched full projection shape; replace three outputs with packed single36-head result so compiler can choose one storage/layout boundary.",
+  "full_projection_shape_M_N_K": [
+    512,
+    4608,
+    3584
+  ],
+  "biased_projection_and_all_six_rotary_node_objects_unchanged": true,
+  "packed_channel_indices_checked": 4608,
+  "restored_V_coordinates_checked": 262144,
+  "V_extra_numerical_operations": 0,
+  "region": {
+    "id": "image_packed_projection_rotary_compiled",
+    "inputs": [
+      "image_input_norm",
+      "vision_qkv_weight",
+      "vision_qkv_bias",
+      "image_cos",
+      "image_signed_sin"
+    ],
+    "outputs": [
+      "image_packed_qkv"
+    ],
+    "prefix": false
+  },
+  "single_boundary_shape": [
+    2,
+    36,
+    256,
+    128
+  ],
+  "single_boundary_bytes": 4718592,
+  "limitations": [
+    "Adds explicit packing concat and eager V reshape may copy. No measured copy elimination, epilogue fusion, stride or latency argument.",
+    "108failure does not establish a unique numerical cause; this method avoids its changed GEMM widths.",
+    "Same geometry as valid historical58 is not current-GPU numerical qualification."
+  ],
+  "canonical_sha256": "d5b9a87326b6a65b2c62869b984de4e04175494cbd4b5356c161df7b086e2438"
+}

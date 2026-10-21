@@ -1,0 +1,212 @@
+{
+  "schema_version": "autoresearch-run.v2",
+  "status": "COMPLETE",
+  "role": "baseline",
+  "seed": 17,
+  "formal_seeds": [
+    17,
+    29,
+    43
+  ],
+  "protocol": {
+    "id": "pbmc-context-v1",
+    "source_protocol_sha256": "1521e255b99ce85547a3b10a68c9be81b19f364907f82be4f704f103e68277dc",
+    "formal_seeds_at_execution": [
+      17,
+      29,
+      43
+    ],
+    "final_formal_seeds": [
+      17,
+      29,
+      43,
+      71,
+      97
+    ],
+    "data_hashes": {
+      "public_assets/train.h5ad": "da00e9ca331ca15b895c4321e9309b6c200abe859cb9d3f9cf2d9ac2e631a50f",
+      "public_assets/dev_controls.h5ad": "a03c6929cfb35e7b64d03978ca018135165f9d136da284bd69cc9938cadfe3c2",
+      "public_assets/dev_targets.h5ad": "97df2967fc0dfd1304ebb559dbec9c48251a3937d2a957b243f47dfec769856b"
+    },
+    "metric": {
+      "primary": "mean-expression MSE on log1p normalized expression",
+      "direction": "minimize",
+      "diagnostics": [
+        "r2",
+        "pcc"
+      ],
+      "aggregation": "arithmetic mean of all declared independent training seeds"
+    },
+    "per_seed_timeout_seconds": 900,
+    "inference_seed_rule": "train seed + 10000; reset before each conditional decode",
+    "training": {
+      "epoch": 200,
+      "batch_size": 1024,
+      "lr": 0.0001,
+      "weight_decay": 2.5e-05,
+      "col_msk_threshold": 0.6,
+      "scheduler": "upstream official",
+      "reference_training": "identical independent initialization and recipe"
+    },
+    "resources": {
+      "gpu_count": 1,
+      "gpu_model": "NVIDIA A100-PCIE-40GB",
+      "cpu_threads": 4
+    }
+  },
+  "protocol_sha256": "1521e255b99ce85547a3b10a68c9be81b19f364907f82be4f704f103e68277dc",
+  "method_sha256": "07f88c819d54ea4589d6f792d32dad9c045a1c8245c18ce3834daa8aab339a43",
+  "dependency_hashes": {
+    "submission/workspace/harbor_task/environment/starter/method.py": "07f88c819d54ea4589d6f792d32dad9c045a1c8245c18ce3834daa8aab339a43",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/__init__.py": "fc4c801c8b03a1e5c818ca830a15d706f897c0ca8be3e57a72f81a5d98d2221d",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/model.py": "4e005866adf85d0a48ae0ba69bf77dcd0e6713c554448846a95601d1e64c898c",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/VAE_train.py": "d7429c23eaa038d3b68a681d8552b8d0b0e04e4964cf916b872f996082161542",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/VAE_model.py": "4be64b64d589f6fc1fc40d48792ea50057d0c2b01ccf993ca8fc3bc91404bba9",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/flow_matching_train.py": "d67e8e090bd35ba93818f556ead66e7b8849d1faa26e5292ac314c417671098b",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/layer_utils.py": "1f2bc49ee794f4e108ff77038c5e43b62f8fb58460f0458d56cc3b4bd1fc8b88",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/__init__.py": "87d887bee00dd69c509976a83750eabaa0ffae2269e91f0b054d25aa1d872c39",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/fm.py": "ccdd0130c505b2069505c92cd9cfc099014184fdab88b8a3aa4f3c1d5da9bc42",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/denoising_model.py": "5f1212798295b46e831c745dc5a7034dbeb533d394a64387b72a470e35c3eac8",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/ot_sampler.py": "41760aa119daa662dffd097ae150cf360b74671b79f2ba3d171e61843eaba7f7",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/utils/__init__.py": "013e037dc44665cf9b3530cdbf369cd20ab6ad203bbac96c72d42b4f3a07b856",
+    "submission/workspace/harbor_task/environment/starter/conditional_backend/utils/process_h5ad.py": "fe475f0be90d828a145d3f468b01af169a43279dbd97bc260645d84f2aa88b83",
+    "submission/workspace/harbor_task/tests/train_eval.py": "c461a7252e5fe8f35d332c557d7d074df42d6c5fda565d32dba28f2f53d2157b",
+    "submission/workspace/harbor_task/tests/metrics.py": "28c0232a184bfe36dfaaba35fa54d6f02b37a1629f76eaefbe448dacb41098cd",
+    "submission/workspace/reference/method.py": "e1b3d5100b1ef56d5a72b4b44364199d82fbde63863e9953387a77a937336f12",
+    "preparation/formal_runner.py": "d519ed83579818cad4aa8b0d8cb3241c6be0e1f1b1a2da4de8af5bf03d6daf35",
+    "submission/workspace/harbor_task/environment/public_assets/dev_targets.h5ad": "97df2967fc0dfd1304ebb559dbec9c48251a3937d2a957b243f47dfec769856b",
+    "submission/workspace/harbor_task/environment/public_assets/dev_controls.h5ad": "a03c6929cfb35e7b64d03978ca018135165f9d136da284bd69cc9938cadfe3c2",
+    "submission/workspace/harbor_task/environment/public_assets/train.h5ad": "da00e9ca331ca15b895c4321e9309b6c200abe859cb9d3f9cf2d9ac2e631a50f",
+    "submission/workspace/harbor_task/environment/public_assets/manifest.json": "c2e46dc335d56704f1ad10ab3117d2b51f774824a244c3fba197704061fe7251"
+  },
+  "training": {
+    "epoch": 200,
+    "batch_size": 1024,
+    "lr": 0.0001,
+    "weight_decay": 2.5e-05,
+    "col_msk_threshold": 0.6,
+    "scheduler": "upstream official",
+    "reference_training": "identical independent initialization and recipe"
+  },
+  "execution": {
+    "start_time": "2026-10-09T14:09:51.692272+08:00",
+    "command": null,
+    "command_note": "Actual private argv in operator record; portable command below",
+    "portable_command": "python tests/train_eval.py --method method.py --train train.h5ad --controls dev_controls.h5ad --out execution --seed 17",
+    "exit_code": 0,
+    "reload_exit_code": 0,
+    "training_seconds": 360.633858342655,
+    "gpu": "NVIDIA A100-PCIE-40GB",
+    "peak_cuda_allocated_bytes": 2408007168,
+    "train_pid": 286016,
+    "reload_pid": 292997,
+    "end_time": "2026-10-09T14:16:07.988683+08:00",
+    "elapsed_seconds": 376.2964156488888
+  },
+  "metrics": {
+    "mse": 0.003521345965315171,
+    "r2": 0.9776204169894682,
+    "pcc": 0.9887535365192253
+  },
+  "quality_gates": {
+    "passed": true,
+    "finite_nonnegative_prediction": true,
+    "fresh_initialization": true,
+    "checkpoint_reload_verified": true,
+    "reload_max_metric_difference": 0.0
+  },
+  "artifacts": {
+    "format": "torch weights_only state_dict",
+    "path": "optimization_evidence/baseline_runs/seed_17/model/model.pt",
+    "bytes": 152124106,
+    "sha256": "37e90be4cbc8806d44b6e93b0878c0804bb3a41428bf7a799d4453d7899faad7",
+    "source": "baseline seed 17 independent fresh training",
+    "method_sha256": "07f88c819d54ea4589d6f792d32dad9c045a1c8245c18ce3834daa8aab339a43",
+    "reload_verified": true,
+    "reload_metrics": {
+      "mse": 0.003521345965315171,
+      "r2": 0.9776204169894682,
+      "pcc": 0.9887535365192253
+    },
+    "max_metric_difference": 0.0,
+    "max_prediction_difference": 0.0
+  },
+  "runtime": {
+    "mode": "fresh_training",
+    "seed": 17,
+    "inference_seed": 10017,
+    "method_sha256": "07f88c819d54ea4589d6f792d32dad9c045a1c8245c18ce3834daa8aab339a43",
+    "train_sha256": "da00e9ca331ca15b895c4321e9309b6c200abe859cb9d3f9cf2d9ac2e631a50f",
+    "controls_sha256": "a03c6929cfb35e7b64d03978ca018135165f9d136da284bd69cc9938cadfe3c2",
+    "checkpoint_sha256": "37e90be4cbc8806d44b6e93b0878c0804bb3a41428bf7a799d4453d7899faad7",
+    "checkpoint_bytes": 152124106,
+    "prediction_sha256": "6dbe917213cb8b7f3a3e7619c9da821c1f7eefeb168446163581bbdec7553df1",
+    "train_shape": [
+      21336,
+      2000
+    ],
+    "control_shape": [
+      811,
+      2000
+    ],
+    "training_seconds": 360.633858342655,
+    "elapsed_seconds": 363.65069793211296,
+    "gpu": "NVIDIA A100-PCIE-40GB",
+    "peak_cuda_allocated_bytes": 2408007168,
+    "torch": "2.5.1+cu124",
+    "cuda": "12.4"
+  },
+  "task_type": "training",
+  "method": {
+    "source_path": "workspace/harbor_task/environment/starter/method.py",
+    "sha256": "07f88c819d54ea4589d6f792d32dad9c045a1c8245c18ce3834daa8aab339a43",
+    "fixed_dependency_hashes": {
+      "submission/workspace/harbor_task/environment/starter/method.py": "07f88c819d54ea4589d6f792d32dad9c045a1c8245c18ce3834daa8aab339a43",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/__init__.py": "fc4c801c8b03a1e5c818ca830a15d706f897c0ca8be3e57a72f81a5d98d2221d",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/model.py": "4e005866adf85d0a48ae0ba69bf77dcd0e6713c554448846a95601d1e64c898c",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/VAE_train.py": "d7429c23eaa038d3b68a681d8552b8d0b0e04e4964cf916b872f996082161542",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/VAE_model.py": "4be64b64d589f6fc1fc40d48792ea50057d0c2b01ccf993ca8fc3bc91404bba9",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/flow_matching_train.py": "d67e8e090bd35ba93818f556ead66e7b8849d1faa26e5292ac314c417671098b",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/layer_utils.py": "1f2bc49ee794f4e108ff77038c5e43b62f8fb58460f0458d56cc3b4bd1fc8b88",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/__init__.py": "87d887bee00dd69c509976a83750eabaa0ffae2269e91f0b054d25aa1d872c39",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/fm.py": "ccdd0130c505b2069505c92cd9cfc099014184fdab88b8a3aa4f3c1d5da9bc42",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/denoising_model.py": "5f1212798295b46e831c745dc5a7034dbeb533d394a64387b72a470e35c3eac8",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/fm/ot_sampler.py": "41760aa119daa662dffd097ae150cf360b74671b79f2ba3d171e61843eaba7f7",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/utils/__init__.py": "013e037dc44665cf9b3530cdbf369cd20ab6ad203bbac96c72d42b4f3a07b856",
+      "submission/workspace/harbor_task/environment/starter/conditional_backend/utils/process_h5ad.py": "fe475f0be90d828a145d3f468b01af169a43279dbd97bc260645d84f2aa88b83",
+      "submission/workspace/harbor_task/tests/train_eval.py": "c461a7252e5fe8f35d332c557d7d074df42d6c5fda565d32dba28f2f53d2157b",
+      "submission/workspace/harbor_task/tests/metrics.py": "28c0232a184bfe36dfaaba35fa54d6f02b37a1629f76eaefbe448dacb41098cd",
+      "submission/workspace/reference/method.py": "e1b3d5100b1ef56d5a72b4b44364199d82fbde63863e9953387a77a937336f12",
+      "preparation/formal_runner.py": "d519ed83579818cad4aa8b0d8cb3241c6be0e1f1b1a2da4de8af5bf03d6daf35",
+      "submission/workspace/harbor_task/environment/public_assets/dev_targets.h5ad": "97df2967fc0dfd1304ebb559dbec9c48251a3937d2a957b243f47dfec769856b",
+      "submission/workspace/harbor_task/environment/public_assets/dev_controls.h5ad": "a03c6929cfb35e7b64d03978ca018135165f9d136da284bd69cc9938cadfe3c2",
+      "submission/workspace/harbor_task/environment/public_assets/train.h5ad": "da00e9ca331ca15b895c4321e9309b6c200abe859cb9d3f9cf2d9ac2e631a50f",
+      "submission/workspace/harbor_task/environment/public_assets/manifest.json": "c2e46dc335d56704f1ad10ab3117d2b51f774824a244c3fba197704061fe7251"
+    }
+  },
+  "quality_gate": {
+    "passed": true,
+    "finite_nonnegative_prediction": true,
+    "fresh_initialization": true,
+    "checkpoint_reload_verified": true,
+    "reload_max_metric_difference": 0.0
+  },
+  "record_provenance": {
+    "portable_metadata_added_after_execution": true,
+    "original_record_sha256": "59906624d47fab50d4e2733f0489dc64011d475e3dd78f8271c7327d25bd073e",
+    "original_raw_archive_preserved_privately": true,
+    "metrics_times_seeds_budgets_unchanged": true,
+    "declared_seed_expansion": {
+      "initial": [
+        17,
+        29,
+        43
+      ],
+      "appended": [
+        71,
+        97
+      ]
+    }
+  },
+  "protocol_id": "pbmc-context-v1"
+}

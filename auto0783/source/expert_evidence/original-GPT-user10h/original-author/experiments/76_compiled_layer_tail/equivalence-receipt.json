@@ -1,0 +1,17 @@
+{
+  "base": "experiments/53_compiled_image_rotary/method.py",
+  "candidate_canonical_sha256": "b45adf8625a82685788cbfe32a384c3118c86522e5e34ae9583a5fc30da6f9a1",
+  "all_graph_nodes_and_order_identical": true,
+  "original_compiled_regions_identical": true,
+  "region_inputs": [
+    "image_residual_rows",
+    "image_mlp",
+    "text_output"
+  ],
+  "region_outputs": [
+    "output"
+  ],
+  "argument": "Only original BF16 add and pure concat in added contiguous stage region. Rounded image sum copied into original layer output. No folding into GEMM/down projection or reduction.",
+  "hypothesis": "Internal image_output buffer has sole concat consumer; direct output production may reduce storage and launches. No generated fusion or timing claim.",
+  "distinct_from": "56 combines opaque MLP and both tail nodes into one region, eliminating original MLP boundary; this leaves selected53 MLP region and output untouched."
+}

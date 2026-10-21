@@ -1,0 +1,31 @@
+{
+  "task": {
+    "path": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/workspace/harbor_task"
+  },
+  "trial_name": "heima-research-seed-146a072f494a",
+  "trials_dir": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/146a072f494a4dad8f2fd8e4d1f770ca/native",
+  "agent": {
+    "import_path": "native_codex_agent:QueuedCodexAgent",
+    "model_name": "doubao-seed-2-1-turbo-260628",
+    "override_timeout_sec": 1890.0,
+    "exclude_logs": [
+      "*"
+    ],
+    "kwargs": {
+      "role": "seed",
+      "resume_folder": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/658dcc9ee1044ac382a18ffb6cfa4689",
+      "prompt_file": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/146a072f494a4dad8f2fd8e4d1f770ca/formal-prompt.txt",
+      "bounded_seconds": 1800,
+      "evidence_folder": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/native-actor-evidence/146a072f494a4dad8f2fd8e4d1f770ca/seed"
+    }
+  },
+  "environment": {
+    "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+    "kwargs": {
+      "role": "seed"
+    }
+  },
+  "verifier": {
+    "override_timeout_sec": 10800.0
+  }
+}

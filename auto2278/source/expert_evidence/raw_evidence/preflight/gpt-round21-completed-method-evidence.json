@@ -1,0 +1,79 @@
+{
+  "checked_unix": 1791447825.446987,
+  "track": "gpt",
+  "round": 21,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "da18fa550721b7a399d0d7c72c85cb39664f653795b7b124486f41b1a01ceada",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00021.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.4192847123218003,
+      "score": 0.6072829804860442,
+      "quality_gates_passed": true,
+      "method_sha256": "da18fa550721b7a399d0d7c72c85cb39664f653795b7b124486f41b1a01ceada",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791444021.5042481,
+      "end_unix": 1791444184.1125753
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.41843513765102786,
+    "score": 0.6080787224312079,
+    "quality_gates_passed": true,
+    "method_sha256": "da18fa550721b7a399d0d7c72c85cb39664f653795b7b124486f41b1a01ceada",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791444223.4434843,
+    "end_unix": 1791444384.498622
+  },
+  "model_final_decision": {
+    "policy_name": "packed_dual_softmax_coefficients",
+    "method_summary": "Packed both logit sets for one softmax and reused its output directly for norm contractions. Full protected Dev passed all gates with CPU ratio 0.419284712, score 0.607282980, and maximum error 4.95e-6; the evaluated candidate remains in place.",
+    "next_direction": "Reject against the verified best ratio 0.397143907. Next test Cholesky norm contractions for short sequences."
+  },
+  "original_controller_decision": {
+    "round": 21,
+    "policy_name": "packed_dual_softmax_coefficients",
+    "method_summary": "Packed both logit sets for one softmax and reused its output directly for norm contractions. Full protected Dev passed all gates with CPU ratio 0.419284712, score 0.607282980, and maximum error 4.95e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.41843513765102786,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 15:26:25"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791443750.4320495,
+    "ended_unix": 1791444221.2609186,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 21,
+    "start_unix": 1791443750.2042491,
+    "end_unix": 1791444385.0203252,
+    "observed_seconds": 634.8140744578559,
+    "effective_seconds": 634.8140744578559,
+    "model_seconds": 471.0881240000017,
+    "model_completed": true,
+    "successful_command_tools": 12,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": false,
+    "method_sha256": "da18fa550721b7a399d0d7c72c85cb39664f653795b7b124486f41b1a01ceada",
+    "public_result": "round_00021.grader.log",
+    "events": "round_00021.events.jsonl",
+    "next_direction": "Reject against the verified best ratio 0.397143907. Next test Cholesky norm contractions for short sequences."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00021.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

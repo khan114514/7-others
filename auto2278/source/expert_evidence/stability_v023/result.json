@@ -1,0 +1,44 @@
+{
+  "checked_unix": 1791413551.2661812,
+  "task_version": "0.2.3",
+  "status": "PASS",
+  "threshold_seconds": 43200,
+  "observed_seconds": 43210.16956238399,
+  "observed_hours": 12.002824878439998,
+  "container": {
+    "Id": "0fe3f4bff60d53eeab3b779d30f6c041e0734198e6e578e86df635aed35b3cbf",
+    "Image": "sha256:e4fcf15ac3eb2f802ad27febeb4159866df1ca4dc94b11c4ee2e7178277bb90b",
+    "image_name": "asd-attention-agent:v023",
+    "State": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-07T22:44:43.3641805Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-07T10:44:18.290764593Z",
+      "Status": "exited"
+    },
+    "RestartCount": 0
+  },
+  "current_image_matches_test_image": true,
+  "iterations": 719,
+  "iteration_sequence_complete": true,
+  "all_sampled_outputs_finite": true,
+  "fd_range": [
+    15,
+    15
+  ],
+  "minimum_free_bytes": 908529975296,
+  "raw_log": "run.jsonl",
+  "raw_log_sha256": "8efc7e96c113614d9f7aa1892e8bdf424215d0e11a0ce7e3585646b23edda12b",
+  "workload_source": "stability_check.py",
+  "workload_source_sha256": "6da74de1c09710af29c5ff604d95fdb1c2bedcd35726adf7b91c14c7e91724c9",
+  "workload": "one fixed CPU float32 Starter attention case evaluated every60s with output finiteness and process resource snapshots",
+  "scope": "current task image and environment stability; this does not assert final optimized method stability or private clean validation",
+  "agent_effective_seconds": 0,
+  "counted_in_model_research_duration": false
+}

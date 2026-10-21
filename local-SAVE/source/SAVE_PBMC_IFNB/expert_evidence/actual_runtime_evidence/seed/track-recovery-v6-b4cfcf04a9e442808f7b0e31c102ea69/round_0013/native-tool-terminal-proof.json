@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "b6072f8053d5ed42feba722a44b9ec023c7a0ef526f1887e26f95da465d59268",
+  "original_receipt_sha256": "dfdc23ebab7ec0f347041b95d5bb3a6cafd3b651edd743120377c8aa0ff12ae2",
+  "original_event_last_write_epoch": 1791626222.9442172,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method_v18_test.py << 'PYEOF'\n\\\"\\\"\\\"Method v18 test: Ridge regression CT weights (optimal linear combination).\n\nv8 uses correlation-based softmax weights.\nv18 change: Fit target_ctrl \u2248 \u03a3 w_i * ctrl_mean_i via non-negative ridge regression,\nthen use w_i as weights for both ctrl means and stim diffs.\nThis finds the optimal linear mixture of CTs for the target context.\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\nfrom sklearn.linear_model import Ridge\n\nBASE_UP_POW = 0.75\nSLOPE_UP_POW = -0.60\nDOWN_POW = 0.77\nRATIO_CLIP_MAX = 60.0\nRIDGE_ALPHA = 1.0\nGLOBAL_BLEND = 0.3  # blend ridge weights with correlation-based for stability\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    n_ct = ctrl_means_np.shape[0]\n    n_genes = ctrl_means_np.shape[1]\n\n    # --- v8 correlation weights (for baseline/blending) ---\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / 0.07  # T=0.07\n    logits -= logits.max()\n    corr_weights = np.exp(logits)\n    corr_weights /= corr_weights.sum()\n\n    # --- Ridge regression weights ---\n    # Fit: target_ctrl_mean = sum_i w_i * ctrl_means_np[i]\n    # X: (n_genes, n_ct), y: (n_genes,)\n    X = ctrl_means_np.T.astype(np.float64)  # (n_genes, n_ct)\n    y = target_ctrl_mean.astype(np.float64)  # (n_genes,)\n    \n    ridge = Ridge(alpha=RIDGE_ALPHA, fit_intercept=False)\n    ridge.fit(X, y)\n    ridge_weights = ridge.coef_.astype(np.float64)\n    \n    # Clip negative weights to 0 and renormalize\n    ridge_weights = np.clip(ridge_weights, 0, None)\n    if ridge_weights.sum() > 0:\n        ridge_weights /= ridge_weights.sum()\n    else:\n        ridge_weights = corr_weights.copy()\n\n    # Blend ridge weights with correlation weights\n    weights = (1 - GLOBAL_BLEND) * corr_weights + GLOBAL_BLEND * ridge_weights\n    weights /= weights.sum()\n\n    # Weighted ensemble\n    ref_ctrl = np.zeros(n_genes, dtype=np.float64)\n    ref_diff = np.zeros(n_genes, dtype=np.float64)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    # --- Ratio scaling ---\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    # Expression quantile from reference control\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = BASE_UP_POW + SLOPE_UP_POW * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** DOWN_POW)\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(pred_mean_scaled.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nPYEOF\necho \\\"v18 written\\\"\"",
+      "original_command_sha256": "17ddb430f3b2de232a30eff6f5a51d417585afb8a801359fdb8cc1caa233fe9d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8e676b493346bf4001382ead6526c1b2b5e15c806cfc66d2c3d3359528ee724a",
+      "output_characters": 12
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cd /workspace/solution && /opt/runtime/bin/python3 loo_eval.py method_v18_test.py 2>&1'",
+      "original_command_sha256": "8cddb2a06e26fa6d78dbc9cd9a769e3b20ed471a364b3344a77f946530639913",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5f6cf10e5c09513efe832b69880516faa24da47e6185ee65176ae9825ef49ae0",
+      "output_characters": 486
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 7308538,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 329239,
+        "reasoning_output_tokens": 26870
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

@@ -1,0 +1,92 @@
+{
+  "original_event_sha256": "87f0c4a89cd2fa3a7bdbfa5d7874c7f051b6f6bd2a41d4db33de56fbb0ec6133",
+  "original_receipt_sha256": "2c3cdb65ca297878ee31e2f8e9ba005f920588f4ceafd3f43308dc12c5e96ecd",
+  "original_event_last_write_epoch": 1791641639.056091,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json'",
+      "original_command_sha256": "da448aa6592171e0e2d14934d6d0d3019c06bf38d9b66c40f7248d7363259a78",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ea61a0ffafd78ee7f72f08ec534ee89a610523791b03a6da9eec85c088551fce",
+      "output_characters": 613
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cd /workspace/solution && ls -la method.py method_v20_best.py method_v21_test.py dev_result.json research-notes.md 2>&1'",
+      "original_command_sha256": "420ab36d5aa10103e0aba1ec810dee02bc5846f9d293b7572402c5abb04c5726",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 2,
+      "output_sha256": "f2d635de4039bee4805c725c94d78565dc691cda3438ec82910cd9a37df74996",
+      "output_characters": 321
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'ls /workspace/solution/'",
+      "original_command_sha256": "f96be8022710330b86bf8d7910bc4d5fe59518d6253e4db543738ef725d65b5e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a52ee16ba32c6d0ca7dcf907fcdc99de745d5250f11280933a4b5d70424e600a",
+      "output_characters": 42
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'head -5 /workspace/solution/method.py && echo \"---\" && wc -l /workspace/solution/method.py'",
+      "original_command_sha256": "631dc22eb52f978ca9d317c543d24242890f2c0028fcb1a3f199e8409a80952b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "56be7ac55634a3b91a66189f6fca96784bf32dcbc955a0a752eee2a1971ce9ca",
+      "output_characters": 247
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v20_best.py'",
+      "original_command_sha256": "028e9e9bfbc179d12d424595ea9f13812c6dd0adbdce0482da379fbe9c26c395",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc 'ls /workspace/public_assets/ && ls /tests/'",
+      "original_command_sha256": "e793a5bf7a70f172f44ee406cb679083006195ad3e60439c7a3eeceeff41a48d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b5cceb2d03913bbd52f03c213be9e8d3bb2db847614d3d5990105e653e517488",
+      "output_characters": 225
+    },
+    {
+      "id": "item_14",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -c \\\"\nimport scanpy as sc\nimport numpy as np\n\ntrain = sc.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\n\ncell_types = sorted(train.obs['cell_type'].unique())\nprint('Training CTs:', cell_types)\n\n# Get dev control mean\ndev_mean = np.asarray(dev_ctrl.X.mean(axis=0)).flatten()\n\n# Get per-CT control means\nfor ct in cell_types:\n    mask = (train.obs['cell_type'] == ct) & (train.obs['condition'] == 'control')\n    ct_mean = np.asarray(train[mask].X.mean(axis=0)).flatten()\n    c = np.corrcoef(dev_mean, ct_mean)[0, 1]\n    print(f'  {ct}: corr = {c:.4f}')\n\\\" 2>&1\"",
+      "original_command_sha256": "695ef67ba5f1cf63f200e27dd6b7e8e7c7b06109a4024ea581bc4ccdc51ececf",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "49dfc7b78a7adbffc168ae868403df1f2f7d4ce2578b11e1618738006fe204de",
+      "output_characters": 305
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "error",
+      "message": "Reconnecting... 1/5 (stream disconnected before completion: idle timeout waiting for SSE)"
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 11761875,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 473165,
+        "reasoning_output_tokens": 42205
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

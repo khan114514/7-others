@@ -1,0 +1,9 @@
+只修正你自己首轮研究的事实与因果分析，不改变方法，不启动任何GPU作业，不访问另一轨道、Reference、私有评分或凭据。
+
+先通过真实python3/shell工具读取你自己的round-01/analysis.json、plan.json、method.py、evaluation/failure.json及evaluation/recovery-20261006/result.json、trajectory_current.json。原始首轮分析有三处需复核：
+1. 同时改变max-LPIPS选择和early-time分布，一次联合方法的FID10.126636628087738高于公开Baseline9.663262058820692，只能说明该联合候选在这次完整固定流比较中较差，不能单独拒绝两个子假设，也不能通过下一次同时翻转两个因素就独立归因。保留合理猜测但明确它们尚未被隔离验证。你的第二轮选择由你决定；修订原计划的判断范围即可，不必为了归因新增大量实验。
+2. time=U^2.5的P(t<0.2)和P(t<0.3)应由真实python计算，不要把scale0-1的概率写成约61.5%。确认scale=floor(10*t)映射的范围。
+3. finished_unix=1791256165.7016556是UTC时间戳。请使用实际python的ZoneInfo('Asia/Shanghai')计算当地时间，原写的“2026-10-06 03:09:25”实际上是UTC钟面，不能标为上海时间。
+
+保持round-01/analysis.json原字节不变。在round-01/analysis-correction.json写实际工具核对、纠正后的结论、单试验限制、概率和准确时间、你自己确认的下一步方向；引用原文件SHA与真实结果SHA。不要增加质量提升或统计显著性主张。
+在改trajectory_current.json前，将原字节复制为trajectory_current.before-analysis-correction-20261006.json，并在纠正记录中绑定SHA；不能覆盖已经存在的原备份。然后只更新这个相同首轮的round为整数1和time为实际回执的上海时间；每轮仍恰好八字段round、policy_name、method_summary、status、score、failure_reason、retained_best、time，真实FID、方法与保留决定不变。不要追加虚构轮次。最后通过实际工具核对更新后的字段、源码SHA没有变化及原分析仍不变，完成回合。

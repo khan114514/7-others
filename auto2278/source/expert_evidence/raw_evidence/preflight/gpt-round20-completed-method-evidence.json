@@ -1,0 +1,79 @@
+{
+  "checked_unix": 1791447825.4490519,
+  "track": "gpt",
+  "round": 20,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "b2442e11bfe6517a23dd4ecc7d0ff013e9104ef58a17e4ae87c9b9b84f874f14",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00020.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.4401076842154198,
+      "score": 0.5877794421523859,
+      "quality_gates_passed": true,
+      "method_sha256": "b2442e11bfe6517a23dd4ecc7d0ff013e9104ef58a17e4ae87c9b9b84f874f14",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791443367.545709,
+      "end_unix": 1791443530.6335585
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.4775825562907769,
+    "score": 0.5526791400531151,
+    "quality_gates_passed": true,
+    "method_sha256": "b2442e11bfe6517a23dd4ecc7d0ff013e9104ef58a17e4ae87c9b9b84f874f14",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791443579.3826232,
+    "end_unix": 1791443747.3136601
+  },
+  "model_final_decision": {
+    "policy_name": "fused_dual_attention_factor_space",
+    "method_summary": "Implemented paired fused CPU attention that jointly retrieves Cholesky factors and projected values for short sequences. Full protected Dev passed all gates with raw CPU ratio 0.440107684, score 0.587779442, and maximum error 5.48e-6; the evaluated candidate remains in place.",
+    "next_direction": "Recommend rejecting against the verified best ratio 0.397143907. Next test 32-column Cholesky norm panels for 128-token cases."
+  },
+  "original_controller_decision": {
+    "round": 20,
+    "policy_name": "fused_dual_attention_factor_space",
+    "method_summary": "Implemented paired fused CPU attention that jointly retrieves Cholesky factors and projected values for short sequences. Full protected Dev passed all gates with raw CPU ratio 0.440107684, score 0.587779442, and maximum error 5.48e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.4775825562907769,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 15:15:48"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791442699.5827274,
+    "ended_unix": 1791443576.837288,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 20,
+    "start_unix": 1791442699.404518,
+    "end_unix": 1791443748.285293,
+    "observed_seconds": 1048.8782534999773,
+    "effective_seconds": 1048.8782534999773,
+    "model_seconds": 877.616429040907,
+    "model_completed": true,
+    "successful_command_tools": 13,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": true,
+    "method_sha256": "b2442e11bfe6517a23dd4ecc7d0ff013e9104ef58a17e4ae87c9b9b84f874f14",
+    "public_result": "round_00020.grader.log",
+    "events": "round_00020.events.jsonl",
+    "next_direction": "Recommend rejecting against the verified best ratio 0.397143907. Next test 32-column Cholesky norm panels for 128-token cases."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00020.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

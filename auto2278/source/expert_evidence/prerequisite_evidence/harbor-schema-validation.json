@@ -1,0 +1,84 @@
+{
+  "harbor_version": "0.23.0",
+  "task_config": {
+    "schema_version": "1.4",
+    "task": {
+      "name": "autoresearch/exact-retrieval-kernel",
+      "version": "0.1.0",
+      "description": "Optimize a norm-preserving multihead retrieval operator under fixed numerical semantics.",
+      "authors": [
+        {
+          "name": "AutoResearch Expert",
+          "email": null
+        }
+      ],
+      "keywords": []
+    },
+    "metadata": {
+      "category": "numerical-algorithms",
+      "path_contract": "harbor-environment-v1",
+      "difficulty_explanation": "Algorithm implementation is open; latency is scored only after numerical correctness. Baseline calibrated from all five formal seed runs."
+    },
+    "verifier": {
+      "network_mode": null,
+      "allowed_hosts": null,
+      "timeout_sec": 1800.0,
+      "env": {},
+      "user": "root",
+      "environment_mode": "separate",
+      "environment": {
+        "network_mode": "no-network",
+        "allowed_hosts": null,
+        "build_timeout_sec": 600.0,
+        "docker_image": null,
+        "os": "linux",
+        "cpus": 1,
+        "memory_mb": 2048,
+        "storage_mb": 4096,
+        "gpus": null,
+        "gpu_types": null,
+        "tpu": null,
+        "mcp_servers": [],
+        "env": {},
+        "skills_dir": null,
+        "healthcheck": null,
+        "workdir": "/tests"
+      },
+      "collect": []
+    },
+    "agent": {
+      "network_mode": null,
+      "allowed_hosts": null,
+      "timeout_sec": 36000.0,
+      "user": "agent"
+    },
+    "environment": {
+      "network_mode": "no-network",
+      "allowed_hosts": null,
+      "build_timeout_sec": 1800.0,
+      "docker_image": null,
+      "os": "linux",
+      "cpus": 1,
+      "memory_mb": 2048,
+      "storage_mb": 4096,
+      "gpus": null,
+      "gpu_types": null,
+      "tpu": null,
+      "mcp_servers": [],
+      "env": {},
+      "skills_dir": null,
+      "healthcheck": null,
+      "workdir": "/workspace"
+    },
+    "solution": {
+      "env": {}
+    },
+    "source": null,
+    "multi_step_reward_strategy": null,
+    "steps": null,
+    "artifacts": [
+      "/workspace/solution"
+    ]
+  },
+  "basis": "Loaded actual installed Harbor 0.23.0 native TaskConfig"
+}

@@ -1,0 +1,148 @@
+{
+  "installed_Harbor_version": "0.23.0",
+  "validation_scope": "Actual installed native Pydantic schemas; no new Job/Trial, candidate execution or model call.",
+  "source_schemas": {
+    "TrialConfig": {
+      "native_module": "harbor.models.trial.config",
+      "installed_source_sha256": "c95acedd896e7bab9f4007ed6373adc7e414ac2b63dfd188b7bbcae6ce5ac480",
+      "schema_sha256": "00f1eab40184de1eb7e3561a91de127a35b35b638008957a57a27b9d590a4f51"
+    },
+    "JobConfig": {
+      "native_module": "harbor.models.job.config",
+      "installed_source_sha256": "195cbc3491efa2bc9947b90d6d390370dd601ade658e13daeafaf2665eb8f638",
+      "schema_sha256": "53d1b01c89acb11a80bc5de6df4edbf27a671d5d51d503977fe4457b66082bbd"
+    },
+    "TaskConfig": {
+      "native_module": "harbor.models.task.config",
+      "installed_source_sha256": "d8c62a49acefb8cd6a0be4c4d48dc0f4f52f31f8a8a6728439aad04e1c62e9fb",
+      "schema_sha256": "6c08a596fb8f7278e08de19e0f0811d917abc53fb86323c32931f2f5e71ef08d"
+    }
+  },
+  "existing_Trial_configs": [
+    {
+      "evidence_config": "expert_evidence/nop_trial/config.json",
+      "original_config_sha256": "cdd5ea2f01f30cd5ca692294f4f86a1685c09538ef7f0b68f482ade7daefd043",
+      "path_only_portable_config_sha256": "9a5abb49d12b52d2665ab01e8f8f66c9d9fe7fb7f8422dd77ca43da598161198",
+      "actual_native_schema_loaded": true,
+      "task_path": "<TASK_ROOT>/private/native_task_v7",
+      "environment_import_path": "save_hybrid_environment:SaveHybridDockerEnvironment",
+      "effective_environment_kwargs": {
+        "lane": "gpt",
+        "numerical_status": "<TASK_ROOT>/private/no_numerical_controller.json",
+        "runtime_root": "<TASK_ROOT>/private/harbor-nop/222d2e75b7184ce9880b224325f53163"
+      },
+      "agent_name": "nop",
+      "agent_import_path": null,
+      "verifier_disable": false,
+      "result_separate_Verifier": true,
+      "result_exception_info": null,
+      "actual_provider_module_source_snapshot": "expert_evidence/runtime_integration/native_schema/save_hybrid_environment.source.py.txt",
+      "source_sha256_observed_now": "95a868de93fa3ea436d28766c7fa40f95826d60c6d879e146cd7ef15aee2fbb0",
+      "snapshot_sha256": "b6af607fb08024c2a9344acde9df39fc9e320e2ffd6831736820c10b23f5ddfa",
+      "snapshot_is_static_evidence_not_an_importable_runtime": true,
+      "only_declared_path_strings_changed": {
+        "<ACTOR_HOME>": 1,
+        "<VERIFIER_HOME>": 1
+      }
+    },
+    {
+      "evidence_config": "expert_evidence/portable_runtime_nop/config.json",
+      "original_config_sha256": "50963f900d5b0eb740691d6b721078e5f655db46a868a6003a6546772c72748d",
+      "path_only_portable_config_sha256": "bbb0b3ac38695fc79e08ab782ab3b5a039d6795b90d420e75a205619293b2b10",
+      "actual_native_schema_loaded": true,
+      "task_path": "<TASK_ROOT>/private/native_task_v7",
+      "environment_import_path": "portable_runtime.environment:SaveHybridDockerEnvironment",
+      "effective_environment_kwargs": {
+        "lane": "gpt",
+        "numerical_status": "<TASK_ROOT>/private/no_numerical_controller.json",
+        "runtime_root": "<TASK_ROOT>/private/portable-runtime-nop/58a2983c6d51448b857ee41bd2add96b"
+      },
+      "agent_name": "nop",
+      "agent_import_path": null,
+      "verifier_disable": false,
+      "result_separate_Verifier": true,
+      "result_exception_info": null,
+      "actual_provider_module_source_snapshot": "expert_evidence/runtime_integration/native_schema/portable_runtime_environment.source.py.txt",
+      "source_sha256_observed_now": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "snapshot_sha256": "d3287503c74efdd1d9fd04e4196ff970b21fa46693a7141f3479b623a1406680",
+      "snapshot_is_static_evidence_not_an_importable_runtime": true,
+      "only_declared_path_strings_changed": {
+        "<ACTOR_HOME>": 1,
+        "<VERIFIER_HOME>": 1
+      }
+    },
+    {
+      "evidence_config": "expert_evidence/final_revalidation/gpt/config.json",
+      "original_config_sha256": "baa6e06944226b387604c4ca17203124bdb0d18f9f30faf091e7dc5ed9361261",
+      "path_only_portable_config_sha256": "38fbade2dd43c06764f7aea8e6335bf906d005d00b0f86f775fff2a5a375f719",
+      "actual_native_schema_loaded": true,
+      "task_path": "<TASK_ROOT>/private/native_task_v7",
+      "environment_import_path": "portable_runtime_v4.environment:SaveHybridDockerEnvironment",
+      "effective_environment_kwargs": {
+        "lane": "gpt",
+        "numerical_status": "<TASK_ROOT>/private/no_numerical_controller.json",
+        "runtime_root": "<TASK_ROOT>/private/final-revalidation/ad722004d9d14bc0b7be4369df1bac22/gpt"
+      },
+      "agent_name": null,
+      "agent_import_path": "save_artifact_validation_agent:SaveArtifactValidationAgent",
+      "verifier_disable": false,
+      "result_separate_Verifier": true,
+      "result_exception_info": null,
+      "actual_provider_module_source_snapshot": "expert_evidence/runtime_integration/native_schema/portable_runtime_v4_environment.source.py.txt",
+      "source_sha256_observed_now": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "snapshot_sha256": "d3287503c74efdd1d9fd04e4196ff970b21fa46693a7141f3479b623a1406680",
+      "snapshot_is_static_evidence_not_an_importable_runtime": true,
+      "only_declared_path_strings_changed": {
+        "<ACTOR_HOME>": 1,
+        "<VERIFIER_HOME>": 1
+      }
+    },
+    {
+      "evidence_config": "expert_evidence/final_revalidation/seed/config.json",
+      "original_config_sha256": "4b6936b4d75e54d4aef9da2bf0814a5b2431051cc6aa96cb8405692e6f641576",
+      "path_only_portable_config_sha256": "f7065b3c9192c6678c632e924c20cb7af674bfd55c7c16862526b2f923147917",
+      "actual_native_schema_loaded": true,
+      "task_path": "<TASK_ROOT>/private/native_task_v7",
+      "environment_import_path": "portable_runtime_v4.environment:SaveHybridDockerEnvironment",
+      "effective_environment_kwargs": {
+        "lane": "seed",
+        "numerical_status": "<TASK_ROOT>/private/no_numerical_controller.json",
+        "runtime_root": "<TASK_ROOT>/private/final-revalidation/e1ff7e8d9c6046d38a1fe00239284d2b/seed"
+      },
+      "agent_name": null,
+      "agent_import_path": "save_artifact_validation_agent:SaveArtifactValidationAgent",
+      "verifier_disable": false,
+      "result_separate_Verifier": true,
+      "result_exception_info": null,
+      "actual_provider_module_source_snapshot": "expert_evidence/runtime_integration/native_schema/portable_runtime_v4_environment.source.py.txt",
+      "source_sha256_observed_now": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "snapshot_sha256": "d3287503c74efdd1d9fd04e4196ff970b21fa46693a7141f3479b623a1406680",
+      "snapshot_is_static_evidence_not_an_importable_runtime": true,
+      "only_declared_path_strings_changed": {
+        "<ACTOR_HOME>": 1,
+        "<VERIFIER_HOME>": 1
+      }
+    }
+  ],
+  "research_credit_seconds": 0,
+  "current_native_task_schema_validated": true,
+  "final_validation_run_id": "e1ff7e8d9c6046d38a1fe00239284d2b",
+  "provider_mapping": {
+    "native_import_path": "portable_runtime_v4.environment:SaveHybridDockerEnvironment",
+    "supplied_source": "expert_evidence/runtime_integration/portable_runtime_v4/environment.py",
+    "executed_and_supplied_source_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+    "trusted_controller_import_root": "<CONTROLLER_TASK_ROOT>/preparation",
+    "Harbor_base": "harbor.environments.docker.docker.DockerEnvironment",
+    "Actor_context": "environment",
+    "Verifier_context": "tests",
+    "declared_remote_GPU_count": 1,
+    "actual_local_Docker_GPU_count": 0,
+    "credential_configuration_remains_external": true
+  },
+  "Job_example": {
+    "path": "expert_evidence/runtime_integration/job.example.json",
+    "actual_native_schema_validated": true,
+    "executed": false,
+    "placeholder_materialization_required": true
+  }
+}

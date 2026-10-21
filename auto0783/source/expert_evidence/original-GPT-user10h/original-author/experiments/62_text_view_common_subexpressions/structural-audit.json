@@ -1,0 +1,11 @@
+{
+  "scope": "Structural duplicate-node audit of tested 62, ignores lifetime only for detecting equivalent operation/input/attribute tuples, does not establish numerical lifetime safety",
+  "node_count": 105,
+  "remaining_exact_duplicate_operation_tuples": [],
+  "view_only_ops_count": {
+    "slice": 42,
+    "reshape": 12,
+    "transpose": 8
+  },
+  "decision": "No remaining exact duplicate operation/input/attribute tuples. Other views select/reshape different axes or are needed as boundaries; removing prefix aliases changes execution/lifetime behavior and lacks a measured speed advantage after 62."
+}

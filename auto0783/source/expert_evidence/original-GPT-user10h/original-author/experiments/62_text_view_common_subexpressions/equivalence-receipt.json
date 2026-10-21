@@ -1,0 +1,15 @@
+{
+  "base": "53_compiled_image_rotary",
+  "change": "exact identity slice elimination and state-slice common subexpression reuse",
+  "removed_nodes": {
+    "text_input_norm_rows": "text_input_norm",
+    "text_state_rows": "input_text_rows"
+  },
+  "all_other_node_attributes_and_compile_regions_unchanged": true,
+  "state_slice_shapes": [
+    2,
+    300,
+    3584
+  ],
+  "cached_text_residual_lifetime_unchanged": true
+}

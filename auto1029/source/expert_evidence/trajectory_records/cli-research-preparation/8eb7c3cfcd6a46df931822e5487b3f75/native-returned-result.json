@@ -1,0 +1,129 @@
+{
+  "id": "613065ad-cbee-4ee7-87ee-a378765529c9",
+  "task_name": "harbor_task",
+  "trial_name": "heima-research-seed-8eb7c3cfcd6a",
+  "trial_uri": "file://${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New%20project/heima_20261005/private/cli-research-preparation/8eb7c3cfcd6a46df931822e5487b3f75/native/heima-research-seed-8eb7c3cfcd6a",
+  "task_id": {
+    "path": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/workspace/harbor_task"
+  },
+  "source": null,
+  "task_checksum": "6871e9c49fd456b3b2940e97b391e43ab9d620f64b83ed94ffed5e1f02df52d0",
+  "config": {
+    "task": {
+      "path": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/workspace/harbor_task",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "heima-research-seed-8eb7c3cfcd6a",
+    "trials_dir": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/8eb7c3cfcd6a46df931822e5487b3f75/native",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": null,
+      "import_path": "native_codex_agent:QueuedCodexAgent",
+      "model_name": "doubao-seed-2-1-turbo-260628",
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": 1890.0,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "exclude_logs": [
+        "*"
+      ],
+      "kwargs": {
+        "role": "seed",
+        "resume_folder": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/76e5d93d43fd4a229bcfb839ba005e21",
+        "prompt_file": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/8eb7c3cfcd6a46df931822e5487b3f75/formal-prompt.txt",
+        "bounded_seconds": 1800,
+        "evidence_folder": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/native-actor-evidence/8eb7c3cfcd6a46df931822e5487b3f75/seed"
+      },
+      "mcp_servers": []
+    },
+    "user_agent": null,
+    "environment": {
+      "type": null,
+      "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {
+        "role": "seed"
+      },
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": 10800.0,
+      "max_timeout_sec": null,
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "extra_instructions": [],
+    "job_id": null,
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "heima-real-codex",
+    "version": "0.160.0",
+    "model_info": {
+      "name": "doubao-seed-2-1-turbo-260628",
+      "provider": null
+    }
+  },
+  "agent_result": {
+    "n_input_tokens": null,
+    "n_cache_tokens": null,
+    "n_output_tokens": null,
+    "cost_usd": null,
+    "model_usage": null,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.6784795272999333
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-10-06T13:11:55.339295Z",
+  "finished_at": "2026-10-06T14:36:01.958972Z",
+  "environment_setup": {
+    "started_at": "2026-10-06T13:11:55.410705Z",
+    "finished_at": "2026-10-06T13:12:10.664059Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-10-06T13:12:10.664251Z",
+    "finished_at": "2026-10-06T13:12:12.445119Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-10-06T13:12:12.445328Z",
+    "finished_at": "2026-10-06T13:42:13.748334Z"
+  },
+  "verifier": {
+    "started_at": "2026-10-06T13:42:22.079891Z",
+    "finished_at": "2026-10-06T14:36:01.958637Z"
+  },
+  "step_results": null
+}

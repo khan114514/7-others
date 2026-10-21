@@ -1,0 +1,12 @@
+{
+  "status": "CPU_REGRESSION_PASS",
+  "does_not_establish_nop": true,
+  "tests": 5,
+  "output": "test_dead_worker_fails_and_other_scope_cannot_read_receipt (__main__.RuntimeBoundary) ... ok\ntest_fresh_result_binds_method_role_and_complete_metric (__main__.RuntimeBoundary) ... ok\ntest_image_client_copies_match_reviewed_source (__main__.RuntimeBoundary) ... ok\ntest_one_socket_cannot_spawn_unbounded_ssh_requests (__main__.RuntimeBoundary) ... ok\ntest_socket_role_owns_scope_and_rejects_override (__main__.RuntimeBoundary) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 1.011s\n\nOK\n",
+  "reviewed_source_sha256": {
+    "runtime_client.py": "3d446cc592f3ec1e1c2e872b621c9c871a2c5150471879c78799e5f78f128ecd",
+    "http_service.py": "20584a11d785753ee36e686b55e748bf1dfff64b0d5c6a1bf32b6e0ef1c88d84",
+    "ssh_gateway.py": "577cffedfc13ef0edcee72ee042d9dc87279118abfceb0ce13a7241b976a30c6",
+    "test_runtime_boundary.py": "3cee7ad18b7adc1f6b6686361560c6f688ee3e794e18991ed68ede104ab0b549"
+  }
+}

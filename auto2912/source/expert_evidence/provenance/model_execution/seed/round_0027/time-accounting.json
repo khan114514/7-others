@@ -1,0 +1,31 @@
+{
+  "policy": "user-normal-work-clock-20261006",
+  "elapsed_seconds": 12.953562021255493,
+  "effective_seconds": 0,
+  "excluded_seconds": 12.953562021255493,
+  "excluded_intervals": [
+    [
+      1791308195.174536,
+      1791308208.128098
+    ]
+  ],
+  "exclusion_evidence": [
+    {
+      "start_epoch": 1791308195.7957919,
+      "end_epoch": 1791308197.530878,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-204d9592__env/routes/seed-9fa5a671cfcc45e18acd75df52d2c027-route.json"
+    },
+    {
+      "start_epoch": 1791308195.174536,
+      "end_epoch": 1791308208.128098,
+      "reason": "Observed backend/startup block without model work in this turn; unrelated repetition of old scoring cannot fill research time",
+      "evidence": "campaign/seed/round_0027/stdout.jsonl"
+    }
+  ],
+  "score_success_used_for_time": false,
+  "role": "seed",
+  "round": 27,
+  "cli_exit_code": 1,
+  "actual_model_completion_observed": true
+}

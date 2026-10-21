@@ -1,0 +1,65 @@
+{
+  "original_event_sha256": "65f470133e9a39f21cc2a9306584d5a5d9dc2da6a46333d7bd8af1944622271e",
+  "original_receipt_sha256": "bd5c919efd69aa347494f174a6365807b81208ef9d13ebe920a99592c80ecebe",
+  "original_event_last_write_epoch": 1791699963.2866302,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'wc -c /workspace/solution/method.py && head -5 /workspace/solution/method.py && echo \"---\" && grep -n \"''^def '\"\\\\|\"'^class \" /workspace/solution/method.py'",
+      "original_command_sha256": "89f769f539423d5cedab17f04fcd6b5a7bacd0d99e20503be92e02030ff49d4e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e26d94ce7b9d8e7e057316f678c93b0a4437555fc52faf3904bf8281e59606d6",
+      "output_characters": 646
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+      "output_characters": 7808
+    },
+    {
+      "id": "item_12",
+      "command": "/bin/sh -lc 'cat /tests/protocol.json && echo \"---\" && cat /tests/anchors.json'",
+      "original_command_sha256": "4326ea7057aab9eaba8276309fc14c98c20f12a23afac3a6fe634e6f0fd94fbe",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4a5a0e1ce597c6d884b1f8e7bd8cd556028ba938824b87078a6fde63c5799826",
+      "output_characters": 529
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json'",
+      "original_command_sha256": "de1a6fdaf38b4e51f4ed564afdf19e55e3ac083e5f4b47d146a903197242d28f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "d50d9678adbaa9d6ef39799c0b03c900d6d3673173114380418635bb8d1497e5",
+      "output_characters": 3106
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "error",
+      "message": "Reconnecting... 1/5 (stream disconnected before completion: idle timeout waiting for SSE)"
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 36085564,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 965666,
+        "reasoning_output_tokens": 116768
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

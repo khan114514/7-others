@@ -1,0 +1,66 @@
+{
+  "phase": "ACTUAL_CLOSED_FORMAL_CLOCK_SEMANTIC_V2_PASS",
+  "role": "gpt",
+  "run_id": "f946b057eb84411285e5c29bbd03e681",
+  "prior_audit_preserved": "native-queue-sandbox-diagnosis/closed-clock-audits/gpt/result.json",
+  "actual_api_failures_excluded": [
+    {
+      "item_id": "item_14",
+      "start_epoch": 1791228550.407136,
+      "end_epoch": 1791228550.415935
+    },
+    {
+      "item_id": "item_33",
+      "start_epoch": 1791229050.541366,
+      "end_epoch": 1791229050.5974112
+    }
+  ],
+  "normal_diagnosis_retained": [
+    {
+      "item_id": "item_16",
+      "start_epoch": 1791228570.46241,
+      "end_epoch": 1791228570.4649081,
+      "reason": "Useful filesystem diagnosis or reading real prior failure evidence; counted as normal model research"
+    },
+    {
+      "item_id": "item_45",
+      "start_epoch": 1791229235.2056441,
+      "end_epoch": 1791229235.205834,
+      "reason": "Useful filesystem diagnosis or reading real prior failure evidence; counted as normal model research"
+    }
+  ],
+  "effective_seconds": 4165.3399357795715,
+  "difference_from_prior_audit_seconds": 0.0026879310607910156,
+  "same_gpu_clock_intervals_and_union": true,
+  "root_credit_seconds": 0,
+  "model_identity_or_scored_artifact_changed": false,
+  "correction_row": {
+    "phase": "NATIVE_FORMAL_CLI_RESEARCH",
+    "start_epoch": 1791228474.253979,
+    "end_epoch": 1791232673.4768388,
+    "effective_seconds": 4165.3399357795715,
+    "excluded_seconds": 33.88292407989502,
+    "included_intervals": [
+      [
+        1791228474.253979,
+        1791228550.407136
+      ],
+      [
+        1791228550.415935,
+        1791229050.541366
+      ],
+      [
+        1791229050.5974112,
+        1791229300.9068642
+      ],
+      [
+        1791229325.4693108,
+        1791232664.2212055
+      ]
+    ],
+    "minimum_effective_seconds": 36000,
+    "evidence": "cli-research-preparation/f946b057eb84411285e5c29bbd03e681/gpt/execution.json",
+    "audit_override": "SEMANTIC_API_FAILURE_ONLY_NORMAL_DIAGNOSIS_RETAINED",
+    "audit_evidence": "native-queue-sandbox-diagnosis/closed-clock-audits-v2/gpt/result.json"
+  }
+}

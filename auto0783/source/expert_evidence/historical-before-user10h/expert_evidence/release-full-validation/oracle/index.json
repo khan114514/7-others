@@ -1,0 +1,121 @@
+{
+  "run_id": "dd8f420fd90d427f83c4abbb7148642b",
+  "artifact_sha256": "4c051f10ad664d9fbe423752a3d15ed058c4b33e00e13c582fc7958111a5391e",
+  "source_binding_sha256": "308e9a3cd53710ac22def6a086e7a4212c0327a859e541e85b0b3e2bde6c6d40",
+  "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+  "baseline_mean_ms": 58342.53020731608,
+  "candidate_mean_ms": 33611.19611231486,
+  "baseline_sample_sd_ms": 338.12867458801395,
+  "reward": 0.42389889514767637,
+  "noise_3sigma_pass": true,
+  "quality_pass": true,
+  "peak_cuda_allocated_bytes": 27697030656,
+  "per_seed": [
+    {
+      "sampling_seed": 101,
+      "case_count": 2,
+      "baseline_ms": 58100.484130859375,
+      "candidate_ms": 33458.19860839844
+    },
+    {
+      "sampling_seed": 202,
+      "case_count": 2,
+      "baseline_ms": 58198.23970794678,
+      "candidate_ms": 33546.58253097534
+    },
+    {
+      "sampling_seed": 303,
+      "case_count": 2,
+      "baseline_ms": 58728.86678314209,
+      "candidate_ms": 33828.8071975708
+    }
+  ],
+  "started_epoch": 1791542740.67677,
+  "completed_epoch": 1791544619.6168706,
+  "child_exit_code": 0,
+  "parent_cuda_context_initialized": false,
+  "native_run_id": "6cc1c4cca2594ba398843b5115a3b352",
+  "native_trial_id": "4880a155-6a50-4423-bf88-e14a7abb4687",
+  "raw_stages": 4608,
+  "repetitions": 18,
+  "independent_CPU_exit_code": 0,
+  "CPU_latent_checks": [
+    {
+      "case": 0,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14"
+    },
+    {
+      "case": 1,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a"
+    },
+    {
+      "case": 2,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b"
+    },
+    {
+      "case": 3,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948"
+    },
+    {
+      "case": 4,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165"
+    },
+    {
+      "case": 5,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c"
+    }
+  ],
+  "original_private_durable_archive_sha256": "a89407cd0b2815e48ddb9cc00c730264b3cf510d333d74befbbf6be889a24e84",
+  "actual_durable_readback_all_SHA_match": true,
+  "public_evidence_directory": "expert_evidence/release-full-validation/oracle",
+  "label": "oracle",
+  "task_source_manifest_sha256": "a1bf9e27a4adae5e2f224c80d3426960caeb7bf101da6e1fd151fefc43e7534c",
+  "runtime_sources": {
+    "Runtime/bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+    "Runtime/frozen_artifact_agent.py": "6c67b6716ddec42ccf1f1a3fcbf4b147c0de01e6a0ab25d25d0d02dc85d0ebc0",
+    "Runtime/hybrid_harbor_environment.py": "f5242e4eb6ceac0b9d62d8c12b1f4e4106bc0798aae42a57b412138ad25a43fc",
+    "Runtime/hybrid_relay.py": "e4e8da56448d30b4b237b3c8bffa6745f2bba5142d329dfd5af4da3e272aeeca",
+    "Runtime/numerical_controller.py": "9aa3f72a9f2e8090d19dd2d3ecb22a851968e9193e1ab5ed3619e16c9998d8ae",
+    "Runtime/numerical_controller_config.py": "6bf096aa69d74b37a881b212751af46865a74eda4e72c44b0253629c79033da0",
+    "Runtime/oracle_exec_environment.py": "2ab495d88f2d60df5d38b989890247d0c2de036084d8eec4b729b41a7740e64d",
+    "Runtime/release_source_binding.py": "c8ecad5990c2c3d52674a7b8d7efc772f69b227106136cdb00293143694ce33e",
+    "Runtime/requirements.txt": "0bdf87b86e4cb06e0e47ca6d5e38d59d4155a3d43e595d5b983a8dfe4bc23d72",
+    "Runtime/run_isolation.py": "88ed451c2a4d736dbd88f7a9be111b6c63827c84e4df87ebaa32efa11958ae18",
+    "Runtime/run_native_validation.py": "2aa6f644d388b8717d8bfb580ad8728916c31040fa7f135e63174f2a49599516",
+    "Runtime/runtime-build/queue_broker.py": "38b4e68cfa0653924881555b072ca74c273042846ba708e5f0956ac76ce9903f",
+    "dependencies/checkpoint/materialize_checkpoint_assets.py": "9ea26ea8091166d0537d27f5def4082b3b05f6514b7e60aa107622ca9cb1e8c8",
+    "dependencies/checkpoint/public-checkpoint-assets.json": "e68e28e43ce28489a3e6d62ef157eb198f9ff515e3f9c8c0fe2429acbba7f7e8",
+    "dependencies/checkpoint/public-tensor-manifest.json": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+    "dependencies/checkpoint/public_tensor_server.py": "67459998e191d8a8d8a5758edbf555d7e3a0a5f4401e513f19cfcbaa6e286ae3",
+    "dependencies/checkpoint/requirements-worker.txt": "6796ff1b0b390ab26fc92f8930f5de8d8108bed23f72f7f2015a177dcf6d9517",
+    "dependencies/cli/materialize_cli_assets.py": "4bd8f5226f9041252c0154ab364d50069616d2c7accb940cb86250febda9ed6a",
+    "dependencies/cli/public-cli-assets.json": "9b1108cef8ea7418876de762ac500f638b4397d2e7dfa9aa64d54baf3196039e",
+    "dependencies/hidden-input/hidden-input-chunks.json": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+    "dependencies/hidden-input/materialize_hidden_asset.py": "4bd81af76d1810a356362f841b721614712f0204971fc643e2ceed5df26e69c7",
+    "dependencies/numerical/materialize_numerical_runtime.py": "76e6e1e042fa8b5c04eb860f7f1f4bc90158291bb3cc1e82eb7af38240988aaa",
+    "dependencies/numerical/runtime-files.json": "3cb2b03642c02d0c0076e858aa2bd44c3d62290b5bf29b401f7f3147cb2cf358",
+    "dependencies/task/materialize_task.py": "42db8f5bc3b1ce59798ef547976a9fc0e76ce3c5fcc5d756aff122021494788d",
+    "dependencies/task/task-files.json": "978f6f3c80b67a89fd940b9ce9e7964bc47218344607bae1b23a9216fef1bdc9",
+    "selected-method-identities.json": "7e12dfd7ca1f868c44d6c37751987fb622c6acc7b8e75d1a02141dea9241832d",
+    "Trajectories/GPT/selected-method/method.py": "cb0d48a4c063372e73d25b718e31694ed07707bb40f8577ce6c92f340dfb4477",
+    "Trajectories/GPT/selected-method/program.json": "d394289b5c1b985c0344ce88fa90140a37808ddb4ef5041917f7fb04e87f1d0e",
+    "Trajectories/Seed/selected-method/method.py": "0da5c4cb0fd76c3dd01b58aa2e1341888c68216091893476cf76c335dc74d012",
+    "Trajectories/Seed/selected-method/program.json": "20ce4ff0464588ae073753476c3a851e501972e62a6b8d3adf174989e8fabd16"
+  },
+  "final_latents": 6,
+  "fresh_full_GPU_CPU_validation_complete_for_this_run": true,
+  "whole_release_complete_or_final_QA_PASS": false,
+  "new_GPU_CPU_model_or_candidate_execution_for_packaging": false
+}

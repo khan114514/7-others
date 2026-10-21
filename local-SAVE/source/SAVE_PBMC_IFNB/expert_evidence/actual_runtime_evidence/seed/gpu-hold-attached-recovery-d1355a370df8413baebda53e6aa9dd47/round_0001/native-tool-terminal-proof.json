@@ -1,0 +1,79 @@
+{
+  "original_event_sha256": "d4d4a83fd49a8619ebea6aa404398d0ab67670ad6c2ce674a6d96d2f7ed4fb05",
+  "original_receipt_sha256": "359fdcc5162c5f9ad3c8b544e0a012584cb6a3de9743ac5cf91d5afa8f0b77a4",
+  "original_event_last_write_epoch": 1791778532.705978,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"cd /workspace/solution && cp method.py method_v67_best.py && sed -i 's/\"'^RATIO_MOD_UP = 0.035$/RATIO_MOD_UP = 0.040/'\"' method.py && grep '\"'^RATIO_MOD_UP'\"' method.py && cp method.py method_v68_test.py\"",
+      "original_command_sha256": "3ed24a391930c7302c3a0e5622b8f610943fc10d0f4bb8aa40c69e6b9e8eba04",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "d79d55405022bd900c2cb84f95fb6f757701ced5c6dc4ae36b6d9251eb2d4337",
+      "output_characters": 21
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "3669fa279cca02716be7b95d947fcb2444ff655438f6ade20405cef140a9e718",
+      "output_characters": 2059
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'ls -la /workspace/'",
+      "original_command_sha256": "1fde4e7c1e52066f571619d5e65b33d4017e906150c528a5051d7a339fc92e91",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "30267898d92704f6f0dce77e16ff9ad9fb68e034efefced643b8d59d6514d1af",
+      "output_characters": 300
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json'",
+      "original_command_sha256": "da448aa6592171e0e2d14934d6d0d3019c06bf38d9b66c40f7248d7363259a78",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ce87fae3f22ed43a4194e23d4b68a6f6d3a2265cf52546680efed7b411606608",
+      "output_characters": 612
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json'",
+      "original_command_sha256": "de1a6fdaf38b4e51f4ed564afdf19e55e3ac083e5f4b47d146a903197242d28f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "1be19cb841b661bf48feafe9de94c5d3094dd9135a1855fd208a84f75f883ad0",
+      "output_characters": 3091
+    },
+    {
+      "id": "item_12",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md'",
+      "original_command_sha256": "efd671e59f5c8de5dda39f72671e3a2e4597a0f03af3ed277868f73124dbb9c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "96825d7a34ca167daec92ba442f333b87bb1bcd39e70428ea82dd218ec32124f",
+      "output_characters": 4727
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 43390714,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1051336,
+        "reasoning_output_tokens": 141279
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

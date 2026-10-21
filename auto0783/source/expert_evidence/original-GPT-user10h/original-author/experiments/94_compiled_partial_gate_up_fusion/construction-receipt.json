@@ -1,0 +1,51 @@
+{
+  "base": "62_text_view_common_subexpressions",
+  "base_retains_original53_arithmetic_after_two_known_view_cleanups": true,
+  "changed_existing_nodes": [
+    "image_mlp"
+  ],
+  "new_nodes": [
+    "image_fused_gate_up",
+    "image_fused_gate_up_weight",
+    "image_gate",
+    "image_gate_first_weight",
+    "image_gate_fused",
+    "image_gate_remaining",
+    "image_gate_remaining_weight",
+    "image_gate_silu",
+    "image_gated_product",
+    "image_up",
+    "image_up_first_weight",
+    "image_up_fused",
+    "image_up_remaining",
+    "image_up_remaining_weight"
+  ],
+  "all_other_existing_node_objects_and_relative_order_equal": true,
+  "original_image_rotary_region_equal": true,
+  "immutable_fused_weight_shape": [
+    18944,
+    3584
+  ],
+  "one_new_prefix_node": "image_fused_gate_up_weight",
+  "new_stage_MLP_region_members": [
+    "image_gate_remaining_weight",
+    "image_up_remaining_weight",
+    "image_fused_gate_up",
+    "image_gate_fused",
+    "image_up_fused",
+    "image_gate_remaining",
+    "image_up_remaining",
+    "image_gate",
+    "image_up",
+    "image_gate_silu",
+    "image_gated_product",
+    "image_mlp"
+  ],
+  "original_hidden_and_down_reduction_sizes": [
+    3584,
+    18944
+  ],
+  "chosen_block_reason": "Pair two9472-output halves so fused GEMM N=18944 equals an original gate/up projection; full fusion exceeds fixed limits.",
+  "performance_tradeoff": "Three input projections replace two, plus retained copy first-construction; no operation-count/input-read gain promised.",
+  "numerical_GPU_layout_dispatch_and_peak_unqualified": true
+}

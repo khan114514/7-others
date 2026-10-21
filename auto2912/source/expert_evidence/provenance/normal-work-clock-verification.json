@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "normal_work_without_score_counts": true,
+  "only_evidenced_overlapping_exclusions_deducted_once": true,
+  "example": {
+    "policy": "user-normal-work-clock-20261006",
+    "elapsed_seconds": 100,
+    "effective_seconds": 75,
+    "excluded_seconds": 25,
+    "excluded_intervals": [
+      [
+        20,
+        45
+      ]
+    ],
+    "exclusion_evidence": [
+      {
+        "start_epoch": 20,
+        "end_epoch": 40,
+        "reason": "observed download",
+        "evidence": "log-A"
+      },
+      {
+        "start_epoch": 30,
+        "end_epoch": 45,
+        "reason": "observed stall",
+        "evidence": "log-B"
+      }
+    ],
+    "score_success_used_for_time": false
+  }
+}

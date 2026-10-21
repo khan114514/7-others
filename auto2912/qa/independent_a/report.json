@@ -1,0 +1,1195 @@
+{
+  "schema_version": 4,
+  "status": "FAIL",
+  "core_conclusion": "NOT READY: research gates pass; current V4 build/constraints and trajectory format have confirmed non-relaxed failures.",
+  "review": {
+    "completed": true,
+    "scope": "local-v4-content-review",
+    "independent_runtime_reproduction": false,
+    "previous_qa_reports_used": false
+  },
+  "policy": {
+    "revision": "research-quality-v3",
+    "content_contract": "phase3-v4 + user2026-10-21 five non-blocking categories"
+  },
+  "qa_run": {
+    "kind": "local-v4-content-review",
+    "reviewer_provider": "OpenAI",
+    "reviewer_model": "GPT-6 (system identity; exact deployment variant unavailable)",
+    "session_id": "stssdl_a",
+    "input_type": "complete_zip",
+    "input_filename": "auto2912-delivery.zip",
+    "zip_sha256": "18ee42736dcb71d492cf47a8f83a3d863d148cdb4b1a3d4a9488a8c8087e3dba",
+    "clean_context": true,
+    "identity_limitation": "Exact deployment model ID is not exposed; no version ID was invented. This report does not establish a second-AI consensus.",
+    "official_tool_identity": null
+  },
+  "overview": {
+    "task": "auto2912 / Conditional traffic forecasting",
+    "optimization_surface": {
+      "summary": "Executable fitted correction of frozen ST-SSDL upstream forecasts,with fresh fitting and independent reload per seed.",
+      "modifiable": [
+        "fit objective/algorithm",
+        "conditional/spatiotemporal representation",
+        "prediction combination structure",
+        "up to16Python source files"
+      ],
+      "fixed": [
+        "public calibration andDev splits",
+        "shared trained upstream forecasts/features",
+        "seeds17/29/43",
+        "masked MAE direction andquality gates",
+        "2CPU common limit"
+      ],
+      "metric_and_gate": "Minimize masked MAE; shape/finite/reload absolute tolerance1e-4;strict positive improvement.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:10",
+        "workspace/harbor_task/environment/engine/actor_worker.py:40"
+      ]
+    },
+    "baseline_reference": {
+      "baseline_method": "Unchanged Starter identity returns the shared trained predictor output. fit produces48-byte state; no SGD required. Upstream log records63epochs and early stop.",
+      "reference_method": "Nine conditional features: base,recent history,slope,anchor,sin/cos clock,horizon,node. HistGradientBoostingRegressor fits residuals for100iterations with seed-specific initialization; adds0.5times predicted residual.",
+      "metric": "masked MAE",
+      "direction": "minimize",
+      "paired_runs": [
+        {
+          "seed": 17,
+          "baseline": 15.421857156583444,
+          "reference": 15.094631864779133,
+          "baseline_valid": true,
+          "reference_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_17/result.json#metrics.mae",
+          "reference_source": "optimization_evidence/reference_runs/seed_17/result.json#metrics.mae"
+        },
+        {
+          "seed": 29,
+          "baseline": 15.421857156583444,
+          "reference": 15.100112152134592,
+          "baseline_valid": true,
+          "reference_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_29/result.json#metrics.mae",
+          "reference_source": "optimization_evidence/reference_runs/seed_29/result.json#metrics.mae"
+        },
+        {
+          "seed": 43,
+          "baseline": 15.421857156583444,
+          "reference": 15.09311989424863,
+          "baseline_valid": true,
+          "reference_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_43/result.json#metrics.mae",
+          "reference_source": "optimization_evidence/reference_runs/seed_43/result.json#metrics.mae"
+        }
+      ],
+      "baseline_mean": 15.421857156583444,
+      "baseline_sample_std": 0.0,
+      "reference_mean": 15.095954637054119,
+      "reference_sample_std": 0.0036790233017135383,
+      "improvement_summary": "Positive improvement0.325902519529;normalized0.688520079296. Zero Baseline sigma still requires strict positive improvement.",
+      "quality_gate_summary": "All6 formal result gates=true,fit/reload exits0,reload difference0. Existing material consistency only;not independent reproduction.",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json",
+        "workspace/reference/method.py"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "GPT track",
+        "status": "partial",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "agent_model": "gpt-6.1-sol",
+        "reasoning_effort": "xhigh",
+        "packaged_rounds": 27,
+        "reported_effective_rounds": 27,
+        "duration_hours": 10.001053029961056,
+        "summary": "Residual trees, temporal/spatial calibration, neural mixtures and confidence diffusion. 11 controller scores succeeded; 16 failed with HTTP409.",
+        "final_result": {
+          "raw_mae": 13.902094246542314,
+          "normalized_score": 3.210737004562953
+        },
+        "evidence": [
+          "expert_evidence/trajectory_codex.json",
+          "expert_evidence/run_summary.json#agent_execution",
+          "expert_evidence/provenance/model_execution/gpt"
+        ]
+      },
+      {
+        "name": "Seed track",
+        "status": "partial",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "agent_model": "doubao-seed-2-1-turbo-260628",
+        "reasoning_effort": "high",
+        "packaged_rounds": 79,
+        "reported_effective_rounds": 79,
+        "duration_hours": 10.002329799599117,
+        "summary": "Node/horizon bias, anchor mixtures, ridge and clock features. 78 controller scores succeeded; 53 zero-effective ledger rounds are not 53 method cycles.",
+        "final_result": {
+          "raw_mae": 15.165965823366738,
+          "normalized_score": 0.5406104908058266
+        },
+        "evidence": [
+          "expert_evidence/trajectory_seed.json",
+          "expert_evidence/run_summary.json#agent_execution",
+          "expert_evidence/provenance/model_execution/seed"
+        ]
+      }
+    ]
+  },
+  "baseline_quality": {
+    "overall": "合理（在已提供材料范围内）",
+    "roles": "Starter=identity;formal Baseline=unchanged identity;scoring B=complete3-seed identity mean;no alternate weak anchor.",
+    "checks": [
+      {
+        "id": "B01",
+        "status": "通过",
+        "summary": "Formal B is unchanged identity Starter on a shared trained predictor; appropriate for a fixed-predictor correction task.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py:5",
+          "workspace/harbor_task/environment/engine/actor_worker.py:33",
+          "expert_evidence/provenance/shared-backbone-training.run.log:251",
+          "optimization_evidence/baseline_runs/seed_17/result.json",
+          "expert_evidence/专家作业说明文档.md:13"
+        ]
+      },
+      {
+        "id": "B02",
+        "status": "通过",
+        "summary": "Identity requires no SGD. Shared backbone actually stopped at epoch63/200 with 42147 batches; all formal fit/reload exits are0. No wrong-checkpoint or label-misalignment evidence.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py:5",
+          "workspace/harbor_task/environment/engine/actor_worker.py:33",
+          "expert_evidence/provenance/shared-backbone-training.run.log:251",
+          "optimization_evidence/baseline_runs/seed_17/result.json",
+          "expert_evidence/专家作业说明文档.md:13",
+          "expert_evidence/provenance/shared-backbone-training.run.log:248"
+        ]
+      },
+      {
+        "id": "B03",
+        "status": "通过",
+        "summary": "Same calibration/Dev data, seeds17/29/43,2CPU,180s fit and60s reload limits. Fitting-cost differences are allowed method variables.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/grader.py:104",
+          "workspace/harbor_task/environment/engine/grader.py:127",
+          "optimization_evidence/comparison_summary.json"
+        ]
+      },
+      {
+        "id": "B04",
+        "status": "通过",
+        "summary": "Identity has no anomalous hyperparameters. Reference fixes a100-iteration residual tree and0.5 mixture. Pilot/frozen-anchor records precede formal R.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py",
+          "workspace/reference/method.py:22",
+          "expert_evidence/provenance/anchors-frozen-before-reference.json",
+          "expert_evidence/provenance/pilot-upper-estimate.json"
+        ]
+      },
+      {
+        "id": "B05",
+        "status": "通过",
+        "summary": "Complete3 paired seeds enter random/numpy seeds and Reference random_state. Same method/protocol hashes across each role. Identical identity states are semantically expected.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/actor_worker.py:33",
+          "workspace/reference/method.py:23",
+          "optimization_evidence/comparison_summary.json"
+        ]
+      },
+      {
+        "id": "B06",
+        "status": "通过",
+        "summary": "Identity is the trained upstream forecast, not an untrained/random predictor. No unexplained stronger same-protocol sanity anchor is shown.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py:9",
+          "expert_evidence/专家作业说明文档.md:3"
+        ]
+      },
+      {
+        "id": "B07",
+        "status": "通过",
+        "summary": "Only correction method changes; data,mask,shared predictor and evaluation remain fixed. No claim of independent neural retraining or use of Hidden for formal Dev comparison.",
+        "evidence": [
+          "workspace/reference/method.py",
+          "workspace/harbor_task/environment/engine/grader.py:68",
+          "expert_evidence/run_summary.json#independent_neural_training_replicates"
+        ]
+      },
+      {
+        "id": "B08",
+        "status": "通过",
+        "summary": "Expert discloses identity role,shared initialization,fresh correction fits and raw-only to frozen-protocol B reconciliation.",
+        "evidence": [
+          "expert_evidence/专家作业说明文档.md:3",
+          "expert_evidence/专家作业说明文档.md:29",
+          "expert_evidence/provenance/baseline-frozen-protocol-recheck.json"
+        ]
+      }
+    ],
+    "dimensions": {
+      "training_sufficiency": {
+        "status": "pass",
+        "summary": "Identity does not require training; upstream early stop and correction completion are documented.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py:5",
+          "workspace/harbor_task/environment/engine/actor_worker.py:33",
+          "expert_evidence/provenance/shared-backbone-training.run.log:251",
+          "optimization_evidence/baseline_runs/seed_17/result.json",
+          "expert_evidence/专家作业说明文档.md:13"
+        ]
+      },
+      "method_representativeness": {
+        "status": "pass",
+        "summary": "Reasonable naive fixed-predictor correction anchor; SOTA is not required.",
+        "evidence": [
+          "expert_evidence/专家作业说明文档.md:3"
+        ]
+      },
+      "budget_comparability": {
+        "status": "pass",
+        "summary": "Same full seeds/data/scorer/2CPU cap. B and R take approximately0.31-0.38s and5.87-7.12s per seed.",
+        "evidence": [
+          "workspace/harbor_task/task.toml",
+          "optimization_evidence/comparison_summary.json"
+        ]
+      },
+      "implementation_correctness": {
+        "status": "pass",
+        "summary": "Identity and residual-tree execution paths are coherent; shape,finite and independent reload gates pass in existing records.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/actor_worker.py",
+          "workspace/reference/method.py"
+        ]
+      },
+      "selection_integrity": {
+        "status": "pass",
+        "summary": "All3 seeds; pre-anchor raw identity equals frozen-protocol recheck. B/U frozen before formal R.",
+        "evidence": [
+          "expert_evidence/provenance/baseline-frozen-protocol-recheck.json",
+          "expert_evidence/provenance/anchors-frozen-before-reference.json"
+        ]
+      }
+    },
+    "red_flags": "No direct Baseline weakening red flags found.",
+    "boundary": "Static internal consistency is not independent reproduction. The frozen upstream weights are not a runtime dependency of this correction task."
+  },
+  "content_gates": {
+    "schema_version": 1,
+    "checks": [
+      {
+        "id": "G01",
+        "status": "pass",
+        "summary": "Executable fit/predict permits structural methods. Guard limits source/resources rather than constants; Reference learns residuals.",
+        "evidence": [
+          "workspace/harbor_task/instruction.md:13",
+          "workspace/harbor_task/environment/engine/grade_server.py:44",
+          "workspace/harbor_task/environment/engine/actor_worker.py:24",
+          "workspace/reference/method.py:18"
+        ],
+        "reason_code": "OPEN_EXECUTABLE_METHOD_SURFACE"
+      },
+      {
+        "id": "G02",
+        "status": "pass",
+        "summary": "Baseline is reasonable within submitted evidence: identity shares the trained predictor,Starter and scoring anchor; no direct weakening/seed-selection evidence.",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py:5",
+          "workspace/harbor_task/environment/engine/actor_worker.py:33",
+          "expert_evidence/provenance/shared-backbone-training.run.log:251",
+          "optimization_evidence/baseline_runs/seed_17/result.json",
+          "expert_evidence/专家作业说明文档.md:13"
+        ],
+        "reason_code": "REASONABLE_IDENTITY_ANCHOR",
+        "dimensions": {
+          "training_sufficiency": {
+            "status": "pass",
+            "summary": "Identity does not require training; upstream early stop and correction completion are documented.",
+            "evidence": [
+              "workspace/harbor_task/environment/engine/starter.py:5",
+              "workspace/harbor_task/environment/engine/actor_worker.py:33",
+              "expert_evidence/provenance/shared-backbone-training.run.log:251",
+              "optimization_evidence/baseline_runs/seed_17/result.json",
+              "expert_evidence/专家作业说明文档.md:13"
+            ]
+          },
+          "method_representativeness": {
+            "status": "pass",
+            "summary": "Reasonable naive fixed-predictor correction anchor; SOTA is not required.",
+            "evidence": [
+              "expert_evidence/专家作业说明文档.md:3"
+            ]
+          },
+          "budget_comparability": {
+            "status": "pass",
+            "summary": "Same full seeds/data/scorer/2CPU cap. B and R take approximately0.31-0.38s and5.87-7.12s per seed.",
+            "evidence": [
+              "workspace/harbor_task/task.toml",
+              "optimization_evidence/comparison_summary.json"
+            ]
+          },
+          "implementation_correctness": {
+            "status": "pass",
+            "summary": "Identity and residual-tree execution paths are coherent; shape,finite and independent reload gates pass in existing records.",
+            "evidence": [
+              "workspace/harbor_task/environment/engine/actor_worker.py",
+              "workspace/reference/method.py"
+            ]
+          },
+          "selection_integrity": {
+            "status": "pass",
+            "summary": "All3 seeds; pre-anchor raw identity equals frozen-protocol recheck. B/U frozen before formal R.",
+            "evidence": [
+              "expert_evidence/provenance/baseline-frozen-protocol-recheck.json",
+              "expert_evidence/provenance/anchors-frozen-before-reference.json"
+            ]
+          }
+        }
+      },
+      {
+        "id": "G03",
+        "status": "pass",
+        "summary": "Complete3 formal pairs valid. Improvement0.3259025195, sigma_B0 and normalized0.6885200793 satisfy positive improvement and[0.15,0.8].",
+        "evidence": [
+          "optimization_evidence/comparison_summary.json",
+          "optimization_evidence/baseline_runs/seed_17/result.json",
+          "optimization_evidence/reference_runs/seed_17/result.json",
+          "expert_evidence/provenance/pilot-upper-estimate.json",
+          "expert_evidence/provenance/anchors-frozen-before-reference.json"
+        ],
+        "reason_code": "SUFFICIENT_FORMAL_PAIRED_GAIN",
+        "assessment": {
+          "direction": "minimize",
+          "formal_seeds": [
+            17,
+            29,
+            43
+          ],
+          "declared_run_count": 3,
+          "evaluation_mode": "stochastic",
+          "same_protocol": true,
+          "quality_valid": true,
+          "upper_bound": 14.948519443814908,
+          "threshold_basis": "V4 improvement>=3sigma_B and normalized R[0.15,0.8]; instruction additionally requires strict positive improvement.",
+          "absolute_min_improvement": 0,
+          "absolute_threshold_source": "workspace/harbor_task/instruction.md:10"
+        },
+        "computed": {
+          "baseline_mean": 15.421857156583444,
+          "baseline_sample_std": 0.0,
+          "reference_mean": 15.095954637054119,
+          "reference_sample_std": 0.0036790233017135383,
+          "positive_improvement": 0.3259025195293255,
+          "relative_improvement": 0.021132507986575455,
+          "normalized_reference": 0.6885200792963072,
+          "upper_bound": 14.948519443814908,
+          "remaining_headroom": 0.14743519323921106,
+          "three_sigma_baseline": 0.0,
+          "improvement_ge_3sigma": true,
+          "normalized_in_range": true,
+          "baseline_sigma_multiple": null,
+          "sigma_note": "Identity is deterministic; Reference remains stochastic. Zero sigma does not establish deterministic evaluation."
+        }
+      }
+    ]
+  },
+  "runtime_review": {
+    "status": "pass",
+    "exception_reason": "",
+    "exception_eligibility": {
+      "non_training": false,
+      "short_iterations": null,
+      "basis": "Fitting/training task: each track is assessed against10h;7h exception is not used.",
+      "evidence": [
+        "workspace/harbor_task/environment/engine/actor_worker.py:42"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "GPT track",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "effective_seconds": 36003.7909078598,
+        "evidence": [
+          "expert_evidence/trajectory_codex.json#duration_seconds",
+          "expert_evidence/provenance/model_execution/gpt/initial-normal-model-work.json",
+          "expert_evidence/provenance/model_execution/gpt/round_0001/time-accounting.json"
+        ],
+        "time_accounting": "Sum each elapsed minus union of excluded intervals, plus actual initial task reading receipt. All 27/79 ledgers checked. No cross-round event overlap. Final no-model replays and independent stability excluded.",
+        "effective_method_cycles": null,
+        "next_direction": "Further conditional representations, robust fitting or spatiotemporal structure remain legal.",
+        "best_method_revalidated": true,
+        "best_method_evidence": [
+          "expert_evidence/provenance/native_harbor/gpt/task-source-manifest.json"
+        ]
+      },
+      {
+        "name": "Seed track",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "effective_seconds": 36008.387278556824,
+        "evidence": [
+          "expert_evidence/trajectory_seed.json#duration_seconds",
+          "expert_evidence/provenance/model_execution/seed/initial-normal-model-work.json",
+          "expert_evidence/provenance/model_execution/seed/round_0001/time-accounting.json"
+        ],
+        "time_accounting": "Sum each elapsed minus union of excluded intervals, plus actual initial task reading receipt. All 27/79 ledgers checked. No cross-round event overlap. Final no-model replays and independent stability excluded.",
+        "effective_method_cycles": null,
+        "next_direction": "Further conditional representations, robust fitting or spatiotemporal structure remain legal.",
+        "best_method_revalidated": true,
+        "best_method_evidence": [
+          "expert_evidence/provenance/native_harbor/seed/task-source-manifest.json"
+        ]
+      }
+    ],
+    "clock_recomputation": [
+      {
+        "lane": "gpt",
+        "round_count": 27,
+        "round_elapsed_seconds": 36641.06933116913,
+        "excluded_union_seconds": 688.2963454723358,
+        "round_effective_seconds": 35952.77298569679,
+        "initial_effective_seconds": 51.017922163009644,
+        "effective_seconds": 36003.7909078598,
+        "effective_hours": 10.001053029961056,
+        "invalid_arithmetic_rounds": [],
+        "cross_round_event_overlaps": 0,
+        "zero_effective_rounds": [
+          13,
+          14,
+          15,
+          16,
+          17
+        ]
+      },
+      {
+        "lane": "seed",
+        "round_count": 79,
+        "round_elapsed_seconds": 39019.00444841385,
+        "excluded_union_seconds": 3046.6330387592316,
+        "round_effective_seconds": 35972.37140965462,
+        "initial_effective_seconds": 36.01586890220642,
+        "effective_seconds": 36008.387278556824,
+        "effective_hours": 10.002329799599117,
+        "invalid_arithmetic_rounds": [],
+        "cross_round_event_overlaps": 0,
+        "zero_effective_rounds": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          54,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          70
+        ]
+      }
+    ],
+    "trajectory_validation": [
+      {
+        "lane": "gpt",
+        "extra_keys": {
+          "original_status": 16
+        },
+        "required_keys_missing": 0,
+        "successful_scores_matching_original_commands": 11,
+        "retention_mismatches": 0,
+        "sessions_present": false,
+        "failed_controller_command_class": "HTTP 409 Conflict: protected scorer busy"
+      },
+      {
+        "lane": "seed",
+        "extra_keys": {
+          "method_summary_evidence": 79,
+          "original_status": 1
+        },
+        "required_keys_missing": 0,
+        "successful_scores_matching_original_commands": 78,
+        "retention_mismatches": 0,
+        "sessions_present": false,
+        "failed_controller_command_class": "HTTP 409 Conflict: protected scorer busy"
+      }
+    ],
+    "stability": {
+      "existing_record_seconds": 43239.755033016205,
+      "independently_stress_tested": false,
+      "evidence": [
+        "expert_evidence/provenance/stability-status.json"
+      ]
+    },
+    "resource_review": {
+      "task_gpus": 0,
+      "cpus": 2,
+      "memory_mb": 4096,
+      "baseline_per_seed_fit_and_reload_seconds": [
+        0.37201380729675293,
+        0.3761169910430908,
+        0.3111586570739746
+      ],
+      "reference_per_seed_fit_and_reload_seconds": [
+        7.121449947357178,
+        6.189047336578369,
+        5.867104768753052
+      ],
+      "selected_dev_evaluation_seconds": 348.11919617652893,
+      "selected_local_hidden_evaluation_seconds": 382.6755864620209,
+      "upstream_preparation_device": "A100-PCIE-40GB",
+      "migration_note": "Current scoring isCPU;historical upstream GPU preparation is preserved,not relabeled."
+    }
+  },
+  "format_review": {
+    "status": "deviations",
+    "summary": "Three top-level roles and complete formal paired evidence exist. Extra evidence is allowed;Compose and exactly-eight-key deviations are substantive current-contract issues.",
+    "additional_suggestions": [
+      {
+        "path": "workspace/harbor_task/environment/Dockerfile",
+        "classification": "obsolete_layout",
+        "recommendation": "Use environment build context and a public Starter contained inside it."
+      },
+      {
+        "path": "expert_evidence/trajectory_codex.json",
+        "classification": "misplaced",
+        "recommendation": "Move per-round extra metadata to a sidecar."
+      },
+      {
+        "path": "expert_evidence/trajectory_seed.json",
+        "classification": "misplaced",
+        "recommendation": "Move79 per-round evidence objects to sidecar; keep concise1-3 sentence summaries."
+      },
+      {
+        "path": "expert_evidence/official_source/",
+        "classification": "extra_allowed",
+        "recommendation": "Optional upstream material may remain; consider separate expert-only attachment with license/privacy review."
+      },
+      {
+        "path": "optimization_evidence/训练证据说明.md",
+        "classification": "merge_candidate",
+        "recommendation": "Reduce repeated expert narrative without losing formal evidence mapping."
+      },
+      {
+        "path": "optimization_evidence/baseline_runs/seed_17/result.json",
+        "classification": "merge_candidate",
+        "recommendation": "Optionally add explicit schema/role/task_type and grouped method/protocol/execution indexes. Equivalent existing fields are not alone a rejection. The checkpoint.path is run-relative; disclose that base or use package-relative paths."
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "QA01",
+      "status": "pass",
+      "summary": "Eight substantive sections; no paper title,arXiv,repository or reference-answer clues in instruction.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md"
+      ]
+    },
+    {
+      "id": "QA02",
+      "status": "pass",
+      "summary": "Actual score=(B-mean)/(B-U),continuous,monotone and unclipped. B is formal identity aggregate; U is preregistered pilot estimate.",
+      "evidence": [
+        "workspace/harbor_task/tests/engine/grader.py:187",
+        "workspace/harbor_task/tests/verifier_assets/protocol.json:15"
+      ]
+    },
+    {
+      "id": "QA03",
+      "status": "pass",
+      "summary": "Reference source,entry,all3 results/raw logs,and actual model/reload records exist. Normalized Reference0.68852.",
+      "evidence": [
+        "workspace/reference/method.py",
+        "optimization_evidence/reference_runs/result.json",
+        "optimization_evidence/reference_runs/seed_43/model/artifact.json"
+      ]
+    },
+    {
+      "id": "QA04",
+      "status": "pass",
+      "summary": "Reference is stochastic. All3 pairs were recalculated with n-1 Baseline sample standard deviation: delta>0 and delta>=3sigma_B=0.",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json",
+        "optimization_evidence/baseline_runs/seed_17/result.json",
+        "optimization_evidence/reference_runs/seed_29/result.json"
+      ]
+    },
+    {
+      "id": "QA05",
+      "status": "fail",
+      "summary": "Source,memory,CPU,wall-time and prediction gates exist; instruction/TOML still require unsupported no-network and storage_mb conditions.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/task.toml:18",
+        "workspace/harbor_task/tests/engine/grader.py:39"
+      ],
+      "remediation": "Remove unsupported storage_mb and no-network/allowlist requirements from current submission. Synchronize instruction,TOML and offline-only adapter; retain private-data/scoring confinement under actual platform networking.",
+      "acceptance_evidence": "New complete ZIP with supported network/resource declarations and actual platform mapping; constraint call chain remains valid. Do not automatically rerun all training solely for this edit."
+    },
+    {
+      "id": "QA06",
+      "status": "pass",
+      "summary": "Single test.sh->grader entry; scalar reward and classified failure handling exist.",
+      "evidence": [
+        "workspace/harbor_task/tests/test.sh",
+        "workspace/harbor_task/tests/engine/grader.py:217"
+      ]
+    },
+    {
+      "id": "QA07",
+      "status": "pass",
+      "summary": "Instruction-only check: no Hidden examples,labels or recoverable answers.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md"
+      ]
+    },
+    {
+      "id": "QA08",
+      "status": "pass",
+      "summary": "Instruction-only check: no Reference code,configuration or result. Generic executable interface is not an answer.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md"
+      ]
+    },
+    {
+      "id": "QA09",
+      "status": "pass",
+      "summary": "Formal entry deletes prewritten rewards; successful trusted reward uses pending file and atomic replace.",
+      "evidence": [
+        "workspace/harbor_task/tests/test.sh:4",
+        "workspace/harbor_task/tests/engine/grader.py:220"
+      ]
+    },
+    {
+      "id": "QA10",
+      "status": "pass",
+      "summary": "Assets/engine are frozen; UID1000+bwrap sees read-only source and allowed inputs. Labels are read after candidate exits; source hash is rechecked.",
+      "evidence": [
+        "workspace/harbor_task/tests/Dockerfile:14",
+        "workspace/harbor_task/tests/engine/grader.py:111",
+        "workspace/harbor_task/tests/engine/grader.py:132",
+        "workspace/harbor_task/tests/engine/grader.py:157"
+      ]
+    },
+    {
+      "id": "QA11",
+      "status": "pass",
+      "summary": "Goal,setting,metric,scope,boundaries,submission,iteration and completion contain substantive instructions.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:3",
+        "workspace/harbor_task/instruction.md:24"
+      ]
+    },
+    {
+      "id": "QA12",
+      "status": "pass",
+      "summary": "Inventory contains no .git directory; no claim of exhaustive unreachable-object audit.",
+      "evidence": [
+        "@inventory"
+      ]
+    },
+    {
+      "id": "QA13",
+      "status": "pass",
+      "summary": "All3 formal paired seeds share protocol/metric; model records and raw logs exist. Every pair improves; gates true and fit/reload exits0.",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json",
+        "optimization_evidence/baseline_runs/result.json",
+        "optimization_evidence/reference_runs/result.json"
+      ]
+    },
+    {
+      "id": "QA14",
+      "status": "pass",
+      "summary": "Executable structural method space and unsaturated Reference. Submitted trajectories show legal conditional/spatiotemporal directions. Best score>1 is allowed for unclipped estimated U; U was not moved.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:13",
+        "workspace/reference/method.py",
+        "expert_evidence/best_method/conditional_calibration.py",
+        "expert_evidence/trajectory_codex.json"
+      ]
+    },
+    {
+      "id": "QA15",
+      "status": "pass",
+      "summary": "Scoring task uses0GPU/2CPU. Full formal B/R take about1.07/19.19s; selected Dev348.12s and local Hidden382.68s are below2h. A100 belongs only to upstream preparation,not relabeled target-card scoring.",
+      "evidence": [
+        "workspace/harbor_task/task.toml:16",
+        "optimization_evidence/baseline_runs/result.json",
+        "optimization_evidence/reference_runs/result.json",
+        "expert_evidence/provenance/native_harbor/gpt/forecast-final-dev-gpt-d8cbab87/verifier/test-stdout.txt",
+        "expert_evidence/provenance/forecast-export-manifest.json#backbone_training_device"
+      ]
+    },
+    {
+      "id": "QA16",
+      "status": "pass",
+      "summary": "Separate clock recomputation: GPT36003.790908s and Seed36008.387279s,each>=10h. Exclusion unions checked; no sum across tracks or credit for final no-model replay/stability.",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json#duration_seconds",
+        "expert_evidence/trajectory_seed.json#duration_seconds",
+        "expert_evidence/provenance/model_execution/gpt/initial-normal-model-work.json",
+        "expert_evidence/provenance/model_execution/seed/initial-normal-model-work.json"
+      ]
+    },
+    {
+      "id": "QA17",
+      "status": "fail",
+      "summary": "Separate,public Dev,private Hidden,handoff,reward and local NOP exist. Current package still relies on forbidden Compose/root context and unsupported network/resource conditions.",
+      "evidence": [
+        "workspace/harbor_task/task.toml",
+        "workspace/harbor_task/environment/docker-compose.yaml",
+        "workspace/harbor_task/tests/docker-compose.yaml"
+      ],
+      "remediation": "Remove direct Compose files and formal Compose/extra broker-container dependencies. Put public Starter inside environment and rewrite Agent COPY for environment build context; preserve separate Verifier and candidate artifacts handoff. Remove unsupported storage_mb and no-network/allowlist requirements from current submission. Synchronize instruction,TOML and offline-only adapter; retain private-data/scoring confinement under actual platform networking.",
+      "acceptance_evidence": "Complete package,one-container startup contract,valid COPY/dependency/entry mappings for both contexts and platform adapter evidence. Dynamic build/handoff/reward evidence only in an authorized target environment. New complete ZIP with supported network/resource declarations and actual platform mapping; constraint call chain remains valid. Do not automatically rerun all training solely for this edit."
+    },
+    {
+      "id": "QA18",
+      "status": "fail",
+      "summary": "Eight keys exist and scores/retention match. GPT adds original_status in16 rounds; Seed adds method_summary_evidence in79 and original_status in1. Extra keys violate the contract;409 failures need classification.",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json#rounds[1].original_status",
+        "expert_evidence/trajectory_seed.json#rounds[0].method_summary_evidence",
+        "expert_evidence/provenance/model_execution/gpt/round_0002/trusted-evaluation-command.json"
+      ],
+      "remediation": "Keep exactly8 keys per round. Move original_status and method_summary_evidence into a sidecar with original records preserved. Classify409 scorer-busy separately from invalid methods and clarify ledger rounds versus effective method cycles.",
+      "acceptance_evidence": "Both trajectory JSONs have exactly8 round keys,unchanged original scores/times/retention,and relative sidecar references. Failure classification traces to original trusted evaluation command."
+    },
+    {
+      "id": "QA19",
+      "status": "pass",
+      "summary": "Instruction specifies seeds17/29/43 and gates+strict positive improvement. No extra repeat-count prose was imposed.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:10"
+      ]
+    },
+    {
+      "id": "QA20",
+      "status": "pass",
+      "summary": "Scope,network/host rules and public evaluation tool strategy are stated. Current network incompatibility is handled under constraints.",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:13",
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/instruction.md:22"
+      ]
+    },
+    {
+      "id": "QA21",
+      "status": "manual",
+      "summary": "run_summary lacks task_binding/hash_profile/task_content_sha256. Trial member manifests are not substituted for official four-input fingerprint. Non-blocking under2026-10-21 policy.",
+      "evidence": [
+        "expert_evidence/run_summary.json",
+        "expert_evidence/provenance/native_harbor/nop/task-source-manifest.json"
+      ],
+      "remediation": "With real official task_fingerprint.py,add actual profile and full recursive four-input fingerprint outside the hashed inputs; preserve historical versions.",
+      "acceptance_evidence": "Real script version/SHA,original output,task_binding fields and version mapping. No training rerun solely for missing fingerprint.",
+      "non_blocking": true
+    }
+  ],
+  "counts": {
+    "pass": 17,
+    "fail": 3,
+    "manual": 1
+  },
+  "gate_counts": {
+    "pass": 3
+  },
+  "harbor": {
+    "task_root": "workspace/harbor_task",
+    "target_version": "0.23.0(submitted local records)",
+    "provider": "custom DockerEnvironment adapter(submitted local evidence)",
+    "version_basis": "Package PATH_BINDING,adapter sources and Trial configs only;no online official-source/schema loading.",
+    "checks": [
+      {
+        "id": "H01",
+        "status": "pass",
+        "summary": "Complete task root and Verifier entry/dependencies exist. Real Hidden injection assets and call chain exist; candidate receives features without private labels.",
+        "evidence": [
+          "workspace/harbor_task/task.toml",
+          "workspace/harbor_task/tests/test.sh:5",
+          "expert_evidence/held_out_assets/INJECTION.md",
+          "expert_evidence/provenance/harbor_adapter/post_selection_harbor.py:40"
+        ]
+      },
+      {
+        "id": "H02",
+        "status": "fail",
+        "summary": "Explicit separate is correct, but storage_mb and multiple no-network settings conflict with current V4 platform conditions. No official schema was loaded.",
+        "evidence": [
+          "workspace/harbor_task/task.toml:9",
+          "workspace/harbor_task/task.toml:18",
+          "workspace/harbor_task/task.toml:22"
+        ],
+        "remediation": "Remove unsupported storage_mb and no-network/allowlist requirements from current submission. Synchronize instruction,TOML and offline-only adapter; retain private-data/scoring confinement under actual platform networking.",
+        "acceptance_evidence": "New complete ZIP with supported network/resource declarations and actual platform mapping; constraint call chain remains valid. Do not automatically rerun all training solely for this edit."
+      },
+      {
+        "id": "H03",
+        "status": "fail",
+        "summary": "Direct Compose files violate V4. Agent COPY requires task-root context; environment context cannot resolve prefixed sources or root files. Historical local adapter success does not waive V4.",
+        "evidence": [
+          "workspace/harbor_task/environment/docker-compose.yaml:4",
+          "workspace/harbor_task/tests/docker-compose.yaml:1",
+          "workspace/harbor_task/environment/Dockerfile:5",
+          "workspace/harbor_task/environment/Dockerfile:10",
+          "expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py:69"
+        ],
+        "remediation": "Remove direct Compose files and formal Compose/extra broker-container dependencies. Put public Starter inside environment and rewrite Agent COPY for environment build context; preserve separate Verifier and candidate artifacts handoff.",
+        "acceptance_evidence": "Complete package,one-container startup contract,valid COPY/dependency/entry mappings for both contexts and platform adapter evidence. Dynamic build/handoff/reward evidence only in an authorized target environment."
+      },
+      {
+        "id": "H04",
+        "status": "pass",
+        "summary": "test.sh clears old rewards; trusted grader writes scalar score through pending+replace. Format/timeout/execution errors and hard gates are classified.",
+        "evidence": [
+          "workspace/harbor_task/tests/test.sh:4",
+          "workspace/harbor_task/tests/engine/grader.py:217",
+          "workspace/harbor_task/tests/engine/grader.py:224"
+        ]
+      },
+      {
+        "id": "H05",
+        "status": "pass",
+        "summary": "Existing local Trial configs select the intended task and explicit adapter; Verifier is enabled. Local version0.23.0. This does not certify target-platform adapter installation.",
+        "evidence": [
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/config.json",
+          "expert_evidence/provenance/harbor_adapter/post_selection_harbor.py",
+          "expert_evidence/provenance/native_harbor/PATH_BINDING.md"
+        ]
+      },
+      {
+        "id": "H06",
+        "status": "pass",
+        "summary": "Same NOP Trial config/result/reward/log exist: nop,separate,finished,no exception,reward0 agreement. All55 task-source members match current package. Evidence supports the submitted local adapter branch only.",
+        "evidence": [
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/config.json",
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/result.json",
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/verifier/reward.txt",
+          "expert_evidence/provenance/native_harbor/nop/task-source-manifest.json"
+        ]
+      }
+    ],
+    "runtime_status": "existing_local_records_consistent;not_run_this_review;target_platform_unverified",
+    "path_contract": {
+      "profile": "historical teaching-task-root-v1;requires migration toharbor-environment-v1",
+      "profile_basis": "Submitted local Compose adapter specifies root context;current V4 requires environment context and bans direct Compose files.",
+      "status": "fail",
+      "agent_dockerfile": "workspace/harbor_task/environment/Dockerfile",
+      "observed_agent_context": "workspace/harbor_task",
+      "required_agent_context": "workspace/harbor_task/environment",
+      "verifier_dockerfile": "workspace/harbor_task/tests/Dockerfile",
+      "verifier_context": "workspace/harbor_task/tests",
+      "runtime_task_root": "/workspace",
+      "test_entry": "/tests/test.sh",
+      "adapter_evidence": [
+        "expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py",
+        "expert_evidence/provenance/harbor_adapter/post_selection_harbor.py"
+      ]
+    },
+    "hidden_review": {
+      "mode": "injected",
+      "summary": "Nonempty held-out assets are injected only into Verifier after Dev selection/freeze. test.sh selects--hidden-assets;candidate gets features without private labels. Existing local Hidden check is not official platform acceptance.",
+      "asset_paths": [
+        "expert_evidence/held_out_assets/hidden_features.npz",
+        "expert_evidence/held_out_assets/hidden_targets.npz",
+        "expert_evidence/held_out_assets/protocol.json"
+      ],
+      "evidence": [
+        "expert_evidence/held_out_assets/INJECTION.md",
+        "expert_evidence/provenance/harbor_adapter/post_selection_harbor.py:40",
+        "workspace/harbor_task/tests/test.sh:5",
+        "workspace/harbor_task/tests/engine/grader.py:89"
+      ]
+    },
+    "submission_paths": [
+      "/workspace/solution"
+    ],
+    "existing_trials": {
+      "nop_reward": 0.0,
+      "gpt_dev_reward": 3.210737004562953,
+      "seed_dev_reward": 0.5406104908058266,
+      "selected_local_hidden_reward": 3.000927226676853,
+      "reward_files_match_all_four": true,
+      "current_task_manifest_members": 55,
+      "all_four_current_manifest_match": true
+    }
+  },
+  "formal_model_integrity": [
+    {
+      "role": "baseline",
+      "seed": 17,
+      "path": "optimization_evidence/baseline_runs/seed_17/model/model.pkl",
+      "bytes": 48,
+      "sha256": "e8f19ccc2d5e308b928f241ba985e739163382479f628ee5af928694e1ae85d2",
+      "index_matches": true,
+      "fit_exit_code": 0,
+      "reload_exit_code": 0,
+      "reload_max_abs_difference": 0.0,
+      "method_sha256": "cc90618a96d9d35520e56e3654eba47dac1ff9619490c6e4060f41a74f89974a",
+      "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+      "logs": [
+        "optimization_evidence/baseline_runs/seed_17/run.log",
+        "optimization_evidence/baseline_runs/seed_17/reload.log",
+        "optimization_evidence/baseline_runs/seed_17/model/reload.log"
+      ]
+    },
+    {
+      "role": "baseline",
+      "seed": 29,
+      "path": "optimization_evidence/baseline_runs/seed_29/model/model.pkl",
+      "bytes": 48,
+      "sha256": "e8f19ccc2d5e308b928f241ba985e739163382479f628ee5af928694e1ae85d2",
+      "index_matches": true,
+      "fit_exit_code": 0,
+      "reload_exit_code": 0,
+      "reload_max_abs_difference": 0.0,
+      "method_sha256": "cc90618a96d9d35520e56e3654eba47dac1ff9619490c6e4060f41a74f89974a",
+      "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+      "logs": [
+        "optimization_evidence/baseline_runs/seed_29/run.log",
+        "optimization_evidence/baseline_runs/seed_29/reload.log",
+        "optimization_evidence/baseline_runs/seed_29/model/reload.log"
+      ]
+    },
+    {
+      "role": "baseline",
+      "seed": 43,
+      "path": "optimization_evidence/baseline_runs/seed_43/model/model.pkl",
+      "bytes": 48,
+      "sha256": "e8f19ccc2d5e308b928f241ba985e739163382479f628ee5af928694e1ae85d2",
+      "index_matches": true,
+      "fit_exit_code": 0,
+      "reload_exit_code": 0,
+      "reload_max_abs_difference": 0.0,
+      "method_sha256": "cc90618a96d9d35520e56e3654eba47dac1ff9619490c6e4060f41a74f89974a",
+      "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+      "logs": [
+        "optimization_evidence/baseline_runs/seed_43/run.log",
+        "optimization_evidence/baseline_runs/seed_43/reload.log",
+        "optimization_evidence/baseline_runs/seed_43/model/reload.log"
+      ]
+    },
+    {
+      "role": "reference",
+      "seed": 17,
+      "path": "optimization_evidence/reference_runs/seed_17/model/model.pkl",
+      "bytes": 192730,
+      "sha256": "f818ec8496e7f1377f4e823b2685ffb9ee4bb3613168ce914300269d407d7aaf",
+      "index_matches": true,
+      "fit_exit_code": 0,
+      "reload_exit_code": 0,
+      "reload_max_abs_difference": 0.0,
+      "method_sha256": "a1c7bf9e3023f7258f37f08a7c3c2fd8ce478a5521ea78b7b28066590ef6737f",
+      "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+      "logs": [
+        "optimization_evidence/reference_runs/seed_17/run.log",
+        "optimization_evidence/reference_runs/seed_17/reload.log",
+        "optimization_evidence/reference_runs/seed_17/model/reload.log"
+      ]
+    },
+    {
+      "role": "reference",
+      "seed": 29,
+      "path": "optimization_evidence/reference_runs/seed_29/model/model.pkl",
+      "bytes": 192730,
+      "sha256": "100520b73dd654f80585624d2c90e143c104344959d7218700fb33b51a3cd594",
+      "index_matches": true,
+      "fit_exit_code": 0,
+      "reload_exit_code": 0,
+      "reload_max_abs_difference": 0.0,
+      "method_sha256": "a1c7bf9e3023f7258f37f08a7c3c2fd8ce478a5521ea78b7b28066590ef6737f",
+      "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+      "logs": [
+        "optimization_evidence/reference_runs/seed_29/run.log",
+        "optimization_evidence/reference_runs/seed_29/reload.log",
+        "optimization_evidence/reference_runs/seed_29/model/reload.log"
+      ]
+    },
+    {
+      "role": "reference",
+      "seed": 43,
+      "path": "optimization_evidence/reference_runs/seed_43/model/model.pkl",
+      "bytes": 192731,
+      "sha256": "6cc4f876d502d214ed664fbb7aad5bafc816958da9bd1c5cce27a67a1d615446",
+      "index_matches": true,
+      "fit_exit_code": 0,
+      "reload_exit_code": 0,
+      "reload_max_abs_difference": 0.0,
+      "method_sha256": "a1c7bf9e3023f7258f37f08a7c3c2fd8ce478a5521ea78b7b28066590ef6737f",
+      "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+      "logs": [
+        "optimization_evidence/reference_runs/seed_43/run.log",
+        "optimization_evidence/reference_runs/seed_43/reload.log",
+        "optimization_evidence/reference_runs/seed_43/model/reload.log"
+      ]
+    }
+  ],
+  "computed": {
+    "baseline_mean": 15.421857156583444,
+    "baseline_sample_std": 0.0,
+    "reference_mean": 15.095954637054119,
+    "reference_sample_std": 0.0036790233017135383,
+    "positive_improvement": 0.3259025195293255,
+    "relative_improvement": 0.021132507986575455,
+    "normalized_reference": 0.6885200792963072,
+    "upper_bound": 14.948519443814908,
+    "remaining_headroom": 0.14743519323921106,
+    "three_sigma_baseline": 0.0,
+    "improvement_ge_3sigma": true,
+    "normalized_in_range": true,
+    "baseline_sigma_multiple": null,
+    "sigma_note": "Identity is deterministic; Reference remains stochastic. Zero sigma does not establish deterministic evaluation."
+  },
+  "core_issues": [
+    {
+      "id": "C1",
+      "summary": "Unsupported network/storage conditions",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/task.toml:9",
+        "workspace/harbor_task/task.toml:18",
+        "expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py:51"
+      ],
+      "remediation": "Remove unsupported storage_mb and no-network/allowlist requirements from current submission. Synchronize instruction,TOML and offline-only adapter; retain private-data/scoring confinement under actual platform networking.",
+      "acceptance_evidence": "New complete ZIP with supported network/resource declarations and actual platform mapping; constraint call chain remains valid. Do not automatically rerun all training solely for this edit."
+    },
+    {
+      "id": "C2",
+      "summary": "Compose-dependent formal build/runtime and old task-root context",
+      "evidence": [
+        "workspace/harbor_task/environment/docker-compose.yaml:1",
+        "workspace/harbor_task/tests/docker-compose.yaml:1",
+        "workspace/harbor_task/environment/Dockerfile:5",
+        "expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py:72"
+      ],
+      "remediation": "Remove direct Compose files and formal Compose/extra broker-container dependencies. Put public Starter inside environment and rewrite Agent COPY for environment build context; preserve separate Verifier and candidate artifacts handoff.",
+      "acceptance_evidence": "Complete package,one-container startup contract,valid COPY/dependency/entry mappings for both contexts and platform adapter evidence. Dynamic build/handoff/reward evidence only in an authorized target environment."
+    },
+    {
+      "id": "C3",
+      "summary": "Trajectory rounds have extra keys and vague scorer-busy classification",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json#rounds[1]",
+        "expert_evidence/trajectory_seed.json#rounds[0]"
+      ],
+      "remediation": "Keep exactly8 keys per round. Move original_status and method_summary_evidence into a sidecar with original records preserved. Classify409 scorer-busy separately from invalid methods and clarify ledger rounds versus effective method cycles.",
+      "acceptance_evidence": "Both trajectory JSONs have exactly8 round keys,unchanged original scores/times/retention,and relative sidecar references. Failure classification traces to original trusted evaluation command."
+    }
+  ],
+  "relaxed_pending": [
+    {
+      "scope": "QA21 fingerprint",
+      "summary": "Missing official four-input task_binding fingerprint is non-blocking. No official algorithm was guessed.",
+      "evidence": [
+        "expert_evidence/run_summary.json"
+      ]
+    },
+    {
+      "scope": "G02/G03/QA03/QA13/QA15 migration",
+      "summary": "Current correction scoring isCPU;historical upstream A100 is separate. No automatic full retraining/recalibration solely for device migration.",
+      "evidence": [
+        "expert_evidence/provenance/forecast-export-manifest.json"
+      ]
+    },
+    {
+      "scope": "QA17/H06 NOP",
+      "summary": "Complete matching local NOP exists;not independently rerun. Future version association after migration may be supplemented under relaxation,but does not waive confirmed Compose failures.",
+      "evidence": [
+        "expert_evidence/provenance/native_harbor/nop/task-source-manifest.json"
+      ]
+    }
+  ],
+  "tool_gaps": {
+    "official_0_3_10": "not available;official acceptance pending",
+    "missing": [
+      "official check_submission.py",
+      "official independent GPU precheck",
+      "official task_fingerprint.py"
+    ],
+    "old_tool": "Skill states actual localv0.3.2;not executed or relabeled",
+    "review_type": "local-v4-content-review;no official PASS claim"
+  },
+  "not_run_this_review": [
+    "submitted Python/shell",
+    "Docker/build/Verifier/NOP",
+    "training/models/provider calls",
+    "pickle/weight deserialization",
+    "target platform Hidden/schema/resources/12h verification",
+    "official format/GPU/fingerprint tools",
+    "strict whole-artifact privacy scanner"
+  ],
+  "privacy_review": {
+    "status": "NOT READY for external release",
+    "mode": "limited static text/member inspection; not strict scanner certification",
+    "findings": [
+      {
+        "code": "AUTHOR_ABSOLUTE_PATH",
+        "location": "expert_evidence/provenance/forecast-export-manifest.json:5"
+      },
+      {
+        "code": "AUTHOR_ABSOLUTE_PATH",
+        "location": "expert_evidence/provenance/shared-backbone-training.run.log:254"
+      },
+      {
+        "code": "AUTHOR_ABSOLUTE_PATH",
+        "location": "expert_evidence/provenance/preparation-complete.json:3"
+      }
+    ],
+    "summary": "Author-machine absolute paths remain. Only types and member locations are reported; values are not copied. Runtime container paths must be distinguished from author-machine paths. No whole-binary/nested-archive strict certification or external release was performed.",
+    "remediation": "Regenerate author-machine paths as relative paths or stable logical identifiers. Preserve raw originals outside release attachments. Rebuild the complete ZIP and strictly scan each final artifact separately.",
+    "acceptance_evidence": "Zero-blocker strict scan for final ZIP and every attachment,rebuilt member/hash manifests,and relative-only report references."
+  },
+  "inventory": {
+    "member_count": 4287,
+    "uncompressed_bytes": 650275389,
+    "symlink_count": 0,
+    "encrypted_members": 0,
+    "path_traversal_count": 0,
+    "git_directory_count": 0,
+    "zip_sha256": "18ee42736dcb71d492cf47a8f83a3d863d148cdb4b1a3d4a9488a8c8087e3dba"
+  },
+  "risk_notes": [
+    "Explicit unsupported network/storage conditions.",
+    "Compose/root-context adapter is not current-platform compatibility.",
+    "Author-machine absolute paths remain in release candidate;no external release performed."
+  ]
+}

@@ -1,0 +1,39 @@
+schema_version = "1.4"
+artifacts = ["/workspace/solution"]
+
+[task]
+name = "autoresearch/exact-retrieval-kernel"
+version = "0.2.3"
+description = "Optimize a norm-preserving multihead retrieval operator under fixed numerical semantics."
+authors = [{name = "AutoResearch Expert"}]
+
+[metadata]
+category = "numerical-algorithms"
+path_contract = "harbor-environment-v1"
+difficulty_explanation = "Algorithm implementation is open; latency is scored only after numerical correctness. Baseline calibrated from all five formal seed runs."
+
+[agent]
+user = "agent"
+timeout_sec = 50400
+network_mode = "allowlist"
+allowed_hosts = ["modcon.top", "ark.cn-beijing.volces.com"]
+
+[environment]
+cpus = 1
+memory_mb = 2048
+storage_mb = 4096
+network_mode = "no-network"
+workdir = "/workspace"
+build_timeout_sec = 1800
+
+[verifier]
+environment_mode = "separate"
+user = "root"
+timeout_sec = 1800
+
+[verifier.environment]
+cpus = 1
+memory_mb = 2048
+storage_mb = 4096
+network_mode = "no-network"
+workdir = "/tests"

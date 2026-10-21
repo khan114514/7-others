@@ -1,0 +1,199 @@
+{
+  "status": "credible_method_directions_exhausted_under_current_catalog",
+  "decision": "The finer own kernel events justified experiment 50: cache a contiguous transposed down weight while preserving row-major activations. Actual Dev is valid and exact but slower than selected 41 and allocates 3.818 GB more. Preserve the local overbudget draft and the tested worse candidate. No further specific credible direction is established under the fixed operator catalog; restore 41 and stop unsupported permutations.",
+  "public_operator_profile_review": {
+    "prior_stopping_record": "research-exhausted-before-operator-profile.json",
+    "source_index": "own-public-operator-profile/source-index.json",
+    "analysis": "own-public-operator-profile/analysis.json",
+    "source_hashes_verified": true,
+    "scope": "Own experiment 41, one public case, first and next forward. Not a new score.",
+    "annotation_caution": "Inclusive times can overlap and are perturbed by instrumentation. CPU-side and device-only rows were kept separate rather than double-counted.",
+    "actionable_finding": "Image MLP is the largest recurring CPU-side inclusive CUDA annotation: about 31.435 ms across 28 layers on the next forward. Cached text MLP/attention annotations have zero CUDA work then.",
+    "new_method_argument_supported": true,
+    "new_gpu_evaluations": 1,
+    "experiment": "49_batch_partition_image_mlp",
+    "decision": "Two independent CFG-batch MLPs preserve predictions but regress reward to 0.6479712186197056. Reject finer partition trials without evidence of a different kernel advantage."
+  },
+  "public_stage_profile_review": {
+    "prior_stopping_record": "research-exhausted-before-public-profile.json",
+    "source_index": "own-public-stage-profile/source-index.json",
+    "stage_times": "own-public-stage-profile/own-public-Dev-stage-times.json",
+    "analysis": "own-public-stage-profile/analysis.json",
+    "stage_count": 96,
+    "integrity": "Raw SHA256 matches source index; artifact and run match experiment 41; all three baseline and candidate stage sums exactly match original Dev feedback.",
+    "finding": "First forward takes 124-127 ms; typical later forwards take 58-59 ms. Approximately 67 ms excess over later-stage medians is consistent with included prefix construction, but cannot be attributed to specific operations from this whole-decoder profile.",
+    "new_method_argument_supported": false,
+    "new_gpu_evaluations": 0,
+    "reason_for_no_evaluation": "No changed graph with a newly supported algorithmic argument was identified; unchanged repeats and unsupported variant sweeps would not resolve an evidence-based hypothesis.",
+    "formal_latency_extrapolated": false
+  },
+  "scope": "Own independent native Bifrost-1 decoder research using the fixed public operator catalog and real public Dev evaluations. This is a research stopping judgment, not a proof of global optimality.",
+  "best_valid_method": {
+    "experiment": "41_reversed_value_product",
+    "builder": "experiments/41_reversed_value_product/method.py",
+    "program": "experiments/41_reversed_value_product/program.json",
+    "feedback": "experiments/41_reversed_value_product/dev-result.json",
+    "artifact_sha256": "6a9a696f1debd902737f957e9ed31430d827c7cffc1181b353412e0d9133b723",
+    "execution_status": "COMPLETED",
+    "quality_pass": true,
+    "reward": 0.7287394620596103,
+    "baseline_mean_ms": 7134.07145690918,
+    "candidate_mean_ms": 1935.192061106364,
+    "peak_cuda_allocated_bytes": 29700810240,
+    "all_disclosed_prediction_and_final_latent_errors": 0.0
+  },
+  "latest_test": {
+    "experiment": "50_contiguous_down_weight",
+    "builder": "experiments/50_contiguous_down_weight/method.py",
+    "program": "experiments/50_contiguous_down_weight/program.json",
+    "feedback": "experiments/50_contiguous_down_weight/dev-result.json",
+    "cli_receipt": "experiments/50_contiguous_down_weight/dev-cli-receipt.json",
+    "artifact_sha256": "109d27d7719c73e3b8ccdeb1a695618185d3eb729254466e1eeb6041ecf77699",
+    "execution_status": "COMPLETED",
+    "cli_exit_code": 0,
+    "quality_pass": true,
+    "reward": 0.7249700422580868,
+    "baseline_mean_ms": 7127.302485148112,
+    "candidate_mean_ms": 1960.221701304118,
+    "peak_cuda_allocated_bytes": 33518438400,
+    "all_disclosed_errors": 0.0,
+    "local_failed_draft": "experiments/50_contiguous_down_weight/local-overbudget/",
+    "decision": "Valid worse method, rejected and preserved. Initial known-overbudget draft was not evaluated."
+  },
+  "non_improving_evidence": [
+    {
+      "experiments": [
+        38,
+        39
+      ],
+      "direction": "Full and down-only image MLP multiplication orientation",
+      "rewards": [
+        0.7191365535891342,
+        0.71892863627774
+      ]
+    },
+    {
+      "experiments": [
+        40
+      ],
+      "direction": "Reverse image attention score product",
+      "rewards": [
+        0.7087043588017636
+      ]
+    },
+    {
+      "experiments": [
+        42,
+        43
+      ],
+      "direction": "Direct channel-layout output projection with batched and single-matrix contractions",
+      "rewards": [
+        0.7217970460659884,
+        0.7226169381070205
+      ]
+    },
+    {
+      "experiments": [
+        44,
+        45
+      ],
+      "direction": "KV-grouped probability/value products in both orientations",
+      "rewards": [
+        0.7245160629401872,
+        0.7283955073387481
+      ]
+    },
+    {
+      "experiments": [
+        46,
+        47
+      ],
+      "direction": "Isolated grouped scores and combined grouped attention",
+      "rewards": [
+        0.7229790101010181,
+        0.7269055575525073
+      ]
+    },
+    {
+      "experiments": [
+        48
+      ],
+      "direction": "Two independent query-axis tiles with shared full keys/values",
+      "rewards": [
+        0.7202815261270124
+      ]
+    },
+    {
+      "experiments": [
+        49
+      ],
+      "direction": "Split image MLP into independent 256-row CFG batches",
+      "rewards": [
+        0.6479712186197056
+      ]
+    },
+    {
+      "experiments": [
+        50
+      ],
+      "direction": "Cached contiguous transposed image MLP down-weight storage with unchanged row-major activations",
+      "rewards": [
+        0.7249700422580868
+      ]
+    }
+  ],
+  "catalog_constraints": [
+    "Full gate/up fused weights have 135790592 elements, exceeding the 100000000-element tensor bound.",
+    "Retaining all permissible split gate/up fused weights across 28 layers requires 7604273152 BF16 bytes, exceeding the 7 GiB prefix budget before other caches.",
+    "No custom fused normalization, residual or MLP epilogue kernels, sparse updates or incremental cache mutation are available.",
+    "Remaining image hidden states depend on changing image tokens; unconditional first-stage prefix reuse has no preservation argument.",
+    "Final image normalization and projection are fixed evaluator operations after the editable layer DAG."
+  ],
+  "limitations": [
+    "Candidate reward comparisons use separate evaluations and are not paired statistical tests between candidates.",
+    "Hidden prompts and formal 256-stage evaluation remain untested.",
+    "Other combinatorial graphs may exist; no further sufficiently supported method direction was identified."
+  ],
+  "research_record": "research-notes.md",
+  "evaluator_rules_modified": false,
+  "failures_and_non_improving_attempts_preserved": true,
+  "public_kernel_profile_review": {
+    "prior_stopping_record": "research-exhausted-before-kernel-profile.json",
+    "source_index": "own-public-kernel-profile/source-index.json",
+    "analysis": "own-public-kernel-profile/analysis.json",
+    "reproducible_analysis": "own-public-kernel-profile/analyze.py",
+    "all_38_parts_hashes_bytes_and_event_counts_verified": true,
+    "scope": "Own selected experiment 41; original one public case, first and next forward. No new score or GPU evaluation for the trace.",
+    "kernel_launch_correlations_verified": {
+      "first_forward": 2949,
+      "next_forward": 1185
+    },
+    "layer_node_kernel_attribution_count": {
+      "first_forward": 2940,
+      "next_forward": 1176
+    },
+    "attribution_method": "Original kernel External id links to CPU op; CPU operation containment in layer-node annotation; matching runtime correlation checked. Nine non-layer kernels per forward are not attributed to editable nodes.",
+    "next_forward_image_mlp_kernel_sums_ms": {
+      "gate": 8.237905,
+      "up": 8.270674,
+      "down": 13.13303,
+      "silu": 0.777657,
+      "multiply": 1.015704
+    },
+    "actionable_argument": "The down projection has equal multiply count to gate/up but a greater duration. Test a physically contiguous transposed down weight, changing storage/dispatch without reversing activation/output orientation or splitting reductions.",
+    "new_method_argument_supported": true,
+    "new_gpu_evaluations": 1,
+    "experiment": "50_contiguous_down_weight",
+    "decision": "Valid and numerically exact but no Dev speed advantage; allocation rises by 3817628160 bytes. Reject further unsupported physical-layout sweeps.",
+    "caution": "Kernel duration sums, CPU inclusive times and GPU annotations can overlap and instrumentation perturbs timing. These are not new scores or research clocks.",
+    "formal_256_stage_amortized_gain_inferred": false
+  },
+  "remaining_directions_review": [
+    "MLP GEMMs dominate recurring GPU work; contraction orientation, token-row partition and physical down-weight layout have now all failed to improve selected Dev reward.",
+    "SiLU and gate multiply kernels take about 1.793 ms in this diagnostic but no fused epilogue/kernel operator exists. Remaining fixed RMS/softmax operators cannot be custom-fused.",
+    "Kernel events give no bandwidth/cache counters or supported alternative dispatch argument for sweeping faster gate/up weight layouts or reduction tiles.",
+    "Attention layouts, grouped products, score orientations and query partitioning were already tested. The finer events supply no new preserving factorization.",
+    "Prefix construction remains included and invariant work is already cached. Image states change; no additional valid first-value reuse follows from kernel events.",
+    "Formal 256-stage cache amortization is untested and is not inferred from the 32-stage aggregate feedback."
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "scope": "Actual JSON inverse logical-index diagnostic, no physical strides or numerical kernels",
+  "artifact_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df",
+  "value_coordinates_checked": 3985408,
+  "probability_boundary_coordinates_checked": 57344,
+  "probability_transform": "One original transpose dim2/3; unchanged exact inverse for every symbolic source position",
+  "ordered_sum": "channel_query_output[b,h,d,q] sums source positions t=0..555 in original order",
+  "source_mapping": "t<300:text_v_rows[b,t,128*(h//7)+d]; t>=300:image_packed_qkv[b,32+h//7,t-300,d]",
+  "shapes": {
+    "image_packed_qkv": [
+      2,
+      36,
+      256,
+      128
+    ],
+    "text_v_rows": [
+      2,
+      300,
+      512
+    ],
+    "image_prob": [
+      2,
+      28,
+      256,
+      556
+    ],
+    "image_v_packed_heads": [
+      2,
+      4,
+      256,
+      128
+    ],
+    "image_v_packed_rows": [
+      2,
+      256,
+      4,
+      128
+    ],
+    "image_v": [
+      2,
+      256,
+      512
+    ],
+    "v": [
+      2,
+      556,
+      512
+    ],
+    "value_shape": [
+      2,
+      556,
+      4,
+      128
+    ],
+    "value_heads": [
+      2,
+      4,
+      556,
+      128
+    ],
+    "value_repeat": [
+      2,
+      28,
+      556,
+      128
+    ],
+    "value_transpose": [
+      2,
+      28,
+      128,
+      556
+    ],
+    "probability_transpose": [
+      2,
+      28,
+      556,
+      256
+    ]
+  }
+}

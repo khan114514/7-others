@@ -1,0 +1,76 @@
+{
+  "round": 2,
+  "recorded_at_utc": "2026-10-06T04:40:27.777064Z",
+  "public_evaluation_cli_invocations": 0,
+  "cpu_precheck_cli": {
+    "command": "python3 -B /workspace/agent-output/round-02/cpu_precheck.py > /workspace/agent-output/round-02/cpu_precheck.log 2>&1",
+    "exit_code": 0,
+    "status": "PASS",
+    "log_path": "cpu_precheck.log",
+    "score": null
+  },
+  "failures": [
+    {
+      "argv": ["python3", "-B", "-"],
+      "command_description": "Offline final artifact audit supplied via stdin; no network or evaluation calls.",
+      "failing_code": "datetime.fromisoformat(plan['time'].replace('Z', '+00:00'))",
+      "exit_code": 1,
+      "stderr_path": "artifact-audit-first-failure.log",
+      "category": "local_artifact_audit_timestamp_parse_error",
+      "reason": "Python 3.10 rejected the original 9-digit subsecond ISO timestamp 2026-10-06T04:40:27.777064304Z.",
+      "resolution": "Keep the same observed UTC timestamp to microsecond precision (2026-10-06T04:40:27.777064Z) and rerun the offline artifact audit. This does not change the method or the completed CPU precheck.",
+      "quality_result": false
+    },
+    {
+      "command": "for f in /workspace/agent-output/round-01/*; do printf '\\n===== %s =====\\n' \"$f\"; sed -n '1,240p' \"$f\"; done",
+      "aggregate_exit_code": 0,
+      "failing_subcommand_exit_code": null,
+      "stderr": "sed: read error on /workspace/agent-output/round-01/evaluation: Is a directory",
+      "category": "local_discovery_directory_read_error",
+      "resolution": "Read the four own-track files inside round-01/evaluation individually. No evaluation was submitted and no previous artifacts were changed."
+    },
+    {
+      "command": "cat /workspace/agent-output/round-01/result.json",
+      "exit_code": 1,
+      "stderr": "cat: /workspace/agent-output/round-01/result.json: No such file or directory",
+      "category": "local_discovery_missing_result_path",
+      "resolution": "Read the existing complete receipt at round-01/evaluation/result.json."
+    },
+    {
+      "command": "git -C /workspace status --short",
+      "exit_code": 128,
+      "stderr": "fatal: not a git repository (or any parent up to mount point /)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
+      "category": "local_git_metadata_unavailable",
+      "resolution": "Use source diff, AST comparisons and hashes of the unchanged prior artifacts. No Git metadata was inspected further."
+    },
+    {
+      "command": "ls -l /workspace/AGENTS.md /workspace/solution/AGENTS.md /workspace/agent-output/AGENTS.md /workspace/agent-output/round-01/AGENTS.md /AGENTS.md",
+      "exit_code": 2,
+      "stderr": "ls: cannot access '/workspace/AGENTS.md': No such file or directory\nls: cannot access '/workspace/solution/AGENTS.md': No such file or directory\nls: cannot access '/workspace/agent-output/AGENTS.md': No such file or directory\nls: cannot access '/workspace/agent-output/round-01/AGENTS.md': No such file or directory\nls: cannot access '/AGENTS.md': No such file or directory",
+      "category": "optional_instruction_files_absent",
+      "resolution": "Follow the user-provided constraints and instruction.md; none of the explicitly checked AGENTS.md files exists."
+    }
+  ],
+  "expected_nonzero_commands": [
+    {
+      "command": "diff -u /workspace/agent-output/round-01/method.py /workspace/solution/method.py",
+      "exit_code": 1,
+      "meaning": "Expected source differences: descriptions/name and fm_time_sampler formula. This is not a failed precheck."
+    }
+  ],
+  "warnings": [
+    {
+      "source": "cpu_precheck.log",
+      "text": "UserWarning: Failed to initialize NumPy: No module named 'numpy'",
+      "outcome": "CPU torch 2.5.1 and all seven checks succeeded; no NumPy dependency was added."
+    }
+  ],
+  "historical_failure_records_preserved": [
+    "../round-01/cli-failures.json",
+    "../round-01/evaluation/client-launch.json",
+    "../round-01/evaluation/evaluation-client.log"
+  ],
+  "historical_client_timeout": "Round-01's accepted public job outlived the client's --wait-seconds 5, so that client exited 1 with TimeoutError. The later same-job terminal receipt succeeded. The timeout and success evidence remain separate and unchanged.",
+  "score": null,
+  "effective_research_time_claimed": false
+}

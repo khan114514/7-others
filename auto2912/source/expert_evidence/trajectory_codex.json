@@ -1,0 +1,297 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "policy_name": "pooled_absolute_error_tree_calibration",
+      "method_summary": "Fits a regularized histogram gradient boosting model to calibration residuals using sensor identity, traffic level, anchor disagreement, recent-history statistics, horizon and clock, then adds the predicted correction to the upstream forecast. The complete protected MAE is 14.1452638897 (seeds 17, 29, 43), improving identity 15.4218571566; network-context and longer-boosting variants were rejected. Actual mean MAE 14.145263889696942; retained as best.",
+      "status": "ok",
+      "score": 14.145263889696942,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-06 20:24:20"
+    },
+    {
+      "round": 2,
+      "policy_name": "horizon_tree_smooth_network_blend",
+      "method_summary": "Blends partially pooled short/long-horizon median residual trees with a small sensor-embedding NumPy network trained on smooth absolute error; both use local history and learned sensor-neighborhood context, and the network adds periodic clock features and a linear correction path. Complete protected MAE is 14.0354537227 for seeds 17, 29 and 43, improving horizon trees 14.1101708074, so the 75% tree / 25% network blend is retained. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-06 20:54:21",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 3,
+      "policy_name": "horizon_dependent_tree_smooth_network_blend",
+      "method_summary": "Blends partially pooled horizon residual trees with a sensor-embedding NumPy residual network using learned neighborhood context and periodic clock features. The network weight is 0.18 for horizons 1-6 and 0.32 for horizons 7-12; complete protected MAE is 14.0302026105, improving the constant 0.25 blend (14.0354537227), so this schedule is retained. Actual mean MAE 14.030202610462462; retained as best.",
+      "status": "ok",
+      "score": 14.030202610462462,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-06 21:07:36"
+    },
+    {
+      "round": 4,
+      "policy_name": "cross_fitted_conditional_residual_blend",
+      "method_summary": "Replaces the fixed horizon-only tree/network mixture with a clipped sigmoid gate learned from three calibration-origin cross-fits, using horizon, traffic disagreements, history variability and expert disagreement. Complete protected masked MAE improved from 14.0302026105 to 14.0180263118 under seeds 17, 29 and 43; history-view ensembles and sensor-seasonal heads were evaluated and reverted after worse protected MAE. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-06 21:37:37",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 5,
+      "policy_name": "graph_shared_seasonal_conditional_blend",
+      "method_summary": "Adds sensor intercept, horizon and Fourier heads to the residual network, with a learned-neighborhood Laplacian penalty sharing only the four seasonal coefficients, then refits the gate from matching origin cross-fits. Complete protected masked MAE improves from 14.0180263118 to 14.0076506609 under unchanged seeds 17, 29 and 43, with all quality gates passing; the graph-head method is retained. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-06 22:07:39",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 6,
+      "policy_name": "graph_regularized_sensor_context_blend",
+      "method_summary": "Adds sensor-specific intercepts, horizon slopes and bounded anchor/history-disagreement slopes to cross-fitted logits blending median residual trees with a graph-seasonal residual network, using ridge and learned-neighbor Laplacian penalties. Complete protected masked MAE improves from 14.0054323900 to 13.9782379197 under unchanged seeds 17, 29 and 43, with all quality gates passing; the sensor-context method is retained. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-06 22:37:40",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 7,
+      "policy_name": "graph_regularized_sensor_direction_blend",
+      "method_summary": "Extends the graph-seasonal residual network and cross-fitted tree gate with two bounded signed anchor/base and recent/base disagreement slopes per sensor, alongside the existing sensor intercept, horizon, and absolute-context terms. The complete protected three-seed masked MAE is 13.9770593182 versus 13.9782379197 for the retained context gate, with all quality gates passing, so the directional gate is retained. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-06 23:07:42",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 8,
+      "policy_name": "graph_regularized_sensor_expert_direction",
+      "method_summary": "Adds a shared and graph-regularized sensor-specific signed neural-minus-tree discrepancy slope to the cross-fitted blend of median trees and a graph-seasonal residual network. Complete protected three-seed MAE improves from 13.9770592162 to 13.9763124847 with all quality gates passing, so this method is retained; active fitting uses one thread to meet the CPU budget. Actual mean MAE 13.972877199845888; retained as best.",
+      "status": "ok",
+      "score": 13.972877199845888,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-06 23:42:48"
+    },
+    {
+      "round": 9,
+      "policy_name": "graph_regularized_sensor_neighbor_horizon_gate",
+      "method_summary": "Adds horizon-dependent and learned-neighbor signed expert disagreement to the graph-regularized sensor blend gate over median residual trees and a graph-seasonal residual network. The unchanged complete three-seed public evaluation confirms MAE 13.9728771998 versus 13.9763124847 for the previous signed-gap gate, with all quality gates passing; this is the retained control. Actual mean MAE 13.966280749980996; retained as best.",
+      "status": "ok",
+      "score": 13.966280749980996,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-07 00:20:02"
+    },
+    {
+      "round": 10,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 00:50:03",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 11,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 01:20:05",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 12,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 01:47:31",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 13,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 01:48:00",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 14,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 01:49:00",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 15,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 01:50:02",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 16,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 01:51:01",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 17,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Actual mean MAE 13.919461925615863; retained as best.",
+      "status": "ok",
+      "score": 13.919461925615863,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-07 02:00:06"
+    },
+    {
+      "round": 18,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Actual mean MAE 13.919461925615863; previous best retained.",
+      "status": "ok",
+      "score": 13.919461925615863,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:17:00"
+    },
+    {
+      "round": 19,
+      "policy_name": "diffused_graph_ensemble_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors while preserving horizon and daily seasonal terms, blends them with median residual trees through the graph sensor-neighbor-horizon gate, and applies a shallow six-input median residual tree at half strength. The complete three-seed public evaluation confirms MAE 13.9243045613 versus 13.9474322555 without the residual tree and 13.9662807500 before diffusion, with all quality gates passing. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 02:47:02",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 20,
+      "policy_name": "diffused_graph_ensemble_bounded_residual_tree",
+      "method_summary": "Averages two independently initialized graph-seasonal residual networks, diffuses their cross-fitted innovations over learned history neighbors, blends them with horizon-aware median residual trees, and applies a shallow bounded final residual tree with seasonal-preserving context attenuation. The retained complete protected evaluation is MAE 13.9114176347 (seeds 17/29/43, all reload gates passed); a robust expert-support guard was tested and reverted after 13.9115676889. Actual mean MAE 13.911417634726083; retained as best.",
+      "status": "ok",
+      "score": 13.911417634726083,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-07 03:16:02"
+    },
+    {
+      "round": 21,
+      "policy_name": "history_trend_gate_graph_ensemble",
+      "method_summary": "Adds relative tree/network agreement with the last observation and a damped least-squares trend over all twelve history steps to the cross-fitted graph-regularized blending gate. Retained after the complete protected seeds 17/29/43 improved masked MAE from 13.911417634726083 to 13.906717605638235, with all quality gates passed. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 03:46:05",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 22,
+      "policy_name": "prediction_innovation_graph_history_trend_ensemble",
+      "method_summary": "Learns diffusion neighbors from seasonally detrended, scale-normalized out-of-fold network innovations while retaining the history-trend gate and bounded residual diffusion. The complete protected seeds 17/29/43 passed all gates and improved masked MAE from 13.906717605638235 to 13.903431941524218, so this graph is retained. Actual mean MAE 13.903431941524218; retained as best.",
+      "status": "ok",
+      "score": 13.903431941524218,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-07 04:12:44"
+    },
+    {
+      "round": 23,
+      "policy_name": "block_median_innovation_diffusion",
+      "method_summary": "Selects diffusion neighbors by median seasonally detrended innovation correlation across three out-of-fold origin blocks, preserving pooled sensor scales, history-trend gating and bounded residual diffusion. Complete protected seeds 17/29/43 improved masked MAE from 13.903431941524218 to 13.902411027727524, so median edges are retained; median within-block scaling worsened MAE to 13.905305723647922 and was reverted. Actual mean MAE 13.902411027727524; retained as best.",
+      "status": "ok",
+      "score": 13.902411027727524,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-07 04:48:10"
+    },
+    {
+      "round": 24,
+      "policy_name": "confidence_fallback_innovation_diffusion",
+      "method_summary": "Selects innovation diffusion edges with mean correlation minus across-block standard deviation, then blends each sensor toward the history graph according to positive support on its selected eight edges. The corrected complete protected seeds 17/29/43 reached masked MAE 13.902094246542314 versus 13.902411027727524 for median edges, so the confidence fallback is retained; an earlier all-edge support implementation scored 13.903352477641612 and was rejected. Actual mean MAE 13.902094246542314; retained as best.",
+      "status": "ok",
+      "score": 13.902094246542314,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-07 05:17:30"
+    },
+    {
+      "round": 25,
+      "policy_name": "confidence_fallback_innovation_diffusion",
+      "method_summary": "Selects innovation diffusion edges with mean correlation minus across-block standard deviation, then blends each sensor toward the history graph according to positive support on its selected eight edges. The corrected complete protected seeds 17/29/43 reached masked MAE 13.902094246542314 versus 13.902411027727524 for median edges, so the confidence fallback is retained; an earlier all-edge support implementation scored 13.903352477641612 and was rejected. Actual mean MAE 13.902094246542314; previous best retained.",
+      "status": "ok",
+      "score": 13.902094246542314,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 05:50:42"
+    },
+    {
+      "round": 26,
+      "policy_name": "confidence_fallback_innovation_diffusion",
+      "method_summary": "Selects innovation diffusion edges with mean correlation minus across-block standard deviation, then blends each sensor toward the history graph according to positive support on its selected eight edges. The corrected complete protected seeds 17/29/43 reached masked MAE 13.902094246542314 versus 13.902411027727524 for median edges, so the confidence fallback is retained; an earlier all-edge support implementation scored 13.903352477641612 and was rejected. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 06:20:43",
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 27,
+      "policy_name": "confidence_fallback_innovation_diffusion",
+      "method_summary": "Selects innovation diffusion edges with mean correlation minus across-block standard deviation, then blends each sensor toward the history graph according to positive support on its selected eight edges. The corrected complete protected seeds 17/29/43 reached masked MAE 13.902094246542314 versus 13.902411027727524 for median edges, so the confidence fallback is retained; an earlier all-edge support implementation scored 13.903352477641612 and was rejected. Method scoring failed; original CLI and verifier output preserved.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-07 06:23:05",
+      "original_status": "evaluation_error"
+    }
+  ],
+  "run_id": "auto2912-gpt",
+  "duration_seconds": 36003.7909078598,
+  "initial_normal_model_work_seconds": 51.017922163009644,
+  "round_normal_model_work_seconds": 35952.77298569679,
+  "duration_basis": "Exact sum of original normal CLI preflight work receipt plus every own round ledger; failures retained, only evidenced abnormal blocks deducted. No setup, download, final frozen replay or stability time added.",
+  "duration_evidence_root": "expert_evidence/provenance/model_execution/gpt",
+  "metadata_derivation": "Post-research editorial normalization only: evaluation_error maps to failed with original_status preserved; Seed descriptions quote own preserved source comments and actual completed CLI events. Original trajectories preserved under provenance/trajectory_metadata_repair. Scores, retention, timestamps and all clock values unchanged. Model quotations are unverified attempts, not new score evidence."
+}

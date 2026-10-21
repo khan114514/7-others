@@ -1,0 +1,284 @@
+{"guard": {"landlock_abi": 1, "filesystem_enforced": true, "ipv4_ipv6_denied": true, "no_new_privileges": true}}
+
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+[init_weights] DD_Model with init_std=0.0180422
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+historical-resources/venvs/dd1/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+historical-resources/venvs/dd1/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: historical-codex-models/training_venv/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+historical-codex-models/training_venv/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR/models/dd.py:109: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=False):
+historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR/models/dd.py:302: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  concat_pos = self.L - torch.tensor(self.accum_token_length[1:])[split_t] - 1
+{
+  "diagnostic_only": true,
+  "fid_score": null,
+  "formal_score": null,
+  "gpu_used": false,
+  "checkpoint_update": 2500,
+  "checkpoint_sha256": "b159db51ba8f281537579c5a409495af3cdef23907fc05399e10f03c64335286",
+  "sample_count": 4,
+  "dataset_scope": "Four known training teacher/noise pairs; no generalization claim",
+  "precision": "CPU bf16 autocast; not the official scoring precision or protocol",
+  "grid_rows": [
+    "teacher",
+    "student_prefix0",
+    "student_prefix5",
+    "student_prefix9"
+  ],
+  "prefix_metrics": [
+    {
+      "prefix_scale": 0,
+      "ce_generated_suffix": 4.237185478210449,
+      "lpips_hybrid_reconstruction": 0.431640625,
+      "image_std": 0.4429585039615631,
+      "per_scale": [
+        {
+          "scale": 0,
+          "generated_tokens_per_image": 1,
+          "ce": 2.88301420211792,
+          "classification_accuracy": 0.5,
+          "distinct_argmax_codes": 4,
+          "continuous_mse": 0.016718614846467972,
+          "continuous_rms": 0.1493883579969406,
+          "target_rms": 0.14131566882133484,
+          "uses_classification_at_formal_split": true
+        },
+        {
+          "scale": 1,
+          "generated_tokens_per_image": 4,
+          "ce": 2.9164042472839355,
+          "classification_accuracy": 0.4375,
+          "distinct_argmax_codes": 14,
+          "continuous_mse": 0.033392734825611115,
+          "continuous_rms": 0.18836766481399536,
+          "target_rms": 0.117777518928051,
+          "uses_classification_at_formal_split": true
+        },
+        {
+          "scale": 2,
+          "generated_tokens_per_image": 9,
+          "ce": 2.4591245651245117,
+          "classification_accuracy": 0.4444444477558136,
+          "distinct_argmax_codes": 34,
+          "continuous_mse": 0.06778844445943832,
+          "continuous_rms": 0.2633330821990967,
+          "target_rms": 0.12097656726837158,
+          "uses_classification_at_formal_split": true
+        },
+        {
+          "scale": 3,
+          "generated_tokens_per_image": 16,
+          "ce": 3.332322359085083,
+          "classification_accuracy": 0.1875,
+          "distinct_argmax_codes": 62,
+          "continuous_mse": 0.05781533941626549,
+          "continuous_rms": 0.23963482677936554,
+          "target_rms": 0.12836681306362152,
+          "uses_classification_at_formal_split": true
+        },
+        {
+          "scale": 4,
+          "generated_tokens_per_image": 25,
+          "ce": 3.6732852458953857,
+          "classification_accuracy": 0.23000000417232513,
+          "distinct_argmax_codes": 97,
+          "continuous_mse": 0.050875887274742126,
+          "continuous_rms": 0.2166881412267685,
+          "target_rms": 0.12146733701229095,
+          "uses_classification_at_formal_split": true
+        },
+        {
+          "scale": 5,
+          "generated_tokens_per_image": 36,
+          "ce": 3.843600034713745,
+          "classification_accuracy": 0.1736111044883728,
+          "distinct_argmax_codes": 139,
+          "continuous_mse": 0.073222316801548,
+          "continuous_rms": 0.2565087676048279,
+          "target_rms": 0.1233942061662674,
+          "uses_classification_at_formal_split": false
+        },
+        {
+          "scale": 6,
+          "generated_tokens_per_image": 64,
+          "ce": 3.8106143474578857,
+          "classification_accuracy": 0.1796875,
+          "distinct_argmax_codes": 248,
+          "continuous_mse": 0.1224907636642456,
+          "continuous_rms": 0.33480629324913025,
+          "target_rms": 0.14534692466259003,
+          "uses_classification_at_formal_split": false
+        },
+        {
+          "scale": 7,
+          "generated_tokens_per_image": 100,
+          "ce": 4.054803371429443,
+          "classification_accuracy": 0.1574999988079071,
+          "distinct_argmax_codes": 374,
+          "continuous_mse": 0.14428971707820892,
+          "continuous_rms": 0.3671988546848297,
+          "target_rms": 0.13148128986358643,
+          "uses_classification_at_formal_split": false
+        },
+        {
+          "scale": 8,
+          "generated_tokens_per_image": 169,
+          "ce": 4.21077823638916,
+          "classification_accuracy": 0.1420118361711502,
+          "distinct_argmax_codes": 617,
+          "continuous_mse": 0.20733891427516937,
+          "continuous_rms": 0.4427407383918762,
+          "target_rms": 0.13078057765960693,
+          "uses_classification_at_formal_split": false
+        },
+        {
+          "scale": 9,
+          "generated_tokens_per_image": 256,
+          "ce": 4.687911510467529,
+          "classification_accuracy": 0.0947265625,
+          "distinct_argmax_codes": 828,
+          "continuous_mse": 1.130089521408081,
+          "continuous_rms": 1.053295612335205,
+          "target_rms": 0.15403175354003906,
+          "uses_classification_at_formal_split": false
+        }
+      ]
+    },
+    {
+      "prefix_scale": 5,
+      "ce_generated_suffix": 4.275825500488281,
+      "lpips_hybrid_reconstruction": 0.375,
+      "image_std": 0.6452730894088745,
+      "per_scale": [
+        {
+          "scale": 5,
+          "generated_tokens_per_image": 36,
+          "ce": 3.86804461479187,
+          "classification_accuracy": 0.1666666716337204,
+          "distinct_argmax_codes": 139,
+          "continuous_mse": 0.023145904764533043,
+          "continuous_rms": 0.13064637780189514,
+          "target_rms": 0.1233942061662674,
+          "uses_classification_at_formal_split": false
+        },
+        {
+          "scale": 6,
+          "generated_tokens_per_image": 64,
+          "ce": 3.7006800174713135,
+          "classification_accuracy": 0.2109375,
+          "distinct_argmax_codes": 247,
+          "continuous_mse": 0.03157820925116539,
+          "continuous_rms": 0.15199217200279236,
+          "target_rms": 0.14534692466259003,
+          "uses_classification_at_formal_split": false
+        },
+        {
+          "scale": 7,
+          "generated_tokens_per_image": 100,
+          "ce": 3.9506638050079346,
+          "classification_accuracy": 0.16750000417232513,
+          "distinct_argmax_codes": 372,
+          "continuous_mse": 0.03171472251415253,
+          "continuous_rms": 0.15372265875339508,
+          "target_rms": 0.13148128986358643,
+          "uses_classification_at_formal_split": false
+        },
+        {
+          "scale": 8,
+          "generated_tokens_per_image": 169,
+          "ce": 4.115501403808594,
+          "classification_accuracy": 0.14644969999790192,
+          "distinct_argmax_codes": 603,
+          "continuous_mse": 0.0392158068716526,
+          "continuous_rms": 0.17353686690330505,
+          "target_rms": 0.13078057765960693,
+          "uses_classification_at_formal_split": false
+        },
+        {
+          "scale": 9,
+          "generated_tokens_per_image": 256,
+          "ce": 4.70980978012085,
+          "classification_accuracy": 0.0888671875,
+          "distinct_argmax_codes": 833,
+          "continuous_mse": 0.17055268585681915,
+          "continuous_rms": 0.39316684007644653,
+          "target_rms": 0.15403175354003906,
+          "uses_classification_at_formal_split": false
+        }
+      ]
+    },
+    {
+      "prefix_scale": 9,
+      "ce_generated_suffix": 4.3019490242004395,
+      "lpips_hybrid_reconstruction": 0.1396484375,
+      "image_std": 0.642874538898468,
+      "per_scale": [
+        {
+          "scale": 9,
+          "generated_tokens_per_image": 256,
+          "ce": 4.3019490242004395,
+          "classification_accuracy": 0.1240234375,
+          "distinct_argmax_codes": 848,
+          "continuous_mse": 0.023509083315730095,
+          "continuous_rms": 0.10393296182155609,
+          "target_rms": 0.15403175354003906,
+          "uses_classification_at_formal_split": false
+        }
+      ]
+    }
+  ],
+  "missing_keys": [
+    "lvl_1L",
+    "attn_bias_for_masking",
+    "blocks.0.attn.zero_k_bias",
+    "blocks.1.attn.zero_k_bias",
+    "blocks.2.attn.zero_k_bias",
+    "blocks.3.attn.zero_k_bias",
+    "blocks.4.attn.zero_k_bias",
+    "blocks.5.attn.zero_k_bias",
+    "blocks.6.attn.zero_k_bias",
+    "blocks.7.attn.zero_k_bias",
+    "blocks.8.attn.zero_k_bias",
+    "blocks.9.attn.zero_k_bias",
+    "blocks.10.attn.zero_k_bias",
+    "blocks.11.attn.zero_k_bias",
+    "blocks.12.attn.zero_k_bias",
+    "blocks.13.attn.zero_k_bias",
+    "blocks.14.attn.zero_k_bias",
+    "blocks.15.attn.zero_k_bias"
+  ],
+  "unexpected_keys": [],
+  "unscored_head_decomposition": [
+    {
+      "diagnostic_loss_split_t": 0,
+      "lpips_to_known_teacher": 0.41796875,
+      "formal_split_used_only_when": false
+    },
+    {
+      "diagnostic_loss_split_t": 5,
+      "lpips_to_known_teacher": 0.431640625,
+      "formal_split_used_only_when": true
+    },
+    {
+      "diagnostic_loss_split_t": 10,
+      "lpips_to_known_teacher": 0.59765625,
+      "formal_split_used_only_when": false
+    }
+  ],
+  "head_grid_rows": [
+    "teacher",
+    "continuous_only",
+    "formal_hybrid",
+    "classification_only"
+  ],
+  "completed_at": "2026-10-03T07:40:08.001524+08:00"
+}

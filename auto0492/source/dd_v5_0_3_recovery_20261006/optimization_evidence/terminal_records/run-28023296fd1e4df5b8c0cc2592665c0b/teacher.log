@@ -1,0 +1,159 @@
+
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+runtime:python/lib/python3.12/site-packages/torch/nn/init.py:51: UserWarning: Specified kernel cache directory could not be created! This disables kernel caching. Specified directory is runtime:dd_runs/run-28023296fd1e4df5b8c0cc2592665c0b/kernel-cache. This warning will appear only once per process. (Triggered internally at ../aten/src/ATen/native/cuda/jit_utils.cpp:1442.)
+  tensor.erfinv_()
+[init_weights] VAR with init_std=0.0180422
+
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+runtime:python/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+runtime:python/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+runtime:python_extras/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+runtime:attempt04/workspace/harbor_task/environment/engine/framework/vendor/dpm_solver_pytorch.py:53: SyntaxWarning: invalid escape sequence '\h'
+  The `alphas_cumprod` is the \hat{alpha_n} arrays in the notations of DDPM. Specifically, DDPMs assume that
+runtime:attempt04/workspace/harbor_task/environment/vendor/var/models/dd.py:109: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=False):
+runtime:attempt04/workspace/harbor_task/environment/vendor/var/models/dd.py:302: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  concat_pos = self.L - torch.tensor(self.accum_token_length[1:])[split_t] - 1
+[init_weights] DD_Model with init_std=0.0180422
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: runtime:python_extras/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"teacher_pairs": 256, "elapsed_seconds": 40.50895953178406, "peak_torch_allocated_mib": 5198.3818359375, "peak_torch_reserved_mib": 8898.0}
+{"teacher_pairs": 512, "elapsed_seconds": 67.63165807723999, "peak_torch_allocated_mib": 5295.0537109375, "peak_torch_reserved_mib": 8898.0}
+{"teacher_pairs": 768, "elapsed_seconds": 94.65830278396606, "peak_torch_allocated_mib": 5299.7880859375, "peak_torch_reserved_mib": 8900.0}
+{"teacher_pairs": 1024, "elapsed_seconds": 121.63300037384033, "peak_torch_allocated_mib": 5311.4599609375, "peak_torch_reserved_mib": 8900.0}
+{"teacher_pairs": 1280, "elapsed_seconds": 148.59960460662842, "peak_torch_allocated_mib": 5345.9599609375, "peak_torch_reserved_mib": 8900.0}
+{"teacher_pairs": 1536, "elapsed_seconds": 175.58634734153748, "peak_torch_allocated_mib": 5349.4130859375, "peak_torch_reserved_mib": 8900.0}
+{"teacher_pairs": 1792, "elapsed_seconds": 202.76407480239868, "peak_torch_allocated_mib": 5362.3662109375, "peak_torch_reserved_mib": 8982.0}
+{"teacher_pairs": 2048, "elapsed_seconds": 229.8620400428772, "peak_torch_allocated_mib": 5394.6474609375, "peak_torch_reserved_mib": 8982.0}
+{"teacher_pairs": 2304, "elapsed_seconds": 256.9020941257477, "peak_torch_allocated_mib": 5398.4755859375, "peak_torch_reserved_mib": 8982.0}
+{"teacher_pairs": 2560, "elapsed_seconds": 283.958936214447, "peak_torch_allocated_mib": 5410.9912109375, "peak_torch_reserved_mib": 8982.0}
+{"teacher_pairs": 2816, "elapsed_seconds": 311.0740625858307, "peak_torch_allocated_mib": 5445.9599609375, "peak_torch_reserved_mib": 8982.0}
+{"teacher_pairs": 3072, "elapsed_seconds": 338.1328365802765, "peak_torch_allocated_mib": 5448.5380859375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 3328, "elapsed_seconds": 365.1964511871338, "peak_torch_allocated_mib": 5461.9912109375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 3584, "elapsed_seconds": 392.30188369750977, "peak_torch_allocated_mib": 5495.7099609375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 3840, "elapsed_seconds": 419.58855748176575, "peak_torch_allocated_mib": 5499.7880859375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 4096, "elapsed_seconds": 444.65701127052307, "peak_torch_allocated_mib": 5512.0537109375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 4352, "elapsed_seconds": 467.5434958934784, "peak_torch_allocated_mib": 5545.6474609375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 4608, "elapsed_seconds": 490.3763327598572, "peak_torch_allocated_mib": 5549.5380859375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 4864, "elapsed_seconds": 513.1547827720642, "peak_torch_allocated_mib": 5562.0537109375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 5120, "elapsed_seconds": 535.8904416561127, "peak_torch_allocated_mib": 5596.7099609375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 5376, "elapsed_seconds": 558.6526274681091, "peak_torch_allocated_mib": 5600.6005859375, "peak_torch_reserved_mib": 9064.0}
+{"teacher_pairs": 5632, "elapsed_seconds": 581.4606146812439, "peak_torch_allocated_mib": 5613.1162109375, "peak_torch_reserved_mib": 9146.0}
+{"teacher_pairs": 5888, "elapsed_seconds": 604.2363941669464, "peak_torch_allocated_mib": 5646.7724609375, "peak_torch_reserved_mib": 9146.0}
+{"teacher_pairs": 6144, "elapsed_seconds": 626.9975433349609, "peak_torch_allocated_mib": 5651.4755859375, "peak_torch_reserved_mib": 9146.0}
+{"teacher_pairs": 6400, "elapsed_seconds": 649.8010466098785, "peak_torch_allocated_mib": 5663.1787109375, "peak_torch_reserved_mib": 9146.0}
+{"teacher_pairs": 6656, "elapsed_seconds": 672.5660562515259, "peak_torch_allocated_mib": 5697.5224609375, "peak_torch_reserved_mib": 9228.0}
+{"teacher_pairs": 6912, "elapsed_seconds": 695.3225221633911, "peak_torch_allocated_mib": 5700.1005859375, "peak_torch_reserved_mib": 9228.0}
+{"teacher_pairs": 7168, "elapsed_seconds": 718.11771941185, "peak_torch_allocated_mib": 5712.6162109375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 7424, "elapsed_seconds": 740.9177412986755, "peak_torch_allocated_mib": 5746.2724609375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 7680, "elapsed_seconds": 763.8357541561127, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 7936, "elapsed_seconds": 786.6421096324921, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 8192, "elapsed_seconds": 809.4577107429504, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 8448, "elapsed_seconds": 832.2534465789795, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 8704, "elapsed_seconds": 855.0923361778259, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 8960, "elapsed_seconds": 877.9084722995758, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 9216, "elapsed_seconds": 900.6931302547455, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 9472, "elapsed_seconds": 923.5272114276886, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 9728, "elapsed_seconds": 946.3660683631897, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 9984, "elapsed_seconds": 969.2161328792572, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 10240, "elapsed_seconds": 992.0157568454742, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 10496, "elapsed_seconds": 1014.8530411720276, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 10752, "elapsed_seconds": 1037.7221367359161, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 11008, "elapsed_seconds": 1060.723279953003, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 11264, "elapsed_seconds": 1083.674152135849, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 11520, "elapsed_seconds": 1106.4908380508423, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 11776, "elapsed_seconds": 1129.292245388031, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 12032, "elapsed_seconds": 1152.0786271095276, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 12288, "elapsed_seconds": 1174.9141442775726, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 12544, "elapsed_seconds": 1197.7135338783264, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 12800, "elapsed_seconds": 1220.52015209198, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 13056, "elapsed_seconds": 1243.3199276924133, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 13312, "elapsed_seconds": 1266.119695186615, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 13568, "elapsed_seconds": 1288.8790895938873, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 13824, "elapsed_seconds": 1311.711906194687, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 14080, "elapsed_seconds": 1334.5143556594849, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 14336, "elapsed_seconds": 1357.3092591762543, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 14592, "elapsed_seconds": 1380.1204187870026, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 14848, "elapsed_seconds": 1402.9218394756317, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 15104, "elapsed_seconds": 1425.705668926239, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 15360, "elapsed_seconds": 1448.5160279273987, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 15616, "elapsed_seconds": 1471.2751235961914, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 15872, "elapsed_seconds": 1494.0084567070007, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 16128, "elapsed_seconds": 1516.7841930389404, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 16384, "elapsed_seconds": 1539.5374426841736, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 16640, "elapsed_seconds": 1562.2612521648407, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 16896, "elapsed_seconds": 1585.0247175693512, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 17152, "elapsed_seconds": 1607.7589197158813, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 17408, "elapsed_seconds": 1630.4810094833374, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 17664, "elapsed_seconds": 1653.302593946457, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 17920, "elapsed_seconds": 1676.1353299617767, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 18176, "elapsed_seconds": 1698.9719154834747, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 18432, "elapsed_seconds": 1721.7895023822784, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 18688, "elapsed_seconds": 1744.5709509849548, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 18944, "elapsed_seconds": 1767.347279548645, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 19200, "elapsed_seconds": 1790.1268754005432, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 19456, "elapsed_seconds": 1812.9843246936798, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 19712, "elapsed_seconds": 1835.8961503505707, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 19968, "elapsed_seconds": 1858.7496168613434, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 20224, "elapsed_seconds": 1881.5638229846954, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 20480, "elapsed_seconds": 1904.3922197818756, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 20736, "elapsed_seconds": 1927.2167353630066, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 20992, "elapsed_seconds": 1950.0195748806, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 21248, "elapsed_seconds": 1972.778193950653, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 21504, "elapsed_seconds": 1995.5999307632446, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 21760, "elapsed_seconds": 2018.4088969230652, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 22016, "elapsed_seconds": 2041.2643196582794, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 22272, "elapsed_seconds": 2064.137649536133, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 22528, "elapsed_seconds": 2087.0226294994354, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 22784, "elapsed_seconds": 2109.9137341976166, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 23040, "elapsed_seconds": 2132.8308277130127, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 23296, "elapsed_seconds": 2155.7291474342346, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 23552, "elapsed_seconds": 2178.6372492313385, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 23808, "elapsed_seconds": 2201.562113761902, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 24064, "elapsed_seconds": 2224.51412153244, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 24320, "elapsed_seconds": 2247.437809228897, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 24576, "elapsed_seconds": 2270.394907951355, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 24832, "elapsed_seconds": 2293.2628655433655, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 25088, "elapsed_seconds": 2316.08723115921, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 25344, "elapsed_seconds": 2338.9286592006683, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 25600, "elapsed_seconds": 2361.7584624290466, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 25856, "elapsed_seconds": 2384.5863375663757, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 26112, "elapsed_seconds": 2407.5510885715485, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 26368, "elapsed_seconds": 2430.613241672516, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 26624, "elapsed_seconds": 2453.6284403800964, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 26880, "elapsed_seconds": 2476.5944378376007, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 27136, "elapsed_seconds": 2499.52135181427, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 27392, "elapsed_seconds": 2522.3446640968323, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 27648, "elapsed_seconds": 2545.192267179489, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 27904, "elapsed_seconds": 2568.03254365921, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 28160, "elapsed_seconds": 2590.8614189624786, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 28416, "elapsed_seconds": 2613.7198026180267, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 28672, "elapsed_seconds": 2636.5541541576385, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 28928, "elapsed_seconds": 2659.3856494426727, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 29184, "elapsed_seconds": 2682.135627269745, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 29440, "elapsed_seconds": 2704.878881216049, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 29696, "elapsed_seconds": 2727.6334176063538, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 29952, "elapsed_seconds": 2750.4130458831787, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 30208, "elapsed_seconds": 2773.235643863678, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 30464, "elapsed_seconds": 2796.099818944931, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 30720, "elapsed_seconds": 2818.981064081192, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 30976, "elapsed_seconds": 2841.8821170330048, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 31232, "elapsed_seconds": 2864.7666850090027, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 31488, "elapsed_seconds": 2887.659266233444, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 31744, "elapsed_seconds": 2910.552337169647, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 32000, "elapsed_seconds": 2933.4522728919983, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 32256, "elapsed_seconds": 2956.353403568268, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 32512, "elapsed_seconds": 2979.2684783935547, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_pairs": 32768, "elapsed_seconds": 3002.321193218231, "peak_torch_allocated_mib": 5749.7880859375, "peak_torch_reserved_mib": 9230.0}
+{"teacher_generation_complete": true, "sample_count": 4096}

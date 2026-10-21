@@ -1,0 +1,119 @@
+{
+  "id": "1c6b0407-33d6-44e9-b594-71711395b18e",
+  "task_name": "local-research/bifrost-patch-latent-decoder",
+  "trial_name": "release-nop-00ef0ccf2ee2",
+  "trial_uri": "file://<author-home>/Documents/ChatGPT/New%20project/bifrost1_20261005/private/user10h-final-selection-validation/1791704109650398000/runtime-state-validation/native-validations/00ef0ccf2ee2415ca7cef07a940dfc82/release-nop-00ef0ccf2ee2",
+  "task_id": {
+    "path": "Task"
+  },
+  "source": null,
+  "task_checksum": "c990866fe2105ccc0b10e77dd140c42ce98b9518aa224d6c81a95611ec825a9e",
+  "config": {
+    "task": {
+      "path": "Task",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "release-nop-00ef0ccf2ee2",
+    "trials_dir": "<trusted-runtime-state>/native-validations/00ef0ccf2ee2415ca7cef07a940dfc82",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": "nop",
+      "import_path": null,
+      "model_name": null,
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {},
+      "mcp_servers": []
+    },
+    "user_agent": null,
+    "environment": {
+      "type": null,
+      "import_path": "hybrid_harbor_environment:HybridDockerEnvironment",
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {
+        "lane": "gpt",
+        "numerical_status": "<private-evidence-root>/gpt-human-research-resume/continuous-until-user10h-1791679979081280000/numerical-controller-state/numerical-controller-latest.json",
+        "runtime_root": "<trusted-runtime-state>"
+      },
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "extra_instructions": [],
+    "job_id": null,
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "nop",
+    "version": "1.0.0",
+    "model_info": null
+  },
+  "agent_result": {
+    "n_input_tokens": null,
+    "n_cache_tokens": null,
+    "n_output_tokens": null,
+    "cost_usd": null,
+    "model_usage": null,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 7.625685327767063e-05
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-10-11T07:35:30.334592Z",
+  "finished_at": "2026-10-11T08:16:50.466019Z",
+  "environment_setup": {
+    "started_at": "2026-10-11T07:35:30.422806Z",
+    "finished_at": "2026-10-11T07:35:33.347551Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-10-11T07:35:33.347755Z",
+    "finished_at": "2026-10-11T07:35:33.347901Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-10-11T07:35:33.348078Z",
+    "finished_at": "2026-10-11T07:35:33.348242Z"
+  },
+  "verifier": {
+    "started_at": "2026-10-11T07:35:39.023711Z",
+    "finished_at": "2026-10-11T08:16:50.465038Z"
+  },
+  "step_results": null
+}

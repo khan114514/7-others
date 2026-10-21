@@ -1,0 +1,11 @@
+当前完整包需要返修；本轮为静态内容复核，不是独立复跑或官方0.3.10验收。
+
+1. 保留真实B/R/U和全部失败。公开seed0 B=9.663262058820692、R=9.511905516911611、U=9.497105760787463，复算归一化0.9109287080939392，超过当前V4的0.8（comparison_summary.json及reference_runs/seed_0/result.json）。私有一次0.3279633701145659不能替代Public/Dev门槛。包内作者将区间放宽至1.0、撤销3σ的旧口径不覆盖本轮合同。不要裁剪分数、倒调U或削弱B；交付满足公开区间的实际方法及全部正式成对记录，并明确随机性。随机模式至少3组、按n−1计算Baseline σ及Δ≥3σ；完整保存模型重载不是独立训练重复。若主张确定性，补覆盖完整重训/评测链的依据。
+
+2. workspace/harbor_task/instruction.md:11,38、task.toml:15-47、environment/docker-compose.yaml、tests/docker-compose.yaml、tests/test.sh:18显示CPU sandbox依赖外部A100/H100及socket/SSH工作后端，且训练4h与后评测分开计。请迁移为每sandbox单容器直接用自身H20/L20，取消直属Compose与外部工作服务；删除storage_mb/禁网声明；对完整必要教师/训练/重载/评分轮设置≤7200秒的可中断预算。保留guard、冻结校验、源码-only移交、Hidden与可信reward。验收需更新Docker/context/依赖与资产准备链、TOML和真实调用路径。旧卡已交数值保真；换卡导致的成绩/耗时补证可以延期。
+
+3. expert_evidence/run_summary.json的10.3013h/11.7217h混入旧协议实验；duration_audit/seed.json的11.5h来自旧R3/R5/R6，protocol-evolution-map-20261006.json已说明旧损失、LR和从头训练不属于当前合法轮。不要删历史或把它们改名当前轮。按当前冻结任务逐轨重算起止、排队/安装/故障/阻塞扣除，提供各≥10h的现有合法证据，或在另获执行授权后补足研究。本次只确认当前各2个真实方法闭环，653.207/798.262秒是保守下界而不是总时长上界，当前有效总时长仍未核验。训练题不适用7h例外。
+
+4. 两份主轨迹当前成功行status=SUCCESS（Codex R18/R19、Seed R14/R15），请保留原始输出并生成当前八字段规范副本，成功status=ok；当前与历史分开，逐轮源码、真实Public结果、决策与run_summary时间一致。最终唯一方法源码及必要入口/配置明确归位或映射至workspace/reference；补轻量expert_annotation及私有正式对照索引，避免按目录名造无用材料。
+
+非阻断后补：官方四项指纹/task_binding、换卡影响、目标卡完整耗时、迁移后NOP、仅换卡引出的重算/标定。已有旧Harbor0.23 NOP同Trial无异常、separate、完整50k、reward0，103项文件SHA与现包匹配；应原样保留，不把它改成目标平台通过。真实官方0.3.10及独立格式/GPU/指纹工具仍待取得，不得改旧工具版本或伪造PASS。当前CPU稳定性记录未完成，不代表12h压力通过。

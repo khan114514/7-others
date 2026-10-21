@@ -1,0 +1,230 @@
+{
+  "track": "dd_codex",
+  "scope": "Existing historical trajectory only; zero new v1.3 research time",
+  "effective_process_seconds_lower_bound": 36431.318982,
+  "intervals": [
+    {
+      "round": 1,
+      "stage": "official_baseline_sampling_and_fid",
+      "effective_seconds": 3300.022716,
+      "original_audit_interval": {
+        "round": 1,
+        "stage": "official_baseline_sampling_and_fid",
+        "start": "2026-10-02T23:15:22.115917+08:00",
+        "end": "2026-10-03T00:10:22.138633+08:00",
+        "effective_seconds": 3300.022716,
+        "evidence": [
+          "rounds/round01/attempt03/execution.json",
+          "rounds/round01/attempt03/run.log",
+          "rounds/round01/attempt03/gpu_process.jsonl"
+        ],
+        "end_basis": "Actual child completion marker, removing outer poll/reaping slack",
+        "interruption_overlap_seconds_excluded": 0
+      },
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round01/attempt03/execution.json",
+        "sha256": "c2bf8588c3520011037b7665483d94fd76f51f987b1579898558736be2f4ba12"
+      },
+      "raw_exit_code": 0,
+      "failed_save_or_poll_tail_not_added": true
+    },
+    {
+      "round": 2,
+      "stage": "teacher_generation",
+      "effective_seconds": 1072.59823,
+      "original_audit_interval": {
+        "round": 2,
+        "stage": "teacher_generation",
+        "start": "2026-10-03T00:15:19.249909+08:00",
+        "end": "2026-10-03T00:33:11.848139+08:00",
+        "effective_seconds": 1072.59823,
+        "evidence": [
+          "rounds/round02/teacher_generation_execution.json",
+          "rounds/round02/run.log",
+          "rounds/round02/teacher_generation_gpu.jsonl",
+          "historical-codex-models/round02/pairs/manifest.json"
+        ],
+        "end_basis": "Final completed teacher manifest file mtime; remove later parent polling/reaping slack.",
+        "interruption_overlap_seconds_excluded": 0
+      },
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round02/teacher_generation_execution.json",
+        "sha256": "86072667ab340ed63658477f89c4068e03600b90f86431655ce06b2c4a71ef53"
+      },
+      "raw_exit_code": 0,
+      "failed_save_or_poll_tail_not_added": true
+    },
+    {
+      "round": 2,
+      "stage": "student_training",
+      "effective_seconds": 12506.995476,
+      "original_audit_interval": {
+        "round": 2,
+        "stage": "student_training",
+        "start": "2026-10-03T00:33:16.820285+08:00",
+        "end": "2026-10-03T04:01:43.815761+08:00",
+        "effective_seconds": 12506.995476,
+        "interruption_overlap_seconds_excluded": 0,
+        "end_basis": "Actual completed output mtime or official completion marker; polling slack excluded",
+        "evidence": [
+          "historical-codex-workspace/agent-output/rounds/round02/student_training_execution.json",
+          "historical-codex-workspace/agent-output/rounds/round02/run.log",
+          "historical-codex-workspace/agent-output/rounds/round02/student_training_gpu.jsonl"
+        ]
+      },
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round02/student_training_execution.json",
+        "sha256": "4fcfad8e05ef81b829b1d9a6f4524e190c8317739d29a492b056805785fced9e"
+      },
+      "raw_exit_code": 0,
+      "failed_save_or_poll_tail_not_added": true
+    },
+    {
+      "round": 2,
+      "stage": "evaluation",
+      "effective_seconds": 2329.416134,
+      "original_audit_interval": {
+        "round": 2,
+        "stage": "evaluation",
+        "start": "2026-10-03T04:01:51.277714+08:00",
+        "end": "2026-10-03T04:41:50.839819+08:00",
+        "effective_seconds": 2329.416134,
+        "interruption_overlap_seconds_excluded": 70.145971,
+        "end_basis": "Actual completed output mtime or official completion marker; polling slack excluded",
+        "evidence": [
+          "historical-codex-workspace/agent-output/rounds/round02/evaluation_execution.json",
+          "historical-codex-workspace/agent-output/rounds/round02/run.log",
+          "historical-codex-workspace/agent-output/rounds/round02/evaluation_gpu.jsonl"
+        ]
+      },
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round02/evaluation_execution.json",
+        "sha256": "3dcb72f4903a4d340365f061bd88aaecf6a535c0f2056d004a6f45e8e62d09cc"
+      },
+      "raw_exit_code": 0,
+      "failed_save_or_poll_tail_not_added": true
+    },
+    {
+      "round": 3,
+      "stage": "teacher_generation",
+      "effective_seconds": 746.018875,
+      "original_audit_interval": {
+        "round": 3,
+        "stage": "teacher_generation",
+        "start": "2026-10-03T05:49:25.448668+08:00",
+        "end": "2026-10-03T06:01:51.467543+08:00",
+        "effective_seconds": 746.018875,
+        "evidence": [
+          "historical-codex-workspace/agent-output/rounds/round03/teacher_generation_execution.json",
+          "historical-codex-workspace/agent-output/rounds/round03/run.log",
+          "historical-codex-models/round03/pairs/manifest.json"
+        ],
+        "end_basis": "Completed final manifest mtime; poll/reaping slack excluded.",
+        "interruption_overlap_seconds_excluded": 0
+      },
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round03/teacher_generation_execution.json",
+        "sha256": "060aec952ec6c0435a5d866ddcd441a9d616e9efe7809eca53745736cca52f28"
+      },
+      "raw_exit_code": 0,
+      "failed_save_or_poll_tail_not_added": true
+    },
+    {
+      "round": 3,
+      "stage": "student_training",
+      "effective_seconds": 12744.26089,
+      "original_audit_interval": {
+        "round": 3,
+        "stage": "student_training",
+        "start": "2026-10-03T06:01:55.310267+08:00",
+        "end": "2026-10-03T09:34:19.571157+08:00",
+        "effective_seconds": 12744.26089,
+        "interruption_overlap_seconds_excluded": 0,
+        "end_basis": "Actual completed output mtime or official completion marker; polling slack excluded",
+        "evidence": [
+          "historical-codex-workspace/agent-output/rounds/round03/student_training_execution.json",
+          "historical-codex-workspace/agent-output/rounds/round03/run.log",
+          "historical-codex-workspace/agent-output/rounds/round03/student_training_gpu.jsonl"
+        ]
+      },
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round03/student_training_execution.json",
+        "sha256": "ba26a80996c596e07f529c909a2db9cabd871f3872552be2b8ae74f6639592f4"
+      },
+      "raw_exit_code": 1,
+      "failed_save_or_poll_tail_not_added": true
+    },
+    {
+      "round": 3,
+      "stage": "evaluation",
+      "effective_seconds": 3141.993033,
+      "original_audit_interval": {
+        "round": 3,
+        "stage": "evaluation",
+        "start": "2026-10-03T10:03:33.281380+08:00",
+        "end": "2026-10-03T10:55:55.274413+08:00",
+        "effective_seconds": 3141.993033,
+        "interruption_overlap_seconds_excluded": 0,
+        "end_basis": "Actual completed output mtime or official completion marker; polling slack excluded",
+        "evidence": [
+          "historical-codex-workspace/agent-output/rounds/round03/evaluation_execution.json",
+          "historical-codex-workspace/agent-output/rounds/round03/run.log",
+          "historical-codex-workspace/agent-output/rounds/round03/evaluation_gpu.jsonl"
+        ]
+      },
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round03/evaluation_execution.json",
+        "sha256": "5c9fb4711959c62f79d643bec6503b379c9dccafbfc90b249a595c51ea3361d5"
+      },
+      "raw_exit_code": 0,
+      "failed_save_or_poll_tail_not_added": true
+    },
+    {
+      "round": 15,
+      "stage": "teacher_generation",
+      "effective_seconds": 315.613554,
+      "scope": "Adjacent observations of the same actual GPU subprocess; not parent polling or queue duration",
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round15/teacher_generation_execution.json",
+        "sha256": "1c6232d22ce93bfd608f9cb5c27fd50921ec5ed95ae2eb4c22c563a4d97fb4e4"
+      },
+      "gpu_observations": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round15/teacher_generation_gpu.jsonl",
+        "sha256": "e9601ca05c4cdf58905185e9290e9671c15ddfe84c429b45c3a8582440b8291e"
+      },
+      "pid": 204528,
+      "included_observation_intervals": 31,
+      "zero_memory_reading_not_interpreted_as_zero_use": true
+    },
+    {
+      "round": 15,
+      "stage": "student_training",
+      "effective_seconds": 274.400074,
+      "scope": "Adjacent observations of the same actual GPU subprocess; not parent polling or queue duration",
+      "raw_execution": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round15/student_training_execution.json",
+        "sha256": "1e5762740075d50e496d269d9066115e4b26e220cca787597224bfb5b77b359c"
+      },
+      "gpu_observations": {
+        "path": "expert_evidence/historical_track_sources/codex/agent-output/rounds/round15/student_training_gpu.jsonl",
+        "sha256": "3724dfe1c91bbe689c60f535b0974b8ada256f4ca186ac956285f3bc32e21348"
+      },
+      "pid": 204801,
+      "included_observation_intervals": 27,
+      "zero_memory_reading_not_interpreted_as_zero_use": true
+    }
+  ],
+  "omitted_unverifiable_intervals": [
+    {
+      "round": 4,
+      "stage": "best_clean_validation",
+      "excluded_seconds": 4768.715968,
+      "reason": "No matching original execution JSON in this package; do not count it"
+    }
+  ],
+  "original_time_audit": {
+    "path": "optimization_evidence/historical_trajectories/codex/effective_time_evidence.json",
+    "sha256": "ea21de8b8e66ef0b3ced67320c05eba7ec6d1f63ad0fecdee7814ab16f17fcfd"
+  },
+  "new_training_or_score_created": false
+}

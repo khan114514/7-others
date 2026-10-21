@@ -1,0 +1,33 @@
+{
+  "configuration": {
+    "name": "calibration_inference_atom_mixture4096",
+    "protocol_version": "dd-selfproto-v1.3",
+    "initialization": "warmstart_official_dd_ema",
+    "teacher": {
+      "num_samples": 4096,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "student_agreement_per_label",
+      "weighting": "uniform",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 8
+    },
+    "time_sampler_note": "Mixture: probability 0.5 exact t=0, otherwise Uniform U(0.5,1).",
+    "train_notes": "Released DD EMA initialization; 4096 selected genuine teacher pairs, eight proposals per label, one training pass. Allocate half the FM training mass to the exact inference t=0 stage; retain late-prefix supervision for the other half."
+  },
+  "worker_guard": {
+    "landlock_abi": 1,
+    "filesystem_enforced": true,
+    "network_denied": true,
+    "unix_sockets_denied": true,
+    "cross_process_signals_denied": true,
+    "new_processes_denied": true,
+    "device_creation_denied": true,
+    "gpu_devices_denied": true,
+    "system_private_files_denied": true
+  }
+}

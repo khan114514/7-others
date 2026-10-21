@@ -1,0 +1,1 @@
+Hidden byte identity is unchanged. Included chunks live in Task/tests/hidden-chunks and are verified/combined by Task/tests/prepare_hidden.py during the separate Verifier Docker build. They are never in the Agent build context. The legacy data-only helper is an optional external numerical setup aid; do not add generated files to the frozen build-ready Task tree.

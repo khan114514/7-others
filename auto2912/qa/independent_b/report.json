@@ -1,0 +1,1117 @@
+{
+  "schema": "local-v4-content-review",
+  "schema_version": 4,
+  "status": "FAIL",
+  "release_readiness": "NOT READY",
+  "review": {
+    "completed": true,
+    "mode": "read_only_static_full_zip",
+    "independent_context": true,
+    "package_historical_qa_used": false
+  },
+  "qa_run": {
+    "input_artifact": "auto2912-delivery.zip",
+    "zip_sha256": "18ee42736dcb71d492cf47a8f83a3d863d148cdb4b1a3d4a9488a8c8087e3dba",
+    "session_id": "stssdl_b",
+    "configured_model": "gpt-6-astra",
+    "configured_reasoning_effort": "high",
+    "configured_fork_turns": "none",
+    "configuration_basis": "可信主控本次派发说明：spawn工具接受上述配置。",
+    "runtime_reported_model": "not_exposed",
+    "runtime_version": "not_exposed",
+    "runtime_identity_note": "无可读取的精确后端模型/版本回执；不以派发配置冒充运行端独立回报。",
+    "official_0_3_10_executed": false,
+    "tool_identity": "local static review; Python standard library zipfile/json/hashlib/statistics only"
+  },
+  "policy": {
+    "revision": "V4 + user adjustment 2026-10-21",
+    "official_skill_claim": false
+  },
+  "overview": {
+    "optimization_surface": {
+      "summary": "固定训练好的上游交通预测器输出上，学习可执行条件校正方法；三seed完整Dev MAE最小化。",
+      "modifiable": [
+        "fit/predict及最多15个辅助Python文件",
+        "条件表示、学习目标、时空模型结构、预测组合"
+      ],
+      "fixed": [
+        "共享骨干与公开校正/Dev划分",
+        "17/29/43种子与可信评分",
+        "源/状态尺寸、fit/reload预算、冻结入口"
+      ],
+      "metric_and_gate": "masked MAE；有限输出、精确shape、独立reload差≤1e-4；(B-MAE)/(B-U)未裁剪。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md",
+        "workspace/harbor_task/tests/engine/grader.py",
+        "workspace/harbor_task/tests/engine/actor_worker.py",
+        "workspace/reference/method.py"
+      ]
+    },
+    "baseline_reference": {
+      "baseline_method": "正式Baseline=未经改动Starter identity，直接返回固定骨干预测；共享骨干在PEMS08上真实训练63epoch后按patience20早停并选择best-val模型，后处理fit返回标识状态。",
+      "reference_method": "9维base/近期历史/斜率/锚点/周期/步长/节点特征→HistGradientBoostingRegressor拟合残差，absolute_error、100迭代上限、15叶、learning_rate0.08/l2=10，预测加0.5倍校正。",
+      "metric": "masked_mae",
+      "direction": "minimize",
+      "paired_runs": [
+        {
+          "seed": 17,
+          "baseline": 15.421857156583444,
+          "reference": 15.094631864779133,
+          "baseline_valid": true,
+          "reference_valid": true,
+          "improvement": 0.3272252918043108,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_17/result.json#metrics.mae",
+          "reference_source": "optimization_evidence/reference_runs/seed_17/result.json#metrics.mae"
+        },
+        {
+          "seed": 29,
+          "baseline": 15.421857156583444,
+          "reference": 15.100112152134592,
+          "baseline_valid": true,
+          "reference_valid": true,
+          "improvement": 0.3217450044488519,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_29/result.json#metrics.mae",
+          "reference_source": "optimization_evidence/reference_runs/seed_29/result.json#metrics.mae"
+        },
+        {
+          "seed": 43,
+          "baseline": 15.421857156583444,
+          "reference": 15.09311989424863,
+          "baseline_valid": true,
+          "reference_valid": true,
+          "improvement": 0.3287372623348137,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_43/result.json#metrics.mae",
+          "reference_source": "optimization_evidence/reference_runs/seed_43/result.json#metrics.mae"
+        }
+      ],
+      "baseline_mean": 15.421857156583444,
+      "baseline_sample_std": 0.0,
+      "reference_mean": 15.095954637054119,
+      "reference_sample_std": 0.0036790233017135383,
+      "improvement_summary": "完整均值改善0.325902519529325，相对改善2.113250798658%，归一化0.688520079296307。",
+      "quality_gate_summary": "六份结果质量门true，fit/reload exit0，reload最大差0；六模型大小/hash逐件吻合。R三次fresh fit，B确定性重复；共享神经骨干只训练一次。",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json",
+        "optimization_evidence/训练证据说明.md",
+        "optimization_evidence/baseline_runs/seed_17/result.json",
+        "optimization_evidence/reference_runs/seed_17/result.json",
+        "optimization_evidence/baseline_runs/seed_29/result.json",
+        "optimization_evidence/reference_runs/seed_29/result.json",
+        "optimization_evidence/baseline_runs/seed_43/result.json",
+        "optimization_evidence/reference_runs/seed_43/result.json"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "gpt",
+        "agent_model": "gpt-6.1-sol",
+        "reasoning_effort": "xhigh",
+        "status": "complete",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "packaged_rounds": 27,
+        "reported_effective_rounds": 27,
+        "positive_model_work_rounds": 22,
+        "duration_hours": 10.001053029961056,
+        "summary": "条件树→时间/空间条件残差→神经与图扩散校正；保留第24轮最佳。零工作轮保留历史但不计有效方法轮，摘要effective_rounds需订正。",
+        "final_result": {
+          "dev_mae": 13.902094246542314,
+          "normalized_score": 3.210737004562953,
+          "source": "expert_evidence/provenance/native_harbor/gpt/forecast-final-dev-gpt-d8cbab87/verifier/evaluation/result.json"
+        },
+        "evidence": [
+          "expert_evidence/trajectory_codex.json",
+          "expert_evidence/provenance/model_execution/gpt",
+          "expert_evidence/run_summary.json"
+        ]
+      },
+      {
+        "name": "seed",
+        "agent_model": "doubao-seed-2-1-turbo-260628",
+        "reasoning_effort": "high",
+        "status": "complete",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "packaged_rounds": 79,
+        "reported_effective_rounds": 79,
+        "positive_model_work_rounds": 26,
+        "duration_hours": 10.002329799599117,
+        "summary": "线性/偏置→锚点混合→丰富样本级ridge校正；保留第76轮最佳。零工作轮保留历史但不计有效方法轮，摘要effective_rounds需订正。",
+        "final_result": {
+          "dev_mae": 15.165965823366738,
+          "normalized_score": 0.5406104908058266,
+          "source": "expert_evidence/provenance/native_harbor/seed/forecast-final-dev-seed-69d7b0e0/verifier/evaluation/result.json"
+        },
+        "evidence": [
+          "expert_evidence/trajectory_seed.json",
+          "expert_evidence/provenance/model_execution/seed",
+          "expert_evidence/run_summary.json"
+        ]
+      }
+    ]
+  },
+  "baseline_quality": {
+    "conclusion": "在已提供材料范围内合理",
+    "roles": {
+      "starter": "identity",
+      "formal_baseline": "identity on fixed backbone",
+      "normalization_B": "正式三seed identity平均MAE",
+      "sanity": "identity为任务自然锚点"
+    },
+    "dimensions": {
+      "training_sufficiency": "共享骨干实际63epoch，best-val epoch43，正常patience20早停；无差别截短的直接证据。正式identity无参数更新需求。",
+      "method_representativeness": "对固定预测后处理任务，原预测不变是可辩护的朴素正式对照；未用包外SOTA推断。",
+      "budget_comparability": "同公开校正数据、Dev、每seed180+60秒与2CPU/4GiB；校正模型结构允许改变。",
+      "implementation_correctness": "fit/predict调用生效，标签在候选退出后才由root读取；六个checkpoint索引大小与SHA一致，已有reload退出0/预测差0。",
+      "selection_integrity": "完整三seed；共同骨干明确共享，U在Reference开始前约3秒冻结；三组B/R原值可追溯。"
+    },
+    "checks": [
+      {
+        "id": "B01",
+        "status": "通过",
+        "summary": "Starter、正式Baseline与B均为同一固定上游预测器的identity输出；它是固定预测后处理任务的自然对照，不是随机/故障网络。",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py",
+          "expert_evidence/provenance/shared-backbone-training.run.log",
+          "expert_evidence/provenance/forecast-export-manifest.json",
+          "optimization_evidence/训练证据说明.md"
+        ]
+      },
+      {
+        "id": "B02",
+        "status": "通过",
+        "summary": "共享上游计划200epoch，日志实际63epoch、42147步、patience20正常早停；最优验证epoch43。identity无需SGD；三次保存48字节状态并独立重载。",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py",
+          "expert_evidence/provenance/shared-backbone-training.run.log",
+          "expert_evidence/provenance/forecast-export-manifest.json",
+          "optimization_evidence/训练证据说明.md",
+          "optimization_evidence/baseline_runs/seed_17/run.log"
+        ]
+      },
+      {
+        "id": "B03",
+        "status": "通过",
+        "summary": "双方相同固定预测、74个校正origin、148个Dev origin、170节点及12步预测；每seed同180秒fit/60秒reload、2CPU/4GiB。任务允许新增校正训练。",
+        "evidence": [
+          "workspace/harbor_task/instruction.md:13",
+          "workspace/harbor_task/tests/engine/grader.py:104",
+          "expert_evidence/provenance/forecast-export-manifest.json"
+        ]
+      },
+      {
+        "id": "B04",
+        "status": "通过",
+        "summary": "identity无搜索参数；Reference显式树模型与固定0.5混合，结构/校正训练为允许变量。未见只削弱Baseline的异常配置证据。",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py",
+          "workspace/reference/method.py",
+          "optimization_evidence/训练证据说明.md"
+        ]
+      },
+      {
+        "id": "B05",
+        "status": "通过",
+        "summary": "17/29/43全交；worker将seed传入fit且设置Python/NumPy随机源，Reference传入random_state；同方法跨seed哈希不变。共享神经骨干未冒充三次神经重训。",
+        "evidence": [
+          "workspace/harbor_task/tests/engine/actor_worker.py:33",
+          "workspace/reference/method.py:18",
+          "optimization_evidence/comparison_summary.json"
+        ]
+      },
+      {
+        "id": "B06",
+        "status": "通过",
+        "summary": "identity本身即合理恒等锚点；其分数等于B，归一化0不意味着无效。未发现包内同协议的更弱/异常基线被选作B。",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py",
+          "workspace/harbor_task/tests/verifier_assets/protocol.json"
+        ]
+      },
+      {
+        "id": "B07",
+        "status": "通过",
+        "summary": "收益归因于固定预测上的条件残差校正整体方案；同Dev、种子、评分器和资源上限，未声称各组件独立消融贡献。",
+        "evidence": [
+          "workspace/harbor_task/tests/engine/grader.py",
+          "workspace/reference/method.py",
+          "expert_evidence/provenance/forecast-export-manifest.json"
+        ]
+      },
+      {
+        "id": "B08",
+        "status": "通过",
+        "summary": "专家说明清楚披露固定骨干、非独立神经重训、CPU后处理边界及先验pilot的U；未见挑最差Baseline/最好Reference seed。",
+        "evidence": [
+          "expert_evidence/专家作业说明文档.md:3",
+          "optimization_evidence/训练证据说明.md:15",
+          "expert_evidence/provenance/anchors-frozen-before-reference.json"
+        ]
+      }
+    ],
+    "model_evidence": [
+      {
+        "role": "baseline",
+        "seed": 17,
+        "result_path": "optimization_evidence/baseline_runs/seed_17/result.json",
+        "run_log": "optimization_evidence/baseline_runs/seed_17/run.log",
+        "artifact_index": "optimization_evidence/baseline_runs/seed_17/model/artifact.json",
+        "checkpoint_path": "optimization_evidence/baseline_runs/seed_17/model/model.pkl",
+        "reload_log": "optimization_evidence/baseline_runs/seed_17/model/reload.log",
+        "checkpoint_bytes": 48,
+        "sha256": "e8f19ccc2d5e308b928f241ba985e739163382479f628ee5af928694e1ae85d2",
+        "index_size_matches": true,
+        "index_sha256_matches": true,
+        "reload_exit_code": 0,
+        "reload_prediction_max_abs_difference": 0.0,
+        "fit_and_reload_seconds": 0.37201380729675293,
+        "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+        "method_sha256": "cc90618a96d9d35520e56e3654eba47dac1ff9619490c6e4060f41a74f89974a"
+      },
+      {
+        "role": "reference",
+        "seed": 17,
+        "result_path": "optimization_evidence/reference_runs/seed_17/result.json",
+        "run_log": "optimization_evidence/reference_runs/seed_17/run.log",
+        "artifact_index": "optimization_evidence/reference_runs/seed_17/model/artifact.json",
+        "checkpoint_path": "optimization_evidence/reference_runs/seed_17/model/model.pkl",
+        "reload_log": "optimization_evidence/reference_runs/seed_17/model/reload.log",
+        "checkpoint_bytes": 192730,
+        "sha256": "f818ec8496e7f1377f4e823b2685ffb9ee4bb3613168ce914300269d407d7aaf",
+        "index_size_matches": true,
+        "index_sha256_matches": true,
+        "reload_exit_code": 0,
+        "reload_prediction_max_abs_difference": 0.0,
+        "fit_and_reload_seconds": 7.121449947357178,
+        "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+        "method_sha256": "a1c7bf9e3023f7258f37f08a7c3c2fd8ce478a5521ea78b7b28066590ef6737f"
+      },
+      {
+        "role": "baseline",
+        "seed": 29,
+        "result_path": "optimization_evidence/baseline_runs/seed_29/result.json",
+        "run_log": "optimization_evidence/baseline_runs/seed_29/run.log",
+        "artifact_index": "optimization_evidence/baseline_runs/seed_29/model/artifact.json",
+        "checkpoint_path": "optimization_evidence/baseline_runs/seed_29/model/model.pkl",
+        "reload_log": "optimization_evidence/baseline_runs/seed_29/model/reload.log",
+        "checkpoint_bytes": 48,
+        "sha256": "e8f19ccc2d5e308b928f241ba985e739163382479f628ee5af928694e1ae85d2",
+        "index_size_matches": true,
+        "index_sha256_matches": true,
+        "reload_exit_code": 0,
+        "reload_prediction_max_abs_difference": 0.0,
+        "fit_and_reload_seconds": 0.3761169910430908,
+        "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+        "method_sha256": "cc90618a96d9d35520e56e3654eba47dac1ff9619490c6e4060f41a74f89974a"
+      },
+      {
+        "role": "reference",
+        "seed": 29,
+        "result_path": "optimization_evidence/reference_runs/seed_29/result.json",
+        "run_log": "optimization_evidence/reference_runs/seed_29/run.log",
+        "artifact_index": "optimization_evidence/reference_runs/seed_29/model/artifact.json",
+        "checkpoint_path": "optimization_evidence/reference_runs/seed_29/model/model.pkl",
+        "reload_log": "optimization_evidence/reference_runs/seed_29/model/reload.log",
+        "checkpoint_bytes": 192730,
+        "sha256": "100520b73dd654f80585624d2c90e143c104344959d7218700fb33b51a3cd594",
+        "index_size_matches": true,
+        "index_sha256_matches": true,
+        "reload_exit_code": 0,
+        "reload_prediction_max_abs_difference": 0.0,
+        "fit_and_reload_seconds": 6.189047336578369,
+        "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+        "method_sha256": "a1c7bf9e3023f7258f37f08a7c3c2fd8ce478a5521ea78b7b28066590ef6737f"
+      },
+      {
+        "role": "baseline",
+        "seed": 43,
+        "result_path": "optimization_evidence/baseline_runs/seed_43/result.json",
+        "run_log": "optimization_evidence/baseline_runs/seed_43/run.log",
+        "artifact_index": "optimization_evidence/baseline_runs/seed_43/model/artifact.json",
+        "checkpoint_path": "optimization_evidence/baseline_runs/seed_43/model/model.pkl",
+        "reload_log": "optimization_evidence/baseline_runs/seed_43/model/reload.log",
+        "checkpoint_bytes": 48,
+        "sha256": "e8f19ccc2d5e308b928f241ba985e739163382479f628ee5af928694e1ae85d2",
+        "index_size_matches": true,
+        "index_sha256_matches": true,
+        "reload_exit_code": 0,
+        "reload_prediction_max_abs_difference": 0.0,
+        "fit_and_reload_seconds": 0.3111586570739746,
+        "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+        "method_sha256": "cc90618a96d9d35520e56e3654eba47dac1ff9619490c6e4060f41a74f89974a"
+      },
+      {
+        "role": "reference",
+        "seed": 43,
+        "result_path": "optimization_evidence/reference_runs/seed_43/result.json",
+        "run_log": "optimization_evidence/reference_runs/seed_43/run.log",
+        "artifact_index": "optimization_evidence/reference_runs/seed_43/model/artifact.json",
+        "checkpoint_path": "optimization_evidence/reference_runs/seed_43/model/model.pkl",
+        "reload_log": "optimization_evidence/reference_runs/seed_43/model/reload.log",
+        "checkpoint_bytes": 192731,
+        "sha256": "6cc4f876d502d214ed664fbb7aad5bafc816958da9bd1c5cce27a67a1d615446",
+        "index_size_matches": true,
+        "index_sha256_matches": true,
+        "reload_exit_code": 0,
+        "reload_prediction_max_abs_difference": 0.0,
+        "fit_and_reload_seconds": 5.867104768753052,
+        "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+        "method_sha256": "a1c7bf9e3023f7258f37f08a7c3c2fd8ce478a5521ea78b7b28066590ef6737f"
+      }
+    ],
+    "limitations": "静态内部一致不等于独立复现；未加载任何权重，未验证第三方底层模型身份。"
+  },
+  "content_gates": {
+    "schema_version": 1,
+    "checks": [
+      {
+        "id": "G01",
+        "status": "pass",
+        "summary": "16个Python文件内开放可执行fit/predict，guard仅限制源文件/资源/输出；Reference新增条件残差树学习，非只改标量参数。",
+        "evidence": [
+          "workspace/harbor_task/instruction.md:13",
+          "workspace/harbor_task/tests/engine/grader.py:56",
+          "workspace/harbor_task/tests/engine/actor_worker.py:24",
+          "workspace/reference/method.py"
+        ],
+        "reason_code": "EXECUTABLE_METHOD_SURFACE"
+      },
+      {
+        "id": "G02",
+        "status": "pass",
+        "summary": "在已提供静态材料范围内，固定预测identity正式Baseline合理；共享骨干和校正训练角色披露，未发现不公平削弱。",
+        "evidence": [
+          "workspace/harbor_task/environment/engine/starter.py",
+          "expert_evidence/provenance/shared-backbone-training.run.log",
+          "expert_evidence/provenance/forecast-export-manifest.json",
+          "optimization_evidence/训练证据说明.md"
+        ],
+        "reason_code": "REASONABLE_FIXED_BACKBONE_IDENTITY",
+        "dimensions": {
+          "training_sufficiency": "共享骨干实际63epoch，best-val epoch43，正常patience20早停；无差别截短的直接证据。正式identity无参数更新需求。",
+          "method_representativeness": "对固定预测后处理任务，原预测不变是可辩护的朴素正式对照；未用包外SOTA推断。",
+          "budget_comparability": "同公开校正数据、Dev、每seed180+60秒与2CPU/4GiB；校正模型结构允许改变。",
+          "implementation_correctness": "fit/predict调用生效，标签在候选退出后才由root读取；六个checkpoint索引大小与SHA一致，已有reload退出0/预测差0。",
+          "selection_integrity": "完整三seed；共同骨干明确共享，U在Reference开始前约3秒冻结；三组B/R原值可追溯。"
+        }
+      },
+      {
+        "id": "G03",
+        "status": "pass",
+        "summary": "全部三seed成对有效；均值改善0.3259025195293255，归一化0.6885200792963072在范围内。B为确定性identity，R拟合有波动，按随机口径复算3σ_B=0仍有真实正向改善。",
+        "evidence": [
+          "optimization_evidence/comparison_summary.json",
+          "expert_evidence/provenance/anchors-frozen-before-reference.json",
+          "expert_evidence/provenance/pilot-upper-estimate.json",
+          "optimization_evidence/baseline_runs/seed_17/result.json#metrics.mae",
+          "optimization_evidence/baseline_runs/seed_29/result.json#metrics.mae",
+          "optimization_evidence/baseline_runs/seed_43/result.json#metrics.mae",
+          "optimization_evidence/reference_runs/seed_17/result.json#metrics.mae",
+          "optimization_evidence/reference_runs/seed_29/result.json#metrics.mae",
+          "optimization_evidence/reference_runs/seed_43/result.json#metrics.mae"
+        ],
+        "reason_code": "POSITIVE_PAIRED_GAIN_IN_RANGE",
+        "assessment": {
+          "direction": "minimize",
+          "formal_seeds": [
+            17,
+            29,
+            43
+          ],
+          "declared_run_count": 3,
+          "evaluation_mode": "stochastic_with_deterministic_baseline",
+          "same_protocol": true,
+          "quality_valid": true,
+          "upper_bound": 14.948519443814908,
+          "threshold_basis": "V4：归一化[0.15,0.8]；随机评价改善≥3σ_B；题面仅附加严格正改善。",
+          "absolute_min_improvement": 0,
+          "absolute_threshold_source": "workspace/harbor_task/instruction.md:10"
+        },
+        "computed": {
+          "baseline_mean": 15.421857156583444,
+          "baseline_sample_std": 0.0,
+          "reference_mean": 15.095954637054119,
+          "reference_sample_std": 0.0036790233017135383,
+          "positive_improvement": 0.3259025195293255,
+          "relative_improvement": 0.021132507986575455,
+          "normalized_reference": 0.6885200792963072,
+          "upper_bound": 14.948519443814908,
+          "three_sigma": 0.0,
+          "passes_three_sigma": true,
+          "passes_normalized_range": true,
+          "remaining_headroom": 0.14743519323921106,
+          "formal_seed_set_complete": true,
+          "quality_valid": true,
+          "baseline_sigma_multiple": null,
+          "baseline_sigma_multiple_reason": "确定性identity的样本标准差为0，不报告除零倍数；仍核对正向改善。"
+        }
+      }
+    ]
+  },
+  "runtime_review": {
+    "status": "pass",
+    "exception_reason": "",
+    "exception_eligibility": {
+      "non_training": false,
+      "short_iterations": null,
+      "basis": "含校正拟合且两轨均达到10h，不用7h例外。",
+      "evidence": [
+        "workspace/harbor_task/tests/engine/actor_worker.py"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "gpt",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "effective_seconds": 36003.7909078598,
+        "round_elapsed_seconds": 36641.06933116913,
+        "excluded_seconds": 688.2963454723358,
+        "round_effective_seconds": 35952.77298569679,
+        "initial_normal_model_work_seconds": 51.017922163009644,
+        "effective_method_cycles": null,
+        "positive_model_work_rounds": 22,
+        "zero_work_rounds": [
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "time_accounting": "逐轮 elapsed - 合并扣除区间 = effective；所有扣除区间并集复算一致，初始真实CLI读题/工具检查另加；冻结复验与稳定性不计。仅这些已有账本和原始CLI材料支持，不是本次实测。",
+        "next_direction": "可继续研究时空残差表示与稳健模型选择；本次未求解。",
+        "best_method_revalidated": true,
+        "best_method_evidence": [
+          "expert_evidence/provenance/native_harbor/gpt/forecast-final-dev-gpt-d8cbab87/verifier/evaluation/result.json"
+        ],
+        "evidence": [
+          "expert_evidence/trajectory_codex.json",
+          "expert_evidence/provenance/model_execution/gpt/initial-normal-model-work.json",
+          "expert_evidence/provenance/model_execution/gpt"
+        ]
+      },
+      {
+        "name": "seed",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "effective_seconds": 36008.387278556824,
+        "round_elapsed_seconds": 39019.00444841385,
+        "excluded_seconds": 3046.6330387592316,
+        "round_effective_seconds": 35972.37140965462,
+        "initial_normal_model_work_seconds": 36.01586890220642,
+        "effective_method_cycles": null,
+        "positive_model_work_rounds": 26,
+        "zero_work_rounds": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          54,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          70
+        ],
+        "time_accounting": "逐轮 elapsed - 合并扣除区间 = effective；所有扣除区间并集复算一致，初始真实CLI读题/工具检查另加；冻结复验与稳定性不计。仅这些已有账本和原始CLI材料支持，不是本次实测。",
+        "next_direction": "可继续研究时空残差表示与稳健模型选择；本次未求解。",
+        "best_method_revalidated": true,
+        "best_method_evidence": [
+          "expert_evidence/provenance/native_harbor/seed/forecast-final-dev-seed-69d7b0e0/verifier/evaluation/result.json"
+        ],
+        "evidence": [
+          "expert_evidence/trajectory_seed.json",
+          "expert_evidence/provenance/model_execution/seed/initial-normal-model-work.json",
+          "expert_evidence/provenance/model_execution/seed"
+        ]
+      }
+    ],
+    "round_audits": {
+      "gpt": {
+        "score_mismatch_rounds": [],
+        "failures": [
+          {
+            "round": 2,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0002/trusted-evaluation-command.json"
+          },
+          {
+            "round": 4,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0004/trusted-evaluation-command.json"
+          },
+          {
+            "round": 5,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0005/trusted-evaluation-command.json"
+          },
+          {
+            "round": 6,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0006/trusted-evaluation-command.json"
+          },
+          {
+            "round": 7,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0007/trusted-evaluation-command.json"
+          },
+          {
+            "round": 10,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0010/trusted-evaluation-command.json"
+          },
+          {
+            "round": 11,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0011/trusted-evaluation-command.json"
+          },
+          {
+            "round": 12,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0012/trusted-evaluation-command.json"
+          },
+          {
+            "round": 13,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0013/trusted-evaluation-command.json"
+          },
+          {
+            "round": 14,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0014/trusted-evaluation-command.json"
+          },
+          {
+            "round": 15,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0015/trusted-evaluation-command.json"
+          },
+          {
+            "round": 16,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0016/trusted-evaluation-command.json"
+          },
+          {
+            "round": 19,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0019/trusted-evaluation-command.json"
+          },
+          {
+            "round": 21,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0021/trusted-evaluation-command.json"
+          },
+          {
+            "round": 26,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0026/trusted-evaluation-command.json"
+          },
+          {
+            "round": 27,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/gpt/round_0027/trusted-evaluation-command.json"
+          }
+        ],
+        "additional_fields": {
+          "original_status": 16
+        },
+        "ok_rounds": 11,
+        "failed_rounds": 16
+      },
+      "seed": {
+        "score_mismatch_rounds": [],
+        "failures": [
+          {
+            "round": 2,
+            "reason": "HTTP 409 evaluation busy",
+            "evidence": "expert_evidence/provenance/model_execution/seed/round_0002/trusted-evaluation-command.json"
+          }
+        ],
+        "additional_fields": {
+          "method_summary_evidence": 79,
+          "original_status": 1
+        },
+        "ok_rounds": 78,
+        "failed_rounds": 1
+      }
+    }
+  },
+  "format_review": {
+    "status": "deviations",
+    "summary": "三大目录齐全；B/R可追溯但result为旧字段布局，缺显式role/task_type等结构字段；轨迹有扩展字段与错误有效轮数。Compose部署属于核心问题。",
+    "additional_suggestions": [
+      {
+        "path": "optimization_evidence/baseline_runs/seed_17/result.json",
+        "classification": "obsolete_layout",
+        "recommendation": "将现有真实字段归入schema_version/role/seed/task_type/method/protocol/training/execution/metrics/quality_gate/artifacts；B无新增训练写NOT_APPLICABLE，R写fresh fit。补方法源码相对路径和依赖标识，不编造旧记录缺失值。"
+      },
+      {
+        "path": "optimization_evidence/comparison_summary.json",
+        "classification": "merge_candidate",
+        "recommendation": "补逐seed result相对来源路径；当前数值已由本次直接读取原result验证。"
+      },
+      {
+        "path": "expert_evidence/trajectory_seed.json",
+        "classification": "misplaced",
+        "recommendation": "method_summary_evidence与original_status移到独立证据映射，单轮保留八字段；原始事件继续保存。"
+      },
+      {
+        "path": "expert_evidence/provenance",
+        "classification": "extra_allowed",
+        "recommendation": "保留原始训练、CLI、Trial与失败证据；移出无需随公开任务发布的历史重复候选与大CLI二进制，按专家附件职责归位。"
+      },
+      {
+        "path": "workspace/harbor_task/tests/instruction.md",
+        "classification": "merge_candidate",
+        "recommendation": "同步任务根与Verifier副本，避免网络/资源口径修复时只改一份。"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "QA01",
+      "status": "pass",
+      "summary": "题面有八部分且未披露论文标题、arXiv、参考源码或答案线索。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md"
+      ]
+    },
+    {
+      "id": "QA02",
+      "status": "pass",
+      "summary": "可信评分使用(B-mean)/(B-U)，未裁剪；B映射0、U映射1，minimize方向连续单调。",
+      "evidence": [
+        "workspace/harbor_task/tests/engine/grader.py:187",
+        "workspace/harbor_task/tests/verifier_assets/protocol.json:15"
+      ]
+    },
+    {
+      "id": "QA03",
+      "status": "pass",
+      "summary": "Reference入口、三seed原始结果/日志/模型/reload齐全，字节元数据一致；归一化0.6885200793。",
+      "evidence": [
+        "workspace/reference/method.py",
+        "optimization_evidence/reference_runs/result.json",
+        "optimization_evidence/reference_runs/seed_17/result.json",
+        "optimization_evidence/reference_runs/seed_29/result.json",
+        "optimization_evidence/reference_runs/seed_43/result.json"
+      ]
+    },
+    {
+      "id": "QA04",
+      "status": "pass",
+      "summary": "随机Reference拟合不能按固定seed视为全确定；三次B样本标准差0，改善>0且≥3σ_B。该检验不意味着统计泛化已独立证实。",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json",
+        "workspace/harbor_task/tests/engine/actor_worker.py:33"
+      ]
+    },
+    {
+      "id": "QA05",
+      "status": "fail",
+      "summary": "虽有UID1000/bwrap、180/60秒超时、源/状态限额与形状检查，但task.toml声明storage_mb及no-network，题面承诺无Internet，不符合当前内场合同。",
+      "evidence": [
+        "workspace/harbor_task/task.toml:9",
+        "workspace/harbor_task/task.toml:18",
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/tests/engine/grader.py:111"
+      ],
+      "remediation": "移除task.toml中的storage_mb和任务级禁网/网络白名单声明；题面改用平台实际网络与工具策略，隔离继续依赖文件权限/受限候选/冻结面而不是未支持的禁网承诺。",
+      "acceptance_evidence": "同步task.toml及其tests副本、instruction及适配器；提交目标平台可解析的配置和隔离验证记录。"
+    },
+    {
+      "id": "QA06",
+      "status": "pass",
+      "summary": "固定solve.sh调用公开评分；test.sh调用可信grader，成功写有限reward，格式/超时/Hard Gate分开处理；Hard Gate=-1。",
+      "evidence": [
+        "workspace/harbor_task/solution/solve.sh",
+        "workspace/harbor_task/tests/test.sh",
+        "workspace/harbor_task/tests/engine/grader.py:207"
+      ]
+    },
+    {
+      "id": "QA07",
+      "status": "pass",
+      "summary": "仅按题面检查：没有Hidden样本、标签或可恢复答案。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md"
+      ]
+    },
+    {
+      "id": "QA08",
+      "status": "pass",
+      "summary": "仅按题面检查：未披露Reference代码、配置或数值答案。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md"
+      ]
+    },
+    {
+      "id": "QA09",
+      "status": "pass",
+      "summary": "test.sh先删reward.txt/json，成功写reward.pending.txt并原子replace；候选无reward访问面。",
+      "evidence": [
+        "workspace/harbor_task/tests/test.sh:4",
+        "workspace/harbor_task/tests/engine/grader.py:220"
+      ]
+    },
+    {
+      "id": "QA10",
+      "status": "pass",
+      "summary": "公开冻结资产只读、Dev标签root-only；源快照只读并核源码hash，solve固定hash；候选在bwrap受限身份中执行，root不加载pickle。",
+      "evidence": [
+        "workspace/harbor_task/tests/Dockerfile:14",
+        "workspace/harbor_task/tests/engine/grader.py:100",
+        "workspace/harbor_task/tests/engine/grader.py:111",
+        "workspace/harbor_task/tests/engine/grader.py:132",
+        "workspace/harbor_task/tests/engine/actor_worker.py:20"
+      ]
+    },
+    {
+      "id": "QA11",
+      "status": "pass",
+      "summary": "八部分均有任务输入输出、公式、可改范围、边界、提交、迭代与完成标准；不只空标题。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md"
+      ]
+    },
+    {
+      "id": "QA12",
+      "status": "pass",
+      "summary": "ZIP成员清点无.git目录，未见版本库历史暴露。",
+      "evidence": [
+        "@inventory"
+      ]
+    },
+    {
+      "id": "QA13",
+      "status": "pass",
+      "summary": "三组17/29/43成对原始结果齐全，逐seed均改善，全部质量门true；六份checkpoint与reload记录可追溯。",
+      "evidence": [
+        "optimization_evidence/baseline_runs/result.json",
+        "optimization_evidence/reference_runs/result.json",
+        "optimization_evidence/comparison_summary.json"
+      ]
+    },
+    {
+      "id": "QA14",
+      "status": "pass",
+      "summary": "可实现新的条件表示、稳健校正或空间组合；题面不直接给出参考树方法。正式Reference未达到估计U，R-U=0.1474351932。",
+      "evidence": [
+        "workspace/reference/method.py",
+        "workspace/harbor_task/instruction.md:13",
+        "optimization_evidence/comparison_summary.json"
+      ]
+    },
+    {
+      "id": "QA15",
+      "status": "pass",
+      "summary": "正式CPU任务gpus=0，现有inspect为2CPU/4GiB；B完整fit/reload约1.067s，R约19.189s，最终GPT复验约348.119s，低于2h。A100仅共享上游准备，不冒充H20/L20实测。",
+      "evidence": [
+        "workspace/harbor_task/task.toml:15",
+        "optimization_evidence/baseline_runs/result.json",
+        "optimization_evidence/reference_runs/result.json",
+        "expert_evidence/provenance/physical_isolation/forecast-final-nop-gpt-43a9918f__verifier__trial/container-inspect.json"
+      ]
+    },
+    {
+      "id": "QA16",
+      "status": "pass",
+      "summary": "独立账本复算GPT36003.790908秒、Seed36008.387279秒；扣除并集一致，初始真实读题计入，冻结复验/稳定性不计。任务含拟合，不使用7h例外。",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json#duration_seconds",
+        "expert_evidence/trajectory_seed.json#duration_seconds",
+        "expert_evidence/provenance/model_execution/gpt",
+        "expert_evidence/provenance/model_execution/seed"
+      ]
+    },
+    {
+      "id": "QA17",
+      "status": "fail",
+      "summary": "已有separate/NOP/Hidden注入记录，但正式包保留禁用Compose，Agent构建依赖task-root context；模型轨适配器创建辅助broker容器，当前内场部署尚不满足。",
+      "evidence": [
+        "workspace/harbor_task/environment/docker-compose.yaml",
+        "workspace/harbor_task/tests/docker-compose.yaml",
+        "workspace/harbor_task/environment/Dockerfile:5",
+        "expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py:67"
+      ],
+      "remediation": "删除environment/、tests/直属Compose文件；将Agent所需公开文件与starter归入environment/，改COPY为该context内相对来源；使用平台每sandbox单容器能力，移除任务对额外broker容器的依赖。",
+      "acceptance_evidence": "重交完整ZIP、平台采用的Agent environment/与Verifier tests/构建定义及单容器部署配置；在目标Harbor上补构建、Public Dev、artifacts移交与separate评分记录。"
+    },
+    {
+      "id": "QA18",
+      "status": "fail",
+      "summary": "分数逐轮与原始评分一致，但摘要把27/79全记录称effective_rounds，账本中5/53轮为0秒基础设施阻塞；另有八字段之外的字段及HTTP409统称方法失败，未忠实区分有效方法与评分故障。",
+      "evidence": [
+        "expert_evidence/run_summary.json:10",
+        "expert_evidence/run_summary.json:42",
+        "expert_evidence/trajectory_codex.json",
+        "expert_evidence/trajectory_seed.json",
+        "expert_evidence/provenance/model_execution/gpt/round_0017/time-accounting.json",
+        "expert_evidence/provenance/model_execution/seed/round_0035/time-accounting.json"
+      ],
+      "remediation": "将run_summary的effective_rounds改为经过方法闭环定义核对的数值，并另列总记录数；把0秒API阻塞/旧候选重评标为基础设施记录；把17个HTTP409失败明确写为评分忙。每轮只保留规定八字段，辅助证据移到独立映射，摘要限定1–3句。",
+      "acceptance_evidence": "提交归一后的两条轨迹、逐轮到原始CLI/评分/时间账本的映射；不得改变原始分数、时间或删失败历史。复核八字段、状态与零工作轮分类。"
+    },
+    {
+      "id": "QA19",
+      "status": "pass",
+      "summary": "题面明确seed17/29/43、完整均值、全部门通过及严格正向MAE改善，无额外统一百分比门槛。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:10"
+      ]
+    },
+    {
+      "id": "QA20",
+      "status": "pass",
+      "summary": "题面明确可编辑Python源、可用numpy/scipy/sklearn与固定solve迭代工具、禁止外网及评分篡改；网络口径与内场冲突另列环境配置失败。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:13",
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/instruction.md:22"
+      ]
+    },
+    {
+      "id": "QA21",
+      "status": "manual",
+      "summary": "run_summary无task_binding.hash_profile/task_content_sha256；已有NOP逐文件manifest与当前55个任务文件一致，但不能替代官方四项指纹。按五类放宽记非阻断待补。",
+      "evidence": [
+        "expert_evidence/run_summary.json",
+        "expert_evidence/provenance/native_harbor/nop/task-source-manifest.json"
+      ],
+      "blocking": false,
+      "remediation": "取得真实发布task_fingerprint.py后按四项全递归生成并补task_binding；保留现有历史绑定。",
+      "acceptance_evidence": "脚本版本/哈希、当前四项指纹与各轨版本说明；不得给历史结果补造当前值。"
+    }
+  ],
+  "harbor": {
+    "task_root": "workspace/harbor_task",
+    "target_version": "0.23.0 (packaged historical local runtime)",
+    "provider": "Docker via expert-only custom ForecastDockerEnvironment",
+    "version_basis": "包内launch、adapter README与Trial记录；未加载原生schema、未浏览部署端源码，也不等同当前平台版本。",
+    "runtime_status": "existing_local_trials_reviewed_not_rerun",
+    "checks": [
+      {
+        "id": "H01",
+        "status": "pass",
+        "summary": "任务根与入口完整；公开Dev经受保护local scorer可迭代，专家侧真实Hidden资产、注入实现及冻结后Hidden Trial齐全，未把仅有目录当完成。",
+        "evidence": [
+          "workspace/harbor_task/task.toml",
+          "workspace/harbor_task/tests/test.sh",
+          "expert_evidence/held_out_assets/INJECTION.md",
+          "expert_evidence/provenance/harbor_adapter/post_selection_harbor.py:32",
+          "expert_evidence/provenance/native_harbor/selected_hidden_injection/returned-result.json"
+        ]
+      },
+      {
+        "id": "H02",
+        "status": "fail",
+        "summary": "TOML可静态解析，separate显式；但当前storage_mb/no-network与内场合同冲突。已有Harbor0.23私有适配记录不能证明当前平台接受。",
+        "evidence": [
+          "workspace/harbor_task/task.toml",
+          "expert_evidence/专家作业说明文档.md:15"
+        ],
+        "remediation": "移除task.toml中的storage_mb和任务级禁网/网络白名单声明；题面改用平台实际网络与工具策略，隔离继续依赖文件权限/受限候选/冻结面而不是未支持的禁网承诺。",
+        "acceptance_evidence": "同步task.toml及其tests副本、instruction及适配器；提交目标平台可解析的配置和隔离验证记录。"
+      },
+      {
+        "id": "H03",
+        "status": "fail",
+        "summary": "Verifier tests/ context自洽；Agent COPY要求environment/...及根solution，无法直接以environment/构建。两处Compose与额外broker依赖不满足当前单容器规则。",
+        "evidence": [
+          "workspace/harbor_task/environment/Dockerfile:5",
+          "workspace/harbor_task/tests/Dockerfile",
+          "workspace/harbor_task/environment/docker-compose.yaml",
+          "workspace/harbor_task/tests/docker-compose.yaml",
+          "expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py:69"
+        ],
+        "remediation": "删除environment/、tests/直属Compose文件；将Agent所需公开文件与starter归入environment/，改COPY为该context内相对来源；使用平台每sandbox单容器能力，移除任务对额外broker容器的依赖。",
+        "acceptance_evidence": "重交完整ZIP、平台采用的Agent environment/与Verifier tests/构建定义及单容器部署配置；在目标Harbor上补构建、Public Dev、artifacts移交与separate评分记录。"
+      },
+      {
+        "id": "H04",
+        "status": "pass",
+        "summary": "test.sh→grader写/logs/verifier/reward.txt，已有Trial reward与结果一致；成功原子写，Hard Gate=-1，执行/超时错误不伪造正常分数。",
+        "evidence": [
+          "workspace/harbor_task/tests/test.sh",
+          "workspace/harbor_task/tests/engine/grader.py:207",
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/verifier/reward.txt"
+        ]
+      },
+      {
+        "id": "H05",
+        "status": "pass",
+        "summary": "已有Trial选择本题、nop与自定义FrozenEvaluationEnvironment，verifier未禁用；任务artifacts移交solution，候选源码有manifest。此项只认可本地调用记录。",
+        "evidence": [
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/config.json",
+          "expert_evidence/provenance/native_harbor/nop/returned-result.json",
+          "workspace/harbor_task/task.toml:2"
+        ]
+      },
+      {
+        "id": "H06",
+        "status": "pass",
+        "summary": "同一次NOP config/result/reward/log齐全：nop、separate、exception=null、reward=0，55个任务文件逐件hash与包中一致。为既有本地0.23记录，本次未运行。",
+        "evidence": [
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/config.json",
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/result.json",
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/trial.log",
+          "expert_evidence/provenance/native_harbor/nop/forecast-final-nop-gpt-43a9918f/verifier/reward.txt",
+          "expert_evidence/provenance/native_harbor/nop/task-source-manifest.json"
+        ]
+      }
+    ],
+    "path_contract": {
+      "profile": "harbor-environment-v1",
+      "profile_basis": "当前V4规定Agent environment/ context及专用Verifier tests/ context；历史包实际为Compose映射的task-root context。",
+      "status": "fail",
+      "dockerfile": "workspace/harbor_task/environment/Dockerfile",
+      "build_context": "workspace/harbor_task/environment",
+      "verifier_dockerfile": "workspace/harbor_task/tests/Dockerfile",
+      "verifier_build_context": "workspace/harbor_task/tests",
+      "runtime_task_root": "/workspace",
+      "test_entry": "/tests/test.sh",
+      "submission_path": "/workspace/solution"
+    },
+    "hidden_review": {
+      "mode": "injected",
+      "summary": "真实专家侧Hidden三文件；post-selection适配器只向Verifier安全注入，结果在Dev选优冻结之后。默认test.sh若无注入会退回Dev，目标部署应显式要求正式Hidden资产，避免误把Dev当最终评分。",
+      "evidence": [
+        "expert_evidence/held_out_assets/INJECTION.md",
+        "expert_evidence/provenance/harbor_adapter/post_selection_harbor.py",
+        "expert_evidence/provenance/native_harbor/selected_hidden_injection/returned-result.json"
+      ],
+      "asset_paths": [
+        "expert_evidence/held_out_assets/hidden_features.npz",
+        "expert_evidence/held_out_assets/hidden_targets.npz",
+        "expert_evidence/held_out_assets/protocol.json"
+      ]
+    },
+    "submission_paths": [
+      "/workspace/solution"
+    ],
+    "isolation": {
+      "separate_declared": true,
+      "dev_iterable": true,
+      "hidden_assets_outside_agent_context": true,
+      "candidate_unprivileged": true,
+      "root_deserializes_candidate_pickle": false,
+      "single_container_contract_satisfied": false,
+      "extra_container_evidence": "expert_evidence/provenance/harbor_adapter/forecast_harbor_environment.py:69",
+      "gpu_requirement": "CPU任务gpus=0；不申请额外GPU；已记录A100仅上游准备。",
+      "current_task_manifest_file_count": 55,
+      "current_task_manifest_mismatches": 0
+    }
+  },
+  "nonblocking_followups": [
+    {
+      "category": "四项指纹/哈希",
+      "status": "待补",
+      "facts": "run_summary未含task_binding；已有逐文件manifest55项一致，不冒充官方profile。",
+      "remediation": "取得真实官方脚本后补四项指纹；无需仅为此全量重跑。"
+    },
+    {
+      "category": "换卡对Baseline/Reference影响",
+      "status": "不适用当前核心",
+      "facts": "正式任务CPU0GPU，共享骨干历史A100保真，未声称已迁移H20/L20。",
+      "remediation": "若平台后续要求迁移上游准备，保留旧证据并补影响说明；本次不强制补跑。"
+    },
+    {
+      "category": "换卡耗时",
+      "status": "不适用当前核心",
+      "facts": "正式CPU实测已列，当前没有H20/L20迁移耗时主张。",
+      "remediation": "若将来改卡，实测与估算分列，迁移计时可后补。"
+    },
+    {
+      "category": "NOP",
+      "status": "已有本地记录",
+      "facts": "同一当前文件版本的nop/separate/reward0材料齐全；新平台验收未做。",
+      "remediation": "部署修复后建议补目标平台同版本NOP；该记录本身不单独阻断。"
+    },
+    {
+      "category": "换卡重算分数",
+      "status": "不适用当前核心",
+      "facts": "已直接核对全部CPU正式原值，无仅因换卡要求重算。",
+      "remediation": "后续如换卡影响标定可单列复核，不将该项混作当前Compose与轨迹失败豁免。"
+    }
+  ],
+  "tool_gaps": [
+    "未获真实官方0.3.10发布包、check_submission.py、独立GPU前检脚本与task_fingerprint.py；完整官方工具验收待补。",
+    "未运行旧0.3.2收集器，未改工具版本字符串，报告不是官方PASS。"
+  ],
+  "execution_boundary": [
+    "仅zipfile读取源码、文本、JSON、日志与文件元数据/原始字节哈希；未执行或导入提交代码。",
+    "未运行Docker、Verifier、安装、训练、外部模型或任何模型反序列化；现有12h稳定与Trial均仅审包内记录。",
+    "完整二进制发布隐私门禁由主控另行逐件扫描；本次可见文本发现作者home/远端环境绝对路径，仅报类型与位置。"
+  ],
+  "privacy_findings": [
+    {
+      "type": "author_machine_absolute_path",
+      "path": "expert_evidence/provenance/shared-backbone-training.execution.json",
+      "fields": [
+        "command",
+        "cwd"
+      ],
+      "remediation": "脱敏为逻辑artifact路径，同时保留可审运行来源映射。"
+    },
+    {
+      "type": "author_machine_absolute_path",
+      "path": "expert_evidence/provenance/forecast-export-manifest.json",
+      "fields": [
+        "backbone.checkpoint"
+      ],
+      "remediation": "以相对模型索引或稳定逻辑标识替代机器路径。"
+    }
+  ],
+  "risk_notes": [
+    "正式Hidden依赖专家适配器注入，test.sh缺资产时默默评分Dev；迁移到平台必须将最终Hidden模式设为显式必需并给注入回执。",
+    "现有U是先验pilot估计，最终GPT候选分数已达3.2107；未裁剪本身正确，但应保留U估计局限并避免把>1解释成异常或反调U。",
+    "可见训练provenance仍含作者环境绝对路径；发布前逐件脱敏与隐私扫描，不在本报告复制原值。"
+  ],
+  "counts": {
+    "pass": 17,
+    "fail": 3,
+    "manual": 1
+  },
+  "gate_counts": {
+    "pass": 3
+  },
+  "core_conclusion": "NOT READY：方法空间、Baseline、正式Reference提升和双轨有效时长均有支持；当前内场环境配置/构建/单容器要求明确不符，轨迹有效轮数与故障分类也需修正。不是由五类放宽缺口造成。"
+}

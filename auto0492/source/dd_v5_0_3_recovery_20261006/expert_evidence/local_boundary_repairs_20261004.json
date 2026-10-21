@@ -1,0 +1,56 @@
+{
+  "scope": "Author local candidate engine-boundary repair, not quality run or final QA",
+  "observed_at": "2026-10-04T15:14:37.693592+00:00",
+  "task_candidate_version": "5.0.1-candidate",
+  "root_cause": {
+    "original_parser_allowed_ode_nfe": [
+      1,
+      2
+    ],
+    "actual_CategoricalFlow_rejected_nfe_below": 3,
+    "read_only_original_remote_cpu_probe": {
+      "torch": "2.5.1+cu121",
+      "parser_accepted_1_and_2": true,
+      "solver_rejected_1_and_2": true,
+      "gpu_used": false
+    }
+  },
+  "repair": "Local checked_spec lower bound is now 3, matching the existing solver and instruction. No training/sampling math or legal archived configuration changed.",
+  "verification": {
+    "local_regression_count": 15,
+    "unittest_exit_code": 0,
+    "all_eight_archived_method_configs_accepted_identically": true,
+    "native_final_nop": "NOT_RUN"
+  },
+  "old_local_manifest_sha256": "e0a6bdd7a6b81fc86ac5c24a1632e3f29ecdd5e370dafb9f0f7a2365fe2b16f5",
+  "new_local_manifest_sha256": "b85c42c69df84275dc15cf9e36223fc23d7981cfd5346f7b5ef36fae74f93859",
+  "original_runtime_manifest_sha256": "d69fa87bc503cf12a33f32a718c313557a88e579d2fa8678f2f50bdaeb99b7a4",
+  "actual_running_attempt04_unchanged": true,
+  "changed_files": [
+    {
+      "path": "workspace/harbor_task/environment/engine/method_contract.py",
+      "sha256": "c8708479d85dbb91125ada4314d5a70c083d30d5628d4011b450c0330f757e10"
+    },
+    {
+      "path": "author_tools/ssh_gateway.py",
+      "sha256": "7d4a2a7ae155b294d6eb1b5e51418ea09b7293d753e62724238a8fab23964180"
+    },
+    {
+      "path": "author_tools/runtime_client.py",
+      "sha256": "6a7a2f59c85879509d9ed076627e0edfeee877317613ef1ddaa5fc50e2a0fb8d"
+    },
+    {
+      "path": "workspace/harbor_task/tests/test.sh",
+      "sha256": "9013f27991ff08ae06104218779a46c1cbb12830d564f66978d53635c8808e29"
+    },
+    {
+      "path": "workspace/harbor_task/task.toml",
+      "sha256": "4717abffff34ff6cdaecd3b7b987a7ce1e733e9316be61d85e7a80da3c79eb21"
+    }
+  ],
+  "limitations": [
+    "Classified hard-gate failures bind accepted job/scope/source before invalid score -1; storage and other infrastructure failures have no quality reward.",
+    "Unrecognized method-worker exceptions remain conservative infrastructure/method runtime failures; fully structured stage/worker error records remain to integrate.",
+    "No current formal NOP or private scoring/anchors have been claimed."
+  ]
+}

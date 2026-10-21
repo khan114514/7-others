@@ -1,0 +1,81 @@
+{
+  "protocol": "attention-exact-cpu-v2",
+  "device": "cpu",
+  "dtype": "float32",
+  "torch_threads": 1,
+  "formal_seeds": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "warmup": 3,
+  "timed_repeats": 11,
+  "quality": {
+    "atol": 3e-05,
+    "rtol": 0.0003
+  },
+  "upper_bound_ms": 0.0,
+  "upper_bound_basis": "Mathematical nonnegative latency floor, fixed before any Reference evaluation.",
+  "baseline_ms": 1.0676509840106392,
+  "cases": [
+    {
+      "batch": 1,
+      "length": 64,
+      "channels": 512,
+      "heads": 8,
+      "dim": 64,
+      "alpha": 1.05,
+      "beta": 5.0
+    },
+    {
+      "batch": 1,
+      "length": 128,
+      "channels": 640,
+      "heads": 10,
+      "dim": 64,
+      "alpha": 1.1,
+      "beta": 4.0
+    },
+    {
+      "batch": 1,
+      "length": 128,
+      "channels": 1280,
+      "heads": 20,
+      "dim": 64,
+      "alpha": 1.15,
+      "beta": 3.0
+    },
+    {
+      "batch": 1,
+      "length": 256,
+      "channels": 1280,
+      "heads": 20,
+      "dim": 64,
+      "alpha": 1.05,
+      "beta": 7.5
+    },
+    {
+      "batch": 1,
+      "length": 256,
+      "channels": 640,
+      "heads": 10,
+      "dim": 64,
+      "alpha": 1.2,
+      "beta": 5.0
+    },
+    {
+      "batch": 2,
+      "length": 128,
+      "channels": 512,
+      "heads": 8,
+      "dim": 64,
+      "alpha": 1.0,
+      "beta": 5.0
+    }
+  ],
+  "metric": "relative_process_cpu_time",
+  "baseline_anchor_units": "dimensionless_relative_cpu_time",
+  "measurement_order": "control_then_candidate_for_odd_seed_candidate_then_control_for_even_seed"
+}

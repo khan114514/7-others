@@ -1,0 +1,70 @@
+{
+  "role": "seed",
+  "runtime": "actual Linux Codex CLI 0.160.0",
+  "model_requested": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "command": [
+    "${LOCAL_OPERATOR_HOME}/Applications/Docker.app/Contents/Resources/bin/docker",
+    "exec",
+    "latentcli-seed-658dcc9ee104",
+    "codex",
+    "exec",
+    "--ephemeral",
+    "--json",
+    "--skip-git-repo-check",
+    "--sandbox",
+    "workspace-write",
+    "-m",
+    "doubao-seed-2-1-turbo-260628",
+    "-c",
+    "model_reasoning_effort=\"high\"",
+    "Continue the authorized research task through the actual CLI and actual tools. Read /workspace/instruction.md, your own method.py, method_notes.json and research_journal.md if present. Your track has a mandatory cumulative minimum of 10 effective research hours; a bounded CLI turn ending is not the end of the campaign. Do concrete normal analysis, coding, experiments and verification. Do not add sleeps, redundant reruns, invented results, token padding, or other work whose only purpose is passing time. Preserve reproducible code and actual outputs. All ordinary failed experiments count as research. Infrastructure stalls and resource waits do not.\n\nThis turn is pre-score research while the trusted host prepares the isolated GPU scorer. There is no GPU evaluation service in this workspace yet. Never claim a formal score or infer private Reference, Hidden data, credentials or another track. Use only your own accumulated work and the public interface. Update research_journal.md with findings, decisions, uncertainties and a concrete next experiment, and retain a valid method.py and method_notes.json. Complete the specific work below within this turn; if interrupted, preserve enough progress for your next turn to continue without starting over.\n\nSpecific research work:\nNew evidence is now available: all96 real frozen public Dev questions, labels, categories and images at /workspace/public_assets/dev, with the manifest at /workspace/public_assets/manifest.json. Use actual tools to verify this corpus and characterize its question lengths, option formatting, textual structures and input diversity. Compare these real distributions with assumptions in your own previous simulations. Investigate a generalizable question-feature or format-conditioned drafting controller, contrast it with your own current policy using discriminating executable CPU experiments on the real public questions, measure policy overhead and reset robustness, and preserve counterexamples. Do not hardcode development answer labels or present synthetic verification as target output evidence. Select concrete competing implementations and write the exact real GPU ablation to resolve the remaining uncertainty. This is new corpus-based pre-score research; the GPU service remains unavailable in this preparation workspace until Native gates pass. Preserve your own prior evidence and update method_notes.json, research_journal.md and research_handoff.md.\n"
+  ],
+  "started_epoch": 1791224523.702691,
+  "completed_epoch": 1791225351.801787,
+  "monotonic_elapsed_seconds": 828.05238325,
+  "cli_exit_code": 0,
+  "timed_out": false,
+  "model_turn_completed": true,
+  "tool_commands_succeeded": 35,
+  "tool_commands_failed": 4,
+  "method_changed": true,
+  "method_sha256": "9cc97e4af5f76ebdfeb704d226e331cd2190b7ffb0cfb84787bac3ea43cc921e",
+  "independent_compile_exit_code": 0,
+  "notes_produced": true,
+  "status": "PRODUCTIVE_CLI_RESEARCH_PREPARATION",
+  "effective_research_seconds": 828.0990958213806,
+  "time_accounting": {
+    "effective_seconds": 828.0990958213806,
+    "included_intervals": [
+      [
+        1791224523.702691,
+        1791225351.801787
+      ]
+    ],
+    "infrastructure_failure_seconds": 0,
+    "pending_activity_audit_seconds": 0.0,
+    "excluded_seconds": 0.0,
+    "accounting_status": "COUNTED_NORMAL_RESEARCH",
+    "artifact_validity_used_for_time": false
+  },
+  "included_activity": [
+    "normal analysis",
+    "coding",
+    "contract verification",
+    "ordinary failed experiments"
+  ],
+  "formal_trajectory_started": false,
+  "formal_scored_round": false,
+  "score": null,
+  "same_prompt_sha256": "e857ceb7d3bb56bdcea86468a0058540be3719107f4e3ca0bfbbfcd711c07dc3",
+  "same_instruction_sha256": "807c7a2541ed1eecd07a8a9862ec67e7d3f99d068819f56433b0620b8a5fcab0",
+  "usage": {
+    "input_tokens": 1422069,
+    "cached_input_tokens": 1321304,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 44197,
+    "reasoning_output_tokens": 9447
+  },
+  "public_dev_sha256": "7286fc3126b46434a4019fab3fd82a61e219a546acbe8fd15b0b41aab878e6eb"
+}

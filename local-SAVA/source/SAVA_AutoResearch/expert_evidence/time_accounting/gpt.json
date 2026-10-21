@@ -1,0 +1,3527 @@
+{
+  "schema_version": "sava-time-reconciliation.v2",
+  "track": "gpt",
+  "state": "COLLECTED_EPISODES_ONLY_NOT_TRACK_COMPLETION",
+  "accounting_basis": "Successful API segments plus completed native tool durations, bounded by episode wall; failed requests, verified repetitive stalls, setup-only episodes, and uncollected episodes excluded.",
+  "effective_seconds": 31751.36391291509,
+  "episodes": [
+    {
+      "episode": 1,
+      "started_at": "2026-10-09T12:19:32.388300+00:00",
+      "ended_at": "2026-10-09T13:06:59.415849+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 2846.5319938750035,
+      "successful_api_seconds": 2688.7339392470312,
+      "completed_tool_seconds": 148.59999999999997,
+      "effective_seconds": 2837.333939247031,
+      "cumulative_effective_seconds": 2837.333939247031,
+      "actual_completed_command_tools": 88,
+      "valid_episode": true,
+      "before_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+      "after_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0001/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0001/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0001/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0001/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0001/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0001/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        }
+      ],
+      "request_slice": [
+        42,
+        123
+      ],
+      "original_effective_seconds": 2837.333939247031,
+      "original_cumulative_effective_seconds": 2837.333939247031,
+      "counted_successful_api_seconds": 2688.7339392470312,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 9.198054627972397
+    },
+    {
+      "episode": 2,
+      "started_at": "2026-10-09T13:06:59.563245+00:00",
+      "ended_at": "2026-10-09T13:57:18.060330+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 3017.7667645420006,
+      "successful_api_seconds": 2246.8110380009603,
+      "completed_tool_seconds": 53.000000000000036,
+      "effective_seconds": 2299.8110380009603,
+      "cumulative_effective_seconds": 5137.144977247992,
+      "actual_completed_command_tools": 86,
+      "valid_episode": false,
+      "before_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73",
+      "after_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0002/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        }
+      ],
+      "request_slice": [
+        123,
+        186
+      ],
+      "original_effective_seconds": 0.0,
+      "original_cumulative_effective_seconds": 2837.333939247031,
+      "counted_successful_api_seconds": 2246.8110380009603,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 717.9557265410403
+    },
+    {
+      "episode": 3,
+      "started_at": "2026-10-09T13:57:18.246150+00:00",
+      "ended_at": "2026-10-09T14:49:47.708342+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 3148.4457920419954,
+      "successful_api_seconds": 2648.553437369992,
+      "completed_tool_seconds": 74.89999999999998,
+      "effective_seconds": 2723.453437369992,
+      "cumulative_effective_seconds": 7860.5984146179835,
+      "actual_completed_command_tools": 85,
+      "valid_episode": false,
+      "before_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb",
+      "after_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0003/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        }
+      ],
+      "request_slice": [
+        186,
+        254
+      ],
+      "original_effective_seconds": 0.0,
+      "original_cumulative_effective_seconds": 2837.333939247031,
+      "counted_successful_api_seconds": 2648.553437369992,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 424.99235467200333
+    },
+    {
+      "episode": 4,
+      "started_at": "2026-10-09T14:49:47.894820+00:00",
+      "ended_at": "2026-10-09T15:24:59.088782+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 2110.351844792007,
+      "successful_api_seconds": 1984.9118933370046,
+      "completed_tool_seconds": 113.1,
+      "effective_seconds": 2098.0118933370045,
+      "cumulative_effective_seconds": 9958.610307954988,
+      "actual_completed_command_tools": 72,
+      "valid_episode": true,
+      "before_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc",
+      "after_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0004/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        }
+      ],
+      "request_slice": [
+        254,
+        316
+      ],
+      "original_effective_seconds": 2098.0118933370045,
+      "original_cumulative_effective_seconds": 4935.345832584036,
+      "counted_successful_api_seconds": 1984.9118933370046,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 12.339951455002392
+    },
+    {
+      "episode": 5,
+      "started_at": "2026-10-09T15:24:59.301913+00:00",
+      "ended_at": "2026-10-09T16:09:32.488895+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 2671.3495074579987,
+      "successful_api_seconds": 2506.7891731649725,
+      "completed_tool_seconds": 154.49999999999991,
+      "effective_seconds": 2661.2891731649725,
+      "cumulative_effective_seconds": 12619.899481119961,
+      "actual_completed_command_tools": 126,
+      "valid_episode": true,
+      "before_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6",
+      "after_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/2d001ba35d8b43e1a88651e3b4a4a8f0.json",
+          "status": "ok",
+          "raw_metric": 0.0488753250654554,
+          "score": 0.9062783716492805,
+          "quality_valid": true,
+          "method_sha256": "530ce257edf08b325935c8d67349714134490d5e92d12f438f63a6528f41a725"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/5f3c05aee191420eb24a7426d1503267.json",
+          "status": "ok",
+          "raw_metric": 0.05629953476842881,
+          "score": 0.892041964594227,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/6816eb2aed454473ae3a86cb3b5002fc.json",
+          "status": "ok",
+          "raw_metric": 0.062160325032891706,
+          "score": 0.8808035164351224,
+          "quality_valid": true,
+          "method_sha256": "60489b287ca6e1ef56ce61b31413985781b0b1ec5db15861090abae9d62f92c4"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/7be8583bab7b4875bd03646ff3ef5f7d.json",
+          "status": "ok",
+          "raw_metric": 0.04625840150013876,
+          "score": 0.9112964935233014,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/b8562f4e55294af0925dd368374bb60e.json",
+          "status": "ok",
+          "raw_metric": 0.06020816953338605,
+          "score": 0.8845469021202808,
+          "quality_valid": true,
+          "method_sha256": "173297cfd168e6e336844f253f9baadbd31c77a8ecd2f627a584de962ef32b44"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/d8d8c9ce139948289bc11948cfcb3e9e.json",
+          "status": "ok",
+          "raw_metric": 0.049951216733218944,
+          "score": 0.9042152790990676,
+          "quality_valid": true,
+          "method_sha256": "d26af51d56550306674075a9be4114694acf97d6f835602aebeaa9139587b25b"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0005/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        }
+      ],
+      "request_slice": [
+        316,
+        404
+      ],
+      "original_effective_seconds": 2661.2891731649725,
+      "original_cumulative_effective_seconds": 7596.635005749008,
+      "counted_successful_api_seconds": 2506.7891731649725,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 10.060334293026244
+    },
+    {
+      "episode": 6,
+      "started_at": "2026-10-09T16:09:32.770896+00:00",
+      "ended_at": "2026-10-09T16:57:23.599191+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 2868.782441042,
+      "successful_api_seconds": 2613.3619708329206,
+      "completed_tool_seconds": 140.10000000000002,
+      "effective_seconds": 2753.4619708329205,
+      "cumulative_effective_seconds": 15373.361451952882,
+      "actual_completed_command_tools": 103,
+      "valid_episode": false,
+      "before_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece",
+      "after_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/2d001ba35d8b43e1a88651e3b4a4a8f0.json",
+          "status": "ok",
+          "raw_metric": 0.0488753250654554,
+          "score": 0.9062783716492805,
+          "quality_valid": true,
+          "method_sha256": "530ce257edf08b325935c8d67349714134490d5e92d12f438f63a6528f41a725"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/2e2d65ccb1ac455d81f4a22200b57416.json",
+          "status": "ok",
+          "raw_metric": 0.04829915573354811,
+          "score": 0.9073832139786109,
+          "quality_valid": true,
+          "method_sha256": "9dffe0a408fc8d8922f8cc936a706c17b159a12f5741a23309ae22fbf1db3db8"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/5f3c05aee191420eb24a7426d1503267.json",
+          "status": "ok",
+          "raw_metric": 0.05629953476842881,
+          "score": 0.892041964594227,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/67bdabdefad741f99b8744d852ba4251.json",
+          "status": "ok",
+          "raw_metric": 0.05072115703320985,
+          "score": 0.9027388682813114,
+          "quality_valid": true,
+          "method_sha256": "3b49deca1907c9ce9ffafc3990eee737f244b09afb283e1bc4ffb929e4ff17a5"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/6816eb2aed454473ae3a86cb3b5002fc.json",
+          "status": "ok",
+          "raw_metric": 0.062160325032891706,
+          "score": 0.8808035164351224,
+          "quality_valid": true,
+          "method_sha256": "60489b287ca6e1ef56ce61b31413985781b0b1ec5db15861090abae9d62f92c4"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/7be8583bab7b4875bd03646ff3ef5f7d.json",
+          "status": "ok",
+          "raw_metric": 0.04625840150013876,
+          "score": 0.9112964935233014,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/8d372515c6a44b5583754e23d0f2eeac.json",
+          "status": "ok",
+          "raw_metric": 0.049546916665470536,
+          "score": 0.904990550887868,
+          "quality_valid": true,
+          "method_sha256": "a3db49d67e5ee1817e37a3b14771f73c520f121160e08e2f9c6df656b8313b8d"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/b6b0c89e372b4c4b9c88fc581b8ceaf5.json",
+          "status": "ok",
+          "raw_metric": 0.04491611540094406,
+          "score": 0.9138704147966757,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/b8562f4e55294af0925dd368374bb60e.json",
+          "status": "ok",
+          "raw_metric": 0.06020816953338605,
+          "score": 0.8845469021202808,
+          "quality_valid": true,
+          "method_sha256": "173297cfd168e6e336844f253f9baadbd31c77a8ecd2f627a584de962ef32b44"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/d8d8c9ce139948289bc11948cfcb3e9e.json",
+          "status": "ok",
+          "raw_metric": 0.049951216733218944,
+          "score": 0.9042152790990676,
+          "quality_valid": true,
+          "method_sha256": "d26af51d56550306674075a9be4114694acf97d6f835602aebeaa9139587b25b"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        },
+        {
+          "report_file": "episode_0006/trusted_evaluator_results/ffde857e879243d0bfbf24b4ccba36ad.json",
+          "status": "ok",
+          "raw_metric": 0.05008928056631703,
+          "score": 0.9039505326807684,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        }
+      ],
+      "request_slice": [
+        404,
+        498
+      ],
+      "original_effective_seconds": 0.0,
+      "original_cumulative_effective_seconds": 7596.635005749008,
+      "counted_successful_api_seconds": 2613.3619708329206,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 115.3204702090793
+    },
+    {
+      "episode": 7,
+      "started_at": "2026-10-09T16:57:23.935620+00:00",
+      "ended_at": "2026-10-09T18:13:18.498777+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 4550.620513334012,
+      "successful_api_seconds": 3039.4934807970276,
+      "completed_tool_seconds": 1491.2999999999997,
+      "effective_seconds": 4530.793480797027,
+      "cumulative_effective_seconds": 19904.15493274991,
+      "actual_completed_command_tools": 91,
+      "valid_episode": true,
+      "before_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804",
+      "after_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/0c96f1bedc924b518725c1da85d541c3.json",
+          "status": "ok",
+          "raw_metric": 0.08985660549903211,
+          "score": 0.827694089519422,
+          "quality_valid": true,
+          "method_sha256": "4aa4bc29f2bd4768611f72351fdf29923ddd3229f80a892dcd67a31d2b949d4c"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/133a9c31c787428e93672fd584d324d9.json",
+          "status": "ok",
+          "raw_metric": 0.044679051434407785,
+          "score": 0.9143250004375346,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/2b884d1e407044179d3f6e19854e3353.json",
+          "status": "ok",
+          "raw_metric": 0.053173962633688156,
+          "score": 0.8980354533250584,
+          "quality_valid": true,
+          "method_sha256": "10a10446ca8de7200a14e2ee48dfbb27d74484cabfb4ea758e8c986d49dace98"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/2d001ba35d8b43e1a88651e3b4a4a8f0.json",
+          "status": "ok",
+          "raw_metric": 0.0488753250654554,
+          "score": 0.9062783716492805,
+          "quality_valid": true,
+          "method_sha256": "530ce257edf08b325935c8d67349714134490d5e92d12f438f63a6528f41a725"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/2e2d65ccb1ac455d81f4a22200b57416.json",
+          "status": "ok",
+          "raw_metric": 0.04829915573354811,
+          "score": 0.9073832139786109,
+          "quality_valid": true,
+          "method_sha256": "9dffe0a408fc8d8922f8cc936a706c17b159a12f5741a23309ae22fbf1db3db8"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/530468e8af5642c39952c3cac16728b1.json",
+          "status": "ok",
+          "raw_metric": 0.09249506799921316,
+          "score": 0.8226346653308747,
+          "quality_valid": true,
+          "method_sha256": "4fa6eb602d0b2b5523f7b17bd8740588e337737f455264c4c634ea33fd6183c6"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/5f3c05aee191420eb24a7426d1503267.json",
+          "status": "ok",
+          "raw_metric": 0.05629953476842881,
+          "score": 0.892041964594227,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/67bdabdefad741f99b8744d852ba4251.json",
+          "status": "ok",
+          "raw_metric": 0.05072115703320985,
+          "score": 0.9027388682813114,
+          "quality_valid": true,
+          "method_sha256": "3b49deca1907c9ce9ffafc3990eee737f244b09afb283e1bc4ffb929e4ff17a5"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/6816eb2aed454473ae3a86cb3b5002fc.json",
+          "status": "ok",
+          "raw_metric": 0.062160325032891706,
+          "score": 0.8808035164351224,
+          "quality_valid": true,
+          "method_sha256": "60489b287ca6e1ef56ce61b31413985781b0b1ec5db15861090abae9d62f92c4"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/6ecac93134cf4a3e991e74c5dd09233d.json",
+          "status": "ok",
+          "raw_metric": 0.039484752933882795,
+          "score": 0.9242854071040261,
+          "quality_valid": true,
+          "method_sha256": "735c397eb50027f284c285eb09947f26b06afa92c9758be3052915f3a11e492b"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/742657e2c069431996ffc36ae68835ce.json",
+          "status": "ok",
+          "raw_metric": 0.03996076669718605,
+          "score": 0.9233726196196587,
+          "quality_valid": true,
+          "method_sha256": "ebb3fa14a0fb032373582110ebb707ce6d38a6a8fb2d41eede149444fd464edb"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/7be8583bab7b4875bd03646ff3ef5f7d.json",
+          "status": "ok",
+          "raw_metric": 0.04625840150013876,
+          "score": 0.9112964935233014,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/7f8ed969b7214f72b74359700832de72.json",
+          "status": "ok",
+          "raw_metric": 0.03942903473265081,
+          "score": 0.924392250394403,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/8d372515c6a44b5583754e23d0f2eeac.json",
+          "status": "ok",
+          "raw_metric": 0.049546916665470536,
+          "score": 0.904990550887868,
+          "quality_valid": true,
+          "method_sha256": "a3db49d67e5ee1817e37a3b14771f73c520f121160e08e2f9c6df656b8313b8d"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/b6b0c89e372b4c4b9c88fc581b8ceaf5.json",
+          "status": "ok",
+          "raw_metric": 0.04491611540094406,
+          "score": 0.9138704147966757,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/b8562f4e55294af0925dd368374bb60e.json",
+          "status": "ok",
+          "raw_metric": 0.06020816953338605,
+          "score": 0.8845469021202808,
+          "quality_valid": true,
+          "method_sha256": "173297cfd168e6e336844f253f9baadbd31c77a8ecd2f627a584de962ef32b44"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/d8d8c9ce139948289bc11948cfcb3e9e.json",
+          "status": "ok",
+          "raw_metric": 0.049951216733218944,
+          "score": 0.9042152790990676,
+          "quality_valid": true,
+          "method_sha256": "d26af51d56550306674075a9be4114694acf97d6f835602aebeaa9139587b25b"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/f6448d71c28542bcbffdd5104fee1c22.json",
+          "status": "ok",
+          "raw_metric": 0.04618020283184402,
+          "score": 0.911446444577696,
+          "quality_valid": true,
+          "method_sha256": "77425d2aeef83490a7604e88eba97b198fbc7a485f9123f0848e4b0f2e2752d4"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        },
+        {
+          "report_file": "episode_0007/trusted_evaluator_results/ffde857e879243d0bfbf24b4ccba36ad.json",
+          "status": "ok",
+          "raw_metric": 0.05008928056631703,
+          "score": 0.9039505326807684,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        }
+      ],
+      "request_slice": [
+        498,
+        658
+      ],
+      "original_effective_seconds": 4530.793480797027,
+      "original_cumulative_effective_seconds": 12127.428486546036,
+      "counted_successful_api_seconds": 3039.4934807970276,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 19.827032536984916
+    },
+    {
+      "episode": 8,
+      "started_at": "2026-10-09T18:13:19.023528+00:00",
+      "ended_at": "2026-10-09T18:50:31.913192+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 2230.7240405420016,
+      "successful_api_seconds": 2148.3289609189815,
+      "completed_tool_seconds": 68.30000000000003,
+      "effective_seconds": 2216.6289609189816,
+      "cumulative_effective_seconds": 22120.78389366889,
+      "actual_completed_command_tools": 79,
+      "valid_episode": false,
+      "before_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354",
+      "after_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/0c96f1bedc924b518725c1da85d541c3.json",
+          "status": "ok",
+          "raw_metric": 0.08985660549903211,
+          "score": 0.827694089519422,
+          "quality_valid": true,
+          "method_sha256": "4aa4bc29f2bd4768611f72351fdf29923ddd3229f80a892dcd67a31d2b949d4c"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/133a9c31c787428e93672fd584d324d9.json",
+          "status": "ok",
+          "raw_metric": 0.044679051434407785,
+          "score": 0.9143250004375346,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/2b884d1e407044179d3f6e19854e3353.json",
+          "status": "ok",
+          "raw_metric": 0.053173962633688156,
+          "score": 0.8980354533250584,
+          "quality_valid": true,
+          "method_sha256": "10a10446ca8de7200a14e2ee48dfbb27d74484cabfb4ea758e8c986d49dace98"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/2d001ba35d8b43e1a88651e3b4a4a8f0.json",
+          "status": "ok",
+          "raw_metric": 0.0488753250654554,
+          "score": 0.9062783716492805,
+          "quality_valid": true,
+          "method_sha256": "530ce257edf08b325935c8d67349714134490d5e92d12f438f63a6528f41a725"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/2e2d65ccb1ac455d81f4a22200b57416.json",
+          "status": "ok",
+          "raw_metric": 0.04829915573354811,
+          "score": 0.9073832139786109,
+          "quality_valid": true,
+          "method_sha256": "9dffe0a408fc8d8922f8cc936a706c17b159a12f5741a23309ae22fbf1db3db8"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/3428ccff1c5d48deb968f855212cacbb.json",
+          "status": "ok",
+          "raw_metric": 0.04008131396646301,
+          "score": 0.9231414623566688,
+          "quality_valid": true,
+          "method_sha256": "1ff73d90ffb05ae31910ecc236b7481fdc268b37573cd916036dd2058015cb90"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/530468e8af5642c39952c3cac16728b1.json",
+          "status": "ok",
+          "raw_metric": 0.09249506799921316,
+          "score": 0.8226346653308747,
+          "quality_valid": true,
+          "method_sha256": "4fa6eb602d0b2b5523f7b17bd8740588e337737f455264c4c634ea33fd6183c6"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/5f3c05aee191420eb24a7426d1503267.json",
+          "status": "ok",
+          "raw_metric": 0.05629953476842881,
+          "score": 0.892041964594227,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/67bdabdefad741f99b8744d852ba4251.json",
+          "status": "ok",
+          "raw_metric": 0.05072115703320985,
+          "score": 0.9027388682813114,
+          "quality_valid": true,
+          "method_sha256": "3b49deca1907c9ce9ffafc3990eee737f244b09afb283e1bc4ffb929e4ff17a5"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/6816eb2aed454473ae3a86cb3b5002fc.json",
+          "status": "ok",
+          "raw_metric": 0.062160325032891706,
+          "score": 0.8808035164351224,
+          "quality_valid": true,
+          "method_sha256": "60489b287ca6e1ef56ce61b31413985781b0b1ec5db15861090abae9d62f92c4"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/6c369e5141ca423f97aa3c359fc09d1e.json",
+          "status": "ok",
+          "raw_metric": 0.04523859436594648,
+          "score": 0.913252040316948,
+          "quality_valid": true,
+          "method_sha256": "fc9b3e4401eea47ac5d9df307a79d703e8a1bf9e0ea5f759c19ff992e6475cfb"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/6ecac93134cf4a3e991e74c5dd09233d.json",
+          "status": "ok",
+          "raw_metric": 0.039484752933882795,
+          "score": 0.9242854071040261,
+          "quality_valid": true,
+          "method_sha256": "735c397eb50027f284c285eb09947f26b06afa92c9758be3052915f3a11e492b"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/742657e2c069431996ffc36ae68835ce.json",
+          "status": "ok",
+          "raw_metric": 0.03996076669718605,
+          "score": 0.9233726196196587,
+          "quality_valid": true,
+          "method_sha256": "ebb3fa14a0fb032373582110ebb707ce6d38a6a8fb2d41eede149444fd464edb"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/7be8583bab7b4875bd03646ff3ef5f7d.json",
+          "status": "ok",
+          "raw_metric": 0.04625840150013876,
+          "score": 0.9112964935233014,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/7f8ed969b7214f72b74359700832de72.json",
+          "status": "ok",
+          "raw_metric": 0.03942903473265081,
+          "score": 0.924392250394403,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/8d372515c6a44b5583754e23d0f2eeac.json",
+          "status": "ok",
+          "raw_metric": 0.049546916665470536,
+          "score": 0.904990550887868,
+          "quality_valid": true,
+          "method_sha256": "a3db49d67e5ee1817e37a3b14771f73c520f121160e08e2f9c6df656b8313b8d"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/a49cd08bda4b40099962814504a0d2cc.json",
+          "status": "ok",
+          "raw_metric": 0.0631893097650997,
+          "score": 0.8788303709977997,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/b6b0c89e372b4c4b9c88fc581b8ceaf5.json",
+          "status": "ok",
+          "raw_metric": 0.04491611540094406,
+          "score": 0.9138704147966757,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/b8562f4e55294af0925dd368374bb60e.json",
+          "status": "ok",
+          "raw_metric": 0.06020816953338605,
+          "score": 0.8845469021202808,
+          "quality_valid": true,
+          "method_sha256": "173297cfd168e6e336844f253f9baadbd31c77a8ecd2f627a584de962ef32b44"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/bd9ed96cda1849d1b2a45703c20d3bda.json",
+          "status": "ok",
+          "raw_metric": 0.04727764859999297,
+          "score": 0.9093420206320797,
+          "quality_valid": true,
+          "method_sha256": "0b6d2d08768addc7cc6342bb22a1c0fcf89ef73f797b287444b367dd3d87667f"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/d2af70f4d4ce4200b6a44e93f469ae5f.json",
+          "status": "ok",
+          "raw_metric": 0.04126905420174201,
+          "score": 0.9208638928722934,
+          "quality_valid": true,
+          "method_sha256": "fab4ae464687ac8e3c80604ccd4be38b66476d47e031b62425cc7300a9f253a5"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/d8d8c9ce139948289bc11948cfcb3e9e.json",
+          "status": "ok",
+          "raw_metric": 0.049951216733218944,
+          "score": 0.9042152790990676,
+          "quality_valid": true,
+          "method_sha256": "d26af51d56550306674075a9be4114694acf97d6f835602aebeaa9139587b25b"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/f6448d71c28542bcbffdd5104fee1c22.json",
+          "status": "ok",
+          "raw_metric": 0.04618020283184402,
+          "score": 0.911446444577696,
+          "quality_valid": true,
+          "method_sha256": "77425d2aeef83490a7604e88eba97b198fbc7a485f9123f0848e4b0f2e2752d4"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        },
+        {
+          "report_file": "episode_0008/trusted_evaluator_results/ffde857e879243d0bfbf24b4ccba36ad.json",
+          "status": "ok",
+          "raw_metric": 0.05008928056631703,
+          "score": 0.9039505326807684,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        }
+      ],
+      "request_slice": [
+        658,
+        722
+      ],
+      "original_effective_seconds": 0.0,
+      "original_cumulative_effective_seconds": 12127.428486546036,
+      "counted_successful_api_seconds": 2148.3289609189815,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 14.095079623019956
+    },
+    {
+      "episode": 9,
+      "started_at": "2026-10-09T18:50:32.311131+00:00",
+      "ended_at": "2026-10-09T19:41:58.840491+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 3082.080564541,
+      "successful_api_seconds": 2699.023839828078,
+      "completed_tool_seconds": 147.79999999999993,
+      "effective_seconds": 2846.823839828078,
+      "cumulative_effective_seconds": 24967.607733496967,
+      "actual_completed_command_tools": 123,
+      "valid_episode": false,
+      "before_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354",
+      "after_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/0c96f1bedc924b518725c1da85d541c3.json",
+          "status": "ok",
+          "raw_metric": 0.08985660549903211,
+          "score": 0.827694089519422,
+          "quality_valid": true,
+          "method_sha256": "4aa4bc29f2bd4768611f72351fdf29923ddd3229f80a892dcd67a31d2b949d4c"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/133a9c31c787428e93672fd584d324d9.json",
+          "status": "ok",
+          "raw_metric": 0.044679051434407785,
+          "score": 0.9143250004375346,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/15a52aa45db84d09aaecd826f4de2e6a.json",
+          "status": "ok",
+          "raw_metric": 0.040048826466954776,
+          "score": 0.9232037592590603,
+          "quality_valid": true,
+          "method_sha256": "d55f04d527fb23000cd61107bdbd3facd172e52bb43a5969e195a87f3ae463d3"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/2b884d1e407044179d3f6e19854e3353.json",
+          "status": "ok",
+          "raw_metric": 0.053173962633688156,
+          "score": 0.8980354533250584,
+          "quality_valid": true,
+          "method_sha256": "10a10446ca8de7200a14e2ee48dfbb27d74484cabfb4ea758e8c986d49dace98"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/2d001ba35d8b43e1a88651e3b4a4a8f0.json",
+          "status": "ok",
+          "raw_metric": 0.0488753250654554,
+          "score": 0.9062783716492805,
+          "quality_valid": true,
+          "method_sha256": "530ce257edf08b325935c8d67349714134490d5e92d12f438f63a6528f41a725"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/2e2d65ccb1ac455d81f4a22200b57416.json",
+          "status": "ok",
+          "raw_metric": 0.04829915573354811,
+          "score": 0.9073832139786109,
+          "quality_valid": true,
+          "method_sha256": "9dffe0a408fc8d8922f8cc936a706c17b159a12f5741a23309ae22fbf1db3db8"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/3428ccff1c5d48deb968f855212cacbb.json",
+          "status": "ok",
+          "raw_metric": 0.04008131396646301,
+          "score": 0.9231414623566688,
+          "quality_valid": true,
+          "method_sha256": "1ff73d90ffb05ae31910ecc236b7481fdc268b37573cd916036dd2058015cb90"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/347af298fa0344ffb4b451cbe0a26e03.json",
+          "status": "ok",
+          "raw_metric": 0.061441357034103326,
+          "score": 0.8821821845358105,
+          "quality_valid": true,
+          "method_sha256": "cec185be3b526a4ac4beb2d90522f8f89d08d13022ae21f1ccdac22f06d9ee73"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/530468e8af5642c39952c3cac16728b1.json",
+          "status": "ok",
+          "raw_metric": 0.09249506799921316,
+          "score": 0.8226346653308747,
+          "quality_valid": true,
+          "method_sha256": "4fa6eb602d0b2b5523f7b17bd8740588e337737f455264c4c634ea33fd6183c6"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/5f3c05aee191420eb24a7426d1503267.json",
+          "status": "ok",
+          "raw_metric": 0.05629953476842881,
+          "score": 0.892041964594227,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/67bdabdefad741f99b8744d852ba4251.json",
+          "status": "ok",
+          "raw_metric": 0.05072115703320985,
+          "score": 0.9027388682813114,
+          "quality_valid": true,
+          "method_sha256": "3b49deca1907c9ce9ffafc3990eee737f244b09afb283e1bc4ffb929e4ff17a5"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/6816eb2aed454473ae3a86cb3b5002fc.json",
+          "status": "ok",
+          "raw_metric": 0.062160325032891706,
+          "score": 0.8808035164351224,
+          "quality_valid": true,
+          "method_sha256": "60489b287ca6e1ef56ce61b31413985781b0b1ec5db15861090abae9d62f92c4"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/6c369e5141ca423f97aa3c359fc09d1e.json",
+          "status": "ok",
+          "raw_metric": 0.04523859436594648,
+          "score": 0.913252040316948,
+          "quality_valid": true,
+          "method_sha256": "fc9b3e4401eea47ac5d9df307a79d703e8a1bf9e0ea5f759c19ff992e6475cfb"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/6ecac93134cf4a3e991e74c5dd09233d.json",
+          "status": "ok",
+          "raw_metric": 0.039484752933882795,
+          "score": 0.9242854071040261,
+          "quality_valid": true,
+          "method_sha256": "735c397eb50027f284c285eb09947f26b06afa92c9758be3052915f3a11e492b"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/742657e2c069431996ffc36ae68835ce.json",
+          "status": "ok",
+          "raw_metric": 0.03996076669718605,
+          "score": 0.9233726196196587,
+          "quality_valid": true,
+          "method_sha256": "ebb3fa14a0fb032373582110ebb707ce6d38a6a8fb2d41eede149444fd464edb"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/7be8583bab7b4875bd03646ff3ef5f7d.json",
+          "status": "ok",
+          "raw_metric": 0.04625840150013876,
+          "score": 0.9112964935233014,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/7f8ed969b7214f72b74359700832de72.json",
+          "status": "ok",
+          "raw_metric": 0.03942903473265081,
+          "score": 0.924392250394403,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/8d372515c6a44b5583754e23d0f2eeac.json",
+          "status": "ok",
+          "raw_metric": 0.049546916665470536,
+          "score": 0.904990550887868,
+          "quality_valid": true,
+          "method_sha256": "a3db49d67e5ee1817e37a3b14771f73c520f121160e08e2f9c6df656b8313b8d"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/a1308d4cd2344b85b131ead5095f4f2c.json",
+          "status": "ok",
+          "raw_metric": 0.03859480283329807,
+          "score": 0.9259919445534647,
+          "quality_valid": true,
+          "method_sha256": "592df6dad60e09f62656181a75ed1687b9e58c4dfa0e8ad799e2a3f4217a33b4"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/a49cd08bda4b40099962814504a0d2cc.json",
+          "status": "ok",
+          "raw_metric": 0.0631893097650997,
+          "score": 0.8788303709977997,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/b6b0c89e372b4c4b9c88fc581b8ceaf5.json",
+          "status": "ok",
+          "raw_metric": 0.04491611540094406,
+          "score": 0.9138704147966757,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/b8562f4e55294af0925dd368374bb60e.json",
+          "status": "ok",
+          "raw_metric": 0.06020816953338605,
+          "score": 0.8845469021202808,
+          "quality_valid": true,
+          "method_sha256": "173297cfd168e6e336844f253f9baadbd31c77a8ecd2f627a584de962ef32b44"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/bd9ed96cda1849d1b2a45703c20d3bda.json",
+          "status": "ok",
+          "raw_metric": 0.04727764859999297,
+          "score": 0.9093420206320797,
+          "quality_valid": true,
+          "method_sha256": "0b6d2d08768addc7cc6342bb22a1c0fcf89ef73f797b287444b367dd3d87667f"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/bfd5570a349e40cd978aaa3dfcd14585.json",
+          "status": "ok",
+          "raw_metric": 0.03760104173222013,
+          "score": 0.9278975463772868,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/d2af70f4d4ce4200b6a44e93f469ae5f.json",
+          "status": "ok",
+          "raw_metric": 0.04126905420174201,
+          "score": 0.9208638928722934,
+          "quality_valid": true,
+          "method_sha256": "fab4ae464687ac8e3c80604ccd4be38b66476d47e031b62425cc7300a9f253a5"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/d8d8c9ce139948289bc11948cfcb3e9e.json",
+          "status": "ok",
+          "raw_metric": 0.049951216733218944,
+          "score": 0.9042152790990676,
+          "quality_valid": true,
+          "method_sha256": "d26af51d56550306674075a9be4114694acf97d6f835602aebeaa9139587b25b"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/e9a0dff97fd845bfaa5bfeb2e6e856fe.json",
+          "status": "ok",
+          "raw_metric": 0.049396719331950105,
+          "score": 0.9052785640857877,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/f6448d71c28542bcbffdd5104fee1c22.json",
+          "status": "ok",
+          "raw_metric": 0.04618020283184402,
+          "score": 0.911446444577696,
+          "quality_valid": true,
+          "method_sha256": "77425d2aeef83490a7604e88eba97b198fbc7a485f9123f0848e4b0f2e2752d4"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        },
+        {
+          "report_file": "episode_0009/trusted_evaluator_results/ffde857e879243d0bfbf24b4ccba36ad.json",
+          "status": "ok",
+          "raw_metric": 0.05008928056631703,
+          "score": 0.9039505326807684,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        }
+      ],
+      "request_slice": [
+        722,
+        794
+      ],
+      "original_effective_seconds": 0.0,
+      "original_cumulative_effective_seconds": 12127.428486546036,
+      "counted_successful_api_seconds": 2699.023839828078,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 235.25672471292228
+    },
+    {
+      "episode": 10,
+      "started_at": "2026-10-09T19:41:59.361156+00:00",
+      "ended_at": "2026-10-09T20:20:37.045141+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 2315.0159768329904,
+      "successful_api_seconds": 2054.603355583051,
+      "completed_tool_seconds": 250.69999999999987,
+      "effective_seconds": 2305.3033555830507,
+      "cumulative_effective_seconds": 27272.91108908002,
+      "actual_completed_command_tools": 131,
+      "valid_episode": true,
+      "before_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d",
+      "after_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/0c96f1bedc924b518725c1da85d541c3.json",
+          "status": "ok",
+          "raw_metric": 0.08985660549903211,
+          "score": 0.827694089519422,
+          "quality_valid": true,
+          "method_sha256": "4aa4bc29f2bd4768611f72351fdf29923ddd3229f80a892dcd67a31d2b949d4c"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/133a9c31c787428e93672fd584d324d9.json",
+          "status": "ok",
+          "raw_metric": 0.044679051434407785,
+          "score": 0.9143250004375346,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/15a52aa45db84d09aaecd826f4de2e6a.json",
+          "status": "ok",
+          "raw_metric": 0.040048826466954776,
+          "score": 0.9232037592590603,
+          "quality_valid": true,
+          "method_sha256": "d55f04d527fb23000cd61107bdbd3facd172e52bb43a5969e195a87f3ae463d3"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/1656bf3807374afabda1605efc348eaf.json",
+          "status": "ok",
+          "raw_metric": 0.03716656926650709,
+          "score": 0.9287306757100462,
+          "quality_valid": true,
+          "method_sha256": "11ab757b0756b88114ae8a0842f61511bb2edea6af6a9970fcf3cb01e904deff"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/287a874e4605445d85a4fb95df35696d.json",
+          "status": "ok",
+          "raw_metric": 0.038183655467582865,
+          "score": 0.926780346483382,
+          "quality_valid": true,
+          "method_sha256": "a81f881c4909fe7a4c7746449c8aa8f2b08ef266c8a5a5cf63c4259bd964d654"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/2b884d1e407044179d3f6e19854e3353.json",
+          "status": "ok",
+          "raw_metric": 0.053173962633688156,
+          "score": 0.8980354533250584,
+          "quality_valid": true,
+          "method_sha256": "10a10446ca8de7200a14e2ee48dfbb27d74484cabfb4ea758e8c986d49dace98"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/2d001ba35d8b43e1a88651e3b4a4a8f0.json",
+          "status": "ok",
+          "raw_metric": 0.0488753250654554,
+          "score": 0.9062783716492805,
+          "quality_valid": true,
+          "method_sha256": "530ce257edf08b325935c8d67349714134490d5e92d12f438f63a6528f41a725"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/2e2d65ccb1ac455d81f4a22200b57416.json",
+          "status": "ok",
+          "raw_metric": 0.04829915573354811,
+          "score": 0.9073832139786109,
+          "quality_valid": true,
+          "method_sha256": "9dffe0a408fc8d8922f8cc936a706c17b159a12f5741a23309ae22fbf1db3db8"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/3428ccff1c5d48deb968f855212cacbb.json",
+          "status": "ok",
+          "raw_metric": 0.04008131396646301,
+          "score": 0.9231414623566688,
+          "quality_valid": true,
+          "method_sha256": "1ff73d90ffb05ae31910ecc236b7481fdc268b37573cd916036dd2058015cb90"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/347af298fa0344ffb4b451cbe0a26e03.json",
+          "status": "ok",
+          "raw_metric": 0.061441357034103326,
+          "score": 0.8821821845358105,
+          "quality_valid": true,
+          "method_sha256": "cec185be3b526a4ac4beb2d90522f8f89d08d13022ae21f1ccdac22f06d9ee73"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/530468e8af5642c39952c3cac16728b1.json",
+          "status": "ok",
+          "raw_metric": 0.09249506799921316,
+          "score": 0.8226346653308747,
+          "quality_valid": true,
+          "method_sha256": "4fa6eb602d0b2b5523f7b17bd8740588e337737f455264c4c634ea33fd6183c6"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/5f3c05aee191420eb24a7426d1503267.json",
+          "status": "ok",
+          "raw_metric": 0.05629953476842881,
+          "score": 0.892041964594227,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/67bdabdefad741f99b8744d852ba4251.json",
+          "status": "ok",
+          "raw_metric": 0.05072115703320985,
+          "score": 0.9027388682813114,
+          "quality_valid": true,
+          "method_sha256": "3b49deca1907c9ce9ffafc3990eee737f244b09afb283e1bc4ffb929e4ff17a5"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/6816eb2aed454473ae3a86cb3b5002fc.json",
+          "status": "ok",
+          "raw_metric": 0.062160325032891706,
+          "score": 0.8808035164351224,
+          "quality_valid": true,
+          "method_sha256": "60489b287ca6e1ef56ce61b31413985781b0b1ec5db15861090abae9d62f92c4"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/6c369e5141ca423f97aa3c359fc09d1e.json",
+          "status": "ok",
+          "raw_metric": 0.04523859436594648,
+          "score": 0.913252040316948,
+          "quality_valid": true,
+          "method_sha256": "fc9b3e4401eea47ac5d9df307a79d703e8a1bf9e0ea5f759c19ff992e6475cfb"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/6ecac93134cf4a3e991e74c5dd09233d.json",
+          "status": "ok",
+          "raw_metric": 0.039484752933882795,
+          "score": 0.9242854071040261,
+          "quality_valid": true,
+          "method_sha256": "735c397eb50027f284c285eb09947f26b06afa92c9758be3052915f3a11e492b"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/742657e2c069431996ffc36ae68835ce.json",
+          "status": "ok",
+          "raw_metric": 0.03996076669718605,
+          "score": 0.9233726196196587,
+          "quality_valid": true,
+          "method_sha256": "ebb3fa14a0fb032373582110ebb707ce6d38a6a8fb2d41eede149444fd464edb"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/7be8583bab7b4875bd03646ff3ef5f7d.json",
+          "status": "ok",
+          "raw_metric": 0.04625840150013876,
+          "score": 0.9112964935233014,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/7f8ed969b7214f72b74359700832de72.json",
+          "status": "ok",
+          "raw_metric": 0.03942903473265081,
+          "score": 0.924392250394403,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/809853d8b620459186d36eb522636b35.json",
+          "status": "ok",
+          "raw_metric": 0.037873630533188894,
+          "score": 0.9273748395459205,
+          "quality_valid": true,
+          "method_sha256": "e82bb0d4d623f828bebcd1673a651e4acb54a0edf07f99dcfc761a1d0b911b00"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/8d372515c6a44b5583754e23d0f2eeac.json",
+          "status": "ok",
+          "raw_metric": 0.049546916665470536,
+          "score": 0.904990550887868,
+          "quality_valid": true,
+          "method_sha256": "a3db49d67e5ee1817e37a3b14771f73c520f121160e08e2f9c6df656b8313b8d"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/a1308d4cd2344b85b131ead5095f4f2c.json",
+          "status": "ok",
+          "raw_metric": 0.03859480283329807,
+          "score": 0.9259919445534647,
+          "quality_valid": true,
+          "method_sha256": "592df6dad60e09f62656181a75ed1687b9e58c4dfa0e8ad799e2a3f4217a33b4"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/a49cd08bda4b40099962814504a0d2cc.json",
+          "status": "ok",
+          "raw_metric": 0.0631893097650997,
+          "score": 0.8788303709977997,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/b6b0c89e372b4c4b9c88fc581b8ceaf5.json",
+          "status": "ok",
+          "raw_metric": 0.04491611540094406,
+          "score": 0.9138704147966757,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/b8562f4e55294af0925dd368374bb60e.json",
+          "status": "ok",
+          "raw_metric": 0.06020816953338605,
+          "score": 0.8845469021202808,
+          "quality_valid": true,
+          "method_sha256": "173297cfd168e6e336844f253f9baadbd31c77a8ecd2f627a584de962ef32b44"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/bd9ed96cda1849d1b2a45703c20d3bda.json",
+          "status": "ok",
+          "raw_metric": 0.04727764859999297,
+          "score": 0.9093420206320797,
+          "quality_valid": true,
+          "method_sha256": "0b6d2d08768addc7cc6342bb22a1c0fcf89ef73f797b287444b367dd3d87667f"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/bfd5570a349e40cd978aaa3dfcd14585.json",
+          "status": "ok",
+          "raw_metric": 0.03760104173222013,
+          "score": 0.9278975463772868,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/c1a342d3e8124714b238dd161a0cc544.json",
+          "status": "ok",
+          "raw_metric": 0.03851975833482963,
+          "score": 0.9261358472811869,
+          "quality_valid": true,
+          "method_sha256": "a40a6a5de217330ae595311ed7e92968bcf86f213346651d8c314223a84d0193"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/c715a89aca4d4d6081e6f39aec4075d7.json",
+          "status": "ok",
+          "raw_metric": 0.03685865550020632,
+          "score": 0.9293211204698644,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/d2af70f4d4ce4200b6a44e93f469ae5f.json",
+          "status": "ok",
+          "raw_metric": 0.04126905420174201,
+          "score": 0.9208638928722934,
+          "quality_valid": true,
+          "method_sha256": "fab4ae464687ac8e3c80604ccd4be38b66476d47e031b62425cc7300a9f253a5"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/d35dc3c8ae2b428d83e41e6a4d08f014.json",
+          "status": "ok",
+          "raw_metric": 0.048834316631352216,
+          "score": 0.9063570080003455,
+          "quality_valid": true,
+          "method_sha256": "36f6be7911e35c677ae394915c4ccfdc84eafbf796dba9fde9cfc194641d605b"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/d8d8c9ce139948289bc11948cfcb3e9e.json",
+          "status": "ok",
+          "raw_metric": 0.049951216733218944,
+          "score": 0.9042152790990676,
+          "quality_valid": true,
+          "method_sha256": "d26af51d56550306674075a9be4114694acf97d6f835602aebeaa9139587b25b"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/e9a0dff97fd845bfaa5bfeb2e6e856fe.json",
+          "status": "ok",
+          "raw_metric": 0.049396719331950105,
+          "score": 0.9052785640857877,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/f6448d71c28542bcbffdd5104fee1c22.json",
+          "status": "ok",
+          "raw_metric": 0.04618020283184402,
+          "score": 0.911446444577696,
+          "quality_valid": true,
+          "method_sha256": "77425d2aeef83490a7604e88eba97b198fbc7a485f9123f0848e4b0f2e2752d4"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        },
+        {
+          "report_file": "episode_0010/trusted_evaluator_results/ffde857e879243d0bfbf24b4ccba36ad.json",
+          "status": "ok",
+          "raw_metric": 0.05008928056631703,
+          "score": 0.9039505326807684,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        }
+      ],
+      "request_slice": [
+        794,
+        875
+      ],
+      "original_effective_seconds": 2305.3033555830507,
+      "original_cumulative_effective_seconds": 14432.731842129087,
+      "counted_successful_api_seconds": 2054.603355583051,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 9.71262124993973
+    },
+    {
+      "episode": 11,
+      "started_at": "2026-10-09T20:20:37.472599+00:00",
+      "ended_at": "2026-10-09T20:59:01.431981+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 2301.2957469999965,
+      "successful_api_seconds": 2127.871178083078,
+      "completed_tool_seconds": 164.4,
+      "effective_seconds": 2292.271178083078,
+      "cumulative_effective_seconds": 29565.182267163098,
+      "actual_completed_command_tools": 78,
+      "valid_episode": true,
+      "before_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d",
+      "after_sha256": "c84af4a358d47b35c429d0e0a5a14f2f3efc0ea14a2ae1c341aea6f4fa25e404",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/0c96f1bedc924b518725c1da85d541c3.json",
+          "status": "ok",
+          "raw_metric": 0.08985660549903211,
+          "score": 0.827694089519422,
+          "quality_valid": true,
+          "method_sha256": "4aa4bc29f2bd4768611f72351fdf29923ddd3229f80a892dcd67a31d2b949d4c"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/0fa6be6552cb4689a6f51154f10d5c0a.json",
+          "status": "ok",
+          "raw_metric": 0.04477090700092958,
+          "score": 0.9141488613887206,
+          "quality_valid": true,
+          "method_sha256": "ea02e4397ee9d379a0011887f5117ee8ae57606d9b61fa30d067c94569c50313"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/133a9c31c787428e93672fd584d324d9.json",
+          "status": "ok",
+          "raw_metric": 0.044679051434407785,
+          "score": 0.9143250004375346,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/15a52aa45db84d09aaecd826f4de2e6a.json",
+          "status": "ok",
+          "raw_metric": 0.040048826466954776,
+          "score": 0.9232037592590603,
+          "quality_valid": true,
+          "method_sha256": "d55f04d527fb23000cd61107bdbd3facd172e52bb43a5969e195a87f3ae463d3"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/1656bf3807374afabda1605efc348eaf.json",
+          "status": "ok",
+          "raw_metric": 0.03716656926650709,
+          "score": 0.9287306757100462,
+          "quality_valid": true,
+          "method_sha256": "11ab757b0756b88114ae8a0842f61511bb2edea6af6a9970fcf3cb01e904deff"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/21993105e08e4223b0af5fc89fd41153.json",
+          "status": "ok",
+          "raw_metric": 0.03667739993397845,
+          "score": 0.9296686898577253,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/287a874e4605445d85a4fb95df35696d.json",
+          "status": "ok",
+          "raw_metric": 0.038183655467582865,
+          "score": 0.926780346483382,
+          "quality_valid": true,
+          "method_sha256": "a81f881c4909fe7a4c7746449c8aa8f2b08ef266c8a5a5cf63c4259bd964d654"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/2b884d1e407044179d3f6e19854e3353.json",
+          "status": "ok",
+          "raw_metric": 0.053173962633688156,
+          "score": 0.8980354533250584,
+          "quality_valid": true,
+          "method_sha256": "10a10446ca8de7200a14e2ee48dfbb27d74484cabfb4ea758e8c986d49dace98"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/2d001ba35d8b43e1a88651e3b4a4a8f0.json",
+          "status": "ok",
+          "raw_metric": 0.0488753250654554,
+          "score": 0.9062783716492805,
+          "quality_valid": true,
+          "method_sha256": "530ce257edf08b325935c8d67349714134490d5e92d12f438f63a6528f41a725"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/2e2d65ccb1ac455d81f4a22200b57416.json",
+          "status": "ok",
+          "raw_metric": 0.04829915573354811,
+          "score": 0.9073832139786109,
+          "quality_valid": true,
+          "method_sha256": "9dffe0a408fc8d8922f8cc936a706c17b159a12f5741a23309ae22fbf1db3db8"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/3428ccff1c5d48deb968f855212cacbb.json",
+          "status": "ok",
+          "raw_metric": 0.04008131396646301,
+          "score": 0.9231414623566688,
+          "quality_valid": true,
+          "method_sha256": "1ff73d90ffb05ae31910ecc236b7481fdc268b37573cd916036dd2058015cb90"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/347af298fa0344ffb4b451cbe0a26e03.json",
+          "status": "ok",
+          "raw_metric": 0.061441357034103326,
+          "score": 0.8821821845358105,
+          "quality_valid": true,
+          "method_sha256": "cec185be3b526a4ac4beb2d90522f8f89d08d13022ae21f1ccdac22f06d9ee73"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/3ca78fbc960844b0b24ae81be7e9c150.json",
+          "status": "ok",
+          "raw_metric": 0.036028623731787474,
+          "score": 0.9309127606035076,
+          "quality_valid": true,
+          "method_sha256": "c84af4a358d47b35c429d0e0a5a14f2f3efc0ea14a2ae1c341aea6f4fa25e404"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/530468e8af5642c39952c3cac16728b1.json",
+          "status": "ok",
+          "raw_metric": 0.09249506799921316,
+          "score": 0.8226346653308747,
+          "quality_valid": true,
+          "method_sha256": "4fa6eb602d0b2b5523f7b17bd8740588e337737f455264c4c634ea33fd6183c6"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/5f3c05aee191420eb24a7426d1503267.json",
+          "status": "ok",
+          "raw_metric": 0.05629953476842881,
+          "score": 0.892041964594227,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/67bdabdefad741f99b8744d852ba4251.json",
+          "status": "ok",
+          "raw_metric": 0.05072115703320985,
+          "score": 0.9027388682813114,
+          "quality_valid": true,
+          "method_sha256": "3b49deca1907c9ce9ffafc3990eee737f244b09afb283e1bc4ffb929e4ff17a5"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/6816eb2aed454473ae3a86cb3b5002fc.json",
+          "status": "ok",
+          "raw_metric": 0.062160325032891706,
+          "score": 0.8808035164351224,
+          "quality_valid": true,
+          "method_sha256": "60489b287ca6e1ef56ce61b31413985781b0b1ec5db15861090abae9d62f92c4"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/6c369e5141ca423f97aa3c359fc09d1e.json",
+          "status": "ok",
+          "raw_metric": 0.04523859436594648,
+          "score": 0.913252040316948,
+          "quality_valid": true,
+          "method_sha256": "fc9b3e4401eea47ac5d9df307a79d703e8a1bf9e0ea5f759c19ff992e6475cfb"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/6ea752cc275143daaafce58d34cfc040.json",
+          "status": "ok",
+          "raw_metric": 0.059034108334647804,
+          "score": 0.8867982411585742,
+          "quality_valid": true,
+          "method_sha256": "ce0bae80f347f153ec795682e50c3580e959af7cfd70cdea5be4d43fe279ffb0"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/6ecac93134cf4a3e991e74c5dd09233d.json",
+          "status": "ok",
+          "raw_metric": 0.039484752933882795,
+          "score": 0.9242854071040261,
+          "quality_valid": true,
+          "method_sha256": "735c397eb50027f284c285eb09947f26b06afa92c9758be3052915f3a11e492b"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/742657e2c069431996ffc36ae68835ce.json",
+          "status": "ok",
+          "raw_metric": 0.03996076669718605,
+          "score": 0.9233726196196587,
+          "quality_valid": true,
+          "method_sha256": "ebb3fa14a0fb032373582110ebb707ce6d38a6a8fb2d41eede149444fd464edb"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/7be8583bab7b4875bd03646ff3ef5f7d.json",
+          "status": "ok",
+          "raw_metric": 0.04625840150013876,
+          "score": 0.9112964935233014,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/7f8ed969b7214f72b74359700832de72.json",
+          "status": "ok",
+          "raw_metric": 0.03942903473265081,
+          "score": 0.924392250394403,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/809853d8b620459186d36eb522636b35.json",
+          "status": "ok",
+          "raw_metric": 0.037873630533188894,
+          "score": 0.9273748395459205,
+          "quality_valid": true,
+          "method_sha256": "e82bb0d4d623f828bebcd1673a651e4acb54a0edf07f99dcfc761a1d0b911b00"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/8d372515c6a44b5583754e23d0f2eeac.json",
+          "status": "ok",
+          "raw_metric": 0.049546916665470536,
+          "score": 0.904990550887868,
+          "quality_valid": true,
+          "method_sha256": "a3db49d67e5ee1817e37a3b14771f73c520f121160e08e2f9c6df656b8313b8d"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/a1308d4cd2344b85b131ead5095f4f2c.json",
+          "status": "ok",
+          "raw_metric": 0.03859480283329807,
+          "score": 0.9259919445534647,
+          "quality_valid": true,
+          "method_sha256": "592df6dad60e09f62656181a75ed1687b9e58c4dfa0e8ad799e2a3f4217a33b4"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/a49cd08bda4b40099962814504a0d2cc.json",
+          "status": "ok",
+          "raw_metric": 0.0631893097650997,
+          "score": 0.8788303709977997,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/a631c5c3b2b343c688e63e01a9b2da46.json",
+          "status": "ok",
+          "raw_metric": 0.03681742086628219,
+          "score": 0.9294001905738614,
+          "quality_valid": true,
+          "method_sha256": "42450446e384142251d975fffa7fec856cdde17780fd71b1e6d309ef3e30dd3d"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/b6b0c89e372b4c4b9c88fc581b8ceaf5.json",
+          "status": "ok",
+          "raw_metric": 0.04491611540094406,
+          "score": 0.9138704147966757,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/b8562f4e55294af0925dd368374bb60e.json",
+          "status": "ok",
+          "raw_metric": 0.06020816953338605,
+          "score": 0.8845469021202808,
+          "quality_valid": true,
+          "method_sha256": "173297cfd168e6e336844f253f9baadbd31c77a8ecd2f627a584de962ef32b44"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/bd9ed96cda1849d1b2a45703c20d3bda.json",
+          "status": "ok",
+          "raw_metric": 0.04727764859999297,
+          "score": 0.9093420206320797,
+          "quality_valid": true,
+          "method_sha256": "0b6d2d08768addc7cc6342bb22a1c0fcf89ef73f797b287444b367dd3d87667f"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/bfd5570a349e40cd978aaa3dfcd14585.json",
+          "status": "ok",
+          "raw_metric": 0.03760104173222013,
+          "score": 0.9278975463772868,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/c1a342d3e8124714b238dd161a0cc544.json",
+          "status": "ok",
+          "raw_metric": 0.03851975833482963,
+          "score": 0.9261358472811869,
+          "quality_valid": true,
+          "method_sha256": "a40a6a5de217330ae595311ed7e92968bcf86f213346651d8c314223a84d0193"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/c715a89aca4d4d6081e6f39aec4075d7.json",
+          "status": "ok",
+          "raw_metric": 0.03685865550020632,
+          "score": 0.9293211204698644,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/d2af70f4d4ce4200b6a44e93f469ae5f.json",
+          "status": "ok",
+          "raw_metric": 0.04126905420174201,
+          "score": 0.9208638928722934,
+          "quality_valid": true,
+          "method_sha256": "fab4ae464687ac8e3c80604ccd4be38b66476d47e031b62425cc7300a9f253a5"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/d35dc3c8ae2b428d83e41e6a4d08f014.json",
+          "status": "ok",
+          "raw_metric": 0.048834316631352216,
+          "score": 0.9063570080003455,
+          "quality_valid": true,
+          "method_sha256": "36f6be7911e35c677ae394915c4ccfdc84eafbf796dba9fde9cfc194641d605b"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/d8d8c9ce139948289bc11948cfcb3e9e.json",
+          "status": "ok",
+          "raw_metric": 0.049951216733218944,
+          "score": 0.9042152790990676,
+          "quality_valid": true,
+          "method_sha256": "d26af51d56550306674075a9be4114694acf97d6f835602aebeaa9139587b25b"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/e9a0dff97fd845bfaa5bfeb2e6e856fe.json",
+          "status": "ok",
+          "raw_metric": 0.049396719331950105,
+          "score": 0.9052785640857877,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/f6448d71c28542bcbffdd5104fee1c22.json",
+          "status": "ok",
+          "raw_metric": 0.04618020283184402,
+          "score": 0.911446444577696,
+          "quality_valid": true,
+          "method_sha256": "77425d2aeef83490a7604e88eba97b198fbc7a485f9123f0848e4b0f2e2752d4"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        },
+        {
+          "report_file": "episode_0011/trusted_evaluator_results/ffde857e879243d0bfbf24b4ccba36ad.json",
+          "status": "ok",
+          "raw_metric": 0.05008928056631703,
+          "score": 0.9039505326807684,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        }
+      ],
+      "request_slice": [
+        875,
+        944
+      ],
+      "original_effective_seconds": 2292.271178083078,
+      "original_cumulative_effective_seconds": 16725.003020212167,
+      "counted_successful_api_seconds": 2127.871178083078,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 9.02456891691827
+    },
+    {
+      "episode": 12,
+      "started_at": "2026-10-09T20:59:01.879154+00:00",
+      "ended_at": "2026-10-09T21:39:45.124754+00:00",
+      "exit_code": 0,
+      "interruption": null,
+      "wall_seconds": 2440.047723625001,
+      "successful_api_seconds": 2055.981645751992,
+      "completed_tool_seconds": 130.19999999999993,
+      "effective_seconds": 2186.1816457519917,
+      "cumulative_effective_seconds": 31751.36391291509,
+      "actual_completed_command_tools": 106,
+      "valid_episode": false,
+      "before_sha256": "c84af4a358d47b35c429d0e0a5a14f2f3efc0ea14a2ae1c341aea6f4fa25e404",
+      "after_sha256": "af839345946785e31a26e6b03d25b2203d1d1ece87402356c942afb7d752c3ba",
+      "evaluator_observations": [
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/0bf919dc187c44b2af3a7da7fb133ca9.json",
+          "status": "ok",
+          "raw_metric": 0.3041770834014945,
+          "score": 0.41672057372136356,
+          "quality_valid": true,
+          "method_sha256": "494783a939f65bbd7cd6654e3cfb44ae0d7c26028aa05dca54fb3179b543389e"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/0c96f1bedc924b518725c1da85d541c3.json",
+          "status": "ok",
+          "raw_metric": 0.08985660549903211,
+          "score": 0.827694089519422,
+          "quality_valid": true,
+          "method_sha256": "4aa4bc29f2bd4768611f72351fdf29923ddd3229f80a892dcd67a31d2b949d4c"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/0fa6be6552cb4689a6f51154f10d5c0a.json",
+          "status": "ok",
+          "raw_metric": 0.04477090700092958,
+          "score": 0.9141488613887206,
+          "quality_valid": true,
+          "method_sha256": "ea02e4397ee9d379a0011887f5117ee8ae57606d9b61fa30d067c94569c50313"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/133a9c31c787428e93672fd584d324d9.json",
+          "status": "ok",
+          "raw_metric": 0.044679051434407785,
+          "score": 0.9143250004375346,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/15a52aa45db84d09aaecd826f4de2e6a.json",
+          "status": "ok",
+          "raw_metric": 0.040048826466954776,
+          "score": 0.9232037592590603,
+          "quality_valid": true,
+          "method_sha256": "d55f04d527fb23000cd61107bdbd3facd172e52bb43a5969e195a87f3ae463d3"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/1656bf3807374afabda1605efc348eaf.json",
+          "status": "ok",
+          "raw_metric": 0.03716656926650709,
+          "score": 0.9287306757100462,
+          "quality_valid": true,
+          "method_sha256": "11ab757b0756b88114ae8a0842f61511bb2edea6af6a9970fcf3cb01e904deff"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/2185fae788ac4d81812d438253801931.json",
+          "status": "ok",
+          "raw_metric": 0.08285442496902154,
+          "score": 0.841121228068361,
+          "quality_valid": true,
+          "method_sha256": "9a2123b1f10334586e1bbf44d6ef8138df7d753cd13de6f46c7276fce277cb63"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/21993105e08e4223b0af5fc89fd41153.json",
+          "status": "ok",
+          "raw_metric": 0.03667739993397845,
+          "score": 0.9296686898577253,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/287a874e4605445d85a4fb95df35696d.json",
+          "status": "ok",
+          "raw_metric": 0.038183655467582865,
+          "score": 0.926780346483382,
+          "quality_valid": true,
+          "method_sha256": "a81f881c4909fe7a4c7746449c8aa8f2b08ef266c8a5a5cf63c4259bd964d654"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/2b884d1e407044179d3f6e19854e3353.json",
+          "status": "ok",
+          "raw_metric": 0.053173962633688156,
+          "score": 0.8980354533250584,
+          "quality_valid": true,
+          "method_sha256": "10a10446ca8de7200a14e2ee48dfbb27d74484cabfb4ea758e8c986d49dace98"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/2caed5f0a5cb48978475ac0f0c33f046.json",
+          "status": "ok",
+          "raw_metric": 0.7168641031021252,
+          "score": -0.37463374328318144,
+          "quality_valid": true,
+          "method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/2d001ba35d8b43e1a88651e3b4a4a8f0.json",
+          "status": "ok",
+          "raw_metric": 0.0488753250654554,
+          "score": 0.9062783716492805,
+          "quality_valid": true,
+          "method_sha256": "530ce257edf08b325935c8d67349714134490d5e92d12f438f63a6528f41a725"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/2e2d65ccb1ac455d81f4a22200b57416.json",
+          "status": "ok",
+          "raw_metric": 0.04829915573354811,
+          "score": 0.9073832139786109,
+          "quality_valid": true,
+          "method_sha256": "9dffe0a408fc8d8922f8cc936a706c17b159a12f5741a23309ae22fbf1db3db8"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/2f20cff13065447cacfbe90d18b78873.json",
+          "status": "ok",
+          "raw_metric": 0.5545745612675091,
+          "score": -0.06343294605753307,
+          "quality_valid": true,
+          "method_sha256": "d5216ab4213ef2eed92d173dab42d30d33e2e56c045b23dc1adac67b484a47e6"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/3428ccff1c5d48deb968f855212cacbb.json",
+          "status": "ok",
+          "raw_metric": 0.04008131396646301,
+          "score": 0.9231414623566688,
+          "quality_valid": true,
+          "method_sha256": "1ff73d90ffb05ae31910ecc236b7481fdc268b37573cd916036dd2058015cb90"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/347af298fa0344ffb4b451cbe0a26e03.json",
+          "status": "ok",
+          "raw_metric": 0.061441357034103326,
+          "score": 0.8821821845358105,
+          "quality_valid": true,
+          "method_sha256": "cec185be3b526a4ac4beb2d90522f8f89d08d13022ae21f1ccdac22f06d9ee73"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/3ca78fbc960844b0b24ae81be7e9c150.json",
+          "status": "ok",
+          "raw_metric": 0.036028623731787474,
+          "score": 0.9309127606035076,
+          "quality_valid": true,
+          "method_sha256": "c84af4a358d47b35c429d0e0a5a14f2f3efc0ea14a2ae1c341aea6f4fa25e404"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/4ebb4ee52d1243e58ad9f451389e89ce.json",
+          "status": "ok",
+          "raw_metric": 0.2715824751324059,
+          "score": 0.4792228641581371,
+          "quality_valid": true,
+          "method_sha256": "ea63f829bbdba097fc488d3a5115108125e09949410e77f09cc2151420a43ba5"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/530468e8af5642c39952c3cac16728b1.json",
+          "status": "ok",
+          "raw_metric": 0.09249506799921316,
+          "score": 0.8226346653308747,
+          "quality_valid": true,
+          "method_sha256": "4fa6eb602d0b2b5523f7b17bd8740588e337737f455264c4c634ea33fd6183c6"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/5ce1bb5399f2447d9b0c07dfab79106d.json",
+          "status": "ok",
+          "raw_metric": 0.03610672940073224,
+          "score": 0.9307629878814414,
+          "quality_valid": true,
+          "method_sha256": "a7ea6f26fbd572130bdc9830b09c1144d08a7215a23c7ece313d22de8a53eb5c"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/5f3c05aee191420eb24a7426d1503267.json",
+          "status": "ok",
+          "raw_metric": 0.05629953476842881,
+          "score": 0.892041964594227,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/62c4eb2222704ec593224bcd135196d4.json",
+          "status": "ok",
+          "raw_metric": 0.2590207737681339,
+          "score": 0.503310747054841,
+          "quality_valid": true,
+          "method_sha256": "fb46e5d3b5dc019ba7d3858876ad64af9a951d943f9e5d0229b19707e0e99ad0"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/64d63b197a384e928977639ae6e0b70d.json",
+          "status": "ok",
+          "raw_metric": 0.197422715400171,
+          "score": 0.6214290475624421,
+          "quality_valid": true,
+          "method_sha256": "1c8792d45354197af5834a1813b6f7fe554f418b811e07620270a678bc6b54fb"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/67bdabdefad741f99b8744d852ba4251.json",
+          "status": "ok",
+          "raw_metric": 0.05072115703320985,
+          "score": 0.9027388682813114,
+          "quality_valid": true,
+          "method_sha256": "3b49deca1907c9ce9ffafc3990eee737f244b09afb283e1bc4ffb929e4ff17a5"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/6816eb2aed454473ae3a86cb3b5002fc.json",
+          "status": "ok",
+          "raw_metric": 0.062160325032891706,
+          "score": 0.8808035164351224,
+          "quality_valid": true,
+          "method_sha256": "60489b287ca6e1ef56ce61b31413985781b0b1ec5db15861090abae9d62f92c4"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/6c369e5141ca423f97aa3c359fc09d1e.json",
+          "status": "ok",
+          "raw_metric": 0.04523859436594648,
+          "score": 0.913252040316948,
+          "quality_valid": true,
+          "method_sha256": "fc9b3e4401eea47ac5d9df307a79d703e8a1bf9e0ea5f759c19ff992e6475cfb"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/6ea752cc275143daaafce58d34cfc040.json",
+          "status": "ok",
+          "raw_metric": 0.059034108334647804,
+          "score": 0.8867982411585742,
+          "quality_valid": true,
+          "method_sha256": "ce0bae80f347f153ec795682e50c3580e959af7cfd70cdea5be4d43fe279ffb0"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/6ecac93134cf4a3e991e74c5dd09233d.json",
+          "status": "ok",
+          "raw_metric": 0.039484752933882795,
+          "score": 0.9242854071040261,
+          "quality_valid": true,
+          "method_sha256": "735c397eb50027f284c285eb09947f26b06afa92c9758be3052915f3a11e492b"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/7102b7fd23644511895e959ab260432d.json",
+          "status": "ok",
+          "raw_metric": 0.036573858499953836,
+          "score": 0.9298672373207972,
+          "quality_valid": true,
+          "method_sha256": "5176aaffddcdf5001bf38bb42bec7c16f0e3368b464e2690ec374db009a1f16d"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/742657e2c069431996ffc36ae68835ce.json",
+          "status": "ok",
+          "raw_metric": 0.03996076669718605,
+          "score": 0.9233726196196587,
+          "quality_valid": true,
+          "method_sha256": "ebb3fa14a0fb032373582110ebb707ce6d38a6a8fb2d41eede149444fd464edb"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/7be8583bab7b4875bd03646ff3ef5f7d.json",
+          "status": "ok",
+          "raw_metric": 0.04625840150013876,
+          "score": 0.9112964935233014,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/7f8ed969b7214f72b74359700832de72.json",
+          "status": "ok",
+          "raw_metric": 0.03942903473265081,
+          "score": 0.924392250394403,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/809853d8b620459186d36eb522636b35.json",
+          "status": "ok",
+          "raw_metric": 0.037873630533188894,
+          "score": 0.9273748395459205,
+          "quality_valid": true,
+          "method_sha256": "e82bb0d4d623f828bebcd1673a651e4acb54a0edf07f99dcfc761a1d0b911b00"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/867f2050e43b4600acd07ee9e3d10b1d.json",
+          "status": "ok",
+          "raw_metric": 0.06487423613192125,
+          "score": 0.8755994146299784,
+          "quality_valid": true,
+          "method_sha256": "f57def419ac069782eeb981cefb9157e8d2a80d927c6794c0cd116203a4b37a6"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/8d372515c6a44b5583754e23d0f2eeac.json",
+          "status": "ok",
+          "raw_metric": 0.049546916665470536,
+          "score": 0.904990550887868,
+          "quality_valid": true,
+          "method_sha256": "a3db49d67e5ee1817e37a3b14771f73c520f121160e08e2f9c6df656b8313b8d"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/a1308d4cd2344b85b131ead5095f4f2c.json",
+          "status": "ok",
+          "raw_metric": 0.03859480283329807,
+          "score": 0.9259919445534647,
+          "quality_valid": true,
+          "method_sha256": "592df6dad60e09f62656181a75ed1687b9e58c4dfa0e8ad799e2a3f4217a33b4"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/a49cd08bda4b40099962814504a0d2cc.json",
+          "status": "ok",
+          "raw_metric": 0.0631893097650997,
+          "score": 0.8788303709977997,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/a58fef2023f94c75a2d399096cb6de45.json",
+          "status": "ok",
+          "raw_metric": 0.035279755699351274,
+          "score": 0.9323487639717866,
+          "quality_valid": true,
+          "method_sha256": "c84af4a358d47b35c429d0e0a5a14f2f3efc0ea14a2ae1c341aea6f4fa25e404"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/a631c5c3b2b343c688e63e01a9b2da46.json",
+          "status": "ok",
+          "raw_metric": 0.03681742086628219,
+          "score": 0.9294001905738614,
+          "quality_valid": true,
+          "method_sha256": "42450446e384142251d975fffa7fec856cdde17780fd71b1e6d309ef3e30dd3d"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/aa46139ab2c945118ca0da29e120628c.json",
+          "status": "ok",
+          "raw_metric": 0.2315128375320152,
+          "score": 0.5560590116068239,
+          "quality_valid": true,
+          "method_sha256": "f406f42ecbad9d58e480f5b6b9452f00ccbe4a46148cd024c24fea4488d0c377"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/ac5aac1c84c04b84bec868c1e8999d8a.json",
+          "status": "ok",
+          "raw_metric": 0.07845975276820051,
+          "score": 0.8495482990735561,
+          "quality_valid": true,
+          "method_sha256": "011e216f7713a4e107d99beedc0a24c769c46e7b53a7e657463191a50d6ac4cc"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/b6b0c89e372b4c4b9c88fc581b8ceaf5.json",
+          "status": "ok",
+          "raw_metric": 0.04491611540094406,
+          "score": 0.9138704147966757,
+          "quality_valid": true,
+          "method_sha256": "ca9ba4b195760dc34509b9f79d287bb79d1b161478e76c8d53f19b0ef25c2804"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/b8562f4e55294af0925dd368374bb60e.json",
+          "status": "ok",
+          "raw_metric": 0.06020816953338605,
+          "score": 0.8845469021202808,
+          "quality_valid": true,
+          "method_sha256": "173297cfd168e6e336844f253f9baadbd31c77a8ecd2f627a584de962ef32b44"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/bd9ed96cda1849d1b2a45703c20d3bda.json",
+          "status": "ok",
+          "raw_metric": 0.04727764859999297,
+          "score": 0.9093420206320797,
+          "quality_valid": true,
+          "method_sha256": "0b6d2d08768addc7cc6342bb22a1c0fcf89ef73f797b287444b367dd3d87667f"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/bfd5570a349e40cd978aaa3dfcd14585.json",
+          "status": "ok",
+          "raw_metric": 0.03760104173222013,
+          "score": 0.9278975463772868,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/c0c7e00a662c49589f5e3ba2289b0f9b.json",
+          "status": "ok",
+          "raw_metric": 0.04216371253423858,
+          "score": 0.9191483270806219,
+          "quality_valid": true,
+          "method_sha256": "1d400d78c955a300cb0328effa8290c2249ba66fe59e666c39ce72abd14a0ab2"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/c1a342d3e8124714b238dd161a0cc544.json",
+          "status": "ok",
+          "raw_metric": 0.03851975833482963,
+          "score": 0.9261358472811869,
+          "quality_valid": true,
+          "method_sha256": "a40a6a5de217330ae595311ed7e92968bcf86f213346651d8c314223a84d0193"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/c715a89aca4d4d6081e6f39aec4075d7.json",
+          "status": "ok",
+          "raw_metric": 0.03685865550020632,
+          "score": 0.9293211204698644,
+          "quality_valid": true,
+          "method_sha256": "a73d8c270d13c6defb541b70facabbcf7f909dd3911b6a774e200d531691823d"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/d067736a62f94f8e93821ba13720d531.json",
+          "status": "ok",
+          "raw_metric": 0.07197932919904512,
+          "score": 0.8619749345688746,
+          "quality_valid": true,
+          "method_sha256": "45380e25239e9c12ec4828fcf80f9314d981ca792c4d485523e4e7849f6bcae7"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/d2af70f4d4ce4200b6a44e93f469ae5f.json",
+          "status": "ok",
+          "raw_metric": 0.04126905420174201,
+          "score": 0.9208638928722934,
+          "quality_valid": true,
+          "method_sha256": "fab4ae464687ac8e3c80604ccd4be38b66476d47e031b62425cc7300a9f253a5"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/d35dc3c8ae2b428d83e41e6a4d08f014.json",
+          "status": "ok",
+          "raw_metric": 0.048834316631352216,
+          "score": 0.9063570080003455,
+          "quality_valid": true,
+          "method_sha256": "36f6be7911e35c677ae394915c4ccfdc84eafbf796dba9fde9cfc194641d605b"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/d695b17d6b834f8da090db0c320adea5.json",
+          "status": "ok",
+          "raw_metric": 0.15102290423431744,
+          "score": 0.7104037163100325,
+          "quality_valid": true,
+          "method_sha256": "99714c8a2394f719327815a13c559ffcead26c03c584a6c7d605efa2a93285e1"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/d8d8c9ce139948289bc11948cfcb3e9e.json",
+          "status": "ok",
+          "raw_metric": 0.049951216733218944,
+          "score": 0.9042152790990676,
+          "quality_valid": true,
+          "method_sha256": "d26af51d56550306674075a9be4114694acf97d6f835602aebeaa9139587b25b"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/dbc9f99466be4e06a221226148dd3293.json",
+          "status": "ok",
+          "raw_metric": 0.0735952235995986,
+          "score": 0.8588763515055424,
+          "quality_valid": true,
+          "method_sha256": "f6fb552bc2afd0b84bb2daa3a8d912d159992a8d9604b98d8f396fa402bfe60c"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/e25bc4a5bfdb456696ccd5a1bf9d2313.json",
+          "status": "ok",
+          "raw_metric": 0.10838529869943159,
+          "score": 0.7921641100128568,
+          "quality_valid": true,
+          "method_sha256": "6a1459c74bce4a5c80d0972b2627033fe8c8a6edced4c0c36c6c30f4f0c363b4"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/e9a0dff97fd845bfaa5bfeb2e6e856fe.json",
+          "status": "ok",
+          "raw_metric": 0.049396719331950105,
+          "score": 0.9052785640857877,
+          "quality_valid": true,
+          "method_sha256": "7d3f1dd18cf04a39aba10066b90def10384a1f4fd0f9b5562d00d89e1639a354"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/e9dcfec497044d4ab2faaf3c904e2bd6.json",
+          "status": "ok",
+          "raw_metric": 0.06843345973272032,
+          "score": 0.8687743708868532,
+          "quality_valid": true,
+          "method_sha256": "1da84d688b4a1dde5586eb23b05e48769639b4f0b56931b8bbb9d6a92b1a6492"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/f6448d71c28542bcbffdd5104fee1c22.json",
+          "status": "ok",
+          "raw_metric": 0.04618020283184402,
+          "score": 0.911446444577696,
+          "quality_valid": true,
+          "method_sha256": "77425d2aeef83490a7604e88eba97b198fbc7a485f9123f0848e4b0f2e2752d4"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/f7b32021d03f493491ef47a6878e04ca.json",
+          "status": "ok",
+          "raw_metric": 0.03610079859936377,
+          "score": 0.9307743605804656,
+          "quality_valid": true,
+          "method_sha256": "d287a270e10cac9927c763338d1ac9fbd699584ddb93ebb08d16de240a8c1950"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/f8460e4502fe44eba4e3c3cf0acbd66c.json",
+          "status": "ok",
+          "raw_metric": 0.5246864919996975,
+          "score": -0.0061206209469174,
+          "quality_valid": true,
+          "method_sha256": "f855f22591fb86743419256f78afae10b9b36baa4f4f3de50d4df270a38fe504"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/fd1225f0e7c3453f851268935749d27e.json",
+          "status": "ok",
+          "raw_metric": 0.20901791953365317,
+          "score": 0.599194486237406,
+          "quality_valid": true,
+          "method_sha256": "b92818cc1bb2e79042a1d59c7bf57eba0f5bc18597b8d94c8ed3e1fe82230e73"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/fe77c6c34aff45959c7e628a46d848db.json",
+          "status": "ok",
+          "raw_metric": 0.03362394999761212,
+          "score": 0.9355238795621499,
+          "quality_valid": true,
+          "method_sha256": "af839345946785e31a26e6b03d25b2203d1d1ece87402356c942afb7d752c3ba"
+        },
+        {
+          "report_file": "episode_0012/trusted_evaluator_results/ffde857e879243d0bfbf24b4ccba36ad.json",
+          "status": "ok",
+          "raw_metric": 0.05008928056631703,
+          "score": 0.9039505326807684,
+          "quality_valid": true,
+          "method_sha256": "cbb503193aabdeefdcb35fa0d64660e7ed23e9237f69481998f6c2c3ca1dbece"
+        }
+      ],
+      "request_slice": [
+        944,
+        1017
+      ],
+      "original_effective_seconds": 0.0,
+      "original_cumulative_effective_seconds": 16725.003020212167,
+      "counted_successful_api_seconds": 2055.981645751992,
+      "excluded_stall_request_indices": [],
+      "excluded_stall_api_seconds": 0,
+      "excluded_blocked_or_infrastructure_tool_seconds": 0.0,
+      "manual_episode_review": null,
+      "manual_episode_review_sha256": null,
+      "repeated_initial_reads_without_method_work_excluded": false,
+      "excluded_seconds": 253.8660778730091
+    }
+  ],
+  "repeat_stall_proofs": [],
+  "unreviewed_repeat_matches": [],
+  "original_ledger_sha256": "9edd48e2e5197032afa9085b4dea89fa6357cee66a4cc1742a4404f45ed19b2e",
+  "request_log_snapshot_sha256": "42ba5412417cb0c0579f1d5a1abaf0d130d4be4777dda1f859e9d9f59c26384b",
+  "request_count_at_snapshot": 1033,
+  "created_at": "2026-10-10T16:39:56.763643+00:00"
+}

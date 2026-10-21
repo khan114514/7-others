@@ -1,0 +1,17 @@
+Round 7 (restart): warmstart + t0_only + lr=1e-6 + 5000 steps
+Protocol: dd-selfproto-v1.1
+Start: 2026-10-03 21:17:09
+Teacher: reused from round6 (50k, cfg=3.0, 72min counted in budget)
+
+=== Training: warmstart + t0_only + lr=1e-6 + 5000 steps ===
+Start: 2026-10-03 21:17:09
+Training PID: 158203
+usage: train_dd.py [-h] --data_dir DATA_DIR --teacher_ckpt TEACHER_CKPT
+                   --vae_ckpt VAE_CKPT --output_dir OUTPUT_DIR
+                   [--num_steps NUM_STEPS] [--bs BS] [--lr LR]
+                   [--time_sampler {uniform,level_weighted,logit_normal,importance_lowt,importance_hight,t0_importance,t0_dominant,t0_only,curriculum_hl,curriculum_smooth}]
+                   [--loss_type LOSS_TYPE] [--ce_weight CE_WEIGHT]
+                   [--seed SEED] [--ema_decay EMA_DECAY]
+                   [--budget_hours BUDGET_HOURS]
+                   [--warmstart_ckpt WARMSTART_CKPT]
+train_dd.py: error: unrecognized arguments: --save_interval 2500

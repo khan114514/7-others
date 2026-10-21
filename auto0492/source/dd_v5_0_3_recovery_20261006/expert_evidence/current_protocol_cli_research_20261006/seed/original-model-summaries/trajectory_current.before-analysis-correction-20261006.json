@@ -1,0 +1,14 @@
+{
+  "rounds": [
+    {
+      "round": "round-01",
+      "policy_name": "max_disagree_early_scale",
+      "method_summary": "Hard-example proposal selection (max LPIPS disagreement per class group) paired with early-scale-biased time sampling (power law t=U^2.5). 256 samples x 4 proposals = 1024 generated, 256 selected. Uniform weighting. First evaluation attempt failed with INFRASTRUCTURE_RUNTIME error; recovered by trusted backend reusing original frozen checkpoint to regenerate all 50000 samples and compute independent FID. No retraining, no re-submission — this is evaluation recovery of the same method, not an additional method round.",
+      "status": "SUCCESS",
+      "score": 10.126636628087738,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 03:09:25"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "base": "53_compiled_image_rotary",
+  "changed_existing_nodes": [
+    "text_k_rows",
+    "text_q_rows",
+    "text_v_rows"
+  ],
+  "only_new_nodes_are_original_slice_copies": true,
+  "all_other_nodes_and_regions_equal": true,
+  "original_text_GEMM_weight_bias_and_geometry_equal": true,
+  "new_operation_is_bit_preserving_copy_before_downstream_consumers": true,
+  "no_GPU_downstream_dispatch_qualification_from_local_audit": true
+}

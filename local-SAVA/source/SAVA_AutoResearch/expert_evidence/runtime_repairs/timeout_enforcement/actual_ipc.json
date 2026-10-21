@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "started_at": "2026-10-10T11:32:22.075496+00:00",
+  "ended_at": "2026-10-10T11:33:23.250342+00:00",
+  "elapsed_seconds": 61.17471075,
+  "actual_response": {
+    "status": "TIMEOUT",
+    "failure_reason": "TIMEOUT: method call exceeds 60 seconds",
+    "score": null
+  },
+  "actual_client_exit_code": 1,
+  "actor_identity": {
+    "uid": 1000,
+    "gid": 1000,
+    "capeff": "0000000000000000"
+  },
+  "remaining_candidate_worker_pids": [],
+  "counts_as_model_research_time": false,
+  "timeout_budget_unchanged": 60,
+  "commands": [
+    [
+      "docker",
+      "create",
+      "--init",
+      "--name",
+      "sava-timeout-ipc-73edd6bd2471",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "2g",
+      "--cap-drop",
+      "ALL",
+      "--cap-add",
+      "SETUID",
+      "--cap-add",
+      "SETGID",
+      "--cap-add",
+      "KILL",
+      "sava-actor:v1"
+    ],
+    [
+      "docker",
+      "cp",
+      "private/recovery_20261010/timeout_kill_diagnosis/actual_ipc/timeout_method.py",
+      "sava-timeout-ipc-73edd6bd2471:/tmp/timeout-method.py"
+    ],
+    [
+      "docker",
+      "start",
+      "sava-timeout-ipc-73edd6bd2471"
+    ],
+    [
+      "docker",
+      "exec",
+      "--user",
+      "actor",
+      "sava-timeout-ipc-73edd6bd2471",
+      "sh",
+      "-c",
+      "cp /tmp/timeout-method.py /workspace/solution/method.py"
+    ],
+    [
+      "docker",
+      "exec",
+      "--user",
+      "actor",
+      "sava-timeout-ipc-73edd6bd2471",
+      "python",
+      "-c",
+      "import os,pathlib,json;print(json.dumps({\"uid\":os.getuid(),\"gid\":os.getgid(),\"capeff\":next(s.split()[1] for s in pathlib.Path(\"/proc/self/status\").read_text().splitlines() if s.startswith(\"CapEff:\"))}))"
+    ],
+    [
+      "docker",
+      "exec",
+      "--user",
+      "actor",
+      "sava-timeout-ipc-73edd6bd2471",
+      "sh",
+      "/workspace/solution/solve.sh"
+    ],
+    [
+      "docker",
+      "exec",
+      "--user",
+      "root",
+      "sava-timeout-ipc-73edd6bd2471",
+      "python",
+      "-c",
+      "import pathlib,json;workers=[]\nfor p in pathlib.Path(\"/proc\").glob(\"[0-9]*\"):\n try:\n  cmd=(p/\"cmdline\").read_bytes().split(bytes([0]));\n  if b\"/opt/public_eval/candidate_worker.py\" in cmd:workers.append(int(p.name))\n except (PermissionError,FileNotFoundError):pass\nprint(json.dumps({\"remaining_candidate_worker_pids\":workers}))"
+    ]
+  ]
+}

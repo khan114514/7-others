@@ -1,0 +1,63 @@
+{
+  "round": 1,
+  "protocol_version": "dd-selfproto-v1.0",
+  "command": [
+    "historical-resources/venvs/dd1/bin/python",
+    "-B",
+    "-u",
+    "historical-codex-workspace/official_entry.py",
+    "--ckpt_path",
+    "historical-resources/models/dd1/VAR-DD/var-d16.pth",
+    "--vae_ckpt",
+    "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+    "--sample_dir",
+    "historical-codex-models/outputs/repro_d16_step1",
+    "--sample_num",
+    "50000",
+    "--t_list",
+    "0",
+    "--loss_split_t",
+    "5",
+    "--depth",
+    "16",
+    "--bs",
+    "16",
+    "--seed",
+    "0",
+    "--fid_statistic",
+    "historical-resources/models/dd1/fid_stats",
+    "--local_out_dir_path",
+    "historical-codex-models/runtime/round01"
+  ],
+  "cwd": "historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR",
+  "environment_patch": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "0",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "TMPDIR": "historical-codex-models/runtime/tmp",
+    "OMP_NUM_THREADS": "4",
+    "CUDA_CACHE_PATH": "historical-codex-models/runtime/cuda_cache",
+    "PYTORCH_CUDA_ALLOC_CONF": "max_split_size_mb:128"
+  },
+  "started_at": "2026-10-02T22:59:56.869498+08:00",
+  "finished_at": "2026-10-02T23:00:57.363933+08:00",
+  "exit_code": -11,
+  "seed_set": [
+    0
+  ],
+  "sample_num": 50000,
+  "bs": 16,
+  "engineering_adaptations": [
+    "batch16 memory adaptation",
+    "output redirect",
+    "filesystem and network guard",
+    "allocator cap42%"
+  ],
+  "scorer_sha256": "bce8e2205defd99b4e6b9f3e31bb35c6ab4946aed445ce0179cf2db595382ad4",
+  "stage_one_not_training_budget": true,
+  "pid": 61172,
+  "elapsed_seconds": 60.49443141743541,
+  "peak_observed_gpu_mib": 0.0,
+  "memory_limit_breached": false
+}

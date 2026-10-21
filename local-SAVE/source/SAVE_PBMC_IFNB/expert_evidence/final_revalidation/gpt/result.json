@@ -1,0 +1,229 @@
+{
+    "id": "87017053-cee1-47a6-923a-77191e3e2181",
+    "task_name": "autoresearch/pbmc-context-transfer",
+    "trial_name": "save-final-revalidate-gpt",
+    "trial_uri": "file://<CONTROLLER_HOME>/Documents/ChatGPT/New%20project/save_autoresearch_20261009/private/final-revalidation/ad722004d9d14bc0b7be4369df1bac22/save-final-revalidate-gpt",
+    "task_id": {
+        "path": "<TASK_ROOT>/private/native_task_v7"
+    },
+    "source": null,
+    "task_checksum": "ebc1d0e95534f09f9f5ab8a1a2a8cc244a97fd53e174cd71d5af58d6fec3e513",
+    "config": {
+        "task": {
+            "path": "<TASK_ROOT>/private/native_task_v7",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "save-final-revalidate-gpt",
+        "trials_dir": "<TASK_ROOT>/private/final-revalidation/ad722004d9d14bc0b7be4369df1bac22",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "save_artifact_validation_agent:SaveArtifactValidationAgent",
+            "model_name": "gpt-6.1-sol",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "method_source": "<TASK_ROOT>/private/track-recovery-v6/bc79a88037234e9e979f667fa35864ca/gpt-research-evidence/recovered-own-evidence/method.py",
+                "method_sha256": "4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4"
+            },
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": null,
+            "import_path": "portable_runtime_v4.environment:SaveHybridDockerEnvironment",
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "lane": "gpt",
+                "numerical_status": "<TASK_ROOT>/private/no_numerical_controller.json",
+                "runtime_root": "<TASK_ROOT>/private/final-revalidation/ad722004d9d14bc0b7be4369df1bac22/gpt"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": null,
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "save-independent-final-artifact-validation",
+        "version": "0.1.0",
+        "model_info": {
+            "name": "gpt-6.1-sol",
+            "provider": null
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": {
+            "phase": "INDEPENDENT_FINAL_SHA_DEV_REVALIDATION",
+            "method_sha256": "4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4",
+            "runtime_binding_sha256": "be21b5950d3d87d27cec4e91c9d90e0f9a7113bd3129f55bd54a74816e04ed10",
+            "actual_research_seconds": 0,
+            "result": {
+                "runtime_binding_sha256": "be21b5950d3d87d27cec4e91c9d90e0f9a7113bd3129f55bd54a74816e04ed10",
+                "run_id": "d49e3d7c683143708d1f94c63e768320",
+                "status": "COMPLETE",
+                "split": "dev",
+                "seeds": [
+                    17,
+                    29,
+                    43,
+                    71,
+                    97
+                ],
+                "method_sha256": "4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4",
+                "rows": [
+                    {
+                        "seed": 17,
+                        "metrics": {
+                            "mse": 0.001351913106690589,
+                            "r2": 0.9914080434321937,
+                            "pcc": 0.9958043245672317
+                        },
+                        "reload_max_abs_difference": 0.0,
+                        "fresh_child_pid": 773196,
+                        "reload_child_pid": 773481,
+                        "actual_peak_rss_bytes": 1694695424,
+                        "checkpoint_sha256": "586fdaedfe077189fc71cfc3ddc4277a2c96bab8085d6ab424820c988066938f"
+                    },
+                    {
+                        "seed": 29,
+                        "metrics": {
+                            "mse": 0.001351913106690589,
+                            "r2": 0.9914080434321937,
+                            "pcc": 0.9958043245672317
+                        },
+                        "reload_max_abs_difference": 0.0,
+                        "fresh_child_pid": 773769,
+                        "reload_child_pid": 774066,
+                        "actual_peak_rss_bytes": 1695809536,
+                        "checkpoint_sha256": "586fdaedfe077189fc71cfc3ddc4277a2c96bab8085d6ab424820c988066938f"
+                    },
+                    {
+                        "seed": 43,
+                        "metrics": {
+                            "mse": 0.001351913106690589,
+                            "r2": 0.9914080434321937,
+                            "pcc": 0.9958043245672317
+                        },
+                        "reload_max_abs_difference": 0.0,
+                        "fresh_child_pid": 774303,
+                        "reload_child_pid": 774684,
+                        "actual_peak_rss_bytes": 1698930688,
+                        "checkpoint_sha256": "586fdaedfe077189fc71cfc3ddc4277a2c96bab8085d6ab424820c988066938f"
+                    },
+                    {
+                        "seed": 71,
+                        "metrics": {
+                            "mse": 0.001351913106690589,
+                            "r2": 0.9914080434321937,
+                            "pcc": 0.9958043245672317
+                        },
+                        "reload_max_abs_difference": 0.0,
+                        "fresh_child_pid": 774921,
+                        "reload_child_pid": 775314,
+                        "actual_peak_rss_bytes": 1695371264,
+                        "checkpoint_sha256": "586fdaedfe077189fc71cfc3ddc4277a2c96bab8085d6ab424820c988066938f"
+                    },
+                    {
+                        "seed": 97,
+                        "metrics": {
+                            "mse": 0.001351913106690589,
+                            "r2": 0.9914080434321937,
+                            "pcc": 0.9958043245672317
+                        },
+                        "reload_max_abs_difference": 0.0,
+                        "fresh_child_pid": 775551,
+                        "reload_child_pid": 775944,
+                        "actual_peak_rss_bytes": 1695399936,
+                        "checkpoint_sha256": "586fdaedfe077189fc71cfc3ddc4277a2c96bab8085d6ab424820c988066938f"
+                    }
+                ],
+                "elapsed_seconds": 619.7771528093144,
+                "scorer_reads_candidate_metrics": false,
+                "failure_reason": null,
+                "candidate_imported_on_host": false,
+                "all_seeds_complete": true,
+                "raw_metric": 0.001351913106690589,
+                "score": 0.6303036221128062,
+                "quality_gates_passed": true,
+                "independent_fresh_reload_verified": true,
+                "physical_gpu_uuid": "GPU-95a445f6-69ca-10b5-3201-e1cf693804b2",
+                "dispatch_total_seconds": 628.9755872079986,
+                "queue_seconds_excluded": 9.198434398684185,
+                "requested_epoch_local": 1791641297.205589,
+                "completed_epoch_local": 1791641926.153234,
+                "durable_job_id": "54b6a3dac8ae4fb5850290c7253c0c2c",
+                "physical_gpu_port": 30146,
+                "failure_kind": null,
+                "remediation": null
+            }
+        }
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.6516867226223284
+        }
+    },
+    "verifier_environment_mode": "separate",
+    "exception_info": null,
+    "started_at": "2026-10-10T14:08:09.671931Z",
+    "finished_at": "2026-10-10T14:27:36.915598Z",
+    "environment_setup": {
+        "started_at": "2026-10-10T14:08:10.419452Z",
+        "finished_at": "2026-10-10T14:08:16.665270Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-10-10T14:08:16.671438Z",
+        "finished_at": "2026-10-10T14:08:17.001042Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-10-10T14:08:17.001513Z",
+        "finished_at": "2026-10-10T14:18:46.372450Z"
+    },
+    "verifier": {
+        "started_at": "2026-10-10T14:18:51.791356Z",
+        "finished_at": "2026-10-10T14:27:36.915136Z"
+    },
+    "step_results": null
+}

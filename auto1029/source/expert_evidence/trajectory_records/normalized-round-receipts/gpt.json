@@ -1,0 +1,249 @@
+[
+  {
+    "round": 1,
+    "policy_name": "e222177fce41a0cb306b7a9e2a3836b551e8d5c7280e35404d40aeaf67845f4e",
+    "method_summary": "{'name': 'Conservative token reuse with public-prefix adaptation', 'entrypoint': 'method.py:draft(state)', 'strategy': 'Match the longest 4..8-token suffix against earlier nonoverlapping occurrences in the last 96 public generated token IDs. Copy up to four following IDs only while every occurrence agrees, requiring at least two proposed tokens. Keep at most 16 question-keyed pending proposals; on the next compatible public history infer the matched prefix, shrink to horizon 2 after a mismatch, and grow from 2 to 4 after a full observed acceptance.', 'proposal_format': 'Exact observed token-ID list; abstain on missing or malformed fields, insufficient history, ambiguity or budget below two.', 'state': 'At most 16 LRU tracks keyed by exact string questions up to 4096 characters. Valid supported nonterminal calls record a complete history up to 128 IDs, including abstention; budgets below two do not update tracks. Shortened or changed histories reset learning when observed. Unsupported questions and histories longer than 128 IDs use stateless reuse. Identical histories and budgets replay the same proposal, including cooldown abstention; changed budgets recompute without consuming another cooldown.', 'budget_rule': 'At most min(4, remaining_tokens, maximum_draft_tokens, 32) token IDs. Strict integer budgets. A terminal budget below two returns without track lookup or snapshots; oversized histories first discard existing question memory.', 'implementation_optimization': 'draft validates the full public history once, computes allowance once, and calls _reuse_validated on its bounded 96-ID window. The public reuse_tokens helper retains independent validation. Search, proposals and controller decisions are unchanged.'}",
+    "status": "valid",
+    "score": -0.0003986305484496553,
+    "failure_reason": null,
+    "retained_best": true,
+    "time": {
+      "effective_seconds": 4165.404779911041,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/f946b057eb84411285e5c29bbd03e681/gpt/execution.json"
+    }
+  },
+  {
+    "round": 2,
+    "policy_name": "e222177fce41a0cb306b7a9e2a3836b551e8d5c7280e35404d40aeaf67845f4e",
+    "method_summary": "{'name': 'Conservative token reuse with public-prefix adaptation', 'entrypoint': 'method.py:draft(state)', 'strategy': 'Match the longest 4..8-token suffix against earlier nonoverlapping occurrences in the last 96 public generated token IDs. Copy up to four following IDs only while every occurrence agrees, requiring at least two proposed tokens. Keep at most 16 question-keyed pending proposals; on the next compatible public history infer the matched prefix, shrink to horizon 2 after a mismatch, and grow from 2 to 4 after a full observed acceptance.', 'proposal_format': 'Exact observed token-ID list; abstain on missing or malformed fields, insufficient history, ambiguity or budget below two.', 'state': 'At most 16 LRU tracks keyed by exact string questions up to 4096 characters. Valid supported nonterminal calls record a complete history up to 128 IDs, including abstention; budgets below two do not update tracks. Shortened or changed histories reset learning when observed. Unsupported questions and histories longer than 128 IDs use stateless reuse. Identical histories and budgets replay the same proposal, including cooldown abstention; changed budgets recompute without consuming another cooldown.', 'budget_rule': 'At most min(4, remaining_tokens, maximum_draft_tokens, 32) token IDs. Strict integer budgets. A terminal budget below two returns without track lookup or snapshots; oversized histories first discard existing question memory.', 'implementation_optimization': 'draft validates the full public history once, computes allowance once, and calls _reuse_validated on its bounded 96-ID window. The public reuse_tokens helper retains independent validation. Search, proposals and controller decisions are unchanged.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 2949.4944813251495,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/0b9e237fad164e73a0a16d67fb2d20a2/gpt/execution.json"
+    }
+  },
+  {
+    "round": 3,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'budget_rule': 'At most min(8,32,remaining_tokens,maximum_draft_tokens). Strict integer budgets and nonnegative integer history IDs. Malformed fields and divergent opening abstain.', 'entrypoint': 'method.py:draft(state)', 'name': 'Question-independent verified structural drafting, cap8', 'provenance': 'Opening/closing IDs fit only to own real output observations0..11; no question, label, option, answer letter or semantic conclusion retained.', 'source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'strategy': 'Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. After at least two observed closing IDs, complete the invariant closing including the observed stop ID. Stateless across questions; trusted verification checks all IDs.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 463.23935294151306,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/968a81a893204cab866032a3c15d99c1/gpt/execution.json"
+    }
+  },
+  {
+    "round": 4,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'budget_rule': 'At most min(8,32,remaining_tokens,maximum_draft_tokens). Strict integer budgets and nonnegative integer history IDs. Malformed fields and divergent opening abstain.', 'entrypoint': 'method.py:draft(state)', 'name': 'Question-independent verified structural drafting, cap8', 'provenance': 'Opening/closing IDs fit only to own real output observations0..11; no question, label, option, answer letter or semantic conclusion retained.', 'source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'strategy': 'Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. After at least two observed closing IDs, complete the invariant closing including the observed stop ID. Stateless across questions; trusted verification checks all IDs.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 373.0637061595917,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/1c06d05a1b6742dea089d493d4527aa1/gpt/execution.json"
+    }
+  },
+  {
+    "round": 5,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'budget_rule': 'At most min(8,32,remaining_tokens,maximum_draft_tokens). Strict integer budgets and nonnegative integer history IDs. Malformed fields and divergent opening abstain.', 'entrypoint': 'method.py:draft(state)', 'name': 'Question-independent verified structural drafting, cap8', 'provenance': 'Opening/closing IDs fit only to own real output observations0..11; no question, label, option, answer letter or semantic conclusion retained.', 'source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'strategy': 'Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. After at least two observed closing IDs, complete the invariant closing including the observed stop ID. Stateless across questions; trusted verification checks all IDs.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 0,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/a497d5cdf3df4149852be80793079fbe/gpt/execution.json"
+    }
+  },
+  {
+    "round": 6,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'budget_rule': 'At most min(8,32,remaining_tokens,maximum_draft_tokens). Strict integer budgets and nonnegative integer history IDs. Malformed fields and divergent opening abstain.', 'entrypoint': 'method.py:draft(state)', 'name': 'Question-independent verified structural drafting, cap8', 'provenance': 'Opening/closing IDs fit only to own real output observations0..11; no question, label, option, answer letter or semantic conclusion retained.', 'source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'strategy': 'Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. After at least two observed closing IDs, complete the invariant closing including the observed stop ID. Stateless across questions; trusted verification checks all IDs.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 0,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/7ad0a7644a4a4d46a59ec5cc0a85a718/gpt/execution.json"
+    }
+  },
+  {
+    "round": 7,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'budget_rule': 'At most min(8,32,remaining_tokens,maximum_draft_tokens). Strict integer budgets and nonnegative integer history IDs. Malformed fields and divergent opening abstain.', 'entrypoint': 'method.py:draft(state)', 'name': 'Question-independent verified structural drafting, cap8', 'provenance': 'Opening/closing IDs fit only to own real output observations0..11; no question, label, option, answer letter or semantic conclusion retained.', 'source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'strategy': 'Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. After at least two observed closing IDs, complete the invariant closing including the observed stop ID. Stateless across questions; trusted verification checks all IDs.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 183.40546798706055,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/bee9f71f8bb445c9b58b0605e63dbd51/gpt/execution.json"
+    }
+  },
+  {
+    "round": 8,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'budget_rule': 'At most min(8,32,remaining_tokens,maximum_draft_tokens). Strict integer budgets and nonnegative integer history IDs. Malformed fields and divergent opening abstain.', 'entrypoint': 'method.py:draft(state)', 'name': 'Question-independent verified structural drafting, cap8', 'provenance': 'Opening/closing IDs fit only to own real output observations0..11; no question, label, option, answer letter or semantic conclusion retained.', 'source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'strategy': 'Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. After at least two observed closing IDs, complete the invariant closing including the observed stop ID. Stateless across questions; trusted verification checks all IDs.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 0,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/dcb901d063d24b8fb669c111317d1c46/gpt/execution.json"
+    }
+  },
+  {
+    "round": 9,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'budget_rule': 'At most min(8,32,remaining_tokens,maximum_draft_tokens). Strict integer budgets and nonnegative integer history IDs. Malformed fields and divergent opening abstain.', 'entrypoint': 'method.py:draft(state)', 'name': 'Question-independent verified structural drafting, cap8', 'provenance': 'Opening/closing IDs fit only to own real output observations0..11; no question, label, option, answer letter or semantic conclusion retained.', 'source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'strategy': 'Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. After at least two observed closing IDs, complete the invariant closing including the observed stop ID. Stateless across questions; trusted verification checks all IDs.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 351.1512219905853,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/759dcd348d644635ab65eda89a2bdc43/gpt/execution.json"
+    }
+  },
+  {
+    "round": 10,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Public committed integer history; bounded by min(8,32,remaining_tokens,maximum_draft_tokens). Malformed states abstain.', 'strategy': 'Exact 36-ID opening match; no semantic conclusion prediction; complete observed closing after two committed closing IDs. Stateless across questions.', 'provenance': 'Invariant markup fit only to own real observations0..11; no question/label/answer lookup. Trusted target verifies every ID.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 2538.662753343582,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/2151eaa75c354a76af758e37ff0bc865/gpt/execution.json"
+    }
+  },
+  {
+    "round": 11,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Integer committed history; bounded by min(8,32,remaining_tokens,maximum_draft_tokens). Malformed states abstain; stateless question resets.', 'strategy': 'Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification.', 'provenance': 'Invariant markup from own observations0..11; no question, label or answer lookup.'}",
+    "status": "valid",
+    "score": 0.5769221579490044,
+    "failure_reason": null,
+    "retained_best": true,
+    "time": {
+      "effective_seconds": 3232.837247610092,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/15b7720ed59644f38955a5b363e3a736/gpt/execution.json"
+    }
+  },
+  {
+    "round": 12,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Integer committed history; bounded by min(8,32,remaining_tokens,maximum_draft_tokens). Malformed states abstain; stateless question resets.', 'strategy': 'Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification.', 'provenance': 'Invariant markup from own observations0..11; no question, label or answer lookup.'}",
+    "status": "valid",
+    "score": 0.5744083993558705,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 3036.233110189438,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/d6eb94afa82a42c29e26f12d7b6792d0/gpt/execution.json"
+    }
+  },
+  {
+    "round": 13,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Integer committed history; bounded by min(8,32,remaining_tokens,maximum_draft_tokens). Malformed states abstain; stateless question resets.', 'strategy': 'Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification.', 'provenance': 'Invariant markup from own observations0..11; no question, label or answer lookup.'}",
+    "status": "valid",
+    "score": 0.572916577669746,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 2653.553531885147,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/983bb314f8224aa1846c5998528d6ecb/gpt/execution.json"
+    }
+  },
+  {
+    "round": 14,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Integer committed history; bounded by min(8,32,remaining_tokens,maximum_draft_tokens). Malformed states abstain; stateless question resets.', 'strategy': 'Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification.', 'provenance': 'Invariant markup from own observations0..11; no question, label or answer lookup.'}",
+    "status": "valid",
+    "score": 0.573920285974177,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 2929.918506860733,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/b0b54d564ab0433eb6956b2f0303602a/gpt/execution.json"
+    }
+  },
+  {
+    "round": 15,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Integer committed history; bounded by min(8,32,remaining_tokens,maximum_draft_tokens). Malformed states abstain; stateless question resets.', 'strategy': 'Exact 36-ID opening match; no semantic conclusion prediction; complete closing after two committed closing IDs. Every ID subject to trusted verification.', 'provenance': 'Invariant markup from own observations0..11; no question, label or answer lookup.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 442.45095920562744,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/a3438cc67c294eebb9dd597145023b09/gpt/execution.json"
+    }
+  },
+  {
+    "round": 16,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Stateless dict/object state; integer ID list bounded by min(8,32,remaining_tokens,maximum_draft_tokens); malformed or divergent state abstains.', 'strategy': 'Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. No imports or dynamic local loads.', 'provenance': 'Own invariant markup observations0..11; no question/label/answer mapping.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 423.37943029403687,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/0c3505aec8494633b970f0e5777bcde8/gpt/execution.json"
+    }
+  },
+  {
+    "round": 17,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Stateless dict/object state; integer ID list bounded by min(8,32,remaining_tokens,maximum_draft_tokens); malformed or divergent state abstains.', 'strategy': 'Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. No imports or dynamic local loads.', 'provenance': 'Own invariant markup observations0..11; no question/label/answer mapping.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 228.30605173110962,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/9a275948c70247baa5eda3532c319074/gpt/execution.json"
+    }
+  },
+  {
+    "round": 18,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Stateless dict/object state; integer ID list bounded by min(8,32,remaining_tokens,maximum_draft_tokens); malformed or divergent state abstains.', 'strategy': 'Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. No imports or dynamic local loads.', 'provenance': 'Own invariant markup observations0..11; no question/label/answer mapping.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 315.51482486724854,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/438a080a2ae046d6a5965acc38b734a2/gpt/execution.json"
+    }
+  },
+  {
+    "round": 19,
+    "policy_name": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "method_summary": "{'name': 'Question-independent verified structural drafting, cap8', 'retained_source_sha256': 'cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c', 'interface': 'Stateless dict/object state; integer ID list bounded by min(8,32,remaining_tokens,maximum_draft_tokens); malformed or divergent state abstains.', 'strategy': 'Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. No imports or dynamic local loads.', 'provenance': 'Own invariant markup observations0..11; no question/label/answer mapping.'}",
+    "status": "failed",
+    "score": null,
+    "failure_reason": "Incomplete native scoring or failed quality gates; see raw receipt",
+    "retained_best": false,
+    "time": {
+      "effective_seconds": 184.19910764694214,
+      "evidence": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/02357815f0f743a19f7c1a950e74952d/gpt/execution.json"
+    }
+  }
+]

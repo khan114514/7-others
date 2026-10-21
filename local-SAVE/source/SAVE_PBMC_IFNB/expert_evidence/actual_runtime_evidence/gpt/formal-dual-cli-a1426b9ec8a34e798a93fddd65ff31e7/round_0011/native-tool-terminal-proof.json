@@ -1,0 +1,214 @@
+{
+  "original_event_sha256": "c96f2a1a72d8dab84d74b78e2503612c99547d633a6ee49ea3dfb470434e2b47",
+  "original_receipt_sha256": "15e9a8b46eefe519a3b78903fecf436f11b2dc181cc67634800b73333ae64052",
+  "original_event_last_write_epoch": 1791566603.6760807,
+  "original_native_session_ids": [
+    "01a12103-abe0-7ec0-b92f-6231dde78c2d"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"sed -n '1,410p' /workspace/solution/method.py\"",
+      "original_command_sha256": "1adaf83c4f0f98790d146c4dc0402fca5f10ee29f790e8683f2e84448129a3da",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "204126913cbc195d8f8ac130370d0719e53a103581dde6cfc5e63fc2a383ea01",
+      "output_characters": 15404
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /tests/protocol.json /tests/anchors.json /workspace/solution/solve.sh'",
+      "original_command_sha256": "10ff6ec8817b548395ebb5d373ff56a394c41535af3a8aed92bfa29612b492d7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "749a77e02e9c640ca136f54cd3ab88554c533c1565b6f2c860afa88599128f9e",
+      "output_characters": 697
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'tail -n 165 /workspace/solution/research-notes.md'",
+      "original_command_sha256": "a4a825fc1e19d20f119910f75bbef98fc0d07e11e87f3eddf3e1d59d8582260d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "3fcb415e629cdfe336750515781b9d0fbca7e0227714209957ec17364cc1298d",
+      "output_characters": 9250
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'tail -n 200 /workspace/solution/research-notes.md'",
+      "original_command_sha256": "fa5aa9656bdeb8fdbf813a6efe8d2389238bb9f7133dacb962f25b8be6f91b0d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "811aed5dfa4fd03033e4111a36e54ceade4b434f93a71011270d1fe08b1efd27",
+      "output_characters": 10639
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "204126913cbc195d8f8ac130370d0719e53a103581dde6cfc5e63fc2a383ea01",
+      "output_characters": 15404
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution /tests; cat /tests/protocol.json; cat /tests/anchors.json'",
+      "original_command_sha256": "0f3a27130aba3218bc768d1e4e4dce1a5d29049762356e232c445e209df3d4ab",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "506d3459fcf2c97816181687e6c99589adffa55397e825f53b96b1ccf9633148",
+      "output_characters": 1672
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cat /tests/train_eval.py /tests/metrics.py /tests/grader.py /tests/solve.sh /tests/local_model_proxy.py'",
+      "original_command_sha256": "47b1eaa6932952c9bfd530871be2d997eb104e911cd4af779d5fa0f209b4092b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "014905e8c3125a6f0df10904dd094461dc228fcc44f358a78a53f410b04a3f7c",
+      "output_characters": 10154
+    },
+    {
+      "id": "item_12",
+      "command": "/bin/sh -lc 'ls -la /workspace/public_assets; cat /tests/frozen_assets.json'",
+      "original_command_sha256": "a308f5714fb491526ede46a6d25295632fa301bc3c5c04190d0b4244bd4dce6f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a40317f4b0f6948a766f139e1c35fb9e888d670365d04e4d7041a3bd1f59598c",
+      "output_characters": 5494
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\np=Path('/workspace/solution/research-notes.md')\ns=p.read_text()\nlines=s.splitlines()\nfor i,line in enumerate(lines):\n    if line.startswith('##') and ('Session 10' in line or 'Session 9' in line):\n        print(i+1,line)\nfor key in ['common training scaler','MaxAbsScaler','excluded training context','holdout','sys.dont_write_bytecode']:\n    print('\\\\nSEARCH',key)\n    matches=[i for i,l in enumerate(lines) if key in l]\n    for i in matches[-4:]:\n        print('\\\\n'.join(lines[max(0,i-2):i+5]))\nPY\"",
+      "original_command_sha256": "0241d1e1a8a81c405e5483cdc0c0d00957fa641bf014c941c734f8b10e6c350c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5431e01bf1bdc26c3d979efa3558a75b092af82d5cc0db449f1afb953ed01c47",
+      "output_characters": 12813
+    },
+    {
+      "id": "item_14",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\nimport hashlib,json\np=Path('/workspace/solution/method.py')\nsource=p.read_text()\nassert hashlib.sha256(p.read_bytes()).hexdigest()=='204126913cbc195d8f8ac130370d0719e53a103581dde6cfc5e63fc2a383ea01'\nfeedback=json.loads(Path('/workspace/solution/dev_result.json').read_text())\nassert feedback['method_sha256']==hashlib.sha256(p.read_bytes()).hexdigest()\nwith Path('/workspace/solution/research-notes.md').open('a') as out:\n    out.write('\\\\n\\\\n## Session 11 \u2014 2026-10-09: donor-consistency shrinkage of the pooling correction\\\\n\\\\n')\n    out.write('Continue own independent experiment. Exact incumbent SHA-256 204126913cbc195d8f8ac130370d0719e53a103581dde6cfc5e63fc2a383ea01; formal Dev MSE 0.0014561244780635406, score 0.6018058093905461. Preserve source and current feedback below before editing. No unchanged formal evaluation will be repeated.\\\\n\\\\n')\n    out.write('### Exact Session 11 incumbent source\\\\n\\\\n\"'```python'\"\\\\n'+source+'\\\\n\"'```'\"\\\\n\\\\n')\n    out.write('### Session 11 incumbent formal feedback\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(feedback,indent=2)+'\\\\n\"'```'\"\\\\n\\\\n')\n    out.write('Hypothesis: shrink the gene-specific pooling correction toward the nearest-context prediction when it is inconsistent across source donors. Hold the actual input control mean/detection fixed. Compute donor-specific pooling corrections using each one-hot training donor mixture, and their sample variance v (ddof=1). Let delta be the current actual-mixture correction, and apply delta\"'^2/(delta''^2 + lambda*v + 1e-24). Declare lambda screen 0.01, 0.1, 1.0; compare against an analysis-only lambda-zero bypass that reproduces the incumbent. All source/context weights, detection-support gate, response branches and training reliability rule stay fixed. Raw donor scatter contains sampling noise; this is an empirical regularizer, not calibrated biological uncertainty. Assess entirely excluded training contexts with the common full-training MaxAbsScaler. Candidate predictions finish before separate Dev labels are loaded for assessment. Select a changed candidate for the full formal seed protocol even if screening shows regression, then retain only a formal improvement or restore the exact incumbent.'\"\\\\n')\nprint('Incumbent source and feedback preserved; declared screen recorded.')\nPY\"",
+      "original_command_sha256": "6bc3e929d2d2597c3936e631d424b5615326a4510e9ec91ec8fef95172f84035",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "00f4982b19068067156349700ad089a43bba2fb5d638caeea8ecc968f28eed3d",
+      "output_characters": 67
+    },
+    {
+      "id": "item_16",
+      "command": "/bin/sh -lc \"OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4 /opt/runtime/bin/python -B - <<'PY'\nimport sys,time,json,hashlib,types,traceback\nfrom pathlib import Path\nimport numpy as np\nimport anndata as ad\nimport torch\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom scipy.stats import pearsonr\nfrom sklearn.metrics import r2_score\nsys.dont_write_bytecode=True\ntorch.set_num_threads(4)\npath=Path('/workspace/solution/method.py')\nsource=path.read_text()\nmethod=types.ModuleType('screened_method')\nexec(compile(source,str(path),'exec'),method.__dict__)\nnotes=Path('/workspace/solution/research-notes.md')\nwith notes.open('a') as out:\n    out.write('\\\\n\\\\n### Implemented donor-shrinkage screening source\\\\n\\\\n\"'```python'\"\\\\n'+source+'\\\\n\"'```'\"\\\\n')\nstart=time.perf_counter()\nstrengths=[0.0,0.01,0.1,1.0]\ntry:\n    raw=ad.read_h5ad('/workspace/public_assets/train.h5ad')\n    controls=ad.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\n    assert list(raw.var_names)==list(controls.var_names)\n    scaler=MaxAbsScaler()\n    train=raw.copy()\n    train.X=scaler.fit_transform(raw.X)\n    controls.X=scaler.transform(controls.X)\n    model=method.build_model(train,torch.device('cpu'),17)\n    method.train_model(model,17)\n    dev_predictions={}\n    for strength in strengths:\n        method.DONOR_CORRECTION_SHRINKAGE=strength\n        p=method.predict(model,controls,scaler,10017)\n        assert p.shape==controls.shape and p.flags.c_contiguous\n        assert np.isfinite(p).all() and p.min()>=0\n        dev_predictions[strength]=p\n    print('Full-training model and all changed Dev predictions complete.',flush=True)\n\n    scale=np.asarray(scaler.scale_,dtype=np.float64)\n    x=np.asarray(controls.X.toarray() if hasattr(controls.X,'toarray') else controls.X,dtype=np.float64)*scale\n    q=x.mean(axis=0); f=(x>0).mean(axis=0)\n    input_donors=np.asarray(controls.obs['replicate'].astype(str))\n    fractions=np.asarray([(input_donors==d).mean() for d in model.donors])\n    means,distances,costs,fc=method._context_predictions(model,q,f,fractions,scale)\n    nearest=int(np.argmin(distances))\n    delta=method._pooled_prediction_mean(means,distances,costs,fc,f)-means[nearest]\n    donor_deltas=[]\n    for j in range(len(model.donors)):\n        fractions_j=np.eye(len(model.donors))[j]\n        dm,dd,dc,dfc=method._context_predictions(model,q,f,fractions_j,scale)\n        donor_deltas.append(method._pooled_prediction_mean(dm,dd,dc,dfc,f)-dm[nearest])\n    variance=np.var(np.stack(donor_deltas),axis=0,ddof=1)\n    snr=np.divide(np.abs(delta),np.sqrt(variance),out=np.zeros_like(delta),where=variance>0)\n    snr[(variance==0)&(delta\"'!=0)]=np.inf\n\n    ct=np.asarray(train.obs['\"'cell_type'].astype(str))\n    condition=np.asarray(train.obs['condition'].astype(str))\n    holdout_predictions=[]\n    for context in model.contexts:\n        source_train=train[ct\"'!=context].copy()\n        query=train[(ct==context)&(condition=='\"'control')].copy()\n        hm=method.build_model(source_train,torch.device('cpu'),17)\n        method.train_model(hm,17)\n        predictions={}\n        for strength in strengths:\n            method.DONOR_CORRECTION_SHRINKAGE=strength\n            p=method.predict(hm,query,scaler,10017)\n            assert p.shape==query.shape and np.isfinite(p).all() and p.min()>=0 and p.flags.c_contiguous\n            predictions[strength]=np.asarray(p,dtype=np.float64).mean(axis=0)\n        assert context not in hm.contexts\n        holdout_predictions.append((context,predictions))\n        print('Excluded-context predictions complete: '+context,flush=True)\n\n    # Separate assessment starts only after every candidate prediction exists.\n    target=ad.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n    assert list(target.var_names)==list(raw.var_names)\n    y=np.asarray(target.X.toarray() if hasattr(target.X,'toarray') else target.X,dtype=np.float64).mean(axis=0)\n    result={'source_sha256':hashlib.sha256(source.encode()).hexdigest(),'formal':False,'separate_cpu_assessment':True,'seed':17,'strength_screen':strengths,'dev':[],'excluded_training_contexts':[],'donor_scatter_groups':[],'nearest_context':model.contexts[nearest]}\n    pred_means={k:np.asarray(v,dtype=np.float64).mean(axis=0) for k,v in dev_predictions.items()}\n    for strength in strengths:\n        pm=pred_means[strength]\n        factor=np.ones_like(delta) if strength==0 else delta**2/(delta**2+strength*variance+1e-24)\n        result['dev'].append({'lambda':strength,'mse':float(np.mean((y-pm)**2)),'r2':float(r2_score(y,pm)),'pcc':float(pearsonr(y,pm)[0]),'mean_shrink_factor':float(factor.mean()),'correction_retained_l2_ratio':float(np.linalg.norm(factor*delta)/np.linalg.norm(delta))})\n    for context,preds in holdout_predictions:\n        selected=raw[(ct==context)&(condition=='stimulated')].X\n        true=np.asarray(selected.toarray() if hasattr(selected,'toarray') else selected,dtype=np.float64).mean(axis=0)\n        result['excluded_training_contexts'].append({'context':context,'control_cells':int(np.sum((ct==context)&(condition=='control'))),'stimulated_cells':int(np.sum((ct==context)&(condition=='stimulated'))),'mse_by_lambda':{str(k):float(np.mean((v-true)**2)) for k,v in preds.items()}})\n    result['excluded_equal_context_mean_mse']={str(k):float(np.mean([r['mse_by_lambda'][str(k)] for r in result['excluded_training_contexts']])) for k in strengths}\n    for low,high in [(0.,1.),(1.,3.),(3.,np.inf)]:\n        mask=(snr>=low)&(snr<high)\n        result['donor_scatter_groups'].append({'snr_range':[low,None if np.isinf(high) else high],'genes':int(mask.sum()),'mse_by_lambda':{str(k):float(np.mean((v[mask]-y[mask])**2)) for k,v in pred_means.items()},'full_mse_reduction_vs_incumbent':{str(k):float(np.mean(((pred_means[0.0]-y)**2-(v-y)**2)*mask)) for k,v in pred_means.items()}})\n    result['elapsed_seconds']=time.perf_counter()-start\n    with notes.open('a') as out:\n        out.write('\\\\n\\\\n### Donor-consistency exploratory screen and excluded-context diagnostic\\\\n\\\\n')\n        out.write('Separate CPU assessment with four PyTorch threads, fixed training-fitted MaxAbsScaler, and fresh initialization. Each inference-only strength shares a freshly fitted model. Entirely exclude each training context from tables and reliability-rule fitting; keep the full-training scaler common for this controlled comparison. All predictions precede assessment-only target reads. Output gates pass for every screened variant. Lambda zero is solely an in-memory reference, not an unchanged formal rerun. Source-donor scatter includes sampling noise. All screened measurements follow.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(result,indent=2)+'\\\\n\"'```'\"\\\\n')\n    print(json.dumps(result,indent=2),flush=True)\nexcept Exception:\n    failure=traceback.format_exc()\n    with notes.open('a') as out:\n        out.write('\\\\n\\\\n### Session 11 exploratory failure\\\\n\\\\n\"'```text'\"\\\\n'+failure+'\\\\n\"'```'\"\\\\n')\n    raise\nPY\"",
+      "original_command_sha256": "4d63c4eac4f1e5ed78dae4d7bffaf03143438831dc2e2f5173ede69860fe02d3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "3c1e392e25906f95ac74ab2be73216ec3f169ee9b8edd8ba3090c7b3543b4dcd",
+      "output_characters": 4980
+    },
+    {
+      "id": "item_17",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\ns=Path('/workspace/solution/research-notes.md').read_text().splitlines()\nfor i,l in enumerate(s):\n    if l.startswith('## Session '):\n        print(l)\nfor i,l in enumerate(s):\n    if l.startswith('### Next independent research decision') and 'Session 10' not in l:\n        print('\\\\n'.join(s[i:i+5]))\nPY\"",
+      "original_command_sha256": "8422dfbed088d25866c09c05d30b538c1270308cd1f34123d764226089a90e95",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "61123dd28fe67d86263e5154415ffe5c8c3424e4c15047d015586541d2ed2ab1",
+      "output_characters": 12044
+    },
+    {
+      "id": "item_20",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\nimport hashlib\np=Path('/workspace/solution/method.py')\ns=p.read_text()\nwith Path('/workspace/solution/research-notes.md').open('a') as out:\n    out.write('\\\\n\\\\n### Session 11 formal candidate selection\\\\n\\\\n')\n    out.write('Select lambda 0.01, the least-regressing changed setting in the declared screen, for the required complete formal Dev experiment. Exploratory MSE 0.0014563861021161797 versus incumbent 0.0014561244780635406: worsening 2.616240526391557e-7 (0.0179671%). Lambda 0.1 and 1.0 are worse still. All three correction-to-donor-scatter groups regress, including the <1 group that motivated shrinkage; useful small corrections were removed. The excluded-training equal-context mean at 0.01 falls only 1.336212303883505e-7; three contexts improve and three regress. This gives no strong generalization support. No presumption of improvement; restore exact incumbent if formal feedback confirms regression.\\\\n\\\\n')\n    out.write('Selected source SHA-256 '+hashlib.sha256(p.read_bytes()).hexdigest()+'. Exact changed source follows, preserving the tested algorithm even after restoration.\\\\n\\\\n\"'```python'\"\\\\n'+s+'\\\\n\"'```'\"\\\\n')\nprint('Selected lambda 0.01 source preserved:',hashlib.sha256(p.read_bytes()).hexdigest())\nPY\"",
+      "original_command_sha256": "de6c60560f18f10b97139d1094f366992a27e9a2e8d5d33fbf71f7f92e14c992",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a7145bd7cb17ab734cf9371248080299817d85122a09d2df8d18a602ddc26f8c",
+      "output_characters": 104
+    },
+    {
+      "id": "item_21",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\nimport hashlib,json\nmanifest=json.loads(Path('/tests/frozen_assets.json').read_text())\nchecked=[];absent=[];mismatched=[]\nfor name,expected in manifest.items():\n    p=Path(name) if name.startswith('/') else Path('/workspace')/name\n    if not p.is_file():\n        absent.append(name);continue\n    actual=hashlib.sha256(p.read_bytes()).hexdigest()\n    checked.append(name)\n    if actual\"'!=expected:mismatched.append(name)\nprint(json.dumps({'\"'checked':len(checked),'absent':len(absent),'mismatched':mismatched}))\nassert not mismatched\nPY\"",
+      "original_command_sha256": "ed5df1513cc0b22c63ea00adeb70c38d88a2219957549a804ea4f07768dfc846",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "40790946e75d4a75d26f2862e7eeb4cedecd1e02912c887e0ceff3d8b89ad69b",
+      "output_characters": 48
+    },
+    {
+      "id": "item_22",
+      "command": "/bin/sh -lc \"OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4 /opt/runtime/bin/python -B - <<'PY'\nimport io,types,hashlib,json,time\nfrom pathlib import Path\nimport torch,numpy as np,anndata as ad\nfrom sklearn.preprocessing import MaxAbsScaler\ntorch.set_num_threads(4)\nstart=time.perf_counter()\np=Path('/workspace/solution/method.py')\nm=types.ModuleType('artifact_checked_method')\nexec(compile(p.read_text(),str(p),'exec'),m.__dict__)\ntrain=ad.read_h5ad('/workspace/public_assets/train.h5ad')\ncontrols=ad.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\nassert list(train.var_names)==list(controls.var_names)\nscaler=MaxAbsScaler(); train.X=scaler.fit_transform(train.X); controls.X=scaler.transform(controls.X)\nmodel=m.build_model(train,'cpu',17); m.train_model(model,17)\nprediction=m.predict(model,controls,scaler,10017)\ncheckpoint=io.BytesIO(); torch.save(model.model.state_dict(),checkpoint)\nsize=checkpoint.tell(); checkpoint.seek(0)\nreloaded=m.build_model(train,'cpu',17)\nreloaded.model.load_state_dict(torch.load(checkpoint,map_location='cpu',weights_only=True),strict=True)\nreloaded.is_trained=True\nprediction2=m.predict(reloaded,controls,scaler,10017)\nresult={'method_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'shape':list(prediction.shape),'dtype':str(prediction.dtype),'C_contiguous':bool(prediction.flags.c_contiguous),'finite':bool(np.isfinite(prediction).all()),'minimum':float(prediction.min()),'checkpoint_bytes':size,'reload_max_abs_difference':float(np.max(np.abs(prediction-prediction2))),'fresh_reload_build':True,'elapsed_seconds':time.perf_counter()-start,'dev_targets_read':False}\nassert prediction.shape==controls.shape and result['finite'] and result['minimum']>=0 and result['C_contiguous']\nassert size<=256*1024**2 and result['reload_max_abs_difference']<=1e-7\nwith Path('/workspace/solution/research-notes.md').open('a') as out:\n    out.write('\\\\n\\\\n### Selected donor-shrinkage local artifact verification\\\\n\\\\nNo Dev targets loaded. Strict fresh state-dictionary reload, in-memory checkpoint, prediction shape/gene-order, nonnegativity and finiteness pass. Four PyTorch threads and fixed MaxAbsScaler.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(result,indent=2)+'\\\\n\"'```'\"\\\\n')\nprint(json.dumps(result,indent=2))\nPY\"",
+      "original_command_sha256": "8e2cda70e4e58ece4e8acee1ad4eb96b67781af5ad38d3a1a55cda30c55aee21",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "6d5e4754017d7275f868b13d38e9038a71a7313633a188a44a09fc30b5f1f6f6",
+      "output_characters": 375
+    },
+    {
+      "id": "item_24",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\ns=Path('/workspace/solution/research-notes.md').read_text().splitlines()\nfor i,l in enumerate(s):\n    if l.startswith('## Session 1 ') or l.startswith('## Session 2 '):\n        print('\\\\n'.join(s[i:i+32]))\nfor key in ['stratif','per-donor','donor-specific input','donor groups','matched-donor','donor pooling']:\n    matches=[i for i,l in enumerate(s) if key in l.lower()]\n    print('\\\\nSEARCH',key)\n    for i in matches[:4]:\n        print('\\\\n'.join(s[max(0,i-1):i+2]))\nPY\"",
+      "original_command_sha256": "1d3164d5d706f7f4a1c91e39fa4bc87a0a1045456cb9a1fe85643af5933630be",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "02accf8b391a721930b35e31638f601d541de7538c56ac340b858d6debe8056a",
+      "output_characters": 6825
+    },
+    {
+      "id": "item_25",
+      "command": "/bin/sh -lc \"OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4 /opt/runtime/bin/python -B - <<'PY'\nimport json\nfrom pathlib import Path\nimport numpy as np,anndata as ad\ncontrols=ad.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\nx=np.asarray(controls.X.toarray() if hasattr(controls.X,'toarray') else controls.X,dtype=np.float64)\ndonor_id=np.asarray(controls.obs['replicate'].astype(str))\nq=x.mean(axis=0); f=(x>0).mean(axis=0)\nrows=[]; weighted_q_var=np.zeros(x.shape[1]); weighted_f_var=np.zeros(x.shape[1])\nfor donor in sorted(set(donor_id)):\n    mask=donor_id==donor\n    dq=x[mask].mean(axis=0); df=(x[mask]>0).mean(axis=0)\n    weight=mask.mean()\n    weighted_q_var+=weight*(dq-q)**2\n    weighted_f_var+=weight*(df-f)**2\n    rows.append({'donor':donor,'control_cells':int(mask.sum()),'fraction':float(weight),'mean_squared_mean_distance_to_aggregate':float(np.mean((dq-q)**2)),'mean_squared_detection_distance_to_aggregate':float(np.mean((df-f)**2))})\nresult={'diagnostic':'Input-control donor composition and dispersion only; no stimulated targets and no new prediction experiment.','control_cells':x.shape[0],'genes':x.shape[1],'donor_groups':rows,'weighted_mean_gene_mean_variance':float(weighted_q_var.mean()),'weighted_mean_gene_detection_variance':float(weighted_f_var.mean()),'rms_gene_mean_scatter':float(np.sqrt(weighted_q_var.mean())),'rms_gene_detection_scatter':float(np.sqrt(weighted_f_var.mean()))}\nwith Path('/workspace/solution/research-notes.md').open('a') as out:\n    out.write('\\\\n\\\\n### Input-only diagnostic for the next research decision\\\\n\\\\nCurrent inference first aggregates q/f over donors and then applies nonlinear detection/intensity transfer using donor mixture fractions. Reliability training examples instead use one donor at a time. Inspect public input control donor counts and dispersion to assess whether donor-stratified inference is feasible. This diagnostic neither changes the formal candidate nor makes new response predictions, and reads no stimulated targets. It does not establish that donor-stratification will improve error.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(result,indent=2)+'\\\\n\"'```'\"\\\\n')\nprint(json.dumps(result,indent=2))\nPY\"",
+      "original_command_sha256": "4684883e1d68d068200002154e256a4de9947ec2db974fd5428a929ee5bc6f30",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "18f35b05286e33d8250e50cde8fe650573085682177ce72fba4dcb13f731a798",
+      "output_characters": 2486
+    },
+    {
+      "id": "item_28",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\nwith Path('/workspace/solution/research-notes.md').open('a') as out:\n    out.write('\\\\n\\\\n### Next independent research decision after Session 11\\\\n\\\\n')\n    out.write('Move from further pooling-correction attenuation to donor-stratified query adaptation. Current inference aggregates all input controls before nonlinear detection/intensity transfer, whereas the reliability rule is fitted on 44 donor-level pseudo-transfers. Public input-only diagnostics show eight donor groups, 8 to 504 controls, with one group containing 62.15% of cells; smaller-group statistics require shrinkage. For each input donor d, compute its control q_d/f_d, smooth them toward the overall q/f using n_d/(n_d+kappa), then predict from the matched one-hot source-donor mixture with the retained squared gate. Apply the predicted response offset T(smoothed_q_d,smoothed_f_d,one_hot_d)-smoothed_q_d to the actual donor control mean q_d, clipping the resulting target mean nonnegative; calibrate cells within that donor while restoring original row order. This retains the actual control baseline when query smoothing changes its mean. Unknown donors use the existing pooled-source fallback. Compare a small kappa screen such as 32,128,512 against the aggregate incumbent, first on entirely excluded training contexts and separate Dev assessment, then via complete fresh formal Dev. Source-donor uncertainty shrinkage is not part of that future method. No donor-stratified predictor is implemented or tested this session; these input counts only establish feasibility, not expected accuracy.\\\\n')\nprint('Next research decision and small-group stabilization recorded.')\nPY\"",
+      "original_command_sha256": "107ee25b6672f0129adfb0856e1a12237bcb2b24555ac1eb72b4aad3b862e16e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "410e9fc963fb8aa412465a88ef72485869ed0cc2bb862e6463a9798daad80162",
+      "output_characters": 63
+    },
+    {
+      "id": "item_23",
+      "command": "/bin/sh -lc 'bash /workspace/solution/solve.sh'",
+      "original_command_sha256": "62ded559d79c208b11661e48f22268a92f7942c98f5e4d1d92420389a817423f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "826a5f1bc6bea5a34088bc1a3dab23e33d470a9f0f93c609210167e0304c32ce",
+      "output_characters": 3059
+    },
+    {
+      "id": "item_32",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\nimport hashlib,json,stat\np=Path('/workspace/solution/method.py')\nnotes=Path('/workspace/solution/research-notes.md')\nfeedback=json.loads(Path('/workspace/solution/dev_result.json').read_text())\nexpected_candidate='daa6a887399e4f369cdbaf4b81725cceb2b35cf3835915b393ace5d416da0c49'\nassert hashlib.sha256(p.read_bytes()).hexdigest()==expected_candidate==feedback['method_sha256']\nassert feedback['status']=='COMPLETE' and feedback['all_seeds_complete'] and feedback['quality_gates_passed'] and feedback['independent_fresh_reload_verified']\nassert feedback['seeds']==[17,29,43,71,97]\nassert all(row['reload_max_abs_difference']==0 for row in feedback['rows'])\nincumbent_mse=0.0014561244780635406\ncandidate_mse=feedback['raw_metric']\nassert candidate_mse>incumbent_mse\ns=notes.read_text()\nmarker='### Exact Session 11 incumbent source\\\\n\\\\n\"'```python'\"\\\\n'\na=s.index(marker)+len(marker)\nb=s.index('\\\\n\"'```'\"',a)\nincumbent_source=s[a:b]\nincumbent_sha='204126913cbc195d8f8ac130370d0719e53a103581dde6cfc5e63fc2a383ea01'\nassert hashlib.sha256(incumbent_source.encode()).hexdigest()==incumbent_sha\nwith notes.open('a') as out:\n    out.write('\\\\n\\\\n### Formal Session 11 feedback and exact incumbent restoration\\\\n\\\\n')\n    out.write('Actual fixed-entry public Dev completed fresh training for every declared seed 17,29,43,71,97. Candidate mean MSE '+repr(candidate_mse)+', normalized score '+repr(feedback['score'])+', R\u00b2 '+repr(feedback['rows'][0]['metrics']['r2'])+', PCC '+repr(feedback['rows'][0]['metrics']['pcc'])+'. All five seed metrics are identical, matching deterministic fitting and inference. Artifact/prediction/quality/reload gates pass, with exactly zero reload difference per seed. Execution elapsed '+repr(feedback['elapsed_seconds'])+' seconds; full dispatch '+repr(feedback['dispatch_total_seconds'])+' seconds, including '+repr(feedback['queue_seconds_excluded'])+' seconds in queue. Run is within the 3600-second limit. No candidate execution or infrastructure failure occurred. Full generated feedback follows unchanged.\\\\n\\\\n\"'```json'\"\\\\n'+json.dumps(feedback,indent=2)+'\\\\n\"'```'\"\\\\n\\\\n')\n    out.write('Failed improvement hypothesis: even the weakest screened consistency penalty increases formal MSE by '+repr(candidate_mse-incumbent_mse)+' ('+format(100*(candidate_mse/incumbent_mse-1),'.8f')+'%). Stronger penalties regress more in the separate public screen. Donor-correction scatter does not identify harmful pooling well enough here; attenuation removes useful small corrections, with regressions in every correction/scatter group. Training-context transfer is mixed, with only a negligible equal-context gain at lambda 0.01; do not claim generalization improvement. Preserve all weaker/stronger variants, source snapshots and measurements above.\\\\n\\\\n')\n    out.write('Restore the exact saved incumbent rather than retain the regressing donor-consistency method. Best validated Dev MSE remains 0.0014561244780635406, score 0.6018058093905461; SHA-256 '+incumbent_sha+'. Its existing Session 10 complete formal five-seed feedback establishes validity; no unchanged formal rerun is performed. Generated dev_result.json intentionally remains the latest actual failed-improvement feedback, with candidate hash '+expected_candidate+'; it is not a submission or the score of the restored method. Candidate sources never load stimulated Dev labels.\\\\n')\np.write_text(incumbent_source)\nassert stat.S_ISREG(p.stat().st_mode) and not p.is_symlink()\nassert hashlib.sha256(p.read_bytes()).hexdigest()==incumbent_sha\nprint(json.dumps({'restored_method_sha256':incumbent_sha,'method_bytes':p.stat().st_size,'best_valid_dev_mse':incumbent_mse,'tested_candidate_mse':candidate_mse,'regression':candidate_mse-incumbent_mse,'all_seeds_complete':feedback['all_seeds_complete'],'quality_gates_passed':feedback['quality_gates_passed']}))\nPY\"",
+      "original_command_sha256": "ce74a1b8521781fd8eb295d4fd02384b6b39d5587a9a17022db63fa282286ab8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "1316b4f83b014eb75f84054076f44e1c29636f43675f92c1a42a57952f87933e",
+      "output_characters": 305
+    },
+    {
+      "id": "item_33",
+      "command": "/bin/sh -lc \"python - <<'PY'\nfrom pathlib import Path\nimport hashlib,json,ast,stat\nmanifest=json.loads(Path('/tests/frozen_assets.json').read_text())\nchecked=0;absent=0;mismatched=[]\nfor name,expected in manifest.items():\n    p=Path(name) if name.startswith('/') else Path('/workspace')/name\n    if not p.is_file():absent+=1;continue\n    checked+=1\n    if hashlib.sha256(p.read_bytes()).hexdigest()\"'!=expected:mismatched.append(name)\nassert not mismatched\nmethod=Path('\"'/workspace/solution/method.py')\nsha=hashlib.sha256(method.read_bytes()).hexdigest()\nassert sha=='204126913cbc195d8f8ac130370d0719e53a103581dde6cfc5e63fc2a383ea01'\nassert not method.is_symlink() and stat.S_ISREG(method.stat().st_mode) and method.stat().st_size<=1024**2\nnames={node.name for node in ast.parse(method.read_text()).body if isinstance(node,ast.FunctionDef)}\nassert {'build_model','train_model','predict'}<=names\nwith Path('/workspace/solution/research-notes.md').open('a') as out:\n    out.write('\\\\n\\\\nFinal Session 11 integrity: exact restored incumbent is a regular '+str(method.stat().st_size)+'-byte method.py, SHA-256 '+sha+'. All '+str(checked)+' accessible protected manifest entries match their frozen hashes; '+str(absent)+' listed paths are absent in this public container. Fixed entry, evaluator, public assets, initial backend and seed protocol remain unchanged. All three required callables remain present; existing complete incumbent validation is preserved. Submitted prediction state remains in saved buffers, and candidate training/prediction reads supplied training/control data only. No delegation, network search, withheld targets, author/reference/peer material, evaluator/reward-file edits or unchanged formal runs. Actual changed experiment and failures to improve are fully preserved. Next work: donor-stratified input adaptation with response offsets and finite-count control-statistic shrinkage as declared above. No untested next-experiment code remains in method.py.\\\\n')\nprint(json.dumps({'protected_files_checked':checked,'manifest_paths_absent':absent,'hash_mismatches':mismatched,'final_method_sha256':sha,'required_callables_present':True,'final_method_bytes':method.stat().st_size,'notes_bytes':Path('/workspace/solution/research-notes.md').stat().st_size}))\nPY\"",
+      "original_command_sha256": "8ed6b75cc1d4757cfc4a5a914255e78d394c3dd743b5dcdbb5fc82ce6fd96a8c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "6b58e8cc840862ba4263f9758b3829f4e356006b91d3b9b9baea35daa564d932",
+      "output_characters": 263
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 29703182,
+        "cached_input_tokens": 26601668,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 206611,
+        "reasoning_output_tokens": 90108
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

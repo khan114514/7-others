@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "db3521ef1cbe7ef1dfa3083887d61b3220b1ebc92efa7bf9f531a1e20597aac7",
+  "original_receipt_sha256": "98e602ac11a1d698e6cd862ce05fa6112362edf5dda8606dc2ea62c9d60a242c",
+  "original_event_last_write_epoch": 1791626402.463789,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/grid_search_v18.py << 'EOF'\n\\\"\\\"\\\"Grid search for v18: ridge alpha + blend weight.\\\"\\\"\\\"\nimport sys\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.linear_model import Ridge\n\nTRAIN_PATH = '/workspace/public_assets/train.h5ad'\n\nBASE_UP_POW = 0.75\nSLOPE_UP_POW = -0.60\nDOWN_POW = 0.77\nRATIO_CLIP_MAX = 60.0\nCORR_TEMP = 0.07\n\ndef predict_loo(train_adata, target_ctrl_adata, target_stim_adata, ridge_alpha, blend, scaler):\n    cell_types = sorted(train_adata.obs['cell_type'].unique())\n    n_ct = len(cell_types)\n    n_genes = train_adata.shape[1]\n    \n    # Compute ctrl means and stim diffs (on scaled data)\n    ctrl_means = np.zeros((n_ct, n_genes), dtype=np.float64)\n    stim_diffs = np.zeros((n_ct, n_genes), dtype=np.float64)\n    for i, ct in enumerate(cell_types):\n        mask_ct = train_adata.obs['cell_type'] == ct\n        ctrl_mask = mask_ct & (train_adata.obs['condition'] == 'control')\n        stim_mask = mask_ct & (train_adata.obs['condition'] == 'stimulated')\n        cm = np.asarray(train_adata[ctrl_mask].X.mean(axis=0)).flatten()\n        sm = np.asarray(train_adata[stim_mask].X.mean(axis=0)).flatten()\n        ctrl_means[i] = cm\n        stim_diffs[i] = sm - cm\n    \n    # Target ctrl mean (scaled)\n    target_ctrl_mean = np.asarray(target_ctrl_adata.X.mean(axis=0)).flatten().astype(np.float64)\n    \n    # Correlation weights\n    corrs = np.zeros(n_ct)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n    logits = corrs / CORR_TEMP\n    logits -= logits.max()\n    corr_weights = np.exp(logits)\n    corr_weights /= corr_weights.sum()\n    \n    # Ridge weights\n    X = ctrl_means.T  # (n_genes, n_ct)\n    y = target_ctrl_mean\n    ridge = Ridge(alpha=ridge_alpha, fit_intercept=False)\n    ridge.fit(X, y)\n    ridge_weights = ridge.coef_.copy()\n    ridge_weights = np.clip(ridge_weights, 0, None)\n    if ridge_weights.sum() > 0:\n        ridge_weights /= ridge_weights.sum()\n    else:\n        ridge_weights = corr_weights.copy()\n    \n    # Blend\n    weights = (1 - blend) * corr_weights + blend * ridge_weights\n    weights /= weights.sum()\n    \n    # Ensemble\n    ref_ctrl = np.zeros(n_genes)\n    ref_diff = np.zeros(n_genes)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means[i]\n        ref_diff += weights[i] * stim_diffs[i]\n    \n    # Ratio scaling\n    ratio = np.where(ref_ctrl > 1e-8, target_ctrl_mean / np.maximum(ref_ctrl, 1e-8), 1.0)\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n    \n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n    \n    up_pow_gene = BASE_UP_POW + SLOPE_UP_POW * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n    \n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n    \n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** DOWN_POW)\n    \n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    \n    # Inverse transform to log1p\n    pred_mean_unscaled = scaler.inverse_transform(pred_mean_scaled.reshape(1, -1)).flatten()\n    pred_mean_unscaled = np.clip(pred_mean_unscaled, 0, None)\n    \n    # Truth in log1p space\n    truth = target_stim_adata.X\n    if hasattr(truth, 'toarray'):\n        truth = truth.toarray()\n    true_mean = np.asarray(truth.mean(axis=0), dtype=np.float64).flatten()\n    \n    mse = np.mean((true_mean - pred_mean_unscaled) ** 2)\n    return mse\n\ndef main():\n    train = sc.read_h5ad(TRAIN_PATH)\n    cell_types = sorted(train.obs['cell_type'].unique())\n    \n    alphas = [0.01, 0.05, 0.1, 0.3, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0]\n    blends = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]\n    \n    best_mse = float('inf')\n    best_params = None\n    results = []\n    \n    for alpha in alphas:\n        for blend in blends:\n            fold_mses = []\n            for target_ct in cell_types:\n                train_mask = train.obs['cell_type'] \"'!= target_ct\n                target_ctrl_mask = (train.obs['\"'cell_type'] == target_ct) & (train.obs['condition'] == 'control')\n                target_stim_mask = (train.obs['cell_type'] == target_ct) & (train.obs['condition'] == 'stimulated')\n                \n                train_adata = train[train_mask].copy()\n                target_ctrl_adata = train[target_ctrl_mask].copy()\n                target_stim_adata = train[target_stim_mask].copy()\n                \n                scaler = MaxAbsScaler()\n                train_adata.X = scaler.fit_transform(train_adata.X)\n                target_ctrl_adata.X = scaler.transform(target_ctrl_adata.X)\n                \n                mse = predict_loo(train_adata, target_ctrl_adata, target_stim_adata, alpha, blend, scaler)\n                fold_mses.append(mse)\n            \n            avg_mse = np.mean(fold_mses)\n            results.append((alpha, blend, avg_mse))\n            if avg_mse < best_mse:\n                best_mse = avg_mse\n                best_params = (alpha, blend)\n            print(f\\\"alpha={alpha:6.2f}, blend={blend:.2f}, LOO MSE={avg_mse:.6f}\\\")\n    \n    print(f\\\"\\\\nBest: alpha={best_params[0]}, blend={best_params[1]}, MSE={best_mse:.6f}\\\")\n    print(f\\\"v8 baseline LOO MSE: ~0.008585\\\")\n\nif __name__ == '__main__':\n    main()\nEOF\necho \\\"Script created\\\"\"",
+      "original_command_sha256": "9e9038d07b86f0c71c75acbba85c196b5622a924edd71e31b28435cdfbbaa730",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "9a185ebbb4574d894d411b585fc140252d1a5619950b8cc219d10371ca51b8da",
+      "output_characters": 15
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'cd /workspace/solution && /opt/runtime/bin/python3 grid_search_v18.py 2>&1'",
+      "original_command_sha256": "e64bbaeb6015045e770584216a5f2083747b1b35ff83302ec86675176c62d606",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "7ccc37b24022344465e4188a6e8dca0097460d703bae7d8f08781d549c2117bd",
+      "output_characters": 5276
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 7501510,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 333580,
+        "reasoning_output_tokens": 27250
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

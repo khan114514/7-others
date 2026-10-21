@@ -1,0 +1,1 @@
+task-files.json describes every byte of the current build-ready 48-file Task source. materialize_task.py performs a fresh data-only copy and verifies each member plus the aggregate SHA. No external asset preparation or Task execution is required for this copy. Agent and Verifier build contexts contain every declared COPY input.

@@ -1,0 +1,66 @@
+{
+  "checked_unix": 1791431213.26385,
+  "track": "gpt",
+  "round": 7,
+  "type": "independent completed method cycle",
+  "own_resume_evidence": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/resume-provenance.json",
+  "candidate_sha256": "9e3d582022ff15f893a4e12126a54baa32e6739e62a17b4f101c8538aad72e07",
+  "candidate_source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/private_candidate_sources/round_00007.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.4052622760983221,
+      "score": 0.6204168945024044,
+      "quality_gates_passed": true,
+      "method_sha256": "9e3d582022ff15f893a4e12126a54baa32e6739e62a17b4f101c8538aad72e07",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791428791.6475465,
+      "end_unix": 1791428986.773662
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.42463760294031916,
+    "score": 0.6022692721687337,
+    "quality_gates_passed": true,
+    "method_sha256": "9e3d582022ff15f893a4e12126a54baa32e6739e62a17b4f101c8538aad72e07",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791429136.0311594,
+    "end_unix": 1791429365.1718626
+  },
+  "model_final_decision": {
+    "policy_name": "fused_qkv_gram_token_contiguous",
+    "method_summary": "Fused Gram construction into QKV projection and kept tokens contiguous while preserving shared triangular norms. Full protected Dev passed all gates with observed CPU ratio 0.405262276, score 0.620416895, and maximum error 5.01e-6; retained this variant.",
+    "next_direction": "Test shape-dependent triangular norm panel sizes, focusing on length-256 cases."
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791428416.1711998,
+    "ended_unix": 1791429132.8918788,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 7,
+    "start_unix": 1791428415.751772,
+    "end_unix": 1791429366.048445,
+    "observed_seconds": 950.3107610419393,
+    "effective_seconds": 950.3107610419393,
+    "model_seconds": 717.2526580418926,
+    "model_completed": true,
+    "successful_command_tools": 17,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "model_transport_failed": false,
+    "method_sha256": "9e3d582022ff15f893a4e12126a54baa32e6739e62a17b4f101c8538aad72e07",
+    "public_result": "round_00007.grader.log",
+    "events": "round_00007.events.jsonl",
+    "next_direction": "Test shape-dependent triangular norm panel sizes, focusing on length-256 cases."
+  },
+  "original_events": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00007.events.jsonl",
+  "genuine_method_cycle": true,
+  "performance_caveat": "Observed actor and host values differ; cross-campaign unique final best requires clean repeat comparison."
+}

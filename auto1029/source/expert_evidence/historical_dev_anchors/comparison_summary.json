@@ -1,0 +1,89 @@
+{
+  "schema_version": "autoresearch-comparison-summary.v2",
+  "status": "COMPLETE",
+  "evidence_scope": "GPU_CALIBRATED_ANCHORS",
+  "metric": {
+    "name": "mean per-question latency ratio to a fresh counterbalanced ordinary AR calibration",
+    "direction": "minimize",
+    "split": "dev"
+  },
+  "seeds": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "paired_results": {
+    "17": {
+      "baseline": 1.0001033801765729,
+      "reference": 0.37345663611559754,
+      "paired_improvement": 0.6266467440609753
+    },
+    "29": {
+      "baseline": 0.9999248674843658,
+      "reference": 0.40700602100748673,
+      "paired_improvement": 0.5929188464768791
+    },
+    "43": {
+      "baseline": 1.000907990960543,
+      "reference": 0.4125853968175743,
+      "paired_improvement": 0.5883225941429686
+    },
+    "71": {
+      "baseline": 0.999648023906308,
+      "reference": 0.38972927789058653,
+      "paired_improvement": 0.6099187460157215
+    },
+    "101": {
+      "baseline": 1.000101210766072,
+      "reference": 0.3984332847797394,
+      "paired_improvement": 0.6016679259863327
+    }
+  },
+  "statistics": {
+    "paired_run_count": 5,
+    "baseline_mean": 1.0001370946587724,
+    "baseline_sample_std": 0.00046929095522433943,
+    "reference_mean": 0.3962421233221969,
+    "reference_sample_std": 0.015405849970995297,
+    "mean_paired_improvement": 0.6038949713365755,
+    "normalized_reference": 0.603812191910163,
+    "baseline_sigma_multiple": 1286.8242283678578
+  },
+  "significance_rule": {
+    "required_baseline_sigma_multiple": 3,
+    "strong_evidence_multiple": 5,
+    "passed": true,
+    "strong_evidence": true
+  },
+  "validity": {
+    "same_protocol": true,
+    "same_seed_set": true,
+    "all_quality_gates_passed": true,
+    "all_checkpoints_reload_and_rescore_passed": null,
+    "training": "NOT_APPLICABLE"
+  },
+  "protocol_sha256": "71ef938d17f91099d9ff2f7f0abb2e9b4aa05dd0e7e0ada06ccc6ca472544429",
+  "B": 1.0001370946587724,
+  "R": 0.3962421233221969,
+  "U": 0.0,
+  "source_results": {
+    "baseline": [
+      "optimization_evidence/baseline_runs/seed_17/result.json",
+      "optimization_evidence/baseline_runs/seed_29/result.json",
+      "optimization_evidence/baseline_runs/seed_43/result.json",
+      "optimization_evidence/baseline_runs/seed_71/result.json",
+      "optimization_evidence/baseline_runs/seed_101/result.json"
+    ],
+    "reference": [
+      "optimization_evidence/reference_runs/seed_17/result.json",
+      "optimization_evidence/reference_runs/seed_29/result.json",
+      "optimization_evidence/reference_runs/seed_43/result.json",
+      "optimization_evidence/reference_runs/seed_71/result.json",
+      "optimization_evidence/reference_runs/seed_101/result.json"
+    ]
+  },
+  "native_harbor_gates": "Actual current-version separate NOP and Reference Trial gates passed; exact-version attachments are indexed by expert_evidence/native_harbor/current-canonical.json; these qualify the canonical research task only",
+  "official_platform_hidden_claim": false
+}

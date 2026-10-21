@@ -1,0 +1,1685 @@
+{
+  "status": "original_session_research_boundary_current_GPU",
+  "prior_stopping_record": "research-exhausted-before-compiler-interface.json",
+  "prior_stopping_applies_to": "bifrost-tensor-dag/1 eager interface",
+  "new_contract_review": "Current public catalog, tensor interpreter, bounded compiler and benchmark protocol; hashes in experiments/51_compiled_image_mlp/public-contract-sha256.json",
+  "completed_new_experiments": [
+    {
+      "experiment": "51_compiled_image_mlp",
+      "artifact_sha256": "4d659434f717108367fddf1899f63502c9e01d0e03d1709dad197d6725b1d259",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7312524164231079,
+      "baseline_mean_ms": 7127.8356526692705,
+      "candidate_mean_ms": 1915.588607788086,
+      "peak_cuda_allocated_bytes": 29695133184,
+      "compiled_variant_count": 1,
+      "feedback": "experiments/51_compiled_image_mlp/dev-result.json"
+    },
+    {
+      "experiment": "52_compiled_image_rms",
+      "artifact_sha256": "b0b245a4cf15c8bd279481e15f918f1116eba440c8395c81e3d90a418d83fb01",
+      "execution_status": "COMPLETED",
+      "quality_pass": false,
+      "reward": -1.0,
+      "baseline_mean_ms": 7139.9482014973955,
+      "candidate_mean_ms": 1819.4319343566895,
+      "peak_cuda_allocated_bytes": 29699696128,
+      "compiled_variant_count": 3,
+      "feedback": "experiments/52_compiled_image_rms/dev-result.json"
+    },
+    {
+      "experiment": "53_compiled_image_rotary",
+      "artifact_sha256": "0950ec46626c36eb33a6490c84f1c1c963a4727c4c647708ae6a144322227196",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.735364861767461,
+      "baseline_mean_ms": 7150.591303507487,
+      "candidate_mean_ms": 1892.2977180480957,
+      "peak_cuda_allocated_bytes": 29695583744,
+      "compiled_variant_count": 2,
+      "feedback": "experiments/53_compiled_image_rotary/dev-result.json"
+    },
+    {
+      "experiment": "54_compiled_score_pointwise",
+      "artifact_sha256": "ab01211eb0e15c77f551e0d7bc96730387f1d264f31e03606c95c043a6bcfe2f",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7347301029952736,
+      "baseline_mean_ms": 7140.554056803386,
+      "candidate_mean_ms": 1894.1740392049153,
+      "peak_cuda_allocated_bytes": 29701354496,
+      "compiled_variant_count": 3,
+      "feedback": "experiments/54_compiled_score_pointwise/dev-result.json"
+    },
+    {
+      "experiment": "55_compiled_softmax_cast",
+      "artifact_sha256": "030ffd52b82d7ba67176f9534c3d1b0eab3c4074675e118fbb682476fbb1c257",
+      "execution_status": "COMPLETED",
+      "quality_pass": false,
+      "reward": -1.0,
+      "baseline_mean_ms": 7137.437021891276,
+      "candidate_mean_ms": 1832.1168988545735,
+      "peak_cuda_allocated_bytes": 29696255488,
+      "compiled_variant_count": 3,
+      "feedback": "experiments/55_compiled_softmax_cast/dev-result.json"
+    },
+    {
+      "experiment": "56_compiled_mlp_residual_pack",
+      "artifact_sha256": "e7a8626ce8268abe59be949cc3acd774b2685c86ef4ed80222c24e649b657de2",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7326830392829549,
+      "baseline_mean_ms": 7135.118662516276,
+      "candidate_mean_ms": 1907.3382352193196,
+      "peak_cuda_allocated_bytes": 29696902656,
+      "compiled_variant_count": 2,
+      "feedback": "experiments/56_compiled_mlp_residual_pack/dev-result.json"
+    },
+    {
+      "experiment": "57_compiled_attention_output",
+      "artifact_sha256": "67f6e060f924c8b8e4ac94d1c1650aaa4f8ebad746ba29e81187a7a4c27c400f",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7279391707431508,
+      "baseline_mean_ms": 7134.2213134765625,
+      "candidate_mean_ms": 1940.9421666463215,
+      "peak_cuda_allocated_bytes": 29696140800,
+      "compiled_variant_count": 3,
+      "feedback": "experiments/57_compiled_attention_output/dev-result.json"
+    },
+    {
+      "experiment": "58_compiled_projection_rotary",
+      "artifact_sha256": "fffc36b59c6b63ed3fb8c175a028ebc615643b606a9c7573eba1067d96d413e5",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.733666658695548,
+      "baseline_mean_ms": 7134.444900512695,
+      "candidate_mean_ms": 1900.1405487060547,
+      "peak_cuda_allocated_bytes": 29693445632,
+      "compiled_variant_count": 2,
+      "feedback": "experiments/58_compiled_projection_rotary/dev-result.json"
+    },
+    {
+      "experiment": "59_compiled_prefix_text_mlp",
+      "artifact_sha256": "a24bef16b52a4eedfc0b68de865b285b88c66887c33c11a8108e9555be2270d6",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7328803065459598,
+      "baseline_mean_ms": 7144.466766357422,
+      "candidate_mean_ms": 1908.4277725219727,
+      "peak_cuda_allocated_bytes": 29698672128,
+      "compiled_variant_count": 3,
+      "feedback": "experiments/59_compiled_prefix_text_mlp/dev-result.json"
+    },
+    {
+      "experiment": "60_compiled_key_materialization",
+      "artifact_sha256": "7a03ee54e1212b6c82b482a03cefd3a97443aebde176cff0218e2dd3bff7d723",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7303790168897122,
+      "baseline_mean_ms": 7138.54123433431,
+      "candidate_mean_ms": 1924.7005055745442,
+      "peak_cuda_allocated_bytes": 29695583744,
+      "compiled_variant_count": 3,
+      "feedback": "experiments/60_compiled_key_materialization/dev-result.json"
+    },
+    {
+      "experiment": "61_split_static_dynamic_scores",
+      "artifact_sha256": "839ccee67d8d8ca46dbae17cc3eb245d31a4fa5db93b75241272a17cfd71029f",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7248650253647376,
+      "baseline_mean_ms": 7115.19812520345,
+      "candidate_mean_ms": 1957.639855702718,
+      "peak_cuda_allocated_bytes": 29823173632,
+      "compiled_variant_count": 2,
+      "feedback": "experiments/61_split_static_dynamic_scores/dev-result.json"
+    },
+    {
+      "experiment": "62_text_view_common_subexpressions",
+      "artifact_sha256": "03cc1cae27c3ca96698e911d9ccc5c253177bc4f0f82f59f27c8b43ade274a15",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7336887214532077,
+      "baseline_mean_ms": 7136.168960571289,
+      "candidate_mean_ms": 1900.4422798156738,
+      "peak_cuda_allocated_bytes": 29470942720,
+      "compiled_variant_count": 2,
+      "feedback": "experiments/62_text_view_common_subexpressions/dev-result.json"
+    }
+  ],
+  "best_valid_method": {
+    "experiment": "115_compiled_complete_post_softmax",
+    "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+    "run_id": "68cd3ef41d364183a1c4a57ed27a7227",
+    "gpu_uuid": "<assigned-accelerator>",
+    "execution_status": "COMPLETED",
+    "quality_pass": true,
+    "reward": 0.7394114531950514,
+    "baseline_mean_ms": 6923.771565755208,
+    "candidate_mean_ms": 1804.2555707295735,
+    "baseline_sample_sd_ms": 33.525361141117465,
+    "peak_cuda_allocated_bytes": 29701087232,
+    "noise_3sigma_pass": true,
+    "feedback": "experiments/115_compiled_complete_post_softmax/dev-result.json",
+    "foreground_exit_code": null,
+    "worker_child_exit_code": 0,
+    "CLI_clocks": {
+      "started": null,
+      "finished": null
+    },
+    "worker_clocks": [
+      1791773069.3908827,
+      1791773130.5371976
+    ],
+    "compiled_variant_count": 4,
+    "full_console_equals_result": null,
+    "console_limit": "115clienthandle/exit/console unavailable at steering; actual complete worker JSON preserved",
+    "classification": "eligible_current_GPU_Dev"
+  },
+  "failed_method_preserved": "52_compiled_image_rms: hard-gate numerical failure, not a valid faster method",
+  "next_decision": [
+    "Do not sweep/repeat failed splitwidth108 or valid slower value/down orientations and fragment boundaries unchanged.",
+    "Do not use public25/32textlengths as fixed unseenprefix lengths; catalog has no dynamiccompaction.",
+    "Any subsequent method must supply a new preserving producer/consumer or resource argument under unchanged precision/cache/backend guards; actual compiled layout and universal finite-mask bound remain open source/diagnostic questions."
+  ],
+  "limits": "Cross-candidate timings are separate evaluations, not paired statistical significance. Only public 32-stage Dev has been tested; hidden 256-stage trajectories remain untested. No new profile proves actual generated kernel counts.",
+  "compilation_observations_are_execution_cost_not_research_credit": true,
+  "evaluator_rules_modified": false,
+  "new_evaluation_count": 8,
+  "total_new_interface_evaluation_count": 65,
+  "failed_methods_preserved": [
+    "52_compiled_image_rms: hard-gate numerical failure",
+    "55_compiled_softmax_cast: hard-gate numerical failure",
+    "54_compiled_score_pointwise: valid non-improving method",
+    "56_compiled_mlp_residual_pack: valid non-improving method",
+    "57_compiled_attention_output: valid non-improving method",
+    "58_compiled_projection_rotary: valid non-improving method",
+    "59_compiled_prefix_text_mlp: valid non-improving method",
+    "60_compiled_key_materialization: valid non-improving method",
+    "61_split_static_dynamic_scores: valid non-improving static/dynamic score factoring",
+    "62_text_view_common_subexpressions: valid non-improving latency; lower memory alternative preserved",
+    "63_compiled_unit_rms: hard-gate numerical failure",
+    "64_compiled_fp32_rms_eager_rounding: hard-gate numerical failure",
+    "65_compiled_fp32_softmax_eager_rounding: hard-gate numerical failure",
+    "66_compiled_input_rms_only: hard_gate_numerical_failure",
+    "67_compiled_post_rms_only: hard_gate_numerical_failure",
+    "68_compiled_projection_residual: valid_non_improving_method",
+    "69_compiled_prefix_text_attention: hard_gate_numerical_failure",
+    "70_atomic_compiled_text_key_rotary: valid_lower_memory_below_best_reward",
+    "71_atomic_raw_axis_rotary: valid_lower_memory_below_best_reward",
+    "72_compiled_contiguous_qk_outputs: valid_non_improving_method",
+    "73_compiled_score_epilogue: valid_non_improving_method",
+    "74_transpose_before_value_repeat: valid_non_improving_method",
+    "75_compiled_value_materialization: valid_non_improving_method",
+    "76_compiled_layer_tail: valid_non_improving_method",
+    "77_grouped_value_feature_basis: hard_gate_numerical_failure",
+    "78_isolated_projection_feature_basis: hard_gate_numerical_failure",
+    "79_image_only_packed_frequency: valid_lower_memory_below_best_reward",
+    "80_compiled_feature_leading_mlp: valid_non_improving_method",
+    "81_separate_cached_text_projections: hard_gate_numerical_failure",
+    "82_isolated_text_projection_packing: valid_non_improving_method",
+    "83_separate_published_shape_text_projections: valid_lower_memory_below_best_reward",
+    "84_compiled_packed_down_mlp: valid_non_improving_method",
+    "85_full_state_cached_text_rms: valid_non_improving_method",
+    "86_compiled_immutable_qkv_packing: valid_non_improving_method",
+    "87_shared_cached_text_key_attention: valid_non_improving_method",
+    "88_joint_eager_text_qk_rotary: valid_non_improving_method",
+    "89_compiled_joint_text_qk_rotary: valid_non_improving_method",
+    "90_prerotated_opaque_text_attention: valid_lower_memory_below_best_reward",
+    "91_prerotated_query_without_copy: valid_lower_memory_below_best_reward",
+    "92_compact_identity_frequencies: valid_lower_memory_below_best_reward",
+    "93_broadcast_image_query_mask: valid_non_improving_mask_broadcast",
+    "94_compiled_partial_gate_up_fusion: valid_slower_retained_partial_projection_fusion",
+    "95_compiled_two_block_gate_up: valid_slower_stage_packed_two_block_projection_fusion",
+    "96_compiled_prefix_text_qkv: valid_non_selected_cached_biased_QKV_region",
+    "98_compiled_grouped_value_output: valid_non_selected_compiled_grouped_value_output",
+    "99_compiled_grouped_score: valid_non_selected_grouped_score_compilation",
+    "100_compiled_value_columns_producer: valid_non_selected_branchwise_value_column_producer",
+    "101_compiled_column_projection_residual: valid_non_selected_column_projection_residual_compilation",
+    "102_eager_unit_rms_compiled_weight_mlp: valid_non_selected_own_Dev_method; actual artifacts/results recovered from preserved original evidence",
+    "103_eager_unit_input_rms_compiled_qkv: valid_non_selected_own_Dev_method; actual artifacts/results recovered from preserved original evidence",
+    "104_compiled_CFG_partition_mlp: valid_non_selected_own_Dev_method; actual artifacts/results recovered from preserved original evidence",
+    "105_shared_frequency_reshape: valid_non_selected_own_Dev_method; actual artifacts/results recovered from preserved original evidence",
+    "106_batched_frequency_layout: valid_non_selected_own_Dev_method; actual artifacts/results recovered from preserved original evidence",
+    "107_compiled_single_matrix_projection: valid_non_selected_own_Dev_method; actual artifacts/results recovered from preserved original evidence",
+    "108_isolated_v_compiled_qk: actual numericalhardgate failure, currentGPU; all nonselected109/110/111/112/113/114 retained; selected115clientcapturegap separately preserved"
+  ],
+  "duration_target_accounting": "Latest trusted controller steering says165seconds remain at its last message. Boundary remaining not inferred here; prior13057.821882record belongs to previous target. No exact inherited hours or QA qualification claimed.",
+  "previous_stopping_judgment": "research-exhausted-before-human-continuous-target.json",
+  "latest_interval_experiments": [
+    {
+      "experiment": "108_isolated_v_compiled_qk",
+      "artifact_sha256": "2da4ecea7b2ca82dd7c672bca484f08c86badc5af150f56b5161a983ad655524",
+      "run_id": "af36fb95b28941838bfedb9c822f4e93",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": false,
+      "reward": -1.0,
+      "baseline_mean_ms": 6905.765182495117,
+      "candidate_mean_ms": 1851.416239420573,
+      "baseline_sample_sd_ms": 34.04394356002663,
+      "peak_cuda_allocated_bytes": 29575910912,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/108_isolated_v_compiled_qk/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:48:40 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:50:15 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791769783.8001473,
+        1791769851.5328453
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "numerical_hard_gate_failure_ineligible"
+    },
+    {
+      "experiment": "109_packed_compiled_qkv",
+      "artifact_sha256": "d5b9a87326b6a65b2c62869b984de4e04175494cbd4b5356c161df7b086e2438",
+      "run_id": "c8061fcc697d45c6bd289129521391e9",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7310286687003699,
+      "baseline_mean_ms": 6917.560323079427,
+      "candidate_mean_ms": 1860.625409444173,
+      "baseline_sample_sd_ms": 35.31029885503257,
+      "peak_cuda_allocated_bytes": 29693445632,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/109_packed_compiled_qkv/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:52:51 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:54:29 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770035.2730837,
+        1791770086.9967687
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": null,
+      "console_limit": "109console tool-truncated; full evaluator JSON preserved",
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "110_compiled_key_score_composition",
+      "artifact_sha256": "a7c66b88bb6f11803621db159ed569ed5d82716e0d6fa9948dca0bd8c21d872d",
+      "run_id": "809cbe77816544d4b406ee5b80ec77df",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7329098294615983,
+      "baseline_mean_ms": 6923.715225219727,
+      "candidate_mean_ms": 1849.256280263265,
+      "baseline_sample_sd_ms": 48.354855047763245,
+      "peak_cuda_allocated_bytes": 29697115648,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/110_compiled_key_score_composition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:56:57 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:58:53 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770281.6031754,
+        1791770336.2134743
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "111_compiled_packed_value_contraction",
+      "artifact_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df",
+      "run_id": "ffea805fe34b4385af5b1d2bf11804ec",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7223223268390225,
+      "baseline_mean_ms": 6901.40158589681,
+      "candidate_mean_ms": 1916.3651339213054,
+      "baseline_sample_sd_ms": 30.01827049984247,
+      "peak_cuda_allocated_bytes": 29692024320,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/111_compiled_packed_value_contraction/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:02:48 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:05:36 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770631.868071,
+        1791770687.316102
+      ],
+      "compiled_variant_count": 5,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "112_compiled_pre_softmax_partition",
+      "artifact_sha256": "a0cd0fe9d47bdbf332fb21a6c81ce19725ce3417167cf2e4bec02ab2283e064d",
+      "run_id": "b0371b39559f424d8b59d71711ae7669",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7362187238426451,
+      "baseline_mean_ms": 6927.787012736003,
+      "candidate_mean_ms": 1827.4204991658528,
+      "baseline_sample_sd_ms": 34.92967802125154,
+      "peak_cuda_allocated_bytes": 29697435136,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/112_compiled_pre_softmax_partition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:06:40 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:09:01 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770863.82342,
+        1791770918.0922863
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "113_compiled_post_softmax_partition",
+      "artifact_sha256": "51bb6cd234a228102bf52b6d5093e2cf442de649bc0703c83ebe73bd29b27500",
+      "run_id": "449cb834cfb741998c7e8ccd44fba70d",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7265904332200679,
+      "baseline_mean_ms": 6920.140121459961,
+      "candidate_mean_ms": 1892.032512664795,
+      "baseline_sample_sd_ms": 39.380079624286694,
+      "peak_cuda_allocated_bytes": 29696278528,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/113_compiled_post_softmax_partition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:18:25 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:24:03 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791771568.981742,
+        1791771629.7919757
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "114_compiled_down_only_columns",
+      "artifact_sha256": "37ca0a9ddf4da8eecf2ce78f450f2e15627f8ecec17d0b8520916f1bad2f81af",
+      "run_id": "1e68372e99d54d0bbed4e4dc7526c785",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7231010053081304,
+      "baseline_mean_ms": 6918.536229451497,
+      "candidate_mean_ms": 1915.7357266743977,
+      "baseline_sample_sd_ms": 41.93575125706979,
+      "peak_cuda_allocated_bytes": 29697435136,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/114_compiled_down_only_columns/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:27:03 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:33:22 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791772087.3741276,
+        1791772141.5116308
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "115_compiled_complete_post_softmax",
+      "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "run_id": "68cd3ef41d364183a1c4a57ed27a7227",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7394114531950514,
+      "baseline_mean_ms": 6923.771565755208,
+      "candidate_mean_ms": 1804.2555707295735,
+      "baseline_sample_sd_ms": 33.525361141117465,
+      "peak_cuda_allocated_bytes": 29701087232,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/115_compiled_complete_post_softmax/dev-result.json",
+      "foreground_exit_code": null,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": null,
+        "finished": null
+      },
+      "worker_clocks": [
+        1791773069.3908827,
+        1791773130.5371976
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": null,
+      "console_limit": "115clienthandle/exit/console unavailable at steering; actual complete worker JSON preserved",
+      "classification": "eligible_current_GPU_Dev"
+    }
+  ],
+  "restoration_receipt": "research-resume-current-gpu/restoration-receipt.json",
+  "continued_interval_history": [
+    {
+      "experiments": [
+        {
+          "experiment": "63_compiled_unit_rms",
+          "artifact_sha256": "297342704df0d913e1ae02ad4c1634f493185ccb387b327ef0d1c1b155b7c098",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7139.007507324219,
+          "candidate_mean_ms": 1835.6432240804036,
+          "peak_cuda_allocated_bytes": 29700146688,
+          "compiled_variant_count": 4,
+          "feedback": "experiments/63_compiled_unit_rms/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "64_compiled_fp32_rms_eager_rounding",
+          "artifact_sha256": "f38806ea0173693772a858a556dde370459b1db5b38984c7a242080a28027aaf",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7132.048350016276,
+          "candidate_mean_ms": 1875.9976984659831,
+          "peak_cuda_allocated_bytes": 29697056256,
+          "compiled_variant_count": 4,
+          "feedback": "experiments/64_compiled_fp32_rms_eager_rounding/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "65_compiled_fp32_softmax_eager_rounding",
+          "artifact_sha256": "70a679791a643636d8b264a4f07eeac5735f1c0895a722c9b2e658cd968ca5ae",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7145.343663533528,
+          "candidate_mean_ms": 1917.1099344889324,
+          "peak_cuda_allocated_bytes": 29695583744,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/65_compiled_fp32_softmax_eager_rounding/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0
+        }
+      ],
+      "next_decision": "Independently isolate image input RMS vs post-attention RMS compilation; all existing norm trials compiled both. Distinct input strides and aggregate-failure ambiguity support partial-compilation diagnostics, subject to real Dev fidelity.",
+      "restoration_receipt": "experiments/65_compiled_fp32_softmax_eager_rounding/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "experiment": "66_compiled_input_rms_only",
+          "artifact_sha256": "e4ec6f2c59a47ec3f95eb14a15003c8d0b9c1ab091a5e7d5568e152b820ce945",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7141.240132649739,
+          "candidate_mean_ms": 1841.7124735514324,
+          "peak_cuda_allocated_bytes": 29700003328,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/66_compiled_input_rms_only/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "67_compiled_post_rms_only",
+          "artifact_sha256": "76acb6a6184ea56d0d8b41cedd3068372289e6580e374250b649103c3b9845da",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7154.0322825113935,
+          "candidate_mean_ms": 1855.4289538065593,
+          "peak_cuda_allocated_bytes": 29699552768,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/67_compiled_post_rms_only/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "68_compiled_projection_residual",
+          "artifact_sha256": "fca521b588efca191e9e25cbc17fe33bff75c6ee272c973eb5377e51518f4952",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7321677109150295,
+          "baseline_mean_ms": 7128.538482666016,
+          "candidate_mean_ms": 1909.252779642741,
+          "peak_cuda_allocated_bytes": 29697934848,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/68_compiled_projection_residual/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0
+        }
+      ],
+      "next_decision": "Assess and test original cached text_attention_eager compilation: 300-key causal/masked prefix construction differs from failing changing image softmax. Preserve actual numerical and first-construction latency feedback, without presuming success.",
+      "restoration_receipt": "experiments/68_compiled_projection_residual/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "experiment": "69_compiled_prefix_text_attention",
+          "artifact_sha256": "31cdfdecd70826085c10f9f50773848e9852c36b0f0db1e599f700984d43dcc5",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7139.885030110677,
+          "candidate_mean_ms": 1892.1028315226238,
+          "peak_cuda_allocated_bytes": 29705881088,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/69_compiled_prefix_text_attention/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "70_atomic_compiled_text_key_rotary",
+          "artifact_sha256": "927866ec4138edb7dd4ad4893afe1874e3ec664df457d86dc521706f95ed627d",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7351302470677715,
+          "baseline_mean_ms": 7132.803716023763,
+          "candidate_mean_ms": 1889.263957977295,
+          "peak_cuda_allocated_bytes": 29635372544,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/70_atomic_compiled_text_key_rotary/dev-result.json",
+          "classification": "valid_lower_memory_below_best_reward",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "71_atomic_raw_axis_rotary",
+          "artifact_sha256": "5eec7aacdf6d7bb6d42a7f77512bc22aab08e538a965d68f9d4fadaca323e0ae",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7333784782714102,
+          "baseline_mean_ms": 7134.923110961914,
+          "candidate_mean_ms": 1902.3240572611492,
+          "peak_cuda_allocated_bytes": 29613475328,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/71_atomic_raw_axis_rotary/dev-result.json",
+          "classification": "valid_lower_memory_below_best_reward",
+          "foreground_exit_code": 0
+        }
+      ],
+      "next_decision": "Test original 53 image rotary region with explicit contiguous split Q/K output copies inside its boundary. Historical own eager41 score matmul contains a copy; joint 32-head Q/K slicing leaves a query batch gap. Direct packed compiler outputs may avoid native query reshape cloning without changing reductions.",
+      "restoration_receipt": "experiments/71_atomic_raw_axis_rotary/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "experiment": "72_compiled_contiguous_qk_outputs",
+          "artifact_sha256": "e2038771f8e21dc6f81759f594986d2508a04b567263d12d9293df930859145a",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7312654732165896,
+          "baseline_mean_ms": 7136.656382242839,
+          "candidate_mean_ms": 1917.8659756978352,
+          "peak_cuda_allocated_bytes": 29695133184,
+          "compiled_variant_count": 2,
+          "feedback": "experiments/72_compiled_contiguous_qk_outputs/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "73_compiled_score_epilogue",
+          "artifact_sha256": "54c851bbf8add36f84af29eb530ac123bbdd6238eeda018ed9c15b9dd5af4ffb",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7348387029561005,
+          "baseline_mean_ms": 7130.892964680989,
+          "candidate_mean_ms": 1890.8368275960286,
+          "peak_cuda_allocated_bytes": 29700457984,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/73_compiled_score_epilogue/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "74_transpose_before_value_repeat",
+          "artifact_sha256": "6fd7608224a4990421f3cad5ddb892bebf0a198604095647e7ab59d6ef7c494c",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7278026355649004,
+          "baseline_mean_ms": 7135.1169840494795,
+          "candidate_mean_ms": 1942.1600379943848,
+          "peak_cuda_allocated_bytes": 29695583744,
+          "compiled_variant_count": 2,
+          "feedback": "experiments/74_transpose_before_value_repeat/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0
+        }
+      ],
+      "next_decision": "Audit original value-only v concat/reshape/head-transpose/repeat/value-transpose stage region, omitted from57 and physically different from key-copy60. Derive legal contiguous placement and original packing constraints before a changed Dev trial. Retain53; do not reuse slower74 packing or compile reductions.",
+      "restoration_receipt": "experiments/74_transpose_before_value_repeat/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "experiment": "75_compiled_value_materialization",
+          "artifact_sha256": "bbbfb9762b45a0c3eedf71d7709459d7de3f00dfd7dfffed1f77cbf17393685a",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7349365334487045,
+          "baseline_mean_ms": 7136.303787231445,
+          "candidate_mean_ms": 1891.5734202067058,
+          "peak_cuda_allocated_bytes": 29696693760,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/75_compiled_value_materialization/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "76_compiled_layer_tail",
+          "artifact_sha256": "b45adf8625a82685788cbfe32a384c3118c86522e5e34ae9583a5fc30da6f9a1",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7283811487733965,
+          "baseline_mean_ms": 7145.001968383789,
+          "candidate_mean_ms": 1940.7172266642253,
+          "peak_cuda_allocated_bytes": 29695583744,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/76_compiled_layer_tail/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0
+        },
+        {
+          "experiment": "77_grouped_value_feature_basis",
+          "artifact_sha256": "428fa9c359301014bd0997ce16d8155fde36945f08424fede4d8b5f70c825fbc",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7127.140670776367,
+          "candidate_mean_ms": 1901.0228932698567,
+          "peak_cuda_allocated_bytes": 30416504320,
+          "compiled_variant_count": 2,
+          "feedback": "experiments/77_grouped_value_feature_basis/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0
+        }
+      ],
+      "next_decision": "Isolate paired projection-basis permutation on selected53 with original56-batch value contraction unchanged. Pure copy changes its output feature basis and paired frozen projection columns; actual Dev can distinguish basis/projection failure from grouped-contraction interaction. Diagnostic only, no speed promise, precision changes, arbitrary permutation sweep or unchanged repeat.",
+      "restoration_receipt": "experiments/77_grouped_value_feature_basis/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "experiment": "78_isolated_projection_feature_basis",
+          "artifact_sha256": "7b614935d9c7b647b401501adec386d2018c753a9c5cbf9d70746fbbe47f4e3d",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7129.757731119792,
+          "candidate_mean_ms": 1919.2937749226887,
+          "peak_cuda_allocated_bytes": 30415365632,
+          "compiled_variant_count": 2,
+          "feedback": "experiments/78_isolated_projection_feature_basis/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791684674.2765825,
+          "original_worker_completed_epoch": 1791684727.5936363
+        },
+        {
+          "experiment": "79_image_only_packed_frequency",
+          "artifact_sha256": "34107b61b1e7b728cd059433fb310ca381983f5cf4ea52d9a2497fb9f555fd3e",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7331636534672089,
+          "baseline_mean_ms": 7130.548904418945,
+          "candidate_mean_ms": 1902.689618428548,
+          "peak_cuda_allocated_bytes": 29626770944,
+          "compiled_variant_count": 3,
+          "feedback": "experiments/79_image_only_packed_frequency/dev-result.json",
+          "classification": "valid_lower_memory_below_best_reward",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791684982.683452,
+          "original_worker_completed_epoch": 1791685037.0019412
+        },
+        {
+          "experiment": "80_compiled_feature_leading_mlp",
+          "artifact_sha256": "28ae6668145f64880dc5863e82aa5ea90cec5a572e8e679dad49b3838f305201",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7239808671997178,
+          "baseline_mean_ms": 7130.119842529297,
+          "candidate_mean_ms": 1968.0494956970215,
+          "peak_cuda_allocated_bytes": 29695583744,
+          "compiled_variant_count": 2,
+          "feedback": "experiments/80_compiled_feature_leading_mlp/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791685445.273456,
+          "original_worker_completed_epoch": 1791685499.186555
+        }
+      ],
+      "next_decision": "Implement direct separate cached Q/K/V projections over original600flat text rows on selected53. Remove once-built fused text weight/bias/container, preserve changing image/attention/norm/MLP paths and compiler regions. Static receipt predicts1079930880fewer counted prefix bytes, but56extra first-forward GEMMs and changed projection strides/dispatch require real Dev. Historical34->35 confounded fusion with discarded-image-row removal; do not repeat unchanged graphs or claim predicted gain.",
+      "restoration_receipt": "experiments/80_compiled_feature_leading_mlp/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "experiment": "81_separate_cached_text_projections",
+          "artifact_sha256": "a641be2a80c91014ea9ded0e24347533c4d1c493dcc7cbc4acaf7761141b6e4b",
+          "execution_status": "COMPLETED",
+          "quality_pass": false,
+          "reward": -1.0,
+          "baseline_mean_ms": 7120.089762369792,
+          "candidate_mean_ms": 1913.3798421223958,
+          "peak_cuda_allocated_bytes": 28758561792,
+          "compiled_variant_count": 2,
+          "feedback": "experiments/81_separate_cached_text_projections/dev-result.json",
+          "classification": "hard_gate_numerical_failure",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791686134.7441618,
+          "original_worker_completed_epoch": 1791686187.982777
+        },
+        {
+          "experiment": "82_isolated_text_projection_packing",
+          "artifact_sha256": "11c0e9bfe4c90b29fe47268e6d81bb74d664814827e46f85d9d10895f7d0b127",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7325440446947129,
+          "baseline_mean_ms": 7140.530527750651,
+          "candidate_mean_ms": 1909.7774136861165,
+          "peak_cuda_allocated_bytes": 29853955584,
+          "compiled_variant_count": 2,
+          "feedback": "experiments/82_isolated_text_projection_packing/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791686561.257265,
+          "original_worker_completed_epoch": 1791686614.398535
+        },
+        {
+          "experiment": "83_separate_published_shape_text_projections",
+          "artifact_sha256": "dcb138800ed96131c7e8dda354a38e213f3aad450eb2343eb999f91d25dcb415",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7337392805974973,
+          "baseline_mean_ms": 7137.822748819987,
+          "candidate_mean_ms": 1900.5218200683594,
+          "peak_cuda_allocated_bytes": 29150864384,
+          "compiled_variant_count": 2,
+          "feedback": "experiments/83_separate_published_shape_text_projections/dev-result.json",
+          "classification": "valid_lower_memory_below_best_reward",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791686809.3354414,
+          "original_worker_completed_epoch": 1791686862.6293607
+        }
+      ],
+      "next_decision": "Implement the specific packed-down-only compiled row-major MLP on valid83. Stage frozen-weight transpose view, prefix contiguous copied down weight, original row-major gate/up-SiLU-product and full18944-wide matmul inside one stage region. Prospective112nodes and6828183040prefixbytes fit unchanged limits. Eager50 and feature-leading compiled80 do not measure this composition; first-copy cost, actual memory/rounding/latency require distinct Dev. Keep53 until an actual valid higher reward.",
+      "restoration_receipt": "experiments/83_separate_published_shape_text_projections/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "artifact_sha256": "0d4a74edf8d43dd7616c3f6159429c33d80d2fdba92e20a87cd45ec72fc60d3c",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7266890224933756,
+          "baseline_mean_ms": 7128.453486124675,
+          "candidate_mean_ms": 1948.284590403239,
+          "peak_cuda_allocated_bytes": 32969675776,
+          "experiment": "84_compiled_packed_down_mlp",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/84_compiled_packed_down_mlp/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791687318.144873,
+          "original_worker_completed_epoch": 1791687372.021377
+        },
+        {
+          "artifact_sha256": "33085463f4cbb4637f4e05d729e9d04dffbe69117c8ce45794b84d8137152724",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7310946002029728,
+          "baseline_mean_ms": 7133.2690022786455,
+          "candidate_mean_ms": 1918.1745529174805,
+          "peak_cuda_allocated_bytes": 29029291520,
+          "experiment": "85_full_state_cached_text_rms",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/85_full_state_cached_text_rms/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791688031.519884,
+          "original_worker_completed_epoch": 1791688088.1318855
+        },
+        {
+          "artifact_sha256": "fd4f651f871c881bef9ae361c42a240162af2ce3c243080385b8ee645ddb3e3e",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7338120865198527,
+          "baseline_mean_ms": 7134.86506652832,
+          "candidate_mean_ms": 1899.2148450215657,
+          "peak_cuda_allocated_bytes": 29700556288,
+          "experiment": "86_compiled_immutable_qkv_packing",
+          "compiled_variant_count": 3,
+          "feedback": "experiments/86_compiled_immutable_qkv_packing/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791688450.8795252,
+          "original_worker_completed_epoch": 1791688515.1339452
+        }
+      ],
+      "next_decision": "Implement the prospective eager300x300 text attention sharing existing selected53 text_key_rotary. Preserve original text projections/image executables and all eager rounding; shape/cache checks pass122nodes/6562321920bytes. Added persistent score/probability storage and cache bookkeeping may dominate small first-build duplicate rotary savings. Run one changed foreground Dev and preserve all outcomes; no unqualified ranking.",
+      "restoration_receipt": "experiments/86_compiled_immutable_qkv_packing/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "artifact_sha256": "0c0c0d2678a8768bf3b8d59240c0dcfac7be00c985510daa6255eaed1438e043",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7328100037485688,
+          "baseline_mean_ms": 7137.774592081706,
+          "candidate_mean_ms": 1907.1419665018718,
+          "peak_cuda_allocated_bytes": 31902738944,
+          "experiment": "87_shared_cached_text_key_attention",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/87_shared_cached_text_key_attention/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791689230.9349177,
+          "original_worker_completed_epoch": 1791689284.8691206
+        },
+        {
+          "artifact_sha256": "9f917beee4f679902502559c3e16363e51eadc5547c88ddde54f102be81614dc",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7343894073572398,
+          "baseline_mean_ms": 7127.353337605794,
+          "candidate_mean_ms": 1893.10054397583,
+          "peak_cuda_allocated_bytes": 31976819200,
+          "experiment": "88_joint_eager_text_qk_rotary",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/88_joint_eager_text_qk_rotary/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791689905.9072645,
+          "original_worker_completed_epoch": 1791689957.9271963
+        },
+        {
+          "artifact_sha256": "ceae5fe339a4937d2315f3f0596eb7490f5904b2757c3f9a72d1633faf48074b",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7324757936595611,
+          "baseline_mean_ms": 7134.331207275391,
+          "candidate_mean_ms": 1908.606293996175,
+          "peak_cuda_allocated_bytes": 31967940096,
+          "experiment": "89_compiled_joint_text_qk_rotary",
+          "compiled_variant_count": 3,
+          "feedback": "experiments/89_compiled_joint_text_qk_rotary/dev-result.json",
+          "classification": "valid_non_improving_method",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791690059.3334942,
+          "original_worker_completed_epoch": 1791690112.0284452
+        }
+      ],
+      "next_decision": "Implement the exact prospective eager identity-frequency attention composition from valid88. Pack already-rotated Q/K to rows, construct singleton-softmax one plus zero raw frequency, and use native eager attention to hide persistent score/probability intermediates.112nodes/4843077344prefixbytes,2028902176fewer counted bytes than88. Adds first-build packing/identity work and may change GPU layouts; finiteness/quality/peak/latency require one distinct foreground Dev. Keep53unless actual valid reward is higher.",
+      "restoration_receipt": "experiments/89_compiled_joint_text_qk_rotary/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "artifact_sha256": "67808f85891141cba6791defc7874ae2708986c03d36e4c2af8b1c6333a917ae",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7330136798963537,
+          "baseline_mean_ms": 7116.704432169597,
+          "candidate_mean_ms": 1900.0627276102703,
+          "peak_cuda_allocated_bytes": 30032033280,
+          "experiment": "90_prerotated_opaque_text_attention",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/90_prerotated_opaque_text_attention/dev-result.json",
+          "classification": "valid_lower_memory_below_best_reward",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791690496.5920517,
+          "original_worker_completed_epoch": 1791690547.8941894
+        },
+        {
+          "artifact_sha256": "8dbdf0569a7ba4fcad1870a3417e7f9859c2baa48f4f866cb036a50b07e9588e",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7336207872228387,
+          "baseline_mean_ms": 7119.3350830078125,
+          "candidate_mean_ms": 1896.4428749084473,
+          "peak_cuda_allocated_bytes": 29801395712,
+          "experiment": "91_prerotated_query_without_copy",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/91_prerotated_query_without_copy/dev-result.json",
+          "classification": "valid_lower_memory_below_best_reward",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791690829.9978921,
+          "original_worker_completed_epoch": 1791690881.4704764
+        },
+        {
+          "artifact_sha256": "af03288c6b82837916e59442084e78f47a8284f3d0b463605928950de61e3246",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7332561362273,
+          "baseline_mean_ms": 7129.366546630859,
+          "candidate_mean_ms": 1901.7147789001465,
+          "peak_cuda_allocated_bytes": 29775648256,
+          "experiment": "92_compact_identity_frequencies",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/92_compact_identity_frequencies/dev-result.json",
+          "classification": "valid_lower_memory_below_best_reward",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791691043.875547,
+          "original_worker_completed_epoch": 1791691101.9131958
+        }
+      ],
+      "next_decision": "Assess the concrete53-based singleton image-query mask broadcast construction, then pursue one changed foreground Dev if justified. Only image_attention_mask.stop556->301; full score/mask/softmax/value arithmetic and two compiled image regions equal.854016 public Float32 positions prove all disclosed image mask rows equal, but producer body/withheld masks are unprovided, so the general argument remains conditional.107nodes/3855216960prefixbytes; distinct repeated-add address reuse can be measured without claiming a speed/peak guarantee. Preserve every outcome; no CFG-batch compression or arbitrary row sweeps. Keep53until an actual higher valid reward.",
+      "restoration_receipt": "experiments/92_compact_identity_frequencies/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "artifact_sha256": "50d9fb7daea4828c884394928bbd5ace4523b654acd971b0cad3d3d180ea33f0",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7336311022606835,
+          "baseline_mean_ms": 7138.804056803386,
+          "candidate_mean_ms": 1901.555367787679,
+          "peak_cuda_allocated_bytes": 29695583744,
+          "experiment": "93_broadcast_image_query_mask",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/93_broadcast_image_query_mask/dev-result.json",
+          "classification": "valid_non_improving_mask_broadcast",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791691381.793894,
+          "original_worker_completed_epoch": 1791691433.345237
+        },
+        {
+          "artifact_sha256": "8ea899c665d62f528cc6436d6926cc135835d8289e763b6d3b6d567d2151beec",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7122486029446385,
+          "baseline_mean_ms": 7113.367568969727,
+          "candidate_mean_ms": 2046.8814557393391,
+          "peak_cuda_allocated_bytes": 33289381376,
+          "experiment": "94_compiled_partial_gate_up_fusion",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/94_compiled_partial_gate_up_fusion/dev-result.json",
+          "classification": "valid_slower_retained_partial_projection_fusion",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791691710.7968702,
+          "original_worker_completed_epoch": 1791691767.5189385
+        },
+        {
+          "artifact_sha256": "f16a461070cd7ccee19e448dc4d3f83b2ed5e21efbba77b3bce8565669c09895",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.6811393473178259,
+          "baseline_mean_ms": 7128.1271565755205,
+          "candidate_mean_ms": 2272.8792775472007,
+          "peak_cuda_allocated_bytes": 29639555584,
+          "experiment": "95_compiled_two_block_gate_up",
+          "compiled_variant_count": 2,
+          "feedback": "experiments/95_compiled_two_block_gate_up/dev-result.json",
+          "classification": "valid_slower_stage_packed_two_block_projection_fusion",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791691947.1346407,
+          "original_worker_completed_epoch": 1791692011.0703998
+        }
+      ],
+      "next_decision": "Implement the exact prospective original-shape cached text QKV projection/packing region on53. Retain all107node objects/coefficients/lifetimes and two image regions; move only existing Q/K/Vchannel slices after their QKVsource and compile eight homogeneous prefix nodes. Seven runtime inputs/eight separately cached outputs, same3871096320prefixbytes. No RMS/softmax/attention rewrite; bias arithmetic/layout/latency need one distinct foreground Dev. Pure-copy86and changing-image58do not settle this boundary. Preserve every outcome and keep53until an actual higher valid reward; no projection fractions, arbitrary schedules or flags.",
+      "restoration_receipt": "experiments/95_compiled_two_block_gate_up/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "artifact_sha256": "28a3c0d6ea42871571801acb520737e23bb142a4a3bb73d45c6f43018bfd79da",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7326608131347342,
+          "baseline_mean_ms": 7140.150950113933,
+          "candidate_mean_ms": 1908.8421490987141,
+          "baseline_sample_sd_ms": 37.87598083628521,
+          "peak_cuda_allocated_bytes": 29695583744,
+          "experiment": "96_compiled_prefix_text_qkv",
+          "compiled_variant_count": 3,
+          "feedback": "experiments/96_compiled_prefix_text_qkv/dev-result.json",
+          "classification": "valid_non_selected_cached_biased_QKV_region",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791692365.322378,
+          "original_worker_completed_epoch": 1791692420.3211765
+        },
+        {
+          "artifact_sha256": "6b7a98d3d1f880306da4729bdfb528b010a5566433eca33a07754e93d610a913",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7388630857582987,
+          "baseline_mean_ms": 7258.009587605794,
+          "candidate_mean_ms": 1895.3342272440593,
+          "baseline_sample_sd_ms": 187.68033014456194,
+          "peak_cuda_allocated_bytes": 29695583744,
+          "experiment": "97_compiled_frequency_prefix",
+          "compiled_variant_count": 3,
+          "feedback": "experiments/97_compiled_frequency_prefix/dev-result.json",
+          "classification": "selected_highest_valid_Dev_reward_with_baseline_outlier_caution",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791692617.8625844,
+          "original_worker_completed_epoch": 1791692674.894823
+        },
+        {
+          "artifact_sha256": "554cce7be1ae3328838da73a53568392d8312c5332bc862c0aa63559d7fbcf8a",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7301810226340477,
+          "baseline_mean_ms": 7135.797587076823,
+          "candidate_mean_ms": 1925.373607635498,
+          "baseline_sample_sd_ms": 44.869025549966906,
+          "peak_cuda_allocated_bytes": 29699352064,
+          "experiment": "98_compiled_grouped_value_output",
+          "compiled_variant_count": 4,
+          "feedback": "experiments/98_compiled_grouped_value_output/dev-result.json",
+          "classification": "valid_non_selected_compiled_grouped_value_output",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791693037.6033404,
+          "original_worker_completed_epoch": 1791693096.0133026
+        }
+      ],
+      "next_decision": "Implement exactly the prospective97-based grouped score construction c244df417096809938e4445e8d107e0b1105bc692625f99b8ac20cfa5e18109b: remove key_repeat, group seven queries per KVhead, restore canonical BF16scores and compile key concat/transpose/query reshape/GEMM/score reshape. Three runtime inputs/sole score output; unchanged eager scale/mask/FP32softmax/BF16cast/value path, old three regions and3871096320prefixbytes. Exact14336row-base/symbolic128feature556key index proof and valid eager46supply a concrete argument, not compiled CUDA qualification. Run one distinct foreground Dev next interval, preserving failure/worse outcome. No arbitrary boundaries, flags or unchanged repeats; retain97until actual valid reward is higher.",
+      "restoration_receipt": "experiments/98_compiled_grouped_value_output/restoration-receipt.json"
+    },
+    {
+      "experiments": [
+        {
+          "artifact_sha256": "c244df417096809938e4445e8d107e0b1105bc692625f99b8ac20cfa5e18109b",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7273063960400888,
+          "baseline_mean_ms": 7140.904627482097,
+          "candidate_mean_ms": 1947.2790184020996,
+          "baseline_sample_sd_ms": 38.638303547890196,
+          "peak_cuda_allocated_bytes": 29695333376,
+          "experiment": "99_compiled_grouped_score",
+          "compiled_variant_count": 4,
+          "feedback": "experiments/99_compiled_grouped_score/dev-result.json",
+          "classification": "valid_non_selected_grouped_score_compilation",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791693360.9834402,
+          "original_worker_completed_epoch": 1791693420.7028346
+        },
+        {
+          "artifact_sha256": "a31d4c97a76cd6577dc05acc454075881770abd438abf7783ca8c81177c43a3d",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7291955386608329,
+          "baseline_mean_ms": 7132.927322387695,
+          "candidate_mean_ms": 1931.6285413106282,
+          "baseline_sample_sd_ms": 12.456058082249253,
+          "peak_cuda_allocated_bytes": 29696693760,
+          "experiment": "100_compiled_value_columns_producer",
+          "compiled_variant_count": 4,
+          "feedback": "experiments/100_compiled_value_columns_producer/dev-result.json",
+          "classification": "valid_non_selected_branchwise_value_column_producer",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791693661.443132,
+          "original_worker_completed_epoch": 1791693719.3788285
+        },
+        {
+          "artifact_sha256": "ec850c1d7672e992547dd9e0313a8bae05923df6a64d7c6a9c6c10e4878b5678",
+          "execution_status": "COMPLETED",
+          "quality_pass": true,
+          "reward": 0.7289781712612039,
+          "baseline_mean_ms": 7139.2051188151045,
+          "candidate_mean_ms": 1934.8804270426433,
+          "baseline_sample_sd_ms": 37.933649127223745,
+          "peak_cuda_allocated_bytes": 29696677376,
+          "experiment": "101_compiled_column_projection_residual",
+          "compiled_variant_count": 4,
+          "feedback": "experiments/101_compiled_column_projection_residual/dev-result.json",
+          "classification": "valid_non_selected_column_projection_residual_compilation",
+          "foreground_exit_code": 0,
+          "original_worker_started_epoch": 1791693936.8089466,
+          "original_worker_completed_epoch": 1791693995.209772
+        }
+      ],
+      "next_decision": "Assess the concrete prospective97-based eager-unit-post-RMS/compiled-weight-and-MLP tradeoff8063ecb7936acdea0f1d3fbd91b47d165ce2e33ad128b6e56eec23aaddf0656e; if pursued implement exactly and run one distinct foreground Dev. Keep published RMS reduction/rsqrt/casts entirely eager; only original weight-first BF16mul joins the existing image MLP region.111nodes/three regions,3871096544prefixbytes(+224), no weight folding or compiled reduction. Extra unit multiply costs3670016outputbytes/layer and51380224elements/forward, so benefit is uncertain despite65280finite scalar identity checks. No emitted profile proves fusion/latency. Preserve every failure/worse result; retain97until actual valid reward exceeds it, with baseline-outlier caution. Plain dead-node pruning has no opportunity: all107nodes are live.",
+      "restoration_receipt": "experiments/101_compiled_column_projection_residual/restoration-receipt.json"
+    }
+  ],
+  "source_diagnostics": [
+    "research-diagnostics/bf16-boundaries.json",
+    "research-diagnostics/partial-gate-up-cache-feasibility.json",
+    "research-diagnostics/raw-axis-rotary-equivalence.json",
+    "research-diagnostics/score-materialization-profile.json",
+    "research-diagnostics/score-epilogue-profile.json",
+    "research-diagnostics/attention-layout-arguments.json",
+    "research-diagnostics/output-projection-profile.json",
+    "research-diagnostics/value-contraction-profile.json",
+    "research-diagnostics/layer-tail-profile.json",
+    "research-diagnostics/grouped-feature-basis-analysis.json",
+    "research-diagnostics/grouped-feature-program-audit.json",
+    "research-diagnostics/isolated-feature-program-audit.json",
+    "research-diagnostics/image-only-frequency-audit.json",
+    "research-diagnostics/compiled-feature-mlp-argument.json",
+    "research-diagnostics/prefix-storage-and-text-projection.json",
+    "research-diagnostics/separate-text-projection-audit.json",
+    "research-diagnostics/published-projection-geometry-argument.json",
+    "research-diagnostics/full-shape-text-projection-audit.json",
+    "research-diagnostics/compiled-packed-down-feasibility.json",
+    "research-diagnostics/full-state-text-rms-argument.json",
+    "research-diagnostics/immutable-qkv-pack-profile.json",
+    "research-diagnostics/shared-text-key-attention-feasibility.json",
+    "research-diagnostics/shared-text-key-storage-argument.json",
+    "research-diagnostics/joint-text-rotary-audit.json",
+    "research-diagnostics/opaque-text-attention-profile.json",
+    "research-diagnostics/joint-text-rotary-compiler-argument.json",
+    "research-diagnostics/prerotated-opaque-attention-argument.json",
+    "research-diagnostics/prerotated-query-copy-audit.json",
+    "research-diagnostics/compact-identity-frequency-argument.json",
+    "research-diagnostics/image-attention_broadcast-argument.json",
+    "research-diagnostics/partial-gate-up-fusion-argument.json",
+    "research-diagnostics/two-block-gate-up-argument.json",
+    "research-diagnostics/compiled-text-projection-argument.json",
+    "research-diagnostics/frequency-prefix-compilation-argument.json",
+    "research-diagnostics/compiled-grouped-value-output-argument.json",
+    "research-diagnostics/compiled-grouped-score-argument.json",
+    "research-diagnostics/value-columns-producer-argument.json",
+    "research-diagnostics/compiled-column-projection-argument.json",
+    "research-diagnostics/eager-unit-rms-weight-mlp-argument.json",
+    "research-diagnostics/selected97-backward-liveness.json",
+    "research-resume-current-gpu/bf16-dot-tree-argument.json",
+    "research-resume-current-gpu/public-attention_dependency-audit-v3.json",
+    "research-resume-current-gpu/finite-attention_suppression-argument.json"
+  ],
+  "selection_caution": "Separate Baseline-paired jobs do not establish candidate-paired incremental improvement. Historical97score remains historical; no unchanged currentGPU97repeat.",
+  "recovered_completed_round14_evaluation_count": 6,
+  "closure_report": "research-closure/round14-reconciliation.json",
+  "stopping_judgment": "research-exhausted.json",
+  "round14_export_gap": "Bounded checkpoint-export failure left full round14rollout unavailable after container removal. Original native events/receive clocks/captured snapshots/results are preserved; uncaptured loose files and missing natural final response are not reconstructed.",
+  "open_questions": [
+    "Current compiled selected method has no supplied generatedcode/operator/kernelprofile; mechanisms remain hypotheses.",
+    "Historical eager41profiles and priorGPU scores cannot identify current compiled execution costs.",
+    "Finite-min mask topology lemma is conditional on scaled-logit bounds, not established universally from tensor manifest.",
+    "Originalround14fullnativeexportgap remains preserved unchanged in research-closure/actual-own-last-interval."
+  ],
+  "formal_QA_PASS_claimed": false,
+  "global_optimum_claimed": false,
+  "current_authorization": {
+    "additional_observed_work_target_seconds": 3000,
+    "credit_accounting": "trusted controller only; inherited hours rough, not QA",
+    "prior_scores": "historical; different GPU, no candidate-paired comparisons",
+    "unchanged_graph_evaluations_permitted": false
+  },
+  "historical_prior_GPU_best_valid_method": {
+    "artifact_sha256": "6b7a98d3d1f880306da4729bdfb528b010a5566433eca33a07754e93d610a913",
+    "execution_status": "COMPLETED",
+    "quality_pass": true,
+    "reward": 0.7388630857582987,
+    "baseline_mean_ms": 7258.009587605794,
+    "candidate_mean_ms": 1895.3342272440593,
+    "baseline_sample_sd_ms": 187.68033014456194,
+    "peak_cuda_allocated_bytes": 29695583744,
+    "experiment": "97_compiled_frequency_prefix",
+    "compiled_variant_count": 3,
+    "feedback": "experiments/97_compiled_frequency_prefix/dev-result.json",
+    "classification": "selected_highest_valid_Dev_reward_with_baseline_outlier_caution",
+    "foreground_exit_code": 0,
+    "original_worker_started_epoch": 1791692617.8625844,
+    "original_worker_completed_epoch": 1791692674.894823
+  },
+  "historical_duration_target_accounting": "Trusted controller reports13057.821882009885additional ordinary-work seconds after deductions against12944target. This is the supplied accounting record, not exact inherited hours or formal QA qualification.",
+  "historical_latest_interval_experiments": [
+    {
+      "run_id": "ba27ff78e952476ca0f3285ae86ce8d1",
+      "artifact_sha256": "8063ecb7936acdea0f1d3fbd91b47d165ce2e33ad128b6e56eec23aaddf0656e",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7315894209039772,
+      "baseline_mean_ms": 7133.141677856445,
+      "candidate_mean_ms": 1914.610688527425,
+      "baseline_sample_sd_ms": 34.814746366468995,
+      "peak_cuda_allocated_bytes": 29695170048,
+      "started_epoch": 1791694458.506977,
+      "completed_epoch": 1791694515.3583195,
+      "experiment": "102_eager_unit_rms_compiled_weight_mlp",
+      "foreground_exit_code": 0,
+      "native_event_id": "item_14",
+      "classification": "valid_non_selected_own_Dev_method",
+      "feedback": "experiments/102_eager_unit_rms_compiled_weight_mlp/dev-result.json",
+      "compiled_variant_count": 3,
+      "original_result_path": "actual-own-last-interval/original-dev-results/ba27ff78e952476ca0f3285ae86ce8d1.json",
+      "original_snapshot_receipt": "actual-own-last-interval/artifact-snapshots/dev-ba27ff78e952476ca0f3285ae86ce8d1/receipt.json",
+      "original_binding_path": "actual-own-last-interval/original-dev-results/ba27ff78e952476ca0f3285ae86ce8d1-binding.json",
+      "stdout_matches_actual_result": true,
+      "captured_builder_regenerates_captured_graph": true
+    },
+    {
+      "run_id": "6ce6198e2221469386261b03bf49ac22",
+      "artifact_sha256": "883cf72eccd9486a4f70dc113ec04e5be735d68d16728d20b9086b727d527ea9",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.731531058280552,
+      "baseline_mean_ms": 7143.594340006511,
+      "candidate_mean_ms": 1917.8332125345867,
+      "baseline_sample_sd_ms": 37.78366069474217,
+      "peak_cuda_allocated_bytes": 29694522880,
+      "started_epoch": 1791694699.2867243,
+      "completed_epoch": 1791694755.1280806,
+      "experiment": "103_eager_unit_input_rms_compiled_qkv",
+      "foreground_exit_code": 0,
+      "native_event_id": "item_30",
+      "classification": "valid_non_selected_own_Dev_method",
+      "feedback": "experiments/103_eager_unit_input_rms_compiled_qkv/dev-result.json",
+      "compiled_variant_count": 4,
+      "original_result_path": "actual-own-last-interval/original-dev-results/6ce6198e2221469386261b03bf49ac22.json",
+      "original_snapshot_receipt": "actual-own-last-interval/artifact-snapshots/dev-6ce6198e2221469386261b03bf49ac22/receipt.json",
+      "original_binding_path": "actual-own-last-interval/original-dev-results/6ce6198e2221469386261b03bf49ac22-binding.json",
+      "stdout_matches_actual_result": true,
+      "captured_builder_regenerates_captured_graph": true
+    },
+    {
+      "run_id": "25debb9600e5417294355943634b4ebb",
+      "artifact_sha256": "66680c0710ff30d7a2b1f072f9a2b6d537ef18d232f0012ffd9561dca52a7dcd",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.6549893068877907,
+      "baseline_mean_ms": 7130.159098307292,
+      "candidate_mean_ms": 2459.981132507324,
+      "baseline_sample_sd_ms": 19.377273520347206,
+      "peak_cuda_allocated_bytes": 29695583744,
+      "started_epoch": 1791694895.3978524,
+      "completed_epoch": 1791694956.6217096,
+      "experiment": "104_compiled_CFG_partition_mlp",
+      "foreground_exit_code": 0,
+      "native_event_id": "item_49",
+      "classification": "valid_non_selected_own_Dev_method",
+      "feedback": "experiments/104_compiled_CFG_partition_mlp/dev-result.json",
+      "compiled_variant_count": 3,
+      "original_result_path": "actual-own-last-interval/original-dev-results/25debb9600e5417294355943634b4ebb.json",
+      "original_snapshot_receipt": "actual-own-last-interval/artifact-snapshots/dev-25debb9600e5417294355943634b4ebb/receipt.json",
+      "original_binding_path": "actual-own-last-interval/original-dev-results/25debb9600e5417294355943634b4ebb-binding.json",
+      "stdout_matches_actual_result": true,
+      "captured_builder_regenerates_captured_graph": true
+    },
+    {
+      "run_id": "dbdf578c106344f68966344cc7717319",
+      "artifact_sha256": "e4414aa95a4d14981ffa6984ec17851505320635f6b923ca53cbcc949b73a7f6",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7339288771296161,
+      "baseline_mean_ms": 7249.338038126628,
+      "candidate_mean_ms": 1928.839511871338,
+      "baseline_sample_sd_ms": 191.25002910097604,
+      "peak_cuda_allocated_bytes": 29695583744,
+      "started_epoch": 1791695306.4154623,
+      "completed_epoch": 1791695363.5497398,
+      "experiment": "105_shared_frequency_reshape",
+      "foreground_exit_code": 0,
+      "native_event_id": "item_81",
+      "classification": "valid_non_selected_own_Dev_method",
+      "feedback": "experiments/105_shared_frequency_reshape/dev-result.json",
+      "compiled_variant_count": 3,
+      "original_result_path": "actual-own-last-interval/original-dev-results/dbdf578c106344f68966344cc7717319.json",
+      "original_snapshot_receipt": "actual-own-last-interval/artifact-snapshots/dev-dbdf578c106344f68966344cc7717319/receipt.json",
+      "original_binding_path": "actual-own-last-interval/original-dev-results/dbdf578c106344f68966344cc7717319-binding.json",
+      "stdout_matches_actual_result": true,
+      "captured_builder_regenerates_captured_graph": true
+    },
+    {
+      "run_id": "b9c8bddafaef44889442fe9e4b0c6eae",
+      "artifact_sha256": "de70a2ef484f2258d38dbeda414db9efe6b91d573ce91b467abbcf89c5cf191a",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7368225971425016,
+      "baseline_mean_ms": 7238.561101277669,
+      "candidate_mean_ms": 1905.0257110595703,
+      "baseline_sample_sd_ms": 154.1770127002855,
+      "peak_cuda_allocated_bytes": 29765613056,
+      "started_epoch": 1791695517.6768386,
+      "completed_epoch": 1791695574.2490952,
+      "experiment": "106_batched_frequency_layout",
+      "foreground_exit_code": 0,
+      "native_event_id": "item_100",
+      "classification": "valid_non_selected_own_Dev_method",
+      "feedback": "experiments/106_batched_frequency_layout/dev-result.json",
+      "compiled_variant_count": 3,
+      "original_result_path": "actual-own-last-interval/original-dev-results/b9c8bddafaef44889442fe9e4b0c6eae.json",
+      "original_snapshot_receipt": "actual-own-last-interval/artifact-snapshots/dev-b9c8bddafaef44889442fe9e4b0c6eae/receipt.json",
+      "original_binding_path": "actual-own-last-interval/original-dev-results/b9c8bddafaef44889442fe9e4b0c6eae-binding.json",
+      "stdout_matches_actual_result": true,
+      "captured_builder_regenerates_captured_graph": true
+    },
+    {
+      "run_id": "6b141902505342e79db08ef6527fcb73",
+      "artifact_sha256": "22811a2bbbb885e7168a1dc8ba8e155787b24a3deda5ddab3b42d646bcaf5c6d",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7340015876317205,
+      "baseline_mean_ms": 7179.4967702229815,
+      "candidate_mean_ms": 1909.7347424825032,
+      "baseline_sample_sd_ms": 61.5973844404049,
+      "peak_cuda_allocated_bytes": 29697127936,
+      "started_epoch": 1791695809.670101,
+      "completed_epoch": 1791695868.2784307,
+      "experiment": "107_compiled_single_matrix_projection",
+      "foreground_exit_code": 0,
+      "native_event_id": "item_122",
+      "classification": "valid_non_selected_own_Dev_method",
+      "feedback": "experiments/107_compiled_single_matrix_projection/dev-result.json",
+      "compiled_variant_count": 4,
+      "original_result_path": "actual-own-last-interval/original-dev-results/6b141902505342e79db08ef6527fcb73.json",
+      "original_snapshot_receipt": "actual-own-last-interval/artifact-snapshots/dev-6b141902505342e79db08ef6527fcb73/receipt.json",
+      "original_binding_path": "actual-own-last-interval/original-dev-results/6b141902505342e79db08ef6527fcb73-binding.json",
+      "stdout_matches_actual_result": true,
+      "captured_builder_regenerates_captured_graph": true
+    }
+  ],
+  "current_GPU_completed_experiments": [
+    {
+      "experiment": "108_isolated_v_compiled_qk",
+      "artifact_sha256": "2da4ecea7b2ca82dd7c672bca484f08c86badc5af150f56b5161a983ad655524",
+      "run_id": "af36fb95b28941838bfedb9c822f4e93",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": false,
+      "reward": -1.0,
+      "baseline_mean_ms": 6905.765182495117,
+      "candidate_mean_ms": 1851.416239420573,
+      "baseline_sample_sd_ms": 34.04394356002663,
+      "peak_cuda_allocated_bytes": 29575910912,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/108_isolated_v_compiled_qk/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:48:40 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:50:15 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791769783.8001473,
+        1791769851.5328453
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "numerical_hard_gate_failure_ineligible"
+    },
+    {
+      "experiment": "109_packed_compiled_qkv",
+      "artifact_sha256": "d5b9a87326b6a65b2c62869b984de4e04175494cbd4b5356c161df7b086e2438",
+      "run_id": "c8061fcc697d45c6bd289129521391e9",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7310286687003699,
+      "baseline_mean_ms": 6917.560323079427,
+      "candidate_mean_ms": 1860.625409444173,
+      "baseline_sample_sd_ms": 35.31029885503257,
+      "peak_cuda_allocated_bytes": 29693445632,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/109_packed_compiled_qkv/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:52:51 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:54:29 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770035.2730837,
+        1791770086.9967687
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": null,
+      "console_limit": "109console tool-truncated; full evaluator JSON preserved",
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "110_compiled_key_score_composition",
+      "artifact_sha256": "a7c66b88bb6f11803621db159ed569ed5d82716e0d6fa9948dca0bd8c21d872d",
+      "run_id": "809cbe77816544d4b406ee5b80ec77df",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7329098294615983,
+      "baseline_mean_ms": 6923.715225219727,
+      "candidate_mean_ms": 1849.256280263265,
+      "baseline_sample_sd_ms": 48.354855047763245,
+      "peak_cuda_allocated_bytes": 29697115648,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/110_compiled_key_score_composition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 01:56:57 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 01:58:53 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770281.6031754,
+        1791770336.2134743
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "111_compiled_packed_value_contraction",
+      "artifact_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df",
+      "run_id": "ffea805fe34b4385af5b1d2bf11804ec",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7223223268390225,
+      "baseline_mean_ms": 6901.40158589681,
+      "candidate_mean_ms": 1916.3651339213054,
+      "baseline_sample_sd_ms": 30.01827049984247,
+      "peak_cuda_allocated_bytes": 29692024320,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/111_compiled_packed_value_contraction/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:02:48 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:05:36 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770631.868071,
+        1791770687.316102
+      ],
+      "compiled_variant_count": 5,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "112_compiled_pre_softmax_partition",
+      "artifact_sha256": "a0cd0fe9d47bdbf332fb21a6c81ce19725ce3417167cf2e4bec02ab2283e064d",
+      "run_id": "b0371b39559f424d8b59d71711ae7669",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7362187238426451,
+      "baseline_mean_ms": 6927.787012736003,
+      "candidate_mean_ms": 1827.4204991658528,
+      "baseline_sample_sd_ms": 34.92967802125154,
+      "peak_cuda_allocated_bytes": 29697435136,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/112_compiled_pre_softmax_partition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:06:40 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:09:01 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791770863.82342,
+        1791770918.0922863
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "113_compiled_post_softmax_partition",
+      "artifact_sha256": "51bb6cd234a228102bf52b6d5093e2cf442de649bc0703c83ebe73bd29b27500",
+      "run_id": "449cb834cfb741998c7e8ccd44fba70d",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7265904332200679,
+      "baseline_mean_ms": 6920.140121459961,
+      "candidate_mean_ms": 1892.032512664795,
+      "baseline_sample_sd_ms": 39.380079624286694,
+      "peak_cuda_allocated_bytes": 29696278528,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/113_compiled_post_softmax_partition/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:18:25 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:24:03 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791771568.981742,
+        1791771629.7919757
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "114_compiled_down_only_columns",
+      "artifact_sha256": "37ca0a9ddf4da8eecf2ce78f450f2e15627f8ecec17d0b8520916f1bad2f81af",
+      "run_id": "1e68372e99d54d0bbed4e4dc7526c785",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7231010053081304,
+      "baseline_mean_ms": 6918.536229451497,
+      "candidate_mean_ms": 1915.7357266743977,
+      "baseline_sample_sd_ms": 41.93575125706979,
+      "peak_cuda_allocated_bytes": 29697435136,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/114_compiled_down_only_columns/dev-result.json",
+      "foreground_exit_code": 0,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": {
+          "current_time": "2026-10-12 02:27:03 UTC"
+        },
+        "finished": {
+          "current_time": "2026-10-12 02:33:22 UTC"
+        }
+      },
+      "worker_clocks": [
+        1791772087.3741276,
+        1791772141.5116308
+      ],
+      "compiled_variant_count": 3,
+      "full_console_equals_result": true,
+      "console_limit": null,
+      "classification": "eligible_current_GPU_Dev"
+    },
+    {
+      "experiment": "115_compiled_complete_post_softmax",
+      "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "run_id": "68cd3ef41d364183a1c4a57ed27a7227",
+      "gpu_uuid": "<assigned-accelerator>",
+      "execution_status": "COMPLETED",
+      "quality_pass": true,
+      "reward": 0.7394114531950514,
+      "baseline_mean_ms": 6923.771565755208,
+      "candidate_mean_ms": 1804.2555707295735,
+      "baseline_sample_sd_ms": 33.525361141117465,
+      "peak_cuda_allocated_bytes": 29701087232,
+      "noise_3sigma_pass": true,
+      "feedback": "experiments/115_compiled_complete_post_softmax/dev-result.json",
+      "foreground_exit_code": null,
+      "worker_child_exit_code": 0,
+      "CLI_clocks": {
+        "started": null,
+        "finished": null
+      },
+      "worker_clocks": [
+        1791773069.3908827,
+        1791773130.5371976
+      ],
+      "compiled_variant_count": 4,
+      "full_console_equals_result": null,
+      "console_limit": "115clienthandle/exit/console unavailable at steering; actual complete worker JSON preserved",
+      "classification": "eligible_current_GPU_Dev"
+    }
+  ],
+  "current_GPU_evaluation_count": 8
+}

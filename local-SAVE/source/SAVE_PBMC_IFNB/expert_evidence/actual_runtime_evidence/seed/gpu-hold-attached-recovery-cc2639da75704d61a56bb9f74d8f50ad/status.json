@@ -1,0 +1,131 @@
+{
+  "lane": "seed",
+  "model": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "status": "FORMAL_NATIVE_RESEARCH_INTERRUPTED_INFRASTRUCTURE_PRESERVED",
+  "preflight_only": false,
+  "effective_research_seconds": 33766.84027791023,
+  "preparation_time_reused": false,
+  "rounds": [
+    {
+      "index": 1,
+      "started_epoch": 1791768948.497114,
+      "completed_epoch": 1791769742.068932,
+      "elapsed_seconds": 793.571818113327,
+      "native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+      "exit_code": null,
+      "exit_code_observation": "Original native retirement independently witnessed by SIGKILL; original controller remains frozen, exit code unavailable.",
+      "native_turn_closed": false,
+      "successful_command_count": 30,
+      "completed_command_count": 36,
+      "method_sha256": "7c70d177a602c6a21032e922151fedef9d7fb7ec78a877a1c64c74dad3985fad",
+      "effective_research_seconds": 0,
+      "failure_reason": "Three actual Dev dispatches refused by byte-frozen source guard before numerical work; no score generated.",
+      "clock_start_basis": "Original event-file creation; original controller in-memory epoch unavailable."
+    }
+  ],
+  "container_stability_seconds": 32922.49486980587,
+  "stability_passed": false,
+  "environment_binding": {
+    "environment_id": "484ddf5205d14862a4bf16bf88a3838e",
+    "physical_role": "seed",
+    "session_id": "save-clock-deficit-seed-6939aad68252__env",
+    "container_id": "7a192d0e42bcafee8bd6af963b8f4d86852b428481e7578960f5d0b64fdb5575",
+    "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+    "queue_volume": "save-harbor-q-484ddf5205d14862a4bf16bf88a3838e",
+    "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+    "Agent_uses_private_verifier_log_shadow": true,
+    "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+    "declared_remote_gpus": 1,
+    "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+    "portable_runtime_sources": {
+      "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+      "seed_transport.py": "0011fc0e49aefb6f8e3a7e08f39ac2f7f092aa91cbe902c4f3363aafe1af6afa",
+      "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+      "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+      "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+      "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+      "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+      "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+    },
+    "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+    "author_oracle": false,
+    "native_container_GPU": false,
+    "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+    "trusted_read_only_cli_runtime": {
+      "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+      "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+      "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+      "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+      "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+    }
+  },
+  "best_valid_dev": {
+    "score": 0.5604382503275445,
+    "raw_metric": 0.0016073981951842792,
+    "method_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+    "source": "<TASK_ROOT>/private/gpu-hold-attached-recovery/cc2639da75704d61a56bb9f74d8f50ad/seed-research-evidence/recovered-own-evidence/method.py",
+    "evaluation_run_id": "f42be27c85964d2b84b1a19a065c9135"
+  },
+  "same_owned_relay_dir": "<TASK_ROOT>/private/native-end-deficit-recovery/6939aad68252443ba2dd093ae43aa8ec/seed/hybrid-harbor-runtime/484ddf5205d14862a4bf16bf88a3838e/relay",
+  "prior_state_source": "<TASK_ROOT>/private/native-end-deficit-recovery/6939aad68252443ba2dd093ae43aa8ec/seed-research-evidence/status.json",
+  "prior_effective_research_seconds": 33766.84027791023,
+  "native_session_lossless_resume": true,
+  "restored_actual_native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+  "previous_observed_12h_container_stability_proofs": [
+    {
+      "status_source": "<TASK_ROOT>/private/track-recovery-attached/4bf1320b1f0846af9607ca2dac841c43/seed-research-evidence/status.json",
+      "seconds": 43213.8560234278,
+      "environment_binding": {
+        "environment_id": "0fd2a9167d4e4b548d7bbd86fb226769",
+        "physical_role": "seed",
+        "session_id": "save-user-balance-seed-8f17436f163c__env",
+        "container_id": "bc38873a7e5b219ab22a6195c1984b1ed394f9f18f4c47fe21402e4c6250f7f5",
+        "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+        "queue_volume": "save-harbor-q-0fd2a9167d4e4b548d7bbd86fb226769",
+        "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+        "Agent_uses_private_verifier_log_shadow": true,
+        "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+        "declared_remote_gpus": 1,
+        "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+        "portable_runtime_sources": {
+          "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+          "seed_transport.py": "7725c1226401c45f3d9a5002fa40d30f60cbdf01cb4b7458ff95dd88046253e8",
+          "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+          "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+          "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+          "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+          "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+          "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+          "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+        },
+        "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+        "author_oracle": false,
+        "native_container_GPU": false,
+        "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+        "trusted_read_only_cli_runtime": {
+          "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+          "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+          "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+          "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+          "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+        }
+      }
+    }
+  ],
+  "environment_restarted": false,
+  "same_physical_container_started_at": "2026-10-11T16:33:37.062381259Z",
+  "original_GPU_hold_preserved": true,
+  "retained_unscored_candidate_sha256": "7c70d177a602c6a21032e922151fedef9d7fb7ec78a877a1c64c74dad3985fad",
+  "bounded_continuation_limits": {
+    "maximum_native_turns": 24,
+    "maximum_wall_seconds": 10800,
+    "automatic_retry_after_failed_native_turn": false
+  },
+  "started_epoch": 1791768946.465837,
+  "research_time_policy": "User 2026-10-10: normal actual development; exclude downloads, actual transport/queue stalls and idle stability waits; no AST-change or command-count prerequisite",
+  "independently_verified_effective_seconds": 33766.84027791023
+}

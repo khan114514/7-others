@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "track": "dd_seed",
+  "rounds": [
+    {
+      "round": 1,
+      "policy_name": "official_dd_d16_baseline",
+      "method_summary": "Phase 1 reproduction: official VAR-DD-d16 weights, single-step (t_list=0, loss_split_t=5) FID-50k evaluation per paper protocol. Measured FID 9.66 vs paper 9.94. bs reduced to 32 due to OOM at bs=64 (codebook nearest-neighbor memory spike). Establishes baseline anchor for Phase 2 optimization.",
+      "status": "ok",
+      "score": 9.66,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-02 22:59:40"
+    },
+    {
+      "round": 2,
+      "policy_name": "diag_uniform_10k_5k",
+      "method_summary": "Diagnostic round: first end-to-end training pipeline verification with 10k teacher samples (cfg=1.5), 5k training steps, uniform time sampling, mse+ce loss. 2k-sample FID=240 (noisy, diagnostic only). Confirms training pipeline works end-to-end and produces diverse, non-collapsed outputs. Next: full 4h budget candidate with more teacher samples and more training steps.",
+      "status": "incomplete",
+      "score": null,
+      "failure_reason": "Only a diagnostic 2000-sample evaluation completed; no formal FID-50000 score is available for this round. Original process status ok is preserved separately.",
+      "retained_best": false,
+      "time": "2026-10-03 00:13:00"
+    },
+    {
+      "round": 3,
+      "policy_name": "level_weighted_time_50k",
+      "method_summary": "First full-budget candidate: 50k teacher samples (cfg=1.5, top_k=900, top_p=0.95), level-weighted time sampling (by token count per level), 28142 training steps in 2.7h, MSE+CE loss. FID-50k=163.53, far from baseline 9.66. Training loss plateaued at ~0.797. Self-implemented FM training pipeline verified to work end-to-end but quality is poor. Next: improve loss formulation and investigate token-level loss weighting to match DD paper approach more closely.",
+      "status": "ok",
+      "score": 163.53,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-03 05:05:00"
+    },
+    {
+      "round": 4,
+      "policy_name": "t0_importance_levelbalanced_loss",
+      "method_summary": "t0-importance time sampling (70% t=0) + level-balanced loss. Training interrupted at step 9200/30000 (~53min) with no checkpoint saved. Loss plateaued around 0.818 (mse≈0.020, ce≈8.0). Process killed during session interruption.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "interrupted mid-training at step 9200/30000, no checkpoint saved, cannot resume",
+      "retained_best": false,
+      "time": "2026-10-03 06:46:00"
+    },
+    {
+      "round": 5,
+      "policy_name": "curriculum_hl_timesampling",
+      "method_summary": "Full-budget candidate with curriculum high-to-low time sampling (5-phase: high t -> t0 only). Teacher 50k cfg=1.5, 40000 steps in 151min, MSE+CE loss. FID-50k=167.92, worse than round3 163.53. Curriculum from scratch did not help; t=0 phase loss plateaued at 0.817 (CE ~8.0 barely below random 8.3). Next: warm start from official DD weights (v1.1) + t0_dominant + higher quality teacher samples.",
+      "status": "ok",
+      "score": 167.92,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-03 15:02:10"
+    },
+    {
+      "round": 6,
+      "policy_name": "warmstart_t0_dominant_cfg3",
+      "method_summary": "Warm-start from official DD weights (v1.1) + t0_dominant time sampling (90% t=0) + cfg=3.0 teacher samples, lr=5e-5, ce_weight=0.3, 37k steps in 2.8h. FID-50k=166.83, essentially same as from-scratch (163-167). Key finding: full fine-tuning causes catastrophic forgetting - model completely overwrites official DD weights on small 50k dataset. Next: very low LR (5e-6) + t0_only + fewer steps for gentle fine-tuning without forgetting.",
+      "status": "ok",
+      "score": 166.83,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-03 20:29:50"
+    },
+    {
+      "round": 7,
+      "policy_name": "warmstart_t0only_lowlr_cfg3",
+      "method_summary": "Round 7: two failed attempts. (1) warmstart_uniform_cfg3 ablation: started ~15:20, terminated by runner at 20:58:29 CST (launched after cutoff signal, per protocol). (2) warmstart_t0only_lowlr_cfg3 restart at 21:17: immediately failed with CLI error (unrecognized --save_interval). Hypothesis of very gentle fine-tuning (lr=1e-6, t0_only) not tested. Continued as round 8.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "runner terminated (first attempt, cutoff violation) + CLI arg error (restart attempt, --save_interval unrecognized)",
+      "retained_best": false,
+      "time": "2026-10-03 21:30:00"
+    },
+    {
+      "round": 8,
+      "policy_name": "warmstart_t0only_1e6_lr_lowce_diag",
+      "method_summary": "Diagnostic round: very gentle fine-tuning (warmstart + t0_only + lr=1e-6 + 1000 steps + ce_weight=0.01). 10k cfg=3.0 teacher samples reused from round8 generation. FID-2k=28.29 vs baseline 28.11 (2k) — difference within noise, indicating gentle FT preserves most quality. Official 50k FID=9.66. Key finding: 2k FID has large upward bias (~28 vs ~9.7), so 2k results only usable for relative comparison. Next: test if more steps / different time sampling can improve vs baseline.",
+      "status": "incomplete",
+      "score": null,
+      "failure_reason": "Only a diagnostic 2000-sample evaluation completed; no formal FID-50000 score is available for this round. Original process status ok is preserved separately.",
+      "retained_best": false,
+      "time": "2026-10-03 23:10:00"
+    },
+    {
+      "round": 9,
+      "policy_name": "warmstart_t0only_1e6_mseonly_diag",
+      "method_summary": "Diagnostic round: MSE-only training (warmstart + t0_only + lr=1e-6 + 1000 steps + ce_weight=0.0). FID-2k=28.56 vs round8 28.29 vs baseline 28.11 — all within 2k noise band. CE loss not responsible for degradation at 1k steps (MSE-only gives similar result). Confirms gentle FT preserves quality. Next: test 5000 steps + different time sampling strategies.",
+      "status": "incomplete",
+      "score": null,
+      "failure_reason": "Only a diagnostic 2000-sample evaluation completed; no formal FID-50000 score is available for this round. Original process status ok is preserved separately.",
+      "retained_best": false,
+      "time": "2026-10-03 23:20:00"
+    },
+    {
+      "round": 10,
+      "policy_name": "warmstart_t0importance_mse_5k_diag",
+      "method_summary": "Diagnostic round: warmstart + t0_importance (70% t=0) + MSE-only + 5000 steps + lr=2e-6 + 32k cfg=3.0 teacher. 5k-sample FID=62.63 (diagnostic only, score=null). Key finding: MSE-only training at moderate intensity causes severe quality degradation. Hypothesis: shared transformer backbone drifts to optimize MSE while untrained logits head degrades, hurting coarse-level predictions (used in inference via get_final_sequence with split_t=5). Next: test MSE+CE balanced loss to confirm hypothesis.",
+      "status": "incomplete",
+      "score": null,
+      "failure_reason": "Only a diagnostic 5000-sample evaluation completed; no formal FID-50000 score is available for this round. Original process status ok is preserved separately.",
+      "retained_best": false,
+      "time": "2026-10-04 00:47:45"
+    },
+    {
+      "round": 11,
+      "policy_name": "warmstart_t0only_msece_5k_diag",
+      "method_summary": "Diagnostic round: warmstart + t0_only + MSE+CE (ce_weight=0.3) + 5000 steps + lr=2e-6 + 32k cfg=3.0 teacher. 2k-sample FID=50.79 (diagnostic only, score=null). Key finding: MSE+CE preserves quality much better than MSE-only (estimated 2k FID 50.8 vs ~71 for MSE-only at same intensity), confirming logits head drift hypothesis. However, even with MSE+CE, 5k steps at lr=2e-6 causes severe degradation (50.8 vs baseline 28.1 at 2k). Overfitting to 32k samples is the primary bottleneck. Next: test higher-quality teacher samples (cfg=5.0) with very gentle fine-tuning to see if quality can improve over baseline.",
+      "status": "incomplete",
+      "score": null,
+      "failure_reason": "Only a diagnostic 2000-sample evaluation completed; no formal FID-50000 score is available for this round. Original process status ok is preserved separately.",
+      "retained_best": false,
+      "time": "2026-10-04 02:45:00"
+    },
+    {
+      "round": 12,
+      "policy_name": "warmstart_cfg5_t0only_gentle_msece",
+      "method_summary": "Full candidate: warm-start from official DD + t0_only + MSE+CE (ce_weight=0.3) + 1000 steps + lr=1e-6 + 50k cfg=5.0 teacher samples. FID-50k=9.78 vs baseline 9.66. Very close to baseline (+0.12, within noise margin). Key finding: very gentle fine-tuning on cfg=5.0 teacher samples largely preserves baseline quality. The cfg=5.0 teacher did not improve FID beyond baseline. Model barely changed with 1k steps at lr=1e-6. Retained as best trained candidate.",
+      "status": "ok",
+      "score": 9.78,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-04 07:02:00"
+    },
+    {
+      "round": 13,
+      "policy_name": "warmstart_cfg7_t0only_ultragentle_msece",
+      "method_summary": "Full candidate: warm-start from official DD + t0_only + MSE+CE (ce_weight=0.3) + 600 steps + lr=5e-7 + 50k cfg=7.0 teacher samples. FID-50k=9.77 vs baseline 9.66 and R12 9.78. Ultra-gentle fine-tuning (fewer steps, lower LR than R12) with higher-CFG teacher (cfg=7.0 vs cfg=5.0). Marginal improvement over R12 (+0.01, within noise). Neither beats baseline. Key finding: increasing teacher CFG from 5.0 to 7.0 with ultra-gentle FT does not meaningfully improve FID beyond baseline. Overfitting to 50k samples and the shared backbone/logits-head coupling remain the fundamental bottlenecks preventing improvement from warm-start fine-tuning.",
+      "status": "ok",
+      "score": 9.77,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-04 13:07:00"
+    },
+    {
+      "round": 14,
+      "policy_name": "max_disagree_early_scale",
+      "method_summary": "dd-selfproto-v1.3; actual current independent CLI research. Hard-example proposal selection (max LPIPS disagreement per class group) paired with early-scale-biased time sampling (power law t=U^2.5). 256 samples x 4 proposals = 1024 generated, 256 selected. Uniform weighting. First evaluation attempt failed with INFRASTRUCTURE_RUNTIME error; recovered by trusted backend reusing original frozen checkpoint to regenerate all 50000 samples and compute independent FID. No retraining, no re-submission — this is evaluation recovery of the same method, not an additional method round.",
+      "status": "SUCCESS",
+      "score": 10.126636628087738,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 11:09:25"
+    },
+    {
+      "round": 15,
+      "policy_name": "min_disagree_uniform_time",
+      "method_summary": "dd-selfproto-v1.3; actual current independent CLI research. Easy-example proposal selection (min LPIPS disagreement per class group) paired with uniform time sampling. 256 samples x 4 proposals = 1024 generated, 256 selected. Uniform weighting. Joint two-factor flip vs round-01 (max-LPIPS + early-bias). Improves on round-01 by 0.34 FID but still 0.12 worse than no-training baseline at 256 samples.",
+      "status": "SUCCESS",
+      "score": 9.784449511236346,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 13:25:28"
+    }
+  ],
+  "original_rounds_unchanged": false,
+  "original_trajectory": {
+    "path": "optimization_evidence/historical_trajectories/seed/trajectory_seed.json",
+    "sha256": "4adba6c94eaadfdac80bc1c500264cc11c5333a08f8f7ae55ce54bd79fac7cd4"
+  },
+  "duration_kind": "Effective research conservative lower bound; verified disjoint historical/current work, no wall span or idle",
+  "span_first_recorded_execution": "2026-10-02T22:15:20+08:00",
+  "span_last_recorded_round": "2026-10-04T13:07:00+08:00",
+  "effective_time_audit": {
+    "path": "expert_evidence/duration_audit/seed.json",
+    "sha256": "3f9ff432e35fb49b363dfc496a3a34a25645e42225ca96093467c168e61ebe74"
+  },
+  "current_v13_new_research_seconds": 798.261664390564,
+  "historical_protocol_not_relabelled": true,
+  "not_a_current_formal_reference_result": true,
+  "original_raw_trajectory_unchanged": true,
+  "formal_scores_and_round_identities_unchanged": true,
+  "diagnostic_status_normalization": {
+    "scope": "Separate historical process success from availability of a formal50000 score; no new score or research time",
+    "five_diagnostic_only_rounds_formally_incomplete": true,
+    "manifest": "expert_evidence/diagnostic_status_normalization_20261005.json"
+  },
+  "historical_observed_wall_span_seconds": 139900.0,
+  "duration_hours": 11.7217393512196,
+  "historical_round_count": 13,
+  "current_protocol_round_count": 2,
+  "current_round_identity_map": [
+    {
+      "exported_round": 14,
+      "model_original_current_round": 1,
+      "protocol": "dd-selfproto-v1.3",
+      "original_model_trajectory": "expert_evidence/current_protocol_cli_research_20261006/seed/trajectory_current.original-model-output.json",
+      "controller_verified_result": "expert_evidence/current_protocol_cli_research_20261006/seed/round-01/controller-verified-round.json"
+    },
+    {
+      "exported_round": 15,
+      "model_original_current_round": 2,
+      "protocol": "dd-selfproto-v1.3",
+      "original_model_trajectory": "expert_evidence/current_protocol_cli_research_20261006/seed/trajectory_current.original-model-output.json",
+      "controller_verified_result": "expert_evidence/current_protocol_cli_research_20261006/seed/round-02/controller-verified-round.json"
+    }
+  ],
+  "overall_effective_research_seconds_lower_bound": 42198.261664390564,
+  "current_duration_audit": "expert_evidence/current_protocol_cli_research_20261006/seed/run_summary.json"
+}

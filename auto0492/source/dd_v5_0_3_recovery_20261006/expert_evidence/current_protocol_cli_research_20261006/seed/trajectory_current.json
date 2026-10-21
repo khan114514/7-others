@@ -1,0 +1,28 @@
+{
+  "track": "seed",
+  "protocol": "dd-selfproto-v1.3",
+  "rounds": [
+    {
+      "round": 1,
+      "policy_name": "max_disagree_early_scale",
+      "method_summary": "Hard-example proposal selection (max LPIPS disagreement per class group) paired with early-scale-biased time sampling (power law t=U^2.5). 256 samples x 4 proposals = 1024 generated, 256 selected. Uniform weighting. First evaluation attempt failed with INFRASTRUCTURE_RUNTIME error; recovered by trusted backend reusing original frozen checkpoint to regenerate all 50000 samples and compute independent FID. No retraining, no re-submission — this is evaluation recovery of the same method, not an additional method round.",
+      "status": "SUCCESS",
+      "score": 10.126636628087738,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 11:09:25"
+    },
+    {
+      "round": 2,
+      "policy_name": "min_disagree_uniform_time",
+      "method_summary": "Easy-example proposal selection (min LPIPS disagreement per class group) paired with uniform time sampling. 256 samples x 4 proposals = 1024 generated, 256 selected. Uniform weighting. Joint two-factor flip vs round-01 (max-LPIPS + early-bias). Improves on round-01 by 0.34 FID but still 0.12 worse than no-training baseline at 256 samples.",
+      "status": "SUCCESS",
+      "score": 9.784449511236346,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 13:25:28"
+    }
+  ],
+  "time_normalization": "Trusted result finished_unix converted to Asia/Shanghai; raw model output retained",
+  "not_native_harbor_atif": true
+}

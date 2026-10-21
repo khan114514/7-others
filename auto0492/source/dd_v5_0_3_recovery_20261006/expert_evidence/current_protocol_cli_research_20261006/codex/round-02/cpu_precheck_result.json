@@ -1,0 +1,412 @@
+{
+  "protocol": "dd-selfproto-v1.3",
+  "time": "2026-10-06T04:40:20.834676Z",
+  "torch_version": "2.5.1",
+  "device": "cpu",
+  "method_sha256": "bac79f8065ee626551f2c30814b64f61c542d82e166e75b3fe653922d403b162",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "get_method_contract",
+      "status": "PASS",
+      "detail": {
+        "checked_spec": {
+          "name": "dd_median3_paired_uniform128",
+          "protocol_version": "dd-selfproto-v1.3",
+          "initialization": "warmstart_official_dd_ema",
+          "teacher": {
+            "num_samples": 128,
+            "teacher_steps": 10,
+            "guidance": 2.0,
+            "filter_rule": "student_agreement_per_label",
+            "weighting": "uniform",
+            "reuse": 1,
+            "top_k": 900,
+            "top_p": 0.95,
+            "ode_nfe": 32,
+            "ode_grid": "logSNR",
+            "proposal_multiplier": 3
+          },
+          "time_sampler_note": "Each adjacent pair has complementary times low=0.5u and high=1-low for u~U[0,1), with random assignment to its samples. The mixed marginal time distribution is uniform on [0,1] and every pair spans the two half-intervals.",
+          "train_notes": "Official DD EMA initialization under dd-selfproto-v1.3. 128 targets, three proposals per original label, stable lower-median LPIPS-distance selection, one pass, uniform weights. Time pairs use complementary half-interval antithetic sampling. Frozen training and evaluation settings are supplied exclusively by the trainer."
+        },
+        "proposal_count": 384,
+        "planned_pair_visits": 128,
+        "planned_optimizer_updates": 8,
+        "training_or_evaluation_run": false
+      },
+      "cpu_wall_seconds": 5.01670001540333e-05
+    },
+    {
+      "name": "single_time_algorithm_ablation_and_previous_artifact_preservation",
+      "status": "PASS",
+      "detail": {
+        "teacher_config_identical_to_round01": true,
+        "changed_function_names": [
+          "fm_time_sampler"
+        ],
+        "cpu_generator_consumption_identical_for_64_microbatches": true,
+        "previous_artifact_hashes_unchanged": [
+          "agent-output/round-01/cli-failures.json",
+          "agent-output/round-01/cpu_precheck.log",
+          "agent-output/round-01/cpu_precheck.py",
+          "agent-output/round-01/cpu_precheck_result.json",
+          "agent-output/round-01/evaluation/client-launch.json",
+          "agent-output/round-01/evaluation/evaluation-client.log",
+          "agent-output/round-01/evaluation/invocation.json",
+          "agent-output/round-01/evaluation/result.json",
+          "agent-output/round-01/method.py",
+          "agent-output/round-01/plan.json",
+          "agent-output/cli-probe.txt",
+          "agent-output/recovery-probe-20261006.json"
+        ]
+      },
+      "cpu_wall_seconds": 0.07065941700420808
+    },
+    {
+      "name": "time_shape_range_pairing",
+      "status": "PASS",
+      "detail": {
+        "shapes": [
+          {
+            "shape": [
+              1
+            ],
+            "count": 1,
+            "min": 0.986835241317749,
+            "max": 0.986835241317749
+          },
+          {
+            "shape": [
+              2
+            ],
+            "count": 2,
+            "min": 0.03602677583694458,
+            "max": 0.9639732241630554
+          },
+          {
+            "shape": [
+              16
+            ],
+            "count": 16,
+            "min": 0.0018343627452850342,
+            "max": 0.9981656074523926
+          },
+          {
+            "shape": [
+              128
+            ],
+            "count": 128,
+            "min": 0.01506274938583374,
+            "max": 0.9849372506141663
+          },
+          {
+            "shape": [
+              256
+            ],
+            "count": 256,
+            "min": 0.0026060640811920166,
+            "max": 0.9973939657211304
+          },
+          {
+            "shape": [
+              2,
+              3
+            ],
+            "count": 6,
+            "min": 0.09094247221946716,
+            "max": 0.9090574979782104
+          },
+          {
+            "shape": [
+              0
+            ],
+            "count": 0,
+            "min": null,
+            "max": null
+          },
+          {
+            "shape": [],
+            "count": 1,
+            "min": 0.8997631669044495,
+            "max": 0.8997631669044495
+          }
+        ],
+        "complete_pairs_span_half_intervals": true,
+        "complete_pair_sums_equal_one_within_1e-7": true,
+        "public_checked_times_passed_for_each_flattened_shape": true
+      },
+      "cpu_wall_seconds": 0.029848582998965867
+    },
+    {
+      "name": "time_cpu_rng_replay_and_uniform_marginals",
+      "status": "PASS",
+      "detail": {
+        "equal_seed_equal_output": true,
+        "generator_state_advances": true,
+        "transport_state_replay_equal": true,
+        "global_rng_unchanged": true,
+        "simulated_128_visit_training_time_histogram": [
+          9,
+          12,
+          14,
+          17,
+          12,
+          12,
+          17,
+          14,
+          12,
+          9
+        ],
+        "simulated_2048_time_histogram": [
+          188,
+          203,
+          200,
+          213,
+          220,
+          220,
+          213,
+          200,
+          203,
+          188
+        ],
+        "pair_count": 1024,
+        "time_stream_seed": 2003,
+        "these_are_time_calls_only_not_training_or_evaluation": true
+      },
+      "cpu_wall_seconds": 0.031337708001956344
+    },
+    {
+      "name": "selection_unique_group_indices_and_rank",
+      "status": "PASS",
+      "detail": {
+        "cases": [
+          {
+            "multiplier": 1,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 2,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 3,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 4,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 5,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 6,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 7,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 8,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 9,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 10,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 11,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 12,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 13,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 14,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 15,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          },
+          {
+            "multiplier": 16,
+            "groups": 128,
+            "unique_group_legal_indices": true
+          }
+        ],
+        "selection_rule": "stable lower median",
+        "fixed_median_indices": [
+          2,
+          4,
+          8
+        ],
+        "stable_tie_indices": [
+          1,
+          4,
+          7,
+          10
+        ]
+      },
+      "cpu_wall_seconds": 0.04585937499359716
+    },
+    {
+      "name": "weights_finite_nonnegative_positive_mass",
+      "status": "PASS",
+      "detail": {
+        "batches": [
+          {
+            "batch": 1,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 1.0
+          },
+          {
+            "batch": 1,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 1.0
+          },
+          {
+            "batch": 1,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 1.0
+          },
+          {
+            "batch": 2,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 2.0
+          },
+          {
+            "batch": 2,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 2.0
+          },
+          {
+            "batch": 2,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 2.0
+          },
+          {
+            "batch": 16,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 16.0
+          },
+          {
+            "batch": 16,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 16.0
+          },
+          {
+            "batch": 16,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 16.0
+          },
+          {
+            "batch": 128,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 128.0
+          },
+          {
+            "batch": 128,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 128.0
+          },
+          {
+            "batch": 128,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 128.0
+          },
+          {
+            "batch": 256,
+            "targets": "all_zero_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 256.0
+          },
+          {
+            "batch": 256,
+            "targets": "all_max_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 256.0
+          },
+          {
+            "batch": 256,
+            "targets": "random_tokens",
+            "min": 1.0,
+            "max": 1.0,
+            "positive_mass": 256.0
+          }
+        ],
+        "all_weights_finite_nonnegative": true,
+        "all_batches_positive_mass": true
+      },
+      "cpu_wall_seconds": 0.017315042001428083
+    },
+    {
+      "name": "invalid_input_rejections",
+      "status": "PASS",
+      "detail": {
+        "expected_invalid_inputs_rejected": {
+          "missing_cpu_generator": "Method time sampling requires a CPU generator",
+          "incomplete_group": "Agreement must contain complete finite proposal groups",
+          "nonfinite_agreement": "Agreement must contain complete finite proposal groups",
+          "empty_weight_batch": "A weighted batch must have positive mass"
+        }
+      },
+      "cpu_wall_seconds": 0.0004179159877821803
+    }
+  ],
+  "evaluated": false,
+  "score": null
+}

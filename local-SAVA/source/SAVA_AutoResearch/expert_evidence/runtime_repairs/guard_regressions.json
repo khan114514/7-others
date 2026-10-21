@@ -1,0 +1,58 @@
+{
+  "status": "PASS_KNOWN_INDIRECT_IO_REGRESSIONS",
+  "probes": [
+    {
+      "probe": "numpy_indirect_os",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    },
+    {
+      "probe": "numpy_npz_constructor",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    },
+    {
+      "probe": "io_import_alias",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    },
+    {
+      "probe": "builtin_alias",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    },
+    {
+      "probe": "builtins_lookup",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    },
+    {
+      "probe": "attribute_open",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    }
+  ],
+  "legitimate_baseline_reference_published_best_accepted": true,
+  "archived_source_files_accepted": 66,
+  "archived_source_files_rejected": 0,
+  "scope": "AST negative regression and exact archived source compatibility only; not complete OS sandbox certification",
+  "scores_metrics_or_targets_changed": false,
+  "additional_alias_regressions": [
+    {
+      "probe": "star_alias",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    },
+    {
+      "probe": "named_alias",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    },
+    {
+      "probe": "savez_alias",
+      "status": "HARD_GATE",
+      "executed_candidate_code": false
+    }
+  ],
+  "new_evaluator_sha256": "568324a18288c100866872bdc5c81bef1f16d916be61cc717ed5e5f3361f1d37"
+}

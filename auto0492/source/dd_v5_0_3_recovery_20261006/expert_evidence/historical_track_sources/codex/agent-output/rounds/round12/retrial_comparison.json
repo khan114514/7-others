@@ -1,0 +1,1942 @@
+{
+  "at": "2026-10-04T02:57:13.708194+08:00",
+  "new_round": 12,
+  "original_failed_round": 11,
+  "same_method_bytes": true,
+  "same_checkpoint_bytes": false,
+  "same_updates": true,
+  "same_training_time_histogram": true,
+  "original_failure_retained": true,
+  "independent_deterministic_retraining": false,
+  "counts_as_effective": false,
+  "parameter_tensor_counts": {
+    "var_wo_ddp": 240,
+    "ema_parameters": 240
+  },
+  "parameter_tensors_verified_exact": false,
+  "parameter_mismatches": [
+    {
+      "group": "var_wo_ddp",
+      "parameter": "pos_start"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "pos_1LC"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.7.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.7.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.8.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.9.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.10.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.11.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.12.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.13.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.14.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.15.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "head_nm.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "head_nm.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "word_embed.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "head.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "head.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "n_d_embed.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.0.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.0.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.3.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.3.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.4.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.4.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.5.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.5.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.6.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.6.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.7.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.7.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.8.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.8.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.9.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.9.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.10.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.10.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.11.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.11.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.12.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.12.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.13.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.13.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.14.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.14.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.15.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.15.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.16.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "layerwise_n_d_embed.16.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "final_layer_conti.scale_shift_table"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "final_layer_conti.linear.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "final_layer_conti.linear.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "pos_start"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "pos_1LC"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "word_embed.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "word_embed.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "class_emb.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "lvl_embed.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.0.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.1.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.3.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "word_embed.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.ffn.fc1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.ffn.fc2.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.ffn.fc2.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.ada_lin.1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.4.ada_lin.1.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.5.attn.scale_mul_1H11"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.5.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.5.attn.v_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.5.attn.mat_qkv.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.2.attn.q_bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.5.attn.proj.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.5.attn.proj.bias"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.5.ffn.fc1.weight"
+    },
+    {
+      "group": "var_wo_ddp",
+      "parameter": "blocks.5.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.8.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.9.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.10.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.11.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "class_emb.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.12.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.2.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.13.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.14.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.15.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "head_nm.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "head_nm.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "head.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "head.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "n_d_embed.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.0.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.0.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.3.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.3.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.4.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.4.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.5.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.5.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.6.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.6.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.7.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.7.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.8.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.8.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.9.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.9.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.10.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.10.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.11.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.11.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.12.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.12.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.13.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.13.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.14.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.14.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.15.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.15.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.16.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "layerwise_n_d_embed.16.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "final_layer_conti.scale_shift_table"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "final_layer_conti.linear.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "final_layer_conti.linear.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "lvl_embed.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.3.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.0.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.4.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.0.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.5.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.0.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ffn.fc2.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ada_lin.1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.6.ada_lin.1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.0.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.scale_mul_1H11"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.q_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.v_bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.mat_qkv.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.proj.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.attn.proj.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ffn.fc1.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ffn.fc1.bias"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ffn.fc2.weight"
+    },
+    {
+      "group": "ema_parameters",
+      "parameter": "blocks.7.ffn.fc2.bias"
+    }
+  ],
+  "checkpoint_file_difference_explanation": "All480 model/EMA parameter tensors differ in bytes. Seeds, teacher shards, exposure, time histogram and method match; same-seed retraining is not bitwise reproducible. Current runner also removes injected LD_PRELOAD for this entire candidate, unlike round11.",
+  "independent_same_seed_retraining": true,
+  "attribution_limit": "This is a new same-method retraining trial; cannot claim exact weight recovery of round11. Fixed-sampling saved-weight revalidation remains possible."
+}

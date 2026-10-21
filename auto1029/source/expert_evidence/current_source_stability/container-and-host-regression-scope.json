@@ -1,0 +1,61 @@
+{
+  "schema": "container-stability-with-scoped-host-regression-v1",
+  "environment_container_stability_requirement_satisfied": true,
+  "original_stability_run": "08c8a1d0a0b041d880eca0feb55299d6",
+  "elapsed_monotonic_seconds": 43233.744357459014,
+  "actual_sandbox_observations": 713,
+  "task_and_container_source_exact_match": true,
+  "original_host_source_manifest": {
+    "heima_harbor_environment.py": "660d73ff8111b27602f93430cd367a0c08d5f5100e15529f0f9fdd6c40ba43b5",
+    "probe_native.py": "9754de797c05e7969271cca9c996aaa3639a914ada14bcc275507f4a3ec78614",
+    "cli_provider_relay.py": "ede8f673ebd90510a50061505658176f84dcfb3860bc5a01c713188fa8adcb30",
+    "run_portable_stability.py": "2fc603cc59df5347517a2f27c0d80f9fe2cdae7ba57aa5fc59c9ea0fea6d149f",
+    "evaluator_bridge.py": "d7753be30945b1833d1cadb1d8a756469d47a546beab5011c52f3f9f7307549e",
+    "runtime_snapshot.py": "94d6ee6b53b483e093e615a4820029d28316ab88a20316768049e84f7bea7317",
+    "native_codex_agent.py": "e7d603cf28cc82f607d4dd6fd8924f8b23ef845a6f74c6e5a16f9352502baa00",
+    "queue_broker.py": "39ac4883a3dcc86bf06006dd28dbe8dd0af9a3f7f455996e9c54f6e981c03e2d",
+    "host_paths.py": "75d11187487a9a9c76186055802b679110ef3fdaa614d0128a6dc3a5f787c51b",
+    "snapshot_files.py": "2c8711c20e7df9d1fdca04fd5fe966615de10f3047acf420055a96c51c4355df",
+    "probe_model_routes.py": "1acc8ef5e946cc949754f61f4127893384692598b3c7eb601f92779ed19a67e3"
+  },
+  "current_host_source_manifest": {
+    "heima_harbor_environment.py": "660d73ff8111b27602f93430cd367a0c08d5f5100e15529f0f9fdd6c40ba43b5",
+    "probe_native.py": "9754de797c05e7969271cca9c996aaa3639a914ada14bcc275507f4a3ec78614",
+    "cli_provider_relay.py": "ede8f673ebd90510a50061505658176f84dcfb3860bc5a01c713188fa8adcb30",
+    "run_portable_stability.py": "2fc603cc59df5347517a2f27c0d80f9fe2cdae7ba57aa5fc59c9ea0fea6d149f",
+    "evaluator_bridge.py": "a09246d2ce6c75e72292c38737d1fee4edc0765d0472eb125a246b535fdc5826",
+    "runtime_snapshot.py": "94d6ee6b53b483e093e615a4820029d28316ab88a20316768049e84f7bea7317",
+    "native_codex_agent.py": "e7d603cf28cc82f607d4dd6fd8924f8b23ef845a6f74c6e5a16f9352502baa00",
+    "queue_broker.py": "39ac4883a3dcc86bf06006dd28dbe8dd0af9a3f7f455996e9c54f6e981c03e2d",
+    "host_paths.py": "75d11187487a9a9c76186055802b679110ef3fdaa614d0128a6dc3a5f787c51b",
+    "snapshot_files.py": "2c8711c20e7df9d1fdca04fd5fe966615de10f3047acf420055a96c51c4355df",
+    "probe_model_routes.py": "1acc8ef5e946cc949754f61f4127893384692598b3c7eb601f92779ed19a67e3"
+  },
+  "changed_host_files": [
+    "evaluator_bridge.py"
+  ],
+  "changed_host_transport_regression_pass": true,
+  "synthetic_CPU_guards": 3,
+  "actual_new_host_RPCs": 2,
+  "actual_new_source_Harbor_build_handoff_probes": [
+    {
+      "run_id": "e4a2bf9ab10848ecbd46dada79708c4d",
+      "status_sha256": "b081672f16f47de6e22a2fcee3c39678d3f9d3ac11018d599724b1b30506c9bb",
+      "proof_sha256": "bf076400e84d38581663743f55134f6a3b25d0a9356ee9980cfc0cf22312ae9a",
+      "actual_RPC_original_sha256": "6dca166fd79a7567468757717a5a8b8a1e70dbaacd90d9057fc0c85bea502ecb"
+    },
+    {
+      "run_id": "7667738ec86d4806b543fac981c46142",
+      "status_sha256": "4995c054682d2911892eddf312b7c6740a9b18b02c4ce62192be464a0e7ebf8e",
+      "proof_sha256": "7cdebb58addeafd5069ab1662ecce6983bfbee28e67c3a950b3f44ec940d3d10",
+      "actual_RPC_original_sha256": "8477fc45497a50f3c27c2f88e94a3ca4b6c2a03570e0b673ecfd1a082c36e32b"
+    }
+  ],
+  "new_host_adapter_12h_claim": false,
+  "scope": "The unchanged task/container has the completed single 12-hour trace. The changed host SSH transport has separate regression evidence; no new host-adapter 12-hour claim.",
+  "full_private_score_claim": false,
+  "independent_AI_QA_or_final_delivery_claim": false,
+  "model_requests": 0,
+  "GPU_submissions": 0,
+  "model_research_seconds": 0
+}

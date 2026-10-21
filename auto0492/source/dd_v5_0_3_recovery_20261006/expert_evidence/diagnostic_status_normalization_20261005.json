@@ -1,0 +1,85 @@
+{
+  "scope": "Evidence semantics correction, not a new model result or QA PASS",
+  "epoch": 1791159818.320697,
+  "original_raw_trajectory": {
+    "path": "optimization_evidence/historical_trajectories/seed/trajectory_seed.json",
+    "sha256": "4adba6c94eaadfdac80bc1c500264cc11c5333a08f8f7ae55ce54bd79fac7cd4"
+  },
+  "previous_normalized_sha256": "fa386f24b5e15c713dcd357083d2beebbf9fdece74444da9e081d3356a5f1e05",
+  "normalized_sha256": "32b76cbb0c842e025971132b60acf71f6377ba869ce33eb16702bdb1a32b65e6",
+  "formal_scores_unchanged": true,
+  "actual_diagnostic_values_read_from_original_logs": true,
+  "new_research_seconds": 0,
+  "changes": [
+    {
+      "round": 2,
+      "original_status": "ok",
+      "normalized_formal_metric_status": "incomplete",
+      "formal_score_unchanged": null,
+      "diagnostic_metric": {
+        "name": "FID",
+        "sample_count": 2000,
+        "value": 240.30712041459782,
+        "formal_score": false,
+        "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round02_diag/run.log",
+        "evidence_sha256": "400fb68328c8973bf5c06128b39c7bf032140f8c32a8cced5f7f6aa4f5e765f8"
+      }
+    },
+    {
+      "round": 8,
+      "original_status": "ok",
+      "normalized_formal_metric_status": "incomplete",
+      "formal_score_unchanged": null,
+      "diagnostic_metric": {
+        "name": "FID",
+        "sample_count": 2000,
+        "value": 28.293305741270103,
+        "formal_score": false,
+        "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round08_gentle_ft_lowlr_t0only/run.log",
+        "evidence_sha256": "b07f7b98d19ccae007af1253804cb4b48685845cfda0499eac8c53f1f7abd958"
+      }
+    },
+    {
+      "round": 9,
+      "original_status": "ok",
+      "normalized_formal_metric_status": "incomplete",
+      "formal_score_unchanged": null,
+      "diagnostic_metric": {
+        "name": "FID",
+        "sample_count": 2000,
+        "value": 28.560218920759098,
+        "formal_score": false,
+        "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round09_mseonly_lowlr_t0only/run.log",
+        "evidence_sha256": "cac4166a1698600b14bfd0284498155d4dac4623865e5a39e65c09937c4c2495"
+      }
+    },
+    {
+      "round": 10,
+      "original_status": "ok",
+      "normalized_formal_metric_status": "incomplete",
+      "formal_score_unchanged": null,
+      "diagnostic_metric": {
+        "name": "FID",
+        "sample_count": 5000,
+        "value": 62.62587170703512,
+        "formal_score": false,
+        "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round10_t0importance_mse_5k/run.log",
+        "evidence_sha256": "0876211643510bc26f982cb1bb7a94cc2971b476c02fa2d9b7c05484e70bae41"
+      }
+    },
+    {
+      "round": 11,
+      "original_status": "ok",
+      "normalized_formal_metric_status": "incomplete",
+      "formal_score_unchanged": null,
+      "diagnostic_metric": {
+        "name": "FID",
+        "sample_count": 2000,
+        "value": 50.79455341901178,
+        "formal_score": false,
+        "evidence": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round11_t0only_msece_5k_diag/run.log",
+        "evidence_sha256": "08840b52c5a2c4c3bbf4d9210a31290d4c8cbd73448fcd6e808d0142aa56ee01"
+      }
+    }
+  ]
+}

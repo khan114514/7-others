@@ -1,0 +1,15 @@
+{
+  "command": [
+    "historical-resources/venvs/dd1/bin/python",
+    "-B",
+    "-u",
+    "-c",
+    "import torch,json,pathlib\nimport sys\nsys.path.insert(0,'historical-codex-workspace');from runtime_guard import apply_guard\nprint(json.dumps({'guard':apply_guard()}),flush=True)\ntorch.set_num_threads(4)\nroot=pathlib.Path('historical-codex-models/round02/pairs');manifest=json.loads((root/'manifest.json').read_text());classes=torch.zeros(1000,dtype=torch.long);tokens=torch.zeros(4096,dtype=torch.long);noise_sum=0.;noise_sq_sum=0.;elements=0;seen=0;all_finite=True\nfor shard in manifest['shards']:\n data=torch.load(root/shard['file'],map_location='cpu',weights_only=True)\n n=data['noise'];ids=data['tokens'].long();labels=data['labels'];all_finite=all_finite and bool(n.isfinite().all());assert ((ids>=0)&(ids<4096)).all()\n classes+=torch.bincount(labels,minlength=1000);tokens+=torch.bincount(ids.flatten(),minlength=4096);noise_sum+=float(n.double().sum());noise_sq_sum+=float(n.double().square().sum());elements+=n.numel();seen+=len(labels)\nmean=noise_sum/elements;std=(noise_sq_sum/elements-mean**2)**.5\nassert seen==8192 and all_finite\nprint(json.dumps({'sample_count':seen,'noise_shape_per_pair':[680,32],'noise_finite':all_finite,'noise_mean':mean,'noise_std':std,'classes_present':int((classes>0).sum()),'classes_missing':torch.where(classes==0)[0].tolist(),'class_count_min':int(classes.min()),'class_count_max':int(classes.max()),'class_count_histogram':torch.bincount(classes).tolist(),'codebook_entries_used':int((tokens>0).sum()),'token_histogram':tokens.tolist(),'diagnostic_only':True,'fid_score':None,'gpu_used':False}),flush=True)\n"
+  ],
+  "started_at": "2026-10-03T00:37:21.682798+08:00",
+  "finished_at": "2026-10-03T00:37:24.871329+08:00",
+  "wall_seconds": 3.188541970215738,
+  "exit_code": 0,
+  "gpu_used": false,
+  "round_closed": false
+}

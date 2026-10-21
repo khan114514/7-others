@@ -1,0 +1,11 @@
+{
+  "scope": "Own completed public 55 and 65; aggregate quality comparison",
+  "stage_quality_summaries_identical": true,
+  "final_quality_identical": true,
+  "source_alignment_identical": true,
+  "artifact_sha256s": [
+    "030ffd52b82d7ba67176f9534c3d1b0eab3c4074675e118fbb682476fbb1c257",
+    "70a679791a643636d8b264a4f07eeac5735f1c0895a722c9b2e658cd968ca5ae"
+  ],
+  "decision": "Reject. Explicit eager FP32/BF16 conversions do not rescue compiled softmax. No precise exp/reduction/rounding mechanism is attributed."
+}

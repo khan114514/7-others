@@ -1,0 +1,52 @@
+{
+  "original_event_sha256": "bc9b8dd5581a2e8d8a896a6f345f3e3c6147979a0b826e75788fbcb3cd8fe765",
+  "original_receipt_sha256": "d924aa095e8a5bf9fe34a54176e7e13470fc88a848536f71269daac3a1fa31c9",
+  "original_event_last_write_epoch": 1791782661.2266061,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method.py'",
+      "original_command_sha256": "2de42d8d92d99d3f059ab48819d8bd312febeb08c922c18d8845c11a7dca226b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c880019bdf941697e082eb9e96be1e717a8d479f3151cf82e48697ab8d8c1321",
+      "output_characters": 96
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cd /workspace/solution && nohup bash solve.sh > /tmp/solve_v69.log 2>&1 &\necho \"PID: $!\"\necho \"Started at: $(date)\"'",
+      "original_command_sha256": "e5c35088ebbf0a10bd7ec9956b50cfa2c7f5f1f5843bfce05ec0ea6e4d46ffb7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e15ff20a1c0dab7a876f3a45a8996124d273a29eb00b748edbb6ddf05d59b30f",
+      "output_characters": 51
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc \"sleep 60 && cat /workspace/solution/dev_result.json | python3 -c \\\"import sys,json; d=json.load(sys.stdin); print('status:', d.get('status')); print('raw_metric:', d.get('raw_metric')); print('score:', d.get('score')); print('method_sha256:', d.get('method_sha256'))\\\" 2>/dev/null || echo \\\"still running or no result yet\\\"\"",
+      "original_command_sha256": "22fccd6789ff59943a6ad6fdd12b9b63d5ff0d8013bd899cec7ab749fdaf5d91",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "6f4c95b677b2efc9d6867eb02772ab45d4d74782b36ef8d525a334cd113daa43",
+      "output_characters": 157
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 45733479,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1068524,
+        "reasoning_output_tokens": 145461
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

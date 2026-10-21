@@ -1,0 +1,76 @@
+dataset: PEMS08
+num_nodes: 170
+seq_len: 12
+horizon: 12
+input_dim: 1
+output_dim: 1
+tod_embed_dim: 20
+cheb_k: 3
+rnn_layers: 1
+rnn_units: 12
+prototype_num: 20
+prototype_dim: 64
+loss: mask_mae_loss
+epochs: 3
+patience: 20
+batch_size: 16
+lr: 0.01
+steps: [70, 100]
+lr_decay_ratio: 0.1
+weight_decay: 0
+epsilon: 0.001
+max_grad_norm: 5
+use_curriculum_learning: True
+adj_type: symadj
+cl_decay_steps: 6000
+gpu: 0
+seed: 17
+temp: 1.0
+lamb_c: 0.1
+lamb_d: 1
+contra_loss: triplet
+use_STE: True
+adaptive_embedding_dim: 0
+node_embedding_dim: 20
+input_embedding_dim: 16
+max_diffusion_step: 3
+  
+PEMS08 training and testing started Tue Oct  6 17:36:39 2026 
+train xs.shape, ys.shape (10700, 12, 170, 3) (10700, 12, 170, 3) 
+val xs.shape, ys.shape (1783, 12, 170, 3) (1783, 12, 170, 3) 
+test xs.shape, ys.shape (3567, 12, 170, 3) (3567, 12, 170, 3) 
+Trainable parameter list:  
+node_embedding torch.Size([170, 20]) 3400
+time_embedding torch.Size([288, 20]) 5760
+prototypes.prototypes torch.Size([20, 64]) 1280
+prototypes.Wq torch.Size([12, 64]) 768
+input_proj.weight torch.Size([16, 1]) 16
+input_proj.bias torch.Size([16]) 16
+encoder.dcrnn_cells.0.gate.weights torch.Size([204, 24]) 4896
+encoder.dcrnn_cells.0.gate.bias torch.Size([24]) 24
+encoder.dcrnn_cells.0.update.weights torch.Size([204, 12]) 2448
+encoder.dcrnn_cells.0.update.bias torch.Size([12]) 12
+decoder.dcrnn_cells.0.gate.weights torch.Size([396, 152]) 60192
+decoder.dcrnn_cells.0.gate.bias torch.Size([152]) 152
+decoder.dcrnn_cells.0.update.weights torch.Size([396, 76]) 30096
+decoder.dcrnn_cells.0.update.bias torch.Size([76]) 76
+proj.0.weight torch.Size([1, 76]) 76
+proj.0.bias torch.Size([1]) 1
+hypernet.0.weight torch.Size([20, 152]) 3040
+hypernet.0.bias torch.Size([20]) 20
+In total: 112273 trainable parameters.  
+Epoch [1/3] (669) train_loss: 17.8930, train_mae_loss: 16.1262, train_contra_loss: 0.1453, train_deviation_loss: 1.7523, val_loss: 19.0202, lr: 0.010000, 84.08s  
+
+  
+Epoch [2/3] (1338) train_loss: 15.6970, train_mae_loss: 14.0729, train_contra_loss: 0.0913, train_deviation_loss: 1.6150, val_loss: 19.0234, lr: 0.010000, 83.78s  
+
+  
+Epoch [3/3] (2007) train_loss: 15.5049, train_mae_loss: 13.7560, train_contra_loss: 0.0738, train_deviation_loss: 1.7415, val_loss: 18.2748, lr: 0.010000, 83.21s  
+
+  
+===================================Best val_loss model performance===================================  
+======================Better results might be found from model at different epoch======================  
+/opt/author_work/rivermind-data/stssdl_auto2912_20261006/source/ST-SSDL/model_STSSDL/train_prepared.py:180: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(modelpt_path))
+Inference Time: 6.01s  
+PEMS08 training and testing ended Tue Oct  6 17:41:15 2026 

@@ -1,0 +1,16 @@
+{
+  "kernel_attacks": {
+    "frozen_write": "DENIED",
+    "other_run_read": "DENIED",
+    "network": "DENIED",
+    "gpu_device": "DENIED"
+  },
+  "timeout_process_killed": true,
+  "frozen_code_preserved": true,
+  "guard": {
+    "landlock_abi": 1,
+    "filesystem_enforced": true,
+    "network_denied": true,
+    "gpu_devices_denied": true
+  }
+}

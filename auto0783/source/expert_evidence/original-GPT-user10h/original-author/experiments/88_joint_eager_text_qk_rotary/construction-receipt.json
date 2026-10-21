@@ -1,0 +1,32 @@
+{
+  "base": "87_shared_cached_text_key_attention",
+  "changed_existing_nodes": [
+    "text_key_rotary",
+    "text_query_rotated"
+  ],
+  "removed_obsolete_nodes": [
+    "text_key_cos",
+    "text_key_heads",
+    "text_key_rotary_direct",
+    "text_key_rotary_first",
+    "text_key_rotary_half",
+    "text_key_rotary_negative",
+    "text_key_rotary_rotated",
+    "text_key_rotary_second",
+    "text_key_shape",
+    "text_key_sin",
+    "text_query_heads",
+    "text_query_shape"
+  ],
+  "new_nodes": [
+    "text_qk_heads",
+    "text_qk_rotary",
+    "text_qk_rows",
+    "text_qk_shape",
+    "text_query_rotated_view"
+  ],
+  "all_other_existing_nodes_and_image_regions_equal": true,
+  "query_copy_preserves_standalone_contiguous_batch_stride": true,
+  "rotary_remains_eager": true,
+  "original_QKV_projection_score_and_softmax_geometry_equal": true
+}

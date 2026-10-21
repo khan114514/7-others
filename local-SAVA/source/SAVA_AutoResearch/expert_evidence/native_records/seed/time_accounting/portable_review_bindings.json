@@ -1,0 +1,67 @@
+{
+  "scope": "Accounting ledger/review references resolve within this export. Historical private identifiers inside unchanged review proofs describe provenance, not runtime dependencies; native original hashes are bound by provenance.json and publication_migration.json.",
+  "reviews": [
+    {
+      "track_segment": "continuation_v3",
+      "episode": 13,
+      "review_member": "time_accounting/reviews/continuation_v3.json",
+      "review_sha256": "479bb0e2c18dcdba6c60066748056b2af9cbbed0ba42403c9c7fe6ba10d5a455",
+      "historical_private_identifier": "private/recovery_20261010/seed_episode13_review/review.json"
+    },
+    {
+      "track_segment": "continuation_v4",
+      "episode": 8,
+      "review_member": "time_accounting/reviews/continuation_v4.json",
+      "review_sha256": "df40da20f42f31d14762402cb1c3720de0ca6aee2122f13ac8aba27b32a7e7d3",
+      "historical_private_identifier": "private/recovery_20261010/seed_v4_collected_review/review.json"
+    },
+    {
+      "track_segment": "continuation_v4",
+      "episode": 11,
+      "review_member": "time_accounting/reviews/continuation_v4.json",
+      "review_sha256": "df40da20f42f31d14762402cb1c3720de0ca6aee2122f13ac8aba27b32a7e7d3",
+      "historical_private_identifier": "private/recovery_20261010/seed_v4_collected_review/review.json"
+    },
+    {
+      "track_segment": "continuation_v5",
+      "episode": 5,
+      "review_member": "time_accounting/reviews/continuation_v5.json",
+      "review_sha256": "3d6a75d5db028c68eed8215f307f4d12b69b2aa3f3d91b0df87c764e738e16db",
+      "historical_private_identifier": "private/recovery_20261011/seed_v5_collected_review/review.json"
+    }
+  ],
+  "reference_only_migrations": [
+    {
+      "member": "time_accounting/seed_continuation_v3.json",
+      "episode": 13,
+      "changed_field": "manual_episode_review",
+      "original_identifier": "private/recovery_20261010/seed_episode13_review/review.json",
+      "portable_member": "time_accounting/reviews/continuation_v3.json",
+      "numeric_evidence_unchanged": true
+    },
+    {
+      "member": "time_accounting/seed_continuation_v4.json",
+      "episode": 8,
+      "changed_field": "manual_episode_review",
+      "original_identifier": "private/recovery_20261010/seed_v4_collected_review/review.json",
+      "portable_member": "time_accounting/reviews/continuation_v4.json",
+      "numeric_evidence_unchanged": true
+    },
+    {
+      "member": "time_accounting/seed_continuation_v4.json",
+      "episode": 11,
+      "changed_field": "manual_episode_review",
+      "original_identifier": "private/recovery_20261010/seed_v4_collected_review/review.json",
+      "portable_member": "time_accounting/reviews/continuation_v4.json",
+      "numeric_evidence_unchanged": true
+    },
+    {
+      "member": "time_accounting/seed_continuation_v5.json",
+      "episode": 5,
+      "changed_field": "manual_episode_review",
+      "original_identifier": "private/recovery_20261011/seed_v5_collected_review/review.json",
+      "portable_member": "time_accounting/reviews/continuation_v5.json",
+      "numeric_evidence_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "checked_unix": 1791453460.696418,
+  "track": "gpt",
+  "round": 25,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "e3d50e30e96663d560a28fe1a060d2ea97f4b0f5fb4e952649a6d0f4d016014f",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00025.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.42742495424563204,
+      "score": 0.5996585394976109,
+      "quality_gates_passed": true,
+      "method_sha256": "e3d50e30e96663d560a28fe1a060d2ea97f4b0f5fb4e952649a6d0f4d016014f",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791452875.1114106,
+      "end_unix": 1791453064.4600098
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.47101351017904053,
+    "score": 0.5588319429916371,
+    "quality_gates_passed": true,
+    "method_sha256": "e3d50e30e96663d560a28fe1a060d2ea97f4b0f5fb4e952649a6d0f4d016014f",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791453098.8959498,
+    "end_unix": 1791453352.1014087
+  },
+  "model_final_decision": {
+    "policy_name": "row_blocked_triangular_norm_accumulation",
+    "method_summary": "Implemented wide Cholesky row-block products that accumulate into one buffer before a single norm reduction. Full protected Dev passed all gates with raw CPU ratio 0.427424954, score 0.599658539, and maximum error 4.53e-6; the evaluated candidate remains in place.",
+    "next_direction": "Reject this candidate against the verified best ratio 0.397143907. Next test one dense Gram contraction for both coefficient sets to assess whether larger matrix products offset the additional arithmetic."
+  },
+  "original_controller_decision": {
+    "round": 25,
+    "policy_name": "row_blocked_triangular_norm_accumulation",
+    "method_summary": "Implemented wide Cholesky row-block products that accumulate into one buffer before a single norm reduction. Full protected Dev passed all gates with raw CPU ratio 0.427424954, score 0.599658539, and maximum error 4.53e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.47101351017904053,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 17:55:52"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791452582.9780343,
+    "ended_unix": 1791453093.733364,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 25,
+    "start_unix": 1791452582.7970188,
+    "end_unix": 1791453352.709585,
+    "observed_seconds": 769.6350132918451,
+    "effective_seconds": 769.6350132918451,
+    "model_seconds": 510.78309737495147,
+    "model_completed": true,
+    "successful_command_tools": 13,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": false,
+    "method_sha256": "e3d50e30e96663d560a28fe1a060d2ea97f4b0f5fb4e952649a6d0f4d016014f",
+    "public_result": "round_00025.grader.log",
+    "events": "round_00025.events.jsonl",
+    "next_direction": "Reject this candidate against the verified best ratio 0.397143907. Next test one dense Gram contraction for both coefficient sets to assess whether larger matrix products offset the additional arithmetic."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00025.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

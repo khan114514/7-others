@@ -1,0 +1,20 @@
+{
+  "closed": true,
+  "closed_at_utc": "2026-10-04T05:17:19.304671+00:00",
+  "kind": "Operator evidence closure from actual completed agent FID recovery and full original-image SHA256 manifest; not an independent FID rerun",
+  "raw_fid_50k": 9.772967726984291,
+  "raw_fid_source": "historical-seed-models/round13_cfg7_ultragentle/sample/fid.txt",
+  "raw_fid_sha256": "77574144f948e1c81d77b30373ba87a2670ec6b98ebb15b96c8c1653e3cae774",
+  "sample_manifest_sha256": "72a94f6f07f463f6c57bf7727d9947f068456ba459d1792d7168700db1df0062",
+  "sample_count": 50000,
+  "grid_sha256": "c2a455a95690bc5fa266603664fd206c8f0c09b09f7cce566bb6a1b0c543126c",
+  "sampling_seed": 42,
+  "sampling_batch_size": 16,
+  "formal_protocol_valid": false,
+  "original_run_log_sha256_at_collection": "5e8864091ac08b0d610eea3b44397469cc3c81f3da7fe3f8bf2a43b3f93b7b07",
+  "original_run_log_unchanged_by_operator": true,
+  "original_pngs_preserved": false,
+  "independent_fid_remeasurement_completed": false,
+  "collection_record": "runtime:historical_continuation/round13_fid_verification/collection.json",
+  "reason": "Original runner passed a statistics file instead of a directory. Source log records a completed directory-corrected FID calculation. Agent also removed the debug ipdb line and cleaned PNG bytes after producing the full 50000-image SHA256 manifest. Preserve these facts and seed42 protocol deviation."
+}

@@ -1,0 +1,29 @@
+{
+  "status": "prospective_only_not_implemented_as_root_or_evaluated",
+  "argument": "Extend cast/value-preparation/contraction region through original3584feature outputprojection and original state+projection residual. Return only residual rows to unchanged eagerRMS. This hides canonicalattended-row boundary and preserves original entire postsoftmax phase.",
+  "region": {
+    "id": "image_post_softmax_output_compiled",
+    "inputs": [
+      "image_prob_fp32",
+      "text_v_rows",
+      "image_v",
+      "w:self_attn.vision_branch_o_proj.weight",
+      "image_input_rows"
+    ],
+    "outputs": [
+      "image_residual_rows"
+    ],
+    "prefix": false
+  },
+  "every_original_node_object_equal_actual113": true,
+  "preserved_numerical_boundaries": "FP32softmax entirelyeager; originalBF16cast/contraction/outputprojection/residual nodes intact; RMS entirelyeager",
+  "public_evidence": "113qualified cast/valuefamily but slower;57qualified contraction/outputprojection but slower;68qualified projection/residual but slower. No measured completeproducer-to-residual partition or emittedlayout.",
+  "specific_boundary_distinction": "113returns image_attended_rows before eagerlinear, while prospective phase can lower producerpacking with its immediateprojectionconsumer. This is not a gamma/bias/residual reassociation.",
+  "counterevidence": [
+    "All three overlapping historical/current fragments were nonselected. Combining them need not improve.",
+    "No actual compiledstrides/copies/fusedepilogues are measured.",
+    "No candidate-paired incremental evidence; unchangedFLOPs.",
+    "A future Dev must be a new concretegraph; do not rerun any oldmethod merely to occupy time."
+  ],
+  "canonical_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e"
+}

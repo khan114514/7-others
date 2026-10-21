@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-10-03T18:04:49.354782+08:00",
+  "round": 6,
+  "quality_gate_passed": true,
+  "manually_inspected_grid": true,
+  "visual_review": "The formal64 grid has varied recognizable objects and scenes; no all-black, identical-image or repetitive-ring collapse. Some blur/ghosting remains. Full FID-50k9.65872744080815 is only0.004534618012542 below B; no statistical significance claim. Disk failure retained; recovery verifies6288 existing PNGs against exact seed0 replay and completes all50000 with finite outputs. Independent saved-weight50k validation is required before final best delivery.",
+  "grid_sha256": "8916aa1825d420606ab27a6dcad2472e6448b52db71a04e050ede4addbec4735",
+  "result_sha256": "0c644814342c2f3fe9d69d0b2aa6079ef7dd1569eaa1677090b731eacff36cc5",
+  "score": 9.65872744080815,
+  "fid_minus_baseline": -0.004534618012542069,
+  "training_budget_seconds": 70.96497845649719,
+  "updates": 4,
+  "row": {
+    "round": 6,
+    "policy_name": "warmstart_official_dd_teacher64_onepass_uniform",
+    "method_summary": "dd-selfproto-v1.1; warmstart_official_dd_ema; 64 fresh teacher pairs, measured generation 20.244s included in total budget; one shuffled pass, 4 updates; uniform U(0,1); floor(10*t) selects native prefix scale 0..9; fixed full FID-50k=9.658727441, delta to B=-0.004534618. Independent training reimplementation. Visual review: The formal64 grid has varied recognizable objects and scenes; no all-black, identical-image or repetitive-ring collapse. Some blur/ghosting remains. Full FID-50k9.65872744080815 is only0.004534618012542 below B; no statistical significance claim. Disk failure retained; recovery verifies6288 existing PNGs against exact seed0 replay and completes all50000 with finite outputs. Independent saved-weight50k validation is required before final best delivery.",
+    "status": "ok",
+    "score": 9.65872744080815,
+    "failure_reason": null,
+    "retained_best": true,
+    "time": "2026-10-03 18:04:49"
+  }
+}

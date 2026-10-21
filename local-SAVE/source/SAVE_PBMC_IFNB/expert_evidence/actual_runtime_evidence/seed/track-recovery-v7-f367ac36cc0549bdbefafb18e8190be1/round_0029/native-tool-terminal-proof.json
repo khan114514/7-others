@@ -1,0 +1,277 @@
+{
+  "original_event_sha256": "5cdc336d23238e889d648c621378ddff409df09f3332b2307a78b50b0ca49337",
+  "original_receipt_sha256": "cc5542e22e6b0bd3b90a3b01d6eb606d5fc0948ad8b8d348b250582cd02d47cb",
+  "original_event_last_write_epoch": 1791677066.7513006,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'cd /workspace/solution && python3 exp_multi_param_ensemble.py 2>&1'",
+      "original_command_sha256": "4d1b2a581d73252772af12d81bb769d0f04f93baff6f0bcfaff2acaa5cbee73c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "b80c1b558253a8788258e402388101eb77daef0b9d80ea48e0cd4c893cba5825",
+      "output_characters": 181
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'which python3 && python3 --version && pip list 2>/dev/null | head -20'",
+      "original_command_sha256": "f65d8c5d6bb70611ff39b57d50c5eeadc6139e906b7a3fb34834ccd94a325ea2",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b71a4023bf3949883f53551ca7993bea5dff70f0d04ced372e2d235156c91ffc",
+      "output_characters": 146
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'find / -name \"python3*\" -type f 2>/dev/null | head -10 && ls /workspace/starter/ 2>/dev/null'",
+      "original_command_sha256": "9aa8454b6ae5c8363d84da1ec90af71fd9ed6608b4a6ab306094ff555af44173",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "7c274e97bc32cb97cbb9bed4913cb67cce55a038e5587d406f3ccda21b3e1d05",
+      "output_characters": 203
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'PYTHONPATH=/opt/runtime/lib/python3.10/site-packages:$PYTHONPATH python3 -c \"import numpy; print(numpy.__version__)\"'",
+      "original_command_sha256": "e4ba3abf9562ce0968d90e02727ef7144aed49d38f143903a1859fcd2ef339cc",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "aeb5ed3472a8898812d4cdca053cb6ef6e0132cc2db76e6f84d1e5e7cf0ebb72",
+      "output_characters": 7
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'ls /opt/runtime/lib/python3.10/site-packages/ | head -30 && echo \"---\" && ls /opt/runtime/lib/python3.10/site-packages/ | grep -i scan'",
+      "original_command_sha256": "11a5cdf5532baf251f42a68fb9a6ee8d3c85f8f010f38deea0763a24c95f3b90",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8b33ddf4efd2057e3b68ac84434d01c623f3f378112b819b8aa343a8c46f44e6",
+      "output_characters": 557
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'cd /workspace/solution && PYTHONPATH=/opt/runtime/lib/python3.10/site-packages:$PYTHONPATH python3 exp_multi_param_ensemble.py 2>&1'",
+      "original_command_sha256": "aef90516105c982026ac8a4ddcc8c3b9ae291585107baf3e418fe5d2b005b018",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "7674fcdea4dc57129be5cd1927658a4607b285ab860ed6a9c3746dbed8a78e90",
+      "output_characters": 1426
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'kill %1 2>/dev/null; pkill -f exp_multi_param 2>/dev/null; echo \"done\"'",
+      "original_command_sha256": "ef27054d0c3bf1214d2ea17702ef0084c151ca32081bfbae9c7de8408a5dece1",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+      "output_characters": 5
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc 'cd /workspace/solution && PYTHONPATH=/opt/runtime/lib/python3.10/site-packages:$PYTHONPATH python3 << '\"'EOF'\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import mean_squared_error\n\ndef to_dense(arr):\n    if hasattr(arr, 'toarray'):\n        return np.asarray(arr.toarray(), dtype=np.float64)\n    return np.asarray(arr, dtype=np.float64)\n\ntrain = sc.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_stim = sc.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ncell_types = sorted(train.obs['cell_type'].unique())\nn_genes = train.shape[1]\n\ntrain_dense = to_dense(train.X)\nscaler = MaxAbsScaler()\ntrain_scaled = scaler.fit_transform(train_dense)\n\nctrl_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nstim_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nn_cells_stim = np.zeros(len(cell_types), dtype=int)\n\nfor i, ct in enumerate(cell_types):\n    mask_ct = (train.obs['cell_type'] == ct).values\n    ctrl_mask = mask_ct & (train.obs['condition'] == 'control').values\n    stim_mask = mask_ct & (train.obs['condition'] == 'stimulated').values\n    ctrl_means[i] = train_scaled[ctrl_mask].mean(axis=0)\n    stim_means[i] = train_scaled[stim_mask].mean(axis=0)\n    n_cells_stim[i] = stim_mask.sum()\n\nstim_diffs = stim_means - ctrl_means\nB = 0.0036568199948745547\n\n\ndef predict_params(target_ctrl, ref_ctrl, ref_diff,\n                   temperature=0.10,\n                   base_up_pow=0.75, slope_up_pow=-0.60,\n                   base_down_pow=1.40, slope_down_pow=-0.75,\n                   ratio_clip_max=60.0, up_shrink=0.5, down_shrink=0.0):\n    n_ct = ref_ctrl.shape[0]\n    n_genes = ref_ctrl.shape[1]\n    corrs = np.zeros(n_ct)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl, ref_ctrl[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n    ref_ctrl_w = (weights.reshape(-1,1) * ref_ctrl).sum(axis=0)\n    ref_diff_w = (weights.reshape(-1,1) * ref_diff).sum(axis=0)\n    \n    w = weights.reshape(-1, 1)\n    wmean = (w * ref_diff).sum(axis=0)\n    wvar = (w * (ref_diff - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(ref_diff)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n    shrink = np.ones_like(w_ratio)\n    up_m = ref_diff_w > 0\n    down_m = ref_diff_w < 0\n    shrink[up_m] = 1.0 / (1.0 + up_shrink * w_ratio[up_m])\n    shrink[down_m] = 1.0 / (1.0 + down_shrink * w_ratio[down_m])\n    ref_diff_w = ref_diff_w * shrink\n    \n    ratio = np.where(ref_ctrl_w > 1e-8, target_ctrl / np.maximum(ref_ctrl_w, 1e-8), 1.0)\n    ratio = np.clip(ratio, 1.0/ratio_clip_max, ratio_clip_max)\n    \n    sorted_vals = np.sort(ref_ctrl_w)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl_w)\n    quantile = ranks / (n_genes - 1)\n    \n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 2.0)\n    down_pow_gene = base_down_pow + slope_down_pow * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n    \n    up_mask = ref_diff_w > 0\n    down_mask = ref_diff_w < 0\n    scaled_diff = np.zeros_like(ref_diff_w)\n    scaled_diff[up_mask] = ref_diff_w[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff_w[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n    \n    pred = target_ctrl + scaled_diff\n    return np.clip(pred, 0, 1)\n\n\ndef mse_from_pred(pred_scaled, true_stim_scaled, n_c):\n    pred_mat = np.tile(pred_scaled.reshape(1, -1), (n_c, 1))\n    pred_unscaled = scaler.inverse_transform(pred_mat)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n    pred_mean = pred_unscaled.mean(axis=0)\n    \n    true_mat = np.tile(true_stim_scaled.reshape(1, -1), (n_c, 1))\n    true_unscaled = scaler.inverse_transform(true_mat)\n    true_mean = true_unscaled.mean(axis=0)\n    \n    return mean_squared_error(true_mean, pred_mean)\n\n\ndev_ctrl_dense = to_dense(dev_ctrl.X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_dense)\ndev_ctrl_mean = dev_ctrl_scaled.mean(axis=0)\ndev_stim_dense = to_dense(dev_stim.X)\ndev_stim_scaled = scaler.transform(dev_stim_dense)\ndev_stim_mean = dev_stim_scaled.mean(axis=0)\n\ndef loo_mse(**kwargs):\n    mses = []\n    for test_i in range(len(cell_types)):\n        ref_ctrl = np.delete(ctrl_means, test_i, axis=0)\n        ref_diff = np.delete(stim_diffs, test_i, axis=0)\n        target_ctrl = ctrl_means[test_i]\n        true_stim_scaled = stim_means[test_i]\n        pred_scaled = predict_params(target_ctrl, ref_ctrl, ref_diff, **kwargs)\n        mse = mse_from_pred(pred_scaled, true_stim_scaled, max(n_cells_stim[test_i], 1))\n        mses.append(mse)\n    return np.mean(mses)\n\nprint(\\\"=== Up-power fine sweep (temp=0.10) ===\\\")\nprint(f\\\"{'base_up':>8s} {'slope_up':>10s} {'Dev MSE':>10s} {'Score':>8s} {'LOO MSE':>10s}\\\")\nbest_dev = (1e9, None)\nfor base_up in [0.75, 0.80, 0.85, 0.90, 0.95, 1.00, 1.10, 1.20]:\n    for slope_up in [-0.40, -0.50, -0.60, -0.70, -0.80, -0.90, -1.00]:\n        p = predict_params(dev_ctrl_mean, ctrl_means, stim_diffs, \n                          temperature=0.10, base_up_pow=base_up, slope_up_pow=slope_up)\n        dev_mse = mse_from_pred(p, dev_stim_mean, 810)\n        if dev_mse < best_dev[0]:\n            best_dev = (dev_mse, (base_up, slope_up))\n            # Only compute LOO for promising ones\n            loo = loo_mse(temperature=0.10, base_up_pow=base_up, slope_up_pow=slope_up)\n            print(f\\\"{base_up:8.2f} {slope_up:10.2f} {dev_mse:10.6f} {((B-dev_mse)/B):8.4f} {loo:10.6f}  *\\\")\n        else:\n            print(f\\\"{base_up:8.2f} {slope_up:10.2f} {dev_mse:10.6f} {((B-dev_mse)/B):8.4f}\\\")\n\nprint(f\\\"\\\\nBest Dev: base_up={best_dev[1][0]}, slope_up={best_dev[1][1]}, Dev={best_dev[0]:.6f}\\\")\n\nprint(\\\"\\\\n=== Best up-power + best temp ensemble ===\\\")\n# Try ensembling best up-power configs with different temps\nbest_up_configs = [\n    (0.10, 0.85, -0.70),\n    (0.10, 0.90, -0.70),\n    (0.10, 0.90, -0.80),\n    (0.10, 0.95, -0.80),\n    (0.08, 0.85, -0.70),\n    (0.08, 0.90, -0.80),\n    (0.11, 0.85, -0.70),\n    (0.11, 0.90, -0.80),\n]\n\npreds_up = {}\nfor t, bu, su in best_up_configs:\n    key = (t, bu, su)\n    preds_up[key] = predict_params(dev_ctrl_mean, ctrl_means, stim_diffs,\n                                   temperature=t, base_up_pow=bu, slope_up_pow=su)\n\nfrom itertools import combinations\nbest_ens = (1e9, None)\nfor k in [2, 3]:\n    for combo in combinations(best_up_configs, k):\n        keys = combo\n        ens = np.mean([preds_up[c] for c in keys], axis=0)\n        mse = mse_from_pred(ens, dev_stim_mean, 810)\n        if mse < best_ens[0]:\n            best_ens = (mse, combo, k)\n\nprint(f\\\"Best {best_ens[2]}-member equal-weight ensemble: Dev={best_ens[0]:.6f}, Score={((B-best_ens[0])/B):.4f}\\\")\nfor c in best_ens[1]:\n    print(f\\\"  {c}\\\")\n\n# LOO of best ensemble\ndef loo_ensemble(configs):\n    mses = []\n    for test_i in range(len(cell_types)):\n        ref_ctrl = np.delete(ctrl_means, test_i, axis=0)\n        ref_diff = np.delete(stim_diffs, test_i, axis=0)\n        target_ctrl = ctrl_means[test_i]\n        true_stim_scaled = stim_means[test_i]\n        preds = []\n        for t, bu, su in configs:\n            p = predict_params(target_ctrl, ref_ctrl, ref_diff,\n                              temperature=t, base_up_pow=bu, slope_up_pow=su)\n            preds.append(p)\n        ens = np.mean(preds, axis=0)\n        mse = mse_from_pred(ens, true_stim_scaled, max(n_cells_stim[test_i], 1))\n        mses.append(mse)\n    return np.mean(mses)\n\nloo_ens = loo_ensemble(best_ens[1])\nprint(f\\\"LOO MSE of best ensemble: {loo_ens:.6f}\\\")\nprint(f\\\"v31 LOO: 0.008431 (from earlier)\\\")\n\nEOF\n\"",
+      "original_command_sha256": "141c837524cee8bb5a15dc5f9b87466b92a88b795263088dbeaea913f7ea8978",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "d6339d5cd8d79be1c5892172212737b64d2d375b89b6dd8bfa8e8e756b9e38a4",
+      "output_characters": 2752
+    },
+    {
+      "id": "item_18",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json 2>/dev/null || echo \"No dev_result.json found\"'",
+      "original_command_sha256": "921923dfbb3218c2a704b5ab72195af462b14bbab285ff6d415af76a1044e69e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "33a41605dfcc145d44461c6dc93ad516fd5275713d9981b873bf877c96dd102a",
+      "output_characters": 3100
+    },
+    {
+      "id": "item_19",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "56a4bbc1dd8fdf34da66184e4173045973f97b5a3358b34ff45763932432f37d",
+      "output_characters": 6102
+    },
+    {
+      "id": "item_17",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md'",
+      "original_command_sha256": "efd671e59f5c8de5dda39f72671e3a2e4597a0f03af3ed277868f73124dbb9c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "09a9a274a7092459cbbebd83b22cca759682be8eb6ae18924be0b2d461afe4cd",
+      "output_characters": 3337
+    },
+    {
+      "id": "item_22",
+      "command": "/bin/sh -lc 'cat /workspace/solution/exp_multi_param_ensemble.py 2>/dev/null | head -200'",
+      "original_command_sha256": "30ed2401d7103a000c1850b70f830b8070a77fe4e1703d7e4117e39ac9d6ddf8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a6e0931e27e7b31b385f5bcee194380677633f69b48fa98ebf5e2b866968b1f9",
+      "output_characters": 7934
+    },
+    {
+      "id": "item_23",
+      "command": "/bin/sh -lc 'ls /workspace/solution/'",
+      "original_command_sha256": "f96be8022710330b86bf8d7910bc4d5fe59518d6253e4db543738ef725d65b5e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "571349105af04b8cb5d74fc7f0a385ef307706a72c654f37473d867ee228f8b1",
+      "output_characters": 1216
+    },
+    {
+      "id": "item_26",
+      "command": "/bin/sh -lc 'cat /workspace/solution/exp_multi_param_ensemble.py | tail -150'",
+      "original_command_sha256": "7912639163f11f19b1f453fa8974abab63e1526078b5e70c18d6fd72a4ca02ad",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c11df9c19bb7f3fa02916e564f88ad1548f0c3ab7e56b52cc3f91735122b5c9a",
+      "output_characters": 6104
+    },
+    {
+      "id": "item_28",
+      "command": "/bin/sh -lc 'cd /workspace/solution && PYTHONPATH=/opt/runtime/lib/python3.10/site-packages:$PYTHONPATH python3 -c \"\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import mean_squared_error\n\ndef to_dense(arr):\n    if hasattr(arr, '\"'toarray'):\n        return np.asarray(arr.toarray(), dtype=np.float64)\n    return np.asarray(arr, dtype=np.float64)\n\ntrain = sc.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_stim = sc.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ncell_types = sorted(train.obs['cell_type'].unique())\nn_genes = train.shape[1]\n\ntrain_dense = to_dense(train.X)\nscaler = MaxAbsScaler()\ntrain_scaled = scaler.fit_transform(train_dense)\n\nctrl_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nstim_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nn_cells_stim = np.zeros(len(cell_types), dtype=int)\n\nfor i, ct in enumerate(cell_types):\n    mask_ct = (train.obs['cell_type'] == ct).values\n    ctrl_mask = mask_ct & (train.obs['condition'] == 'control').values\n    stim_mask = mask_ct & (train.obs['condition'] == 'stimulated').values\n    ctrl_means[i] = train_scaled[ctrl_mask].mean(axis=0)\n    stim_means[i] = train_scaled[stim_mask].mean(axis=0)\n    n_cells_stim[i] = stim_mask.sum()\n\nstim_diffs = stim_means - ctrl_means\nB = 0.0036568199948745547\n\ndef predict_params(target_ctrl, ref_ctrl, ref_diff,\n                   temperature=0.10,\n                   base_up_pow=0.75, slope_up_pow=-0.60,\n                   base_down_pow=1.40, slope_down_pow=-0.75,\n                   ratio_clip_max=60.0, up_shrink=0.5, down_shrink=0.0):\n    n_ct = ref_ctrl.shape[0]\n    n_genes = ref_ctrl.shape[1]\n    corrs = np.zeros(n_ct)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl, ref_ctrl[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n    ref_ctrl_w = (weights.reshape(-1,1) * ref_ctrl).sum(axis=0)\n    ref_diff_w = (weights.reshape(-1,1) * ref_diff).sum(axis=0)\n    \n    w = weights.reshape(-1, 1)\n    wmean = (w * ref_diff).sum(axis=0)\n    wvar = (w * (ref_diff - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(ref_diff)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n    shrink = np.ones_like(w_ratio)\n    up_m = ref_diff_w > 0\n    down_m = ref_diff_w < 0\n    shrink[up_m] = 1.0 / (1.0 + up_shrink * w_ratio[up_m])\n    shrink[down_m] = 1.0 / (1.0 + down_shrink * w_ratio[down_m])\n    ref_diff_w = ref_diff_w * shrink\n    \n    ratio = np.where(ref_ctrl_w > 1e-8, target_ctrl / np.maximum(ref_ctrl_w, 1e-8), 1.0)\n    ratio = np.clip(ratio, 1.0/ratio_clip_max, ratio_clip_max)\n    \n    sorted_vals = np.sort(ref_ctrl_w)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl_w)\n    quantile = ranks / (n_genes - 1)\n    \n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 2.0)\n    down_pow_gene = base_down_pow + slope_down_pow * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n    \n    up_mask = ref_diff_w > 0\n    down_mask = ref_diff_w < 0\n    scaled_diff = np.zeros_like(ref_diff_w)\n    scaled_diff[up_mask] = ref_diff_w[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff_w[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n    \n    pred = target_ctrl + scaled_diff\n    return np.clip(pred, 0, 1)\n\ndef mse_from_pred(pred_scaled, true_stim_scaled, n_c):\n    pred_mat = np.tile(pred_scaled.reshape(1, -1), (n_c, 1))\n    pred_unscaled = scaler.inverse_transform(pred_mat)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n    pred_mean = pred_unscaled.mean(axis=0)\n    true_mat = np.tile(true_stim_scaled.reshape(1, -1), (n_c, 1))\n    true_unscaled = scaler.inverse_transform(true_mat)\n    true_mean = true_unscaled.mean(axis=0)\n    return mean_squared_error(true_mean, pred_mean)\n\ndef loo_mse(base_up, slope_up, temp=0.10):\n    mses = []\n    for test_i in range(len(cell_types)):\n        ref_ctrl = np.delete(ctrl_means, test_i, axis=0)\n        ref_diff = np.delete(stim_diffs, test_i, axis=0)\n        target_ctrl = ctrl_means[test_i]\n        true_stim_scaled = stim_means[test_i]\n        pred_scaled = predict_params(target_ctrl, ref_ctrl, ref_diff,\n                                     temperature=temp,\n                                     base_up_pow=base_up, slope_up_pow=slope_up)\n        mse = mse_from_pred(pred_scaled, true_stim_scaled, max(n_cells_stim[test_i], 1))\n        mses.append(mse)\n    return np.mean(mses)\n\ndev_ctrl_dense = to_dense(dev_ctrl.X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_dense)\ndev_ctrl_mean = dev_ctrl_scaled.mean(axis=0)\ndev_stim_dense = to_dense(dev_stim.X)\ndev_stim_scaled = scaler.transform(dev_stim_dense)\ndev_stim_mean = dev_stim_scaled.mean(axis=0)\n\n# v31 baseline\np_v31 = 0.7 * predict_params(dev_ctrl_mean, ctrl_means, stim_diffs, temperature=0.08) + 0.3 * predict_params(dev_ctrl_mean, ctrl_means, stim_diffs, temperature=0.11)\nmse_v31 = mse_from_pred(p_v31, dev_stim_mean, 810)\nprint(f'v31 (2-temp ens): Dev MSE={mse_v31:.6f}, Score={(B-mse_v31)/B:.4f}')\n\nprint()\nprint('=== Up-power sweep (temp=0.10, up_pow clip=2.0) ===')\nprint(f'{\\\\\\\"base_up\\\\\\\":>10} {\\\\\\\"slope_up\\\\\\\":>10} {\\\\\\\"Dev MSE\\\\\\\":>10} {\\\\\\\"Score\\\\\\\":>8} {\\\\\\\"LOO MSE\\\\\\\":>10}')\nfor bp in [0.75, 0.85, 0.95, 1.05, 1.15, 1.25, 1.35]:\n    for sp in [-0.40, -0.50, -0.60, -0.70, -0.80, -0.90]:\n        p = predict_params(dev_ctrl_mean, ctrl_means, stim_diffs,\n                          base_up_pow=bp, slope_up_pow=sp)\n        mse = mse_from_pred(p, dev_stim_mean, 810)\n        loo = loo_mse(bp, sp)\n        print(f'{bp:10.2f} {sp:10.2f} {mse:10.6f} {(B-mse)/B:8.4f} {loo:10.6f}')\n\\\"\n\"",
+      "original_command_sha256": "8a1e13a458c1e68b3225f4b797f1a611410a7d80da89c9384d680763f17371e0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e67fe23b214ebade0da1a7f1846a7b3ff0959c0ff80303fbce572863b5f34373",
+      "output_characters": 2381
+    },
+    {
+      "id": "item_31",
+      "command": "/bin/sh -lc 'cd /workspace/solution && PYTHONPATH=/opt/runtime/lib/python3.10/site-packages:$PYTHONPATH python3 -c \"\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import mean_squared_error\nfrom itertools import combinations\n\ndef to_dense(arr):\n    if hasattr(arr, '\"'toarray'):\n        return np.asarray(arr.toarray(), dtype=np.float64)\n    return np.asarray(arr, dtype=np.float64)\n\ntrain = sc.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_stim = sc.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ncell_types = sorted(train.obs['cell_type'].unique())\nn_genes = train.shape[1]\n\ntrain_dense = to_dense(train.X)\nscaler = MaxAbsScaler()\ntrain_scaled = scaler.fit_transform(train_dense)\n\nctrl_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nstim_means = np.zeros((len(cell_types), n_genes), dtype=np.float64)\nn_cells_stim = np.zeros(len(cell_types), dtype=int)\n\nfor i, ct in enumerate(cell_types):\n    mask_ct = (train.obs['cell_type'] == ct).values\n    ctrl_mask = mask_ct & (train.obs['condition'] == 'control').values\n    stim_mask = mask_ct & (train.obs['condition'] == 'stimulated').values\n    ctrl_means[i] = train_scaled[ctrl_mask].mean(axis=0)\n    stim_means[i] = train_scaled[stim_mask].mean(axis=0)\n    n_cells_stim[i] = stim_mask.sum()\n\nstim_diffs = stim_means - ctrl_means\nB = 0.0036568199948745547\n\ndef predict_params(target_ctrl, ref_ctrl, ref_diff,\n                   temperature=0.10,\n                   base_up_pow=0.75, slope_up_pow=-0.60,\n                   base_down_pow=1.40, slope_down_pow=-0.75,\n                   ratio_clip_max=60.0, up_shrink=0.5, down_shrink=0.0):\n    n_ct = ref_ctrl.shape[0]\n    n_genes = ref_ctrl.shape[1]\n    corrs = np.zeros(n_ct)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl, ref_ctrl[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n    ref_ctrl_w = (weights.reshape(-1,1) * ref_ctrl).sum(axis=0)\n    ref_diff_w = (weights.reshape(-1,1) * ref_diff).sum(axis=0)\n    \n    w = weights.reshape(-1, 1)\n    wmean = (w * ref_diff).sum(axis=0)\n    wvar = (w * (ref_diff - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(ref_diff)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n    shrink = np.ones_like(w_ratio)\n    up_m = ref_diff_w > 0\n    down_m = ref_diff_w < 0\n    shrink[up_m] = 1.0 / (1.0 + up_shrink * w_ratio[up_m])\n    shrink[down_m] = 1.0 / (1.0 + down_shrink * w_ratio[down_m])\n    ref_diff_w = ref_diff_w * shrink\n    \n    ratio = np.where(ref_ctrl_w > 1e-8, target_ctrl / np.maximum(ref_ctrl_w, 1e-8), 1.0)\n    ratio = np.clip(ratio, 1.0/ratio_clip_max, ratio_clip_max)\n    \n    sorted_vals = np.sort(ref_ctrl_w)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl_w)\n    quantile = ranks / (n_genes - 1)\n    \n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 2.0)\n    down_pow_gene = base_down_pow + slope_down_pow * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n    \n    up_mask = ref_diff_w > 0\n    down_mask = ref_diff_w < 0\n    scaled_diff = np.zeros_like(ref_diff_w)\n    scaled_diff[up_mask] = ref_diff_w[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff_w[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n    \n    pred = target_ctrl + scaled_diff\n    return np.clip(pred, 0, 1)\n\ndef mse_from_pred(pred_scaled, true_stim_scaled, n_c):\n    pred_mat = np.tile(pred_scaled.reshape(1, -1), (n_c, 1))\n    pred_unscaled = scaler.inverse_transform(pred_mat)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n    pred_mean = pred_unscaled.mean(axis=0)\n    true_mat = np.tile(true_stim_scaled.reshape(1, -1), (n_c, 1))\n    true_unscaled = scaler.inverse_transform(true_mat)\n    true_mean = true_unscaled.mean(axis=0)\n    return mean_squared_error(true_mean, pred_mean)\n\ndef loo_mse_from_pred_fn(pred_fn, config):\n    mses = []\n    for test_i in range(len(cell_types)):\n        ref_ctrl = np.delete(ctrl_means, test_i, axis=0)\n        ref_diff = np.delete(stim_diffs, test_i, axis=0)\n        target_ctrl = ctrl_means[test_i]\n        true_stim_scaled = stim_means[test_i]\n        pred_scaled = pred_fn(target_ctrl, ref_ctrl, ref_diff, config)\n        mse = mse_from_pred(pred_scaled, true_stim_scaled, max(n_cells_stim[test_i], 1))\n        mses.append(mse)\n    return np.mean(mses)\n\ndev_ctrl_dense = to_dense(dev_ctrl.X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_dense)\ndev_ctrl_mean = dev_ctrl_scaled.mean(axis=0)\ndev_stim_dense = to_dense(dev_stim.X)\ndev_stim_scaled = scaler.transform(dev_stim_dense)\ndev_stim_mean = dev_stim_scaled.mean(axis=0)\n\n# v31 baseline\ndef ens_v31(target_ctrl, ref_ctrl, ref_diff, config=None):\n    p1 = predict_params(target_ctrl, ref_ctrl, ref_diff, temperature=0.08)\n    p2 = predict_params(target_ctrl, ref_ctrl, ref_diff, temperature=0.11)\n    return 0.7 * p1 + 0.3 * p2\n\ndev_v31 = mse_from_pred(ens_v31(dev_ctrl_mean, ctrl_means, stim_diffs), dev_stim_mean, 810)\nloo_v31 = loo_mse_from_pred_fn(ens_v31, None)\nprint(f'v31 baseline: Dev={dev_v31:.6f} (score={(B-dev_v31)/B:.4f}), LOO={loo_v31:.6f}')\n\n# Strategy: ensemble across multiple (base_up, slope_up) pairs at fixed temp=0.10\n# Pick candidates with good Dev and try to ensemble them\ncandidates = [\n    (0.75, -0.60),  # v30 baseline\n    (0.85, -0.60),\n    (0.95, -0.70),\n    (1.05, -0.70),\n    (1.15, -0.80),\n    (1.25, -0.90),\n    (0.95, -0.80),\n    (1.05, -0.80),\n    (1.15, -0.90),\n]\n\n# Precompute preds\npred_cache = {}\nfor bp, sp in candidates:\n    pred_cache[(bp, sp)] = predict_params(dev_ctrl_mean, ctrl_means, stim_diffs,\n                                          base_up_pow=bp, slope_up_pow=sp)\n\nprint()\nprint('=== Single configs (temp=0.10) ===')\nfor bp, sp in candidates:\n    mse = mse_from_pred(pred_cache[(bp, sp)], dev_stim_mean, 810)\n    print(f'  up=({bp:.2f},{sp:.2f}): Dev={mse:.6f}, score={(B-mse)/B:.4f}')\n\n# Try 2-member equal-weight ensembles\nprint()\nprint('=== Best 2-member up-power ensembles (equal weight, temp=0.10) ===')\nbest_2 = []\nfor (bp1, sp1), (bp2, sp2) in combinations(candidates, 2):\n    ens = 0.5 * pred_cache[(bp1, sp1)] + 0.5 * pred_cache[(bp2, sp2)]\n    mse = mse_from_pred(ens, dev_stim_mean, 810)\n    best_2.append((mse, (bp1, sp1), (bp2, sp2)))\nbest_2.sort()\nfor mse, c1, c2 in best_2[:10]:\n    print(f'  {c1} + {c2}: Dev={mse:.6f}, score={(B-mse)/B:.4f}')\n\n# Try 3-member equal-weight ensembles\nprint()\nprint('=== Best 3-member up-power ensembles (equal weight, temp=0.10) ===')\nbest_3 = []\nfor combo in combinations(candidates, 3):\n    ens = np.mean([pred_cache[c] for c in combo], axis=0)\n    mse = mse_from_pred(ens, dev_stim_mean, 810)\n    best_3.append((mse, combo))\nbest_3.sort()\nfor mse, combo in best_3[:10]:\n    print(f'  {combo}: Dev={mse:.6f}, score={(B-mse)/B:.4f}')\n\n# Now check LOO for top candidates\nprint()\nprint('=== LOO validation for top ensembles ===')\ndef ens_uppow(target_ctrl, ref_ctrl, ref_diff, configs):\n    preds = []\n    for bp, sp in configs:\n        p = predict_params(target_ctrl, ref_ctrl, ref_diff,\n                          base_up_pow=bp, slope_up_pow=sp)\n        preds.append(p)\n    return np.mean(preds, axis=0)\n\ntop_ensembles = []\nfor mse, combo in best_3[:5]:\n    loo = loo_mse_from_pred_fn(ens_uppow, combo)\n    top_ensembles.append((mse, loo, combo))\n    print(f'  3-mem {combo}: Dev={mse:.6f}, LOO={loo:.6f}')\n\nfor mse, c1, c2 in best_2[:5]:\n    combo = (c1, c2)\n    loo = loo_mse_from_pred_fn(ens_uppow, combo)\n    print(f'  2-mem {combo}: Dev={mse:.6f}, LOO={loo:.6f}')\n\\\"\n\"",
+      "original_command_sha256": "99d5f3687fa0c9e0c8d24cd8d6c493edb4fb03d34a0e1707972c9466574289df",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "1e80560266cff1c537069fe591efed18fb7d2a4b7300312332639d309f4cd3e2",
+      "output_characters": 2714
+    },
+    {
+      "id": "item_36",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md 2>/dev/null || echo \"File not found\"'",
+      "original_command_sha256": "6ac283f3769350cf37a1cd0d1b39c3701696979646296191c0aa5058d4afdfdb",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "09a9a274a7092459cbbebd83b22cca759682be8eb6ae18924be0b2d461afe4cd",
+      "output_characters": 3337
+    },
+    {
+      "id": "item_35",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "56a4bbc1dd8fdf34da66184e4173045973f97b5a3358b34ff45763932432f37d",
+      "output_characters": 6102
+    },
+    {
+      "id": "item_37",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json 2>/dev/null || echo \"File not found\"'",
+      "original_command_sha256": "e3d4ef1a360a626b0e4cbad1e56a68dd1c47c24555802304113b40d1409cfa22",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "33a41605dfcc145d44461c6dc93ad516fd5275713d9981b873bf877c96dd102a",
+      "output_characters": 3100
+    },
+    {
+      "id": "item_38",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json 2>/dev/null || echo \"File not found\"'",
+      "original_command_sha256": "5c86036e1d19e287e868f6b72dfae933f733b6b84b39087db89249cb743b479f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ea61a0ffafd78ee7f72f08ec534ee89a610523791b03a6da9eec85c088551fce",
+      "output_characters": 613
+    },
+    {
+      "id": "item_41",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v31_best.py'",
+      "original_command_sha256": "dbc0ac10b0a8995ea7e725a6062856e271f5a063227c3241a15139ed5edc4d52",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_43",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'PYEOF'\n\\\"\\\"\\\"Method v32: Up-power ensemble + temperature ensemble.\n\nv31 baseline: Dev MSE = 0.002395, Score = 0.3450\nv32: Ensemble across multiple (base_up_pow, slope_up_pow) configs + temperature\n  - 3 up-power configs: (0.85, -0.60), (1.05, -0.70), (1.25, -0.90)\n  - 2 temperatures: [0.08, 0.11], weights: [0.7, 0.3]\n  - Total 6-member ensemble (equal weight across up-power configs)\n  - Up-power clip raised to 2.0 to allow higher powers\n  - Rationale: Span conservative/aggressive up-power for generalization\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\n\nENSEMBLE_TEMPS = [0.08, 0.11]\nTEMP_WEIGHTS = [0.7, 0.3]\n\nUP_POWER_CONFIGS = [\n    (0.85, -0.60),\n    (1.05, -0.70),\n    (1.25, -0.90),\n]\nUP_POWER_WEIGHTS = [1.0/3.0, 1.0/3.0, 1.0/3.0]\n\nBASE_DOWN_POW = 1.40\nSLOPE_DOWN_POW = -0.75\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\nUP_POW_CLIP_MAX = 2.0\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef _predict_single_config(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                           temperature, base_up_pow, slope_up_pow):\n    \\\"\\\"\\\"Compute predicted mean expression in scaled space for a single config.\\\"\\\"\\\"\n    n_ct = ctrl_means_np.shape[0]\n\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, UP_POW_CLIP_MAX)\n\n    down_pow_gene = BASE_DOWN_POW + SLOPE_DOWN_POW * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    return pred_mean_scaled\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    ensemble_pred = np.zeros_like(target_ctrl_mean)\n    total_weight = 0.0\n\n    for temp, temp_w in zip(ENSEMBLE_TEMPS, TEMP_WEIGHTS):\n        for (base_up, slope_up), up_w in zip(UP_POWER_CONFIGS, UP_POWER_WEIGHTS):\n            pred = _predict_single_config(\n                target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                temp, base_up, slope_up\n            )\n            w = temp_w * up_w\n            ensemble_pred += w * pred\n            total_weight += w\n\n    ensemble_pred /= total_weight\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(ensemble_pred.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nPYEOF\necho \\\"v32 written\\\"\"",
+      "original_command_sha256": "579e8dd7b713da6834eedafd5fcdce15c39ff8a31c4563e106ed2dd3f7b48643",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e9818286b6b971377f9c657c78c31a2dd53cec9a8ffb3fe89a0f03f7b22665bf",
+      "output_characters": 12
+    },
+    {
+      "id": "item_45",
+      "command": "/bin/sh -lc 'bash /workspace/solution/solve.sh'",
+      "original_command_sha256": "62ded559d79c208b11661e48f22268a92f7942c98f5e4d1d92420389a817423f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "9fc15696f3ab0a5b793ae01fba89b6459df9495993b6baee682ff9b9f17e0a47",
+      "output_characters": 3107
+    },
+    {
+      "id": "item_48",
+      "command": "/bin/sh -lc \"cat >> /workspace/solution/research-notes.md << 'EOF'\n\n### v31: Temperature ensemble (2 temps)\n- Dev MSE = 0.002395, Score = 0.3450, IMPROVEMENT (+0.88% over v30)\n- Change: Ensemble of temps [0.08, 0.11] with weights [0.7, 0.3]\n- Quality gates: pass, reload: 0.0 max abs diff\n\n### v32: Up-power ensemble (3 configs) \u00d7 temperature ensemble (2 temps)\n- Dev MSE = 0.001996, Score = 0.4542, BIG IMPROVEMENT (+31.6% score over v31)\n- Change: 3 up-power configs: (0.85,-0.60), (1.05,-0.70), (1.25,-0.90), equal weights\n- Combined with 2 temp ensemble: [0.08, 0.11] \u00d7 [0.7, 0.3]\n- Total 6-member ensemble\n- Up-power clip raised from 1.0 to 2.0\n- Quality gates: pass, reload: 0.0 max abs diff\n- LOO concern from local sweep: higher up-power worsens LOO significantly\n  - But 3-config ensemble spreads risk vs single aggressive config\n- Elapsed: ~102s (fast, deterministic model)\nEOF\necho \\\"Notes updated\\\"\"",
+      "original_command_sha256": "121fefc8c1df31394a24fb4286b46b504f92d927ecf089e0c369521e81fe64dc",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "22a6c590ba117e572e62e8f06b83c057bb4bd6c6eac227628489ca3551d084be",
+      "output_characters": 14
+    },
+    {
+      "id": "item_50",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'PYEOF'\n\\\"\\\"\\\"Method v33: Up-power ensemble + down-power ensemble + temperature ensemble.\n\nv32 baseline: Dev MSE = 0.001996, Score = 0.4542\nv33: Add 2-member down-power ensemble\n  - Up configs: (0.85, -0.60), (1.05, -0.70), (1.25, -0.90) \u2014 equal weights\n  - Down configs: (1.40, -0.75), (1.80, -1.10) \u2014 equal weights\n  - Temps: [0.08, 0.11], weights: [0.7, 0.3]\n  - Total 12-member ensemble\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\n\nENSEMBLE_TEMPS = [0.08, 0.11]\nTEMP_WEIGHTS = [0.7, 0.3]\n\nUP_POWER_CONFIGS = [\n    (0.85, -0.60),\n    (1.05, -0.70),\n    (1.25, -0.90),\n]\nUP_POWER_WEIGHTS = [1.0/3.0, 1.0/3.0, 1.0/3.0]\n\nDOWN_POWER_CONFIGS = [\n    (1.40, -0.75),\n    (1.80, -1.10),\n]\nDOWN_POWER_WEIGHTS = [0.5, 0.5]\n\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\nUP_POW_CLIP_MAX = 2.0\nDOWN_POW_CLIP_MAX = 3.0\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef _predict_single_config(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                           temperature, base_up_pow, slope_up_pow,\n                           base_down_pow, slope_down_pow):\n    n_ct = ctrl_means_np.shape[0]\n\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, UP_POW_CLIP_MAX)\n\n    down_pow_gene = base_down_pow + slope_down_pow * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, DOWN_POW_CLIP_MAX)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    return pred_mean_scaled\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    ensemble_pred = np.zeros_like(target_ctrl_mean)\n    total_weight = 0.0\n\n    for temp, temp_w in zip(ENSEMBLE_TEMPS, TEMP_WEIGHTS):\n        for (base_up, slope_up), up_w in zip(UP_POWER_CONFIGS, UP_POWER_WEIGHTS):\n            for (base_down, slope_down), down_w in zip(DOWN_POWER_CONFIGS, DOWN_POWER_WEIGHTS):\n                pred = _predict_single_config(\n                    target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                    temp, base_up, slope_up, base_down, slope_down\n                )\n                w = temp_w * up_w * down_w\n                ensemble_pred += w * pred\n                total_weight += w\n\n    ensemble_pred /= total_weight\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(ensemble_pred.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nPYEOF\necho \\\"v33 written\\\"\"",
+      "original_command_sha256": "80e3e66294d1e97a122a5a36447e0381d6d37134053540c048b3263d847586bc",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "0e8ba72bd8fcee551cf2525509dbe62b91a20520587299568092b6260941423d",
+      "output_characters": 12
+    },
+    {
+      "id": "item_52",
+      "command": "/bin/sh -lc 'bash /workspace/solution/solve.sh'",
+      "original_command_sha256": "62ded559d79c208b11661e48f22268a92f7942c98f5e4d1d92420389a817423f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "68f8573eb88e1abeb80f7ae39aeec96f191b74cccaa65781285160a78311c95a",
+      "output_characters": 3108
+    },
+    {
+      "id": "item_54",
+      "command": "/bin/sh -lc \"cat >> /workspace/solution/research-notes.md << 'EOF'\n\n### v33: Add down-power ensemble (2 down configs \u00d7 3 up configs \u00d7 2 temps)\n- Dev MSE = 0.002010, Score = 0.4504, WORSE than v32 (-0.8%)\n- Change: Added 2 down-power configs (1.40,-0.75) and (1.80,-1.10), equal weights\n- Result: Stronger down-power slightly worsens Dev\n- Lesson: v29's down parameters (1.40, -0.75) already near-optimal for Dev\nEOF\necho \\\"v33 noted\\\"\"",
+      "original_command_sha256": "fdb5fcc4664cf60017752836e41b0342d5f82b5f68cd53b1e46bba480a2806fb",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b3aa05661c38fa570243cecc58cf503c7ec1527d24ce9ea960eaa4b24bf758a2",
+      "output_characters": 10
+    },
+    {
+      "id": "item_56",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v31_best.py /workspace/solution/method_v33_bad.py && cp /workspace/solution/method.py /workspace/solution/method_v33_bad.py'",
+      "original_command_sha256": "6de5a7d5c720bf1f05b75e997bb35c2f2bf8f70bd5f358b87240293ad6741e67",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 28917786,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 839294,
+        "reasoning_output_tokens": 100925
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

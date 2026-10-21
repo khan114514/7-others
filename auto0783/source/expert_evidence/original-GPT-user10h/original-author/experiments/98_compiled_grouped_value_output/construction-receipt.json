@@ -1,0 +1,36 @@
+{
+  "base": "97_compiled_frequency_prefix",
+  "removed_nodes": [
+    "image_output_heads",
+    "value_repeat"
+  ],
+  "added_nodes": [
+    "channel_group_output",
+    "image_token_first",
+    "probability_groups"
+  ],
+  "changed_original_nodes": [
+    "image_output_rows",
+    "probability_transpose",
+    "value_transpose"
+  ],
+  "all_other_node_objects_relative_order_equal": true,
+  "old_three_regions_equal": true,
+  "new_stage_region_nodes": [
+    "value_transpose",
+    "probability_groups",
+    "probability_transpose",
+    "channel_query_output",
+    "channel_group_output",
+    "image_token_first",
+    "image_output_rows",
+    "image_attended_rows",
+    "image_attention_out"
+  ],
+  "original_projection_weight_and_reduction_order_unchanged": true,
+  "original_scores_mask_softmax_cast_and_probability_values_unchanged": true,
+  "unrepeated_four_KV_heads_each_share_seven_query_heads": true,
+  "full556_term_value_contraction_then_original3584_term_projection": true,
+  "no_new_prefix_values_or_changed_cache_lifetimes": true,
+  "no_emitted_kernel_latency_peak_or_numerical_certification": true
+}

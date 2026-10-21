@@ -1,0 +1,29 @@
+{
+  "task_id": "heima-speculative-decoding",
+  "task_type": "S1",
+  "research_direction": "Efficient multimodal reasoning with hidden thinking",
+  "optimization_surface": "Executable draft(state): proposal construction, accepted history reuse, acceptance adaptation",
+  "score_contract": {
+    "metric": "mean paired per-question latency ratio",
+    "direction": "minimize",
+    "split": "dev",
+    "protocol": "71ef938d17f91099d9ff2f7f0abb2e9b4aa05dd0e7e0ada06ccc6ca472544429",
+    "baseline": {
+      "raw_value": 1.0001370946587724,
+      "normalized_score": 0.0
+    },
+    "reference": {
+      "raw_value": 0.3962421233221969,
+      "normalized_score": 0.603812191910163
+    },
+    "upper_bound": {
+      "raw_value": 0.0,
+      "source": "mathematical_lower_bound"
+    },
+    "anchor_evidence": "optimization_evidence/comparison_summary.json"
+  },
+  "isolation": {
+    "reference_visible_to_agent": false,
+    "hidden_assets_visible_to_agent": false
+  }
+}

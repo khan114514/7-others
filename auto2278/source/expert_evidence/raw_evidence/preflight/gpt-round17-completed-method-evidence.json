@@ -1,0 +1,79 @@
+{
+  "checked_unix": 1791441313.153462,
+  "track": "gpt",
+  "round": 17,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "3332a3aca9df3e73ba7b93901da9435e2414b336744a906de383aa13b696d378",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00017.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.42914415082274643,
+      "score": 0.5980482786512656,
+      "quality_gates_passed": true,
+      "method_sha256": "3332a3aca9df3e73ba7b93901da9435e2414b336744a906de383aa13b696d378",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791440492.9537733,
+      "end_unix": 1791440656.5784068
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.3971439065097836,
+    "score": 0.628020849081308,
+    "quality_gates_passed": true,
+    "method_sha256": "3332a3aca9df3e73ba7b93901da9435e2414b336744a906de383aa13b696d378",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791440698.926451,
+    "end_unix": 1791440864.2434688
+  },
+  "model_final_decision": {
+    "policy_name": "token_packed_gram_fused_panel_norms",
+    "method_summary": "Implemented token-packed QKV/Gram projection for large single-batch cases and fused triangular-panel norm reductions. Protected Dev passed all gates with CPU ratio 0.429144151 and maximum error 4.95e-6, worse than the verified best 0.400625566; the evaluated candidate remains in place.",
+    "next_direction": "Reject this update; next test fused norm reductions alone while preserving the best projection and contraction layouts."
+  },
+  "original_controller_decision": {
+    "round": 17,
+    "policy_name": "token_packed_gram_fused_panel_norms",
+    "method_summary": "Implemented token-packed QKV/Gram projection for large single-batch cases and fused triangular-panel norm reductions. Protected Dev passed all gates with CPU ratio 0.429144151 and maximum error 4.95e-6, worse than the verified best 0.400625566; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.3971439065097836,
+    "failure_reason": null,
+    "retained_best": true,
+    "time": "2026-10-08 14:27:45"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791439969.9681861,
+    "ended_unix": 1791440695.4272997,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 17,
+    "start_unix": 1791439969.579633,
+    "end_unix": 1791440865.2961779,
+    "observed_seconds": 895.7141234169248,
+    "effective_seconds": 895.7141234169248,
+    "model_seconds": 725.8792234167922,
+    "model_completed": true,
+    "successful_command_tools": 15,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": false,
+    "method_sha256": "3332a3aca9df3e73ba7b93901da9435e2414b336744a906de383aa13b696d378",
+    "public_result": "round_00017.grader.log",
+    "events": "round_00017.events.jsonl",
+    "next_direction": "Reject this update; next test fused norm reductions alone while preserving the best projection and contraction layouts."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00017.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": true,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

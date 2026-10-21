@@ -1,0 +1,265 @@
+{
+  "review_method": "static byte structures; no submitted code or model deserialization",
+  "raw_scan_status": "NOT_READY",
+  "all_flagged_members_adjudicated": true,
+  "members": [
+    {
+      "member": "dd_v5_0_3_recovery_20261006/expert_evidence/current_native_nop_20261006_recovery/original-registry-failure/native-trial/exception.txt",
+      "codes": [
+        "CREDENTIAL_ASSIGNMENT"
+      ],
+      "outer_member_sha256": "1f8f335cd65796cb50b7a9ec44fc00b4c8b3063ca494863d10534cb8eb35d9a4",
+      "classification": "HTTP method in failed public container-registry auth request, not credential value",
+      "matched_value_is_only_http_verb": true
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/expert_evidence/current_native_nop_20261006_recovery/original-registry-failure/native-trial/result.json",
+      "codes": [
+        "CREDENTIAL_ASSIGNMENT"
+      ],
+      "outer_member_sha256": "a3f6ae3aedc5a6480056f6bc50732a04d0793a5477c9c58a75b8d36fba60a5c8",
+      "classification": "HTTP method in failed public container-registry auth request, not credential value",
+      "matched_value_is_only_http_verb": true
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/expert_evidence/current_native_nop_20261006_recovery/original-registry-failure/native-trial/trial.log",
+      "codes": [
+        "CREDENTIAL_ASSIGNMENT"
+      ],
+      "outer_member_sha256": "c07eab3805f3fb6c87ae8356867a107c9d6fc42c9c6d71717c28ad64eb226614",
+      "classification": "HTTP method in failed public container-registry auth request, not credential value",
+      "matched_value_is_only_http_verb": true
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/expert_evidence/current_native_nop_20261006_recovery/original-registry-failure/native.stdout.log",
+      "codes": [
+        "CREDENTIAL_ASSIGNMENT"
+      ],
+      "outer_member_sha256": "6252a080bcdc7b8fc52f4ccb1c34833fcf2f357bcf5bdea07e7126961b698e3f",
+      "classification": "HTTP method in failed public container-registry auth request, not credential value",
+      "matched_value_is_only_http_verb": true
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/expert_evidence/current_protocol_cli_research_20261006/codex/round-01/trusted-run/pairs/teacher_grid.png",
+      "codes": [
+        "EMAIL"
+      ],
+      "outer_member_sha256": "4698d5f15a75a01cc487ef75ba8fdc94545fa2ba3adee4383716635012430be2",
+      "classification": "random printable bytes wholly inside PNG compressed raster IDAT",
+      "all_findings_inside_idat": true,
+      "chunk_types": [
+        "IHDR",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "decoded_raster_bytes": 1607354,
+      "findings": [
+        {
+          "code": "EMAIL",
+          "start": 996330,
+          "end": 996339,
+          "fragment_sha256": "b08e266ee8dc64eb1553afb37821eb13009c721c9bc4fe6e4ebbd7c4d4cfcb17",
+          "encoding": "ascii"
+        }
+      ]
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/expert_evidence/current_protocol_cli_research_20261006/codex/round-02/trusted-run/pairs/teacher_grid.png",
+      "codes": [
+        "EMAIL"
+      ],
+      "outer_member_sha256": "4698d5f15a75a01cc487ef75ba8fdc94545fa2ba3adee4383716635012430be2",
+      "classification": "random printable bytes wholly inside PNG compressed raster IDAT",
+      "all_findings_inside_idat": true,
+      "chunk_types": [
+        "IHDR",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "decoded_raster_bytes": 1607354,
+      "findings": [
+        {
+          "code": "EMAIL",
+          "start": 996330,
+          "end": 996339,
+          "fragment_sha256": "b08e266ee8dc64eb1553afb37821eb13009c721c9bc4fe6e4ebbd7c4d4cfcb17",
+          "encoding": "ascii"
+        }
+      ]
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/expert_evidence/model_assets/retained_best_round15/ema_inference_checkpoint.pth!checkpoint/data/120",
+      "codes": [
+        "SSH_ENDPOINT"
+      ],
+      "outer_member_sha256": "48d1b46cbb9897612e5c0996fe4a967fc89ce27a08613c271502eb2f6438c646",
+      "classification": "PyTorch raw float32 storage data, distinct from pickle metadata",
+      "pickle_execution": false,
+      "pickle_global_storage_types": [
+        "torch FloatStorage"
+      ],
+      "storage_bytes": 16777216,
+      "storage_sha256": "04909a4711ef97dbec0c00f1cc2b2cc7a78e3e4436083b44bf552490d5a9681d",
+      "findings": [
+        {
+          "code": "SSH_ENDPOINT",
+          "start": 5888624,
+          "end": 5888634,
+          "fragment_sha256": "14ccd73b26574b2ab95f4b387bb21130bdcbfb0b64635a3e7fd3f6b058977e6b",
+          "encoding": "ascii"
+        }
+      ]
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/expert_evidence/model_assets/retained_best_round15/ema_inference_checkpoint.pth!checkpoint/data/205",
+      "codes": [
+        "SSH_ENDPOINT"
+      ],
+      "outer_member_sha256": "48d1b46cbb9897612e5c0996fe4a967fc89ce27a08613c271502eb2f6438c646",
+      "classification": "PyTorch raw float32 storage data, distinct from pickle metadata",
+      "pickle_execution": false,
+      "pickle_global_storage_types": [
+        "torch FloatStorage"
+      ],
+      "storage_bytes": 4194304,
+      "storage_sha256": "e2d96b90c0ec291d6b534e04aa69008e2ecd5701ce899d63382d0010be8cdde7",
+      "findings": [
+        {
+          "code": "SSH_ENDPOINT",
+          "start": 848781,
+          "end": 848789,
+          "fragment_sha256": "bc99f3d4502765c17cc12183312a2c546b63c157d021061baaba287e486153b1",
+          "encoding": "ascii"
+        }
+      ]
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/optimization_evidence/initial_smoke/runs/run-0dc76358dcdd4d0cafaa5746a29aff47/evaluation/images/47.png",
+      "codes": [
+        "EMAIL"
+      ],
+      "outer_member_sha256": "76f7d90faa13e83043886a33cbbe76ec21cb6df716258ab8401032b4ed8260b8",
+      "classification": "random printable bytes wholly inside PNG compressed raster IDAT",
+      "all_findings_inside_idat": true,
+      "chunk_types": [
+        "IHDR",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "decoded_raster_bytes": 196864,
+      "findings": [
+        {
+          "code": "EMAIL",
+          "start": 107447,
+          "end": 107456,
+          "fragment_sha256": "c183c458161d3bd4a9fe629f57f246f63d3aae8ccc704db838060d7038148d61",
+          "encoding": "ascii"
+        }
+      ]
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/optimization_evidence/reference_runs/seed_0/model/ema_inference_checkpoint.pth!checkpoint/data/221",
+      "codes": [
+        "SSH_ENDPOINT"
+      ],
+      "outer_member_sha256": "bf07515aad89a3ca0832f16eab9c1be9669810c5ee4d1a15d06473696c7fdb79",
+      "classification": "PyTorch raw float32 storage data, distinct from pickle metadata",
+      "pickle_execution": false,
+      "pickle_global_storage_types": [
+        "torch FloatStorage"
+      ],
+      "storage_bytes": 4194304,
+      "storage_sha256": "d408477df7221103e1d40b2ec2e08136029a85cb029406f919df8781909d32c1",
+      "findings": [
+        {
+          "code": "SSH_ENDPOINT",
+          "start": 2500915,
+          "end": 2500926,
+          "fragment_sha256": "935cf2a1db09a29c846873514b4516014c0defb13fbbdec0cebfa7f2d2644858",
+          "encoding": "ascii"
+        }
+      ]
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/optimization_evidence/terminal_records/run-ff6fad3514114789b25ff2614771fdf8/evaluation/images/11.png",
+      "codes": [
+        "EMAIL"
+      ],
+      "outer_member_sha256": "5fa505dee3e1d8db4aea8d5678825095626c03e4d9ab425d2a198530e2fe7a8d",
+      "classification": "random printable bytes wholly inside PNG compressed raster IDAT",
+      "all_findings_inside_idat": true,
+      "chunk_types": [
+        "IHDR",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "decoded_raster_bytes": 196864,
+      "findings": [
+        {
+          "code": "EMAIL",
+          "start": 15776,
+          "end": 15784,
+          "fragment_sha256": "fb9041e95ac43f40e4bf99b02de668af5c0fe9e6693a2772fd555c6793d4f057",
+          "encoding": "ascii"
+        }
+      ]
+    },
+    {
+      "member": "dd_v5_0_3_recovery_20261006/optimization_evidence/terminal_records/run-ff6fad3514114789b25ff2614771fdf8/evaluation/images/58.png",
+      "codes": [
+        "EMAIL"
+      ],
+      "outer_member_sha256": "262e0e4fd4d247e578a4aca96650e6fa8a608c734e65d2c4ce6d549997000a90",
+      "classification": "random printable bytes wholly inside PNG compressed raster IDAT",
+      "all_findings_inside_idat": true,
+      "chunk_types": [
+        "IHDR",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "decoded_raster_bytes": 196864,
+      "findings": [
+        {
+          "code": "EMAIL",
+          "start": 70041,
+          "end": 70053,
+          "fragment_sha256": "94f6b6ea4eed2d9eb9aefd3f58d9d05920229a5facf58c24d8ba34552abab7d2",
+          "encoding": "ascii"
+        }
+      ]
+    }
+  ]
+}

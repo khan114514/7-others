@@ -1,0 +1,109 @@
+{
+  "status": "credible_method_directions_exhausted_under_current_catalog",
+  "decision": "Stop unsupported graph variants and retain experiment 41. Reopen only for a concrete new method argument, relevant public operator capability, or profiling evidence.",
+  "scope": "Own independent native Bifrost-1 decoder research using the fixed public operator catalog and real public Dev evaluations. This is a research stopping judgment, not a proof of global optimality.",
+  "best_valid_method": {
+    "experiment": "41_reversed_value_product",
+    "builder": "experiments/41_reversed_value_product/method.py",
+    "program": "experiments/41_reversed_value_product/program.json",
+    "feedback": "experiments/41_reversed_value_product/dev-result.json",
+    "artifact_sha256": "6a9a696f1debd902737f957e9ed31430d827c7cffc1181b353412e0d9133b723",
+    "execution_status": "COMPLETED",
+    "quality_pass": true,
+    "reward": 0.7287394620596103,
+    "baseline_mean_ms": 7134.07145690918,
+    "candidate_mean_ms": 1935.192061106364,
+    "peak_cuda_allocated_bytes": 29700810240,
+    "all_disclosed_prediction_and_final_latent_errors": 0.0
+  },
+  "latest_test": {
+    "experiment": "48_two_query_tiles",
+    "feedback": "experiments/48_two_query_tiles/dev-result.json",
+    "cli_receipt": "experiments/48_two_query_tiles/dev-cli-receipt.json",
+    "execution_status": "COMPLETED",
+    "cli_exit_code": 0,
+    "quality_pass": true,
+    "reward": 0.7202815261270124,
+    "peak_cuda_allocated_bytes": 29707277824,
+    "decision": "Valid, but neither reward nor total peak allocation improves the best method. Preserve the entire experiment."
+  },
+  "non_improving_evidence": [
+    {
+      "experiments": [
+        38,
+        39
+      ],
+      "direction": "Full and down-only image MLP multiplication orientation",
+      "rewards": [
+        0.7191365535891342,
+        0.71892863627774
+      ]
+    },
+    {
+      "experiments": [
+        40
+      ],
+      "direction": "Reverse image attention score product",
+      "rewards": [
+        0.7087043588017636
+      ]
+    },
+    {
+      "experiments": [
+        42,
+        43
+      ],
+      "direction": "Direct channel-layout output projection with batched and single-matrix contractions",
+      "rewards": [
+        0.7217970460659884,
+        0.7226169381070205
+      ]
+    },
+    {
+      "experiments": [
+        44,
+        45
+      ],
+      "direction": "KV-grouped probability/value products in both orientations",
+      "rewards": [
+        0.7245160629401872,
+        0.7283955073387481
+      ]
+    },
+    {
+      "experiments": [
+        46,
+        47
+      ],
+      "direction": "Isolated grouped scores and combined grouped attention",
+      "rewards": [
+        0.7229790101010181,
+        0.7269055575525073
+      ]
+    },
+    {
+      "experiments": [
+        48
+      ],
+      "direction": "Two independent query-axis tiles with shared full keys/values",
+      "rewards": [
+        0.7202815261270124
+      ]
+    }
+  ],
+  "catalog_constraints": [
+    "Full gate/up fused weights have 135790592 elements, exceeding the 100000000-element tensor bound.",
+    "Retaining all permissible split gate/up fused weights across 28 layers requires 7604273152 BF16 bytes, exceeding the 7 GiB prefix budget before other caches.",
+    "No custom fused normalization, residual or MLP epilogue kernels, sparse updates or incremental cache mutation are available.",
+    "Remaining image hidden states depend on changing image tokens; unconditional first-stage prefix reuse has no preservation argument.",
+    "Final image normalization and projection are fixed evaluator operations after the editable layer DAG."
+  ],
+  "limitations": [
+    "Candidate reward comparisons use separate evaluations and are not paired statistical tests between candidates.",
+    "Hidden prompts and formal 256-stage evaluation remain untested.",
+    "Other combinatorial graphs may exist; no further sufficiently supported method direction was identified."
+  ],
+  "research_record": "research-notes.md",
+  "evaluator_rules_modified": false,
+  "failures_and_non_improving_attempts_preserved": true
+}

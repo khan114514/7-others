@@ -1,0 +1,23 @@
+{
+  "task": {
+    "path": "${SOURCE_PROJECT}/private/portable-public-staging/final-portable-task"
+  },
+  "trial_name": "heima-final-portable-reference-3c66f40a11b4",
+  "trials_dir": "${SOURCE_PROJECT}/private/final-backend-host-proof/full-native-reference/3c66f40a11b440f7a98324d1d1779acb",
+  "agent": {
+    "import_path": "native_install_agent:MethodInstallAgent",
+    "kwargs": {
+      "policy": "reference"
+    }
+  },
+  "environment": {
+    "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+    "force_build": true,
+    "kwargs": {
+      "role": "seed"
+    }
+  },
+  "verifier": {
+    "override_timeout_sec": 10800.0
+  }
+}

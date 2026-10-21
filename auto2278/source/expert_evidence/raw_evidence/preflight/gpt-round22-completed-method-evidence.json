@@ -1,0 +1,79 @@
+{
+  "checked_unix": 1791448545.918684,
+  "track": "gpt",
+  "round": 22,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "bc6344ddd26ec1189cf9f3ec211b6261f5e27dfe49e225356d76fe590fe16fbe",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00022.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.6590456301481322,
+      "score": 0.382714351395601,
+      "quality_gates_passed": true,
+      "method_sha256": "bc6344ddd26ec1189cf9f3ec211b6261f5e27dfe49e225356d76fe590fe16fbe",
+      "protocol_sha256": null,
+      "start_unix": null,
+      "end_unix": null
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.7212300006087761,
+    "score": 0.3244702515990104,
+    "quality_gates_passed": true,
+    "method_sha256": "bc6344ddd26ec1189cf9f3ec211b6261f5e27dfe49e225356d76fe590fe16fbe",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791448263.827974,
+    "end_unix": 1791448516.2952607
+  },
+  "model_final_decision": {
+    "policy_name": "direct_buffered_qkv_projections",
+    "method_summary": "Replaced concatenated weight packing with separate QKV matrix products into shared output buffers. Full protected Dev passed all gates with raw CPU ratio 0.659045630, score 0.382714351, and maximum error 4.77e-6; the evaluated candidate remains in place.",
+    "next_direction": "Reject this candidate against the verified best ratio 0.397143907. Return to fused projections and investigate reducing allocation without strided matrix-product outputs."
+  },
+  "original_controller_decision": {
+    "round": 22,
+    "policy_name": "direct_buffered_qkv_projections",
+    "method_summary": "Replaced concatenated weight packing with separate QKV matrix products into shared output buffers. Full protected Dev passed all gates with raw CPU ratio 0.659045630, score 0.382714351, and maximum error 4.77e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.7212300006087761,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 16:35:17"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791444387.03739,
+    "ended_unix": 1791448258.0733259,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 22,
+    "start_unix": 1791444386.54941,
+    "end_unix": 1791448517.040931,
+    "observed_seconds": 3527.7498765839264,
+    "effective_seconds": 3527.7498765839264,
+    "model_seconds": 3268.920825584093,
+    "model_completed": true,
+    "successful_command_tools": 10,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": false,
+    "model_transport_failed": true,
+    "method_sha256": "bc6344ddd26ec1189cf9f3ec211b6261f5e27dfe49e225356d76fe590fe16fbe",
+    "public_result": "round_00022.grader.log",
+    "events": "round_00022.events.jsonl",
+    "next_direction": "Reject this candidate against the verified best ratio 0.397143907. Return to fused projections and investigate reducing allocation without strided matrix-product outputs."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00022.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

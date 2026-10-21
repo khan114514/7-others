@@ -1,0 +1,34 @@
+{
+  "original_event_sha256": "3ff72e73a96dcdf3feac3691ac63245911585a3f619de49bfb07fc81ced75c80",
+  "original_receipt_sha256": "a95f989090064a00e9023596c60a724da399fff4ec700a8c51c2d3f545c97c2d",
+  "original_event_last_write_epoch": 1791630869.8710809,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc \"cd /workspace/solution && cat > /tmp/sweep_corr.py << 'PYEOF'\n\\\"\\\"\\\"Quick sweep of CORR_BOOST parameter using LOO.\\\"\\\"\\\"\nimport sys, os\nsys.path.insert(0, '/workspace/solution')\nimport importlib.util\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom scipy.stats import pearsonr\n\ndef run_loo_with_params(corr_boost, max_corr_gate, corr_boost_thresh):\n    train = sc.read_h5ad('/workspace/public_assets/train.h5ad')\n    cell_types = sorted(train.obs['cell_type'].unique())\n    \n    # Override params in the module\n    spec = importlib.util.spec_from_file_location('m', '/workspace/solution/method_v21_test.py')\n    mod = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(mod)\n    mod.CORR_BOOST = corr_boost\n    mod.MAX_CORR_GATE = max_corr_gate\n    mod.CORR_BOOST_THRESH = corr_boost_thresh\n    \n    fold_mses = []\n    for target_ct in cell_types:\n        train_mask = train.obs['cell_type'] \"'!= target_ct\n        target_ctrl_mask = (train.obs['\"'cell_type'] == target_ct) & (train.obs['condition'] == 'control')\n        target_stim_mask = (train.obs['cell_type'] == target_ct) & (train.obs['condition'] == 'stimulated')\n        \n        train_adata = train[train_mask].copy()\n        target_ctrl_adata = train[target_ctrl_mask].copy()\n        target_stim_adata = train[target_stim_mask].copy()\n        \n        scaler = MaxAbsScaler()\n        train_adata.X = scaler.fit_transform(train_adata.X)\n        target_ctrl_adata.X = scaler.transform(target_ctrl_adata.X)\n        \n        model = mod.build_model(train_adata, 'cpu', 42)\n        mod.train_model(model, 42)\n        pred = mod.predict(model, target_ctrl_adata, scaler, 42 + 10000)\n        pred = np.asarray(pred, dtype=np.float64)\n        \n        truth = target_stim_adata.X\n        if hasattr(truth, 'toarray'):\n            truth = truth.toarray()\n        truth = np.asarray(truth, dtype=np.float64)\n        \n        true_mean = truth.mean(axis=0)\n        pred_mean = pred.mean(axis=0)\n        mse = np.mean((true_mean - pred_mean) ** 2)\n        fold_mses.append(mse)\n    \n    return np.mean(fold_mses), fold_mses\n\nbaseline = 0.008155\nprint(f\\\"Baseline (v20): {baseline:.6f}\\\")\nprint()\n\nfor boost in [-0.08, -0.10, -0.12, -0.14, -0.16, -0.18, -0.20, -0.24]:\n    avg, folds = run_loo_with_params(boost, 0.82, 0.0)\n    pct = (avg - baseline) / baseline * 100\n    print(f\\\"CORR_BOOST={boost:+.2f}: LOO={avg:.6f} ({pct:+.2f}%)\\\")\n\nprint()\nprint(\\\"Now sweeping gate with boost=-0.16:\\\")\nfor gate in [0.70, 0.75, 0.78, 0.80, 0.82, 0.85, 0.88]:\n    avg, folds = run_loo_with_params(-0.16, gate, 0.0)\n    pct = (avg - baseline) / baseline * 100\n    print(f\\\"  gate={gate:.2f}: LOO={avg:.6f} ({pct:+.2f}%)\\\")\nPYEOF\n/opt/runtime/bin/python /tmp/sweep_corr.py 2>&1\"",
+      "original_command_sha256": "26bbb2c2719df806d4bf6e35370fa9ba7673b4b608e7ca6b2372403b5abcaa22",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "70f67d0ecfd96470dc130f5e79ed884ecf9bbaef9a19b82c145d157e69aa8db6",
+      "output_characters": 15338
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 11433406,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 472096,
+        "reasoning_output_tokens": 42094
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

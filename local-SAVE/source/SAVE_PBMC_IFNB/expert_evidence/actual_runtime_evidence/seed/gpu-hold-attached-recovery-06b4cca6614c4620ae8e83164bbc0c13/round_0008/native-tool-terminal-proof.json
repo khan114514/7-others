@@ -1,0 +1,140 @@
+{
+  "original_event_sha256": "dbaf35d6ef0bf9475d16f94cdf2b1f1ee05248f1e3aa6fd43a80e38f26e9bdea",
+  "original_receipt_sha256": "af74edd1ead30e81f8823d856537a7d5cb5e6d3c8f24dbe0288e1af82ed6b761",
+  "original_event_last_write_epoch": 1791786196.1111877,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json 2>/dev/null || echo \"No recovered-own-dev.json\"'",
+      "original_command_sha256": "906151a78063e80e6bb70de382b21453241f624b0e1c124f7fda1ee8fdfbce6a",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ce87fae3f22ed43a4194e23d4b68a6f6d3a2265cf52546680efed7b411606608",
+      "output_characters": 612
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md 2>/dev/null || echo \"No research-notes.md\"'",
+      "original_command_sha256": "ea587e874f52c8899cda316c0bee7b69b69adc07b8bb49d409fadc3dbfc1efbc",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "96825d7a34ca167daec92ba442f333b87bb1bcd39e70428ea82dd218ec32124f",
+      "output_characters": 4727
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cat /workspace/solution/own-continuation-notes.md 2>/dev/null || echo \"No own-continuation-notes.md\"'",
+      "original_command_sha256": "07ffd23abadfe866e625d4a9f5cde169fb7f23f1e350bb0cc9bce710bdb43824",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c048294adfa241b29b04c26040a83abe635b4cce98735252d85c6705582124f0",
+      "output_characters": 29
+    },
+    {
+      "id": "item_12",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "35531a877ec4f9029b794a5e6ba35f798ddbf45d9e7477bf6b477b297770e974",
+      "output_characters": 2202
+    },
+    {
+      "id": "item_14",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json'",
+      "original_command_sha256": "de1a6fdaf38b4e51f4ed564afdf19e55e3ac083e5f4b47d146a903197242d28f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "510a24db937d552438ded8d567f69ec703d391d4f9578dbbf53f4e30bdad6d4e",
+      "output_characters": 3090
+    },
+    {
+      "id": "item_15",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method.py'",
+      "original_command_sha256": "2de42d8d92d99d3f059ab48819d8bd312febeb08c922c18d8845c11a7dca226b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c880019bdf941697e082eb9e96be1e717a8d479f3151cf82e48697ab8d8c1321",
+      "output_characters": 96
+    },
+    {
+      "id": "item_16",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method.py /workspace/solution/method_v67_best.py | head -80'",
+      "original_command_sha256": "050fc79f180392cf34881b555e114549bb0303bb251bd62dc7615dda0054b251",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "3f54790651bcafdeebb44513480628864f0cd1da619f1e9c989766f8032d2724",
+      "output_characters": 807
+    },
+    {
+      "id": "item_19",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method_v68_test.py /workspace/solution/method_v68_worse.py /workspace/solution/method_v67_best.py /workspace/solution/method_v69_test.py 2>/dev/null'",
+      "original_command_sha256": "228f8e3575533dc35da1fd7903fbcfba083b7512753d0e54e0dcc4b0b6b4fcc3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "30748197af87113f8df144a4eddb20cd2a1456cc768dddde21b8c5bd230222ca",
+      "output_characters": 421
+    },
+    {
+      "id": "item_20",
+      "command": "/bin/sh -lc 'head -40 /workspace/solution/method.py'",
+      "original_command_sha256": "82bf0a986d48c4ee0612c62e1d6611fd0b30aa97249d6d561b1fa67aa7c11266",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "1f85156421be8f0813511d785d655574081ff676e0c747f6af3aab00dc322008",
+      "output_characters": 1075
+    },
+    {
+      "id": "item_21",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method_v67_best.py /workspace/solution/method_v68_test.py 2>/dev/null | head -40'",
+      "original_command_sha256": "543c848651242b053a865bb346384e53700ffaa95417e6cca8781ca350270bfc",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "0a4977c546fce48f82110a9840eec8aa33761b5cffda46f7439526fef06f8f5c",
+      "output_characters": 56
+    },
+    {
+      "id": "item_24",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "42eb80eed8c5cfaf757a5a6f26a530ae5db4ea9b65a2c260fca54e4698e85648",
+      "output_characters": 8008
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "error",
+      "message": "Reconnecting... 1/5 (stream disconnected before completion: idle timeout waiting for SSE)"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 2/5 (stream disconnected before completion: Authorized Coding Plan stream failed; original attempts preserved)"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 3/5 (stream disconnected before completion: Authorized Coding Plan stream failed; original attempts preserved)"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 4/5 (stream disconnected before completion: Authorized Coding Plan stream failed; original attempts preserved)"
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 47019214,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1076142,
+        "reasoning_output_tokens": 148385
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

@@ -1,0 +1,19 @@
+{
+  "round": 2,
+  "policy_name": "coupled8192_cfg2_nfe32_uniform",
+  "method_summary": "预算内完成了8192组确定Gaussian到教师token耦合，并用均匀时间覆盖十个前缀尺度。训练和输出均有限，但纯噪声输入仍产生重复纹理，完整单步评分未通过质量门；下一轮将只改变FM时间采样以增加早期尺度训练概率。",
+  "status": "quality_gate_failed",
+  "failure_reason": "Formal FID-50k 353.06180904535483 is far above the baseline 9.663262058820692; the 64-image grid is dominated by repeated curved texture and lacks recognizable objects.",
+  "quality_gate_passed": false,
+  "manually_inspected_grid": true,
+  "result_sha256": "7c17b6de18fb702fd1d37735201a70c0e53984c1812ac3da44538f2cac9238d2",
+  "visual_review": "agent-output/rounds/round02/sample_grid.jpg",
+  "score": 353.06180904535483,
+  "budget_seconds": 13592.02778339386,
+  "checkpoint_update": 4306,
+  "diagnostic_evidence": [
+    "cpu_prefix_step00100/visual_review_refinement.json",
+    "cpu_prefix_step01000/visual_review.json",
+    "cpu_prefix_step02000/visual_review.json"
+  ]
+}

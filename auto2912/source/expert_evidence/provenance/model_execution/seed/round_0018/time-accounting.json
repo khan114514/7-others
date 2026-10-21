@@ -1,0 +1,61 @@
+{
+  "policy": "user-normal-work-clock-20261006",
+  "elapsed_seconds": 37.034788846969604,
+  "effective_seconds": 0,
+  "excluded_seconds": 37.034788846969604,
+  "excluded_intervals": [
+    [
+      1791306985.6107562,
+      1791307022.645545
+    ]
+  ],
+  "exclusion_evidence": [
+    {
+      "start_epoch": 1791306986.179371,
+      "end_epoch": 1791306990.647264,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-67d8fc770e044fc1aa3b04ceff068637-route.json"
+    },
+    {
+      "start_epoch": 1791306990.647264,
+      "end_epoch": 1791306993.1874628,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-1be6400ecc79478187a2430fe97096a3-route.json"
+    },
+    {
+      "start_epoch": 1791306993.1874628,
+      "end_epoch": 1791306996.475806,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-b5897209620c4feeba60094ef380c1d1-route.json"
+    },
+    {
+      "start_epoch": 1791306996.475806,
+      "end_epoch": 1791307001.918299,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-ae9d3a9aa4cd4978a93ac60178dce358-route.json"
+    },
+    {
+      "start_epoch": 1791307001.918299,
+      "end_epoch": 1791307007.5140579,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-fdae56e4d1304e6fa281c8905f701475-route.json"
+    },
+    {
+      "start_epoch": 1791307007.5140579,
+      "end_epoch": 1791307010.623039,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-2da86a6debf844d08eb9875ff93cbbd9-route.json"
+    },
+    {
+      "start_epoch": 1791306985.6107562,
+      "end_epoch": 1791307022.645545,
+      "reason": "Observed backend/startup block without model work in this turn; unrelated repetition of old scoring cannot fill research time",
+      "evidence": "campaign/seed/round_0018/stdout.jsonl"
+    }
+  ],
+  "score_success_used_for_time": false,
+  "role": "seed",
+  "round": 18,
+  "cli_exit_code": 1,
+  "actual_model_completion_observed": true
+}

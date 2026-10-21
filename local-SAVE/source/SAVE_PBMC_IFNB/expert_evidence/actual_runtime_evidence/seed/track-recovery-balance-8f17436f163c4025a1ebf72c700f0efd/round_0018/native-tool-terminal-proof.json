@@ -1,0 +1,79 @@
+{
+  "original_event_sha256": "bdd49ec365c3a7350402918276ce35940c5b24d4500e1fe502d9aba3ae61f6f9",
+  "original_receipt_sha256": "b6733521d3e794ce69674169931a3cbe140c1fc2d91f1f8d1b1e747b286edf93",
+  "original_event_last_write_epoch": 1791693024.333589,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json 2>/dev/null | head -100; echo \"---\"; ls -la /workspace/solution/method*.py 2>/dev/null; echo \"---\"; cat /workspace/solution/dev_result.json 2>/dev/null'",
+      "original_command_sha256": "185fc0fe7224ed5c09d2eb522f293e23c5afab9b916ae900d42ff25631256152",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8a25762c3eb5f4a052480e3a8df618d10226556f16316a929307157bf442d3e1",
+      "output_characters": 5893
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc \"head -30 /workspace/solution/method.py; echo \\\"===\\\"; grep -n \\\"RATIO_MOD\\\\|v53\\\\|v55\\\\|version\\\" /workspace/solution/method.py; echo \\\"===\\\"; diff /workspace/solution/method.py /workspace/solution/method_v53_best.py | head -20\"",
+      "original_command_sha256": "986383c4fd20237523c6f2b9fa5e74a45be7ee1928252a01adb57ee811617242",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5da399b43c1072479b5e8e18212daf8bc52cc52a540549f9297945117ac4ba2c",
+      "output_characters": 1711
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v53_best.py /workspace/solution/method.py'",
+      "original_command_sha256": "00bd94e961889e38673b30c33a5703c2dbc6de944892f15c8c26c22829f26587",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc \"cd /workspace/solution && sed 's/RATIO_MOD_UP = 0.05/RATIO_MOD_UP = 0.03/' method_v53_best.py | sed '1s/Method v53/Method v56/' | sed '4s/v53: Add signed log2(ratio)/v56: RATIO_MOD_UP = 0.03 (lower than v53 0.05 to find peak)/' > method_v56_test.py && cp method_v56_test.py method.py\"",
+      "original_command_sha256": "e73f9cc2a4799e6454e1e2522aa4b3f975d0a4ec4f2bcf12535806beb1e61a84",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_15",
+      "command": "/bin/sh -lc \"cd /workspace/solution && grep -n \\\"RATIO_MOD_UP\\\\|Method v5\\\" method.py | head -5\"",
+      "original_command_sha256": "7cebefe4f10a54a7590f1d45fd255e2f2c4d5108e1869e9d63a8c2fff989d570",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "aefaa7b6a44d73efe3538b794f25a9236a4169f3834bdbd4b3460245081485ac",
+      "output_characters": 307
+    },
+    {
+      "id": "item_17",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1'",
+      "original_command_sha256": "2450e58c36f1a2783553943fdadd542ab707fd56075da80a5fc5c977c98d492a",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "88312b860114c1783d5c9600f8263f08dafd1f24dc8fc070f5e8cdb3169af6d1",
+      "output_characters": 3107
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 35715894,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 961730,
+        "reasoning_output_tokens": 116325
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

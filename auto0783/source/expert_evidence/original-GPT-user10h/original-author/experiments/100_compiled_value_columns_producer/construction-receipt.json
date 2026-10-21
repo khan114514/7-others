@@ -1,0 +1,37 @@
+{
+  "base": "97_compiled_frequency_prefix",
+  "removed_nodes": [
+    "v",
+    "value_heads",
+    "value_repeat",
+    "value_shape"
+  ],
+  "added_nodes": [
+    "value_columns",
+    "value_image_columns",
+    "value_image_heads",
+    "value_image_shape",
+    "value_text_columns",
+    "value_text_heads",
+    "value_text_shape"
+  ],
+  "changed_original_node": "value_transpose",
+  "all_other_node_objects_relative_order_equal": true,
+  "three_original_regions_equal": true,
+  "new_contiguous_stage_region": [
+    "image_v",
+    "value_text_shape",
+    "value_text_heads",
+    "value_text_columns",
+    "value_image_shape",
+    "value_image_heads",
+    "value_image_columns",
+    "value_columns",
+    "value_transpose"
+  ],
+  "no_new_prefix_values_or_lifetime_changes": true,
+  "no_GEMM_score_scale_mask_softmax_cast_projection_RMS_or_MLP_changes": true,
+  "full_original_28_head_128_by556_value_operand_logical_shape": true,
+  "branchwise_transposed_concat_then_repeat_not_token_concat_then_repeat_transpose": true,
+  "actual_compiled_strides_copies_GEMM_dispatch_numerics_latency_and_peak_unmeasured": true
+}

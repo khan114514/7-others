@@ -1,0 +1,8 @@
+核心结论：NOT READY（静态内容复核FAIL；另有核心未核验项）。
+1. 当前执行拓扑必须改。Task/task.toml:18/24/39声明禁网和storage_mb，Agent/Verifier均0GPU；Runtime/hybrid_harbor_environment.py:107/137/166生成Compose覆盖、另启broker并依赖远端A100。按当前V4改为各sandbox单容器直接使用自身H20/L20，删除额外工作容器/远端计算及不支持的配置，保持Dev与Hidden边界。重交目标provider配置、完整依赖、单容器/自身GPU及候选移交/reward链路材料。换卡成绩与耗时可后补，不要求为此重做已交正式seed。
+2. 两轨时长须据已有材料闭环。保守区间复算GPT25828.664409399033秒、Seed27860.4020447731秒；包内canonical为null。默认10h未证，不能把估计10h写实测。可优先完整说明7h例外：无训练、短轮次依据、每轨≥3真实方法→Dev→决策、持续演进/后续方向、干净最佳复验及排队/下载/故障区间扣除，不要求仅因未知总时长就盲目延长运行。
+3. 规范轨迹。expert_evidence/trajectory_codex.json#rounds[47:102]含额外字段、成功COMPLETED和纯实验名摘要；两轨时间均非指定秒级格式。原记录保持不变另存sidecar，主轨迹恰八字段、成功ok、失败/null规则正确、统一秒级时间及声明时区，补生效方法/结果摘要与原反馈映射。指定唯一最终best_method及真实恢复位置，不只保留两套候选路径。
+4. 作者Reference正式结果很好，但缺当前公开Dev资格证据。optimization_evidence/及oracle/result.json均为formal。补同Reference图artifact的Dev profile原始结果/log和归一化/质量门，不把formal标签改成Dev。原GPU stdout缺失已披露；能恢复则原样补，不能恢复明确缺失并保留原4608stage、18重复、native Trial及CPU审计，不生成替代日志。
+正式B/R无需因分差大而削弱或换SOTA：B58432.48055013021ms、R33729.16768900553ms、σB180.57194646667463ms、改善24703.31286112468ms、归一化0.422766800733905；18×256阶段复算一致、质量误差0。三个seed是采样seed，六份result来自同一成对推理job，并非独立训练。
+非阻断待补：官方四项指纹与run_summary.task_binding缺失；A100到H20/L20的成绩影响/锚点与计时补证；目标换卡重算可延期。已有历史NOP可读且一致，不要求因NOP额外开跑。真实0.3.10格式/GPU/指纹工具未提供，完整工具验收待补；本报告不是该官方工具输出，也不是平台通过。
+额外路由提醒：Runtime/hybrid_relay.py:24仍保留非Coding Plan的旧Seed路由。若继续执行涉及豆包的工作，须在可信侧按用户当前共享配置切至Coding Plan Chat Completions并保持指定模型；历史证据不改标，本次未读凭据也未调用模型。

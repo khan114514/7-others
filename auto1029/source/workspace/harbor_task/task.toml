@@ -1,0 +1,27 @@
+schema_version = "1.0"
+artifacts = ["/workspace/solution"]
+
+[metadata]
+name = "heima-speculative-decoding"
+category = "multimodal-inference"
+training = "NOT_APPLICABLE"
+
+[agent]
+user = "1000:1000"
+timeout_sec = 1800
+network_mode = "no-network"
+
+[verifier]
+environment_mode = "separate"
+user = "root"
+timeout_sec = 10800
+network_mode = "no-network"
+
+[environment]
+cpus = 2
+memory_mb = 3072
+storage_mb = 512
+gpus = 0
+build_timeout_sec = 600
+workdir = "/workspace/solution"
+network_mode = "no-network"

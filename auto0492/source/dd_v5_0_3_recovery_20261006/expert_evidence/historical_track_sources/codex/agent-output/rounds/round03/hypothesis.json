@@ -1,0 +1,47 @@
+{
+  "recorded_at": "2026-10-03T05:02:06.254475+08:00",
+  "round": 3,
+  "method": {
+    "name": "coupled8192_cfg2_nfe32_prefix0half",
+    "teacher": {
+      "num_samples": 8192,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "none",
+      "weighting": "uniform",
+      "reuse": 256,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR"
+    },
+    "time_sampler_note": "50%概率均匀覆盖尺度0，剩余50%均匀覆盖尺度1..9；映射floor(10*t)，端点1截到尺度9。教师策略与训练工程保持第二轮不变，以隔离时间分布。",
+    "train_notes": "FM 训练器为自行重实现；超参（lr/steps/bs）为配套工程参数，须在证据中记录实际值。"
+  },
+  "method_sha256": "45c73e8ce2b0f06feadde9551aad0729f3843888313c51df0c08e2638c398250",
+  "hypothesis": "Round2 learned teacher-prefix reconstructions while pure-noise outputs collapsed to repeated texture. Allocate50% time probability to prefix0, retaining50% across the other nine prefixes, to isolate whether training-input allocation can improve frozen one-step sampling within the same budget.",
+  "evidence_basis": [
+    "rounds/round02/review.json",
+    "rounds/round02/cpu_prefix_step02000/visual_review.json",
+    "rounds/round03/time_sampler_probe.json"
+  ],
+  "fixed_engineering": {
+    "training_hours": 3.8,
+    "batch_size": 2,
+    "accumulation": 8,
+    "lr": 0.0001,
+    "ema_decay": 0.99,
+    "teacher_configuration": "unchanged from round2, regenerated with same seed and full generation charge",
+    "student_initialization": "teacher; no round2 or official DD warm start",
+    "formal_eval_samples": 50000,
+    "formal_eval_batch": 8,
+    "formal_seed": [
+      0
+    ]
+  },
+  "innovation_surface": [
+    "fm_time_sampling"
+  ],
+  "score": null,
+  "not_grid_search": true
+}

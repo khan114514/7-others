@@ -1,0 +1,187 @@
+{
+  "original_event_sha256": "d1df846fde6891f7fd2476bb45c516146a4a8218fca90e88f3e51f7776a81aba",
+  "original_receipt_sha256": "0ede7448b9d35f514944ed6e2a7b6e7848cebaf71b4763cbd653536dd78720cd",
+  "original_event_last_write_epoch": 1791664167.0619519,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md 2>/dev/null; echo \"---END NOTES---\"'",
+      "original_command_sha256": "ae853e2087dbb94f655c20f9d36822cc8694179f3c80929adf0d9702d086042f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "1503fb67aeee2de73fc61874373afe4da1f9ffb1dda141d502b9d1e7610f4f9b",
+      "output_characters": 16
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json 2>/dev/null | head -30'",
+      "original_command_sha256": "7842b6c2099cfa4935562bb758c0d88e86426913bf6dd2123fec3654d7576453",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ea61a0ffafd78ee7f72f08ec534ee89a610523791b03a6da9eec85c088551fce",
+      "output_characters": 613
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json 2>/dev/null | head -30'",
+      "original_command_sha256": "a313de138bfc1728e1afe554cd6805f7d77f0ce63377c1168d3d26fa9bfe025b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5e96f02a700a49b0d0930930dfab75154ff02ec418a6147e39bcbf2766dafeb2",
+      "output_characters": 796
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc 'wc -l /workspace/solution/method.py /workspace/solution/loo_eval.py 2>/dev/null'",
+      "original_command_sha256": "aeb9e1a31e2f9eacb6e2afdf4fb9e5a7bcc1f75ccaca3ef788aafd1810d7f7b4",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c087decd9e859dca58cc965e3ba46c2e34a1bd8ac52724ef763ca612a9557f22",
+      "output_characters": 83
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc \"cat /workspace/solution/dev_result.json | python3 -c \\\"import json,sys; d=json.load(sys.stdin); print('MSEs:', [r['metrics']['mse'] for r in d['rows']]); print('Mean MSE:', sum(r['metrics']['mse'] for r in d['rows'])/len(d['rows']))\\\"\"",
+      "original_command_sha256": "b944ac3233f76d0da9d88d17e39c2b0b4fd67b560cd20d6321692e6aca4d2fd0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "0c6cf0fe1963d6dcabfca0d89438dbed55c4a0908914b0fa92917075898fd60a",
+      "output_characters": 154
+    },
+    {
+      "id": "item_14",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method.py /workspace/solution/method_v20_best.py 2>/dev/null | head -40'",
+      "original_command_sha256": "4e1ee87e5b197ae7e5a43f058c5cfa9c065497147fbd07a0f87d456ce7e5e18c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method.py /workspace/solution/method_v20_best.py 2>/dev/null'",
+      "original_command_sha256": "683663b93bce4a85318ffc89c681a2f5694a0c1b6915f67656cedd9e2c791f4c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8060fbbde64490676a9f377e6294bf928debd17ed1829bf17f119b842cba4007",
+      "output_characters": 201
+    },
+    {
+      "id": "item_17",
+      "command": "/bin/sh -lc 'cat /workspace/solution/loo_eval.py'",
+      "original_command_sha256": "544ad293a2d308821b16d1b556f18b26d79eb0d3d30568b9deff274f053401e3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "bb3bd1191ddd9e10cc112f38757bd303da0ec25a03d2032f0f9ec556fd29fb05",
+      "output_characters": 3013
+    },
+    {
+      "id": "item_18",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4ec872b0a2ce359b55308d9540682d9a250f8a90f4032d87af0d8976ac1a2dde",
+      "output_characters": 5181
+    },
+    {
+      "id": "item_21",
+      "command": "/bin/sh -lc 'cd /workspace/solution && /opt/runtime/bin/python loo_eval.py 2>&1'",
+      "original_command_sha256": "af1a167c6b3a508da410e247e7bd495a5460ebed99966d2037c72f08a4628a74",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "302127edb3ec85e87c7c4ad0263df48ccbbab3f56be06fdd24adba68c5b69e8c",
+      "output_characters": 894
+    },
+    {
+      "id": "item_23",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/sweep_v20.py << 'PYEOF'\n\\\"\\\"\\\"Grid sweep of v20 hyperparameters using LOO cross-validation.\\\"\\\"\\\"\nimport sys\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import mean_squared_error\nfrom itertools import product\n\ndef predict_numpy(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                  temperature, base_up_pow, slope_up_pow, down_pow,\n                  ratio_clip_max, up_shrink_strength, down_shrink_strength):\n    n_ct = ctrl_means_np.shape[0]\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + up_shrink_strength * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + down_shrink_strength * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / ratio_clip_max, ratio_clip_max)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow)\n\n    pred_mean = target_ctrl_mean + scaled_diff\n    pred_mean = np.clip(pred_mean, 0, 1)\n    return pred_mean\n\n\ndef main():\n    train_path = '/workspace/public_assets/train.h5ad'\n    adata = sc.read_h5ad(train_path)\n    cell_types = sorted(adata.obs['cell_type'].unique())\n    print(f\\\"Cell types: {cell_types}\\\")\n    \n    # Precompute per-CT means and diffs on original (unscaled) log1p scale\n    # We'll fit scaler inside each LOO fold to mimic the real setup\n    results = []\n    \n    temperatures = [0.03, 0.05, 0.07, 0.10, 0.15, 0.20]\n    base_up_pows = [0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90]\n    slope_up_pows = [-0.80, -0.60, -0.40, -0.20, 0.0, 0.20]\n    down_pows = [0.60, 0.65, 0.70, 0.75, 0.77, 0.80, 0.85]\n    up_shrink_strengths = [0.0, 0.3, 0.5, 0.7, 1.0]\n    down_shrink_strengths = [0.0, 0.2, 0.5]\n    \n    # For speed, first do a coarse sweep, then refine\n    # Start with a focused coarse search around current best\n    temps = [0.05, 0.07, 0.10]\n    bups = [0.65, 0.70, 0.75, 0.80]\n    sups = [-0.70, -0.50, -0.30]\n    dns = [0.70, 0.75, 0.80]\n    ups = [0.3, 0.5, 0.7]\n    dss = [0.0]  # down shrink is usually 0, keep simple\n    \n    n_combos = len(temps)*len(bups)*len(sups)*len(dns)*len(ups)*len(dss)\n    print(f\\\"Coarse sweep: {n_combos} combinations\\\")\n    \n    best_avg = float('inf')\n    best_params = None\n    best_per_ct = None\n    \n    # Precompute LOO data\n    loo_data = {}\n    for held_out_ct in cell_types:\n        train_mask = adata.obs['cell_type'] \"'!= held_out_ct\n        train_adata = adata[train_mask].copy()\n        held_out_ctrl = adata[(adata.obs['\"'cell_type'] == held_out_ct) & \n                               (adata.obs['condition'] == 'control')].copy()\n        held_out_stim = adata[(adata.obs['cell_type'] == held_out_ct) & \n                               (adata.obs['condition'] == 'stimulated')].copy()\n        \n        scaler = MaxAbsScaler()\n        train_scaled = scaler.fit_transform(train_adata.X)\n        ctrl_scaled = scaler.transform(held_out_ctrl.X)\n        \n        train_ct_list = sorted(train_adata.obs['cell_type'].unique())\n        n_genes = train_adata.shape[1]\n        n_ct_train = len(train_ct_list)\n        ctrl_means = np.zeros((n_ct_train, n_genes), dtype=np.float64)\n        stim_diffs = np.zeros((n_ct_train, n_genes), dtype=np.float64)\n        \n        for i, ct in enumerate(train_ct_list):\n            mask_ct = train_adata.obs['cell_type'] == ct\n            ctrl_m = mask_ct & (train_adata.obs['condition'] == 'control')\n            stim_m = mask_ct & (train_adata.obs['condition'] == 'stimulated')\n            if hasattr(train_scaled, 'toarray'):\n                cm = np.asarray(train_adata[ctrl_m].X.toarray()).mean(axis=0)\n                sm = np.asarray(train_adata[stim_m].X.toarray()).mean(axis=0)\n            else:\n                # Need to re-index after scaling\n                cm = np.asarray(train_scaled[ctrl_m.values]).mean(axis=0)\n                sm = np.asarray(train_scaled[stim_m.values]).mean(axis=0)\n            ctrl_means[i] = cm\n            stim_diffs[i] = sm - cm\n        \n        target_ctrl_mean = np.asarray(ctrl_scaled).mean(axis=0)\n        \n        if hasattr(held_out_stim.X, 'toarray'):\n            true_stim = np.asarray(held_out_stim.X.toarray()).astype(np.float64)\n        else:\n            true_stim = np.asarray(held_out_stim.X).astype(np.float64)\n        true_stim_mean_scaled = scaler.transform(true_stim).mean(axis=0)\n        \n        loo_data[held_out_ct] = {\n            'ctrl_means': ctrl_means,\n            'stim_diffs': stim_diffs,\n            'target_ctrl_mean': target_ctrl_mean,\n            'true_stim_mean_scaled': true_stim_mean_scaled,\n            'scaler': scaler,\n        }\n    \n    count = 0\n    for temp, bup, sup, dn_pow, up_sh, dn_sh in product(temps, bups, sups, dns, ups, dss):\n        mses = {}\n        for held_out_ct in cell_types:\n            d = loo_data[held_out_ct]\n            pred_mean_scaled = predict_numpy(\n                d['target_ctrl_mean'], d['ctrl_means'], d['stim_diffs'],\n                temp, bup, sup, dn_pow, 60.0, up_sh, dn_sh\n            )\n            mse = float(mean_squared_error(d['true_stim_mean_scaled'], pred_mean_scaled))\n            mses[held_out_ct] = mse\n        \n        avg_mse = np.mean(list(mses.values()))\n        count += 1\n        if avg_mse < best_avg:\n            best_avg = avg_mse\n            best_params = (temp, bup, sup, dn_pow, up_sh, dn_sh)\n            best_per_ct = mses\n            print(f\\\"  NEW BEST #{count}: avg={avg_mse:.6f} T={temp} BUP={bup} SUP={sup} DP={dn_pow} US={up_sh} DS={dn_sh}\\\")\n            print(f\\\"    Per-CT: { {k: f'{v:.6f}' for k,v in mses.items()} }\\\")\n    \n    print(f\\\"\\\\nCoarse sweep done ({count} combos)\\\")\n    print(f\\\"Best avg MSE: {best_avg:.6f}\\\")\n    print(f\\\"Best params: T={best_params[0]}, BUP={best_params[1]}, SUP={best_params[2]}, DP={best_params[3]}, US={best_params[4]}, DS={best_params[5]}\\\")\n    print(f\\\"Per-CT: {best_per_ct}\\\")\n    \n    # Fine sweep around best\n    print(\\\"\\\\n--- Fine sweep ---\\\")\n    t0, b0, s0, d0, u0, ds0 = best_params\n    fine_temps = [t0 + dt for dt in [-0.02, -0.01, 0, 0.01, 0.02] if t0 + dt > 0.005]\n    fine_bups = [round(b0 + db, 3) for db in [-0.04, -0.02, 0, 0.02, 0.04] if 0 < b0 + db <= 1.5]\n    fine_sups = [round(s0 + ds, 3) for ds in [-0.15, -0.075, 0, 0.075, 0.15]]\n    fine_dps = [round(d0 + dd, 3) for dd in [-0.04, -0.02, 0, 0.02, 0.04] if 0 < d0 + dd <= 1.5]\n    fine_ups = [round(u0 + du, 2) for du in [-0.15, -0.075, 0, 0.075, 0.15] if u0 + du >= 0]\n    fine_dss = [0.0, 0.1]\n    \n    n_fine = len(fine_temps)*len(fine_bups)*len(fine_sups)*len(fine_dps)*len(fine_ups)*len(fine_dss)\n    print(f\\\"Fine sweep: {n_fine} combinations\\\")\n    \n    count = 0\n    for temp, bup, sup, dn_pow, up_sh, dn_sh in product(fine_temps, fine_bups, fine_sups, fine_dps, fine_ups, fine_dss):\n        mses = {}\n        for held_out_ct in cell_types:\n            d = loo_data[held_out_ct]\n            pred_mean_scaled = predict_numpy(\n                d['target_ctrl_mean'], d['ctrl_means'], d['stim_diffs'],\n                temp, bup, sup, dn_pow, 60.0, up_sh, dn_sh\n            )\n            mse = float(mean_squared_error(d['true_stim_mean_scaled'], pred_mean_scaled))\n            mses[held_out_ct] = mse\n        \n        avg_mse = np.mean(list(mses.values()))\n        count += 1\n        if avg_mse < best_avg:\n            best_avg = avg_mse\n            best_params = (temp, bup, sup, dn_pow, up_sh, dn_sh)\n            best_per_ct = mses\n            print(f\\\"  NEW BEST #{count}: avg={avg_mse:.6f} T={temp} BUP={bup} SUP={sup} DP={dn_pow} US={up_sh} DS={dn_sh}\\\")\n            print(f\\\"    Per-CT: { {k: f'{v:.6f}' for k,v in mses.items()} }\\\")\n    \n    print(f\\\"\\\\n=== FINAL BEST ===\\\")\n    print(f\\\"Best avg MSE: {best_avg:.6f} (baseline: 0.008155)\\\")\n    print(f\\\"Improvement: {(0.008155 - best_avg)/0.008155*100:.2f}%\\\")\n    print(f\\\"Params: T={best_params[0]}, BUP={best_params[1]}, SUP={best_params[2]}, DP={best_params[3]}, US={best_params[4]}, DS={best_params[5]}\\\")\n    print(f\\\"Per-CT: { {k: f'{v:.6f}' for k,v in best_per_ct.items()} }\\\")\n\nif __name__ == '__main__':\n    main()\nPYEOF\necho \\\"Sweep script written\\\"\"",
+      "original_command_sha256": "3973dd1e6e5fa2793abcc6d6518c11dec072429d25e6c4f34f5730b861236ee4",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "169835fdc03d8918fb380cf53d4312e3c9eb3eca9aaf2c5f74fdadd4ae6b625b",
+      "output_characters": 21
+    },
+    {
+      "id": "item_24",
+      "command": "/bin/sh -lc 'cd /workspace/solution && /opt/runtime/bin/python sweep_v20.py 2>&1'",
+      "original_command_sha256": "1b6fec50c3e6b625f5f6ee7af41c5fc80b6cb0fa9dbec4da381fafdc052dd3a8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "7519a3bbdfc815f3b6f3d915f1a3830e877bb956d6a7269005719439ad51e1c8",
+      "output_characters": 795
+    },
+    {
+      "id": "item_26",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/sweep_v20.py << 'PYEOF'\n\\\"\\\"\\\"Grid sweep of v20 hyperparameters using LOO cross-validation.\\\"\\\"\\\"\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.metrics import mean_squared_error\nfrom itertools import product\n\ndef predict_numpy(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                  temperature, base_up_pow, slope_up_pow, down_pow,\n                  ratio_clip_max, up_shrink_strength, down_shrink_strength):\n    n_ct = ctrl_means_np.shape[0]\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + up_shrink_strength * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + down_shrink_strength * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / ratio_clip_max, ratio_clip_max)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow)\n\n    pred_mean = target_ctrl_mean + scaled_diff\n    pred_mean = np.clip(pred_mean, 0, 1)\n    return pred_mean\n\n\ndef to_dense(arr):\n    if hasattr(arr, 'toarray'):\n        return np.asarray(arr.toarray(), dtype=np.float64)\n    return np.asarray(arr, dtype=np.float64)\n\n\ndef main():\n    train_path = '/workspace/public_assets/train.h5ad'\n    adata = sc.read_h5ad(train_path)\n    cell_types = sorted(adata.obs['cell_type'].unique())\n    print(f\\\"Cell types: {cell_types}\\\")\n    \n    # Precompute LOO data\n    loo_data = {}\n    for held_out_ct in cell_types:\n        train_mask = adata.obs['cell_type'] \"'!= held_out_ct\n        train_adata = adata[train_mask].copy()\n        held_out_ctrl = adata[(adata.obs['\"'cell_type'] == held_out_ct) & \n                               (adata.obs['condition'] == 'control')].copy()\n        held_out_stim = adata[(adata.obs['cell_type'] == held_out_ct) & \n                               (adata.obs['condition'] == 'stimulated')].copy()\n        \n        # Dense arrays for speed\n        train_X = to_dense(train_adata.X)\n        ctrl_X = to_dense(held_out_ctrl.X)\n        stim_X = to_dense(held_out_stim.X)\n        \n        scaler = MaxAbsScaler()\n        train_scaled = scaler.fit_transform(train_X)\n        ctrl_scaled = scaler.transform(ctrl_X)\n        \n        train_ct_list = sorted(train_adata.obs['cell_type'].unique())\n        n_genes = train_adata.shape[1]\n        n_ct_train = len(train_ct_list)\n        ctrl_means = np.zeros((n_ct_train, n_genes), dtype=np.float64)\n        stim_diffs = np.zeros((n_ct_train, n_genes), dtype=np.float64)\n        \n        train_obs = train_adata.obs\n        for i, ct in enumerate(train_ct_list):\n            mask_ct = train_obs['cell_type'] == ct\n            ctrl_m = mask_ct & (train_obs['condition'] == 'control')\n            stim_m = mask_ct & (train_obs['condition'] == 'stimulated')\n            cm = train_scaled[ctrl_m.values].mean(axis=0)\n            sm = train_scaled[stim_m.values].mean(axis=0)\n            ctrl_means[i] = cm\n            stim_diffs[i] = sm - cm\n        \n        target_ctrl_mean = ctrl_scaled.mean(axis=0)\n        true_stim_mean_scaled = scaler.transform(stim_X).mean(axis=0)\n        \n        loo_data[held_out_ct] = {\n            'ctrl_means': ctrl_means,\n            'stim_diffs': stim_diffs,\n            'target_ctrl_mean': target_ctrl_mean,\n            'true_stim_mean_scaled': true_stim_mean_scaled,\n        }\n        mse_naive = mean_squared_error(true_stim_mean_scaled, target_ctrl_mean)\n        print(f\\\"  LOO {held_out_ct}: naive_mse={mse_naive:.6f}, n_ctrl={ctrl_X.shape[0]}, n_stim={stim_X.shape[0]}\\\")\n    \n    # Baseline v20 params\n    v20_params = (0.07, 0.75, -0.60, 0.77, 0.5, 0.0)\n    v20_mses = {}\n    for held_out_ct in cell_types:\n        d = loo_data[held_out_ct]\n        pred = predict_numpy(d['target_ctrl_mean'], d['ctrl_means'], d['stim_diffs'], *v20_params, 60.0)\n        v20_mses[held_out_ct] = float(mean_squared_error(d['true_stim_mean_scaled'], pred))\n    v20_avg = np.mean(list(v20_mses.values()))\n    print(f\\\"\\\\nv20 baseline: avg={v20_avg:.6f}\\\")\n    print(f\\\"  Per-CT: { {k: f'{v:.6f}' for k,v in v20_mses.items()} }\\\")\n    \n    # Coarse sweep\n    temps = [0.03, 0.05, 0.07, 0.10, 0.15]\n    bups = [0.60, 0.70, 0.75, 0.80, 0.90]\n    sups = [-0.80, -0.60, -0.40, -0.20, 0.0]\n    dns = [0.65, 0.70, 0.75, 0.77, 0.80, 0.85]\n    ups = [0.0, 0.3, 0.5, 0.7, 1.0]\n    dss = [0.0]\n    \n    n_combos = len(temps)*len(bups)*len(sups)*len(dns)*len(ups)*len(dss)\n    print(f\\\"\\\\nCoarse sweep: {n_combos} combinations\\\")\n    \n    best_avg = v20_avg\n    best_params = v20_params\n    best_per_ct = v20_mses\n    \n    count = 0\n    for temp, bup, sup, dn_pow, up_sh, dn_sh in product(temps, bups, sups, dns, ups, dss):\n        mses = {}\n        for held_out_ct in cell_types:\n            d = loo_data[held_out_ct]\n            pred = predict_numpy(d['target_ctrl_mean'], d['ctrl_means'], d['stim_diffs'],\n                               temp, bup, sup, dn_pow, 60.0, up_sh, dn_sh)\n            mses[held_out_ct] = float(mean_squared_error(d['true_stim_mean_scaled'], pred))\n        \n        avg_mse = np.mean(list(mses.values()))\n        count += 1\n        if avg_mse < best_avg:\n            best_avg = avg_mse\n            best_params = (temp, bup, sup, dn_pow, up_sh, dn_sh)\n            best_per_ct = mses\n            print(f\\\"  NEW BEST #{count}: avg={avg_mse:.6f} T={temp} BUP={bup} SUP={sup} DP={dn_pow} US={up_sh} DS={dn_sh}\\\")\n    \n    print(f\\\"\\\\nCoarse done ({count} combos). Best avg: {best_avg:.6f}\\\")\n    print(f\\\"  Params: T={best_params[0]}, BUP={best_params[1]}, SUP={best_params[2]}, DP={best_params[3]}, US={best_params[4]}, DS={best_params[5]}\\\")\n    \n    # Fine sweep around best\n    print(\\\"\\\\n--- Fine sweep ---\\\")\n    t0, b0, s0, d0, u0, ds0 = best_params\n    \n    fine_temps = [round(t0 + dt, 4) for dt in [-0.02, -0.01, 0, 0.01, 0.02] if t0 + dt > 0.005]\n    fine_bups = [round(b0 + db, 3) for db in [-0.04, -0.02, 0, 0.02, 0.04] if 0 < b0 + db <= 2.0]\n    fine_sups = [round(s0 + ds, 3) for ds in [-0.15, -0.075, 0, 0.075, 0.15]]\n    fine_dps = [round(d0 + dd, 3) for dd in [-0.04, -0.02, 0, 0.02, 0.04] if 0 < d0 + dd <= 2.0]\n    fine_ups = [round(u0 + du, 2) for du in [-0.2, -0.1, 0, 0.1, 0.2] if u0 + du >= 0]\n    fine_dss = [0.0, 0.1, 0.2]\n    \n    n_fine = len(fine_temps)*len(fine_bups)*len(fine_sups)*len(fine_dps)*len(fine_ups)*len(fine_dss)\n    print(f\\\"Fine sweep: {n_fine} combinations\\\")\n    \n    count = 0\n    improved = 0\n    for temp, bup, sup, dn_pow, up_sh, dn_sh in product(fine_temps, fine_bups, fine_sups, fine_dps, fine_ups, fine_dss):\n        mses = {}\n        for held_out_ct in cell_types:\n            d = loo_data[held_out_ct]\n            pred = predict_numpy(d['target_ctrl_mean'], d['ctrl_means'], d['stim_diffs'],\n                               temp, bup, sup, dn_pow, 60.0, up_sh, dn_sh)\n            mses[held_out_ct] = float(mean_squared_error(d['true_stim_mean_scaled'], pred))\n        \n        avg_mse = np.mean(list(mses.values()))\n        count += 1\n        if avg_mse < best_avg:\n            best_avg = avg_mse\n            best_params = (temp, bup, sup, dn_pow, up_sh, dn_sh)\n            best_per_ct = mses\n            improved += 1\n            print(f\\\"  NEW BEST #{count}: avg={avg_mse:.6f} T={temp} BUP={bup} SUP={sup} DP={dn_pow} US={up_sh} DS={dn_sh}\\\")\n    \n    print(f\\\"\\\\n=== FINAL BEST ===\\\")\n    print(f\\\"Best avg LOO MSE: {best_avg:.6f} (v20: {v20_avg:.6f})\\\")\n    print(f\\\"Improvement: {(v20_avg - best_avg)/v20_avg*100:.2f}%\\\")\n    print(f\\\"Params: T={best_params[0]}, BUP={best_params[1]}, SUP={best_params[2]}, DP={best_params[3]}, US={best_params[4]}, DS={best_params[5]}\\\")\n    print(f\\\"Per-CT: { {k: f'{v:.6f}' for k,v in best_per_ct.items()} }\\\")\n    print(f\\\"v20 Per-CT: { {k: f'{v:.6f}' for k,v in v20_mses.items()} }\\\")\n\nif __name__ == '__main__':\n    main()\nPYEOF\necho \\\"Fixed sweep script written\\\"\"",
+      "original_command_sha256": "402f61ac05ecd10a139324a5b69ef0be3e7aec2e1980c0e3667936160d1297a4",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "f1caa8e5a129e02e4eb608d4428382c20596d45e528650a19a66db36880fdf15",
+      "output_characters": 27
+    },
+    {
+      "id": "item_27",
+      "command": "/bin/sh -lc 'cd /workspace/solution && /opt/runtime/bin/python sweep_v20.py 2>&1'",
+      "original_command_sha256": "1b6fec50c3e6b625f5f6ee7af41c5fc80b6cb0fa9dbec4da381fafdc052dd3a8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e20e8797f7fe0e14e0bac6d688a1ced1f10e8299f506c517f5e9f4f19adc07a8",
+      "output_characters": 4234
+    },
+    {
+      "id": "item_29",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v20_best_backup.py\necho \"Backup saved\"'",
+      "original_command_sha256": "73f5adccb46105d91e1f404ad958547c37b43b85c8a34bcc5175e0ecb1984295",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "586dc52fbd5e8509672365605f5c891984abb8caf9b73898801af08fa904efe0",
+      "output_characters": 13
+    },
+    {
+      "id": "item_31",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method_v21_sweep.py << 'PYEOF'\n\\\"\\\"\\\"Method v21: sweep-optimized v20 params.\n\nLOO-optimized params from grid search:\nT=0.05, BUP=0.74, SUP=-0.675, DP=0.82, US=0.6, DS=0.1\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\n\nTEMPERATURE = 0.05\nBASE_UP_POW = 0.74\nSLOPE_UP_POW = -0.675\nDOWN_POW = 0.82\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.6\nDOWN_SHRINK_STRENGTH = 0.1\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    n_ct = ctrl_means_np.shape[0]\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / TEMPERATURE\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = BASE_UP_POW + SLOPE_UP_POW * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** DOWN_POW)\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(pred_mean_scaled.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nPYEOF\necho \\\"v21 written\\\"\"",
+      "original_command_sha256": "09eb34999d89626e0f9ba0ea62d5ca02dcbe47b7b4d0fe091e0647b54576ce98",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "115dee0b00fbc52abecebe8ce67e5d91d173de6828de65223fa5a2259dcae80e",
+      "output_characters": 12
+    },
+    {
+      "id": "item_32",
+      "command": "/bin/sh -lc \"cd /workspace/solution && /opt/runtime/bin/python -c \\\"\nimport importlib.util, sys\nspec = importlib.util.spec_from_file_location('m', 'loo_eval.py')\nmod = importlib.util.module_from_spec(spec)\nsys.argv = ['loo_eval.py', 'method_v21_sweep.py']\nspec.loader.exec_module(mod)\n\\\" 2>&1\"",
+      "original_command_sha256": "9bbfa3ec1adf730b728878880b4ecaabe96c26463d2501751250fcf537c9c5dc",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_33",
+      "command": "/bin/sh -lc 'cd /workspace/solution && /opt/runtime/bin/python loo_eval.py method_v21_sweep.py 2>&1'",
+      "original_command_sha256": "d8cf6f4051f8077b8e2301da7af65689f55a1f3e4a2c8e72c2cb0f239e9f71e7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "34593ad0ba6457766fd26b0473651b374699e8add1fc52eb14dcaedf81dc1da3",
+      "output_characters": 897
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 15321237,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 566110,
+        "reasoning_output_tokens": 52873
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

@@ -1,0 +1,71 @@
+{
+  "task_id": "heima-speculative-decoding",
+  "status": "SOURCE_BOUND_IMPLEMENTATION_AND_EVIDENCE_READY_FOR_INDEPENDENT_QA",
+  "training": "NOT_APPLICABLE",
+  "image": "sha256:5e040c447c14e760239fb368d770b5a83fb500eb8afbd638945d273035e625ba",
+  "agent_execution": [
+    {
+      "runtime": "Codex",
+      "model": "gpt-6.1-sol",
+      "provider": "ModCon",
+      "reasoning_effort": "high",
+      "effective_seconds": 40553.85330891609,
+      "duration_hours": 11.264959252476693,
+      "effective_rounds": 5,
+      "typical_round_minutes": 7.547419267892838
+    },
+    {
+      "runtime": "Codex",
+      "model": "doubao-seed-2-1-turbo-260628",
+      "provider": "Volcano Coding Plan",
+      "reasoning_effort": "high",
+      "effective_seconds": 43548.57783436775,
+      "duration_hours": 12.096827176213264,
+      "effective_rounds": 5,
+      "typical_round_minutes": 63.864372511704765
+    }
+  ],
+  "fast_iteration_exception": {
+    "used": false,
+    "non_training": null,
+    "short_iterations": null,
+    "rollable_proved": false,
+    "evidence": ""
+  },
+  "validation": {
+    "baseline_passed": true,
+    "reference_passed": true,
+    "optimization_evidence_complete": true,
+    "best_method_rerun_passed": true,
+    "full_private_operator_validation_passed": true
+  },
+  "best_method_rerun_scope": "Historical clean five-seed Dev method rerun; see native_harbor/final-clean/",
+  "current_runtime_validation": {
+    "status": "COMPLETE_CURRENT_GRADER_NOP",
+    "evidence": "native_harbor/current-nop/",
+    "full_score": 0.00015455815448575576,
+    "current_best_private_rerun": "Earlier user-cancelled scope remains separate"
+  },
+  "current_source_stability": {
+    "unchanged_container_12h_reused": true,
+    "host_transport_regression_separate": true,
+    "new_host_adapter_12h_claim": false,
+    "evidence": "current_source_stability/container-and-host-regression-scope.json"
+  },
+  "historical_scores_reassigned_to_current": false,
+  "platform_acceptance_claim": false,
+  "independent_AI_QA_complete": false,
+  "model_research_seconds_added_by_audit": 0,
+  "current_grader_NOP_passed": true,
+  "independent_clock_verification": {
+    "scope": "Historical duration declarations remain unchanged; independently substantiated effective seconds are the conservative original-execution-only union below, excluding five missing journals and all later recovered completion additions.",
+    "evidence": "expert_evidence/clock_proof/README.md",
+    "sources": "expert_evidence/clock_proof/clock-source-projections.json",
+    "calculation": "expert_evidence/clock_proof/conservative-clock-result.json",
+    "new_model_research_seconds": 0,
+    "effective_seconds": {
+      "gpt": 36749.336764097214,
+      "seed": 41497.01806259155
+    }
+  }
+}

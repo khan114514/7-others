@@ -1,0 +1,45 @@
+{
+  "track": "dd_seed",
+  "scope": "Existing historical trajectory only; zero new v1.3 research time",
+  "effective_process_seconds_lower_bound": 41400,
+  "readable_successful_phase_lower_bound_seconds": 41754.0,
+  "intervals": [
+    {
+      "round_directory": "round03_levelweighted",
+      "raw_log": {
+        "path": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round03_levelweighted/run.log",
+        "sha256": "d4fc1783b9cb23beb44dda4cab1954a59a2c1ac0550bb71ec365c96e138ecc45"
+      },
+      "successful_teacher_minutes_reported": 76.8,
+      "successful_training_minutes_reported": 162.0,
+      "effective_seconds_lower_bound": 14316.0,
+      "excluded": "all FID stages, failed short training, other rounds, setup, queues, connection blocking and gaps"
+    },
+    {
+      "round_directory": "round05_curriculum",
+      "raw_log": {
+        "path": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round05_curriculum/run.log",
+        "sha256": "20621b1c6c836db2532ec83a9c00c83bb27cd46fac8cb6f864b2d78467e171c5"
+      },
+      "successful_teacher_minutes_reported": 67.0,
+      "successful_training_minutes_reported": 151.3,
+      "effective_seconds_lower_bound": 13086.000000000002,
+      "excluded": "all FID stages, failed short training, other rounds, setup, queues, connection blocking and gaps"
+    },
+    {
+      "round_directory": "round06_warmstart_t0_cfg3",
+      "raw_log": {
+        "path": "expert_evidence/historical_track_sources/seed/agent-output/rounds/round06_warmstart_t0_cfg3/run.log",
+        "sha256": "542b3915c2614581a3f4614a339a2a6da9b3707502c5796c7b30353e6a80e35c"
+      },
+      "successful_teacher_minutes_reported": 71.4,
+      "successful_training_minutes_reported": 168.0,
+      "effective_seconds_lower_bound": 14352.0,
+      "excluded": "all FID stages, failed short training, other rounds, setup, queues, connection blocking and gaps"
+    }
+  ],
+  "reported_approximate_34h_not_used": true,
+  "inference_effort_deviation_disclosed_in": "expert_evidence/historical_track_sources/seed/agent-output/RUNNER_ADDENDUM.md",
+  "sampling_seed42_deviation_disclosed_in": "expert_evidence/historical_track_sources/seed/agent-output/ROUND13_RECOVERY_CLOSURE.json",
+  "new_training_or_score_created": false
+}

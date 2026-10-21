@@ -1,0 +1,29 @@
+--- official/train_STSSDL.py
++++ expert/train_prepared.py
+@@ -161,7 +161,7 @@
+         message = 'Epoch [{}/{}] ({}) train_loss: {:.4f}, train_mae_loss: {:.4f}, train_contra_loss: {:.4f}, train_deviation_loss: {:.4f}, val_loss: {:.4f}, lr: {:.6f}, {:.2f}s'.format(epoch_num + 1, args.epochs, batches_seen, train_loss, train_mae_loss, train_contra_loss, train_deviation_loss, val_loss, optimizer.param_groups[0]['lr'], (end_time2 - start_time))
+         logger.info(message)
+         
+-        test_loss, _, _ = evaluate(model, 'test')
++        # Held-out evaluation deliberately omitted during training.
+         logger.info("\n")
+         
+         if val_loss < min_val_loss:
+@@ -179,7 +179,7 @@
+     model = get_model()
+     model.load_state_dict(torch.load(modelpt_path))
+     start=time.time()
+-    test_loss, _, _ = evaluate(model, 'test')
++    test_loss, _, _ = evaluate(model, 'val')
+     end=time.time()
+     logger.info(f"Inference Time: {(end-start):.2f}s")
+ 
+@@ -357,6 +357,8 @@
+     args.tod_embed_dim=16 #TOD embedding
+     args.adaptive_embedding_dim=0
+     
++args.seed = int(os.environ['STSSDL_FIXED_SEED'])
++random.seed(args.seed)
+ model_name = 'STSSDL'
+ timestring = time.strftime('%Y%m%d%H%M%S', time.localtime())
+ path = f'../save/{args.dataset}_{model_name}_{timestring}'

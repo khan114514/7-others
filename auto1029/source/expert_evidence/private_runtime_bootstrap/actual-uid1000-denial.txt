@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/supplement/bootstrap_private_runtime.py", line 142, in <module>
+    main()
+  File "/supplement/bootstrap_private_runtime.py", line 88, in main
+    require_root()
+  File "/supplement/bootstrap_private_runtime.py", line 24, in require_root
+    raise PermissionError("Trusted root operator required")
+PermissionError: Trusted root operator required

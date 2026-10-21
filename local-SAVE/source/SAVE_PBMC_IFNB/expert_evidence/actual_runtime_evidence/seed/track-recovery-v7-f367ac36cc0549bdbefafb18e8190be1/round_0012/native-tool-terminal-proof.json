@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "c3cb44dad5b67a065dccc1c8ed5e1a0c9f3f06d4195dd840c704ff06d3924456",
+  "original_receipt_sha256": "b37d877ab31d3b3175c520c96bdcdbcf7a648dd052485d02e197c257098d83cd",
+  "original_event_last_write_epoch": 1791668264.0123487,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cd /workspace/solution && for f in method_v*.py method.py; do echo \"=== $f ===\"; sha256sum \"$f\"; done'",
+      "original_command_sha256": "31d3264858d80427e42c6bfb1691fd73148ec3662a71f03dba3974be47c87d33",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "41abed8619e9ae26f41a320e66a4502afe9d3caa0b161576c5a33121e45ca065",
+      "output_characters": 1166
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /workspace/solution/sweep_down_pow3.py'",
+      "original_command_sha256": "81ad1cd17fc3373d6d460229bbd738fa74093abf6e9fa026cfb44fb9e537e012",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b346fe73dec5b9315119369b14ba9dd51a8684bee728eb38a392d1ac64181506",
+      "output_characters": 6907
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 18182364,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 630326,
+        "reasoning_output_tokens": 64823
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

@@ -1,0 +1,15 @@
+{
+  "kernel_attacks": {
+    "unix_socket_creation": "ALLOWED",
+    "parent_signal_zero": "ALLOWED",
+    "system_private_canary_read": "ALLOWED"
+  },
+  "guard": {
+    "landlock_abi": 1,
+    "filesystem_enforced": true,
+    "network_denied": true,
+    "gpu_devices_denied": true
+  },
+  "probe": "nondestructive",
+  "historical_revision": "attempt03"
+}

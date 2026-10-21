@@ -1,0 +1,27 @@
+{
+  "task_id": "auto2912",
+  "task_type": "S1",
+  "research_direction": "time-series conditional forecasting",
+  "optimization_surface": "executable fitted forecasting corrections on a shared original predictor",
+  "score_contract": {
+    "metric": "mae",
+    "direction": "minimize",
+    "split": "dev",
+    "baseline": {
+      "raw_value": 15.421857156583444,
+      "normalized_score": 0
+    },
+    "reference": {
+      "raw_value": 15.095954637054119,
+      "normalized_score": 0.6885200792963072
+    },
+    "upper_bound": {
+      "raw_value": 14.948519443814908,
+      "source": "independent_pilot_attainable_estimate"
+    }
+  },
+  "isolation": {
+    "reference_visible_to_agent": false,
+    "hidden_assets_visible_to_agent": false
+  }
+}

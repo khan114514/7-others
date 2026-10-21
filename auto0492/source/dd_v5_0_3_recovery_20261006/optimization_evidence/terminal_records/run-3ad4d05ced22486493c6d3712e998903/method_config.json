@@ -1,0 +1,33 @@
+{
+  "configuration": {
+    "name": "weighted_filtered_interface_smoke",
+    "protocol_version": "dd-selfproto-v1.3",
+    "initialization": "warmstart_official_dd_ema",
+    "teacher": {
+      "num_samples": 16,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "student_agreement_per_label",
+      "weighting": "custom",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 2
+    },
+    "time_sampler_note": "Uniform U(0,1) if adaptation is enabled.",
+    "train_notes": "Released DD EMA initialization; no adaptation by default."
+  },
+  "worker_guard": {
+    "landlock_abi": 1,
+    "filesystem_enforced": true,
+    "network_denied": true,
+    "unix_sockets_denied": true,
+    "cross_process_signals_denied": true,
+    "new_processes_denied": true,
+    "device_creation_denied": true,
+    "gpu_devices_denied": true,
+    "system_private_files_denied": true
+  }
+}

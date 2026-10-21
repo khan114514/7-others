@@ -1,0 +1,47 @@
+{
+  "original_event_sha256": "4e6d9c9adfc97da8923d79c66d518e445db4516bba3e4b59461ae89299c65eae",
+  "original_receipt_sha256": "9447986899eaf3e986b75d64fe62fb8342ae54e2df23906cf383b6770904520c",
+  "original_event_last_write_epoch": 1791770651.4073079,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v59_test.py /workspace/solution/method.py\necho \"v59 is now method.py\"\nmd5sum /workspace/solution/method.py'",
+      "original_command_sha256": "1b97c052763e54c8f44e1e090765df86c9c247478510a24d05c3d99515a828a1",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "6fa4996b459801664a0898298fd192a1da05ac460b0864be616733012fe87f11",
+      "output_characters": 85
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -80'",
+      "original_command_sha256": "28c35746b27d6e7a20c5d62502a0715ef715368b0db21f76c30d391041d58214",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "3349df3afa0bfdccb618dcb9a819a46d4a9cb08b39b88fc5c9e4a489119591a4",
+      "output_characters": 2629
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "error",
+      "message": "Reconnecting... 1/5 (stream disconnected before completion: idle timeout waiting for SSE)"
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 39754315,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1005207,
+        "reasoning_output_tokens": 125463
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

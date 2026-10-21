@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "c082b77c08931179c7f62b33f4351b604838b94b3399204aaadf1f0ca9f7f585",
+  "original_receipt_sha256": "1cef844e8e811c3eaa1f17475aef91029b17475604e0e52c7157eea02d1458a9",
+  "original_event_last_write_epoch": 1791569264.595468,
+  "original_native_session_ids": [
+    "01a12188-e1ec-75c1-9992-dee7c9424cbf"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc \"cat /workspace/solution/recovered-own-dev.json && echo \\\"===\\\" && head -5 /workspace/solution/method.py && echo \\\"===\\\" && sha256sum /workspace/solution/method.py && echo \\\"===\\\" && ls /workspace/solution/dev_result.json 2>/dev/null && cat /workspace/solution/dev_result.json 2>/dev/null | python3 -c \\\"import sys,json;d=json.load(sys.stdin);print('MSE:',d.get('raw_metric'));print('Score:',d.get('score'))\\\" 2>/dev/null || echo \\\"No dev_result\\\"\"",
+      "original_command_sha256": "1219a5e38ef82372288d15e98d7e563ef952d568ac23968bf9f541d35775d918",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2b765d55001c8f568e406c2ccba8e27a2cb423cd11eb30e2fd490c2ab951c9c3",
+      "output_characters": 1027
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md 2>/dev/null || echo \"No notes\"'",
+      "original_command_sha256": "06dada4a8f9407ac4f8412d027fdeb3a6da63de8e1e65843a828786333235256",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "05a8eb482724ba4c295e64ebf7a917aa8e9cfab5bb0b710b578199691f5251c7",
+      "output_characters": 9
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 5488191,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 86687,
+        "reasoning_output_tokens": 2658
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

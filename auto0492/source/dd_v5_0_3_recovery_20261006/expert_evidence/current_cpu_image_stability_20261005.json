@@ -1,0 +1,33 @@
+{
+  "status": "CURRENT_IMAGES_STABILITY_RUNNING",
+  "images": {
+    "agent": {
+      "tag": "dd-agent-author:20261005",
+      "id": "sha256:83f05ca4cefec04d085acbcc794ce8473475c945b960ef160009d50407cf6d65"
+    },
+    "verifier": {
+      "tag": "dd-verifier-author:20261005",
+      "id": "sha256:79f03fc23d4b3fffe9ab4893709402bc10d046e159699560f2ced7959d383ff8"
+    }
+  },
+  "containers": [
+    {
+      "role": "agent-a",
+      "image_id": "sha256:83f05ca4cefec04d085acbcc794ce8473475c945b960ef160009d50407cf6d65"
+    },
+    {
+      "role": "agent-b",
+      "image_id": "sha256:83f05ca4cefec04d085acbcc794ce8473475c945b960ef160009d50407cf6d65"
+    },
+    {
+      "role": "verifier",
+      "image_id": "sha256:79f03fc23d4b3fffe9ab4893709402bc10d046e159699560f2ced7959d383ff8"
+    }
+  ],
+  "actual_stability_complete": false,
+  "initial_health_checks_passed": true,
+  "research_time_seconds": 0,
+  "gpu_jobs_submitted": 0,
+  "purpose": "Separate container stability, not research-time accounting or NOP",
+  "source_runtime_archive_sha256": "a45d8baf8d3027277e92607cfcd7aaf0c8bcda8f083b8d7ba3438c72dd19a330"
+}

@@ -1,0 +1,1522 @@
+{
+  "schema_name": "local-v4-content-review",
+  "schema_version": 4,
+  "policy": {
+    "revision": "research-quality-v3",
+    "tutorial": "phase-three-v4",
+    "current_adjustment": "2026-10-21 five nonblocking evidence categories",
+    "not_official_tool_output": true
+  },
+  "status": "FAIL",
+  "core_conclusion": "NOT READY：当前内场配置冲突与轨迹格式/语义不通过；有效时长核心证明另待重算。G01/G02/G03及正式成对统计通过。",
+  "qa_run": {
+    "input_name": "AutoResearch_attention_v023_final_20261009.zip",
+    "input_type": "zip",
+    "zip_sha256": "bd75ad937f2e1ba807bd8db95f569e7cbac350e1258dac27465129a2dff28e42",
+    "archive_member_count": 745,
+    "archive_uncompressed_bytes": 22346573,
+    "configured_model": "gpt-6.1-sol",
+    "configured_reasoning_effort": "high",
+    "configuration_provenance": "主控派发消息；独立新会话fork_turns=none",
+    "runtime_reported_model": "not_exposed",
+    "runtime_version": "not_exposed",
+    "session_id": "attention_a",
+    "clean_context": true,
+    "clean_context_basis": "仅接收本完整ZIP、通用合同与当前技能；未读取包外历史QA、同伴报告或包内旧QA",
+    "review_mode": "read_only_static_zip",
+    "timestamp_local": "2026-10-22",
+    "submitted_code_executed": false
+  },
+  "review": {
+    "completed": true,
+    "coverage": "全部G/B/H/QA项完成静态复核；manual表示证据未闭环，不等于遗漏检查",
+    "independent_dynamic_run": false,
+    "official_0_3_10_acceptance": "pending_real_release_tools"
+  },
+  "overview": {
+    "optimization_surface": {
+      "summary": "固定精确多头检索算子的CPU推理延迟优化；候选纯函数实现与helper开放，实际AST guard允许方法更新。",
+      "modifiable": [
+        "attention及纯helpers的CPU张量算法",
+        "等价代数重排/投影顺序/布局/分块/形状分支"
+      ],
+      "fixed": [
+        "输入输出算子及alpha/beta",
+        "float32 CPU与allclose数值门",
+        "seed集、case生成、warmup/repeats、评分和资源"
+      ],
+      "metric_and_gate": "minimize mean candidate/control process CPU time ratio；finite float32 CPU、形状、输入不变及atol3e-5/rtol3e-4；无训练。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:10",
+        "workspace/harbor_task/instruction.md:12",
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/tests/grader.py:28"
+      ]
+    },
+    "baseline_reference": {
+      "baseline_method": "未改Starter直接计算q/k与两组softmax，在完整通道空间检索/混合/范数恢复后做value投影；健康控制同源码，B取正式五seed均值。",
+      "reference_method": "先用密集线性投影，L相对C较小时构造XX^T，用二次型恢复检索前范数并在较窄value空间检索；其他形状直接回退，alpha=1采用等价路径。",
+      "metric": "relative_process_cpu_time",
+      "direction": "minimize",
+      "paired_runs": [
+        {
+          "seed": 17,
+          "baseline": 1.1404054003564794,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_17/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_17/run.log:1",
+          "baseline_elapsed_seconds": 54.56126594543457,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.5116721784753299,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_17/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_17/run.log:1",
+          "reference_elapsed_seconds": 45.95985007286072,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.6287332218811496
+        },
+        {
+          "seed": 29,
+          "baseline": 1.2164480736835979,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_29/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_29/run.log:1",
+          "baseline_elapsed_seconds": 52.674448013305664,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.4600538051925116,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_29/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_29/run.log:1",
+          "reference_elapsed_seconds": 48.44570326805115,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.7563942684910863
+        },
+        {
+          "seed": 43,
+          "baseline": 0.9824788978125498,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_43/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_43/run.log:1",
+          "baseline_elapsed_seconds": 54.24377393722534,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.5293415824776744,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_43/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_43/run.log:1",
+          "reference_elapsed_seconds": 51.86888599395752,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.45313731533487545
+        },
+        {
+          "seed": 71,
+          "baseline": 1.086612204224258,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_71/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_71/run.log:1",
+          "baseline_elapsed_seconds": 59.30761694908142,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.49697465814971575,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_71/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_71/run.log:1",
+          "reference_elapsed_seconds": 54.55526876449585,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.5896375460745423
+        },
+        {
+          "seed": 101,
+          "baseline": 0.9123103439763108,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_101/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_101/run.log:1",
+          "baseline_elapsed_seconds": 60.22617793083191,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.4965188206302016,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_101/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_101/run.log:1",
+          "reference_elapsed_seconds": 45.622029066085815,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.41579152334610925
+        }
+      ],
+      "baseline_mean": 1.0676509840106392,
+      "baseline_sample_std": 0.12163295768269929,
+      "reference_mean": 0.49891220898508665,
+      "reference_sample_std": 0.02553537521217916,
+      "improvement_summary": "Δ=.5687387750255526，4.6758607688σB，归一化.5327010264；3–5σ可接受。",
+      "quality_gate_summary": "原始10份正式日志均ok且质量门通过；逐case11个样本median、候选/control比及6case均值重算一致。",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json",
+        "optimization_evidence/训练证据说明.md",
+        "workspace/reference/method.py"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "Codex + GPT-6.1 Sol",
+        "status": "complete",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "packaged_rounds": 64,
+        "reported_effective_rounds": 59,
+        "duration_hours": 10.102225980594339,
+        "reported_duration_hours": 10.102225980594339,
+        "summary": "形状/投影/Gram/Cholesky/分块等持续演进；正式摘要仍有评分和保留语义不一致。",
+        "final_result": "全公开seed清洁比较均值.4279666747，被选唯一最终方法；clean Dev score .6078224375。",
+        "evidence": [
+          "expert_evidence/auditable_time_lower_bound.json#tracks.gpt",
+          "expert_evidence/active_time_recalculation.json#tracks.gpt",
+          "expert_evidence/trajectory_codex.json"
+        ]
+      },
+      {
+        "name": "Codex + Doubao Seed 2.1 Turbo",
+        "status": "complete",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "packaged_rounds": 35,
+        "reported_effective_rounds": 8,
+        "duration_hours": null,
+        "reported_duration_hours": 10.007259767538834,
+        "summary": "保留35轮含真实模型错误，8个声明完整方法闭环；部分摘要为工具片段，计时下界有纯连接故障残余。",
+        "final_result": "全公开seed清洁比较均值.4803020135，未被选中。",
+        "evidence": [
+          "expert_evidence/auditable_time_lower_bound.json#tracks.seed",
+          "expert_evidence/active_time_recalculation.json#tracks.seed",
+          "expert_evidence/trajectory_seed.json"
+        ]
+      }
+    ]
+  },
+  "baseline_review": {
+    "conclusion": "合理（在已提供材料范围内）",
+    "roles": {
+      "starter": "direct healthy implementation",
+      "formal_baseline": "unchanged starter",
+      "normalization_B": "formal five-seed baseline mean",
+      "sanity": "same-run healthy control; no separate random/constant anchor"
+    },
+    "checks": [
+      {
+        "id": "B01",
+        "status": "pass",
+        "summary": "Starter、正式Baseline和评分B均绑定正确直接实现，来自固定算子语义；经典直接法是可辩护的naive对照。",
+        "evidence": [
+          "workspace/harbor_task/environment/starter/method.py:7",
+          "expert_evidence/专家作业说明文档.md:11"
+        ]
+      },
+      {
+        "id": "B02",
+        "status": "pass",
+        "summary": "无训练；q/k、双softmax、完整通道范数与value投影实现完整，正式10次质量门通过。没有训练不足或故障注入反证。",
+        "evidence": [
+          "workspace/harbor_task/environment/starter/method.py:8",
+          "workspace/harbor_task/tests/grader.py:105",
+          "optimization_evidence/baseline_runs/seed_17/result.json#training"
+        ]
+      },
+      {
+        "id": "B03",
+        "status": "pass",
+        "summary": "同一5 seed、6 case、float32、1线程、3 warmup/11计时、1 CPU/2GiB；R改变计算方法，未增加数据或预算。",
+        "evidence": [
+          "optimization_evidence/训练证据说明.md:5",
+          "workspace/harbor_task/environment/public_assets/dev/protocol.json:6",
+          "optimization_evidence/baseline_runs/seed_17/result.json#execution",
+          "optimization_evidence/reference_runs/seed_17/result.json#execution"
+        ]
+      },
+      {
+        "id": "B04",
+        "status": "pass",
+        "summary": "alpha/beta由评分器固定；Baseline源码与Starter逐字节哈希一致，双方同计时规则，无异常单边超参数的直接证据。",
+        "evidence": [
+          "workspace/harbor_task/tests/protocol.json:22",
+          "workspace/harbor_task/environment/starter/method.py",
+          "optimization_evidence/baseline_runs/seed_17/result.json#method"
+        ]
+      },
+      {
+        "id": "B05",
+        "status": "pass",
+        "summary": "全部正式seed成对完整；种子传入生成器，随机性来自计时，5组是输入/评测seed而非训练seed；未冒充独立训练。",
+        "evidence": [
+          "workspace/harbor_task/tests/grader.py:95",
+          "workspace/harbor_task/tests/grader.py:219",
+          "optimization_evidence/comparison_summary.json:9",
+          "optimization_evidence/baseline_runs/seed_17/result.json#protocol.data_generation"
+        ]
+      },
+      {
+        "id": "B06",
+        "status": "pass",
+        "summary": "健康Starter同时充当每次测量控制，评分Baseline本身是独立测量同一健康实现；无随机/常数弱锚点。无额外sanity结果并非失败。",
+        "evidence": [
+          "workspace/harbor_task/tests/grader.py:225",
+          "workspace/harbor_task/tests/grader.py:234",
+          "workspace/harbor_task/tests/baseline_method.py:7"
+        ]
+      },
+      {
+        "id": "B07",
+        "status": "pass",
+        "summary": "Reference以Gram二次型恢复范数并提前value投影、按形状回退；其余数据、评分与资源一致，收益归因于整体合法计算重排。",
+        "evidence": [
+          "workspace/reference/method.py:18",
+          "workspace/reference/method.py:21",
+          "optimization_evidence/训练证据说明.md:7"
+        ]
+      },
+      {
+        "id": "B08",
+        "status": "pass",
+        "summary": "专家披露来源、角色、限制及非SOTA定位；说明B来自未改Starter的全seed均值。",
+        "evidence": [
+          "expert_evidence/专家作业说明文档.md:11",
+          "expert_evidence/专家作业说明文档.md:33"
+        ]
+      }
+    ],
+    "comparison_facts": {
+      "source_and_version": "固定算子直接实现；Starter与Baseline method SHA一致；Reference另有可核对源码",
+      "data_and_metric": "同Dev6case、同5seed、ratio minimize",
+      "training": "NOT_APPLICABLE；没有训练seed或checkpoint",
+      "budget": "1CPU/2GiB、单线程、3warmup+11计时；实际完整正式seed45.62–60.23秒",
+      "selection": "B/R均用全5seed，未抽样；历史绝对时间材料独立存放"
+    },
+    "red_flags": "未发现Baseline实现故障或不公平的直接红旗"
+  },
+  "content_gates": {
+    "schema_version": 1,
+    "checks": [
+      {
+        "id": "G01",
+        "status": "pass",
+        "summary": "接口允许纯函数helpers、CPU PyTorch算法重排和形状分支；实际guard限制危险能力而非只接受数值。Reference包含Gram范数/提前投影方法更新。",
+        "evidence": [
+          "workspace/harbor_task/instruction.md:16",
+          "workspace/harbor_task/tests/grader.py:28",
+          "workspace/reference/method.py:18"
+        ],
+        "reason_code": "METHOD_LEVEL_SURFACE"
+      },
+      {
+        "id": "G02",
+        "status": "pass",
+        "summary": "在已提供材料范围内Baseline合理：健康直接Starter、角色/锚点统一、非训练、同协议公平、全部正式seed完整。",
+        "evidence": [
+          "optimization_evidence/训练证据说明.md:5",
+          "optimization_evidence/comparison_summary.json",
+          "workspace/harbor_task/environment/starter/method.py"
+        ],
+        "reason_code": "BASELINE_REASONABLE",
+        "dimensions": {
+          "training_sufficiency": "不适用：无训练或微调，training=NOT_APPLICABLE；没有虚构checkpoint要求。",
+          "method_representativeness": "正确直接算子实现是适用朴素对照，未声称SOTA；未发现任务匹配且直接否定其代表性的包内反证。",
+          "budget_comparability": "同协议1CPU/2GiB、单线程、同输入和计时预算；正式B/R完整单seed执行45.62–60.23秒。",
+          "implementation_correctness": "源码与保护健康控制一致，原始日志数值误差/质量门正常；静态不等于本次独立复现。",
+          "selection_integrity": "五个预声明seed全交；主B为正式均值；历史v1隔离存放，未混入v2统计。"
+        }
+      },
+      {
+        "id": "G03",
+        "status": "pass",
+        "summary": "正式Dev全5组有效：Δ=.5687387750=4.67586077σB，归一化=.5327010264；达到3σ和[.15,.8]。私有预校准亦支持，非官方Hidden验收。",
+        "evidence": [
+          "optimization_evidence/comparison_summary.json:16",
+          "optimization_evidence/baseline_runs/seed_17/run.log:1",
+          "optimization_evidence/reference_runs/seed_17/run.log:1"
+        ],
+        "reason_code": "SUFFICIENT_STOCHASTIC_GAIN",
+        "assessment": {
+          "direction": "minimize",
+          "formal_seeds": [
+            17,
+            29,
+            43,
+            71,
+            101
+          ],
+          "declared_run_count": 5,
+          "evaluation_mode": "stochastic",
+          "same_protocol": true,
+          "quality_valid": true,
+          "upper_bound": 0.0,
+          "threshold_basis": "当前V4：全部正式成对、Δ≥3σB、归一化[0.15,0.8]；题面预声明3σ。",
+          "absolute_min_improvement": null,
+          "absolute_threshold_source": ""
+        },
+        "computed": {
+          "baseline_mean": 1.0676509840106392,
+          "reference_mean": 0.49891220898508665,
+          "baseline_sample_std": 0.12163295768269929,
+          "reference_sample_std": 0.02553537521217916,
+          "positive_improvement": 0.5687387750255526,
+          "three_sigma_baseline": 0.36489887304809787,
+          "sigma_multiple": 4.675860768832133,
+          "upper_bound": 0,
+          "normalized_reference": 0.5327010264057276,
+          "remaining_headroom": 0.49891220898508665,
+          "remaining_headroom_sigma": 4.101784734089801,
+          "all_valid": true
+        }
+      }
+    ]
+  },
+  "paired_evidence_sets": [
+    {
+      "label": "正式 Dev v2",
+      "prefix": "optimization_evidence",
+      "current_formal": true,
+      "paired_runs": [
+        {
+          "seed": 17,
+          "baseline": 1.1404054003564794,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_17/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_17/run.log:1",
+          "baseline_elapsed_seconds": 54.56126594543457,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.5116721784753299,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_17/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_17/run.log:1",
+          "reference_elapsed_seconds": 45.95985007286072,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.6287332218811496
+        },
+        {
+          "seed": 29,
+          "baseline": 1.2164480736835979,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_29/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_29/run.log:1",
+          "baseline_elapsed_seconds": 52.674448013305664,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.4600538051925116,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_29/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_29/run.log:1",
+          "reference_elapsed_seconds": 48.44570326805115,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.7563942684910863
+        },
+        {
+          "seed": 43,
+          "baseline": 0.9824788978125498,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_43/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_43/run.log:1",
+          "baseline_elapsed_seconds": 54.24377393722534,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.5293415824776744,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_43/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_43/run.log:1",
+          "reference_elapsed_seconds": 51.86888599395752,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.45313731533487545
+        },
+        {
+          "seed": 71,
+          "baseline": 1.086612204224258,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_71/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_71/run.log:1",
+          "baseline_elapsed_seconds": 59.30761694908142,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.49697465814971575,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_71/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_71/run.log:1",
+          "reference_elapsed_seconds": 54.55526876449585,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.5896375460745423
+        },
+        {
+          "seed": 101,
+          "baseline": 0.9123103439763108,
+          "baseline_valid": true,
+          "baseline_source": "optimization_evidence/baseline_runs/seed_101/result.json",
+          "baseline_log": "optimization_evidence/baseline_runs/seed_101/run.log:1",
+          "baseline_elapsed_seconds": 60.22617793083191,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "baseline_case_count": 6,
+          "reference": 0.4965188206302016,
+          "reference_valid": true,
+          "reference_source": "optimization_evidence/reference_runs/seed_101/result.json",
+          "reference_log": "optimization_evidence/reference_runs/seed_101/run.log:1",
+          "reference_elapsed_seconds": 45.622029066085815,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+          "reference_case_count": 6,
+          "paired_improvement": 0.41579152334610925
+        }
+      ],
+      "computed": {
+        "baseline_mean": 1.0676509840106392,
+        "reference_mean": 0.49891220898508665,
+        "baseline_sample_std": 0.12163295768269929,
+        "reference_sample_std": 0.02553537521217916,
+        "positive_improvement": 0.5687387750255526,
+        "three_sigma_baseline": 0.36489887304809787,
+        "sigma_multiple": 4.675860768832133,
+        "upper_bound": 0,
+        "normalized_reference": 0.5327010264057276,
+        "remaining_headroom": 0.49891220898508665,
+        "remaining_headroom_sigma": 4.101784734089801,
+        "all_valid": true
+      }
+    },
+    {
+      "label": "专家私有预校准 v2",
+      "prefix": "expert_evidence/hidden_calibration",
+      "current_formal": false,
+      "paired_runs": [
+        {
+          "seed": 17,
+          "baseline": 1.212927949145425,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/hidden_calibration/baseline_runs/seed_17/result.json",
+          "baseline_log": "expert_evidence/hidden_calibration/baseline_runs/seed_17/run.log:1",
+          "baseline_elapsed_seconds": 52.0278000831604,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "baseline_case_count": 6,
+          "reference": 0.5258901879801482,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/hidden_calibration/reference_runs/seed_17/result.json",
+          "reference_log": "expert_evidence/hidden_calibration/reference_runs/seed_17/run.log:1",
+          "reference_elapsed_seconds": 48.83203983306885,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "reference_case_count": 6,
+          "paired_improvement": 0.6870377611652768
+        },
+        {
+          "seed": 29,
+          "baseline": 1.1910406840214933,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/hidden_calibration/baseline_runs/seed_29/result.json",
+          "baseline_log": "expert_evidence/hidden_calibration/baseline_runs/seed_29/run.log:1",
+          "baseline_elapsed_seconds": 53.51651692390442,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "baseline_case_count": 6,
+          "reference": 0.450082740436716,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/hidden_calibration/reference_runs/seed_29/result.json",
+          "reference_log": "expert_evidence/hidden_calibration/reference_runs/seed_29/run.log:1",
+          "reference_elapsed_seconds": 49.0184109210968,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "reference_case_count": 6,
+          "paired_improvement": 0.7409579435847773
+        },
+        {
+          "seed": 43,
+          "baseline": 1.0329563880410473,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/hidden_calibration/baseline_runs/seed_43/result.json",
+          "baseline_log": "expert_evidence/hidden_calibration/baseline_runs/seed_43/run.log:1",
+          "baseline_elapsed_seconds": 59.4618399143219,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "baseline_case_count": 6,
+          "reference": 0.5296006741709839,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/hidden_calibration/reference_runs/seed_43/result.json",
+          "reference_log": "expert_evidence/hidden_calibration/reference_runs/seed_43/run.log:1",
+          "reference_elapsed_seconds": 100.20566701889038,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "reference_case_count": 6,
+          "paired_improvement": 0.5033557138700634
+        },
+        {
+          "seed": 71,
+          "baseline": 0.9720198731539528,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/hidden_calibration/baseline_runs/seed_71/result.json",
+          "baseline_log": "expert_evidence/hidden_calibration/baseline_runs/seed_71/run.log:1",
+          "baseline_elapsed_seconds": 57.70198678970337,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "baseline_case_count": 6,
+          "reference": 0.43406224809176036,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/hidden_calibration/reference_runs/seed_71/result.json",
+          "reference_log": "expert_evidence/hidden_calibration/reference_runs/seed_71/run.log:1",
+          "reference_elapsed_seconds": 53.9350106716156,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "reference_case_count": 6,
+          "paired_improvement": 0.5379576250621925
+        },
+        {
+          "seed": 101,
+          "baseline": 0.9153536438216223,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/hidden_calibration/baseline_runs/seed_101/result.json",
+          "baseline_log": "expert_evidence/hidden_calibration/baseline_runs/seed_101/run.log:1",
+          "baseline_elapsed_seconds": 53.717602014541626,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "baseline_case_count": 6,
+          "reference": 0.3888142755423572,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/hidden_calibration/reference_runs/seed_101/result.json",
+          "reference_log": "expert_evidence/hidden_calibration/reference_runs/seed_101/run.log:1",
+          "reference_elapsed_seconds": 40.96887993812561,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+          "reference_case_count": 6,
+          "paired_improvement": 0.5265393682792652
+        }
+      ],
+      "computed": {
+        "baseline_mean": 1.0648597076367081,
+        "reference_mean": 0.4656900252443931,
+        "baseline_sample_std": 0.13213152796587782,
+        "reference_sample_std": 0.0609557527198294,
+        "positive_improvement": 0.5991696823923149,
+        "three_sigma_baseline": 0.3963945838976335,
+        "sigma_multiple": 4.5346458306835515,
+        "upper_bound": 0,
+        "normalized_reference": 0.5626747618445247,
+        "remaining_headroom": 0.4656900252443931,
+        "remaining_headroom_sigma": 3.524442897267144,
+        "all_valid": true
+      }
+    },
+    {
+      "label": "历史绝对时间 Dev v1",
+      "prefix": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence",
+      "current_formal": false,
+      "paired_runs": [
+        {
+          "seed": 17,
+          "baseline": 108.97090233333333,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_17/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_17/run.log:1",
+          "baseline_elapsed_seconds": 34.74479699134827,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "baseline_case_count": 6,
+          "reference": 50.31555533333333,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_17/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_17/run.log:1",
+          "reference_elapsed_seconds": 25.101200103759766,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "reference_case_count": 6,
+          "paired_improvement": 58.655347
+        },
+        {
+          "seed": 29,
+          "baseline": 121.7637145,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_29/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_29/run.log:1",
+          "baseline_elapsed_seconds": 38.914406061172485,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "baseline_case_count": 6,
+          "reference": 53.88231233333333,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_29/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_29/run.log:1",
+          "reference_elapsed_seconds": 29.14867377281189,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "reference_case_count": 6,
+          "paired_improvement": 67.88140216666667
+        },
+        {
+          "seed": 43,
+          "baseline": 106.0392705,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_43/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_43/run.log:1",
+          "baseline_elapsed_seconds": 36.953396797180176,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "baseline_case_count": 6,
+          "reference": 51.05426383333333,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_43/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_43/run.log:1",
+          "reference_elapsed_seconds": 33.83309626579285,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "reference_case_count": 6,
+          "paired_improvement": 54.98500666666667
+        },
+        {
+          "seed": 71,
+          "baseline": 105.81106166666667,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_71/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_71/run.log:1",
+          "baseline_elapsed_seconds": 29.47077512741089,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "baseline_case_count": 6,
+          "reference": 48.175444166666665,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_71/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_71/run.log:1",
+          "reference_elapsed_seconds": 23.000142097473145,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "reference_case_count": 6,
+          "paired_improvement": 57.63561750000001
+        },
+        {
+          "seed": 101,
+          "baseline": 113.95777033333333,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_101/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/baseline_runs/seed_101/run.log:1",
+          "baseline_elapsed_seconds": 29.762228965759277,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "baseline_case_count": 6,
+          "reference": 53.525603833333335,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_101/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/optimization_evidence/reference_runs/seed_101/run.log:1",
+          "reference_elapsed_seconds": 27.619141101837158,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "358cdd8988ddbd727b0e282ee34b5e727663fb3dce59c2ebbeb3ea6baca69593",
+          "reference_case_count": 6,
+          "paired_improvement": 60.432166499999994
+        }
+      ],
+      "computed": {
+        "baseline_mean": 111.30854386666667,
+        "reference_mean": 51.3906359,
+        "baseline_sample_std": 6.704123994493006,
+        "reference_sample_std": 2.3650022092454415,
+        "positive_improvement": 59.91790796666667,
+        "three_sigma_baseline": 20.11237198347902,
+        "sigma_multiple": 8.937470132695228,
+        "upper_bound": 0,
+        "normalized_reference": 0.5383046609471472,
+        "remaining_headroom": 51.3906359,
+        "remaining_headroom_sigma": 7.665525867691887,
+        "all_valid": true
+      }
+    },
+    {
+      "label": "历史绝对时间私有 v1",
+      "prefix": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration",
+      "current_formal": false,
+      "paired_runs": [
+        {
+          "seed": 17,
+          "baseline": 117.10179133333332,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_17/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_17/run.log:1",
+          "baseline_elapsed_seconds": 35.4296338558197,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "baseline_case_count": 6,
+          "reference": 45.97732633333333,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_17/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_17/run.log:1",
+          "reference_elapsed_seconds": 27.088214874267578,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "reference_case_count": 6,
+          "paired_improvement": 71.12446499999999
+        },
+        {
+          "seed": 29,
+          "baseline": 132.08843683333333,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_29/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_29/run.log:1",
+          "baseline_elapsed_seconds": 43.54337191581726,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "baseline_case_count": 6,
+          "reference": 41.17002033333333,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_29/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_29/run.log:1",
+          "reference_elapsed_seconds": 25.04336380958557,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "reference_case_count": 6,
+          "paired_improvement": 90.9184165
+        },
+        {
+          "seed": 43,
+          "baseline": 112.77409683333333,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_43/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_43/run.log:1",
+          "baseline_elapsed_seconds": 33.291332960128784,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "baseline_case_count": 6,
+          "reference": 49.92673616666667,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_43/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_43/run.log:1",
+          "reference_elapsed_seconds": 28.059517860412598,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "reference_case_count": 6,
+          "paired_improvement": 62.84736066666666
+        },
+        {
+          "seed": 71,
+          "baseline": 94.21107583333333,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_71/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_71/run.log:1",
+          "baseline_elapsed_seconds": 25.193482875823975,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "baseline_case_count": 6,
+          "reference": 40.842986,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_71/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_71/run.log:1",
+          "reference_elapsed_seconds": 19.32016396522522,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "reference_case_count": 6,
+          "paired_improvement": 53.36808983333332
+        },
+        {
+          "seed": 101,
+          "baseline": 107.28388133333333,
+          "baseline_valid": true,
+          "baseline_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_101/result.json",
+          "baseline_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/baseline_runs/seed_101/run.log:1",
+          "baseline_elapsed_seconds": 28.45102286338806,
+          "baseline_method_sha256": "dfe9194dc9754a70324890ecd603bf860e7c0266f4ba8bb7dca973263def36e5",
+          "baseline_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "baseline_case_count": 6,
+          "reference": 39.6376805,
+          "reference_valid": true,
+          "reference_source": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_101/result.json",
+          "reference_log": "expert_evidence/absolute_cpu_time_protocol_v1/hidden_calibration/reference_runs/seed_101/run.log:1",
+          "reference_elapsed_seconds": 18.934753894805908,
+          "reference_method_sha256": "a44453728d853b705b8cac46f17925b4c6029d44d99629204efd7d26529bad8e",
+          "reference_protocol_sha256": "f0dbd3175935d0fc137a10104655d4eb31a717cd4f2c52c9fb254884039bb675",
+          "reference_case_count": 6,
+          "paired_improvement": 67.64620083333332
+        }
+      ],
+      "computed": {
+        "baseline_mean": 112.69185643333333,
+        "reference_mean": 43.51094986666667,
+        "baseline_sample_std": 13.842570812414605,
+        "reference_sample_std": 4.3256653991965335,
+        "positive_improvement": 69.18090656666666,
+        "three_sigma_baseline": 41.527712437243814,
+        "sigma_multiple": 4.9976920836570535,
+        "upper_bound": 0,
+        "normalized_reference": 0.6138944619089931,
+        "remaining_headroom": 43.51094986666667,
+        "remaining_headroom_sigma": 3.1432708892227015,
+        "all_valid": true
+      }
+    }
+  ],
+  "runtime_review": {
+    "exception_reason": "",
+    "exception_eligibility": {
+      "non_training": true,
+      "short_iterations": null,
+      "basis": "包内最终声明不用7h例外；不能从非训练自动推断例外合格。",
+      "evidence": [
+        "expert_evidence/交付说明.md:8"
+      ]
+    },
+    "trajectories": [
+      {
+        "name": "Codex + GPT-6.1 Sol",
+        "source_path": "expert_evidence/trajectory_codex.json",
+        "effective_seconds": 36368.01353013962,
+        "reported_effective_seconds": 36368.01353013962,
+        "corrected_documented_lower_bound_seconds": 36368.01353013962,
+        "reported_relaxed_estimate_seconds": 52743.19573854213,
+        "reported_effective_rounds": 59,
+        "packaged_rounds": 64,
+        "session_count": 71,
+        "observed_monotonic_seconds": 49795.917228554456,
+        "withheld_model_phase_seconds": 13427.90369841483,
+        "overlap_withheld_seconds": 0.0,
+        "specific_additional_exclusion_seconds": 0,
+        "time_accounting": "逐原始runtime核对起止/单调时长，复算session下界之和与区间并集；无重叠。原下界算术一致，但Seed已知纯连接重试残余须剔除，其他估算/未知时长不认证。",
+        "effective_method_cycles": 59,
+        "next_direction": "进一步检验分块投影和范数约简布局；已有轨迹保留多种未胜出的合法方向。",
+        "best_method_revalidated": true,
+        "best_method_evidence": [
+          "expert_evidence/best_method/verification.json",
+          "expert_evidence/clean_selection_1791505706/selection.json"
+        ],
+        "evidence": [
+          "expert_evidence/auditable_time_lower_bound.json#tracks.gpt",
+          "expert_evidence/active_time_recalculation.json#tracks.gpt",
+          "expert_evidence/trajectory_codex.json"
+        ]
+      },
+      {
+        "name": "Codex + Doubao Seed 2.1 Turbo",
+        "source_path": "expert_evidence/trajectory_seed.json",
+        "effective_seconds": null,
+        "reported_effective_seconds": 36026.1351631398,
+        "corrected_documented_lower_bound_seconds": 35996.29698544393,
+        "reported_relaxed_estimate_seconds": 65021.53592123836,
+        "reported_effective_rounds": 8,
+        "packaged_rounds": 35,
+        "session_count": 42,
+        "observed_monotonic_seconds": 62858.17077960634,
+        "withheld_model_phase_seconds": 26826.771622117143,
+        "overlap_withheld_seconds": 0.0,
+        "specific_additional_exclusion_seconds": 29.8381776958704,
+        "time_accounting": "逐原始runtime核对起止/单调时长，复算session下界之和与区间并集；无重叠。原下界算术一致，但Seed已知纯连接重试残余须剔除，其他估算/未知时长不认证。",
+        "effective_method_cycles": 8,
+        "next_direction": "进一步检验分块投影和范数约简布局；已有轨迹保留多种未胜出的合法方向。",
+        "best_method_revalidated": true,
+        "best_method_evidence": [
+          "expert_evidence/best_method/verification.json",
+          "expert_evidence/clean_selection_1791505706/selection.json"
+        ],
+        "evidence": [
+          "expert_evidence/auditable_time_lower_bound.json#tracks.seed",
+          "expert_evidence/active_time_recalculation.json#tracks.seed",
+          "expert_evidence/trajectory_seed.json"
+        ]
+      }
+    ],
+    "diagnosis": {
+      "key": "effective_time",
+      "status": "manual",
+      "affected": [
+        "QA16"
+      ],
+      "facts": "Seed声称可审计下界36026.1351631398秒，但round20–23分别计入9.1474644737、6.5681648317、6.6756276535、7.4469207369秒。对应原始事件只有配置警告、连接错误与turn.failed，runtime记录成功工具0、model_transport_failed=true、model_completed=false，所有24次请求为URLError。扣除这29.8381776959秒，现有该下界变为35996.2969854439秒（9.9989714h）。",
+      "evidence": [
+        "expert_evidence/auditable_time_lower_bound.json:1875",
+        "expert_evidence/auditable_time_lower_bound.json:1894",
+        "expert_evidence/auditable_time_lower_bound.json:1913",
+        "expert_evidence/auditable_time_lower_bound.json:1932",
+        "expert_evidence/raw_evidence/tools/recalculate_active_time.py:60",
+        "expert_evidence/raw_evidence/tools/recalculate_active_time.py:62",
+        "expert_evidence/raw_evidence/campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json#sessions[round=20..23]",
+        "expert_evidence/raw_evidence/campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/round_00020.events.jsonl:3",
+        "expert_evidence/raw_evidence/campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/coding-plan.audit.jsonl#started_unix[1791422341..1791422372]"
+      ],
+      "why": "API失联和故障重试不能计有效研究时间；包内历史用户的宽松计时叙述不能替代本次当前V4。修正的是已认证下界，不能据此断言真实全部研究时间必然不足10h，其他未认证区间仍可能包含有效工作。当前10h证明尚不成立。",
+      "remediation": "按当前V4从已有原始事件重新核算有效时间，扣除纯连接故障/重试区间，不能用短于5秒为由继续计入；保留正常失败方法工作、模型思考及真实评分，重叠只扣一次。优先从现有记录中核实其他实际有效区间。",
+      "acceptance_evidence": "修订的逐段起止、故障扣除、并集及合计表，引用原始 runtime/events/request audit；每条有效时长≥36000秒，或满足当前7h例外的完整依据。现有证据不足时如实标未完成，不冒称实跑不足或伪造新时间。"
+    },
+    "stability": {
+      "recorded_hours": 12.002824878439998,
+      "scope": "现有Starter镜像工作负载记录，与双轨有效时间及最终方法稳定性分开；本次未运行。",
+      "evidence": [
+        "expert_evidence/stability_v023/result.json"
+      ]
+    }
+  },
+  "format_review": {
+    "status": "deviations",
+    "summary": "三个顶层目录齐全，正式B/R必需材料完整，非训练不造模型；正式轨迹有八字段/摘要语义缺陷。额外材料按职责提出归位建议。",
+    "additional_suggestions": [
+      {
+        "path": "expert_evidence/best_method/",
+        "classification": "misplaced",
+        "recommendation": "目录含rerun_dev/、rerun_hidden/、verification.json与verifier-build.log。将复验日志和私有评分材料移到expert_evidence独立validation/，best_method仅留唯一method.py/solve.sh及必要配置；不因多交单独扣错。"
+      },
+      {
+        "path": "expert_evidence/absolute_cpu_time_protocol_v1/",
+        "classification": "extra_allowed",
+        "recommendation": "保留为明确标注的历史协议证据，继续与正式v2相分离。"
+      },
+      {
+        "path": "expert_evidence/专家作业说明文档.md:41",
+        "classification": "merge_candidate",
+        "recommendation": "该段仍称GPT安全收尾/唯一方法复验待完成、Seed29轮，与最终run_summary及64/35轮轨迹不同；更新最终状态并保留历史说明出处。"
+      },
+      {
+        "path": "expert_evidence/run_summary.json#guard_repair_evidence",
+        "classification": "misplaced",
+        "recommendation": "指向包外相对位置且相应材料未在该位置。若作为当前证据使用，应改为包内实际路径或明确历史缺失；不用其证明当前guard验收。"
+      },
+      {
+        "path": "expert_evidence/trajectory_codex.json#rounds[*].packaged_source",
+        "classification": "misplaced",
+        "recommendation": "出处有用，移至顶层轮次映射以满足正式每轮恰八字段；不丢原始证据。"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "QA01",
+      "status": "pass",
+      "summary": "题面八部分齐全，无论文标题、arXiv、解法仓库或Reference直接提示。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:1",
+        "workspace/harbor_task/instruction.md:3",
+        "workspace/harbor_task/instruction.md:28"
+      ]
+    },
+    {
+      "id": "QA02",
+      "status": "pass",
+      "summary": "score=(B-x)/(B-0)，B>0，连续单调不裁剪；B为正式5seed均值，数学floor U=0。",
+      "evidence": [
+        "workspace/harbor_task/tests/grader.py:239",
+        "workspace/harbor_task/tests/grader.py:243",
+        "workspace/harbor_task/environment/public_assets/dev/protocol.json:19"
+      ]
+    },
+    {
+      "id": "QA03",
+      "status": "pass",
+      "summary": "Reference源码/入口及五seed结果原始日志完整，非训练无需checkpoint；归一化.532701在要求区间。",
+      "evidence": [
+        "workspace/reference/method.py",
+        "workspace/reference/solve.sh",
+        "optimization_evidence/comparison_summary.json"
+      ]
+    },
+    {
+      "id": "QA04",
+      "status": "pass",
+      "summary": "计时随机性明确；基于全部5对原始值复算n−1样本标准差，改善4.67586077σ≥3σ；3–5σ为可接受并建议复核。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:12",
+        "optimization_evidence/comparison_summary.json:43"
+      ]
+    },
+    {
+      "id": "QA05",
+      "status": "fail",
+      "summary": "数值/源码/超时/资源限制有实现，但题面与TOML仍以禁网/白名单/storage_mb声明当前内场不接收的环境约束。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:20",
+        "workspace/harbor_task/task.toml:18",
+        "workspace/harbor_task/task.toml:24",
+        "workspace/harbor_task/task.toml:37",
+        "workspace/harbor_task/tests/grader.py:119"
+      ],
+      "remediation": "删除 task.toml 及 environment/task.toml 中 storage_mb、network_mode、allowed_hosts；同步两份 instruction.md 的禁网/白名单承诺，改为当前平台默认联网/工具策略。保留候选纯函数与禁止外部数据的可执行计算边界。",
+      "acceptance_evidence": "重交同步的题面与配置、真实格式/资源前检结果或平台可接收配置说明；目标环境核对单容器、1 CPU/2 GiB 与 separate。不得将历史禁网实测改标为当前部署；本修订本身不要求全 seed 重跑。"
+    },
+    {
+      "id": "QA06",
+      "status": "pass",
+      "summary": "标准solve.sh提供Dev单命令；最终test.sh调用可信grader并原子写有限reward；失败类别有独立诊断。",
+      "evidence": [
+        "workspace/harbor_task/environment/starter/solve.sh:3",
+        "workspace/harbor_task/tests/test.sh:4",
+        "workspace/harbor_task/tests/test.sh:10",
+        "workspace/harbor_task/tests/grader.py:254"
+      ]
+    },
+    {
+      "id": "QA07",
+      "status": "pass",
+      "summary": "仅检查题面：没有Hidden具体形状/标签或可恢复答案；描述独立私有输入合法。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:7",
+        "workspace/harbor_task/instruction.md:20"
+      ]
+    },
+    {
+      "id": "QA08",
+      "status": "pass",
+      "summary": "仅检查题面：未披露Reference代码、Gram计算方案、具体Reference配置或分数。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:10",
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/instruction.md:28"
+      ]
+    },
+    {
+      "id": "QA09",
+      "status": "pass",
+      "summary": "可信入口清理预写reward/result；result与reward均经临时文件replace写入。",
+      "evidence": [
+        "workspace/harbor_task/tests/test.sh:3",
+        "workspace/harbor_task/tests/test.sh:12",
+        "workspace/harbor_task/tests/grader.py:180",
+        "workspace/harbor_task/tests/grader.py:195"
+      ]
+    },
+    {
+      "id": "QA10",
+      "status": "pass",
+      "summary": "公开冻结目录root所有/去写权限，冻结solve.sh逐字节检查；Verifier候选复制只读并降权kernel，protocol仅root可读。",
+      "evidence": [
+        "workspace/harbor_task/environment/Dockerfile:13",
+        "workspace/harbor_task/tests/Dockerfile:6",
+        "workspace/harbor_task/tests/grader.py:124",
+        "workspace/harbor_task/tests/grader.py:198",
+        "workspace/harbor_task/tests/grader.py:211"
+      ]
+    },
+    {
+      "id": "QA11",
+      "status": "pass",
+      "summary": "目标输入输出、环境、公式、开放范围、禁令、提交、迭代及完成标准均有实质内容；部署策略冲突已由对应项列出。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:3",
+        "workspace/harbor_task/instruction.md:6",
+        "workspace/harbor_task/instruction.md:9",
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/instruction.md:19",
+        "workspace/harbor_task/instruction.md:22",
+        "workspace/harbor_task/instruction.md:25",
+        "workspace/harbor_task/instruction.md:28"
+      ]
+    },
+    {
+      "id": "QA12",
+      "status": "pass",
+      "summary": "清点745个成员未发现.git目录、remotes/tags/reflog。",
+      "evidence": [
+        "@inventory"
+      ]
+    },
+    {
+      "id": "QA13",
+      "status": "pass",
+      "summary": "正式Baseline/Reference五seed集一致，10份result及原始stdout完整，逐seed均改善、质量门通过；历史v1不混入正式统计。",
+      "evidence": [
+        "optimization_evidence/comparison_summary.json:16",
+        "optimization_evidence/训练证据说明.md:11"
+      ]
+    },
+    {
+      "id": "QA14",
+      "status": "pass",
+      "summary": "函数接口可进行融合投影、Gram/Cholesky、布局/分块/等价alpha路径等方法更新，题面未直接提示Gram解；Reference分数未饱和。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/reference/method.py:18",
+        "expert_evidence/best_method/method.py:86"
+      ]
+    },
+    {
+      "id": "QA15",
+      "status": "pass",
+      "summary": "CPU题0 GPU，正式单seed端到端45.62–60.23秒；完整五seedDev/私有复测均远低2h，已有1CPU/2GiB日志支持。历史设备为linux/aarch64，未冒充H20/L20。",
+      "evidence": [
+        "optimization_evidence/baseline_runs/seed_101/result.json#execution",
+        "expert_evidence/best_method/rerun_dev/result.json#start_unix",
+        "expert_evidence/专家作业说明文档.md:27"
+      ]
+    },
+    {
+      "id": "QA16",
+      "status": "manual",
+      "summary": "算术复核原下界GPT36368.014s、Seed36026.135s；但Seed纯URLError轮20–23仍计29.838s，修正后该下界35996.297s，当前≥10h证据待重算。",
+      "evidence": [
+        "expert_evidence/auditable_time_lower_bound.json:1875",
+        "expert_evidence/raw_evidence/tools/recalculate_active_time.py:60",
+        "expert_evidence/raw_evidence/campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json#sessions[round=20..23]"
+      ],
+      "remediation": "按当前V4从已有原始事件重新核算有效时间，扣除纯连接故障/重试区间，不能用短于5秒为由继续计入；保留正常失败方法工作、模型思考及真实评分，重叠只扣一次。优先从现有记录中核实其他实际有效区间。",
+      "acceptance_evidence": "修订的逐段起止、故障扣除、并集及合计表，引用原始 runtime/events/request audit；每条有效时长≥36000秒，或满足当前7h例外的完整依据。现有证据不足时如实标未完成，不冒称实跑不足或伪造新时间。"
+    },
+    {
+      "id": "QA17",
+      "status": "fail",
+      "summary": "目录、路径、separate、移交和reward静态成立；H02当前内场配置冲突使兼容性不通过。NOP精确关联为非阻断待补，不是本项失败原因。",
+      "evidence": [
+        "workspace/harbor_task/task.toml:18",
+        "workspace/harbor_task/task.toml:24",
+        "workspace/harbor_task/task.toml:30",
+        "workspace/harbor_task/tests/test.sh:4"
+      ],
+      "remediation": "删除 task.toml 及 environment/task.toml 中 storage_mb、network_mode、allowed_hosts；同步两份 instruction.md 的禁网/白名单承诺，改为当前平台默认联网/工具策略。保留候选纯函数与禁止外部数据的可执行计算边界。",
+      "acceptance_evidence": "重交同步的题面与配置、真实格式/资源前检结果或平台可接收配置说明；目标环境核对单容器、1 CPU/2 GiB 与 separate。不得将历史禁网实测改标为当前部署；本修订本身不要求全 seed 重跑。"
+    },
+    {
+      "id": "QA18",
+      "status": "fail",
+      "summary": "两轨完整留存且score可回溯原始记录，但每轮多字段、Seed摘要含DSML/代码、GPT round14摘要/可信分数/保留标记矛盾，未满足当前八字段及语义规范。",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json:151",
+        "expert_evidence/trajectory_codex.json:155",
+        "expert_evidence/trajectory_seed.json:8"
+      ],
+      "remediation": "保留原始轨迹不改写；重新生成正式两条 rounds，每轮恰好八字段，把 packaged_source/original_status 移到顶层轮次映射；将工具调用片段整理为1–3句实际生效方法摘要，明确内部测量与可信外部测量，按实际保留决策同步摘要/retained_best。",
+      "acceptance_evidence": "两份可解析八字段轨迹、顶层原始出处映射；逐轮与对应 grader.log 的 raw_value/status/源码版本及恢复或保留记录一致，特别核对 GPT round14 和 Seed round1、2、4、5。无需补造实验。"
+    },
+    {
+      "id": "QA19",
+      "status": "pass",
+      "summary": "题面明确计时随机、正式seed与3σ有效改善阈值；不额外要求重复次数文字，但已声明5seed全部提交。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:12"
+      ]
+    },
+    {
+      "id": "QA20",
+      "status": "pass",
+      "summary": "题面明确可改范围、本地工具与研究网络策略；其当前内场禁网/白名单冲突由部署检查判退，不把本项存在性重复判缺失。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:16",
+        "workspace/harbor_task/instruction.md:20"
+      ]
+    },
+    {
+      "id": "QA21",
+      "status": "manual",
+      "summary": "run_summary缺task_binding/hash_profile/task_content_sha256；真实发布指纹脚本不可用，未猜算法，按当前口径非阻断待补。",
+      "evidence": [
+        "expert_evidence/run_summary.json#task_binding (missing)"
+      ],
+      "remediation": "取得真实发布task_fingerprint.py后补四项全递归指纹与hash_profile；保留历史方法/协议哈希及版本来源，不改写旧结果。",
+      "acceptance_evidence": "真实脚本版本与SHA256、计算输出及新增task_binding，输出放任务四项之外。",
+      "nonblocking": true
+    }
+  ],
+  "harbor": {
+    "task_root": "workspace/harbor_task",
+    "target_version": "0.23.0 (包内记录)",
+    "provider": "docker (包内Trial明确)",
+    "version_basis": "包内harbor-schema-validation与原生Trial记录；该schema记录为旧0.1.0，不当作当前0.2.3独立加载。另读当前官方separate文档静态规范，未做本次原生schema加载。",
+    "checks": [
+      {
+        "id": "H01",
+        "status": "pass",
+        "summary": "完整任务根、公开Dev与双Dockerfile均存在；Hidden由私有非空protocol定义确定性生成，grader在Verifier读取。",
+        "evidence": [
+          "workspace/harbor_task/task.toml",
+          "workspace/harbor_task/tests/Dockerfile:5",
+          "workspace/harbor_task/tests/protocol.json:22",
+          "workspace/harbor_task/tests/grader.py:95"
+        ]
+      },
+      {
+        "id": "H02",
+        "status": "fail",
+        "summary": "TOML文本结构及separate明确，但storage_mb、禁网、白名单与当前内场合同冲突；包内旧native schema记录不是当前部署验收。",
+        "evidence": [
+          "workspace/harbor_task/task.toml:18",
+          "workspace/harbor_task/task.toml:24",
+          "workspace/harbor_task/task.toml:30",
+          "workspace/harbor_task/task.toml:37"
+        ],
+        "remediation": "删除 task.toml 及 environment/task.toml 中 storage_mb、network_mode、allowed_hosts；同步两份 instruction.md 的禁网/白名单承诺，改为当前平台默认联网/工具策略。保留候选纯函数与禁止外部数据的可执行计算边界。",
+        "acceptance_evidence": "重交同步的题面与配置、真实格式/资源前检结果或平台可接收配置说明；目标环境核对单容器、1 CPU/2 GiB 与 separate。不得将历史禁网实测改标为当前部署；本修订本身不要求全 seed 重跑。"
+      },
+      {
+        "id": "H03",
+        "status": "pass",
+        "summary": "Agent context=environment，仅COPY公开文件；Verifier context=tests，依赖自备，入口/tests/test.sh；artifacts移交/workspace/solution并保持路径。",
+        "evidence": [
+          "workspace/harbor_task/environment/Dockerfile:6",
+          "workspace/harbor_task/tests/Dockerfile:2",
+          "workspace/harbor_task/tests/Dockerfile:5",
+          "workspace/harbor_task/task.toml:2",
+          "workspace/harbor_task/tests/test.sh:4"
+        ]
+      },
+      {
+        "id": "H04",
+        "status": "pass",
+        "summary": "test.sh清理预写reward，调用可信评分，有限标量经临时文件原子replace写reward.txt；格式/超时/基础设施错误不伪装零分。",
+        "evidence": [
+          "workspace/harbor_task/tests/test.sh:3",
+          "workspace/harbor_task/tests/test.sh:10",
+          "workspace/harbor_task/tests/grader.py:254"
+        ]
+      },
+      {
+        "id": "H05",
+        "status": "pass",
+        "summary": "已有Trial为docker provider，nop/研究Agent配置可识别，verifier.disable=false；结果记录separate。未执行当前原生schema加载。",
+        "evidence": [
+          "expert_evidence/harbor_nop_v023/harbor_task__aZLUUS4/result.json#config",
+          "expert_evidence/raw_evidence/campaigns/asd-research-1791486012/harbor_task__VqWxhgD/config.json"
+        ]
+      },
+      {
+        "id": "H06",
+        "status": "manual",
+        "summary": "已有同Trial config/result/reward/日志，nop、separate、无异常且reward一致；当前精确任务版本关联仅有导出说明，未用真实新版指纹独立确认，非阻断待补。",
+        "evidence": [
+          "expert_evidence/harbor_nop_v023/harbor_task__aZLUUS4/config.json",
+          "expert_evidence/harbor_nop_v023/harbor_task__aZLUUS4/result.json:89",
+          "expert_evidence/harbor_nop_v023/harbor_task__aZLUUS4/verifier/reward.txt:1",
+          "expert_evidence/harbor_nop_v023/portable_export.json:18"
+        ],
+        "remediation": "保留真实NOP原件，后补当前版本与已有Trial的可核对映射；若平台已有同版本完整记录可复用。",
+        "acceptance_evidence": "同一Trial配置、结果、reward、运行日志及当前版本对应依据；不因本缺口要求自动重跑。",
+        "nonblocking": true
+      }
+    ],
+    "path_contract": {
+      "profile": "harbor-environment-v1",
+      "profile_basis": "题包TOML metadata和实际双context COPY链路",
+      "dockerfile": "workspace/harbor_task/environment/Dockerfile",
+      "build_context": "workspace/harbor_task/environment",
+      "runtime_task_root": "/workspace",
+      "test_entry": "/tests/test.sh",
+      "verifier": {
+        "dockerfile": "workspace/harbor_task/tests/Dockerfile",
+        "build_context": "workspace/harbor_task/tests",
+        "runtime_task_root": "/tests"
+      },
+      "status": "pass",
+      "findings": [
+        "全部本地COPY源位于各自context且存在；Agent未COPY tests/、workspace/reference或专家证据。",
+        "未发现两context直属Compose四种文件；单容器直接CPU执行。",
+        "候选源regular/size/AST检查，冻结solve.sh比对，kernel降权；静态不认证完整物理隔离。"
+      ]
+    },
+    "hidden_review": {
+      "mode": "generated",
+      "summary": "独立Verifier从私有protocol.json读取非空case与seed，generate构造张量，oracle只在可信父进程计算；kernel候选进程只收npz输入、禁止FS/反射/动态执行，protocol600；最终评分不回填迭代轨迹。",
+      "evidence": [
+        "workspace/harbor_task/tests/Dockerfile:5",
+        "workspace/harbor_task/tests/Dockerfile:6",
+        "workspace/harbor_task/tests/grader.py:95",
+        "workspace/harbor_task/tests/grader.py:124",
+        "workspace/harbor_task/tests/grader.py:166",
+        "workspace/harbor_task/tests/worker.py:15"
+      ],
+      "asset_paths": [
+        "workspace/harbor_task/tests/protocol.json"
+      ]
+    },
+    "submission_paths": [
+      "/workspace/solution"
+    ],
+    "runtime_status": "existing_records_only_current_binding_pending",
+    "nop_record": {
+      "trial": "harbor_task__aZLUUS4",
+      "agent": "nop",
+      "verifier_environment_mode": "separate",
+      "reward": -0.04457318804105793,
+      "exception_info": null,
+      "finished": true,
+      "current_exact_binding": "not_independently_verified",
+      "evidence": [
+        "expert_evidence/harbor_nop_v023/harbor_task__aZLUUS4/result.json",
+        "expert_evidence/harbor_nop_v023/harbor_task__aZLUUS4/verifier/reward.txt",
+        "expert_evidence/harbor_nop_v023/harbor_task__aZLUUS4/verifier/test-stdout.txt"
+      ]
+    }
+  },
+  "issues": [
+    {
+      "key": "deployment_policy",
+      "status": "fail",
+      "affected": [
+        "QA05",
+        "H02",
+        "QA17"
+      ],
+      "facts": "题面第20行声明禁网和模型主机白名单；TOML agent.network_mode/allowed_hosts、environment.storage_mb/network_mode、verifier.environment.storage_mb/network_mode 仍声明当前内场不接收的限制。公开镜像内重复题面/配置相同。",
+      "evidence": [
+        "workspace/harbor_task/instruction.md:20",
+        "workspace/harbor_task/task.toml:18",
+        "workspace/harbor_task/task.toml:19",
+        "workspace/harbor_task/task.toml:24",
+        "workspace/harbor_task/task.toml:25",
+        "workspace/harbor_task/task.toml:37",
+        "workspace/harbor_task/task.toml:38",
+        "workspace/harbor_task/environment/instruction.md:20",
+        "workspace/harbor_task/environment/task.toml:18"
+      ],
+      "why": "当前V4明确内场不声明storage_mb、禁网或网络白名单。这是确定的配置/部署合同冲突，属于核心配置问题，不能归入换卡或NOP放宽。",
+      "remediation": "删除 task.toml 及 environment/task.toml 中 storage_mb、network_mode、allowed_hosts；同步两份 instruction.md 的禁网/白名单承诺，改为当前平台默认联网/工具策略。保留候选纯函数与禁止外部数据的可执行计算边界。",
+      "acceptance_evidence": "重交同步的题面与配置、真实格式/资源前检结果或平台可接收配置说明；目标环境核对单容器、1 CPU/2 GiB 与 separate。不得将历史禁网实测改标为当前部署；本修订本身不要求全 seed 重跑。"
+    },
+    {
+      "key": "trajectory_semantics",
+      "status": "fail",
+      "affected": [
+        "QA18"
+      ],
+      "facts": "GPT 64轮、Seed 35轮全部有第9字段packaged_source；Seed失败轮另有original_status。Seed round1/4/5等摘要直接含Python/DSML片段。GPT round14摘要写0.500445且已回退，实际score=0.3816908283且retained_best=true，未区分内外两次评测；这是摘要/决策语义不一致，并非正式B/R伪造证据。",
+      "evidence": [
+        "expert_evidence/trajectory_codex.json:14",
+        "expert_evidence/trajectory_codex.json:151",
+        "expert_evidence/trajectory_codex.json:153",
+        "expert_evidence/trajectory_codex.json:155",
+        "expert_evidence/trajectory_seed.json:8",
+        "expert_evidence/trajectory_seed.json#rounds[13].original_status"
+      ],
+      "why": "V4要求每轮恰八字段、摘要1–3句忠实于生效改动及结果，并可追溯评分和最佳标记。原始来源分数一致不消除摘要和决策矛盾。",
+      "remediation": "保留原始轨迹不改写；重新生成正式两条 rounds，每轮恰好八字段，把 packaged_source/original_status 移到顶层轮次映射；将工具调用片段整理为1–3句实际生效方法摘要，明确内部测量与可信外部测量，按实际保留决策同步摘要/retained_best。",
+      "acceptance_evidence": "两份可解析八字段轨迹、顶层原始出处映射；逐轮与对应 grader.log 的 raw_value/status/源码版本及恢复或保留记录一致，特别核对 GPT round14 和 Seed round1、2、4、5。无需补造实验。"
+    },
+    {
+      "key": "effective_time",
+      "status": "manual",
+      "affected": [
+        "QA16"
+      ],
+      "facts": "Seed声称可审计下界36026.1351631398秒，但round20–23分别计入9.1474644737、6.5681648317、6.6756276535、7.4469207369秒。对应原始事件只有配置警告、连接错误与turn.failed，runtime记录成功工具0、model_transport_failed=true、model_completed=false，所有24次请求为URLError。扣除这29.8381776959秒，现有该下界变为35996.2969854439秒（9.9989714h）。",
+      "evidence": [
+        "expert_evidence/auditable_time_lower_bound.json:1875",
+        "expert_evidence/auditable_time_lower_bound.json:1894",
+        "expert_evidence/auditable_time_lower_bound.json:1913",
+        "expert_evidence/auditable_time_lower_bound.json:1932",
+        "expert_evidence/raw_evidence/tools/recalculate_active_time.py:60",
+        "expert_evidence/raw_evidence/tools/recalculate_active_time.py:62",
+        "expert_evidence/raw_evidence/campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json#sessions[round=20..23]",
+        "expert_evidence/raw_evidence/campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/round_00020.events.jsonl:3",
+        "expert_evidence/raw_evidence/campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/coding-plan.audit.jsonl#started_unix[1791422341..1791422372]"
+      ],
+      "why": "API失联和故障重试不能计有效研究时间；包内历史用户的宽松计时叙述不能替代本次当前V4。修正的是已认证下界，不能据此断言真实全部研究时间必然不足10h，其他未认证区间仍可能包含有效工作。当前10h证明尚不成立。",
+      "remediation": "按当前V4从已有原始事件重新核算有效时间，扣除纯连接故障/重试区间，不能用短于5秒为由继续计入；保留正常失败方法工作、模型思考及真实评分，重叠只扣一次。优先从现有记录中核实其他实际有效区间。",
+      "acceptance_evidence": "修订的逐段起止、故障扣除、并集及合计表，引用原始 runtime/events/request audit；每条有效时长≥36000秒，或满足当前7h例外的完整依据。现有证据不足时如实标未完成，不冒称实跑不足或伪造新时间。"
+    }
+  ],
+  "nonblocking_pending": [
+    {
+      "category": "QA21指纹/哈希",
+      "affected": [
+        "QA21"
+      ],
+      "fact": "run_summary.task_binding缺失；保留方法/协议/ZIP真实哈希，未推算官方四项指纹。",
+      "acceptance": "真实发布脚本及四项指纹输出，非当前通过前提。"
+    },
+    {
+      "category": "G02/G03换卡影响",
+      "affected": [
+        "G02",
+        "G03"
+      ],
+      "fact": "CPU题，现有aarch64真实记录；没有H20/L20迁移补证要求。",
+      "acceptance": "不适用，不要求补跑。"
+    },
+    {
+      "category": "QA15换卡耗时",
+      "affected": [
+        "QA15"
+      ],
+      "fact": "CPU0 GPU；已有端到端耗时，未提出换卡后重计时。",
+      "acceptance": "不适用。"
+    },
+    {
+      "category": "QA17/H06 NOP",
+      "affected": [
+        "H06"
+      ],
+      "fact": "已有完整NOP同Trial且reward一致，精确当前版本关联待核。",
+      "acceptance": "后补关联即可，不自动运行。"
+    },
+    {
+      "category": "QA03/QA13换卡重算",
+      "affected": [
+        "QA03",
+        "QA13"
+      ],
+      "fact": "未因换卡要求重算；正式历史CPU分数保真使用。",
+      "acceptance": "不适用。"
+    }
+  ],
+  "tool_gaps": [
+    {
+      "name": "official-0.3.10-and-independent-format-gpu-fingerprint",
+      "status": "pending",
+      "summary": "当前实际可访问技能明确未安装真实官方0.3.10及独立格式/GPU/指纹脚本。本报告为local-v4-content-review，不冒充官方输出；未调用旧0.3.2脚本生成PASS。"
+    }
+  ],
+  "execution_boundary": {
+    "inspected": "ZIP源码、配置、文本、JSON、原始日志及成员元数据；可信自编只读脚本仅做解析/统计。",
+    "not_run": [
+      "提交代码或模块导入",
+      "Docker/Verifier/安装脚本",
+      "训练/模型/外部LLM调用",
+      "权重反序列化",
+      "当前目标平台实跑或12h压力测试"
+    ],
+    "privacy": "workspace可见文本未发现作者home/邮箱/私网IP命中；未声称完成全ZIP二进制发布隐私门禁，该项由主控逐件扫描。"
+  },
+  "risk_notes": [
+    "随机计时改善处3–5σ区间，支持当前最低门槛；不能称≥5σ强证据或硬件无关不变成绩。",
+    "Seed有效时间认证余量很小，已查出纯连接故障被计入；需重核现有有效区间，不能把历史宽松估算当当前证明。",
+    "本次静态审查与已有本地Harbor记录不等于当前平台部署、最终Hidden或独立动态复现。"
+  ],
+  "observed_hash_differences": [
+    {
+      "artifact": "Dev protocol",
+      "formal_result_field": "optimization_evidence/baseline_runs/seed_17/result.json#protocol_sha256",
+      "observed": "d1a9010296bbbcc4bef8723ba1a3eadd6e6c443c33fd9bb304b2d83aebab55d5",
+      "current_member": "workspace/harbor_task/environment/public_assets/dev/protocol.json",
+      "current_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "status": "nonblocking_pending",
+      "interpretation": "正式raw-only校准日志与当前含B的协议快照不同；同id及测量字段可追溯，不能仅据hash差异断言协议篡改/造假。后补真实版本映射，不重写历史hash。"
+    },
+    {
+      "artifact": "Hidden protocol",
+      "formal_result_field": "expert_evidence/hidden_calibration/baseline_runs/seed_17/result.json#protocol_sha256",
+      "observed": "06d343a312dde5454ea5f680c0b2dccef24dbe50ef50a92fe67025f054240c6c",
+      "current_member": "workspace/harbor_task/tests/protocol.json",
+      "current_sha256": "179ffb8c60d0e85b0018016eed07c9cdfd7483d33e9d08193ce2d2232cc15813",
+      "status": "nonblocking_pending",
+      "interpretation": "保留正式校准记录与当前快照差异，非阻断待核；不猜官方四项指纹。"
+    }
+  ],
+  "counts": {
+    "pass": 16,
+    "fail": 3,
+    "manual": 2
+  },
+  "gate_counts": {
+    "pass": 3
+  },
+  "harbor_counts": {
+    "pass": 4,
+    "fail": 1,
+    "manual": 1
+  }
+}

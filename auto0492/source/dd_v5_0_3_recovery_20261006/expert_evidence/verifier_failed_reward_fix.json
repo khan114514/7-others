@@ -1,0 +1,31 @@
+{
+  "scope": "Author local shell/transport regression; not Harbor NOP or formal QA",
+  "observed_at": "2026-10-04T14:52:45.837969+00:00",
+  "task_candidate_version": "5.0.1-candidate",
+  "original_bug_reproduced": {
+    "client_exit_code": 2,
+    "old_script_wrote_reward_zero": true,
+    "old_script_sha256": "7903a4b2360b9a5d21a259679fd72a922e559bb680f0a761ab7733984292f017"
+  },
+  "corrected_behavior": {
+    "failed_execution_leaves_no_reward": true,
+    "nonzero_exit_preserved": true,
+    "partial_result_removed": true,
+    "fresh_invocation_preserved": true,
+    "successful_baseline_zero_retained": true
+  },
+  "verification": {
+    "tests": "author_tools/test_verifier_failure.py + test_runtime_boundary.py",
+    "test_count": 8,
+    "exit_code": 0,
+    "evidence_basis": "Executed unittest command returned 0 and Ran 8 tests / OK; shell absolute paths relocated to temporary paths only",
+    "native_harbor_nop": "NOT_RUN"
+  },
+  "files": {
+    "workspace/harbor_task/tests/test.sh": "550a3e98738e48eb090363adfea826652975d5a0c0774cd7c1f7673c1fca4627",
+    "workspace/harbor_task/task.toml": "4717abffff34ff6cdaecd3b7b987a7ce1e733e9316be61d85e7a80da3c79eb21",
+    "author_tools/test_verifier_failure.py": "23f84fd0c84fde3a8d019700b1fb69c443af15db2ce153c93f558bbe15a1f17a"
+  },
+  "runtime_attempt04_modified": false,
+  "pending": "Need structured failure categories, non-cheating hard-gate invalid score -1, and actual current-version NOP after scoring calibration; this patch only removes fabricated zero."
+}

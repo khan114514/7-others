@@ -1,0 +1,47 @@
+{
+  "status": "SMOKE_PASS",
+  "formal_readiness": "NOT_READY",
+  "sample_count": 64,
+  "image_visual_review": "64-image baseline grid shows diverse classes, finite decoded images, and no obvious global collapse. This is not a FID-50k quality certificate.",
+  "records": [
+    {
+      "run_id": "run-05113eec33984af0b871e94347b3c882",
+      "kind": "SMOKE_ONLY",
+      "adaptation": true,
+      "sample_count": 64,
+      "metric": 217.2229460519659,
+      "reward": null,
+      "training_seconds": 283.66911005973816,
+      "fid_ram_disk_exact": true,
+      "encoded_pngs_verified": 64,
+      "finite_batch_checks": 8,
+      "checkpoint_sha256": "499241d8ec21b765e6c45010b582b88429478c0289eecadbebd4d2022adf3fef"
+    },
+    {
+      "run_id": "run-0dc76358dcdd4d0cafaa5746a29aff47",
+      "kind": "SMOKE_ONLY",
+      "adaptation": false,
+      "sample_count": 64,
+      "metric": 217.272810556903,
+      "reward": null,
+      "training_seconds": 1.3351078033447266,
+      "fid_ram_disk_exact": true,
+      "encoded_pngs_verified": 64,
+      "finite_batch_checks": 8,
+      "checkpoint_sha256": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c"
+    }
+  ],
+  "weighted_filtered_smoke": {
+    "run_id": "run-bec89613394d49018d80e070d5a91c4a",
+    "status": "SUCCESS",
+    "kind": "SMOKE_ONLY",
+    "sample_count": 64,
+    "metric": 217.31413760721355,
+    "teacher_and_training_seconds": 295.8682391643524,
+    "method_sha256": "4982f172e4e8933e62a1dc8d1cc6e44e5bd1916db8dbe35ba0f95a9759af7e56",
+    "checkpoint_sha256": "6797e40273b25495705e51c1c10144bab0281c315672a1207bafb23e9fd6861d",
+    "evidence": "../optimization_evidence/weighted_smoke",
+    "not_formal_quality_score": true
+  },
+  "current_guard_revision": "attempt04; tensor RPC and kernel probes passed, new full pipeline smoke pending"
+}

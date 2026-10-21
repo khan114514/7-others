@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "entrypoint": "method.py:draft(state)",
+  "algorithm": {
+    "name": "Question-independent verified structural drafting, cap8",
+    "retained_source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "interface": "Stateless dict/object state; integer ID list bounded by min(8,32,remaining_tokens,maximum_draft_tokens); malformed or divergent state abstains.",
+    "strategy": "Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. No imports or dynamic local loads.",
+    "provenance": "Own invariant markup observations0..11; no question/label/answer mapping."
+  },
+  "selection": {
+    "decision": "Retain exact own highest actually full-scored incumbent source; no new optimization in final release.",
+    "incumbent_evidence": "own_verified_incumbent_summary.json",
+    "own_verified_incumbent_score": 0.5769221579490044,
+    "attribution": "Existing own verified full evidence with matching method source. This value is not a new cleaned-bundle score.",
+    "previous_one_file_full_job": "17db7db9b6e646e29f10b61a38a3c18f",
+    "previous_one_file_full_ratio": 0.4261381272788273,
+    "previous_one_file_full_score": 0.573920285974177,
+    "previous_one_file_quality": "All five seeds pass; token/answer agreement1 each seed.",
+    "same_current_runtime_envelope_sha256": "50cf3ed389d14a18d7e93a44006c3aeffe5fe10a6b9ce5d129ca53bddd90e4a8"
+  },
+  "release": {
+    "runtime_dependency_closure": [
+      "method.py"
+    ],
+    "runtime_bytes": 2037,
+    "historical_archive": "own_history_export_recovery.json:archive.base64",
+    "historical_archive_sha256": "02a993cc965ebd91afc26f39180805c71d0a808171905bc84a400b4dd7165151",
+    "original_member_hashes": "gpu_live_research/runtime_history_v1_manifest.json",
+    "simulation_history_archive": "gpu_live_research/own_simulation_history_archive.json",
+    "superseded_notes_and_handoff": "gpu_live_research/release_incoming_notes_archive.json",
+    "validation": "gpu_live_research/release_final_contract.json; actual exporter, base64 roundtrip, ZIP CRC/member hashes, source closure and isolated interface.",
+    "preservation": "63 historical Python files remain data in64-member own archive. Newer variants stored as own JSON source strings; development tools as txt. Failed/worse results and journals retained. Earlier missing bytes documented, never invented.",
+    "new_full_evaluation": {
+      "status": "REJECTED_BEFORE_TARGET_EVALUATION",
+      "request_artifact": "gpu_live_research/release_full_submit.json",
+      "ticket": "evaluation-18ff28913c0e4d939e1897d6ff45b471.ticket.json",
+      "reason": "Trusted evaluator rejected request; no target score or quality feedback returned. Saved cap16 unfinished job remains dcc3eed56d11410989414dacc4a639d1.",
+      "method_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+      "bundle_sha256": "50cf3ed389d14a18d7e93a44006c3aeffe5fe10a6b9ce5d129ca53bddd90e4a8"
+    },
+    "independent_final_verifier_score": null,
+    "next_action": "Do not duplicate or bypass the unfinished cap16 lane job. After external completion/release of that job, submit exactly one full evaluation of this cleaned bundle and record actual feedback; current final handoff remains blocked by evaluator contract rejection."
+  },
+  "saved_owned_cap16_job": {
+    "job_id": "dcc3eed56d11410989414dacc4a639d1",
+    "phase": "GPU_EXPERIMENT_RUNNING",
+    "observed_seed": 17,
+    "observed_completed_questions": 50,
+    "feedback": null,
+    "decision": "Existing full ticket queried without duplication; no full cap16 score or promotion."
+  },
+  "research": {
+    "journal": "research_journal.md",
+    "simulations": "Authored streams and CPU schedules are simulations, never target output or scores.",
+    "acceptance_limit": "Per-proposal acceptance unavailable; work aggregates do not identify acceptance fraction.",
+    "latest_prior_hypothesis": "Cap16 transaction savings generalize over five seeds; existing owned full ticket unresolved.",
+    "release_hypothesis": "Exact cleaned incumbent runtime retains full per-seed target quality and measured latency; one actual new full release evaluation required.",
+    "next_action": "Resolve owned unfinished job; then python release_handoff_tool.txt request release_full_submit (full protocol), save/query its ticket, record real feedback before final handoff. No cap32 or exploratory experiment.",
+    "latest_rejection": "release_handoff_tool request release_full_submit created evaluation-18ff28913c0e4d939e1897d6ff45b471.ticket.json; evaluator rejected before target execution; status query also rejected."
+  },
+  "campaign": {
+    "status": "FINAL_HANDOFF_ONLY",
+    "duration_authority": "Trusted external closed ledger; user reports required ten-hour minimum and at least three valid full loops verified. No local-hour inference. Queues/provider failures/stalls/recovery excluded."
+  }
+}

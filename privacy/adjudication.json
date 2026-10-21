@@ -1,0 +1,46 @@
+{
+  "scope": "Strict privacy release adjudication; original raw scanner findings retained, not overwritten as raw PASS",
+  "scanners_are_official_0_3_10": false,
+  "dd": {
+    "decision": "CLEAR_WITH_EXACT_FORMAT_PROOF",
+    "proof": "dd-false-positive-proof.json",
+    "detail": "All four text files match only the HTTP verb in registry-auth failure; five PNG matches are wholly compressed IDAT raster bytes; three raw checkpoint-storage matches are in float32 storage and not pickle metadata. No model deserialization."
+  },
+  "bifrost": {
+    "decision": "CLEAR_WITH_EXACT_GENERIC_PROBE_CLASSIFICATION",
+    "proof": "bifrost-root-path-classification.json",
+    "detail": "All 20 flags are the same generic protected SSH-directory probe, not author home identity or credential material."
+  },
+  "stssdl": {
+    "decision": "CLEAR_PUBLIC_COPY_WITH_REDACTED_PROVENANCE",
+    "raw_findings_by_code": {
+      "EMAIL": 57,
+      "SSH_ENDPOINT": 1,
+      "ROOT_HOME": 31,
+      "CREDENTIAL_ASSIGNMENT": 9,
+      "LINUX_HOME": 3580,
+      "INTERNAL_DOMAIN": 25,
+      "API_TOKEN": 17,
+      "PRIVATE_IPV4": 4,
+      "BEARER_TOKEN": 3,
+      "MALFORMED_URL": 2,
+      "URL_AUTHORITY_CREDENTIAL": 1
+    },
+    "detail": [
+      "Three vendor executables are byte-identical to integrity-verified official OpenAI npm Linux ARM64 0.160.0 artifacts; all their lexical flags are already-public vendor bytes.",
+      "Six NPY storage members have exact typed numeric range proof.",
+      "Every remaining Linux-home occurrence is the generic candidate runtime account used in sandbox source or its historical logs.",
+      "Relay credential-like match is a zero-argument file-read call in a parsed Python assignment, not a literal value.",
+      "Author home prefix in eight historical provenance members is replaced only in public source/ZIP; original hashes and changed member hashes are retained in auto2912/source_manifest.json."
+    ]
+  },
+  "save": {
+    "decision": "CLEAR_WITH_EXACT_TYPED_NUMERIC_PROOF",
+    "proof": "save-numeric-false-positive-proof.json",
+    "detail": "Two identical HDF5 members carry the same printable random byte sequence in an uncompressed float32 dataset chunk; reconstructed array bytes equal file bytes."
+  },
+  "heima_attention_sava": {
+    "decision": "RAW_STRICT_SCAN_PASS"
+  },
+  "research_status": "These privacy decisions do not upgrade any research/content QA finding or constitute platform acceptance."
+}

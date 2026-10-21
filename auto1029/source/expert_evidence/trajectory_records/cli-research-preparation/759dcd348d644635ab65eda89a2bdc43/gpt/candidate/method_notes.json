@@ -1,0 +1,923 @@
+{
+  "adversarial_interface_audit": {
+    "artifacts": [
+      "adversarial_audit.py",
+      "adversarial_audit_output.json",
+      "adversarial_audit_stderr.txt",
+      "adversarial_contract_output.txt",
+      "adversarial_contract_stderr.txt"
+    ],
+    "command": "python3 adversarial_audit.py > adversarial_audit_output.json 2> adversarial_audit_stderr.txt",
+    "cost_observations": "Five-batch median CPU time per call for histories 0/16/128/1000/10000/100000 was 0.841/1.135/4.239/39.991/455.360/5060.850 microseconds. This is local synthetic timing; full ID validation is O(n), while reuse work is bounded by the last 96 IDs. Under tracemalloc, 24 supported long-question keys left the configured 16 tracks, with 279408 net bytes measured during construction/eviction and 296564 peak bytes. These platform-specific figures do not estimate host executor or request-memory cost.",
+    "first_fixture_failure": "Initial memory case used questions over the 4096-character key limit and therefore took the documented stateless path (zero retained tracks). The fixture was shortened below the limit and rerun; no policy change was needed.",
+    "limitations": "Synthetic states do not estimate target acceptance, quality, GPU behavior or end-to-end latency. Python CPU timing and traced allocation depend on the local interpreter and allocator.",
+    "method_sha256": "41ea6bd8e39092073827bef0e01f8a6e8574117495804d99023e3fbded59fc33",
+    "next_experiment": "When the trusted public CLI becomes available, test executor recreation, state persistence, and callback omission for the same adversarial questions, then compare policy CPU/serialization charges under its documented accounting boundary. Until then, minimize avoidable O(n) validation only if the public interface provides a trustworthy bounded-history contract; do not change behavior based solely on these synthetic measurements.",
+    "result": "PASS: 945 public synthetic states over incomplete XML-like strings, arbitrary text, Unicode, 5000-character questions, malformed IDs and 15 budget shapes; 35 nonempty proposals, 483 malformed/noninteger states abstained. Serialization replay, four repeated deterministic traces, reset equivalence, exact Unicode-key isolation, and large-history nonretention passed."
+  },
+  "algorithm": {
+    "budget_rule": "At most min(8,32,remaining_tokens,maximum_draft_tokens). Strict integer budgets and nonnegative integer history IDs. Malformed fields and divergent opening abstain.",
+    "entrypoint": "method.py:draft(state)",
+    "name": "Question-independent verified structural drafting, cap8",
+    "provenance": "Opening/closing IDs fit only to own real output observations0..11; no question, label, option, answer letter or semantic conclusion retained.",
+    "source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "strategy": "Draft the next at most8 IDs only on exact agreement with the observed invariant36-ID tagged opening. Abstain in the semantic conclusion. After at least two observed closing IDs, complete the invariant closing including the observed stop ID. Stateless across questions; trusted verification checks all IDs."
+  },
+  "assumptions": [
+    "generated_token_ids are the actual public committed target history and observed nonnegative integer IDs are valid in the frozen tokenizer vocabulary.",
+    "Exact verification rejects copied content when it differs; the policy does not supply unverified final answers.",
+    "Small exact-context repetitions may be predictive within some responses, but their actual frequency is unknown.",
+    "The executor may or may not preserve process state across one response; adaptation is useful only when calls share an instance.",
+    "Fixture seeds match the names of paired seeds only; Python's synthetic generator is not the frozen target random stream.",
+    "Synthetic tokenizers, equal format weights, chosen repetition frequency and cost scenarios do not estimate actual target behavior."
+  ],
+  "continuation_shift_research": {
+    "analysis_command": "python3 structural_shift_analysis.py --input-dir shift_results > shift_analysis_output.json 2> shift_analysis_stderr.txt",
+    "analysis_observed_result": "PASS, exit 0: source/fixture/stream/row hashes, per-row accounting and stream output fingerprints checked for both studies; 725 preserved transactions replayed; stderr empty.",
+    "approaches": [
+      "prefix grammar",
+      "public continuation-match adaptive history control",
+      "bounded exact token-history reuse"
+    ],
+    "axes": [
+      "stable, single-shift, alternating and unique values",
+      "sentence, line, table and JSON formats",
+      "natural EOS, EOS at repeated context, EOS inside changed value",
+      "character and whitespace-merged synthetic vocabularies",
+      "zero/one bonus-token semantics",
+      "persistent versus per-call fresh adaptive controller"
+    ],
+    "experiment_command": "python3 structural_shift_testbed.py --output-dir shift_results > shift_testbed_output.json 2> shift_testbed_stderr.txt",
+    "key_findings": [
+      "In no-bonus natural-stop merged streams, cap4 acceptance falls from 0.935818 on stable continuations to 0.844193 after a shift; corresponding hypothetical moderate cost ratios worsen from 0.660613 to 0.794423.",
+      "Two-prior-match consensus can lose coverage and move drafts to later transitions; it is not a guarantee of future acceptance.",
+      "Cap2 increases acceptance but saves fewer transactions than cap4 under the chosen moderate cost model. Across merged no-bonus streams including stops, cap4 costs 0.858480 versus cap2 0.875724.",
+      "Merged aggregate cap4 cost rises to 1.007941 under the hypothetical costly model despite acceptance 0.813788. No actual latency is measured.",
+      "Persistent adaptive state helps the synthetic comparison, but its availability and text-level feedback fidelity are uncertain at the actual interface.",
+      "Two constructed controls both accept 75% of proposed IDs but cost 0.399231 versus 0.540000 per emitted ID under the moderate model; acceptance alone cannot select a policy.",
+      "All single-shift fixtures reach the first change, but 68 of 80 natural character-mode single-shift streams reach the 128-ID cap before EOS. Saved reachability counts expose this censoring."
+    ],
+    "limitations": "Exact CPU verification and chosen stream/tokenizer/cost distributions establish behavior and sensitivity only. They do not measure target response probabilities, tokenizer boundaries, GPU cache numerics, quality, end-to-end latency or a formal score.",
+    "new_row_sha256": "0184761568ca22a330e1686e293b6c6f31c3245d27fe46b8129386954bc20cfb",
+    "observed_result": "PASS, exit 0: 960 fixtures, 1920 encoded streams, 26880 policy-response runs, 3840 paired output groups, 1340055 independently audited policy transactions, plus 2506 seeded/edge verifier checks; stderr empty.",
+    "prior_evidence_recovery": "At continuation start, structural_public_results/rows.json was absent. One deterministic rerun restored it and exactly reproduced prior native row hash c9e8b4dd0b000d1292b8df6a702c2470e501a91c9a442cb3b83d508f8bcaa44f. No prior research duration was inferred."
+  },
+  "cpu_cost_model_research": {
+    "artifacts": [
+      "cost_model_experiment.py",
+      "cost_model_experiment_output.json",
+      "terminal_fastpath_contract_output.json"
+    ],
+    "break_even": "With the moderate block assumptions (55 us fixed, 9 us per compared token, 28 us rollback), adaptive ties starter at approximately 30.05 us ordinary target cost in character fixtures and 20.77 us in merged fixtures. These are model thresholds, not measured target latencies.",
+    "calibration": {
+      "json_roundtrip_median_us_by_arm": {
+        "adaptive": 14.578,
+        "fixed2": 15.931,
+        "fixed4": 14.282,
+        "starter": 15.405
+      },
+      "json_roundtrip_range_us": [
+        2.306,
+        73.999
+      ],
+      "payload_axes": "question lengths 0/32/512/4096 and history lengths 0/4/16/32/64/96/128/256",
+      "policy_median_us_by_arm": {
+        "adaptive": 4.293,
+        "fixed2": 3.019,
+        "fixed4": 3.996,
+        "starter": 0.145
+      },
+      "policy_range_us_by_arm": {
+        "adaptive": [
+          1.033,
+          15.953
+        ],
+        "fixed2": [
+          0.361,
+          21.21
+        ],
+        "fixed4": [
+          0.423,
+          22.999
+        ],
+        "starter": [
+          0.057,
+          0.265
+        ]
+      }
+    },
+    "command": "python3 cost_model_experiment.py > cost_model_experiment_output.json",
+    "decision": "Retain adaptive reuse for the current hypothesis: it is below starter in every priced regime and has lower calibrated transport cost than fixed caps on the simulated call paths. Fixed4 is within 0.1% of adaptive in the expensive/long-block character regimes, so it remains the simplest fallback control. Add the terminal-budget fast path because no two-token proposal is legal when remaining_tokens or maximum_draft_tokens is below two; contract checks still pass (2134 states, 1004 nonempty proposals).",
+    "limitations": "Question strings, streams, tokenizer, acceptance patterns and target cost regimes are synthetic. JSON timings are local stdlib CPU measurements and exclude IPC. No GPU score, quality result or private data was accessed.",
+    "next_experiment": "When the trusted scorer is available, validate whether JSON transport is actually charged, then run paired abstention/fixed2/fixed4/adaptive latency with frozen seeds and public lifecycle probes. If transport dominates and target ordinary cost is below the thresholds, prefer abstention or fixed4; otherwise retain adaptive only after state persistence and effective-cap semantics are verified.",
+    "result": "PASS: 128 measured arm/question/history rows, 4 arms, 4 question lengths, 8 history lengths, 5 batches and 120 repetitions per cell; 280 synthetic streams (140 character and 140 merged) priced under 4 heterogeneous target regimes; all token and call accounting identities passed.",
+    "synthetic_simulation": {
+      "character": {
+        "adaptive": {
+          "accepted": 3027,
+          "draft_calls": 1043,
+          "mismatch": 127,
+          "ordinary_tokens": 5174
+        },
+        "fixed4": {
+          "accepted": 3027,
+          "draft_calls": 1041,
+          "mismatch": 145,
+          "ordinary_tokens": 5156
+        }
+      },
+      "merged": {
+        "adaptive": {
+          "accepted": 730,
+          "draft_calls": 307,
+          "mismatch": 83,
+          "ordinary_tokens": 2376
+        },
+        "fixed4": {
+          "accepted": 738,
+          "draft_calls": 300,
+          "mismatch": 83,
+          "ordinary_tokens": 2368
+        }
+      }
+    }
+  },
+  "current_real_gpu_research": {
+    "contract": {
+      "actual_owned_outputs": 24,
+      "checks": 4374,
+      "closing_difference_states": "See dedicated contract artifact; overlapping probes, not target acceptance.",
+      "limit": "Overlapping recorded prefix probes are not GPU accepted-token counts; malformed histories are simulations.",
+      "raw_sha256": "a59b519f8bc7a47c796b0f80442a79b7da7cbdba9b68fc6829ede766df98c5e1",
+      "status": "PASS"
+    },
+    "decision": "Retain exact structure8: full five-seed latency ratio0.42642933194274285 and exact quality; slower genuine reuse variant remains preserved. Opening-only cap8 ablation submission d56a9923d1264e34a00ef3263ce5f77e was rejected before target execution, so it cannot displace the incumbent.",
+    "failed_submissions": [
+      {
+        "arm": "prefix8",
+        "bundle_sha256": "c7ae426e7c3ded31ef1b4045dfa2c2a416edc265e56e55e3eca8a5e90afdb12a",
+        "job_id": "9ba68b704391482e93bdc2eea55dbd51",
+        "limitation": "No accepted receipt or target feedback; actual rejection reason undisclosed.",
+        "manifest": "prefix8_submission_manifest.json",
+        "measured_latency_ratio": null,
+        "phase": "SUBMISSION_AND_STATUS_REJECTED",
+        "python_files": 64,
+        "score": null,
+        "stderr": null
+      },
+      {
+        "arm": "prefix8",
+        "bundle_sha256": "093b9788366bcbbc43290dd99fb6a48cd27bfc7d29373b8013cbd6ef4b996cde",
+        "job_id": "b62675dd8c0b47759b045c8efd2ee074",
+        "limitation": "No accepted receipt or target feedback; actual rejection reason undisclosed.",
+        "manifest": "prefix8_retry_submission_manifest.json",
+        "measured_latency_ratio": null,
+        "phase": "SUBMISSION_AND_STATUS_REJECTED",
+        "python_files": 63,
+        "score": null,
+        "stderr": "prefix8_retry_submit.stderr"
+      },
+      {
+        "arm": "prefix8",
+        "bundle_sha256": "dd201bc912ee585c84818fb432877838f4aa8e6f2f71d5fb0ac14f2d6010dde8",
+        "job_id": "b28da80ae8a44925b8620117c3071c02",
+        "limitation": "No accepted receipt or target feedback; actual rejection reason undisclosed.",
+        "manifest": "prefix8_minimal_submission_manifest.json",
+        "measured_latency_ratio": null,
+        "phase": "SUBMISSION_AND_STATUS_REJECTED",
+        "python_files": 1,
+        "score": null,
+        "stderr": "prefix8_minimal_submit.stderr"
+      },
+      {
+        "arm": "opening_only_cap8",
+        "bundle_sha256": "unavailable_rejected_before_receipt",
+        "job_id": "d56a9923d1264e34a00ef3263ce5f77e",
+        "limitation": "Submission and status query both rejected by the public evaluator; no target execution, acceptance, latency, quality or score.",
+        "manifest": "evaluation-d56a9923d1264e34a00ef3263ce5f77e.ticket.json",
+        "measured_latency_ratio": null,
+        "phase": "SUBMISSION_AND_STATUS_REJECTED",
+        "python_files": null,
+        "score": null,
+        "stderr": null
+      }
+    ],
+    "full_feedback": {
+      "acceptance_limit": "No per-proposal acceptance or guard-location export; work counts are not an acceptance fraction.",
+      "all_quality_gates_pass": true,
+      "answer_agreement_each_seed": 1,
+      "bundle_sha256": "db85929d3147b4057d213cb4ef0c4d9a29897939bd72d618f75fd1690a1c2b36",
+      "calibration_mean_latency_seconds": 3.013874693500111,
+      "full_development_normalized_score": 0.5736291212273931,
+      "independent_final_score": null,
+      "job_id": "c3f9b592af3f4292b966d62e92c9f19e",
+      "latency_ratio": 0.42642933194274285,
+      "mean_latency_seconds": 1.3060581312747672,
+      "raw_path": "evaluation-c3f9b592af3f4292b966d62e92c9f19e.json",
+      "raw_sha256": "a59b519f8bc7a47c796b0f80442a79b7da7cbdba9b68fc6829ede766df98c5e1",
+      "samples": 480,
+      "seeds": [
+        17,
+        29,
+        43,
+        71,
+        101
+      ],
+      "source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+      "token_agreement_each_seed": 1,
+      "total_calibration": {
+        "forward_calls": 20480,
+        "generated_tokens": 20480,
+        "guard_replays": 0,
+        "policy_calls": 20480,
+        "policy_seconds": 2.6654764777049422,
+        "total_sampled_tokens": 20480
+      },
+      "total_candidate": {
+        "forward_calls": 7754,
+        "generated_tokens": 20480,
+        "guard_replays": 58,
+        "policy_calls": 4680,
+        "policy_seconds": 0.7096944376826286,
+        "total_sampled_tokens": 22444
+      }
+    },
+    "hypothesis": "Closing completion can save ordinary steps but may add replay/verification work; opening-only cap8 isolates its net contribution.",
+    "next_experiment": "Do not resubmit rejected opening-only or structure4 ablations. Keep structure8 restored; next useful experiment is a newly accepted public ablation only after the evaluator contract recovers, with a saved ticket queried before any duplicate submission.",
+    "retained_method": "method.py"
+  },
+  "decision": {
+    "discriminating_next_experiment": "python /opt/latentcli/evaluate.py --status b28da80ae8a44925b8620117c3071c02; preserve any owned status. If an accepted job becomes accessible, query it to completion, never submit a duplicate. Once submission access is restored and no unfinished job exists, run unchanged prefix8 with --quick to isolate closing contribution at cap8. Analyze matched seed17 normalized latency, forwards, guards, sampled work and quality; require full fixed-five-seed evaluation before replacement. No further bundle-size retries are justified by current evidence.",
+    "fallback": "Historical adaptive reuse e222177... remains preserved in real_prefix_gpu_preparation/candidates/incumbent/method.py with its real slower full evidence.",
+    "not_an_optimality_claim": "The public adaptive controller slightly wins one hypothetical character-token cost scenario. Reuse is preferred for its public-interface fit and robustness, not universal dominance or a target score.",
+    "preferred_policy": "Retain exact structure8: full five-seed latency ratio0.42642933194274285 and exact quality; slower genuine reuse variant remains preserved. Prefix8 remains unscored after three generic submission rejections. A newly attempted structure4 cap ablation was rejected before target execution and supplies no score or quality evidence.",
+    "quality_prerequisite": "Earlier numerical_diagnosis.md E0/E1 agreement and bookkeeping checks remain necessary; none was executed on a GPU here.",
+    "research_variant_entrypoints": "method_variants.py:reuse_cap2, reuse_cap4 and reuse_context6; future isolated runner must stage imports according to its public contract."
+  },
+  "development_design": {
+    "analysis": "paired_gpu_analysis.py validates complete case x seeds17/29/43/71/101 x repeat x arm matrices, protocol/runtime/policy hashes, clean timing and quality. Uses whole-question paired bootstrap with family-adjusted intervals; CPU self-test is explicitly tagged synthetic. Formal score always null.",
+    "cpu_timing": "Seven alternating old/new timing batches: cold medians 33.071/22.943 us, stateless 28.508/28.498 us, mixed transition/replay 17.338/17.565 us. Reset cost is included in cold path; samples are noisy and do not establish target latency gain.",
+    "decision": "Retain the behavior-equivalent validation optimization and corrected adaptive submission as a hypothesis. Keep fixed4 and abstention primary controls. Never interpret CPU transaction savings, synthetic timing or provenance counters as a formal GPU score.",
+    "hypotheses_and_stopping": "gpu_experiment_plan.json defines H0..H4 and D0..D5: protocol gates, trace coverage, bounded clean pilot, one conditional ablation, frozen full paired-seed validation and clean confirmation. No GPU command is invented.",
+    "lifecycle_scope": "Constructed stable/single-shift/alternating 113-ID streams, 1/4/16/17/32 tracks, shared/per-response/per-call lifetime, zero/two omitted ordinary callbacks, both bonus rules, fixed4/adaptive/no_cooldown/no_horizon. Shared-question stress uses compatible equal trajectories, not arbitrary fork safety. Fixed4 pending_without_track is inapplicable to eviction because it has no tracks.",
+    "promotion_rule": "Predeclared development criterion: host quality gates and exact paired tokens/choice outcomes, at least 10 independent public questions, and relative mean latency interval upper bound below -2%. Formal host metric/protocol stays authoritative.",
+    "runner": "research_runner.py catalogs legacy studies, records actual commands/source/output hashes/exit codes, rejects unavailable audit inputs, refuses existing output directories, and stages eight independent single-file draft(state) policies without sibling imports."
+  },
+  "expected_failure_modes": [
+    "Short, unique or low-repetition responses produce no acceleration and retain policy overhead.",
+    "An identical context can precede changed content; agreement among historical continuations does not guarantee the next continuation.",
+    "Useful repeats outside the 96-token window, contexts shorter than four or single-token matches are discarded.",
+    "Copying long repeated semantic content can waste verification work after a mismatch.",
+    "GPU numerical disagreement, stop and bonus conventions, real block and rollback costs remain unresolved.",
+    "Even two agreeing prior occurrences can be confidently wrong when the same context changes its continuation or reaches EOS; an executable counterexample is preserved in shift_results/analysis.json.",
+    "Even very high acceptance may fail to amortize block or policy-executor costs.",
+    "JSON state transport can dominate policy execution for long questions or histories; this cost is host-dependent and was measured only with stdlib JSON on the local CPU.",
+    "A same-question identical public state can be either a replay or a new response; no public request ID permits reliable distinction, so the controller remains idempotent.",
+    "Concurrent requests with the same question and compatible prefixes cannot be identified from this interface. Distinct exact question strings are isolated; incompatible prefixes reset learning. Returned IDs always come from the current history.",
+    "Internal block caps or skipped callbacks followed by bonus/ordinary tokens can make continuation matches differ from true verified acceptance. Internal accepted/proposed counters describe inferred matching evidence, not host-reported acceptance or a formal metric.",
+    "Final proposals often have no later callback. Terminal censorship selectively removes some full, rejected or EOS observations; the controller discards unresolved evidence on detectable restarts.",
+    "Adaptive cooldown can remove useful opportunities and costs more CPU than stateless reuse. Synthetic distributions and hypothetical verifier costs cannot choose the actual latency winner."
+  ],
+  "historical_live_gpu_checkpoint": {
+    "actual_feedback": {
+      "acceptance_limit": "No per-proposal export: saved forwards, guards and extra sampled IDs are work measures, not an acceptance fraction.",
+      "accuracy": 0.46875,
+      "actual_acceptance_fraction": null,
+      "answer_agreement_fraction": 1,
+      "calibration_forward_calls": 4097,
+      "calibration_mean_seconds": 3.1363703767419793,
+      "candidate_forward_calls": 1351,
+      "candidate_generated_ids": 4097,
+      "candidate_guard_replays": 7,
+      "candidate_mean_seconds": 1.1945192045532167,
+      "candidate_policy_calls": 936,
+      "candidate_sampled_ids": 4342,
+      "exposed_outputs": "24/24 same tokens and decoded text as saved own outputs; all24 invariant opening/closing matches; none of these24 exposes the7 guards.",
+      "formal_score": null,
+      "host_exploratory_normalized_score": 0.6219860036213939,
+      "latency_ratio": 0.37806582007845074,
+      "parsed_answer_rate": 1,
+      "quality_gates_pass": true,
+      "questions": 96,
+      "quick_seeds": [
+        17
+      ],
+      "source_bound_result": "gpu_live_research/structure8_quick_analysis.json",
+      "token_agreement_fraction": 1
+    },
+    "decision": "Structure8 shows substantial real seed17 speedup with exact quality. Preserve quick evidence, but defer promotion until full fixed-five-seed feedback. Closing-only ablation remains unscored: no trace locates7 guards in a closing block, so do not claim closing caused them. Restore fully validated incumbent e222177... while full candidate job runs.",
+    "duration": "External trusted CLI activity ledger is sole authority. No cumulative duration inferred from local elapsed times or prior notes. GPU queues and infrastructure waiting excluded.",
+    "full_job_actual_status": {
+      "completed_questions": null,
+      "phase": "WAITING_FOR_GPU_EXCLUDED",
+      "seed": null
+    },
+    "full_submission_manifest": "gpu_live_research/structure8_full_submission_manifest.json",
+    "hypothesis": "The invariant observed opening provides latency savings despite trusted block and guard overhead. Closing completion may add opportunity or trigger unwanted drafts inside free conclusion.",
+    "next_experiment": "python /opt/latentcli/evaluate.py --status c3f9b592af3f4292b966d62e92c9f19e --wait; analyze result with python live_gpu_analysis.py evaluation-c3f9b592af3f4292b966d62e92c9f19e.json gpu_live_research/structure8_full_analysis.json. If all5 quality gates pass and latency gain persists, retain exact structure8 source. Then quick opening-only guarded ablation can isolate closing contribution; full fixed-five-seed comparison is required before replacement. If quality fails, preserve source/result and diagnose instead of selecting for speed.",
+    "owned_job_id": "c3f9b592af3f4292b966d62e92c9f19e",
+    "pending_job": "gpu_live_research/pending_job.json",
+    "phase": "Quick real feedback complete; full fixed-five-seed structure8 job submitted; incumbent restored",
+    "quick_job_id": "c05bf5e98b65494ab9f85c93c968e3eb",
+    "retained_method": {
+      "candidate_waiting_for_full_feedback": "gpu_live_research/structure8.py.source",
+      "complete_five_seed_quality_pass": true,
+      "entrypoint": "method.py:draft",
+      "full_validated_development_latency_ratio": 1.000535779857341,
+      "source_sha256": "e222177fce41a0cb306b7a9e2a3836b551e8d5c7280e35404d40aeaf67845f4e"
+    },
+    "revision": {
+      "behavior": "Only invariant opening; no closing or semantic conclusion drafting. O(1) early abstention for oversized/terminal histories.",
+      "checks": 6540,
+      "evidence": "gpu_live_research/prefix_guarded_validation.json",
+      "limit": "Quoted-marker cases are authored simulations; real closing rejection and performance remain unmeasured.",
+      "source": "method_prefix_guarded.py"
+    },
+    "seeds": [
+      17,
+      29,
+      43,
+      71,
+      101
+    ],
+    "source_attribution_resolution": {
+      "current_bundle": "gpu_live_research/structure8_bundle_hash_analysis.json",
+      "finding": "Both envelope hashes exactly equal SHA256 of compact sorted JSON of their saved own source dictionaries. Earlier source/envelope mismatch is explained by bundle versus entrypoint hashing; prior incumbent source attribution is now independently reproducible.",
+      "prior_bundle": "gpu_live_research/prior_bundle_attribution.json"
+    },
+    "submission_bundle_sha256": "85ba99d2663b77dfb212598984851532f11099426df113fd5302e0551030a7e9",
+    "submission_source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c"
+  },
+  "historical_reuse_algorithm": {
+    "budget_rule": "At most min(4, remaining_tokens, maximum_draft_tokens, 32) token IDs. Strict integer budgets. A terminal budget below two returns without track lookup or snapshots; oversized histories first discard existing question memory.",
+    "entrypoint": "method.py:draft(state)",
+    "implementation_optimization": "draft validates the full public history once, computes allowance once, and calls _reuse_validated on its bounded 96-ID window. The public reuse_tokens helper retains independent validation. Search, proposals and controller decisions are unchanged.",
+    "name": "Conservative token reuse with public-prefix adaptation",
+    "proposal_format": "Exact observed token-ID list; abstain on missing or malformed fields, insufficient history, ambiguity or budget below two.",
+    "state": "At most 16 LRU tracks keyed by exact string questions up to 4096 characters. Valid supported nonterminal calls record a complete history up to 128 IDs, including abstention; budgets below two do not update tracks. Shortened or changed histories reset learning when observed. Unsupported questions and histories longer than 128 IDs use stateless reuse. Identical histories and budgets replay the same proposal, including cooldown abstention; changed budgets recompute without consuming another cooldown.",
+    "strategy": "Match the longest 4..8-token suffix against earlier nonoverlapping occurrences in the last 96 public generated token IDs. Copy up to four following IDs only while every occurrence agrees, requiring at least two proposed tokens. Keep at most 16 question-keyed pending proposals; on the next compatible public history infer the matched prefix, shrink to horizon 2 after a mismatch, and grow from 2 to 4 after a full observed acceptance."
+  },
+  "historical_validation": {
+    "adaptive_structural_command": "python3 structural_testbed.py --output-dir adaptive_structural_results --public-adaptive --complete-grammar > adaptive_structural_output.json 2> adaptive_structural_stderr.txt; python3 structural_analysis.py --input-dir adaptive_structural_results > adaptive_structural_analysis_output.json 2> adaptive_structural_analysis_stderr.txt",
+    "adaptive_structural_result": "PASS: 1280 synthetic streams, 28160 policy-response rows, 3271 verifier transactions, 2560 paired fingerprints and bounded CPU drafting analysis. Updated token_reuse no-bonus acceptance/cost: character 0.919518/0.746066, whitespace_merged 0.855780/0.868286.",
+    "adaptive_structural_row_sha256": "e60970189de8a882864c8c1360441e5c9310193bc727a78614a3e513fa68484e",
+    "analysis_command": "python3 structural_analysis.py --input-dir structural_public_results > structural_analysis_output.json 2> structural_analysis_stderr.txt",
+    "analysis_observed_result": "PASS, exit 0: artifact checksums, 28160 row-accounting identities and 2560 paired output fingerprints checked; local CPU drafting batches measured; final stderr empty.",
+    "artifacts": [
+      "structural_public_results/fixtures.json",
+      "structural_public_results/streams.json",
+      "structural_public_results/rows.json",
+      "structural_public_results/results.json",
+      "structural_public_results/checks.json",
+      "structural_public_results/analysis.json",
+      "structural_public_results/summary.md",
+      "structural_findings.md",
+      "research_journal.md",
+      "shift_results/fixtures.json",
+      "shift_results/streams.json",
+      "shift_results/rows.json",
+      "shift_results/results.json",
+      "shift_results/checks.json",
+      "shift_results/traces.json",
+      "shift_results/analysis.json",
+      "shift_results/summary.md",
+      "structural_shift_findings.md"
+    ],
+    "checksum_note": "JSON converts integer histogram keys to strings. structural_analysis.py restores schema-defined key types to check the original native-row hash and separately hashes the serialized rows.",
+    "contract_command": "python3 contract_check.py > contract_check_output.txt 2> contract_check_stderr.txt",
+    "contract_observed_result": "PASS, exit 0: 2134 checked states, 1004 nonempty proposals, including 2000 seeded random states; final stderr empty.",
+    "experiment_command": "python3 structural_testbed.py --output-dir structural_public_results --public-adaptive --complete-grammar > structural_public_output.json 2> structural_public_stderr.txt",
+    "experiment_observed_result": "PASS, exit 0: 1280 synthetic encoded streams, 28160 policy-response runs, 3271 verifier transactions and six adaptive control checks; final stderr empty.",
+    "interpretation": "These measurements demonstrate local policy/verification behavior and sensitivity to fixture/tokenization/cost choices, not real target acceptance, output agreement, latency, multiple-choice quality or formal scores.",
+    "method_sha256": "3063579ce4fc0dc740762a7f9e1a3a51f334c984cbebb998e1cb4a1a98cd85f7",
+    "native_row_sha256": "c9e8b4dd0b000d1292b8df6a702c2470e501a91c9a442cb3b83d508f8bcaa44f",
+    "observation_adaptation_command": "python3 observation_adaptation_test.py > observation_adaptation_output.json",
+    "observation_adaptation_result": "PASS: stable full acceptance, shifted rejection, interleaved question isolation, shortened/arbitrary reset, repeated-state idempotence and maximum-draft boundary checks; artifact SHA256 a6526509b6bb079e872cee0fdf0f6fdd75a81db832af02ec83a218c6df615092.",
+    "serialized_row_sha256": "e29cc2ccb36eebab5e818d664099a488dd7b1088f2e3d3c9f661a3de24ef33bf",
+    "synthetic_no_bonus_results": {
+      "character": {
+        "calls_saved": 9542,
+        "hypothetical_moderate_cost_ratio": 0.745187,
+        "token_reuse_acceptance": 0.90154,
+        "token_reuse_draft_call_coverage": 0.178963
+      },
+      "whitespace_merged": {
+        "calls_saved": 2299,
+        "hypothetical_moderate_cost_ratio": 0.8616,
+        "token_reuse_acceptance": 0.841169,
+        "token_reuse_draft_call_coverage": 0.108239
+      }
+    }
+  },
+  "information_aliasing_research": {
+    "actual_result": "PASS, exit 0: 1536 rows over all96 public question keys, two authored token segmentations and observed/omitted callback schedules; output status SIMULATION_ONLY.",
+    "artifacts": [
+      "information_aliasing_witness.py",
+      "information_aliasing_witness_output.json",
+      "method_consensus_after_reject.py",
+      "evaluation-88964281f89146b191432904c27206a1.ticket.json",
+      "evaluation-88964281f89146b191432904c27206a1.status.stdout",
+      "evaluation-88964281f89146b191432904c27206a1.status.stderr",
+      "consensus_after_reject_contract_output.json"
+    ],
+    "candidate": "method_consensus_after_reject.py requires two agreeing historical continuations only after an inferred rejection; full acceptance clears strict mode.",
+    "command": "python3 -m py_compile information_aliasing_witness.py method_consensus_after_reject.py && python3 information_aliasing_witness.py --output information_aliasing_witness_output.json",
+    "decision": "The strict candidate reduced mean matched synthetic IDs from 30.328 to 11.432 with observed callbacks and from 22.313 to 16.953 with omitted callbacks, while mismatch-row counts stayed 62 and 24. It is therefore slower/lower-coverage in this witness and is retained as an unsuccessful research variant; method.py remains the best valid incumbent pending target feedback.",
+    "hypothesis": "A process-local proposal may become stale when callbacks are omitted or when the same decoded text is represented by a different token segmentation.",
+    "limitations": "All response text, token IDs, segmentation, oracle continuation and callback schedule are authored CPU fixtures. These are simulations, never target outputs, acceptance, latency, quality or scores.",
+    "next_experiment": "Query saved quick ticket 88964281f89146b191432904c27206a1 with --status once the queue is writable; if it is absent/failed before submission, submit exactly one fresh --quick --wait, then compare incumbent and strict candidate only through actual evaluator acceptance, latency and quality fields before any full five-seed run.",
+    "observed_summary": {
+      "abstention/observed": {
+        "incomplete_rows": 0,
+        "mean_calls": 88,
+        "mean_matched": 0,
+        "mean_omitted_tokens": 0,
+        "mean_proposals": 0,
+        "mismatch_rows": 0
+      },
+      "abstention/omitted": {
+        "incomplete_rows": 0,
+        "mean_calls": 39,
+        "mean_matched": 0,
+        "mean_omitted_tokens": 49,
+        "mean_proposals": 0,
+        "mismatch_rows": 0
+      },
+      "adaptive/observed": {
+        "incomplete_rows": 0,
+        "mean_calls": 65.51041666666667,
+        "mean_matched": 30.328125,
+        "mean_omitted_tokens": 0,
+        "mean_proposals": 8.223958333333334,
+        "mismatch_rows": 62
+      },
+      "adaptive/omitted": {
+        "incomplete_rows": 0,
+        "mean_calls": 31.427083333333332,
+        "mean_matched": 22.3125,
+        "mean_omitted_tokens": 39.895833333333336,
+        "mean_proposals": 5.78125,
+        "mismatch_rows": 24
+      },
+      "consensus2/observed": {
+        "incomplete_rows": 0,
+        "mean_calls": 87.94270833333333,
+        "mean_matched": 0.08854166666666667,
+        "mean_omitted_tokens": 0,
+        "mean_proposals": 0.036458333333333336,
+        "mismatch_rows": 1
+      },
+      "consensus2/omitted": {
+        "incomplete_rows": 0,
+        "mean_calls": 38.984375,
+        "mean_matched": 0.057291666666666664,
+        "mean_omitted_tokens": 48.979166666666664,
+        "mean_proposals": 0.026041666666666668,
+        "mismatch_rows": 1
+      },
+      "consensus_after_reject/observed": {
+        "incomplete_rows": 0,
+        "mean_calls": 79.36979166666667,
+        "mean_matched": 11.432291666666666,
+        "mean_omitted_tokens": 0,
+        "mean_proposals": 3.1302083333333335,
+        "mismatch_rows": 62
+      },
+      "consensus_after_reject/omitted": {
+        "incomplete_rows": 0,
+        "mean_calls": 33.239583333333336,
+        "mean_matched": 16.953125,
+        "mean_omitted_tokens": 42.036458333333336,
+        "mean_proposals": 4.354166666666667,
+        "mismatch_rows": 24
+      }
+    },
+    "status_query_command": "python /opt/latentcli/evaluate.py --status 88964281f89146b191432904c27206a1 --wait",
+    "status_query_result": "Failed before request frame for the same read-only queue (OSError errno 30); stdout empty, stderr saved in evaluation-88964281f89146b191432904c27206a1.status.stderr."
+  },
+  "live_gpu_research": {
+    "actual_feedback": {
+      "acceptance_limit": "No per-proposal acceptance or guard-location export; work counts are not an acceptance fraction.",
+      "all_quality_gates_pass": true,
+      "answer_agreement_each_seed": 1,
+      "bundle_sha256": "db85929d3147b4057d213cb4ef0c4d9a29897939bd72d618f75fd1690a1c2b36",
+      "calibration_mean_latency_seconds": 3.013874693500111,
+      "full_development_normalized_score": 0.5736291212273931,
+      "independent_final_score": null,
+      "job_id": "c3f9b592af3f4292b966d62e92c9f19e",
+      "latency_ratio": 0.42642933194274285,
+      "mean_latency_seconds": 1.3060581312747672,
+      "raw_path": "evaluation-c3f9b592af3f4292b966d62e92c9f19e.json",
+      "raw_sha256": "a59b519f8bc7a47c796b0f80442a79b7da7cbdba9b68fc6829ede766df98c5e1",
+      "samples": 480,
+      "seeds": [
+        17,
+        29,
+        43,
+        71,
+        101
+      ],
+      "source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+      "token_agreement_each_seed": 1,
+      "total_calibration": {
+        "forward_calls": 20480,
+        "generated_tokens": 20480,
+        "guard_replays": 0,
+        "policy_calls": 20480,
+        "policy_seconds": 2.6654764777049422,
+        "total_sampled_tokens": 20480
+      },
+      "total_candidate": {
+        "forward_calls": 7754,
+        "generated_tokens": 20480,
+        "guard_replays": 58,
+        "policy_calls": 4680,
+        "policy_seconds": 0.7096944376826286,
+        "total_sampled_tokens": 22444
+      }
+    },
+    "decision": "Retain exact structure8: full five-seed latency ratio0.42642933194274285 and exact quality; slower genuine reuse variant remains preserved. Prefix8 remains unscored after three generic submission rejections.",
+    "duration": "External CLI activity ledger alone determines duration. No local duration estimate or campaign-completion claim.",
+    "full_job_actual_status": "COMPLETE",
+    "next_experiment": "python /opt/latentcli/evaluate.py --status b28da80ae8a44925b8620117c3071c02; preserve any owned status. If an accepted job becomes accessible, query it to completion, never submit a duplicate. Once submission access is restored and no unfinished job exists, run unchanged prefix8 with --quick to isolate closing contribution at cap8. Analyze matched seed17 normalized latency, forwards, guards, sampled work and quality; require full fixed-five-seed evaluation before replacement. No further bundle-size retries are justified by current evidence.",
+    "owned_job_id": "c3f9b592af3f4292b966d62e92c9f19e",
+    "pending_job": "gpu_live_research/pending_job.json",
+    "phase": "Full structure8 validated and retained; opening-only GPU ablation rejected by infrastructure",
+    "retained_method": {
+      "complete_five_seed_quality_pass": true,
+      "entrypoint": "method.py:draft",
+      "full_validated_development_latency_ratio": 0.42642933194274285,
+      "source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c"
+    },
+    "revision": {
+      "contract_checks": 4374,
+      "source": "method_prefix_guarded.py",
+      "status": "Unscored after generic infrastructure rejection",
+      "target_evaluation": null
+    }
+  },
+  "local_validation": {
+    "artifacts": [
+      "method_before_runner_optimization.py",
+      "research_runner.py",
+      "policy_optimization_check.py",
+      "policy_lifecycle_experiment.py",
+      "policy_lifecycle_results.json",
+      "policy_lifecycle_results.json.gz",
+      "paired_gpu_analysis.py",
+      "preparation_verify.py",
+      "research_preparation_results/manifest.json",
+      "gpu_candidates/manifest.json",
+      "gpu_experiment_plan.json",
+      "research_handoff.md"
+    ],
+    "command": "python3 research_runner.py run --output-dir research_preparation_results",
+    "historical_provenance": "observer_historical_validation and other prior studies retain their original source hashes; they are not direct current-source GPU or CPU measurements. Some raw historical artifacts were omitted by the resume bundle. No regeneration was performed solely to restore time-consuming old studies.",
+    "lifecycle_artifact_sha256": "4e78a147f2d3c835b7c13e4ca2006ffa05bb628a287975810c2404ae4301828b",
+    "manifest": "research_preparation_results/manifest.json",
+    "method_sha256": "e222177fce41a0cb306b7a9e2a3836b551e8d5c7280e35404d40aeaf67845f4e",
+    "result": "PASS: 32000 old/new public decisions and complete track states agree; new lifecycle study retains 10096 response rows and 2524 complete four-arm paired groups; normalized analysis self-test rejects seven invalid export shapes and stops promotion on quality failure; contract passes 2134 states and 1004 nonempty proposals. All four stderr logs are empty."
+  },
+  "observer_historical_validation": {
+    "artifacts": [
+      "method_before_observation_audit.py",
+      "online_adaptation_results/audit.json",
+      "online_adaptation_results/streams.json",
+      "online_adaptation_results/rows.json",
+      "online_adaptation_results/traces.json",
+      "online_adaptation_results/results.json",
+      "online_adaptation_results/complexity.json",
+      "online_observation_limits_output.json",
+      "online_policy_overhead_output.json",
+      "online_adaptation_findings.md",
+      "observation_contract_output.json",
+      "research_journal.md"
+    ],
+    "comparison_command": "python3 online_adaptation_research.py > online_adaptation_output.json 2> online_adaptation_stderr.txt",
+    "comparison_result": "PASS, exit 0: 1920 streams, 69120 six-arm policy runs, 11520 paired outputs, 3443108 independently audited CPU transactions. All synthetic outputs agree; stderr empty.",
+    "contract_command": "python3 contract_check.py > stochastic_boundary_contract_output.json 2> stochastic_boundary_contract_stderr.txt",
+    "contract_result": "PASS, exit 0: 2134 states, 1004 nonempty proposals; stderr empty.",
+    "historical_evidence_note": "historical_validation records prior versions and must not be interpreted as validation of the current method. Some prior large row/stream files were absent on this resume; the current study regenerated public fixtures from existing code and retains its complete rows and streams.",
+    "independent_audit_command": "python3 online_observation_limits.py > online_observation_limits_output.json 2> online_observation_limits_stderr.txt",
+    "independent_audit_result": "PASS, exit 0: source/stream/row hashes, all accounting identities, 30 saved observation traces, lifecycle and indistinguishable-feedback witnesses; stderr empty.",
+    "method_sha256": "41ea6bd8e39092073827bef0e01f8a6e8574117495804d99023e3fbded59fc33",
+    "overhead_command": "python3 online_policy_overhead.py > online_policy_overhead_output.json 2> online_policy_overhead_stderr.txt",
+    "overhead_result": "PASS, exit 0: five CPU policy-only batches per arm; medians previous 18.348 us, improved 18.998 us, fixed4 11.420 us per call. Noise and synthetic stream choice limit comparisons; stderr empty.",
+    "row_sha256": "9c9c05bb74f8d5e40d10ac2dade1e45e9d38bfc5666de29fa201e526169fb940"
+  },
+  "online_adaptation_research": {
+    "censoring_improvement": "No-bonus early-cap character moderate modeled cost: previous 0.858871, improved 0.799280; merged previous 0.926441, improved 0.882195. These are hypothetical cost ratios, not measured inference latency.",
+    "complexity": "Full input-ID validation is O(n); observer prefix validation is O(min(n,128)); reuse search scans at most 96 IDs over widths 4..8 and copies at most four IDs. At most 16 tracks each retain two 128-ID snapshots, two four-ID lists and one question string <=4096 characters, plus scalar counters. Assumes bounded vocabulary IDs; counter bit length grows logarithmically with calls.",
+    "defects_fixed": [
+      "Matching proper prefixes were misclassified as rejection",
+      "Lifecycle resets were missed after abstention",
+      "Truncated repr(question) keys collided",
+      "Cooldown replays could consume different decisions",
+      "Pending full histories were unbounded for arbitrary long prefixes"
+    ],
+    "failed_experiment": "online_limits_focused_stderr.txt retains a failed witness assertion that incorrectly required unequal accepted counts for the rejection/no-rejection pair. Both accepted one token but had different mismatch flags. Corrected the assertion to compare both quantities; extended focused and full audits pass.",
+    "memory_measurements": "128-ID input: previous 1672 and improved 2984 retained additional traced bytes. 100000-ID input: previous 800648 bytes/100000 retained IDs, improved 152 bytes/zero tracks. Sixteen 4002-character question tracks: 109848 retained traced bytes, 3840 retained history references; platform-specific CPU measurements.",
+    "next_experiment": "CPU executor-lifetime sensitivity: evict with 1,4,16,17,32 interleaved live questions; recreate the policy per call or per response; vary same-question compatible-prefix concurrent trajectories and omitted/terminal callbacks. Measure retained inference opportunities, ambiguous feedback and extra calls against fixed4 without changing verification.",
+    "nominal_comparison": "No-bonus merged serial moderate cost: fixed4 0.857123, improved 0.857811, fixed2 0.875434. Character fixed4 0.748687 versus improved 0.752899. Correct observation logic does not establish an adaptation benefit.",
+    "nonidentifiability": "Three pairs of independently verified transactions have identical public before/after states but different verified accepted counts or rejection flags. Hidden early-cap plus bonus stressors yield corrected count discrepancies character 8148/11334 observations and merged 1614/3560. The public observer measures continuation agreement and cannot recover undisclosed token provenance.",
+    "normal_verification": "Zero inferred-count or classification discrepancies for corrected serial/interleaved normal-cap streams under both bonus conventions. Zero discrepancies for early-cap streams without bonus.",
+    "observation_matrix": "15 extension cases: previous 3 classification errors and 9 evidence-denominator errors; corrected 0 and 0. Supplementary lifecycle test reproduces cooldown decisions [] then [50,51] in the old version and [] then [] in the corrected version."
+  },
+  "real_public_dev_research": {
+    "artifacts": [
+      "corpus_audit.py",
+      "question_features.py",
+      "corpus_policies.py",
+      "option_wordcap.py",
+      "corpus_controller_experiment.py",
+      "corpus_controller_analysis.py",
+      "corpus_gpu_prepare.py",
+      "corpus_findings.md",
+      "corpus_audit_results/audit.json",
+      "corpus_audit_results/rows.json",
+      "corpus_boundary_initial/boundary.json",
+      "corpus_boundary_initial/manifest.json",
+      "corpus_controller_results/manifest.json",
+      "corpus_controller_results/streams.json.gz",
+      "corpus_controller_results/rows.json.gz",
+      "corpus_controller_results/traces.json",
+      "corpus_controller_results/robustness.json",
+      "corpus_controller_results/timings.json",
+      "corpus_controller_analysis_results/analysis.json",
+      "corpus_controller_analysis_results/counterexamples.json",
+      "corpus_controller_analysis_results/payload_study.json.gz",
+      "corpus_controller_analysis_results/parser_checks.json",
+      "corpus_gpu_preparation/manifest.json",
+      "corpus_gpu_preparation/candidates/manifest.json",
+      "corpus_gpu_preparation/isolated_states.json.gz",
+      "corpus_gpu_preparation/isolated_decisions.json.gz",
+      "corpus_gpu_preparation/isolated_check.json",
+      "corpus_gpu_preparation/overhead.json",
+      "corpus_gpu_preparation/gpu_plan.json",
+      "corpus_inspection_failure.txt"
+    ],
+    "audit": "PASS: 96 unique records/questions, all image hashes/inventory and JPEG headers; 6 categories x16, 95 distinct image hashes, shared-image cases1154/1175; five representative images actually rendered. Pixel decoding of every image was not performed.",
+    "boundary_counterexample": "Strict trailing-space gate has0 lexical opportunities versus386 at word boundaries; public question7 constructed prefix 'Answer: B: a man on' demonstrates the failure. Legacy rule and actual initial outputs retained.",
+    "conditional_controls": [
+      "global_guard",
+      "echo64"
+    ],
+    "cpu_comparison": "PASS: 3840 deliberately constructed counterbalanced A/B/C/D streams using actual questions/options, 46080 rows, 7680 paired groups, 1144140 independently audited CPU transactions. Oracle equality is an invariant, not target output evidence. Fresh adaptive matches fixed4; 760 restart/malformed/metadata checks and 869 saved trace transactions independently checked.",
+    "final_integrity": "python3 corpus_integrity_verify.py passed: 13 manifested artifacts and their source/compressed/decompressed hashes, all7 staged policy hashes,30142 isolated decisions, exact24/72 split and71 validation image clusters, five PASS study stdout logs and empty stderr. Python compilation passed for method and all8 new modules. corpus_integrity_output.json/corpus_integrity_stderr.txt retain actual output.",
+    "findings": "Lexical no-bonus repeated-reasoning calls: fixed4/adaptive8064 vs profile9304, with384 mismatches in each. Exact option echoes: fixed4 3047 vs echo64 2640; changed echoes: same4789 calls but echo adds69 fully rejected proposals/326 IDs. Whole-word payload capping removes8 exact lexical mismatches but increases no-bonus calls2640->2642. No representative response weights or latency ranking is claimed.",
+    "focused_payload_rows": 3072,
+    "gpu_plan": "corpus_gpu_preparation/gpu_plan.json; Native/D0/B0/B1/text-capping gates, 24 category-balanced pilot cases, all5 seeds, 3 clean blocks, at most1 conditional ablation, 72 cases held out from GPU tuning, 3 validation blocks, all96 clean confirmation. GPU service absent; no actual CLI syntax is invented.",
+    "gpu_validation_scope": "All public inputs/labels audited and all inputs used in CPU probes. The72 cases are held out from GPU tuning, not an untouched dataset. Cases1154/1175 share an image and remain together; use weighted image-cluster paired inference. Earlier question-only analyzer needs a documented grouping extension when actual export is available.",
+    "input_distributions": {
+      "cjk_questions": 2,
+      "code_questions": 2,
+      "duplicate_option_questions": 6,
+      "inline_options": 71,
+      "letter_at_end_hints": 25,
+      "multiline_choices": 25,
+      "nan_option_questions": 13,
+      "non_ascii_questions": 5,
+      "option_chars_min_median_p90_max": [
+        1,
+        4,
+        29,
+        146
+      ],
+      "question_chars_min_median_p90_max": [
+        67,
+        141,
+        289,
+        563
+      ]
+    },
+    "isolation": "Seven self-contained staged candidates passed actual python3 -I subprocess imports from /tmp: 4306 states each and30142 decisions against reference functions, unchanged inputs/idempotent replays. Additional288 reset checks passed; source cache<=16 with13296 net retained traced bytes on a real-question probe.",
+    "next_cpu_if_unavailable": "Construct a minimal information-aliasing witness with identical question/decoded prefix but different token segmentations and omitted callback schedules. Compare echo eligibility/rejection exposure using only public state; preserve counterexamples rather than repeat the completed matrices.",
+    "policy_features": "Use question and committed prefix only, no corpus filesystem, sample ID, answer, category or image access in policy. Profile routes62/96 questions to context6/cap2 based on short/numeric/placeholder option structure. Echo uses an already committed letter and substantial exact option prefix, and never chooses a letter. Cache max16 exact bounded string keys.",
+    "policy_overhead_us": {
+      "adaptive": 3.187,
+      "echo64": 4.617,
+      "echo_wordcap": 4.851,
+      "fixed4": 1.728,
+      "profile_reuse": 7.555,
+      "workload": "141 real-question first-eligible-echo/empty-prefix states, five batches, local CPU only"
+    },
+    "samples_sha256": "7286fc3126b46434a4019fab3fd82a61e219a546acbe8fd15b0b41aab878e6eb",
+    "selected_primary": [
+      "abstention",
+      "fixed4",
+      "adaptive",
+      "profile_reuse",
+      "echo_wordcap"
+    ],
+    "simulation_comparison": "Earlier eight equal-weight synthetic response formats are not the two observed question layouts. Actual target response formats/repeats cannot be inferred from prompts. Prior question-length timing grid0/32/512/4096 differs substantially from real median141/max563. New costs use real question strings, but constructed histories and 64-bit synthetic IDs, not host IPC.",
+    "source": "/workspace/public_assets/dev/samples.json",
+    "uncertainties": "Actual response verbosity/repeats/echo frequency, trusted tokenizer alignment and clipping, verifier cost, persistence, quality and target latency remain unknown. The main method is unchanged and valid; text candidates require real Native/public-contract validation."
+  },
+  "real_target_prefix_research": {
+    "artifacts": [
+      "real_prefix_results/artifact_manifest.json",
+      "real_prefix_replay_output.json",
+      "real_prefix_replay_stderr.txt",
+      "real_prefix_gpu_preparation/manifest.json",
+      "real_prefix_gpu_preparation/verification.json",
+      "real_prefix_gpu_preparation/incumbent_provenance.json",
+      "real_prefix_prepare_output.json",
+      "real_prefix_prepare_stderr.txt",
+      "real_output_grammar_diagnostics.json"
+    ],
+    "controller": {
+      "candidate_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+      "entrypoint": "method_observed_structure.py:draft",
+      "failure_modes": "Format/segmentation shifts, quoted closing markers, active speculative numerical divergence, stop behavior and expensive verifier guards. Initial empty history assumes the observed scaffold; all guesses require trusted verification.",
+      "fit": "Only common opening/closing IDs from observations0..11; no question, answer letter, option, label or semantic conclusion retained",
+      "policy": "Exact prefix match, cap8; abstain in variable conclusion; complete common closing suffix after two observed closing IDs. Divergent scaffold abstains. Stateless and question-independent."
+    },
+    "decision": "Retain exact structure8: full five-seed latency ratio0.42642933194274285 and exact quality; slower genuine reuse variant remains preserved. Prefix8 remains unscored after three generic submission rejections.",
+    "duration": "Trusted external activity ledger is sole authority; all older local estimates remain unverified. No ten-effective-hour completion claim.",
+    "findings": "real_prefix_findings.md",
+    "gpu_plan": "real_prefix_gpu_preparation/gpu_ablation_plan.json",
+    "hypothesis": "A question-independent invariant tagged opening offers substantially more draft opportunities than within-response four-ID repetition. Actual block/guard costs may erase the opportunity.",
+    "incumbent_provenance": {
+      "own_summary_sha256": "27aefdc68b1e352745e7de78bf340baccee811bd211eaa67f03cc0424361fac0",
+      "retained_method_sha256": "e222177fce41a0cb306b7a9e2a3836b551e8d5c7280e35404d40aeaf67845f4e",
+      "run_envelope_policy_sha256": "e41072c1f945488cc905729c4977889730aca674953850b0997a91a52c171117",
+      "uncertainty": "Resolved by exact canonical own-source-bundle SHA256 match; see gpu_live_research/prior_bundle_attribution.json. Raw earlier files preserved."
+    },
+    "next_experiment": "python /opt/latentcli/evaluate.py --status b28da80ae8a44925b8620117c3071c02; preserve any owned status. If an accepted job becomes accessible, query it to completion, never submit a duplicate. Once submission access is restored and no unfinished job exists, run unchanged prefix8 with --quick to isolate closing contribution at cap8. Analyze matched seed17 normalized latency, forwards, guards, sampled work and quality; require full fixed-five-seed evaluation before replacement. No further bundle-size retries are justified by current evidence.",
+    "offline_replay": {
+      "count_limit": "3192 counts overlapping probes, not accepted unique tokens",
+      "decoded_text": "Unavailable exact prefix decoding; empty field used, all compared policies are ID-only",
+      "failed_predictions_preserved": 315,
+      "fit_indices": "0..11",
+      "guard_sensitivity": "Adding one ordinary replay per matching drafted ID gives129+468=597 calls vs525. Agreement alone does not establish speed; unit-cost extra allowance is5.5 ordinary-call equivalents per draft.",
+      "held_out_indices": "12..23",
+      "held_out_states": 525,
+      "holdout_limit": "Excluded from fitting, not blind; aggregate outputs inspected before rule design. Single exposed24-output subset and highly dependent scaffold prefixes; no population confidence claim.",
+      "incumbent_nonempty_proposals": 0,
+      "scheduled_no_bonus": "525 held-out recorded IDs,129 scaffold8 calls,72 drafts,468 matched IDs; hypothetical full-match bonus has117 calls. These are assumed callback progression counts, not GPU calls or counterfactual stochastic outputs.",
+      "short_context_fully_agreeing_proposals": 0,
+      "short_context_matching_prefix_ids": 84,
+      "short_context_nonempty_proposals": 159,
+      "short_context_proposed_ids": 605,
+      "structure8_full_proposal_agreement": 1.0,
+      "structure8_matching_prefix_ids": 3192,
+      "structure8_nonempty_proposals": 468,
+      "structure8_proposed_ids": 3192
+    },
+    "ordinary_cpu_verification": {
+      "isolated_subprocess_decisions": 6180,
+      "json_only_median_us": 10.746110476190475,
+      "limits": "Local CPU/stdlib JSON and real isolated subprocess pipes only; raw noisy batches retained. No trusted executor, target, GPU, cache or tokenizer measured.",
+      "mean_request_bytes": 409.1142857142857,
+      "new_controller_contract_checks": 355,
+      "policy_only_median_us": {
+        "abstention": 0.08865142857142856,
+        "incumbent": 10.66373142857143,
+        "structure8": 2.373889523809524
+      },
+      "prefix_rows_independently_checked": 10300,
+      "scheduled_rows_checked": 480,
+      "scheduled_transactions_checked": 10760,
+      "single_pass_pipe_roundtrip_mean_us": {
+        "abstention": 62.34296116504854,
+        "incumbent": 81.4936495145631,
+        "structure8": 67.02261262135922
+      }
+    },
+    "phase": "Full structure8 validated and retained; opening-only GPU ablation rejected by infrastructure",
+    "previous_reuse_real_evidence": {
+      "boundary_limit": "Actual token IDs/full decoded outputs exist, but no tokenizer or per-prefix decoding is supplied. Standalone text encodings and precise inferred tag/space alignment are unverified.",
+      "candidate_and_calibration_forward_calls": 20480,
+      "candidate_and_calibration_generated_ids": 20480,
+      "candidate_and_calibration_guard_replays": 0,
+      "candidate_policy_excess_us_per_call": 26.186825925833546,
+      "complete_development_seeds": [
+        17,
+        29,
+        43,
+        71,
+        101
+      ],
+      "current_and_last_result_sha256": "b1babcdd52b4fc50d897d061b8eb3ba1464b45b6a44ec0532aa9171db5d78a7a",
+      "development_normalized_score": -0.0003986305484496553,
+      "formal_score": null,
+      "guard_limit": "No per-proposal export. Zero incumbent guards and equality of generated IDs/forwards do not validate active structural speculation or imply zero proposals across all480 runs.",
+      "latency_ratio": 1.000535779857341,
+      "maximum_nonoverlapping_repeat_width": 3,
+      "mean_latency_difference_ms": 1.3716513504435923,
+      "observed_grammar": "All24 tagged SUMMARY/CAPTION/REASONING placeholder scaffold; common36-ID opening and5-ID closing. Conclusions:21 letter-only,2 letter-period,1 extended numerical explanation; token lengths42/43/62.",
+      "observed_outputs": 24,
+      "quality": "All host quality gates pass and each seed reports exact token/answer agreement",
+      "questions_per_seed": 96
+    },
+    "real_evidence": {
+      "acceptance_limit": "No per-proposal acceptance or guard-location export; work counts are not an acceptance fraction.",
+      "all_quality_gates_pass": true,
+      "answer_agreement_each_seed": 1,
+      "bundle_sha256": "db85929d3147b4057d213cb4ef0c4d9a29897939bd72d618f75fd1690a1c2b36",
+      "calibration_mean_latency_seconds": 3.013874693500111,
+      "full_development_normalized_score": 0.5736291212273931,
+      "independent_final_score": null,
+      "job_id": "c3f9b592af3f4292b966d62e92c9f19e",
+      "latency_ratio": 0.42642933194274285,
+      "mean_latency_seconds": 1.3060581312747672,
+      "raw_path": "evaluation-c3f9b592af3f4292b966d62e92c9f19e.json",
+      "raw_sha256": "a59b519f8bc7a47c796b0f80442a79b7da7cbdba9b68fc6829ede766df98c5e1",
+      "samples": 480,
+      "seeds": [
+        17,
+        29,
+        43,
+        71,
+        101
+      ],
+      "source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+      "token_agreement_each_seed": 1,
+      "total_calibration": {
+        "forward_calls": 20480,
+        "generated_tokens": 20480,
+        "guard_replays": 0,
+        "policy_calls": 20480,
+        "policy_seconds": 2.6654764777049422,
+        "total_sampled_tokens": 20480
+      },
+      "total_candidate": {
+        "forward_calls": 7754,
+        "generated_tokens": 20480,
+        "guard_replays": 58,
+        "policy_calls": 4680,
+        "policy_seconds": 0.7096944376826286,
+        "total_sampled_tokens": 22444
+      }
+    },
+    "reproduction": [
+      "python3 real_prefix_replay.py --output-dir real_prefix_results",
+      "python3 real_prefix_prepare.py --output-dir real_prefix_gpu_preparation"
+    ]
+  },
+  "status": {
+    "gpu_evaluation": "Real full480-case feedback available; no new accepted prefix8 job or score.",
+    "next_validation": "python /opt/latentcli/evaluate.py --status b28da80ae8a44925b8620117c3071c02; preserve any owned status. If an accepted job becomes accessible, query it to completion, never submit a duplicate. Once submission access is restored and no unfinished job exists, run unchanged prefix8 with --quick to isolate closing contribution at cap8. Analyze matched seed17 normalized latency, forwards, guards, sampled work and quality; require full fixed-five-seed evaluation before replacement. No further bundle-size retries are justified by current evidence.",
+    "phase": "Full structure8 validated and retained; opening-only GPU ablation rejected by infrastructure",
+    "research_duration": "External CLI activity ledger alone determines duration. No local duration estimate or campaign-completion claim."
+  },
+  "stochastic_boundary_research": {
+    "artifacts": [
+      "stochastic_boundary_audit.py",
+      "stochastic_boundary_verify.py",
+      "stochastic_sampling_stages.py",
+      "stochastic_boundary_results/noise.json",
+      "stochastic_boundary_results/fixtures.json",
+      "stochastic_boundary_results/pairs.json.gz",
+      "stochastic_boundary_results/controlled_boundaries.json",
+      "stochastic_boundary_results/replay.json",
+      "stochastic_boundary_results/aggregate.json",
+      "stochastic_boundary_results/summary.json",
+      "stochastic_boundary_results/verification.json",
+      "stochastic_boundary_results/sampling_stages.json",
+      "stochastic_boundary_results/sampling_stage_summary.json",
+      "stochastic_boundary_findings.md",
+      "stochastic_gpu_test_plan.json"
+    ],
+    "commands": [
+      "python3 stochastic_boundary_audit.py",
+      "python3 stochastic_boundary_verify.py",
+      "python3 stochastic_sampling_stages.py"
+    ],
+    "decision": "Retain current adaptive observed-ID policy. Public state exposes no logits, q or replay authority, so introduce no numerical threshold or engine alteration. Trusted sampler and quality gates remain frozen.",
+    "duration": "Campaign ongoing; minimum 10 effective research hours not complete. See journal for conservative credited duration and excluded storage recovery.",
+    "interpretation": "Shared noise does not guarantee shared logits, sampler-stage arithmetic or retained cache state. Support and log-margin conditions are sufficient only in ideal arithmetic under justified bounds. Refined possible-entrant conditions reduce conservative uncertainty, but observed pair errors do not certify future errors. Canonical replay must restore/rebuild retained state and reuse unchanged position noise.",
+    "limitations": "Synthetic logits/noise, deliberately noise-conditioned boundary fixtures and scalar rounding are not target distributions, GPU kernels, trusted sampler emulation, target equality, speedup or formal scores. Current-token stability does not certify subsequent cache-dependent decisions.",
+    "measurements": {
+      "certified_ideal_flips": 0,
+      "controlled_boundary_flips": 2560,
+      "refined_ideal_certificates": 52975,
+      "same_logits_and_noise_stage_flips": 7092,
+      "simple_ideal_certificates": 36604,
+      "support_changes": 8578,
+      "sweep_flips": 756,
+      "unsafe_margin_only_flips": 677,
+      "unsafe_support_only_flips": 19
+    },
+    "next_experiment": "GPU B0/B1 through the actual trusted public interface when available. Otherwise construct bounded two-step cache-residual propagation and compare current-only, uncertainty-triggered and full canonical replay, retaining a minimized next-step divergence witness.",
+    "result": "PASS: 640 explicit per-position 64-element Exp(1) vectors; 2560 synthetic logit fixtures; 56320 perturbation pairs; 2560 selected boundary pairs; independent 60-digit Decimal verification; 23040 sampler-stage cast cases."
+  },
+  "latest_experiment": {
+    "hypothesis": "A structure4 cap could reduce verifier/replay overhead relative to the retained structure8 scaffold.",
+    "candidate_source_sha256": "b14ae50e31a4ea385273fe09da24b0396a8db38d49f2e9dd79e809c142bb3370",
+    "command": "python -m py_compile method.py && python /opt/latentcli/evaluate.py --quick --wait; python /opt/latentcli/evaluate.py --status 0071b2510b654f4996ac0ef2e7a5491e --wait",
+    "actual_feedback": "Both submission and saved-ticket status were rejected before target execution: Evaluator request rejected; check your own job ticket and public submission contract.",
+    "offline_counterfactual": {
+      "source": "real_prefix_replay.py over 24 owned real development outputs; not target acceptance",
+      "cap4_no_bonus_calls": 334,
+      "cap8_no_bonus_calls": 238,
+      "cap4_full_match_bonus_calls": 286,
+      "cap8_full_match_bonus_calls": 214,
+      "cap4_proposed_tokens": 936,
+      "cap8_proposed_tokens": 936
+    },
+    "outcome": "No target output, acceptance, latency, quality result or score exists for cap4; the offline call comparison is a simulation of owned output traces and cannot select a method.",
+    "decision": "Restore exact structure8 source cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c, whose full five-seed development ratio is 0.42642933194274285 with exact quality.",
+    "next_experiment": "After evaluator submission recovery, query ticket 0071b2510b654f4996ac0ef2e7a5491e first; if no accepted job exists, submit one cap4 quick ablation and require full fixed-five-seed evidence before replacement."
+  }
+}

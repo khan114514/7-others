@@ -1,0 +1,4 @@
+{
+  "policy_name": "confidence_fallback_innovation_diffusion",
+  "method_summary": "Selects innovation diffusion edges with mean correlation minus across-block standard deviation, then blends each sensor toward the history graph according to positive support on its selected eight edges. The corrected complete protected seeds 17/29/43 reached masked MAE 13.902094246542314 versus 13.902411027727524 for median edges, so the confidence fallback is retained; an earlier all-edge support implementation scored 13.903352477641612 and was rejected."
+}

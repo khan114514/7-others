@@ -1,0 +1,376 @@
+{
+  "original_event_sha256": "53e17f3d9725612d174013ccce2a5370115becd90706d14f2703acf7c83fba8f",
+  "original_receipt_sha256": "2fc617d23bcac166cf8de1df33e58a56b0e3305ee0032eb3f51d6d506535748a",
+  "original_event_last_write_epoch": 1791690163.016228,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'PYEOF'\n\\\"\\\"\\\"Method v43: Higher base up-power + flatter slope configs for Spearman v39.\n\nv39 baseline: Dev MSE = 0.001871, Score = 0.4882\nv43: Re-tune up-power configs for v39 low-temp Spearman weights.\n  - Lower temps \u2192 more peaked cell-type weights \u2192 more confident diff estimate\n  - May be under-amplifying stim response; try higher base up-power\n  - Flatter quantile slope: expression-level dependence may be less important\n    when cell-type mapping is more accurate\n  - Configs: (1.00,-0.30), (1.20,-0.40), (1.40,-0.50) equal weights\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\nfrom scipy.stats import spearmanr\n\nENSEMBLE_TEMPS = [0.05, 0.07, 0.09]\nTEMP_WEIGHTS = [0.3, 0.4, 0.3]\n\nUP_POWER_CONFIGS = [\n    (1.00, -0.30),\n    (1.20, -0.40),\n    (1.40, -0.50),\n]\nUP_POWER_WEIGHTS = [1.0/3.0, 1.0/3.0, 1.0/3.0]\n\nBASE_DOWN_POW = 1.40\nSLOPE_DOWN_POW = -0.75\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\nUP_POW_CLIP_MAX = 2.0\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\ndef _rankdata(x):\n    \\\"\\\"\\\"Fast rank data (average ranks for ties).\\\"\\\"\\\"\n    sorter = np.argsort(x, kind='mergesort')\n    inv = np.empty_like(sorter)\n    inv[sorter] = np.arange(len(x))\n    sorted_x = x[sorter]\n    ranks = np.empty(len(x), dtype=np.float64)\n    i = 0\n    n = len(x)\n    while i < n:\n        j = i\n        while j < n and sorted_x[j] == sorted_x[i]:\n            j += 1\n        avg_rank = (i + j - 1) / 2.0\n        ranks[i:j] = avg_rank\n        i = j\n    out = ranks[inv]\n    return out\n\n\ndef _spearman_corr(x, y):\n    \\\"\\\"\\\"Spearman rank correlation between two 1D arrays.\\\"\\\"\\\"\n    rx = _rankdata(x)\n    ry = _rankdata(y)\n    mx = rx.mean()\n    my = ry.mean()\n    num = np.sum((rx - mx) * (ry - my))\n    den = np.sqrt(np.sum((rx - mx)**2) * np.sum((ry - my)**2))\n    if den < 1e-12:\n        return -1.0\n    return num / den\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef _predict_single_config(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                           temperature, base_up_pow, slope_up_pow):\n    \\\"\\\"\\\"Compute predicted mean expression in scaled space for a single config.\\\"\\\"\\\"\n    n_ct = ctrl_means_np.shape[0]\n\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = _spearman_corr(target_ctrl_mean, ctrl_means_np[i])\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, UP_POW_CLIP_MAX)\n\n    down_pow_gene = BASE_DOWN_POW + SLOPE_DOWN_POW * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    return pred_mean_scaled\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    ensemble_pred = np.zeros_like(target_ctrl_mean)\n    total_weight = 0.0\n\n    for temp, temp_w in zip(ENSEMBLE_TEMPS, TEMP_WEIGHTS):\n        for (base_up, slope_up), up_w in zip(UP_POWER_CONFIGS, UP_POWER_WEIGHTS):\n            pred = _predict_single_config(\n                target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                temp, base_up, slope_up\n            )\n            w = temp_w * up_w\n            ensemble_pred += w * pred\n            total_weight += w\n\n    ensemble_pred /= total_weight\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(ensemble_pred.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nPYEOF\necho \\\"v43 written\\\"\"",
+      "original_command_sha256": "0d9b29f3e5665b414c2fd8d94d22e46723ee67df318dba7f779cff7027935ff5",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ad05423f2087e16c20236f0e6d7053dc5b5fd8d697a405243223785b37dcb368",
+      "output_characters": 12
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc 'ls /workspace/solution/'",
+      "original_command_sha256": "f96be8022710330b86bf8d7910bc4d5fe59518d6253e4db543738ef725d65b5e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "fca49ac764bdf78e621ae80405d3c86c6e8bb8a3d05f057fd5768ab65b5ae08c",
+      "output_characters": 272
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json 2>/dev/null || echo \"No recovered file\"'",
+      "original_command_sha256": "c93014077e18581822f66d0f6f6763764eb88699a3907c5408088d8ae6d16cc3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "eb935cf2af131e51b66fa329a91a5fa2d21510ceaddb8256eb79302eb72c7b70",
+      "output_characters": 612
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'ls /workspace/solution/method_v*.py 2>/dev/null | sort'",
+      "original_command_sha256": "f111c7b564d9e6b26314996148564515862ebdc9efa9bc6a09651fee3a8dbae0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "9253725aeda712d45164a5b15704d09dd728e20f64ca7493666e0c33236f8fc6",
+      "output_characters": 396
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md'",
+      "original_command_sha256": "efd671e59f5c8de5dda39f72671e3a2e4597a0f03af3ed277868f73124dbb9c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4101e134d3145b89e71ac9b6c03659f655a1290d9b2f206399415a0abd67a693",
+      "output_characters": 2208
+    },
+    {
+      "id": "item_15",
+      "command": "/bin/sh -lc 'wc -l /workspace/solution/method.py /workspace/solution/method_v39_best.py /workspace/solution/method_v38_best.py'",
+      "original_command_sha256": "ef437bb313f2f76ed26d9087e7e4359414d7be4b6df84e1be12d24a363c75581",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "6c66c726b99ca928886439aea73f6342a01520c30482ffb29cfe0c5732c7d1bf",
+      "output_characters": 138
+    },
+    {
+      "id": "item_14",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json 2>/dev/null || echo \"No dev_result\"'",
+      "original_command_sha256": "43584e60db047fe2fbe86699fe5c23c8c03beffa96bd73dc2d80b12bba938d85",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "632944c235e859e2a09dad129711a0a1326c90ebbf1c7c8ce3b475849b955fd3",
+      "output_characters": 3109
+    },
+    {
+      "id": "item_19",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method.py /workspace/solution/method_v39_best.py | head -80'",
+      "original_command_sha256": "b5be1300c42408352bb9c7f4f2259ee85e57630f71c4727fc9d78288bc5b31f1",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2472f638773dbec0143576e4d1d6e558f8689d44b78b9d09dca1e1ec16a053fe",
+      "output_characters": 1187
+    },
+    {
+      "id": "item_20",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method.py /workspace/solution/method_v42_worse.py | head -40'",
+      "original_command_sha256": "f2bbd36372f3bd86a2c988ba1d1b47e6cd8d38cb9e60692d95ab0d37617984c2",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "286e4038a15c7e53f02f7fe8a1ace12509a8f5ef0147012f868acedaa6ed338f",
+      "output_characters": 853
+    },
+    {
+      "id": "item_18",
+      "command": "/bin/sh -lc 'head -60 /workspace/solution/method.py'",
+      "original_command_sha256": "d180952f099d2a695b1f84d96a9b0cd9de524bb3bd86264fb70ee18fee8ff342",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "43c4396b67b203869f7f1d06950363114ed26dc8f6c2e3a020e851917ae8401c",
+      "output_characters": 1608
+    },
+    {
+      "id": "item_21",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c94c911dbb99bf8a97f06205dba09a07dc7ab6999c663275fe12c04cc8f60523",
+      "output_characters": 7531
+    },
+    {
+      "id": "item_23",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method_v39_best.py'",
+      "original_command_sha256": "4aa530c6f1f1e5abb152b93ab1ab627b24fdb0867c658c69ef7e8a1b5fe47b91",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "35aa374f16620f545a3d026327d8a7d93ce39f1269f24300f766b304749ca3e2",
+      "output_characters": 7468
+    },
+    {
+      "id": "item_25",
+      "command": "/bin/sh -lc 'bash /workspace/solution/solve.sh 2>&1'",
+      "original_command_sha256": "09da24862318a3d8a1fb872ec020d50f9d209aaba41c0315e8a2cd5b83080451",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "3f8c363c9fe4089a53b39ee9786eb477851e7b577515eb63c081c96f77ac086e",
+      "output_characters": 3109
+    },
+    {
+      "id": "item_27",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v43_worse.py && cp /workspace/solution/method_v39_best.py /workspace/solution/method.py'",
+      "original_command_sha256": "0bf12fd9cfb660765e810ef53e43a08dec9e3f88714608802a191ea22f610f49",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_29",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'ENDOFFILE'\n\\\"\\\"\\\"Method v44: Cosine similarity instead of Spearman for cell-type weighting.\n\nv39 baseline: Dev MSE = 0.001871, Score = 0.4882\nv44: Cosine similarity as alternative to Spearman rank correlation.\n  - Spearman works well but cosine is another angle-based metric\n  - Cosine focuses on direction of expression rather than rank\n  - May be more robust to expression-level differences between cell types\n  - Test with same temperature ensemble and up-power configs as v39\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\n\nENSEMBLE_TEMPS = [0.05, 0.07, 0.09]\nTEMP_WEIGHTS = [0.3, 0.4, 0.3]\n\nUP_POWER_CONFIGS = [\n    (0.80, -0.55),\n    (1.00, -0.65),\n    (1.20, -0.85),\n]\nUP_POWER_WEIGHTS = [1.0/3.0, 1.0/3.0, 1.0/3.0]\n\nBASE_DOWN_POW = 1.40\nSLOPE_DOWN_POW = -0.75\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\nUP_POW_CLIP_MAX = 2.0\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\ndef _cosine_sim(x, y):\n    \\\"\\\"\\\"Cosine similarity between two 1D arrays.\\\"\\\"\\\"\n    num = np.sum(x * y)\n    den = np.sqrt(np.sum(x**2) * np.sum(y**2))\n    if den < 1e-12:\n        return -1.0\n    return num / den\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef _predict_single_config(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                           temperature, base_up_pow, slope_up_pow):\n    \\\"\\\"\\\"Compute predicted mean expression in scaled space for a single config.\\\"\\\"\\\"\n    n_ct = ctrl_means_np.shape[0]\n\n    sims = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        s = _cosine_sim(target_ctrl_mean, ctrl_means_np[i])\n        sims[i] = s if np.isfinite(s) else -1.0\n\n    logits = sims / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, UP_POW_CLIP_MAX)\n\n    down_pow_gene = BASE_DOWN_POW + SLOPE_DOWN_POW * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    return pred_mean_scaled\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    ensemble_pred = np.zeros_like(target_ctrl_mean)\n    total_weight = 0.0\n\n    for temp, temp_w in zip(ENSEMBLE_TEMPS, TEMP_WEIGHTS):\n        for (base_up, slope_up), up_w in zip(UP_POWER_CONFIGS, UP_POWER_WEIGHTS):\n            pred = _predict_single_config(\n                target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                temp, base_up, slope_up\n            )\n            w = temp_w * up_w\n            ensemble_pred += w * pred\n            total_weight += w\n\n    ensemble_pred /= total_weight\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(ensemble_pred.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nENDOFFILE\necho \\\"v44 written\\\"\"",
+      "original_command_sha256": "055f9109421f3370e998c05908bf60eb7db4b2d7c69ce7e83282aec4b9de83af",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "359057812a98be5e106d1a06451522252cd8aeb51e52d5d3294df4948f608130",
+      "output_characters": 12
+    },
+    {
+      "id": "item_33",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4d7cc6aebbbc912a6bb02b5006deee2c8fcd9b2c5fa5ac3eb0a645982e2ec887",
+      "output_characters": 1244
+    },
+    {
+      "id": "item_35",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json'",
+      "original_command_sha256": "da448aa6592171e0e2d14934d6d0d3019c06bf38d9b66c40f7248d7363259a78",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "eb935cf2af131e51b66fa329a91a5fa2d21510ceaddb8256eb79302eb72c7b70",
+      "output_characters": 612
+    },
+    {
+      "id": "item_36",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md'",
+      "original_command_sha256": "efd671e59f5c8de5dda39f72671e3a2e4597a0f03af3ed277868f73124dbb9c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4101e134d3145b89e71ac9b6c03659f655a1290d9b2f206399415a0abd67a693",
+      "output_characters": 2208
+    },
+    {
+      "id": "item_37",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json'",
+      "original_command_sha256": "de1a6fdaf38b4e51f4ed564afdf19e55e3ac083e5f4b47d146a903197242d28f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c4efd9600b99de807d815b0746c8af1e001bba1461c036651261dee69011810c",
+      "output_characters": 3108
+    },
+    {
+      "id": "item_40",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method.py /workspace/solution/method_v39_best.py | head -80'",
+      "original_command_sha256": "b5be1300c42408352bb9c7f4f2259ee85e57630f71c4727fc9d78288bc5b31f1",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "0734f2f79224029612d6fdebb4113a394b3e921afa504db406b6ba8834cee72c",
+      "output_characters": 2450
+    },
+    {
+      "id": "item_41",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method.py /workspace/solution/method_v43_worse.py | head -80'",
+      "original_command_sha256": "5d4cd0a07d11c1d171dc511792d44e4d8c1c7c278a14054d31c5bd906b21b3df",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4a3b9dd031c0712352a0ecc9cc2b80606e8613869d5b5dc663bb29d81dfc391e",
+      "output_characters": 2555
+    },
+    {
+      "id": "item_44",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1'",
+      "original_command_sha256": "2450e58c36f1a2783553943fdadd542ab707fd56075da80a5fc5c977c98d492a",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2cdaed297751272231747faf27ae3d0fa21331d6c50ae9350ba309d91068e9db",
+      "output_characters": 3108
+    },
+    {
+      "id": "item_46",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v44_worse.py'",
+      "original_command_sha256": "ca719f3d0b06cf56c092a749f69a25f2d39b135965e932d41439bdf9318e386f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_47",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v39_best.py /workspace/solution/method.py'",
+      "original_command_sha256": "bdb03812244fb7fad602d8af7dc5186524843d68bfd8bd33370d944f4e5c271c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_49",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method_v39_best.py'",
+      "original_command_sha256": "4aa530c6f1f1e5abb152b93ab1ab627b24fdb0867c658c69ef7e8a1b5fe47b91",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "35aa374f16620f545a3d026327d8a7d93ce39f1269f24300f766b304749ca3e2",
+      "output_characters": 7468
+    },
+    {
+      "id": "item_51",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'ENDOFFILE'\n\\\"\\\"\\\"Method v45: Down-power re-tuning with ensemble for Spearman v39.\n\nv39 baseline: Dev MSE = 0.001871, Score = 0.4882\nv45: Add down-power ensemble (3 configs) with lower base values.\n  - BASE_DOWN_POW=1.40 and SLOPE_DOWN_POW=-0.75 have been fixed since baseline\n  - Up-power ensemble worked well; try same approach for down-power\n  - Try lower base down-pow: maybe 1.40 is over-amplifying down-regulation\n  - Center ensemble around 1.0-1.2 range with varying slopes\n  - Keep Spearman, temps, up-configs, shrinkage from v39\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\nfrom scipy.stats import spearmanr\n\nENSEMBLE_TEMPS = [0.05, 0.07, 0.09]\nTEMP_WEIGHTS = [0.3, 0.4, 0.3]\n\nUP_POWER_CONFIGS = [\n    (0.80, -0.55),\n    (1.00, -0.65),\n    (1.20, -0.85),\n]\nUP_POWER_WEIGHTS = [1.0/3.0, 1.0/3.0, 1.0/3.0]\n\nDOWN_POWER_CONFIGS = [\n    (0.90, -0.40),\n    (1.10, -0.55),\n    (1.30, -0.70),\n]\nDOWN_POWER_WEIGHTS = [1.0/3.0, 1.0/3.0, 1.0/3.0]\n\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\nUP_POW_CLIP_MAX = 2.0\nDOWN_POW_CLIP_MAX = 3.0\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\ndef _rankdata(x):\n    \\\"\\\"\\\"Fast rank data (average ranks for ties).\\\"\\\"\\\"\n    sorter = np.argsort(x, kind='mergesort')\n    inv = np.empty_like(sorter)\n    inv[sorter] = np.arange(len(x))\n    sorted_x = x[sorter]\n    ranks = np.empty(len(x), dtype=np.float64)\n    i = 0\n    n = len(x)\n    while i < n:\n        j = i\n        while j < n and sorted_x[j] == sorted_x[i]:\n            j += 1\n        avg_rank = (i + j - 1) / 2.0\n        ranks[i:j] = avg_rank\n        i = j\n    out = ranks[inv]\n    return out\n\n\ndef _spearman_corr(x, y):\n    \\\"\\\"\\\"Spearman rank correlation between two 1D arrays.\\\"\\\"\\\"\n    rx = _rankdata(x)\n    ry = _rankdata(y)\n    mx = rx.mean()\n    my = ry.mean()\n    num = np.sum((rx - mx) * (ry - my))\n    den = np.sqrt(np.sum((rx - mx)**2) * np.sum((ry - my)**2))\n    if den < 1e-12:\n        return -1.0\n    return num / den\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef _predict_single_config(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                           temperature, base_up_pow, slope_up_pow,\n                           base_down_pow, slope_down_pow):\n    \\\"\\\"\\\"Compute predicted mean expression in scaled space for a single config.\\\"\\\"\\\"\n    n_ct = ctrl_means_np.shape[0]\n\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = _spearman_corr(target_ctrl_mean, ctrl_means_np[i])\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, UP_POW_CLIP_MAX)\n\n    down_pow_gene = base_down_pow + slope_down_pow * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, DOWN_POW_CLIP_MAX)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    return pred_mean_scaled\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    ensemble_pred = np.zeros_like(target_ctrl_mean)\n    total_weight = 0.0\n\n    for temp, temp_w in zip(ENSEMBLE_TEMPS, TEMP_WEIGHTS):\n        for (base_up, slope_up), up_w in zip(UP_POWER_CONFIGS, UP_POWER_WEIGHTS):\n            for (base_down, slope_down), down_w in zip(DOWN_POWER_CONFIGS, DOWN_POWER_WEIGHTS):\n                pred = _predict_single_config(\n                    target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                    temp, base_up, slope_up, base_down, slope_down\n                )\n                w = temp_w * up_w * down_w\n                ensemble_pred += w * pred\n                total_weight += w\n\n    ensemble_pred /= total_weight\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(ensemble_pred.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nENDOFFILE\necho \\\"done\\\"\"",
+      "original_command_sha256": "e0d4dbc8ef96c86fa290fbf8f76a0048cf7e6c182d18f09bb5c920cc46b2d4de",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+      "output_characters": 5
+    },
+    {
+      "id": "item_53",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1'",
+      "original_command_sha256": "2450e58c36f1a2783553943fdadd542ab707fd56075da80a5fc5c977c98d492a",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a49a88fa91b516211493a396efb1be03c9ba9ddb55db3648eeee980c56a4d5f0",
+      "output_characters": 3109
+    },
+    {
+      "id": "item_57",
+      "command": "/bin/sh -lc 'ls /workspace/solution/'",
+      "original_command_sha256": "f96be8022710330b86bf8d7910bc4d5fe59518d6253e4db543738ef725d65b5e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "fbe4df5f6f3c058121a5ae98889c4bf8eead447d23532d6930032864aa9609da",
+      "output_characters": 312
+    },
+    {
+      "id": "item_58",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json 2>/dev/null | head -50'",
+      "original_command_sha256": "5e77731e1bc6913c17a9b29b51232af22c549861a5472a3259c2a724545f23de",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "eb935cf2af131e51b66fa329a91a5fa2d21510ceaddb8256eb79302eb72c7b70",
+      "output_characters": 612
+    },
+    {
+      "id": "item_60",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method.py /workspace/solution/method_v39_best.py | head -20'",
+      "original_command_sha256": "e61e531732fb659c91b7365822f914fc2464b3544db052e461600b7ac39de911",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "280342204da8d8a08245121c3fe346d9e599b6a0139043be7d6010a8bb1a636c",
+      "output_characters": 1050
+    },
+    {
+      "id": "item_61",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json'",
+      "original_command_sha256": "de1a6fdaf38b4e51f4ed564afdf19e55e3ac083e5f4b47d146a903197242d28f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "6f84c41d7c2dd973caee4252141a7793565a12f89734e0d38dabafefaefcf48b",
+      "output_characters": 3108
+    },
+    {
+      "id": "item_64",
+      "command": "/bin/sh -lc 'wc -l /workspace/solution/method_v39_best.py /workspace/solution/method.py'",
+      "original_command_sha256": "a51cb5f50cc64768cc78fc2e3b220b2978e4b923f03a718bc22ce16a2cea09a3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "f9205c91e692a23687fdd503f1b4b9ffe0206aa18059142b46357d925318ebb3",
+      "output_characters": 93
+    },
+    {
+      "id": "item_65",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method_v39_best.py'",
+      "original_command_sha256": "4aa530c6f1f1e5abb152b93ab1ab627b24fdb0867c658c69ef7e8a1b5fe47b91",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "35aa374f16620f545a3d026327d8a7d93ce39f1269f24300f766b304749ca3e2",
+      "output_characters": 7468
+    },
+    {
+      "id": "item_68",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v39_best.py /workspace/solution/method_v45_worse.py 2>/dev/null; true\n# First restore v39 as current method.py\ncp /workspace/solution/method_v39_best.py /workspace/solution/method.py'",
+      "original_command_sha256": "80b85c02ef366481027143a2cd1ba89b2f7fb6154771689c48beb1cd7581503b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_70",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'ENDOFFILE'\n\\\"\\\"\\\"Method v46: Single lower down-power point (1.20) based on v39.\n\nv39 baseline: Dev MSE = 0.001871, Score = 0.4882\nv46: Lower BASE_DOWN_POW from 1.40 to 1.20, keep SLOPE_DOWN_POW=-0.75\n  - Down-power ensemble (v45) hurt due to ensemble smearing\n  - But maybe a single lower down-power value helps\n  - 1.40 may be over-amplifying down-regulated genes\n  - Try 1.20 as a middle ground\n  - Keep everything else from v39 (Spearman, temps, up-configs, shrinkage)\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\nfrom scipy.stats import spearmanr\n\nENSEMBLE_TEMPS = [0.05, 0.07, 0.09]\nTEMP_WEIGHTS = [0.3, 0.4, 0.3]\n\nUP_POWER_CONFIGS = [\n    (0.80, -0.55),\n    (1.00, -0.65),\n    (1.20, -0.85),\n]\nUP_POWER_WEIGHTS = [1.0/3.0, 1.0/3.0, 1.0/3.0]\n\nBASE_DOWN_POW = 1.20\nSLOPE_DOWN_POW = -0.75\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\nUP_POW_CLIP_MAX = 2.0\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\ndef _rankdata(x):\n    \\\"\\\"\\\"Fast rank data (average ranks for ties).\\\"\\\"\\\"\n    sorter = np.argsort(x, kind='mergesort')\n    inv = np.empty_like(sorter)\n    inv[sorter] = np.arange(len(x))\n    sorted_x = x[sorter]\n    ranks = np.empty(len(x), dtype=np.float64)\n    i = 0\n    n = len(x)\n    while i < n:\n        j = i\n        while j < n and sorted_x[j] == sorted_x[i]:\n            j += 1\n        avg_rank = (i + j - 1) / 2.0\n        ranks[i:j] = avg_rank\n        i = j\n    out = ranks[inv]\n    return out\n\n\ndef _spearman_corr(x, y):\n    \\\"\\\"\\\"Spearman rank correlation between two 1D arrays.\\\"\\\"\\\"\n    rx = _rankdata(x)\n    ry = _rankdata(y)\n    mx = rx.mean()\n    my = ry.mean()\n    num = np.sum((rx - mx) * (ry - my))\n    den = np.sqrt(np.sum((rx - mx)**2) * np.sum((ry - my)**2))\n    if den < 1e-12:\n        return -1.0\n    return num / den\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef _predict_single_config(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                           temperature, base_up_pow, slope_up_pow):\n    \\\"\\\"\\\"Compute predicted mean expression in scaled space for a single config.\\\"\\\"\\\"\n    n_ct = ctrl_means_np.shape[0]\n\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = _spearman_corr(target_ctrl_mean, ctrl_means_np[i])\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, UP_POW_CLIP_MAX)\n\n    down_pow_gene = BASE_DOWN_POW + SLOPE_DOWN_POW * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    return pred_mean_scaled\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    ensemble_pred = np.zeros_like(target_ctrl_mean)\n    total_weight = 0.0\n\n    for temp, temp_w in zip(ENSEMBLE_TEMPS, TEMP_WEIGHTS):\n        for (base_up, slope_up), up_w in zip(UP_POWER_CONFIGS, UP_POWER_WEIGHTS):\n            pred = _predict_single_config(\n                target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                temp, base_up, slope_up\n            )\n            w = temp_w * up_w\n            ensemble_pred += w * pred\n            total_weight += w\n\n    ensemble_pred /= total_weight\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(ensemble_pred.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nENDOFFILE\"",
+      "original_command_sha256": "dc290b974f7d72e22ea16c7e52a85c54efd0cc68f9523de71829add6189ed953",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_72",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -20'",
+      "original_command_sha256": "5ff02ac6a1a531cc6daa97b69676b6d4a11053c8fe189e41eed55f4855d4674b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "bce009caf3af0ad1d754f4bc7a7cb829118b09e0aff5e1a39852b9cf82dbfb46",
+      "output_characters": 718
+    },
+    {
+      "id": "item_74",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v46_worse.py'",
+      "original_command_sha256": "6fc2205f25368f8f9a72053cc7a99f807035580f28c5dd53b41b2c68471a4234",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_76",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'ENDOFFILE'\n\\\"\\\"\\\"Method v47: Peaked up-power weights (middle config emphasized).\n\nv39 baseline: Dev MSE = 0.001871, Score = 0.4882\nv47: Use peaked weights for up-power configs instead of equal weights\n  - Middle config (1.00, -0.65) likely best single config\n  - Peaked weights: [0.2, 0.6, 0.2] to emphasize middle\n  - Keep everything else from v39\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\nfrom scipy.stats import spearmanr\n\nENSEMBLE_TEMPS = [0.05, 0.07, 0.09]\nTEMP_WEIGHTS = [0.3, 0.4, 0.3]\n\nUP_POWER_CONFIGS = [\n    (0.80, -0.55),\n    (1.00, -0.65),\n    (1.20, -0.85),\n]\nUP_POWER_WEIGHTS = [0.2, 0.6, 0.2]\n\nBASE_DOWN_POW = 1.40\nSLOPE_DOWN_POW = -0.75\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\nUP_POW_CLIP_MAX = 2.0\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\ndef _rankdata(x):\n    \\\"\\\"\\\"Fast rank data (average ranks for ties).\\\"\\\"\\\"\n    sorter = np.argsort(x, kind='mergesort')\n    inv = np.empty_like(sorter)\n    inv[sorter] = np.arange(len(x))\n    sorted_x = x[sorter]\n    ranks = np.empty(len(x), dtype=np.float64)\n    i = 0\n    n = len(x)\n    while i < n:\n        j = i\n        while j < n and sorted_x[j] == sorted_x[i]:\n            j += 1\n        avg_rank = (i + j - 1) / 2.0\n        ranks[i:j] = avg_rank\n        i = j\n    out = ranks[inv]\n    return out\n\n\ndef _spearman_corr(x, y):\n    \\\"\\\"\\\"Spearman rank correlation between two 1D arrays.\\\"\\\"\\\"\n    rx = _rankdata(x)\n    ry = _rankdata(y)\n    mx = rx.mean()\n    my = ry.mean()\n    num = np.sum((rx - mx) * (ry - my))\n    den = np.sqrt(np.sum((rx - mx)**2) * np.sum((ry - my)**2))\n    if den < 1e-12:\n        return -1.0\n    return num / den\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef _predict_single_config(target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                           temperature, base_up_pow, slope_up_pow):\n    \\\"\\\"\\\"Compute predicted mean expression in scaled space for a single config.\\\"\\\"\\\"\n    n_ct = ctrl_means_np.shape[0]\n\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = _spearman_corr(target_ctrl_mean, ctrl_means_np[i])\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / temperature\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff = ref_diff * shrink\n\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = base_up_pow + slope_up_pow * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, UP_POW_CLIP_MAX)\n\n    down_pow_gene = BASE_DOWN_POW + SLOPE_DOWN_POW * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 3.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])\n\n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    return pred_mean_scaled\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    ensemble_pred = np.zeros_like(target_ctrl_mean)\n    total_weight = 0.0\n\n    for temp, temp_w in zip(ENSEMBLE_TEMPS, TEMP_WEIGHTS):\n        for (base_up, slope_up), up_w in zip(UP_POWER_CONFIGS, UP_POWER_WEIGHTS):\n            pred = _predict_single_config(\n                target_ctrl_mean, ctrl_means_np, stim_diffs_np,\n                temp, base_up, slope_up\n            )\n            w = temp_w * up_w\n            ensemble_pred += w * pred\n            total_weight += w\n\n    ensemble_pred /= total_weight\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(ensemble_pred.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nENDOFFILE\"",
+      "original_command_sha256": "f9da02b155ff5e5ac207bb78833c7b9195e38f7f57e91a73ccecce536bdabca6",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_77",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -15'",
+      "original_command_sha256": "b58324195c2fe7f429b243619e24c543659604fc8eef0fca0563e3cdef9b756b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "d143fdff6a28466b2c98612ad883719988a15686c7f0c3d5b499867038ee7c59",
+      "output_characters": 567
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 33086782,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 914543,
+        "reasoning_output_tokens": 108213
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

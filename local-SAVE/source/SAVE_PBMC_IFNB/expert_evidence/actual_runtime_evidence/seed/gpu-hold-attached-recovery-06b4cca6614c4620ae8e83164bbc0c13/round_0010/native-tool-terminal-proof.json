@@ -1,0 +1,52 @@
+{
+  "original_event_sha256": "83701eaca9bc4a78a8164c9d613faa25d8557ee2a7ae6fe5e1911c0bc4a8a348",
+  "original_receipt_sha256": "38ab32e9a1d2e385be87a815742a2c7f2e8d8e03969b0c510205c2af484ca0fc",
+  "original_event_last_write_epoch": 1791786353.9509776,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"cat /workspace/solution/dev_result.json 2>/dev/null | python3 -c \\\"import sys,json; d=json.load(sys.stdin); print('status:', d.get('status')); print('raw_metric:', d.get('raw_metric')); print('score:', d.get('score')); print('method_sha256:', d.get('method_sha256')[:16]+'...')\\\" 2>/dev/null || echo \\\"No valid result yet\\\"\nstat -c '%Y %y' /workspace/solution/dev_result.json 2>/dev/null || echo \\\"No file\\\"\"",
+      "original_command_sha256": "1423e8e58307a538390da839e06f4de32b1b326eed3f5a4e0dfa8a531f032c28",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e5de2b8b36fc703e73918b4e9d5386e6eafc1fd5605d12b2a5543a30da7e7f40",
+      "output_characters": 159
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'ps aux | grep grader | grep -v grep; echo \"---\"; ls -la /workspace/solution/dev_result.pending.json 2>/dev/null || echo \"No pending file\"'",
+      "original_command_sha256": "a5f87fcd2041d04fc6f5dec0f80a01f22785d17e78c85f346fe1e31045976f85",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5bdaf1e146894bbf896b6f60d70cd6db367fa448a1a5ed2604031e81747cb2b8",
+      "output_characters": 46
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /proc/5060/status 2>/dev/null | head -3 || echo \"Process 5060 not found\"\n# Check if any python grader is running\nls /proc/*/cmdline 2>/dev/null | while read f; do\n  cmd=$(cat \"$f\" 2>/dev/null | tr '\"'\\\\0' ' ')\n  echo \\\"\"'$cmd\" | grep -q grader && echo \"Found: $cmd\" && echo \"PID: $(basename $(dirname $f))\"\ndone'",
+      "original_command_sha256": "0866ab500f605a6b189d389f626259cc40951e0cc14158412ec4ed09b5b37912",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "8d4dd8b0bda97a9013e0f317cadad524215d763bc8f22d0f84e659e8f8cd5795",
+      "output_characters": 338
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 47432487,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1077343,
+        "reasoning_output_tokens": 148395
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

@@ -1,0 +1,85 @@
+{
+  "algorithm": "Position-based token-ID structural template + answer guessing + no-single-token-fallbacks",
+  "version": "0.14.0",
+  "summary": "v0.14.0 is the highest-scoring verified method. Uses 36-token structural XML template, answer letter guessing (43.8% accuracy), conclusion closing tag drafting, and gated fallbacks. Full 5-seed normalized score: 0.6771 (ratio 0.3229). Quality gates: all pass.",
+  "method_sha256": "a0a4bb2d8a059009673ebfac97e2d47dc6d5a845b63db30a0155b1c0e542934c",
+  "return_format": "Returns list of token IDs. Returns [] when no confident draft available (requests ordinary AR step).",
+  "key_strategies": {
+    "structural_template": "36-token XML prefix: <SUMMARY>...</SUMMARY> <CAPTION>...</CAPTION> <REASONING>...</REASONING> <CONCLUSION>",
+    "conclusion_closing": "After answer letter appears, drafts ' </CONCLUSION>' (5 tokens)",
+    "answer_guessing": "Category-aware heuristic, 43.8% accuracy on dev set",
+    "the_answer_is_pattern": "Token-ID-based 'The answer is X.' pattern for complex outputs",
+    "no_single_token_fallbacks": "Removes net-negative 1-token predictions from v0.13.0"
+  },
+  "strategy_priority": [
+    "structural_template",
+    "conclusion_closing",
+    "the_answer_is_pattern",
+    "answer_guessing_enhanced",
+    "period_aware_drafting"
+  ],
+  "budget_handling": {
+    "max_draft_tokens": 32,
+    "remaining_tokens": "respected",
+    "position_tracking": "len(generated_token_ids) based"
+  },
+  "verified_results": {
+    "full_5seed": {
+      "score": 0.6771049225264887,
+      "ratio": 0.3228950774735113,
+      "quality_pass": true,
+      "source": "own_verified_incumbent_summary.json"
+    },
+    "quick_seed17": {
+      "score": 0.7265856757559472,
+      "ratio": 0.2734518078875386,
+      "quality_pass": true,
+      "forward_calls": 939,
+      "policy_calls": 360,
+      "speedup": "3.66x",
+      "job_id": "82076e2170744250a02da4adf2687653"
+    },
+    "last_verified_full": {
+      "score": 0.6752657332369706,
+      "ratio": 0.32477878609652305,
+      "quality_pass": true,
+      "job_id": "74885d1420ee4eb6af5aad7c05572186",
+      "note": "v0.16.0 bundle; v0.14.0 scores higher (0.6771)"
+    }
+  },
+  "real_dev_observations": {
+    "common_prefix_tokens": 36,
+    "simple_mc_fraction": "23/24 observed outputs",
+    "avg_output_tokens": 42.9,
+    "structural_prefix_acceptance": "100% on 24/24 observed outputs"
+  },
+  "dependencies": {
+    "runtime": [
+      "method.py"
+    ],
+    "standard_library": [
+      "re",
+      "string",
+      "collections"
+    ],
+    "local_imports": "none \u2014 self-contained"
+  },
+  "version_history": {
+    "v0.7.1": "Natural language templates, 13.4% SLOWER than baseline (ratio 1.134)",
+    "v0.8.0": "XML structural template discovery, 3.09x speedup (quick)",
+    "v0.12.0": "Position-based token-ID drafting, 8.6% better than v0.8.0",
+    "v0.13.0": "Improved complex handling + answer guessing, 0.2852 ratio (quick)",
+    "v0.14.0": "Enhanced answer guessing (43.8%) + no fallbacks, best verified full score",
+    "v0.15.2": "Dynamic extraction + proactive TAI, neutral on seed 17 quick eval",
+    "v0.16.0": "Conclusion opening prediction, 0.6753 full score (slightly worse than v0.14.0)"
+  },
+  "decision": "Retained v0.14.0 as incumbent \u2014 highest verified full 5-seed score (0.6771) with all quality gates passing. v0.15.x and v0.16.0 improvements target complex questions but regress slightly on overall average.",
+  "preserved_evidence": {
+    "method_variants": "research_archive_methods.json (14 historical method versions, base64)",
+    "research_tools": "research_archive_tools.json (24 research scripts and tests, base64)",
+    "evaluation_results": "evaluation-*.json files (6 completed quick evals + full results)",
+    "research_journal": "research_journal.md (24 entries documenting full development history)",
+    "incumbent_summary": "own_verified_incumbent_summary.json (full verified score evidence)"
+  },
+  "final_evaluation_status": "pending \u2014 submitting cleaned bundle for full 5-seed verification"
+}

@@ -1,0 +1,1825 @@
+{
+  "policy": "user_amended_active_execution_v2_relaxed",
+  "scope": "each model separately; all same-task native Harbor attempts",
+  "user_instruction": "有效时间宽松计入正常思考、读写代码、评测、失败尝试和正常等待；不把失败请求整段自动扣掉；只扣已记录系统挂起及明确较长重试暂停，下载与停止空档仍排除；完整闭环另计。",
+  "failed_model_output_accounting": "HTTP200 malformed output remains failed method work. A failed HTTP request does not by itself locate a stall; ordinary attempted-request waiting is included as an estimate. Quantified system suspension is deducted once and observed retry pauses >=5s are deducted.",
+  "cutoff_unix": 1791506361.681927,
+  "cutoff_local": "2026-10-09 08:39:21",
+  "excluded_without_counting": [
+    "downloads and image/dependency preparation before agent execution",
+    "connection probes",
+    "author Baseline/Reference experiments",
+    "time between stopped attempts",
+    "container stability-only uptime"
+  ],
+  "original_runtime_records_modified": false,
+  "tracks": {
+    "gpt": {
+      "exclusions": [
+        {
+          "kind": "CLI_configuration_rejection",
+          "start": 1791371328.347703,
+          "end": 1791371328.8070009,
+          "source": "campaigns/asd-research-1791370972/harbor_task__baCKwKC/agent/round_00001.events.jsonl"
+        }
+      ],
+      "sources": [
+        {
+          "path": "campaigns/asd-research-1791370972/harbor_task__baCKwKC/agent/initial-baseline.log",
+          "kind": "actual_initial_starter_scoring",
+          "start": 1791371008.372324,
+          "end": 1791371325.9569569
+        },
+        {
+          "path": "campaigns/asd-research-1791370972/harbor_task__baCKwKC/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 1,
+          "start": 1791371328.347703,
+          "end": 1791371615.140403,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__43XxfDL/agent/initial-baseline.log",
+          "kind": "actual_initial_starter_scoring",
+          "start": 1791372049.918269,
+          "end": 1791372331.506627
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__43XxfDL/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 1,
+          "start": 1791372333.102815,
+          "end": 1791373512.771563,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__43XxfDL/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 2,
+          "start": 1791373513.1885738,
+          "end": 1791374749.2309408,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__43XxfDL/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 3,
+          "start": 1791374749.911805,
+          "end": 1791376224.0341818,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__43XxfDL/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 4,
+          "start": 1791376224.860047,
+          "end": 1791377725.9780622,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__43XxfDL/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 5,
+          "start": 1791377727.190815,
+          "end": 1791378939.9021719,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__dGakBiV/agent/initial-baseline.log",
+          "kind": "actual_initial_starter_scoring",
+          "start": 1791382598.8322427,
+          "end": 1791382908.923033
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__dGakBiV/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 1,
+          "start": 1791382910.144512,
+          "end": 1791383841.778602,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__dGakBiV/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 2,
+          "start": 1791383841.973087,
+          "end": 1791384787.674869,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__dGakBiV/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 3,
+          "start": 1791384788.025582,
+          "end": 1791385845.72131,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791424145.7235498,
+          "end": 1791424452.2063947
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 4,
+          "start": 1791424461.780056,
+          "end": 1791425483.88378,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 5,
+          "start": 1791425486.702023,
+          "end": 1791426517.67623,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 6,
+          "start": 1791426519.081381,
+          "end": 1791428414.076983,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 7,
+          "start": 1791428415.751772,
+          "end": 1791429366.048445,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 8,
+          "start": 1791429373.965472,
+          "end": 1791432188.289543,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 9,
+          "start": 1791432198.237112,
+          "end": 1791433092.806078,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 10,
+          "start": 1791433106.5018802,
+          "end": 1791434098.7289522,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 11,
+          "start": 1791434107.06435,
+          "end": 1791435607.826585,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 12,
+          "start": 1791435610.246976,
+          "end": 1791436372.23537,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 13,
+          "start": 1791436374.457578,
+          "end": 1791437209.0934038,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 14,
+          "start": 1791437210.6916249,
+          "end": 1791438217.702943,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 15,
+          "start": 1791438218.787665,
+          "end": 1791438837.45871,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791439120.2207923,
+          "end": 1791439293.4377294
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 16,
+          "start": 1791439295.648902,
+          "end": 1791439968.3197162,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 17,
+          "start": 1791439969.579633,
+          "end": 1791440865.2961779,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 18,
+          "start": 1791440866.744321,
+          "end": 1791441482.215035,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 19,
+          "start": 1791441484.409634,
+          "end": 1791442697.462039,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 20,
+          "start": 1791442699.404518,
+          "end": 1791443748.285293,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 21,
+          "start": 1791443750.2042491,
+          "end": 1791444385.0203252,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 22,
+          "start": 1791444386.54941,
+          "end": 1791448517.040931,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 23,
+          "start": 1791448518.849121,
+          "end": 1791451774.8394308,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 24,
+          "start": 1791451787.220337,
+          "end": 1791452581.332292,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 25,
+          "start": 1791452582.7970188,
+          "end": 1791453352.709585,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791453375/harbor_task__VKTqimT/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791453411.1712823,
+          "end": 1791454916.2171419
+        },
+        {
+          "path": "campaigns/asd-research-1791482688/harbor_task__9sB9K5a/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791482699.0291784,
+          "end": 1791482754.9989688
+        },
+        {
+          "path": "campaigns/asd-research-1791482688/harbor_task__9sB9K5a/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 26,
+          "start": 1791482755.764481,
+          "end": 1791483202.2628,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791482688/harbor_task__9sB9K5a/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 27,
+          "start": 1791483202.916409,
+          "end": 1791483818.968239,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791486049.1780474,
+          "end": 1791486108.911131
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 28,
+          "start": 1791486109.7663958,
+          "end": 1791486735.6912892,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 29,
+          "start": 1791486736.4245892,
+          "end": 1791486976.947928,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 30,
+          "start": 1791486977.90522,
+          "end": 1791487517.029589,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 31,
+          "start": 1791487517.6840472,
+          "end": 1791487985.348236,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 32,
+          "start": 1791487986.084599,
+          "end": 1791488294.214658,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 33,
+          "start": 1791488294.962805,
+          "end": 1791489575.7383318,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 34,
+          "start": 1791489576.463459,
+          "end": 1791489855.024909,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 35,
+          "start": 1791489855.8328772,
+          "end": 1791490327.345911,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 36,
+          "start": 1791490328.1154811,
+          "end": 1791490840.536609,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 37,
+          "start": 1791490841.344408,
+          "end": 1791491099.582874,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 38,
+          "start": 1791491100.3403919,
+          "end": 1791491548.299801,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 39,
+          "start": 1791491549.091788,
+          "end": 1791492096.9217951,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 40,
+          "start": 1791492097.642586,
+          "end": 1791492573.6430368,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 41,
+          "start": 1791492574.336135,
+          "end": 1791493159.487743,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 42,
+          "start": 1791493160.188695,
+          "end": 1791493347.984685,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 43,
+          "start": 1791493348.6148858,
+          "end": 1791494352.3147268,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 44,
+          "start": 1791494353.070553,
+          "end": 1791494565.5809228,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 45,
+          "start": 1791494566.349668,
+          "end": 1791494917.325695,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 46,
+          "start": 1791494918.043705,
+          "end": 1791495745.6416872,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 47,
+          "start": 1791495746.477676,
+          "end": 1791496010.410112,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 48,
+          "start": 1791496011.130282,
+          "end": 1791496439.765006,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 49,
+          "start": 1791496440.51856,
+          "end": 1791496767.359873,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 50,
+          "start": 1791496768.1150699,
+          "end": 1791497136.451264,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 51,
+          "start": 1791497137.264178,
+          "end": 1791497448.427522,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 52,
+          "start": 1791497449.266728,
+          "end": 1791498063.4646559,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 53,
+          "start": 1791498064.204184,
+          "end": 1791498454.20733,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 54,
+          "start": 1791498455.0566819,
+          "end": 1791498969.659462,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 55,
+          "start": 1791498970.415162,
+          "end": 1791499244.257994,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 56,
+          "start": 1791499245.185051,
+          "end": 1791499561.975038,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 57,
+          "start": 1791499562.768043,
+          "end": 1791499872.484595,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 58,
+          "start": 1791499873.2950249,
+          "end": 1791500154.738834,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 59,
+          "start": 1791500155.59011,
+          "end": 1791500512.435057,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 60,
+          "start": 1791500513.250651,
+          "end": 1791500941.061651,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 61,
+          "start": 1791500941.869458,
+          "end": 1791501278.465944,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 62,
+          "start": 1791501279.238466,
+          "end": 1791501714.889508,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 63,
+          "start": 1791501715.713141,
+          "end": 1791502115.555192,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 64,
+          "start": 1791502116.444769,
+          "end": 1791502502.752942,
+          "model_finished": true,
+          "method_changed": true
+        }
+      ],
+      "missing_partial_cli_log_seconds": 2400.398753373185,
+      "completed_method_cycles": 59,
+      "failed_model_output_generation_seconds_included": 0.0,
+      "system_suspension_gaps": [
+        {
+          "source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "round": 6,
+          "seconds": 1257.6265846425667,
+          "evidence": "completed wall-clock interval minus recorded monotonic execution duration; quantity observed, exact subinterval not localized"
+        },
+        {
+          "source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "round": 8,
+          "seconds": 1520.7823124304414,
+          "evidence": "completed wall-clock interval minus recorded monotonic execution duration; quantity observed, exact subinterval not localized"
+        },
+        {
+          "source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/runtime.json",
+          "round": 11,
+          "seconds": 746.3478835816495,
+          "evidence": "completed wall-clock interval minus recorded monotonic execution duration; quantity observed, exact subinterval not localized"
+        },
+        {
+          "source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "round": 22,
+          "seconds": 602.7416442977265,
+          "evidence": "completed wall-clock interval minus recorded monotonic execution duration; quantity observed, exact subinterval not localized"
+        },
+        {
+          "source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "round": 23,
+          "seconds": 1620.1933346730657,
+          "evidence": "completed wall-clock interval minus recorded monotonic execution duration; quantity observed, exact subinterval not localized"
+        },
+        {
+          "source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/runtime.json",
+          "round": 24,
+          "seconds": 121.86294529098086,
+          "evidence": "completed wall-clock interval minus recorded monotonic execution duration; quantity observed, exact subinterval not localized"
+        }
+      ],
+      "failed_request_wait_seconds_included_estimated": 0.0,
+      "observed_active_windows": [
+        [
+          1791371008.372324,
+          1791371325.9569569
+        ],
+        [
+          1791371331.2769072,
+          1791371614.4407442
+        ],
+        [
+          1791372049.918269,
+          1791372331.506627
+        ],
+        [
+          1791372333.102815,
+          1791373512.771563
+        ],
+        [
+          1791373513.1885738,
+          1791374749.2309408
+        ],
+        [
+          1791374749.911805,
+          1791376224.0341818
+        ],
+        [
+          1791376224.860047,
+          1791377725.9780622
+        ],
+        [
+          1791377727.190815,
+          1791378939.9021719
+        ],
+        [
+          1791382598.8322427,
+          1791382908.923033
+        ],
+        [
+          1791382910.144512,
+          1791383841.778602
+        ],
+        [
+          1791383841.973087,
+          1791384787.674869
+        ],
+        [
+          1791384788.025582,
+          1791385845.72131
+        ],
+        [
+          1791424145.7235498,
+          1791424452.2063947
+        ],
+        [
+          1791424461.780056,
+          1791425483.88378
+        ],
+        [
+          1791425486.702023,
+          1791426517.67623
+        ],
+        [
+          1791426519.081381,
+          1791428414.076983
+        ],
+        [
+          1791428415.751772,
+          1791429366.048445
+        ],
+        [
+          1791429373.965472,
+          1791432188.289543
+        ],
+        [
+          1791432198.237112,
+          1791433092.806078
+        ],
+        [
+          1791433106.5018802,
+          1791434098.7289522
+        ],
+        [
+          1791434107.06435,
+          1791435607.826585
+        ],
+        [
+          1791435610.246976,
+          1791436372.23537
+        ],
+        [
+          1791436374.457578,
+          1791437209.0934038
+        ],
+        [
+          1791437210.6916249,
+          1791438217.702943
+        ],
+        [
+          1791438218.787665,
+          1791438837.45871
+        ],
+        [
+          1791439120.2207923,
+          1791439293.4377294
+        ],
+        [
+          1791439295.648902,
+          1791439968.3197162
+        ],
+        [
+          1791439969.579633,
+          1791440865.2961779
+        ],
+        [
+          1791440866.744321,
+          1791441482.215035
+        ],
+        [
+          1791441484.409634,
+          1791442697.462039
+        ],
+        [
+          1791442699.404518,
+          1791443748.285293
+        ],
+        [
+          1791443750.2042491,
+          1791444385.0203252
+        ],
+        [
+          1791444386.54941,
+          1791448517.040931
+        ],
+        [
+          1791448518.849121,
+          1791451774.8394308
+        ],
+        [
+          1791451787.220337,
+          1791452581.332292
+        ],
+        [
+          1791452582.7970188,
+          1791453352.709585
+        ],
+        [
+          1791453411.1712823,
+          1791454916.2171419
+        ],
+        [
+          1791482699.0291784,
+          1791482754.9989688
+        ],
+        [
+          1791482755.764481,
+          1791483202.2628
+        ],
+        [
+          1791483202.916409,
+          1791483818.968239
+        ],
+        [
+          1791486049.1780474,
+          1791486108.911131
+        ],
+        [
+          1791486109.7663958,
+          1791486735.6912892
+        ],
+        [
+          1791486736.4245892,
+          1791486976.947928
+        ],
+        [
+          1791486977.90522,
+          1791487517.029589
+        ],
+        [
+          1791487517.6840472,
+          1791487985.348236
+        ],
+        [
+          1791487986.084599,
+          1791488294.214658
+        ],
+        [
+          1791488294.962805,
+          1791489575.7383318
+        ],
+        [
+          1791489576.463459,
+          1791489855.024909
+        ],
+        [
+          1791489855.8328772,
+          1791490327.345911
+        ],
+        [
+          1791490328.1154811,
+          1791490840.536609
+        ],
+        [
+          1791490841.344408,
+          1791491099.582874
+        ],
+        [
+          1791491100.3403919,
+          1791491548.299801
+        ],
+        [
+          1791491549.091788,
+          1791492096.9217951
+        ],
+        [
+          1791492097.642586,
+          1791492573.6430368
+        ],
+        [
+          1791492574.336135,
+          1791493159.487743
+        ],
+        [
+          1791493160.188695,
+          1791493347.984685
+        ],
+        [
+          1791493348.6148858,
+          1791494352.3147268
+        ],
+        [
+          1791494353.070553,
+          1791494565.5809228
+        ],
+        [
+          1791494566.349668,
+          1791494917.325695
+        ],
+        [
+          1791494918.043705,
+          1791495745.6416872
+        ],
+        [
+          1791495746.477676,
+          1791496010.410112
+        ],
+        [
+          1791496011.130282,
+          1791496439.765006
+        ],
+        [
+          1791496440.51856,
+          1791496767.359873
+        ],
+        [
+          1791496768.1150699,
+          1791497136.451264
+        ],
+        [
+          1791497137.264178,
+          1791497448.427522
+        ],
+        [
+          1791497449.266728,
+          1791498063.4646559
+        ],
+        [
+          1791498064.204184,
+          1791498454.20733
+        ],
+        [
+          1791498455.0566819,
+          1791498969.659462
+        ],
+        [
+          1791498970.415162,
+          1791499244.257994
+        ],
+        [
+          1791499245.185051,
+          1791499561.975038
+        ],
+        [
+          1791499562.768043,
+          1791499872.484595
+        ],
+        [
+          1791499873.2950249,
+          1791500154.738834
+        ],
+        [
+          1791500155.59011,
+          1791500512.435057
+        ],
+        [
+          1791500513.250651,
+          1791500941.061651
+        ],
+        [
+          1791500941.869458,
+          1791501278.465944
+        ],
+        [
+          1791501279.238466,
+          1791501714.889508
+        ],
+        [
+          1791501715.713141,
+          1791502115.555192
+        ],
+        [
+          1791502116.444769,
+          1791502502.752942
+        ]
+      ],
+      "observed_window_seconds": 58612.75044345856,
+      "deducted_observed_retry_pause_seconds": 0,
+      "deducted_system_suspension_seconds": 5869.554704916431,
+      "deducted_observed_stall_seconds": 5869.554704916431,
+      "effective_seconds": 52743.19573854213,
+      "effective_hours": 14.650887705150591,
+      "historical_precision": "estimate: old partial CLI logs were discarded; any unobserved stall cannot be precisely deducted; native GPT network errors observed without per-event timestamps, stall durations remain unquantified",
+      "unquantified_native_network_errors": [
+        {
+          "source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00009.events.jsonl",
+          "count": 1,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00010.events.jsonl",
+          "count": 1,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00005.events.jsonl",
+          "count": 2,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00004.events.jsonl",
+          "count": 3,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00015.events.jsonl",
+          "count": 1,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00020.events.jsonl",
+          "count": 1,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00022.events.jsonl",
+          "count": 42,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00023.events.jsonl",
+          "count": 10,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/round_00057.events.jsonl",
+          "count": 1,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/round_00031.events.jsonl",
+          "count": 1,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791382557/harbor_task__dGakBiV/agent/round_00002.events.jsonl",
+          "count": 1,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        },
+        {
+          "source": "campaigns/asd-research-1791382557/harbor_task__dGakBiV/agent/round_00003.events.jsonl",
+          "count": 1,
+          "duration_seconds": null,
+          "reason": "original native events lack per-event receipt timestamps; do not invent a duration or deduct normal model thought"
+        }
+      ]
+    },
+    "seed": {
+      "exclusions": [
+        {
+          "kind": "CLI_configuration_rejection",
+          "start": 1791371327.733537,
+          "end": 1791371328.2440221,
+          "source": "campaigns/asd-research-1791370972/harbor_task__d9XHobK/agent/round_00001.events.jsonl"
+        },
+        {
+          "kind": "observed_retry_pause_at_least_5s",
+          "start": 1791424225.740157,
+          "end": 1791424228.903834,
+          "source": "campaigns/asd-research-1791423617/harbor_task__oBfRQKC/agent/coding-plan.audit.jsonl",
+          "error_type": "URLError"
+        }
+      ],
+      "sources": [
+        {
+          "path": "campaigns/asd-research-1791370972/harbor_task__d9XHobK/agent/initial-baseline.log",
+          "kind": "actual_initial_starter_scoring",
+          "start": 1791371010.4667196,
+          "end": 1791371325.8018315
+        },
+        {
+          "path": "campaigns/asd-research-1791370972/harbor_task__d9XHobK/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 1,
+          "start": 1791371327.733537,
+          "end": 1791371614.890083,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__BHwCTR3/agent/initial-baseline.log",
+          "kind": "actual_initial_starter_scoring",
+          "start": 1791372054.4219055,
+          "end": 1791372330.6223633
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__BHwCTR3/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 1,
+          "start": 1791372331.905535,
+          "end": 1791372812.5599968,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__BHwCTR3/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 2,
+          "start": 1791372813.3804932,
+          "end": 1791373817.033841,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__BHwCTR3/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 3,
+          "start": 1791373817.27036,
+          "end": 1791374632.174175,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__BHwCTR3/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 4,
+          "start": 1791374633.151124,
+          "end": 1791375862.6964889,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791372018/harbor_task__BHwCTR3/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 5,
+          "start": 1791375863.8724911,
+          "end": 1791376361.153574,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__DHfFWca/agent/initial-baseline.log",
+          "kind": "actual_initial_starter_scoring",
+          "start": 1791382602.3362205,
+          "end": 1791382909.3051856
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__DHfFWca/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 1,
+          "start": 1791382910.376328,
+          "end": 1791384163.446812,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__DHfFWca/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 2,
+          "start": 1791384163.776447,
+          "end": 1791385659.631297,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__DHfFWca/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 3,
+          "start": 1791385659.83939,
+          "end": 1791386050.1890209,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__DHfFWca/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 4,
+          "start": 1791386050.3395321,
+          "end": 1791387104.283849,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791382557/harbor_task__DHfFWca/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 5,
+          "start": 1791387104.424675,
+          "end": 1791388415.296781,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791392980/harbor_task__HNdfKGy/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791393008.7691636,
+          "end": 1791393238.6047854
+        },
+        {
+          "path": "campaigns/asd-research-1791392980/harbor_task__HNdfKGy/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 6,
+          "start": 1791393239.444403,
+          "end": 1791394327.420133,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791392980/harbor_task__HNdfKGy/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 7,
+          "start": 1791394327.6643698,
+          "end": 1791395169.132746,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791392980/harbor_task__HNdfKGy/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 8,
+          "start": 1791395169.499438,
+          "end": 1791396395.738144,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791396757/harbor_task__s9yHnes/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791396781.0434723,
+          "end": 1791396941.2328525
+        },
+        {
+          "path": "campaigns/asd-research-1791396757/harbor_task__s9yHnes/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 9,
+          "start": 1791396942.014923,
+          "end": 1791397447.013636,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791396757/harbor_task__s9yHnes/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 10,
+          "start": 1791397447.1512241,
+          "end": 1791399896.186976,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791396757/harbor_task__s9yHnes/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 11,
+          "start": 1791399896.5982258,
+          "end": 1791400746.668281,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791396757/harbor_task__s9yHnes/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 12,
+          "start": 1791400746.8272388,
+          "end": 1791402323.044249,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791396757/harbor_task__s9yHnes/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 13,
+          "start": 1791402323.177553,
+          "end": 1791403724.3823628,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791403805/harbor_task__SE2CRpq/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791403829.8039036,
+          "end": 1791403989.1155958
+        },
+        {
+          "path": "campaigns/asd-research-1791403805/harbor_task__SE2CRpq/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 14,
+          "start": 1791403990.47378,
+          "end": 1791406424.64306,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791403805/harbor_task__SE2CRpq/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 15,
+          "start": 1791406424.901831,
+          "end": 1791408026.391105,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791403805/harbor_task__SE2CRpq/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 16,
+          "start": 1791408026.916095,
+          "end": 1791409269.791803,
+          "model_finished": true,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791409324.5707,
+          "end": 1791409485.2659497
+        },
+        {
+          "path": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 17,
+          "start": 1791409485.9998631,
+          "end": 1791412215.6232,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 18,
+          "start": 1791412215.830086,
+          "end": 1791416387.9475882,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 19,
+          "start": 1791416388.452811,
+          "end": 1791422340.338325,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 20,
+          "start": 1791422340.733275,
+          "end": 1791422350.0270238,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 21,
+          "start": 1791422350.360075,
+          "end": 1791422357.0789819,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 22,
+          "start": 1791422357.444591,
+          "end": 1791422364.277537,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 23,
+          "start": 1791422364.629993,
+          "end": 1791422372.230763,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791423617/harbor_task__oBfRQKC/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791423651.7911701,
+          "end": 1791423938.9551404
+        },
+        {
+          "path": "campaigns/asd-research-1791423617/harbor_task__oBfRQKC/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 24,
+          "start": 1791423942.38365,
+          "end": 1791424186.1403441,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791423617/harbor_task__oBfRQKC/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 25,
+          "start": 1791424186.744558,
+          "end": 1791424228.903834,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791423617/harbor_task__oBfRQKC/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 26,
+          "start": 1791424231.505984,
+          "end": 1791424291.426241,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791423617/harbor_task__oBfRQKC/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 27,
+          "start": 1791424292.182575,
+          "end": 1791424350.480521,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791423617/harbor_task__oBfRQKC/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 28,
+          "start": 1791424350.848717,
+          "end": 1791425245.4623308,
+          "model_finished": false,
+          "method_changed": false
+        },
+        {
+          "path": "campaigns/asd-research-1791425440/harbor_task__2XajarE/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791425475.4735465,
+          "end": 1791425749.835006
+        },
+        {
+          "path": "campaigns/asd-research-1791425440/harbor_task__2XajarE/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 29,
+          "start": 1791425751.287696,
+          "end": 1791436606.771888,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/initial-baseline.log",
+          "kind": "actual_initial_resumed_own_method_scoring",
+          "start": 1791486053.3766909,
+          "end": 1791486113.3124652
+        },
+        {
+          "path": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 30,
+          "start": 1791486113.6529732,
+          "end": 1791491763.160235,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 31,
+          "start": 1791491763.431896,
+          "end": 1791495765.577494,
+          "model_finished": false,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 32,
+          "start": 1791495765.845633,
+          "end": 1791498248.803354,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 33,
+          "start": 1791498249.055278,
+          "end": 1791501558.50477,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 34,
+          "start": 1791501558.77613,
+          "end": 1791503008.376362,
+          "model_finished": true,
+          "method_changed": true
+        },
+        {
+          "path": "campaigns/asd-research-1791486043/harbor_task__5USBxwx/agent/runtime.json",
+          "kind": "observed_execution_session_including_failed_attempts",
+          "round": 35,
+          "start": 1791503008.637364,
+          "end": 1791505206.631158,
+          "model_finished": true,
+          "method_changed": true
+        }
+      ],
+      "missing_partial_cli_log_seconds": 1920.2114827479236,
+      "completed_method_cycles": 8,
+      "failed_model_output_generation_seconds_included": 1817.6931817531586,
+      "system_suspension_gaps": [
+        {
+          "source": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/runtime.json",
+          "round": 19,
+          "seconds": 2839.229523437796,
+          "evidence": "completed wall-clock interval minus recorded monotonic execution duration; quantity observed, exact subinterval not localized"
+        },
+        {
+          "source": "campaigns/asd-research-1791425440/harbor_task__2XajarE/agent/runtime.json",
+          "round": 29,
+          "seconds": 3524.895716508152,
+          "evidence": "completed wall-clock interval minus recorded monotonic execution duration; quantity observed, exact subinterval not localized"
+        }
+      ],
+      "failed_request_wait_seconds_included_estimated": 22377.66757774353,
+      "observed_active_windows": [
+        [
+          1791371010.4667196,
+          1791371325.8018315
+        ],
+        [
+          1791371331.186121,
+          1791371614.1815994
+        ],
+        [
+          1791372054.4219055,
+          1791372330.6223633
+        ],
+        [
+          1791372331.905535,
+          1791372812.5599968
+        ],
+        [
+          1791372813.3804932,
+          1791373817.033841
+        ],
+        [
+          1791373817.27036,
+          1791374632.174175
+        ],
+        [
+          1791374633.151124,
+          1791375862.6964889
+        ],
+        [
+          1791375863.8724911,
+          1791376361.153574
+        ],
+        [
+          1791382602.3362205,
+          1791382909.3051856
+        ],
+        [
+          1791382910.376328,
+          1791384163.446812
+        ],
+        [
+          1791384163.776447,
+          1791385659.631297
+        ],
+        [
+          1791385659.83939,
+          1791386050.1890209
+        ],
+        [
+          1791386050.3395321,
+          1791387104.283849
+        ],
+        [
+          1791387104.424675,
+          1791388415.296781
+        ],
+        [
+          1791393008.7691636,
+          1791393238.6047854
+        ],
+        [
+          1791393239.444403,
+          1791394327.420133
+        ],
+        [
+          1791394327.6643698,
+          1791395169.132746
+        ],
+        [
+          1791395169.499438,
+          1791396395.738144
+        ],
+        [
+          1791396781.0434723,
+          1791396941.2328525
+        ],
+        [
+          1791396942.014923,
+          1791397447.013636
+        ],
+        [
+          1791397447.1512241,
+          1791399896.186976
+        ],
+        [
+          1791399896.5982258,
+          1791400746.668281
+        ],
+        [
+          1791400746.8272388,
+          1791402323.044249
+        ],
+        [
+          1791402323.177553,
+          1791403724.3823628
+        ],
+        [
+          1791403829.8039036,
+          1791403989.1155958
+        ],
+        [
+          1791403990.47378,
+          1791406424.64306
+        ],
+        [
+          1791406424.901831,
+          1791408026.391105
+        ],
+        [
+          1791408026.916095,
+          1791409269.791803
+        ],
+        [
+          1791409324.5707,
+          1791409485.2659497
+        ],
+        [
+          1791409485.9998631,
+          1791412215.6232
+        ],
+        [
+          1791412215.830086,
+          1791416387.9475882
+        ],
+        [
+          1791416388.452811,
+          1791422340.338325
+        ],
+        [
+          1791422340.733275,
+          1791422350.0270238
+        ],
+        [
+          1791422350.360075,
+          1791422357.0789819
+        ],
+        [
+          1791422357.444591,
+          1791422364.277537
+        ],
+        [
+          1791422364.629993,
+          1791422372.230763
+        ],
+        [
+          1791423651.7911701,
+          1791423938.9551404
+        ],
+        [
+          1791423942.38365,
+          1791424186.1403441
+        ],
+        [
+          1791424186.744558,
+          1791424228.903834
+        ],
+        [
+          1791424231.505984,
+          1791424291.426241
+        ],
+        [
+          1791424292.182575,
+          1791424350.480521
+        ],
+        [
+          1791424350.848717,
+          1791425245.4623308
+        ],
+        [
+          1791425475.4735465,
+          1791425749.835006
+        ],
+        [
+          1791425751.287696,
+          1791436606.771888
+        ],
+        [
+          1791486053.3766909,
+          1791486113.3124652
+        ],
+        [
+          1791486113.6529732,
+          1791491763.160235
+        ],
+        [
+          1791491763.431896,
+          1791495765.577494
+        ],
+        [
+          1791495765.845633,
+          1791498248.803354
+        ],
+        [
+          1791498249.055278,
+          1791501558.50477
+        ],
+        [
+          1791501558.77613,
+          1791503008.376362
+        ],
+        [
+          1791503008.637364,
+          1791505206.631158
+        ]
+      ],
+      "observed_window_seconds": 71388.82483839989,
+      "deducted_observed_retry_pause_seconds": 3.163677215576172,
+      "deducted_system_suspension_seconds": 6364.125239945948,
+      "deducted_observed_stall_seconds": 6367.288917161524,
+      "effective_seconds": 65021.53592123836,
+      "effective_hours": 18.061537755899547,
+      "historical_precision": "estimate: old partial CLI logs were discarded; any unobserved stall cannot be precisely deducted; failed-request ordinary waiting included by relaxed user policy, no assertion that every included second is model computation",
+      "unquantified_native_network_errors": []
+    }
+  }
+}

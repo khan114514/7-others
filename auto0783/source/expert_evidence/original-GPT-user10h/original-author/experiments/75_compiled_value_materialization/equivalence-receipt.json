@@ -1,0 +1,36 @@
+{
+  "base": "experiments/53_compiled_image_rotary/method.py",
+  "candidate_canonical_sha256": "bbbfb9762b45a0c3eedf71d7709459d7de3f00dfd7dfffed1f77cbf17393685a",
+  "all_original_nodes_identical_by_id": true,
+  "reorder": "Original four value view/copy nodes move just after v, before independent text attention and image rotary. No dependency or cache lifetime changes.",
+  "region_inputs": [
+    "image_qkv",
+    "text_v_rows"
+  ],
+  "region_outputs": [
+    "value_transpose"
+  ],
+  "sole_consumer_chain": {
+    "image_v": [
+      "v"
+    ],
+    "v": [
+      "value_shape"
+    ],
+    "value_shape": [
+      "value_heads"
+    ],
+    "value_heads": [
+      "value_repeat"
+    ],
+    "value_repeat": [
+      "value_transpose"
+    ],
+    "value_transpose": [
+      "channel_query_output"
+    ]
+  },
+  "argument": "Only exact slice/concat/reshape/transpose/head repetition in region. Original repeat-before-transpose order and all arithmetic remain. Full unrepeated v is internal; fixed compiler may pack directly from fused QKV inputs.",
+  "layout_limit": "No candidate stride contract exists. Retaining original operator order does not prove selected compiled output strides or generated copy elimination. Actual Dev fidelity/latency required.",
+  "distinct_from": "57 starts after value_repeat; 60 compiles rank4 key materialization; 74 changes transpose/repeat order and is not the base."
+}

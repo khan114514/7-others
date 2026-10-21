@@ -1,0 +1,70 @@
+{
+  "original_event_sha256": "246fb3df369e0eea84981dedef397154bb3e594005fed084f8db0daf3d7814c2",
+  "original_receipt_sha256": "7d18833831790d9cdd21021481ce0a4b25676f25be9ef353ceb413f413ceb5f4",
+  "original_event_last_write_epoch": 1791626811.447713,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/grid_search_v18_fine.py << 'EOF'\n\\\"\\\"\\\"Fine grid search for v18: ridge alpha + base_up + slope_up + down_pow.\\\"\\\"\\\"\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nfrom sklearn.linear_model import Ridge\n\nTRAIN_PATH = '/workspace/public_assets/train.h5ad'\nRATIO_CLIP_MAX = 60.0\n\ndef predict_loo_params(train_adata, target_ctrl_adata, target_stim_adata, \n                       alpha, base_up, slope_up, down_pow, scaler):\n    cell_types = sorted(train_adata.obs['cell_type'].unique())\n    n_ct = len(cell_types)\n    n_genes = train_adata.shape[1]\n    \n    ctrl_means = np.zeros((n_ct, n_genes), dtype=np.float64)\n    stim_diffs = np.zeros((n_ct, n_genes), dtype=np.float64)\n    for i, ct in enumerate(cell_types):\n        mask_ct = train_adata.obs['cell_type'] == ct\n        ctrl_mask = mask_ct & (train_adata.obs['condition'] == 'control')\n        stim_mask = mask_ct & (train_adata.obs['condition'] == 'stimulated')\n        cm = np.asarray(train_adata[ctrl_mask].X.mean(axis=0)).flatten()\n        sm = np.asarray(train_adata[stim_mask].X.mean(axis=0)).flatten()\n        ctrl_means[i] = cm\n        stim_diffs[i] = sm - cm\n    \n    target_ctrl_mean = np.asarray(target_ctrl_adata.X.mean(axis=0)).flatten().astype(np.float64)\n    \n    # Ridge weights (blend=1.0, pure ridge)\n    X = ctrl_means.T\n    y = target_ctrl_mean\n    ridge = Ridge(alpha=alpha, fit_intercept=False)\n    ridge.fit(X, y)\n    weights = ridge.coef_.copy()\n    weights = np.clip(weights, 0, None)\n    if weights.sum() > 0:\n        weights /= weights.sum()\n    else:\n        # fallback to correlation\n        corrs = np.zeros(n_ct)\n        for i in range(n_ct):\n            c = np.corrcoef(target_ctrl_mean, ctrl_means[i])[0, 1]\n            corrs[i] = c if np.isfinite(c) else -1.0\n        logits = corrs / 0.07\n        logits -= logits.max()\n        weights = np.exp(logits)\n        weights /= weights.sum()\n    \n    ref_ctrl = np.zeros(n_genes)\n    ref_diff = np.zeros(n_genes)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means[i]\n        ref_diff += weights[i] * stim_diffs[i]\n    \n    ratio = np.where(ref_ctrl > 1e-8, target_ctrl_mean / np.maximum(ref_ctrl, 1e-8), 1.0)\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n    \n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n    \n    up_pow_gene = base_up + slope_up * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n    \n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n    \n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow)\n    \n    pred_mean_scaled = target_ctrl_mean + scaled_diff\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n    \n    pred_mean_unscaled = scaler.inverse_transform(pred_mean_scaled.reshape(1, -1)).flatten()\n    pred_mean_unscaled = np.clip(pred_mean_unscaled, 0, None)\n    \n    truth = target_stim_adata.X\n    if hasattr(truth, 'toarray'):\n        truth = truth.toarray()\n    true_mean = np.asarray(truth.mean(axis=0), dtype=np.float64).flatten()\n    \n    mse = np.mean((true_mean - pred_mean_unscaled) ** 2)\n    return mse\n\ndef main():\n    train = sc.read_h5ad(TRAIN_PATH)\n    cell_types = sorted(train.obs['cell_type'].unique())\n    \n    alphas = [0.5, 0.7, 0.9, 1.0, 1.2, 1.5, 2.0]\n    base_ups = [0.65, 0.70, 0.75, 0.80, 0.85]\n    slope_ups = [-0.45, -0.55, -0.60, -0.65, -0.75]\n    down_pows = [0.70, 0.75, 0.77, 0.80, 0.85]\n    \n    best_mse = float('inf')\n    best_params = None\n    count = 0\n    total = len(alphas) * len(base_ups) * len(slope_ups) * len(down_pows)\n    \n    # Precompute data splits\n    folds = []\n    for target_ct in cell_types:\n        train_mask = train.obs['cell_type'] \"'!= target_ct\n        target_ctrl_mask = (train.obs['\"'cell_type'] == target_ct) & (train.obs['condition'] == 'control')\n        target_stim_mask = (train.obs['cell_type'] == target_ct) & (train.obs['condition'] == 'stimulated')\n        train_adata = train[train_mask].copy()\n        target_ctrl_adata = train[target_ctrl_mask].copy()\n        target_stim_adata = train[target_stim_mask].copy()\n        scaler = MaxAbsScaler()\n        train_adata.X = scaler.fit_transform(train_adata.X)\n        target_ctrl_adata.X = scaler.transform(target_ctrl_adata.X)\n        folds.append((train_adata, target_ctrl_adata, target_stim_adata, scaler))\n    \n    for alpha in alphas:\n        for base_up in base_ups:\n            for slope_up in slope_ups:\n                for down_pow in down_pows:\n                    fold_mses = []\n                    for (tr, tc, ts, sc) in folds:\n                        mse = predict_loo_params(tr, tc, ts, alpha, base_up, slope_up, down_pow, sc)\n                        fold_mses.append(mse)\n                    avg_mse = np.mean(fold_mses)\n                    count += 1\n                    if avg_mse < best_mse:\n                        best_mse = avg_mse\n                        best_params = (alpha, base_up, slope_up, down_pow)\n                        print(f\\\"  NEW BEST [{count}/{total}] alpha={alpha:.2f}, base_up={base_up:.2f}, slope_up={slope_up:.2f}, down_pow={down_pow:.2f}, MSE={avg_mse:.6f}\\\")\n    \n    print(f\\\"\\\\nBest: alpha={best_params[0]}, base_up={best_params[1]}, slope_up={best_params[2]}, down_pow={best_params[3]}\\\")\n    print(f\\\"Best LOO MSE: {best_mse:.6f}\\\")\n    print(f\\\"v8 baseline LOO MSE: 0.008585\\\")\n    print(f\\\"Improvement: {(1 - best_mse/0.008585)*100:.2f}%\\\")\n\nif __name__ == '__main__':\n    main()\nEOF\necho \\\"Fine grid script created\\\"\"",
+      "original_command_sha256": "4aae6c5acc0bd947d2884031ff3313836086f438eb51c216751ce24ec26b7497",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "68875ff91566234fbf42aa92898adceb44578046cc879a9b0e2fca82bcf76219",
+      "output_characters": 25
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'cd /workspace/solution && /opt/runtime/bin/python3 grid_search_v18_fine.py 2>&1'",
+      "original_command_sha256": "8aad9acb099b252472c5ceb1baa89f49e6d7d8e79f018a891cee4a323efa3bc1",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "3cea1f04bb226972c2ea95ee77153c0ea184c01c33131a18dbfa9840b151f185",
+      "output_characters": 298
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cd /workspace/solution && head -5 grid_search_v18_fine.py'",
+      "original_command_sha256": "f71e8e298890f971513936c0ebced0970ef34a3b5e00e25bd072db482b0811bd",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "591592ad28199c6a736453079a64a22bb8e706fe9e9a367672a308367f9edffa",
+      "output_characters": 202
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc \"cd /workspace/solution && sed -i 's/for (tr, tc, ts, sc) in folds:/for (tr, tc, ts, scl) in folds:/; s/alpha, base_up, slope_up, down_pow, sc)/alpha, base_up, slope_up, down_pow, scl)/' grid_search_v18_fine.py && /opt/runtime/bin/python3 grid_search_v18_fine.py 2>&1\"",
+      "original_command_sha256": "16033ecfef8d11e3b3b8bd4bf3077181653dbfc62f66d1cb7673baee947a2298",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e67cbbb0a317243fd27f940bfa1c9e2dd57c41068b43cd5116cf9c90756864c7",
+      "output_characters": 2299
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v18_test.py /workspace/solution/method_v19_ridge.py'",
+      "original_command_sha256": "164c4ee45c03b6a8310ad4580fbb10845d45652e9d28ba4967b985dd80c3c159",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 7712506,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 338124,
+        "reasoning_output_tokens": 27258
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

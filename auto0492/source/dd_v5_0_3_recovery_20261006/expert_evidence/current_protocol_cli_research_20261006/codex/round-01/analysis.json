@@ -1,0 +1,235 @@
+{
+  "round": 1,
+  "policy_name": "dd_median3_paired_anchor128",
+  "protocol": "dd-selfproto-v1.3",
+  "method_summary": "从官方 DD EMA 初始化，以每个原标签三个提案的 LPIPS 距离稳定中位数筛选 128 个教师目标；每对训练时间为 0.1u 与 0.1+0.9(1-u)，随机交换方向；单次复用、均匀损失权重，训练和评测设置冻结。",
+  "status": "SUCCESS",
+  "score": 9.730977102619079,
+  "metric_name": "FID-50k",
+  "sample_count": 50000,
+  "failure_category": null,
+  "failure_reason": null,
+  "retained_best": true,
+  "time": "2026-10-06T04:21:41.388599Z",
+  "recorded_at_utc": "2026-10-06T04:33:13.528039Z",
+  "method": {
+    "initialization": "warmstart_official_dd_ema",
+    "teacher_config": {
+      "num_samples": 128,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "student_agreement_per_label",
+      "weighting": "uniform",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 3
+    },
+    "teacher_proposals": 384,
+    "selection": "每个标签组内对三项 LPIPS 距离稳定排序，取索引 rank=1；每组恰好一个目标。",
+    "time_sampler": "u~U[0,1)，时间对 (0.1u, 0.1+0.9(1-u))，以 CPU generator 随机交换两项。",
+    "prefix_bin_probabilities": [
+      0.5,
+      0.05555555555555555,
+      0.05555555555555555,
+      0.05555555555555555,
+      0.05555555555555555,
+      0.05555555555555555,
+      0.05555555555555555,
+      0.05555555555555555,
+      0.05555555555555555,
+      0.05555555555555555
+    ],
+    "weights": "uniform；pair_weights 返回全一，但本配置不启用 custom 权重钩子。",
+    "configuration_evidence": "round-01/method.py 与 round-01/cpu_precheck_result.json；预检中的计划更新数不代替后端实际训练回执。"
+  },
+  "trusted_terminal": {
+    "job_id": "254978704e1647bf9cdc77e53ebb2004",
+    "scope": "dd-final-track-gpt-calibration",
+    "run_id": "run-3e11093a2a674cc6851b84c767ea3083",
+    "kind": "CALIBRATION",
+    "returncode": 0,
+    "method_sha256": "8f92177304433b7abab9b0413a9eb6717e3d874db18fe49d0461662bea47ede7",
+    "checkpoint_sha256": "9d54f47971460f95e56412b75646f299fc609cd27b30bd32b9c46919561f3523",
+    "sample_manifest_sha256": "58262673fada28ee084f2d8b5c42d06bdd298936d01cb17d03d6b65b5d1d27fa",
+    "frozen_manifest_sha256": "b366ba329b015bbae3f6d2027d9004c3aea71f6116b3d84e1fab0927af0b0924",
+    "teacher_seed": 1001,
+    "training_seed": 2001,
+    "evaluation_seed": 0,
+    "receipt_path": "round-01/evaluation/result.json",
+    "validation": "离线调用公开 runtime_client.py 的 checked_receipt(formal=False)：作业及范围匹配、源码匹配、成功且 returncode=0、运行 ID 与哈希格式有效、协议一致、完整 50000 样本、有限非负 metric。",
+    "source_hashes_equal": true,
+    "metric_provenance": "直接采用本轮可信公开 CALIBRATION 终态的原始 metric；未计算或填写奖励。"
+  },
+  "causal_assessment": {
+    "hypothesis": "Unvalidated hypothesis: selecting the median of three teacher/student LPIPS distances may balance target consistency and variation, while pairing an inference-near time anchor with a broader context time may improve low-time learning without losing coverage. Any FID benefit remains unmeasured; CPU interface PASS provides no quality or score evidence.",
+    "verdict": "NOT_ESTABLISHED",
+    "conclusion": "因果假设尚未证实成立，也不能由本轮结果判定其无效。",
+    "observed": "本方法确实完成一次同源码、同协议的公开 FID-50k 评测，FID=9.730977102619079。",
+    "limitations": [
+      "自己公开结果中只有这一轮可信成功 FID，没有同协议发布初始化基线的完整成对结果，无法计算改善幅度。",
+      "本轮同时使用中位数提案筛选与低时间加重配对，缺少消融，无法归因到任一机制。",
+      "单个公开评测随机流的结果没有成对重复证据，不能证明稳定改善。",
+      "CPU 预检只提供接口与随机流证据，不提供质量或因果证据。"
+    ],
+    "evidence_paths": [
+      "round-01/plan.json",
+      "round-01/method.py",
+      "round-01/evaluation/result.json",
+      "round-01/cpu_precheck_result.json"
+    ]
+  },
+  "execution_incidents": [
+    {
+      "category": "CLIENT_WAIT_TIMEOUT",
+      "reason": "客户端使用 --wait-seconds 5，作业获 ACCEPTED 后等待期限耗尽，抛出 TimeoutError 并以 returncode=1 结束。",
+      "score": null,
+      "resolved_by_terminal_receipt": true,
+      "resolution": "同一 job_id 和 scope 的后续可信终态为 SUCCESS，returncode=0，完整 50000 样本。因此本轮后端评测成功；客户端超时历史仍保留。",
+      "evidence_paths": [
+        "round-01/evaluation/evaluation-client.log",
+        "round-01/evaluation/client-launch.json",
+        "round-01/evaluation/invocation.json",
+        "round-01/evaluation/result.json"
+      ]
+    },
+    {
+      "category": "HISTORICAL_LOCAL_DISCOVERY_ERRORS",
+      "recorded_categories": [
+        "local_discovery_permission_error",
+        "local_discovery_missing_public_source_path"
+      ],
+      "reason": "历史目录发现曾遇到权限错误和不存在的公开源码路径；此记录与本轮后端 SUCCESS 分开保留。",
+      "score": null,
+      "evidence_paths": [
+        "round-01/cli-failures.json"
+      ]
+    }
+  ],
+  "current_best": {
+    "round": 1,
+    "policy_name": "dd_median3_paired_anchor128",
+    "score": 9.730977102619079,
+    "protocol": "dd-selfproto-v1.3",
+    "evaluation_seed": 0,
+    "eligible_successful_rounds": [
+      1
+    ],
+    "retention_reason": "自己公开材料中唯一具有可信完整 50000 样本成功结果的轮次，建立首个有效参考。没有其他真实成功轮可供优劣比较；不据此声称优于发布基线。",
+    "comparison_rule": "只比较自己轨道、同协议、同冻结设置及同公开评测随机流下的可信完整成功 FID，越低越好；失败、缺失或不完整结果用 null 且不参与排序。",
+    "historical_plan_preserved": true,
+    "evidence_paths": [
+      "round-01/evaluation/result.json",
+      "round-01/evaluation/invocation.json"
+    ]
+  },
+  "next_round": {
+    "round": 2,
+    "proposed_policy_name": "dd_median3_paired_uniform128",
+    "direction": "优先消融时间采样，检验原来的低时间加重与配对分层是否有益。",
+    "algorithm_change": "仅改变 fm_time_sampler 的时间公式：将 anchor=0.1*u、context=0.1+0.9*(1-u) 改为 low=0.5*u、high=1.0-low；继续使用相同形式的 CPU 随机数、反向配对、随机方向及形状处理。",
+    "new_prefix_bin_probabilities": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "fixed_controls": "保持 128 个目标、三个提案、稳定中位数筛选、teacher_steps=10、guidance=2.0、top_k=900、top_p=0.95、ode_nfe=32、logSNR 网格、reuse=1、uniform 权重及全部冻结训练/评测设置。",
+    "scope_of_inference": "比较时间采样算法的整体影响；本消融仍不能单独证明中位数筛选有效，也不能区分时间边际与配对相关结构的各自效应。",
+    "future_evaluation": "后续获授权执行时，从相同固定初始化重新训练，以相同教师/训练/公开评测 seed 获得该轮源码匹配的完整 50000 样本回执；严格比较 FID 与 round-01，并保留原结果。稳定改善主张仍需同协议完整成对重复证据。",
+    "retention_rule": "可信完整成功且 FID 严格低于 9.730977102619079 时才替换当前最佳；相等或更差保留 round-01；失败或不完整则该轮 score=null。",
+    "implemented_this_closeout": false,
+    "submitted_this_closeout": false
+  },
+  "time_accounting": {
+    "current_protocol_round_receipt": {
+      "protocol": "dd-selfproto-v1.3",
+      "teacher_and_training_seconds": 328.97527551651,
+      "finished_unix": 1791260501.3885992,
+      "finished_utc": "2026-10-06T04:21:41.388599Z",
+      "source_path": "round-01/evaluation/result.json",
+      "interpretation": "原样记录可信回执报告的教师与训练耗时；不将提交到终态的整个跨度计入有效研究。"
+    },
+    "nonresearch_elapsed": {
+      "client_started_utc": "2026-10-06T03:30:44.761027Z",
+      "client_finished_utc": "2026-10-06T03:30:55.747665Z",
+      "client_process_wall_seconds": 10.986638,
+      "submission_to_backend_finish_elapsed_seconds": 3056.627572,
+      "queue_seconds": null,
+      "evaluation_seconds": null,
+      "counted_as_effective_research_seconds": 0,
+      "interpretation": "客户端等待和提交到终态跨度不是有效研究耗时；现有回执不能拆分排队、评测与其他等待，故不推测各项时长。",
+      "evidence_paths": [
+        "round-01/evaluation/client-launch.json",
+        "round-01/evaluation/result.json"
+      ]
+    },
+    "historical_task_separate": {
+      "plan_recorded_at_utc": "2026-10-05T11:43:08Z",
+      "cpu_precheck_recorded_at_utc": "2026-10-05T11:34:03.818536Z",
+      "previous_cli_termination": "TIMEOUT",
+      "previous_cli_time_limit_seconds": 480,
+      "previous_cli_actual_elapsed_seconds": null,
+      "source_path": "round-01/plan.json",
+      "provenance": "前一 CLI 的 TIMEOUT 与 480 秒限额仅按原计划中的用户历史记录保留，未提供原始计时回执；限额不等于已核验耗时。",
+      "included_in_current_protocol_teacher_and_training_seconds": false
+    },
+    "this_closeout": {
+      "new_gpu_jobs": 0,
+      "new_gpu_teacher_and_training_seconds": 0,
+      "note": "本次仅读取公开证据、分析与记账；没有重启评测或等待 GPU 进程。"
+    }
+  },
+  "evidence_root": "agent-output；evidence_paths 与 receipt/source_path 均相对此目录。公共说明和校验器路径相对 /workspace。",
+  "evidence_paths": [
+    "round-01/plan.json",
+    "round-01/method.py",
+    "round-01/evaluation/result.json",
+    "round-01/evaluation/invocation.json",
+    "round-01/evaluation/client-launch.json",
+    "round-01/evaluation/evaluation-client.log",
+    "round-01/cpu_precheck_result.json",
+    "round-01/cpu_precheck.log",
+    "round-01/cpu_precheck.py",
+    "round-01/cli-failures.json",
+    "recovery-probe-20261006.json",
+    "cli-probe.txt"
+  ],
+  "public_contract_paths_relative_to_workspace": [
+    "instruction.md",
+    "task.toml",
+    "environment/public_eval/runtime_client.py",
+    "environment/public_eval/implementation/README.md"
+  ],
+  "preservation": {
+    "original_artifact_sha256_relative_to_workspace": {
+      "agent-output/round-01/cli-failures.json": "d6b0502d688fc77e2b383824f1c9c23f8fdaacb69452ab3fcbd5c2709677b670",
+      "agent-output/round-01/cpu_precheck.log": "2eb3244e0973365658144f9387f073f8b5fab1d9b69d746790808231cbb08d62",
+      "agent-output/round-01/cpu_precheck.py": "d8e58744876a8a4fc933ec09ad95eb2166c16ce33dba165ad534d6c1c83d9f93",
+      "agent-output/round-01/cpu_precheck_result.json": "5b406676bca5895fbb52c59187ee64c586d06de57e1a359e8f915099e4ba8328",
+      "agent-output/round-01/evaluation/client-launch.json": "922ec1a83e9dd4525ab853183b3f2d37ac8459b47f620ec2766f3595d8f35a4f",
+      "agent-output/round-01/evaluation/evaluation-client.log": "ab6bc40146a7551efdb764ca0040f4d8e24dd20a64467023df5e46fdcaac827c",
+      "agent-output/round-01/evaluation/invocation.json": "f83a45841b23c306c73edd1720fa11c824a894c6a0c05d7807cfc0eba2a83f2e",
+      "agent-output/round-01/evaluation/result.json": "3559b1bf57e49e4181b8eb37502b3db5e2208f931d25392b1d658ff49931048e",
+      "agent-output/round-01/method.py": "8f92177304433b7abab9b0413a9eb6717e3d874db18fe49d0461662bea47ede7",
+      "agent-output/round-01/plan.json": "453f511bedaf05ba5d1197e85543bf0d8786e39e1021b5e400e01777b7ee9fdd",
+      "solution/method.py": "8f92177304433b7abab9b0413a9eb6717e3d874db18fe49d0461662bea47ede7",
+      "agent-output/cli-probe.txt": "f4c0d5595c6dbe42d24379262e697fce7f25f96209c0175bb02cd2bacc74ec02",
+      "agent-output/recovery-probe-20261006.json": "bc23a5cced65bd612987e85bd6d9f15e635d8dfd88aafe563db824c36e329c14",
+      "instruction.md": "efb7934b0111ca7cf487714b1f13de31dd9c18c62d912028dfaa62eb3e0394f2",
+      "task.toml": "bef22de3b0e19b6fe999fde1fde202496610ec7c9f54244ed9de655d5d0db45c"
+    },
+    "original_files_modified": false,
+    "solution_method_modified": false,
+    "gpu_job_submitted": false,
+    "private_or_other_track_material_read": false
+  }
+}

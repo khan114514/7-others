@@ -1,0 +1,144 @@
+{
+  "status": "credible_method_directions_exhausted_under_current_catalog",
+  "decision": "The new operator profile justified a targeted image MLP row-partition experiment (49), but actual Dev showed a substantial regression with no peak-allocation benefit. Reject that method, preserve its feedback, and retain experiment 41. No further supported partition/orientation variation was identified; reopen only for a concrete new method or kernel-level evidence.",
+  "public_operator_profile_review": {
+    "prior_stopping_record": "research-exhausted-before-operator-profile.json",
+    "source_index": "own-public-operator-profile/source-index.json",
+    "analysis": "own-public-operator-profile/analysis.json",
+    "source_hashes_verified": true,
+    "scope": "Own experiment 41, one public case, first and next forward. Not a new score.",
+    "annotation_caution": "Inclusive times can overlap and are perturbed by instrumentation. CPU-side and device-only rows were kept separate rather than double-counted.",
+    "actionable_finding": "Image MLP is the largest recurring CPU-side inclusive CUDA annotation: about 31.435 ms across 28 layers on the next forward. Cached text MLP/attention annotations have zero CUDA work then.",
+    "new_method_argument_supported": true,
+    "new_gpu_evaluations": 1,
+    "experiment": "49_batch_partition_image_mlp",
+    "decision": "Two independent CFG-batch MLPs preserve predictions but regress reward to 0.6479712186197056. Reject finer partition trials without evidence of a different kernel advantage."
+  },
+  "public_stage_profile_review": {
+    "prior_stopping_record": "research-exhausted-before-public-profile.json",
+    "source_index": "own-public-stage-profile/source-index.json",
+    "stage_times": "own-public-stage-profile/own-public-Dev-stage-times.json",
+    "analysis": "own-public-stage-profile/analysis.json",
+    "stage_count": 96,
+    "integrity": "Raw SHA256 matches source index; artifact and run match experiment 41; all three baseline and candidate stage sums exactly match original Dev feedback.",
+    "finding": "First forward takes 124-127 ms; typical later forwards take 58-59 ms. Approximately 67 ms excess over later-stage medians is consistent with included prefix construction, but cannot be attributed to specific operations from this whole-decoder profile.",
+    "new_method_argument_supported": false,
+    "new_gpu_evaluations": 0,
+    "reason_for_no_evaluation": "No changed graph with a newly supported algorithmic argument was identified; unchanged repeats and unsupported variant sweeps would not resolve an evidence-based hypothesis.",
+    "formal_latency_extrapolated": false
+  },
+  "scope": "Own independent native Bifrost-1 decoder research using the fixed public operator catalog and real public Dev evaluations. This is a research stopping judgment, not a proof of global optimality.",
+  "best_valid_method": {
+    "experiment": "41_reversed_value_product",
+    "builder": "experiments/41_reversed_value_product/method.py",
+    "program": "experiments/41_reversed_value_product/program.json",
+    "feedback": "experiments/41_reversed_value_product/dev-result.json",
+    "artifact_sha256": "6a9a696f1debd902737f957e9ed31430d827c7cffc1181b353412e0d9133b723",
+    "execution_status": "COMPLETED",
+    "quality_pass": true,
+    "reward": 0.7287394620596103,
+    "baseline_mean_ms": 7134.07145690918,
+    "candidate_mean_ms": 1935.192061106364,
+    "peak_cuda_allocated_bytes": 29700810240,
+    "all_disclosed_prediction_and_final_latent_errors": 0.0
+  },
+  "latest_test": {
+    "experiment": "49_batch_partition_image_mlp",
+    "feedback": "experiments/49_batch_partition_image_mlp/dev-result.json",
+    "cli_receipt": "experiments/49_batch_partition_image_mlp/dev-cli-receipt.json",
+    "execution_status": "COMPLETED",
+    "cli_exit_code": 0,
+    "quality_pass": true,
+    "reward": 0.6479712186197056,
+    "peak_cuda_allocated_bytes": 29701621760,
+    "decision": "Valid, but neither reward nor total peak allocation improves the best method. Preserve the entire experiment."
+  },
+  "non_improving_evidence": [
+    {
+      "experiments": [
+        38,
+        39
+      ],
+      "direction": "Full and down-only image MLP multiplication orientation",
+      "rewards": [
+        0.7191365535891342,
+        0.71892863627774
+      ]
+    },
+    {
+      "experiments": [
+        40
+      ],
+      "direction": "Reverse image attention score product",
+      "rewards": [
+        0.7087043588017636
+      ]
+    },
+    {
+      "experiments": [
+        42,
+        43
+      ],
+      "direction": "Direct channel-layout output projection with batched and single-matrix contractions",
+      "rewards": [
+        0.7217970460659884,
+        0.7226169381070205
+      ]
+    },
+    {
+      "experiments": [
+        44,
+        45
+      ],
+      "direction": "KV-grouped probability/value products in both orientations",
+      "rewards": [
+        0.7245160629401872,
+        0.7283955073387481
+      ]
+    },
+    {
+      "experiments": [
+        46,
+        47
+      ],
+      "direction": "Isolated grouped scores and combined grouped attention",
+      "rewards": [
+        0.7229790101010181,
+        0.7269055575525073
+      ]
+    },
+    {
+      "experiments": [
+        48
+      ],
+      "direction": "Two independent query-axis tiles with shared full keys/values",
+      "rewards": [
+        0.7202815261270124
+      ]
+    },
+    {
+      "experiments": [
+        49
+      ],
+      "direction": "Split image MLP into independent 256-row CFG batches",
+      "rewards": [
+        0.6479712186197056
+      ]
+    }
+  ],
+  "catalog_constraints": [
+    "Full gate/up fused weights have 135790592 elements, exceeding the 100000000-element tensor bound.",
+    "Retaining all permissible split gate/up fused weights across 28 layers requires 7604273152 BF16 bytes, exceeding the 7 GiB prefix budget before other caches.",
+    "No custom fused normalization, residual or MLP epilogue kernels, sparse updates or incremental cache mutation are available.",
+    "Remaining image hidden states depend on changing image tokens; unconditional first-stage prefix reuse has no preservation argument.",
+    "Final image normalization and projection are fixed evaluator operations after the editable layer DAG."
+  ],
+  "limitations": [
+    "Candidate reward comparisons use separate evaluations and are not paired statistical tests between candidates.",
+    "Hidden prompts and formal 256-stage evaluation remain untested.",
+    "Other combinatorial graphs may exist; no further sufficiently supported method direction was identified."
+  ],
+  "research_record": "research-notes.md",
+  "evaluator_rules_modified": false,
+  "failures_and_non_improving_attempts_preserved": true
+}

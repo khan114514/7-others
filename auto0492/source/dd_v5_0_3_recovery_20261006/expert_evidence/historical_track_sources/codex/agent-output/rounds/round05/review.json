@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-10-03T16:40:59.893968+08:00",
+  "round": 5,
+  "quality_gate_passed": false,
+  "manually_inspected_grid": true,
+  "visual_review": "Formal 64-image grid is dominated by repetitive glossy rings and warped surface texture, despite some retained object/background structure. FID-50k 79.17681249580045 is far above B 9.663262058820692. Original full sampling was finite; evaluator segfault retained and FID-only recovery used all original 50000 images with unchanged official scorer and batch256.",
+  "grid_sha256": "8fcbdb1230e52e9eea2182887b12424415d7f97ffc15d03517e8d45e44d5fa05",
+  "result_sha256": "c551131854448fda3dfbaeab9e6962c8c2592232238fe0dff75fdce895e45a65",
+  "score": 79.17681249580045,
+  "fid_minus_baseline": 69.51355043697976,
+  "training_budget_seconds": 2397.9958798559383,
+  "updates": 512,
+  "row": {
+    "round": 5,
+    "policy_name": "warmstart_official_dd_reuse8192_onepass_uniform",
+    "method_summary": "dd-selfproto-v1.1; warmstart_official_dd_ema; 8192 verified teacher pairs reused with full generation charge 1077.570s; one shuffled pass, 512 updates; uniform U(0,1); floor(10*t) selects native prefix scale 0..9; fixed full FID-50k=79.176812496, delta to B=+69.513550437. Independent training reimplementation. Visual review: Formal 64-image grid is dominated by repetitive glossy rings and warped surface texture, despite some retained object/background structure. FID-50k 79.17681249580045 is far above B 9.663262058820692. Original full sampling was finite; evaluator segfault retained and FID-only recovery used all original 50000 images with unchanged official scorer and batch256.",
+    "status": "quality_gate_failed",
+    "score": 79.17681249580045,
+    "failure_reason": "Formal 64-image grid is dominated by repetitive glossy rings and warped surface texture, despite some retained object/background structure. FID-50k 79.17681249580045 is far above B 9.663262058820692. Original full sampling was finite; evaluator segfault retained and FID-only recovery used all original 50000 images with unchanged official scorer and batch256.",
+    "retained_best": false,
+    "time": "2026-10-03 16:40:59"
+  }
+}

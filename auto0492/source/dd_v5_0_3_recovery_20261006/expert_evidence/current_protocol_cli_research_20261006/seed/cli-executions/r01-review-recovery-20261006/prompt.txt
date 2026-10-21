@@ -1,0 +1,3 @@
+读取你自己的 round-01/plan.json、method.py、evaluation/failure.json 与 evaluation/recovery-20261006/result.json，必须用真实 shell 工具读取。首个基础设施失败已保留，可信后端复用原冻结checkpoint重新生成全部50000样本，完整原样本哈希复现后才通过独立FID计算；没有重训、没有再次POST。这是同一方法的评测恢复，不是额外方法轮。
+在 round-01/analysis.json 写实际FID、因果假设是否成立、保留或不保留的理由、原失败与恢复的证据路径、下一轮明确的算法变化及为什么选择它。不要把共享内存修复当方法创新。只依据你自己的公开结果，不可访问其他轨道、私有资料或凭据。
+在 agent-output/trajectory_current.json 写 rounds 数组，本轮恰好八字段 round、policy_name、method_summary、status、score、failure_reason、retained_best、time。score仅用恢复成功的真实FID，summary披露原评测基础设施失败与原checkpoint恢复；time使用真实回执时间，转换为Asia/Shanghai的YYYY-MM-DD HH:mm:ss。成功时failure_reason为null。把当前最好成功方法的完整源码保存到agent-output/best_method；不能把旧协议成绩与本轮排序。此轮不修改solution/method.py，不启动新GPU作业，不声称QA PASS。

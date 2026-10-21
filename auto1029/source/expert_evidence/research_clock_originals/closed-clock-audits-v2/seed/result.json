@@ -1,0 +1,107 @@
+{
+  "phase": "ACTUAL_CLOSED_FORMAL_CLOCK_SEMANTIC_V2_PASS",
+  "role": "seed",
+  "run_id": "146a072f494a4dad8f2fd8e4d1f770ca",
+  "prior_audit_preserved": "native-queue-sandbox-diagnosis/closed-clock-audits/seed/result.json",
+  "actual_api_failures_excluded": [
+    {
+      "item_id": "item_26",
+      "start_epoch": 1791228538.3405619,
+      "end_epoch": 1791228538.3853729
+    },
+    {
+      "item_id": "item_44",
+      "start_epoch": 1791228591.390728,
+      "end_epoch": 1791228591.494185
+    },
+    {
+      "item_id": "item_77",
+      "start_epoch": 1791228843.0567522,
+      "end_epoch": 1791228843.172192
+    },
+    {
+      "item_id": "item_130",
+      "start_epoch": 1791229311.921269,
+      "end_epoch": 1791229311.922497
+    },
+    {
+      "item_id": "item_142",
+      "start_epoch": 1791229443.158394,
+      "end_epoch": 1791229443.434083
+    },
+    {
+      "item_id": "item_172",
+      "start_epoch": 1791229779.3707101,
+      "end_epoch": 1791229779.613685
+    },
+    {
+      "item_id": "item_198",
+      "start_epoch": 1791230070.799362,
+      "end_epoch": 1791230070.9417112
+    },
+    {
+      "item_id": "item_210",
+      "start_epoch": 1791230154.423142,
+      "end_epoch": 1791230154.439473
+    }
+  ],
+  "normal_diagnosis_retained": [],
+  "effective_seconds": 4820.2165858745575,
+  "difference_from_prior_audit_seconds": 0.0,
+  "same_gpu_clock_intervals_and_union": true,
+  "root_credit_seconds": 0,
+  "model_identity_or_scored_artifact_changed": false,
+  "correction_row": {
+    "phase": "NATIVE_FORMAL_CLI_RESEARCH",
+    "start_epoch": 1791228481.762929,
+    "end_epoch": 1791235794.769294,
+    "effective_seconds": 4820.2165858745575,
+    "excluded_seconds": 2492.789779186249,
+    "included_intervals": [
+      [
+        1791228481.762929,
+        1791228538.3405619
+      ],
+      [
+        1791228538.3853729,
+        1791228591.390728
+      ],
+      [
+        1791228591.494185,
+        1791228843.0567522
+      ],
+      [
+        1791228843.172192,
+        1791229311.921269
+      ],
+      [
+        1791229311.922497,
+        1791229443.158394
+      ],
+      [
+        1791229443.434083,
+        1791229779.3707101
+      ],
+      [
+        1791229779.613685,
+        1791230070.799362
+      ],
+      [
+        1791230070.9417112,
+        1791230154.423142
+      ],
+      [
+        1791230154.439473,
+        1791230185.736276
+      ],
+      [
+        1791232666.4888887,
+        1791235783.6744075
+      ]
+    ],
+    "minimum_effective_seconds": 36000,
+    "evidence": "cli-research-preparation/146a072f494a4dad8f2fd8e4d1f770ca/seed/execution.json",
+    "audit_override": "SEMANTIC_API_FAILURE_ONLY_NORMAL_DIAGNOSIS_RETAINED",
+    "audit_evidence": "native-queue-sandbox-diagnosis/closed-clock-audits-v2/seed/result.json"
+  }
+}

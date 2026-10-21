@@ -1,0 +1,100 @@
+{
+  "canonical_sha256": "34107b61b1e7b728cd059433fb310ca381983f5cf4ea52d9a2497fb9f555fd3e",
+  "node_count": 99,
+  "output_shape": [
+    2,
+    556,
+    3584
+  ],
+  "syntax_validation": "passed",
+  "compile_regions": [
+    {
+      "id": "text_key_rotary_compiled",
+      "nodes": [
+        "text_key_rotary"
+      ]
+    },
+    {
+      "id": "image_rotary_compiled",
+      "nodes": [
+        "image_qk_rotary_first",
+        "image_qk_rotary_second",
+        "image_qk_rotary_half",
+        "image_qk_rotary_direct",
+        "image_qk_rotary_rotated",
+        "image_qk_rotary"
+      ]
+    },
+    {
+      "id": "image_mlp_compiled",
+      "nodes": [
+        "image_mlp"
+      ]
+    }
+  ],
+  "local_prefix_budget_pass": true,
+  "prefix_bytes_all_28_layers": 3730947584,
+  "prefix_limit_bytes": 7516192768,
+  "prefix_node_bytes_per_layer": {
+    "text_input_norm": 4300800,
+    "text_input_norm_rows": 4300800,
+    "text_qkv_weight": 33030144,
+    "text_qkv_bias": 9216,
+    "text_input_flat": 4300800,
+    "text_flat_qkv": 5529600,
+    "text_qkv": 5529600,
+    "vision_qkv_weight": 33030144,
+    "vision_qkv_bias": 9216,
+    "text_q_rows": 4300800,
+    "text_k_rows": 614400,
+    "text_v_rows": 614400,
+    "text_mask_rows": 667200,
+    "text_attention_mask": 360000,
+    "text_cos": 460800,
+    "text_sin": 460800,
+    "text_attended": 4300800,
+    "text_attention_out": 4300800,
+    "image_raw_cos": 393216,
+    "image_raw_sin": 393216,
+    "cos_axis_0": 131072,
+    "cos_axis_shape_0": 131072,
+    "cos_axis_1": 131072,
+    "cos_axis_shape_1": 131072,
+    "cos_axis_2": 131072,
+    "cos_axis_shape_2": 131072,
+    "cos_section_0": 16384,
+    "cos_section_1": 24576,
+    "cos_section_2": 24576,
+    "cos_section_3": 16384,
+    "cos_section_4": 24576,
+    "cos_section_5": 24576,
+    "image_cos": 131072,
+    "sin_axis_0": 131072,
+    "sin_axis_shape_0": 131072,
+    "sin_axis_1": 131072,
+    "sin_axis_shape_1": 131072,
+    "sin_axis_2": 131072,
+    "sin_axis_shape_2": 131072,
+    "sin_section_0": 16384,
+    "sin_section_1": 24576,
+    "sin_section_2": 24576,
+    "sin_section_3": 16384,
+    "sin_section_4": 24576,
+    "sin_section_5": 24576,
+    "image_sin": 131072,
+    "image_sin_first": 65536,
+    "image_sin_negative": 65536,
+    "image_sin_second": 65536,
+    "image_signed_sin": 131072,
+    "text_key_shape": 614400,
+    "text_key_heads": 614400,
+    "text_key_rotary": 614400,
+    "image_attention_mask": 569344,
+    "text_state_rows": 4300800,
+    "text_residual_rows": 4300800,
+    "text_post_norm": 4300800,
+    "text_mlp": 4300800,
+    "text_output": 4300800
+  },
+  "caution": "Local arithmetic uses BF16 external tensors; worker meta validation is authoritative."
+}

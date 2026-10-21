@@ -1,0 +1,89 @@
+{
+  "checked_unix": 1791441929.353209,
+  "track": "gpt",
+  "round": 18,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "f34d28267a8db76772241edcf7dd1126cfaf9b55a6dba12421773b1d88f2ad45",
+  "candidate_source": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/private_candidate_sources/round_00018.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.4194903779377451,
+      "score": 0.6070903467330436,
+      "quality_gates_passed": true,
+      "method_sha256": "f34d28267a8db76772241edcf7dd1126cfaf9b55a6dba12421773b1d88f2ad45",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791441107.8945193,
+      "end_unix": 1791441272.2658803
+    },
+    {
+      "status": "ok",
+      "raw_value": 0.4194903779377451,
+      "score": 0.6070903467330436,
+      "quality_gates_passed": true,
+      "method_sha256": "f34d28267a8db76772241edcf7dd1126cfaf9b55a6dba12421773b1d88f2ad45",
+      "protocol_sha256": null,
+      "start_unix": null,
+      "end_unix": null
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.421049737911619,
+    "score": 0.6056297945514532,
+    "quality_gates_passed": true,
+    "method_sha256": "f34d28267a8db76772241edcf7dd1126cfaf9b55a6dba12421773b1d88f2ad45",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791441306.2517629,
+    "end_unix": 1791441481.6061332
+  },
+  "model_final_decision": {
+    "policy_name": "preallocated_triangular_single_norm",
+    "method_summary": "Implemented triangular contractions into one preallocated buffer followed by a single row-norm reduction. Full protected Dev passed all gates with CPU ratio 0.419490378, score 0.607090347, and maximum error 4.89e-6; the evaluated candidate remains in place.",
+    "next_direction": "Reject this candidate: its measured ratio is 5.6% worse than the verified best. Next test contiguous contraction layouts for the 256-token cases."
+  },
+  "original_controller_decision": {
+    "round": 18,
+    "policy_name": "preallocated_triangular_single_norm",
+    "method_summary": "Implemented triangular contractions into one preallocated buffer followed by a single row-norm reduction. Full protected Dev passed all gates with CPU ratio 0.419490378, score 0.607090347, and maximum error 4.89e-6; the evaluated candidate remains in place.",
+    "status": "ok",
+    "score": 0.421049737911619,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 14:38:02"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791440866.9095275,
+    "ended_unix": 1791441302.5697145,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 18,
+    "start_unix": 1791440866.744321,
+    "end_unix": 1791441482.215035,
+    "observed_seconds": 615.4690917090047,
+    "effective_seconds": 615.4690917090047,
+    "model_seconds": 436.00082883401774,
+    "model_completed": true,
+    "successful_command_tools": 12,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "distinct_candidate_dev_evaluated": true,
+    "model_transport_failed": false,
+    "method_sha256": "f34d28267a8db76772241edcf7dd1126cfaf9b55a6dba12421773b1d88f2ad45",
+    "public_result": "round_00018.grader.log",
+    "events": "round_00018.events.jsonl",
+    "next_direction": "Reject this candidate: its measured ratio is 5.6% worse than the verified best. Next test contiguous contraction layouts for the 256-token cases."
+  },
+  "original_events": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/round_00018.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791439098/harbor_task__2xAKGRf/agent/resume-provenance.json"
+}

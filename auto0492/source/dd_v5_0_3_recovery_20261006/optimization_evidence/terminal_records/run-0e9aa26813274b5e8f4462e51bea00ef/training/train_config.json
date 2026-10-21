@@ -1,0 +1,59 @@
+{
+  "protocol": "dd-selfproto-v1.3",
+  "reimplementation": true,
+  "method": {
+    "name": "smoke_inference_atom_mixture64",
+    "protocol_version": "dd-selfproto-v1.3",
+    "initialization": "warmstart_official_dd_ema",
+    "teacher": {
+      "num_samples": 64,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "student_agreement_per_label",
+      "weighting": "uniform",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 8
+    },
+    "time_sampler_note": "Mixture: probability 0.5 exact t=0, otherwise Uniform U(0.5,1).",
+    "train_notes": "Released DD EMA initialization; 4096 selected genuine teacher pairs, eight proposals per label, one training pass. Allocate half the FM training mass to the exact inference t=0 stage; retain late-prefix supervision for the other half."
+  },
+  "method_sha256": "f172a9ee23f2a7410ace9b63e4ff049a164dbda129f4df55dec420af008e8213",
+  "pair_manifest_sha256": "d118637e1aaecd4ac83737dc4a5b6e137b01918529b85627a7d0b12d0ef20312",
+  "seed": 2001,
+  "batch_size": 2,
+  "accumulation": 8,
+  "lr": 0.0001,
+  "betas": [
+    0.9,
+    0.95
+  ],
+  "weight_decay": 0.05,
+  "clip_grad_norm": 1.0,
+  "ema_decay": 0.99,
+  "embedding_loss": "LPIPS-alex-v0.1 on decoded continuous-head suffix and teacher prefix",
+  "classification_loss": "CE averaged over generated tokens of all scales",
+  "loss_weights": {
+    "embedding": 1.0,
+    "classification": 0.1
+  },
+  "precision": "bf16 autocast with fp32 weights",
+  "architecture": "released DD depth16, 256px",
+  "initialization": {
+    "source": "warmstart_official_dd_ema",
+    "checkpoint_asset": "VAR-DD/var-d16.pth",
+    "checkpoint_sha256": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+    "parameter_key_count": 240,
+    "parameter_values_verified_exact": true,
+    "matches_baseline_initialization": true
+  },
+  "loss_split_t_eval": 5,
+  "training_prefix_mapping": "floor(method_t*10), clamped to0..9",
+  "deadline_unix": 1791134305.9302776,
+  "start_unix": 1791119980.2427335,
+  "teacher_reuse_maximum_passes": 1,
+  "teacher_reuse_note": "Each pass visits every pair once; stop earlier when the GPU budget ends."
+}

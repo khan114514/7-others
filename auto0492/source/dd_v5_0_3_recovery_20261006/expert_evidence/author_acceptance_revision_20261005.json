@@ -1,0 +1,38 @@
+{
+  "user_request": "\u7ee7\u7eed\u5427\uff0c\u6700\u65b0\u5b8c\u6574\u8dd1\u5206 FID 20.81 \u8fd9\u4e2a\u6211\u8bb0\u5f97\u662f\u6709\u66f4\u597d\u7684\uff0c\u4e3a\u4ec0\u4e48\u4e0d\u4fdd\u7559\u6700\u597d\u7684\uff0c\u6709\u7a33\u5b9a\u8d85\u8fc7\u7684\u5427\u3002\u7136\u540e\u7a0d\u5fae\u653e\u5bbd\u4e00\u70b9\u70b9",
+  "scope": "AUTHOR_ACCEPTANCE_REVISION; does not rewrite historical results or assert external QA PASS",
+  "preferred_candidate": "workspace/reference/method.py",
+  "required_author_quality": [
+    "Current frozen protocol full FID-50000 improves same-protocol same-evaluation-seed baseline",
+    "Saved trained checkpoint can be reloaded and full evaluation reproduced",
+    "Training, teacher-generation budget and failure history remain accurate"
+  ],
+  "no_longer_blocking_author_completion": [
+    "Mandatory paired three-sigma statistical sufficiency",
+    "Bitwise reproducibility across independently retrained models",
+    "Further determinism-kernel or cause-attribution diagnostics",
+    "Default public Reference score ceiling0.8; user-scoped ceiling1.0 is used transparently, with unchanged real anchors"
+  ],
+  "unchanged": [
+    "Fixed evaluation sample count and metric",
+    "Fixed trainer/initialization/inference",
+    "Real current package NOP execution",
+    "Preserve original failures and historical best",
+    "Do not alter RF owned by chat 2"
+  ],
+  "external_qa": "Any stricter external contract mismatch must be disclosed; no invented PASS",
+  "public_reference_score_interval_under_user_relaxation": [
+    0.15,
+    1.0
+  ],
+  "normalization_relaxation_basis": "User asked to retain the best and slightly loosen acceptance before this public experiment. Accept a stronger public Reference up to score1.0 instead of weakening it solely to fit the default0.8 ceiling; do not move B/U, clip rewards, or change the metric.",
+  "default_qa_interval_unchanged": [
+    0.15,
+    0.8
+  ],
+  "default_qa_mismatch_must_remain_visible": true,
+  "default_qa_pass_not_claimed": true,
+  "user_override_does_not_change_scoring": true,
+  "revision_epoch": 1791155582.8147788,
+  "private_scores_observed_at_revision": false
+}

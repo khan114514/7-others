@@ -1,0 +1,134 @@
+{
+  "track": "dd_seed",
+  "protocol": "dd-selfproto-v1.1",
+  "phase1_complete": true,
+  "phase2_complete": true,
+  "baseline_fid": 9.66,
+  "baseline_round": 1,
+  "best_trained_fid": 9.77,
+  "best_trained_round": 13,
+  "best_overall_fid": 9.66,
+  "best_overall_round": 1,
+  "total_rounds": 13,
+  "successful_candidates": 5,
+  "failed_rounds": 2,
+  "diagnostic_rounds": 6,
+  "total_wallclock_hours_approx": 37.0,
+  "interruption_hours": 2.76,
+  "effective_hours_approx": 34.2,
+  "cutoff_received": "2026-10-04 07:32:00 CST",
+  "final_completion": "2026-10-04 13:15:00 CST",
+  "rounds": [
+    {
+      "round": 1,
+      "policy": "official_dd_d16_baseline",
+      "score": 9.66,
+      "status": "ok",
+      "type": "baseline"
+    },
+    {
+      "round": 2,
+      "policy": "diag_uniform_10k_5k",
+      "score": null,
+      "status": "ok",
+      "type": "diagnostic"
+    },
+    {
+      "round": 3,
+      "policy": "level_weighted_time_50k",
+      "score": 163.53,
+      "status": "ok",
+      "type": "full_candidate"
+    },
+    {
+      "round": 4,
+      "policy": "t0_importance_levelbalanced_loss",
+      "score": null,
+      "status": "failed",
+      "type": "full_candidate"
+    },
+    {
+      "round": 5,
+      "policy": "curriculum_hl_timesampling",
+      "score": 167.92,
+      "status": "ok",
+      "type": "full_candidate"
+    },
+    {
+      "round": 6,
+      "policy": "warmstart_t0_dominant_cfg3",
+      "score": 166.83,
+      "status": "ok",
+      "type": "full_candidate"
+    },
+    {
+      "round": 7,
+      "policy": "warmstart_t0only_lowlr_cfg3",
+      "score": null,
+      "status": "failed",
+      "type": "full_candidate"
+    },
+    {
+      "round": 8,
+      "policy": "warmstart_t0only_1e6_lr_lowce_diag",
+      "score": null,
+      "status": "ok",
+      "type": "diagnostic"
+    },
+    {
+      "round": 9,
+      "policy": "warmstart_t0only_1e6_mseonly_diag",
+      "score": null,
+      "status": "ok",
+      "type": "diagnostic"
+    },
+    {
+      "round": 10,
+      "policy": "warmstart_t0importance_mse_5k_diag",
+      "score": null,
+      "status": "ok",
+      "type": "diagnostic"
+    },
+    {
+      "round": 11,
+      "policy": "warmstart_t0only_msece_5k_diag",
+      "score": null,
+      "status": "ok",
+      "type": "diagnostic"
+    },
+    {
+      "round": 12,
+      "policy": "warmstart_cfg5_t0only_gentle_msece",
+      "score": 9.78,
+      "status": "ok",
+      "type": "full_candidate"
+    },
+    {
+      "round": 13,
+      "policy": "warmstart_cfg7_t0only_ultragentle_msece",
+      "score": 9.77,
+      "status": "ok",
+      "type": "full_candidate"
+    }
+  ],
+  "key_findings": [
+    "从 scratch 训练 FID ~165，远差于基线 9.66",
+    "全量微调导致灾难性遗忘 (FID 166.83)",
+    "MSE-only 比 MSE+CE 退化更快（logits head 漂移假说证实）",
+    "轻柔微调 (warmstart + t0_only + MSE+CE + 低 LR) 接近基线 (FID 9.77)",
+    "教师 CFG 从 5 提升到 7 未带来显著 FID 改善",
+    "核心瓶颈：50k 样本量过小 + 共享骨干结构限制微调收益"
+  ],
+  "protocol_compliance": {
+    "warmstart_disclosed": true,
+    "budget_compliant": true,
+    "cleanup_performed": true,
+    "fid_protocol_followed": true
+  },
+  "deliverables": {
+    "trajectory_json": "trajectory_seed.json",
+    "best_method_dir": "best_method/",
+    "run_summary_md": "run_summary.md",
+    "run_summary_json": "run_summary.json"
+  }
+}

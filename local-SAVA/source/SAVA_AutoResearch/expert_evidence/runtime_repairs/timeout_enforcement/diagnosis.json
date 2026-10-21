@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-10-10T11:30:05.268832+00:00",
+  "image": "sava-actor:v1",
+  "same_image_only_variable_root_service_CAP_KILL": true,
+  "records": [
+    {
+      "root_service_cap_kill": false,
+      "returncode": 0,
+      "actual_output": {
+        "kill_success": false,
+        "errno": 1,
+        "error": "[Errno 1] Operation not permitted"
+      }
+    },
+    {
+      "root_service_cap_kill": true,
+      "returncode": 0,
+      "actual_output": {
+        "kill_success": true,
+        "child_returncode": -9
+      }
+    }
+  ],
+  "root_cause": "Evaluator drops workers to UID1001, but runtime drops CAP_KILL from UID0 service. Root can no longer kill another UID process at the declared deadline; os.killpg raises EPERM and timed-out workers remain.",
+  "final_task_mutated": false
+}

@@ -1,0 +1,177 @@
+"""User-authorized ordinary development clock; immutable receipts stay untouched."""
+import ast,datetime,hashlib,json,re,time
+from pathlib import Path
+from clock_wait_evidence import witnessed_waits
+ROOT=Path(__file__).resolve().parents[1]
+def incomplete_provider_response(value):
+ return value.get('provider_finish_reason') in ('length','content_filter')
+def signature(path):
+ tree=ast.parse(path.read_text())
+ for node in ast.walk(tree):
+  if isinstance(node,(ast.Module,ast.FunctionDef,ast.AsyncFunctionDef,ast.ClassDef)) and node.body and isinstance(node.body[0],ast.Expr) and isinstance(node.body[0].value,ast.Constant) and isinstance(node.body[0].value.value,str):node.body.pop(0)
+ return hashlib.sha256(ast.dump(tree,include_attributes=False).encode()).hexdigest()
+def union(values):
+ result=[]
+ for start,end in sorted(values):
+  if end<=start:continue
+  if result and start<=result[-1][1]:result[-1]=(result[-1][0],max(end,result[-1][1]))
+  else:result.append((start,end))
+ return result
+def witnessed_pending_queue_intervals(relay):
+ # An unfinished numerical request has no final queue_seconds_excluded yet.
+ # Derive only its own actually observed BUSY admission interval from local
+ # transport receipt epochs. Never infer a future wait from uptime, a PID,
+ # remote wall timestamps or a still DISPATCHED worker that might be running.
+ intervals=[]
+ for folder in relay.glob('evaluation-*'):
+  if (folder/'result.json').exists():continue
+  observed=[]
+  for log in folder.glob('*-transport.original.jsonl'):
+   for line in log.read_text().splitlines():
+    try:
+     row=json.loads(line);response=json.loads(row['stdout'].splitlines()[-1])
+    except (ValueError,KeyError,IndexError):continue
+    epoch=row.get('epoch');status=response.get('status')
+    if isinstance(epoch,(int,float)) and row.get('exit_code')==0:
+     observed.append((epoch,row.get('operation'),status))
+  if any(status in ('RUNNING','COMPLETE') for _,_,status in observed):continue
+  dispatched=[epoch for epoch,operation,status in observed if operation=='submit' and status=='DISPATCHED']
+  busy=[epoch for epoch,_,status in observed if status=='BUSY']
+  if dispatched and busy:
+   intervals.append((min(dispatched),max(busy)))
+ return union(intervals)
+def segments(status):
+ out=[];seen=set()
+ while status:
+  status=Path(status).resolve();status.relative_to(ROOT/'private')
+  if status in seen:raise ValueError('Repeated recovery segment')
+  seen.add(status);state=json.loads(status.read_text());out.append((status.parent,state));status=state.get('prior_state_source')
+ parts=list(reversed(out))
+ # A bounded closure review may use the same already healthy container/session
+ # while the original controller only observes liveness. It is never uptime
+ # credit or a second track; only immutable native-turn receipts count.
+ supplements=[]
+ for folder,state in parts:
+  for extra in sorted(folder.glob('clock-supplements/*/status.json')):
+   value=json.loads(extra.read_text())
+   assert value['lane']==state['lane'] and value['model']==state['model']
+   assert value['same_owned_parent_status']==str(folder/'status.json')
+   assert value['environment_binding']['container_id']==state['environment_binding']['container_id']
+   assert value['restored_actual_native_session_id']==state['restored_actual_native_session_id']
+   assert value['review_only_source_sha256']==state['best_valid_dev']['method_sha256']
+   expected=folder.parent/state['lane']/'hybrid-harbor-runtime'/state['environment_binding']['environment_id']/'relay'
+   assert Path(value['same_owned_relay_dir'])==expected
+   supplements.append((extra.parent,value))
+ return parts+supplements
+def audit(status):
+ parts=segments(status);lane=parts[-1][1]['lane'];excluded=[];evaluations=[];routes=[];pending_admission=[]
+ # Native history timestamps provide observed download call intervals. Use the
+ # largest retained snapshot per actual session, rather than repeated copies.
+ histories={}
+ for folder,state in parts:
+  for manifest in sorted(folder.glob('round_*/own-native-history/manifest.json'))[-1:]:
+   for relative,proof in json.loads(manifest.read_text()).items():
+    source=manifest.parent/relative;sid=json.loads(source.open().readline())['payload']['id']
+    if sid not in histories or source.stat().st_size>histories[sid].stat().st_size:histories[sid]=source
+ download_intervals=[];wait_proof=[]
+ for source in histories.values():
+  wait_proof.extend(witnessed_waits(source))
+  calls={}
+  for line in source.open():
+   value=json.loads(line);payload=value.get('payload',{});timestamp=value.get('timestamp')
+   if not timestamp:continue
+   epoch=datetime.datetime.fromisoformat(timestamp.replace('Z','+00:00')).timestamp()
+   if payload.get('type')=='function_call' and payload.get('name')=='exec_command':
+    try:command=json.loads(payload['arguments']).get('cmd','')
+    except (ValueError,KeyError):continue
+    if re.search(r'\b(?:curl|wget)\b|\b(?:pip|uv pip)\s+install\b|\bgit\s+clone\b|\b(?:hf|huggingface-cli)\s+download\b',command):calls[payload['call_id']]=epoch
+   elif payload.get('type')=='function_call_output' and payload.get('call_id') in calls:
+    download_intervals.append((calls.pop(payload['call_id']),epoch))
+ excluded.extend(download_intervals)
+ wait_intervals=[tuple(interval) for proof in wait_proof for interval in proof['intervals']]
+ excluded.extend(wait_intervals)
+ for folder,state in parts:
+  assert state['lane']==lane
+  for hold in folder.glob('clock-exclusions/*.json'):
+   value=json.loads(hold.read_text())
+   assert value['kind']=='OPERATIONAL_INFRASTRUCTURE_HOLD'
+   assert value['lane']==lane and value['container_id']==state['environment_binding']['container_id']
+   assert value['native_session_id']==state['restored_actual_native_session_id']
+   start=value['started_epoch'];end=value.get('completed_epoch') or time.time()
+   assert isinstance(start,(int,float)) and isinstance(end,(int,float)) and end>=start
+   excluded.append((start,end))
+  relay=Path(state['same_owned_relay_dir']) if state.get('same_owned_relay_dir') else folder.parent/lane/'hybrid-harbor-runtime'/state['environment_binding']['environment_id']/'relay'
+  observed_pending=witnessed_pending_queue_intervals(relay);pending_admission.extend(observed_pending);excluded.extend(observed_pending)
+  for p in relay.glob('evaluation-*/result.json'):
+   value=json.loads(p.read_text());assert value['split']=='dev'
+   evaluations.append(value)
+   if value.get('queue_seconds_excluded') is not None:excluded.append((value['requested_epoch_local'],value['requested_epoch_local']+value['queue_seconds_excluded']))
+  for p in relay.glob('*-route.json'):
+   if '-attempt-' in p.name:continue
+   value=json.loads(p.read_text());routes.append(value)
+   if value.get('native_request_no_tool_inventory_context_maintenance'):
+    excluded.append((value['started_epoch'],value['completed_epoch']))
+   for attempt in value.get('attempts') or [value]:
+    if attempt.get('status')=='FAILED' or attempt.get('http_status')!=200 or incomplete_provider_response(attempt):
+     start=attempt.get('started_epoch');end=attempt.get('backoff_completed_epoch',attempt.get('completed_epoch'))
+     if start is not None and end is not None:excluded.append((start,end))
+  # Older generic exception records lacked timing: use actual immutable file
+  # write times as conservative bounds, and include a full following minute.
+  for p in relay.glob('*-error.json'):
+   prefix=p.name[:-len('-error.json')];request=relay/(prefix+'-request.json')
+   if not (relay/(prefix+'-route.json')).exists() and request.is_file():excluded.append((request.stat().st_mtime,p.stat().st_mtime+60))
+ excluded=union(excluded);rows=[];seen_methods=set();last=signature(ROOT/'submission/workspace/harbor_task/solution/method.py')
+ for folder,state in parts:
+  restored=folder/'recovered-own-evidence/method.py'
+  last=signature(restored) if restored.is_file() else signature(ROOT/'submission/workspace/harbor_task/solution/method.py')
+  for receipt in state['rounds']:
+   index=receipt['index'];event=folder/f'round_{index:04d}/native-events.original.jsonl';source=folder/f'round_{index:04d}/method.py'
+   start=receipt['started_epoch'];host_end=receipt['completed_epoch']
+   # The original event stream is written directly by the native process.
+   # Nothing after its last byte is witnessed native development. Receipt
+   # collection and the host's polling delay are pure waiting, not research.
+   native_end=event.stat().st_mtime
+   end=max(start,min(host_end,native_end))
+   available=[v for v in evaluations if start<=v.get('completed_epoch_local',0)<=end]
+   novel=[v for v in available if v['method_sha256'] not in seen_methods]
+   for value in available:seen_methods.add(value['method_sha256'])
+   try:current=signature(source)
+   except (SyntaxError,OSError):current=None
+   changed=current is not None and current!=last
+   # A genuine development turn counts without a minimum command count,
+   # method AST change, or a distinct measured method. Failed final turns may
+   # contain real earlier work. Pure transport failure loops remain stalls.
+   successful_routes=[v for v in routes if v.get('http_status')==200 and v.get('status')!='FAILED' and not incomplete_provider_response(v) and start<=v.get('completed_epoch',0)<=end]
+   eligible=bool(receipt.get('successful_command_count',0) or successful_routes or (receipt['exit_code']==0 and receipt['native_turn_closed']))
+   # HTTP 200 alone is not completed development. Exclude a witnessed
+   # failed native output loop containing almost exclusively protocol tags.
+   # Ordinary reasoning/review remains eligible regardless of tool count.
+   events=[json.loads(line) for line in event.read_text().splitlines() if line.strip()]
+   messages=[row['item'].get('text','') for row in events if row.get('type')=='item.completed' and row.get('item',{}).get('type')=='agent_message']
+   text=''.join(messages);without_tags=re.sub(r'</?think>', '', text).strip()
+   pure_protocol_failure=bool(not receipt.get('successful_command_count',0) and not available and receipt['exit_code']!=0 and any(row.get('type')=='turn.failed' and 'max_output_tokens' in str(row.get('error',{})) for row in events) and len(text)>1000 and len(without_tags)/len(text)<0.01)
+   if pure_protocol_failure:eligible=False
+   # A specific diagnosed promise-only native stop is not ordinary review.
+   # Keep original receipts/events immutable and require hash-bound evidence;
+   # this does not impose a command-count rule on genuine reasoning/review.
+   witness=folder/'clock-invalid-turns'/f'round_{index:04d}.json'
+   promise_only=False
+   if witness.is_file():
+    proof=json.loads(witness.read_text())
+    assert proof['kind']=='WITNESSED_UNPERFORMED_PROGRESS_ONLY_NATIVE_STOP'
+    assert proof['native_session_id']==receipt['native_session_id']
+    assert proof['event_sha256']==hashlib.sha256(event.read_bytes()).hexdigest()
+    assert proof['receipt_sha256']==hashlib.sha256((source.parent/'receipt.json').read_bytes()).hexdigest()
+    assert not receipt.get('completed_command_count',0) and not available
+    assert len(messages)==1 and proof['message_sha256']==hashlib.sha256(messages[0].encode()).hexdigest()
+    assert proof['ordinary_review_or_method_analysis_present'] is False
+    promise_only=True;eligible=False
+   actual=max(0,end-start);deduct=sum(max(0,min(end,b)-max(start,a)) for a,b in excluded)
+   credit=max(0,actual-deduct) if eligible else 0
+   rows.append({'segment':str(folder.relative_to(ROOT)),'native_round':index,'native_session_id':receipt.get('native_session_id'),'started_epoch':start,'actual_native_end_epoch_from_raw_file_mtime':native_end,'host_poll_end_epoch':host_end,'host_poll_idle_seconds_excluded':max(0,host_end-end),'eligible_real_method_work':eligible,'witnessed_empty_protocol_output_failure_excluded':pure_protocol_failure,'witnessed_unperformed_progress_only_stop_excluded':promise_only,'semantic_method_changed_ignoring_comments_and_docstrings':changed,'new_measured_method_hashes':[v['method_sha256'] for v in novel],'queue_and_failed_provider_union_seconds_excluded':deduct,'verified_effective_seconds':credit,'raw_receipt_effective_seconds':receipt.get('effective_research_seconds',0),'event_sha256':hashlib.sha256(event.read_bytes()).hexdigest()})
+   if current is not None:last=current
+ total=sum(r['verified_effective_seconds'] for r in rows)
+ return {'lane':lane,'verified_effective_seconds':total,'verified_effective_hours':total/3600,'minimum_10h_passed':total>=36000,'raw_receipts_modified':False,'audit_observed_epoch':time.time(),'clock_policy_version':'user-20261010-ordinary-development-v5-witnessed-blocking-waits-excluded','observed_download_call_intervals':union(download_intervals),'observed_native_wait_intervals':union(wait_intervals),'native_wait_timestamp_proof':wait_proof,'observed_pending_admission_intervals_from_local_transport_receipts':union(pending_admission),'method_clock_basis':'Actual ordinary development turns capped at the original native event stream endpoint, including reasoning, review and unchanged-method work; exclude evidenced downloads, blocking sleep and associated empty-input polling calls from original native history timestamps, transport/queue stalls, HTTP200-but-incomplete provider requests, host polling and receipt collection. Polling-loop maximum sleep is not assumed elapsed; all deductions are unioned. No command-count, AST-change or distinct-experiment requirement.','rows':rows}
+if __name__=='__main__':
+ import argparse
+ p=argparse.ArgumentParser();p.add_argument('--status',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();value=audit(a.status);a.out.parent.mkdir(parents=True,exist_ok=True);a.out.write_text(json.dumps(value,indent=2));print(json.dumps({k:value[k] for k in ['lane','verified_effective_seconds','verified_effective_hours','minimum_10h_passed']}))

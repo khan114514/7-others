@@ -1,0 +1,40 @@
+{
+  "container": "harbor_task__5lkhcnz__env-main-1",
+  "image_id": "sha256:88d84d66ba4fb1e7a6ff7e798292e0836df15d6437cfb9948173338aea710db8",
+  "observed_at": "2026-10-10T12:29:28.891654+00:00",
+  "cpu_nanos": 2000000000,
+  "memory_bytes": 2147483648,
+  "cap_drop": [
+    "ALL"
+  ],
+  "cap_add": [
+    "CAP_KILL",
+    "CAP_SETGID",
+    "CAP_SETUID"
+  ],
+  "mounts": [
+    {
+      "type": "bind",
+      "destination": "/logs/agent",
+      "read_write": true,
+      "host_source": "<trusted-run-log>"
+    },
+    {
+      "type": "bind",
+      "destination": "/logs/artifacts",
+      "read_write": true,
+      "host_source": "<trusted-run-log>"
+    },
+    {
+      "type": "bind",
+      "destination": "/logs/verifier",
+      "read_write": true,
+      "host_source": "<trusted-run-log>"
+    }
+  ],
+  "networks": [
+    "sava-harbor-model-66dde61f0386"
+  ],
+  "fresh_base_image": false,
+  "view_sha256": "09fc83eff0f6fdb80cf3b06aebdd5a22bd6afe363965738194c6ad09483a73f3"
+}

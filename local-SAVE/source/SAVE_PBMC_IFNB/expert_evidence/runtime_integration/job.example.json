@@ -1,0 +1,27 @@
+{
+  "job_name": "save-nop",
+  "jobs_dir": "<FRESH_OUTPUT_ROOT>",
+  "n_attempts": 1,
+  "n_concurrent_trials": 1,
+  "tasks": [
+    {
+      "path": "<NATIVE_TASK_ROOT>"
+    }
+  ],
+  "agents": [
+    {
+      "name": "nop"
+    }
+  ],
+  "verifier": {
+    "disable": false
+  },
+  "environment": {
+    "import_path": "portable_runtime_v4.environment:SaveHybridDockerEnvironment",
+    "kwargs": {
+      "lane": "gpt",
+      "numerical_status": "<FRESH_OUTPUT_ROOT>/unused-numerical-status.json",
+      "runtime_root": "<FRESH_OUTPUT_ROOT>/runtime"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "checked_unix": 1791434422.43616,
+  "track": "gpt",
+  "round": 10,
+  "type": "independent completed method cycle",
+  "agent_model": "gpt-6.1-sol",
+  "candidate_sha256": "d911e6a8b1b4a3ae74c7f0750787bd9ce9659b3b2bb1515e5e5dc38c3f600334",
+  "candidate_source": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/private_candidate_sources/round_00010.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.3887798288837081,
+      "score": 0.6358549425737859,
+      "quality_gates_passed": true,
+      "method_sha256": "d911e6a8b1b4a3ae74c7f0750787bd9ce9659b3b2bb1515e5e5dc38c3f600334",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791433555.0852628,
+      "end_unix": 1791433776.196053
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.4030682676395883,
+    "score": 0.622471881095956,
+    "quality_gates_passed": true,
+    "method_sha256": "d911e6a8b1b4a3ae74c7f0750787bd9ce9659b3b2bb1515e5e5dc38c3f600334",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791433829.0541768,
+    "end_unix": 1791434097.8554792
+  },
+  "model_final_decision": {
+    "policy_name": "shape_aware_mm_norm_contractions",
+    "method_summary": "Added shape-aware norm contractions: full 2-D mm for 128-token 20-head cases and 2-D triangular panels for 256-token 20-head cases. Protected evaluation passed with raw relative CPU time 0.388779829, score 0.635854943, and maximum error 5.01e-6.",
+    "next_direction": "Retain this method; evaluate projection/output fusion in a future iteration."
+  },
+  "original_controller_decision": {
+    "round": 10,
+    "policy_name": "shape_aware_mm_norm_contractions",
+    "method_summary": "Added shape-aware norm contractions: full 2-D mm for 128-token 20-head cases and 2-D triangular panels for 256-token 20-head cases. Protected evaluation passed with raw relative CPU time 0.388779829, score 0.635854943, and maximum error 5.01e-6.",
+    "status": "ok",
+    "score": 0.4030682676395883,
+    "failure_reason": null,
+    "retained_best": true,
+    "time": "2026-10-08 12:34:58"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791433106.9483833,
+    "ended_unix": 1791433825.2445107,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 10,
+    "start_unix": 1791433106.5018802,
+    "end_unix": 1791434098.7289522,
+    "observed_seconds": 992.2395227500238,
+    "effective_seconds": 992.2395227500238,
+    "model_seconds": 718.9322358330246,
+    "model_completed": true,
+    "successful_command_tools": 20,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "model_transport_failed": true,
+    "method_sha256": "d911e6a8b1b4a3ae74c7f0750787bd9ce9659b3b2bb1515e5e5dc38c3f600334",
+    "public_result": "round_00010.grader.log",
+    "events": "round_00010.events.jsonl",
+    "next_direction": "Retain this method; evaluate projection/output fusion in a future iteration."
+  },
+  "original_events": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/round_00010.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": true,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791424092/harbor_task__MvdmuYP/agent/resume-provenance.json"
+}

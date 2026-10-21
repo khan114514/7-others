@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "scope": "Published pretrained 28-layer decoder only. No whole-paper FLUX rendering or image-quality reproduction claim.",
+  "training": "NOT_APPLICABLE; published checkpoint fixed, no training or fine-tuning",
+  "task_source_manifest_sha256": "2abb0bb70731458dbf320b26be53b0f219a1f3807838d73201219e83333f386e",
+  "same_A100_and_existing_numerical_worker": true,
+  "sampling_seeds": [
+    101,
+    202,
+    303
+  ],
+  "cases_per_sampling_seed": 2,
+  "repetitions_per_case": 3,
+  "decoder_steps_per_repetition": 256,
+  "timing_scope": "Sum of256 decoder forward events:28 layers, final norm and head. Frozen CFG/reveal/input preparation, quality diagnostics, loading and queueing are excluded equally.",
+  "rows": {
+    "nop": {
+      "run_id": "dc02ea50528e4ce1b31adfc1bc2f1ff1",
+      "artifact_sha256": "22e530ab57471d2145e8008299b66cdc58c81305ea18698206469c5048a3b309",
+      "source_binding_sha256": "66bc087d9fa54a22e7ad39ca544c347fa779dba71ad1b563def08ef7fd7025a8",
+      "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+      "baseline_mean_ms": 58274.88579305013,
+      "candidate_mean_ms": 58294.56111907959,
+      "baseline_sample_sd_ms": 270.97871623083995,
+      "reward": -0.000337629593978607,
+      "noise_3sigma_pass": false,
+      "quality_pass": true,
+      "peak_cuda_allocated_bytes": 26498078208,
+      "per_seed": [
+        {
+          "sampling_seed": 101,
+          "case_count": 2,
+          "baseline_ms": 57964.55123138428,
+          "candidate_ms": 57975.81876373291
+        },
+        {
+          "sampling_seed": 202,
+          "case_count": 2,
+          "baseline_ms": 58464.676902770996,
+          "candidate_ms": 58486.05132293701
+        },
+        {
+          "sampling_seed": 303,
+          "case_count": 2,
+          "baseline_ms": 58395.42924499512,
+          "candidate_ms": 58421.81327056885
+        }
+      ],
+      "started_epoch": 1792025384.9820688,
+      "completed_epoch": 1792027851.9504228,
+      "child_exit_code": 0,
+      "parent_cuda_context_initialized": false,
+      "native_run_id": "07337ad11f5e45a1b8c223bf3c7045b1",
+      "native_trial_id": "7f58b9e5-1896-4280-902e-bb2ba89a7e92",
+      "raw_stages": 4608,
+      "repetitions": 18,
+      "independent_CPU_exit_code": 0,
+      "CPU_latent_checks": [
+        {
+          "case": 0,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14"
+        },
+        {
+          "case": 1,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a"
+        },
+        {
+          "case": 2,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b"
+        },
+        {
+          "case": 3,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948"
+        },
+        {
+          "case": 4,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165"
+        },
+        {
+          "case": 5,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c"
+        }
+      ],
+      "original_private_durable_archive_sha256": "880ef9c52929ff560837ad4e4d34113d0274519e384ec83220e1b5dff2051f55",
+      "actual_durable_readback_all_SHA_match": true,
+      "public_evidence_directory": "expert_evidence/release-full-validation/nop"
+    },
+    "oracle": {
+      "run_id": "59dabefa65e54a73ab111830079d7d97",
+      "artifact_sha256": "4c051f10ad664d9fbe423752a3d15ed058c4b33e00e13c582fc7958111a5391e",
+      "source_binding_sha256": "66bc087d9fa54a22e7ad39ca544c347fa779dba71ad1b563def08ef7fd7025a8",
+      "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+      "baseline_mean_ms": 58432.48055013021,
+      "candidate_mean_ms": 33729.16768900553,
+      "baseline_sample_sd_ms": 180.57194646667463,
+      "reward": 0.422766800733905,
+      "noise_3sigma_pass": true,
+      "quality_pass": true,
+      "peak_cuda_allocated_bytes": 27697030656,
+      "per_seed": [
+        {
+          "sampling_seed": 101,
+          "case_count": 2,
+          "baseline_ms": 58263.6082611084,
+          "candidate_ms": 33606.80603027344
+        },
+        {
+          "sampling_seed": 202,
+          "case_count": 2,
+          "baseline_ms": 58411.00238800049,
+          "candidate_ms": 33728.2001953125
+        },
+        {
+          "sampling_seed": 303,
+          "case_count": 2,
+          "baseline_ms": 58622.83100128174,
+          "candidate_ms": 33852.496841430664
+        }
+      ],
+      "started_epoch": 1792027881.1023955,
+      "completed_epoch": 1792029762.5346131,
+      "child_exit_code": 0,
+      "parent_cuda_context_initialized": false,
+      "native_run_id": "bbb85cb671004296b05e77b20af17068",
+      "native_trial_id": "c2b4fee1-0fed-4713-85b4-601b0fbc6c1c",
+      "raw_stages": 4608,
+      "repetitions": 18,
+      "independent_CPU_exit_code": 0,
+      "CPU_latent_checks": [
+        {
+          "case": 0,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14"
+        },
+        {
+          "case": 1,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a"
+        },
+        {
+          "case": 2,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b"
+        },
+        {
+          "case": 3,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948"
+        },
+        {
+          "case": 4,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165"
+        },
+        {
+          "case": 5,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c"
+        }
+      ],
+      "original_private_durable_archive_sha256": "880ef9c52929ff560837ad4e4d34113d0274519e384ec83220e1b5dff2051f55",
+      "actual_durable_readback_all_SHA_match": true,
+      "public_evidence_directory": "expert_evidence/release-full-validation/oracle"
+    },
+    "gpt-selected": {
+      "run_id": "3902966495fc4f0083a91624eb8b269a",
+      "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "source_binding_sha256": "66bc087d9fa54a22e7ad39ca544c347fa779dba71ad1b563def08ef7fd7025a8",
+      "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+      "baseline_mean_ms": 58570.95049285889,
+      "candidate_mean_ms": 14484.337151845297,
+      "baseline_sample_sd_ms": 384.90162725292146,
+      "reward": 0.7527044203660095,
+      "noise_3sigma_pass": true,
+      "quality_pass": true,
+      "peak_cuda_allocated_bytes": 29699220992,
+      "per_seed": [
+        {
+          "sampling_seed": 101,
+          "case_count": 2,
+          "baseline_ms": 58143.79267883301,
+          "candidate_ms": 14409.751543045044
+        },
+        {
+          "sampling_seed": 202,
+          "case_count": 2,
+          "baseline_ms": 58678.22129058838,
+          "candidate_ms": 14510.437889099121
+        },
+        {
+          "sampling_seed": 303,
+          "case_count": 2,
+          "baseline_ms": 58890.83750915527,
+          "candidate_ms": 14532.822023391724
+        }
+      ],
+      "started_epoch": 1792029784.7062676,
+      "completed_epoch": 1792031216.5959024,
+      "child_exit_code": 0,
+      "parent_cuda_context_initialized": false,
+      "native_run_id": "f16d5c4466ca4409a4eea15d8ffe7338",
+      "native_trial_id": "dfef246a-67c6-4732-bd94-7aac8c8d50df",
+      "raw_stages": 4608,
+      "repetitions": 18,
+      "independent_CPU_exit_code": 0,
+      "CPU_latent_checks": [
+        {
+          "case": 0,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14"
+        },
+        {
+          "case": 1,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a"
+        },
+        {
+          "case": 2,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b"
+        },
+        {
+          "case": 3,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948"
+        },
+        {
+          "case": 4,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165"
+        },
+        {
+          "case": 5,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c"
+        }
+      ],
+      "original_private_durable_archive_sha256": "880ef9c52929ff560837ad4e4d34113d0274519e384ec83220e1b5dff2051f55",
+      "actual_durable_readback_all_SHA_match": true,
+      "public_evidence_directory": "expert_evidence/release-full-validation/gpt-selected"
+    },
+    "seed-selected": {
+      "run_id": "575a833cfa3a4f98abfe33f3d50c6d47",
+      "artifact_sha256": "637b952f46e7bd25126e1d9e20bfa59cab8c28fd9a2f2605bb565d15129273d7",
+      "source_binding_sha256": "66bc087d9fa54a22e7ad39ca544c347fa779dba71ad1b563def08ef7fd7025a8",
+      "checkpoint_manifest_sha256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+      "baseline_mean_ms": 58277.173444112144,
+      "candidate_mean_ms": 15967.34054629008,
+      "baseline_sample_sd_ms": 141.08682615540647,
+      "reward": 0.7260103810353333,
+      "noise_3sigma_pass": true,
+      "quality_pass": true,
+      "peak_cuda_allocated_bytes": 29601871872,
+      "per_seed": [
+        {
+          "sampling_seed": 101,
+          "case_count": 2,
+          "baseline_ms": 58117.7144241333,
+          "candidate_ms": 15928.137205123901
+        },
+        {
+          "sampling_seed": 202,
+          "case_count": 2,
+          "baseline_ms": 58328.00471496582,
+          "candidate_ms": 15966.261251449585
+        },
+        {
+          "sampling_seed": 303,
+          "case_count": 2,
+          "baseline_ms": 58385.801193237305,
+          "candidate_ms": 16007.623182296753
+        }
+      ],
+      "started_epoch": 1792031237.1628263,
+      "completed_epoch": 1792032689.4426093,
+      "child_exit_code": 0,
+      "parent_cuda_context_initialized": false,
+      "native_run_id": "434b6ec5d703453989b6c5f4858d90f8",
+      "native_trial_id": "a516a69c-7643-4ca3-a8e1-e0c81d993c08",
+      "raw_stages": 4608,
+      "repetitions": 18,
+      "independent_CPU_exit_code": 0,
+      "CPU_latent_checks": [
+        {
+          "case": 0,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14"
+        },
+        {
+          "case": 1,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a"
+        },
+        {
+          "case": 2,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b"
+        },
+        {
+          "case": 3,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948"
+        },
+        {
+          "case": 4,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165"
+        },
+        {
+          "case": 5,
+          "relative_rmse": 0.0,
+          "scaled_max_abs": 0.0,
+          "file_sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c"
+        }
+      ],
+      "original_private_durable_archive_sha256": "880ef9c52929ff560837ad4e4d34113d0274519e384ec83220e1b5dff2051f55",
+      "actual_durable_readback_all_SHA_match": true,
+      "public_evidence_directory": "expert_evidence/release-full-validation/seed-selected"
+    }
+  },
+  "interpretation": "Each independent full job pairs its method against its own same-job Baseline on one assigned A100. GPT and Seed use separately bound workers with identical numerical sources. Sampling seeds are not training seeds. Quality checks and independent CPU audits cover six final latents. NOP/Starter retains its actual unclipped measured reward including ordinary timer noise. GPT and Seed results are not a direct paired significance experiment.",
+  "historical_evidence": [
+    "expert_evidence/historical-author-paired-validation",
+    "expert_evidence/original-selected-full-validation"
+  ],
+  "historical_scores_relabelled_as_current_scores": false,
+  "method_descriptions": {
+    "GPT": "expert_evidence/original-GPT-user10h/original-author/research-notes.md",
+    "Seed": "expert_evidence/original-compiler-interface/Seed/original-author/research-notes.md"
+  },
+  "continuity_and_native_restore": "expert_evidence/native-runtime-proofs",
+  "portable_dynamic_isolation": "expert_evidence/portable-runtime-isolation",
+  "canonical_GPT_research_duration_verified": false,
+  "current_GPT_12h_closed": true,
+  "whole_final_ZIP_and_QA_PASS": false,
+  "current_GPT_12h_evidence": "expert_evidence/current-gpt-continuity/index.json",
+  "each_paired_job_uses_one_assigned_A100": true,
+  "historical_precompiler_method_description_sources": {
+    "GPT": {
+      "author_module_docstring": "Cache text-only input RMS and compute cached MLP on text rows only.\n\nEmit an operator DAG. This builder executes only in the local candidate container;\nthe numerical worker accepts JSON, never imports this Python file.",
+      "method_sha256": "c60eb393a66d0e3ecc77c98a605d2668840bc9fe538149817589393854962ac9",
+      "program_sha256": "f8b408c4db242e3692f0dcea8f1d079936d272f1a670f47b04f3c5198f8e16bb",
+      "layer_body_node_count": 95,
+      "prefix_lifetime_node_count": 49,
+      "operations": {
+        "slice": 36,
+        "rms_norm": 4,
+        "concat": 11,
+        "linear": 6,
+        "attention_eager": 1,
+        "reshape": 10,
+        "transpose": 5,
+        "scale": 3,
+        "mul": 4,
+        "add": 7,
+        "repeat_heads": 2,
+        "matmul": 2,
+        "softmax": 1,
+        "cast": 1,
+        "mlp": 2
+      },
+      "explanation_source": "Static author source and original method-evolution evidence; no host candidate execution",
+      "method_evolution_path": "expert_evidence/method-evolution/gpt.json"
+    },
+    "Seed": {
+      "author_module_docstring": "Experiment 91: Use `mlp` op on flattened 2D image input.\n\nBuilding on exp89 (71.63% speedup, BEST).\n\nIdea: Replace manual 5-node MLP (gate+up+silu+mul+down) with single `mlp` op.\nSaves 4 per-stage nodes → less Python interpreter overhead.\n\nThe `mlp` op internally does: F.linear(F.silu(F.linear(x, gate_w)) * F.linear(x, up_w), down_w)\nSame computation, fewer graph nodes.\n\nExp76 found \"mlp op matches manual flattened speed\" within noise.\nTest with our current optimized setup to confirm.",
+      "method_sha256": "0da5c4cb0fd76c3dd01b58aa2e1341888c68216091893476cf76c335dc74d012",
+      "program_sha256": "20ce4ff0464588ae073753476c3a851e501972e62a6b8d3adf174989e8fabd16",
+      "layer_body_node_count": 65,
+      "prefix_lifetime_node_count": 23,
+      "operations": {
+        "slice": 15,
+        "rms_norm": 4,
+        "concat": 7,
+        "linear": 4,
+        "reshape": 13,
+        "attention_eager": 1,
+        "add": 5,
+        "transpose": 5,
+        "rotary": 2,
+        "repeat_heads": 2,
+        "matmul": 2,
+        "scale": 1,
+        "softmax": 1,
+        "cast": 1,
+        "mlp": 2
+      },
+      "explanation_source": "Static author source and original method-evolution evidence; no host candidate execution",
+      "method_evolution_path": "expert_evidence/method-evolution/seed.json"
+    }
+  },
+  "current_selected_method_new_12h_or_research_duration_claimed": false,
+  "Root_method_or_QA_authored": false,
+  "historical_before_user10h_method_description_sources": {
+    "GPT": "expert_evidence/original-compiler-interface/GPT/original-author/research-notes.md",
+    "Seed": "expert_evidence/original-compiler-interface/Seed/original-author/research-notes.md"
+  },
+  "original_GPT_selection_caution": "97baseline case0is unusually high; its candidate mean is above historical53. Highest actual valid reward does not establish a candidate-paired speedup or generated-kernel cause."
+}

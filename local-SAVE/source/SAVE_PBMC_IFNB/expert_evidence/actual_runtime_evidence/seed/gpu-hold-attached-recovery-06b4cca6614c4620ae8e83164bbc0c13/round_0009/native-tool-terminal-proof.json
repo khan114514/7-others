@@ -1,0 +1,79 @@
+{
+  "original_event_sha256": "47994a58f681b92807973f33c96742bec4a7f51a67bcf8e3a819afd44c86e275",
+  "original_receipt_sha256": "c80eaaf51cf50c9cd6205724cce5dcf4f4a38512f81d1db3443f25bfbeb33fa6",
+  "original_event_last_write_epoch": 1791786304.63094,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc \"cat /workspace/solution/dev_result.json 2>/dev/null | python3 -c \\\"import sys,json; d=json.load(sys.stdin); print('status:', d.get('status')); print('raw_metric:', d.get('raw_metric')); print('score:', d.get('score')); print('method_sha256:', d.get('method_sha256')); print('all_seeds:', d.get('all_seeds_complete'))\\\"\"",
+      "original_command_sha256": "67ae72bd4ec2b96bf29ec6a6ae39215d90681986af76524b88c71259d41ed170",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "00a271ddda05b27c85dea067d5e9cbcdadd32756307695ec466cf72fe742c58c",
+      "output_characters": 173
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cd /workspace/solution && ls -la dev_result.json && date && stat dev_result.json | grep Modify'",
+      "original_command_sha256": "edc2ecbb970b0790eb4dacf61ceb377c1b7e622c589a2873297eefd2a4f2c117",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c8cf7109a4c475ae7da483aa71aa57c110a4ceffedc82874f597eed592cb793c",
+      "output_characters": 140
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'cat /workspace/solution/solve.sh'",
+      "original_command_sha256": "f65f9808f25b1d842a664235a6b7667f7780d85f8d3d7a976451f0aad3995d09",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "870c4f51c5eb761053102c805fe0f157232c7bdab128585d5ce4a367426f26f5",
+      "output_characters": 172
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'head -80 /tests/grader.py'",
+      "original_command_sha256": "374915bf1df05ef2df4d5090dfb35dba5e6e426a530da81e0a002ccc12871a9c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "aa412adc490632dfb43502970452c73007ca6d496ba135426c8278ebb760a4a1",
+      "output_characters": 2087
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc 'cd /workspace/solution && timeout 30 bash solve.sh 2>&1 | head -20'",
+      "original_command_sha256": "eb94816b4f21c1d186a8141286bf8a01d64b5b51a8b7eb5b276a94d7f0e89617",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_12",
+      "command": "/bin/sh -lc 'cd /workspace/solution && python3 /tests/grader.py --split dev --method /workspace/solution/method.py --output /workspace/solution/dev_result.json 2>&1 &\nPID=$!\nsleep 5\nif kill -0 $PID 2>/dev/null; then\n  echo \"Still running after 5s, PID=$PID\"\nelse\n  wait $PID\n  echo \"Exited with code $?\"\nfi'",
+      "original_command_sha256": "465d38db963a46d60a526870e3321807de374184e66501d38cfc028f4e260dae",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "7f17aea34e791953c8a7430a0d619d0c33fd93b8866175c0c17c0705b4b55259",
+      "output_characters": 33
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 47290424,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1076903,
+        "reasoning_output_tokens": 148392
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

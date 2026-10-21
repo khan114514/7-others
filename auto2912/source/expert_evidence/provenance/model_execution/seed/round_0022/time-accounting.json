@@ -1,0 +1,25 @@
+{
+  "policy": "user-normal-work-clock-20261006",
+  "elapsed_seconds": 730.5432920455933,
+  "effective_seconds": 727.398649930954,
+  "excluded_seconds": 3.1446421146392822,
+  "excluded_intervals": [
+    [
+      1791307998.562033,
+      1791308001.706675
+    ]
+  ],
+  "exclusion_evidence": [
+    {
+      "start_epoch": 1791307998.562033,
+      "end_epoch": 1791308001.706675,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-204d9592__env/routes/seed-be215088eb424e059c7567e3d6920212-route.json"
+    }
+  ],
+  "score_success_used_for_time": false,
+  "role": "seed",
+  "round": 22,
+  "cli_exit_code": 1,
+  "actual_model_completion_observed": true
+}

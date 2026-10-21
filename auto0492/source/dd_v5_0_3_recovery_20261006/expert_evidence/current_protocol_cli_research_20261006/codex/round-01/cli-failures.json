@@ -1,0 +1,33 @@
+{
+  "round": 1,
+  "public_evaluation_cli_invocations": 0,
+  "inherited_cli_probe": {
+    "path": "/workspace/agent-output/cli-probe.txt",
+    "observed_content": "CLI_TOOL_OK",
+    "quality_result": false
+  },
+  "failures": [
+    {
+      "command": "rg --files -g AGENTS.md -g '!environment/**' -g '!agent-output/**' /workspace /tmp",
+      "exit_code": 2,
+      "stderr": "rg: /tmp/codex-daemon-1000: Permission denied (os error 13)",
+      "category": "local_discovery_permission_error",
+      "resolution": "Read only applicable ancestor AGENTS.md paths. None existed; no permission escalation or retry against the denied directory."
+    },
+    {
+      "command": "rg -n 'uniform_to_scale|def forward|def get_final_sequence|def perturb_data|t=|t_eval' /workspace/environment/public_eval/implementation/vendor/var/rectified_categorical.py /workspace/environment/public_eval/implementation/vendor/var/models/dd.py /workspace/environment/public_eval/implementation/vendor/var/sample.py",
+      "exit_code": 2,
+      "stderr": "rg: /workspace/environment/public_eval/implementation/vendor/var/rectified_categorical.py: No such file or directory (os error 2)",
+      "category": "local_discovery_missing_public_source_path",
+      "resolution": "Located the public rectified_categorical.py in engine/framework; model and sample matches from the original command were available."
+    }
+  ],
+  "warnings": [
+    {
+      "command": "python3 -c 'import torch; torch.set_num_threads(1); print(\"torch_version=\" + torch.__version__); print(\"default_device=\" + str(torch.empty(0, device=\"cpu\").device)); print(\"cpu_generator=\" + str(torch.Generator(device=\"cpu\").device))'",
+      "exit_code": 0,
+      "stderr": "UserWarning: Failed to initialize NumPy: No module named 'numpy'",
+      "resolution": "CPU torch 2.5.1 works; candidate and prechecks require no NumPy."
+    }
+  ]
+}

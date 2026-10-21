@@ -1,0 +1,97 @@
+{
+  "role": "seed",
+  "runtime": "actual native Harbor0.23.0 + Linux Codex0.160.0",
+  "model_requested": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "formal_trajectory_started": true,
+  "formal_scored_round": true,
+  "score": 0.6784795272999333,
+  "model_turn_completed": false,
+  "cli_exit_code": 143,
+  "provider_response_identity_verified": true,
+  "same_prompt_sha256": "0fba11ed11fbe6b972c8d8fdacf461a031df62268e4f4e4c659bf1b56f66a651",
+  "same_instruction_sha256": "687fa50c36287eb4aa48971c73e0944f57b858b583b2096945fbc0c64a6d5530",
+  "trusted_runtime_source_manifest": {
+    "heima_harbor_environment.py": "91138b261a85272d38650c1eb177ae1ee24d1ef3933fc3f24f902f949982cd32",
+    "cli_provider_relay.py": "1fc5a67e02e154c0f77e3d7e5fa3e4e65fdd41c1aa34f692b894119f7488dddd",
+    "native_codex_agent.py": "1633a932c88082e1ed5bc1de27e43f63b09aae09f3aa58cdf1ca9ff1146cad4e",
+    "evaluator_bridge.py": "9c6e2ad5bde3cc54484818df5ce2d25e618f403fb5a3bcb3081d6e7ddec323e5",
+    "run_formal_cli_turn.py": "f0716e3487de4156131fb823dd58c4ffc2fd6c4dbdc20fd5fe4c2a0e6cd8a6cb",
+    "native_round_activity_guard.py": "e6b9a66d9d4541a59439e24c53d389731ed1d350ea8bac3a5a12108a36dfda2a"
+  },
+  "trusted_runtime_unchanged": true,
+  "exported_method_matches_verified_handoff": true,
+  "served_model_identifiers": [
+    "doubao-seed-2-1-turbo-260628"
+  ],
+  "effective_research_seconds": 5007.168364048004,
+  "time_accounting": {
+    "included_intervals": [
+      [
+        1791292332.8418481,
+        1791293299.10069
+      ],
+      [
+        1791293303.7076986,
+        1791294033.269834
+      ],
+      [
+        1791293303.7807827,
+        1791295280.610495
+      ],
+      [
+        1791295285.8904028,
+        1791297349.8971286
+      ]
+    ],
+    "gpu_jobs": [
+      {
+        "job_id": "a53637e7928a4f9ab1990279178ae2c6",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791293268.013453,
+        "clock_offset_estimate_seconds": 66.1800537109375,
+        "transport_uncertainty_seconds": 0.06726133823394775
+      },
+      {
+        "job_id": "8ff646c997a14bc6a50a70b1e8c53c5d",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791293299.10069,
+        "clock_offset_estimate_seconds": 66.24656581878662,
+        "transport_uncertainty_seconds": 0.07308411598205566
+      },
+      {
+        "job_id": "04f80fd8b1234feb8f1e54841947d2d9",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791295281.1949031,
+        "clock_offset_estimate_seconds": 66.29507684707642,
+        "transport_uncertainty_seconds": 0.06295359134674072
+      }
+    ],
+    "queue_intervals_excluded": [
+      [
+        1791293299.10069,
+        1791293303.7076986
+      ]
+    ],
+    "classification": {
+      "effective_seconds": 1700.427985906601,
+      "included_intervals": [
+        [
+          1791292332.8418481,
+          1791294033.269834
+        ]
+      ],
+      "infrastructure_failure_seconds": 0,
+      "pending_activity_audit_seconds": 99.9621889591217,
+      "excluded_seconds": 99.9621889591217,
+      "accounting_status": "PARTIAL_NORMAL_WORK_PRESERVED_PENDING_AUDIT",
+      "artifact_validity_used_for_time": false
+    },
+    "gpu_time_overlapping_cli_not_double_counted": true,
+    "gpu_experiment_attributed_to_genuine_cli_work": true
+  },
+  "method_sha256": "a0a4bb2d8a059009673ebfac97e2d47dc6d5a845b63db30a0155b1c0e542934c",
+  "status": "NATIVE_SCORED_RESEARCH_ROUND",
+  "native_trial_result": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/8eb7c3cfcd6a46df931822e5487b3f75/native-returned-result.json",
+  "failure": null
+}

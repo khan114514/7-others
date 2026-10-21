@@ -1,0 +1,82 @@
+{
+  "schema_version": "autoresearch-comparison-summary.v2",
+  "status": "COMPLETE",
+  "metric": {
+    "name": "relative_process_cpu_time",
+    "direction": "minimize"
+  },
+  "split": "dev",
+  "seeds": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "paired_results": {
+    "17": {
+      "baseline": 1.1404054003564794,
+      "reference": 0.5116721784753299,
+      "paired_improvement": 0.6287332218811496
+    },
+    "29": {
+      "reference": 0.4600538051925116,
+      "baseline": 1.2164480736835979,
+      "paired_improvement": 0.7563942684910863
+    },
+    "43": {
+      "baseline": 0.9824788978125498,
+      "reference": 0.5293415824776744,
+      "paired_improvement": 0.45313731533487545
+    },
+    "71": {
+      "reference": 0.49697465814971575,
+      "baseline": 1.086612204224258,
+      "paired_improvement": 0.5896375460745423
+    },
+    "101": {
+      "baseline": 0.9123103439763108,
+      "reference": 0.4965188206302016,
+      "paired_improvement": 0.41579152334610925
+    }
+  },
+  "statistics": {
+    "paired_run_count": 5,
+    "baseline_mean": 1.0676509840106392,
+    "reference_mean": 0.49891220898508665,
+    "baseline_sample_std": 0.12163295768269929,
+    "reference_sample_std": 0.02553537521217916,
+    "mean_paired_improvement": 0.5687387750255526,
+    "baseline_sigma_multiple": 4.675860768832133,
+    "relative_improvement": 0.5327010264057276
+  },
+  "score_contract": {
+    "baseline": 1.0676509840106392,
+    "reference": 0.49891220898508665,
+    "upper_bound": 0.0,
+    "reference_normalized": 0.5327010264057276,
+    "upper_bound_source": "metric_ceiling_zero_latency"
+  },
+  "significance_rule": {
+    "required_baseline_sigma_multiple": 3.0,
+    "passed": true
+  },
+  "validity": {
+    "same_protocol": true,
+    "same_seed_set": true,
+    "all_quality_gates_passed": true,
+    "all_checkpoints_reload_and_rescore_passed": "NOT_APPLICABLE"
+  },
+  "source_results": [
+    "optimization_evidence/baseline_runs/seed_17/result.json",
+    "optimization_evidence/reference_runs/seed_17/result.json",
+    "optimization_evidence/baseline_runs/seed_29/result.json",
+    "optimization_evidence/reference_runs/seed_29/result.json",
+    "optimization_evidence/baseline_runs/seed_43/result.json",
+    "optimization_evidence/reference_runs/seed_43/result.json",
+    "optimization_evidence/baseline_runs/seed_71/result.json",
+    "optimization_evidence/reference_runs/seed_71/result.json",
+    "optimization_evidence/baseline_runs/seed_101/result.json",
+    "optimization_evidence/reference_runs/seed_101/result.json"
+  ]
+}

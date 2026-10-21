@@ -1,0 +1,8 @@
+CUTOFF NOTICE (2026-10-04 08:05 CST, 运行方发出)
+硬截止：本轨道夜间加跑到此为止，禁止开启新一轮训练/评测。
+当前 round17 评测已在跑，允许完成该闭环并记录；此后立即收尾：
+1. 将全部轮次 trajectory.jsonl 并入最终 trajectory_codex.json，格式 {"rounds":[...]}；
+2. 更新 run_summary（md+json）；
+3. best_method 更新为实际最佳候选（当前为 round15，FID-50k=9.497105760787463，clean validation round16 逐位复现）；
+4. 完成后写出交付确认。
+协议：dd-selfproto-v1.1。Baseline codex=9.663262058820692。

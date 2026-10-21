@@ -1,0 +1,9 @@
+# Original selected-method full validations
+
+These three original runs validate the exact native-selected method identities. They belong to the original research Task and numerical source bindings, not the newer portable Task/runtime. GPT-independent, Seed-original and Seed-independent are distinct numerical runs. Their scores are neither spliced nor substituted for one another.
+
+Each folder contains the original 4,608 numeric stage records, 18 repetitions, six unchanged latent binaries, worker result, request and program, original collection manifest, independent CPU audit and its actual command/stdout/stderr, and original native closure receipt. All numeric, boolean and null fields remain unchanged. Physical paths, runtime names and GPU identifiers in text use logical privacy labels. Source hashes inside original manifests identify original files; the separate private derivation records the hashes of privacy-derived public copies. Empty original stderr files are retained.
+
+No GPU, model, candidate execution or CPU latent recomputation occurs during packaging. The existing completed CPU reports are copied and their associated original file hashes are checked. These are inference validations using published pretrained weights and sampling seeds, with no claim of independent training runs, complete FLUX generation or full-paper reproduction. The original per-case, per-seed timing, fidelity and memory records remain available in each result.
+
+The runs use their assigned original A100 backends and execution conditions. Comparing the three historical normalized rewards does not establish which method wins on one identical release validation environment. Fresh portable NOP, repaired Oracle and both selected methods must still be measured and independently audited under the newer source binding. Final full-ZIP privacy, actual current container stability and the two clean AI QA reviews remain separate requirements.

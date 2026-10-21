@@ -1,0 +1,41 @@
+本次独立V4静态复核结论：NOT READY。现有优化面、正式Baseline和Reference提升数值符合门槛；请修复以下核心问题并重交完整ZIP。未执行题包代码或动态复跑，不是官方0.3.10/平台验收。
+
+P1 跨调用缓存可绕过源码 guard，破坏计时评分边界（confirmed_failure）
+事实：赋值检查仅判断最外层 target 是否为 ast.Attribute；函数内元组解包目标中的模块属性未递归检查。hasattr 未被禁止，torch 的普通新属性名也允许读取。因此可用元组目标把输出持久化在 torch 属性中，warmup 后重复返回缓存。worker 全部计时调用使用同一输入，所谓 fresh call 只是克隆同值输入，不能识别这种缓存。相同赋值缺口还能改写 worker 所用的 torch.equal。
+定位：workspace/harbor_task/tests/grader.py:55；workspace/harbor_task/tests/grader.py:71；workspace/harbor_task/tests/worker.py:24；workspace/harbor_task/tests/worker.py:33；workspace/harbor_task/environment/public_eval/grader.py:55
+影响：题面明确禁止持久状态和结果缓存，而实际 guard/worker 不保证这些边界；缓存值仍能通过父进程 oracle 的数值检查。此为静态可定位的执行边界缺陷，不表示现有 Reference 或已交最佳候选用了该方式。
+最小修改：递归检查所有赋值、解包、增量赋值及删除目标，限制模块/函数属性变更及间接模块状态；对可调用对象采用明确安全计算面。把输入完整性/计时可信状态与候选隔离，并用变化输入验证反缓存，避免只重传相同克隆输入。同步公开与私有 worker/guard。
+验收材料：提交修订源码及在授权隔离环境中针对元组属性写入、模块缓存、torch.equal 修改的拒绝记录；合法纯张量实现仍可运行，变换输入和数值质量门有效；不接受只新增文字禁令。
+
+P2 配置与题面仍依赖当前内场不支持的网络和磁盘约束（confirmed_failure）
+事实：Agent 设置 allowlist/allowed_hosts，environment 和 verifier.environment 声明 storage_mb=4096、network_mode=no-network；题面将禁网/模型主机白名单列为保证。
+定位：workspace/harbor_task/task.toml:18；workspace/harbor_task/task.toml:24；workspace/harbor_task/task.toml:25；workspace/harbor_task/task.toml:37；workspace/harbor_task/task.toml:38；workspace/harbor_task/instruction.md:20；workspace/harbor_task/environment/task.toml
+影响：当前 V4 明确本批不声明 storage_mb、禁网和网络白名单。这不是换卡耗时、NOP 或指纹放宽项；旧 Harbor 本地接受字段不代表当前平台能力。
+最小修改：删除两份 task.toml 中不支持的存储与网络字段，按当前平台实际联网条件改写两份题面；候选纯计算/禁止外部通信由受限执行边界落实，不能依赖平台白名单承诺。
+验收材料：完整新 ZIP 中题面、task.toml 及环境副本一致；以目标平台真实版本的格式/schema 检查结果确认字段支持，并提供候选边界验证材料。无需仅为此要求旧正式 CPU 分数换卡重跑。
+
+P3 轨迹摘要、状态与实际评分/保留结果未对齐，且不是恰八字段（confirmed_failure）
+事实：64 条 GPT 和 35 条 Seed 每轮含 packaged_source，13 条 Seed 失败轮另含 original_status。Seed 第1/14/19/30/31等轮 method_summary 是截断代码/XML或重复输出，非1–3句方法摘要。GPT 第52轮摘要称0.421919084且劣于最佳，最终 score=0.40776985324241416、retained_best=true，原 grader 支持后者。Seed 第19/30/31轮 score=null，但各自 grader 已出 raw=0.524809612381887、0.4892946021797527、0.5282904292793187。
+定位：expert_evidence/trajectory_codex.json:567；expert_evidence/trajectory_codex.json:149；expert_evidence/trajectory_seed.json:6；expert_evidence/trajectory_seed.json:205；expert_evidence/trajectory_seed.json:336；expert_evidence/trajectory_seed.json:348；expert_evidence/raw_evidence/campaigns/asd-research-1791486012/harbor_task__VqWxhgD/agent/round_00052.grader.log
+影响：无法从标准轨迹准确区分模型失败、实际方法评分和最终保留决策；原始日志存在不能使不一致的交付轨迹自动通过。
+最小修改：将来源/原始状态索引移至顶层旁表，逐轮只保留规定八字段。保留原始事件不改写，依据实际生效源码、最终 grader 与保留行为重写简洁摘要；明确模型中断与评分结果不同，有真实已出分则记录该值并说明失败类型。同步过时的专家说明。
+验收材料：两条严格八字段 JSON、逐轮外置来源映射；核对全部99轮数值、失败原因、保留标记，尤其上述轮次；不得把模型自报分数替代最终公共评分或删除失败记录。
+
+P4 Seed 十小时有效时长尚不能由现有下界确认（core_evidence_gap）
+事实：逐会话求和确为 Seed 36026.1351631398秒，但其中286.64082220802084秒是 CLI 配置立即拒绝后、工具数0且方法未改的 Starter 评分；这不是有效方法研究。扣除此项，已可审计下界为35739.49434093178秒（9.927637316925494小时），比10小时少260.50565906822秒。GPT 同类扣除后下界为36081.68229063977秒（10.022689525177714小时）。
+定位：expert_evidence/auditable_time_lower_bound.json:1401；expert_evidence/auditable_time_lower_bound.json:2234；expert_evidence/raw_evidence/campaigns/asd-research-1791370972/harbor_task__d9XHobK/agent/round_00001.events.jsonl:1；expert_evidence/raw_evidence/campaigns/asd-research-1791370972/harbor_task__d9XHobK/agent/runtime.json:20；expert_evidence/run_summary.json:27
+影响：现有摘要不能证明两条均≥10h。修正下界不足不证明实际总时长一定不足；另有被保守扣除的未知时间，不能直接当有效时间加回。该问题不属于五类放宽。
+最小修改：从下界中扣除纯配置/环境故障与无方法研究的自动评分，并核对其余API失联/阻塞区间。优先用已有原始记录补足可核验有效研究时间；不足再在另行授权后补真实迭代。若采用非训练短迭代7h例外，须独立提供全部适用依据，不能把包内旧用户表述当成本会话授权。
+验收材料：每轨起止、扣除区间与去重算式，Seed 至少还需260.505659秒已有有效时间的证据或合法补足；或完整7h例外材料（短迭代、≥3闭环、持续演进、下一方向、最佳方法干净复验）。未知区间保持未知。
+
+五类放宽事项（单独不阻断）：
+- 指纹/哈希：nonblocking_pending。task_binding两个字段缺失；历史协议哈希与校准后协议可能不同，未用哈希差异否定正式数据。 后补建议：真实脚本补四项指纹与版本映射，不全量重跑。 依据：expert_evidence/run_summary.json；optimization_evidence/baseline_runs/seed_17/result.json#protocol_sha256
+- 换卡后B/R影响：not_applicable。CPU算子；保留linux/aarch64历史设备，未将其标为H20/L20实测。 后补建议：若平台更换CPU环境，可后补计时比影响说明。 依据：expert_evidence/专家作业说明文档.md:27
+- 换卡耗时：not_applicable。CPU0GPU，已有计时日志；本次未验证目标平台耗时。 后补建议：目标平台时间验证另列，不单独阻断。 依据：expert_evidence/best_method/rerun_dev/result.json#clean_execution
+- NOP记录/版本：nonblocking_pending。既有NOP链路完整，当前版本绑定未核验。 后补建议：复用并补版本关联，不自动补跑。 依据：expert_evidence/harbor_nop_v023/portable_export.json
+- 换卡后重算分数：not_applicable。当前审查使用已有真实CPU正式全seed数据；不要求因换卡重做。 后补建议：仅设备变化引起的重算可延期。 依据：optimization_evidence/comparison_summary.json
+
+工具缺口：真实官方0.3.10发布包及独立格式/GPU/指纹脚本未取得，完整官方工具验收待补；未调用旧0.3.2收集器或伪改版本。取得后记录真实版本/SHA和原始报告。
+运行边界：仅静态读取ZIP的文本/JSON/源码AST与元数据及自行复算统计；未导入/执行提交代码，未运行Docker、Verifier、训练、模型、安装脚本或权重反序列化。已有运行记录不等于本次独立复跑、平台正式Hidden或目标环境隔离认证。
+可见隐私：已读workspace源码/题面未见个人home、邮箱或私有端点命中；未实施完整二进制严格扫描，该工作由主控另行完成。报告未复制秘密或本机个人路径。
+风险仅列三项：可绕过缓存限制；旧网络/磁盘配置与当前内场不兼容；轨迹及有效时间摘要与原始记录未完全对齐。

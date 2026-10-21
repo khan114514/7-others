@@ -1,0 +1,140 @@
+{
+  "status": "PORTABLE_BINDINGS_BUILT_DYNAMIC_VALIDATION_PENDING",
+  "canonical_algorithm_and_sampler_byte_identical": false,
+  "encoder_class_ast_identical": false,
+  "files": {
+    "run_policy_score_v2.py": {
+      "original_sha256": "58c99176e1e3fa7bb382d571e0e4aca69a259df7c93ede5691eabc3e76bbec44",
+      "deployed_sha256": "58c99176e1e3fa7bb382d571e0e4aca69a259df7c93ede5691eabc3e76bbec44",
+      "changes": [],
+      "byte_identical": true
+    },
+    "policy_decoder_v1.py": {
+      "original_sha256": "8c96eec8bb692fad4652899a8def08aba8419f95ec190919b96aaabe465a33ab",
+      "deployed_sha256": "8c96eec8bb692fad4652899a8def08aba8419f95ec190919b96aaabe465a33ab",
+      "changes": [],
+      "byte_identical": true
+    },
+    "mcq_metrics.py": {
+      "original_sha256": "a4be3984afa308aa86f8e05331f4a790545e7f1ea2ef8701def0fc15bcbd7a5b",
+      "deployed_sha256": "a4be3984afa308aa86f8e05331f4a790545e7f1ea2ef8701def0fc15bcbd7a5b",
+      "changes": [],
+      "byte_identical": true
+    },
+    "policy_jail_runner.py": {
+      "original_sha256": "15ccd140d97bea9d220d083198be9bd9f879d7f8d9014d60e89957c731e4e6a0",
+      "deployed_sha256": "15ccd140d97bea9d220d083198be9bd9f879d7f8d9014d60e89957c731e4e6a0",
+      "changes": [],
+      "byte_identical": true
+    },
+    "run_logged_command.py": {
+      "original_sha256": "87316038d878e9f969df1983f240431fc2a630d6df3f7464f10cad823bf18147",
+      "deployed_sha256": "87316038d878e9f969df1983f240431fc2a630d6df3f7464f10cad823bf18147",
+      "changes": [],
+      "byte_identical": true
+    },
+    "run_inference_pilot.py": {
+      "original_sha256": "83aaa36adcf06e2c393edef3ba2c05e336076ad5f8bacac0244e448039bafea3",
+      "deployed_sha256": "c0a231ff0ef83f068e784e50e9b50f0c76c9437660a7b41b3e1e7ac53173f751",
+      "changes": [
+        "Configured project root",
+        "Removed unused expert-only direct import driver; preserved Encoder AST exactly",
+        "Local Tensor token variable renamed sampled_token; normalized AST alpha-equivalent"
+      ],
+      "byte_identical": false
+    },
+    "gpu_official_encoder_smoke.py": {
+      "original_sha256": "c15aaed12e66a72da670f74a75264f11a2d4cc87f3929bde7254ada213370859",
+      "deployed_sha256": "ef2dc912fce9eb6158bdf26c68477d67939290c1b1efc0fd8ed587d16358a823",
+      "changes": [
+        "Configured root, shared GPU mutexes and observation executable",
+        "Removed unused expert smoke main"
+      ],
+      "byte_identical": false
+    },
+    "isolated_policy.py": {
+      "original_sha256": "7511c7f7cdceb322823151e873d080d4c7ea693d112e273b021ae199e43362c8",
+      "deployed_sha256": "231011e1d174d8eddede425fcbc83cff6b0b55636df9ca6526742b6228cd27bf",
+      "changes": [
+        "Configured private root and trusted jail interpreter arguments; unchanged IPC and limits"
+      ],
+      "byte_identical": false
+    },
+    "policy_jail_launcher.py": {
+      "original_sha256": "43452b6680d8fec2a818cae3ea0ca32a3991512235bee7f9b2f569bb72eb9e9c",
+      "deployed_sha256": "a1c49bc522649d49732005a17a80b52f3fe6e995e65a2e70bd9bdf0664b7a910",
+      "changes": [
+        "Trusted caller supplies jail parent and copied interpreter path; confinement limits unchanged"
+      ],
+      "byte_identical": false
+    },
+    "build_policy_jail.py": {
+      "original_sha256": "31001fea5f77ec5e5ae3b0a051cffde4f9f3ac2c568d59cbe4b375fa3d7f3632",
+      "deployed_sha256": "87481f1541e159612aeb361f196e235504a997d80fac8fe8e71d4ae7f900bb5f",
+      "changes": [
+        "Configured trusted stdlib/interpreter and private destination; no site packages"
+      ],
+      "byte_identical": false
+    },
+    "gpu_evaluator_service.py": {
+      "original_sha256": "74dc2f606fef8bd2c58deed2acb1a7d3582c7bfe7ec353d9d12a7509ceaedd70",
+      "deployed_sha256": "9258d95f4746e5ac0ef18c06d80e3a7fb0c0d610cd5eb7e5cfed24f827f01894",
+      "changes": [
+        "Configured execution paths and private config propagation; fixed public dev-only API unchanged"
+      ],
+      "byte_identical": false
+    },
+    "run_private_hidden_score_v2.py": {
+      "original_sha256": "687bdf970b105a175c9e8f6e7baf8e1128d607ef9a7aa99a46e0b672dd362b5c",
+      "deployed_sha256": "45343397166fba4f7785e579a2e4008823717c37bbae57732696835c7af8c1d5",
+      "changes": [
+        "Configured root-only private asset/request directory"
+      ],
+      "byte_identical": false
+    },
+    "private_verifier_service.py": {
+      "deployed_sha256": "038cf9aec7c9cbcdb6e1a367ed17b59dc6e71ae8d316a96d40e34b7c17df26db",
+      "changes": [
+        "Root-only private endpoint / portable install-source guard extension"
+      ],
+      "original_canonical_scientific_source": false,
+      "full_gpu_native_validation_this_wrapper_pending": true
+    },
+    "harbor_private_worker.py": {
+      "deployed_sha256": "d06fafd3b120d7f7ef5f70514dcbb7e034a9308ecaf36a606b346b69cb4191ac",
+      "changes": [
+        "Root-only private endpoint / portable install-source guard extension"
+      ],
+      "original_canonical_scientific_source": false,
+      "full_gpu_native_validation_this_wrapper_pending": true
+    },
+    "trusted_private_backend_support.py": {
+      "deployed_sha256": "4d0697104f22e5331d6a85bea43359927156b57e63c3ad63d86adef7af1f988f",
+      "changes": [
+        "Root-only private endpoint / portable install-source guard extension"
+      ],
+      "original_canonical_scientific_source": false,
+      "full_gpu_native_validation_this_wrapper_pending": true
+    },
+    "install_backend.py": {
+      "deployed_sha256": "793f7c8298218fe63ef580262f43a254d56207eb9b65189d249da381de33bad0",
+      "changes": [
+        "Root-only private endpoint / portable install-source guard extension"
+      ],
+      "original_canonical_scientific_source": false,
+      "full_gpu_native_validation_this_wrapper_pending": true
+    }
+  },
+  "active_sources_modified": false,
+  "model_research_seconds": 0,
+  "encoder_class_alpha_equivalent_ast": true,
+  "canonical_scorer_decoder_sampler_byte_identical": true,
+  "algorithm_operation_ast_alpha_equivalent": true,
+  "staged_gpu_deployment_and_full_native_score_verified": false,
+  "private_verifier_extension": {
+    "phase": "STAGED_ACTUAL_ISOLATED_ROOT_CODE_ONLY_INSTALL_AND_SOURCE_GUARDS_PASS_FULL_ASSETS_GPU_PENDING",
+    "scientific_scorer_decoder_jail_and_frozen_input_bytes_changed": false,
+    "private_dataset_in_bundle": false,
+    "full_private_gpu_branch_claim": false
+  }
+}

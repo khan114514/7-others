@@ -1,0 +1,264 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "The partitioned graph reduced Dev latency by 44.1%, but failed prediction and rollout quality checks, so I’ve kept it as a failed attempt. The masks also show fully masked padding rows: their states depend on images, but valid queries cannot attend to them. Next I’ll preserve the original GEMM shapes and cache text-branch results, testing whether that preserves predictions.\n",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 124; successful tools 24. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "retained_best": false,
+      "time": "2026-10-05 19:28:57.405380+08:00"
+    },
+    {
+      "round": 2,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Restored and regenerated the best valid Dev method in `method.py` and `program.json`.\n\nText caching plus normalization factoring achieved **42.56% lower paired latency**, with zero measured prediction and final-latent error on all Dev cases. Peak allocation was 25.80 GiB.\n\nPartitioning and SDPA failed quality checks; their builders, artifacts and feedback are preserved. [research-notes.md](<candidate-workspace>/research-notes.md) records the outcomes and next experiment decision. Formal evaluation remains untested.",
+      "status": "ok",
+      "score": 0.42561423751816974,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 19:38:50.228205+08:00"
+    },
+    {
+      "round": 3,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Tested image-row partitioning for the MLP and attention output projection. Both passed real Dev with zero measured prediction and final-latent error.\n\nBest paired latency reduction improved from **42.56% to 58.41%**. Restored its saved builder and regenerated `method.py` and `program.json`.\n\nArtifacts, feedback, prior failures and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules are unchanged; formal evaluation remains untested.",
+      "status": "ok",
+      "score": 0.5841020123398395,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 19:44:22.423149+08:00"
+    },
+    {
+      "round": 4,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Tested two new candidates. The biased V partition failed quality; image-query-only eager attention passed with zero measured Dev error.\n\nBest paired latency reduction improved to **62.96%**, with 26.01 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nSaved both experiments and feedback, and recorded the next decision in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "ok",
+      "score": 0.629550704336135,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 19:50:11.274061+08:00"
+    },
+    {
+      "round": 5,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Tested broadcast and folded grouped-query attention on real Dev. Both produced zero measured error, but neither improved latency.\n\nRestored the best valid builder and regenerated `method.py` and `program.json`: **62.96% paired latency reduction**.\n\nSaved both experiments and feedback. [research-notes.md](<candidate-workspace>/research-notes.md) records the outcomes and next decision. Evaluator rules remain unchanged.",
+      "status": "not_run",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "retained_best": false,
+      "time": "2026-10-05 19:55:43.465942+08:00"
+    },
+    {
+      "round": 6,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "I’ll test branch-specific RMS normalization from the notes, keeping every biased Q/K/V projection at its original shape. Dev feedback will determine whether caching the text normalization and computing only image normalization each stage preserves predictions.\n",
+      "status": "incomplete",
+      "score": null,
+      "failure_reason": "Original status snapshot has no closed native end or exit record; no completion or duration is fabricated.",
+      "retained_best": false,
+      "time": "2026-10-05 19:55:43.772593+08:00"
+    },
+    {
+      "round": 7,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "No final authored message recorded; original native status RUNNING.",
+      "status": "incomplete",
+      "score": null,
+      "failure_reason": "Original status snapshot has no closed native end or exit record; no completion or duration is fabricated.",
+      "retained_best": false,
+      "time": "2026-10-05 19:59:34.543261+08:00"
+    },
+    {
+      "round": 8,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Tested input and post-attention RMS partitioning on real Dev. Both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction is now **63.57%**, with 26.10 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nArtifacts, feedback, prior failures and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "ok",
+      "score": 0.6357107763151084,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 21:17:37.010995+08:00"
+    },
+    {
+      "round": 9,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Completed two new Dev experiments; both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction improved to **67.57%**, with 26.55 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nSaved artifacts and feedback, and recorded the layout uncertainty and next experiment in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "ok",
+      "score": 0.6757495329495194,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 21:22:17.405700+08:00"
+    },
+    {
+      "round": 10,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Completed three experiments, including a graph rejection preserved with its feedback.\n\nBest valid Dev latency reduction is now **68.02%**, with zero measured prediction and final-latent error. Restored its builder and regenerated `method.py` and `program.json`.\n\nArtifacts, outcomes and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "ok",
+      "score": 0.6801897811257087,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 21:27:20.190141+08:00"
+    },
+    {
+      "round": 11,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Completed two new Dev experiments; both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction is now **68.84%**, with 26.77 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nSaved artifacts, feedback and the next decision in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "ok",
+      "score": 0.6884415149347335,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 21:32:19.834360+08:00"
+    },
+    {
+      "round": 12,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Tested fused vision K/V and Q/K/V projections on real Dev. Both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction is now **69.74%**, with 27.65 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nArtifacts, feedback, prior failures and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "ok",
+      "score": 0.6974404451135936,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 21:37:05.907866+08:00"
+    },
+    {
+      "round": 13,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Completed two new Dev experiments; both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction improved to **71.32%**, with 27.85 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nSaved artifacts, feedback and the next decision in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "ok",
+      "score": 0.7132044104257124,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-05 21:42:49.033754+08:00"
+    },
+    {
+      "round": 14,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Completed two foreground Dev experiments. Both passed with zero measured error, but neither improved latency over the saved best.\n\nRestored and regenerated `method.py` and `program.json` with the **71.32% paired latency reduction** method.\n\nSaved both experiments and feedback, and recorded the next decision in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "not_run",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "retained_best": false,
+      "time": "2026-10-05 21:48:45.071991+08:00"
+    },
+    {
+      "round": 15,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Fused text Q/K/V passed Dev with zero measured error but did not improve latency. The text-row follow-up received a trusted-controller error, so its numerical outcome remains unknown; the actual error is preserved.\n\nRestored and regenerated the best valid method: **71.32% paired latency reduction**.\n\nArtifacts, feedback and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "status": "not_run",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "retained_best": false,
+      "time": "2026-10-05 22:24:08.037669+08:00"
+    },
+    {
+      "round": 16,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Implemented a text-only MLP candidate and retried the unresolved text-row projection. Both foreground Dev attempts returned “Trusted numerical controller is unavailable or changed”; numerical outcomes remain unknown.\n\nPreserved both artifacts and actual errors. Restored and regenerated the best validated method: **71.32% paired latency reduction**.\n\n[research-notes.md](<candidate-workspace>/research-notes.md) records the failures and next decision. Evaluator rules remain unchanged.",
+      "status": "not_run",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "retained_best": false,
+      "time": "2026-10-05 22:27:07.972106+08:00"
+    },
+    {
+      "round": 17,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Implemented text-only input RMS caching and retried the unresolved text-only MLP candidate. Both foreground Dev attempts returned “Trusted numerical controller is unavailable or changed,” so their numerical outcomes remain unknown.\n\nPreserved artifacts and actual errors, then restored and regenerated the best validated method: **71.32% paired latency reduction**.\n\n[research-notes.md](<candidate-workspace>/research-notes.md) records the outcomes and next decision. Evaluator rules remain unchanged.",
+      "status": "not_run",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "retained_best": false,
+      "time": "2026-10-05 22:30:27.789694+08:00"
+    },
+    {
+      "round": 18,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "The latest notice requires a foreground evaluation and its actual result. I’ll test the proposed cache-lifetime refinement: keep the text RMS result cached, but stop retaining its input view as a separate prefix entry.\n",
+      "status": "not_run",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "retained_best": false,
+      "time": "2026-10-05 23:20:28.610641+08:00"
+    },
+    {
+      "round": 19,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Experiment 30 is a distinct lifetime variant of 29 and has been generated and structurally checked (97 nodes). Its foreground Dev request is running; I’ll use the returned status or preserve the exact controller error, then update the research record and restore the highest validated artifact.\n",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 124; successful tools 2. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "retained_best": false,
+      "time": "2026-10-06 00:10:29.139830+08:00"
+    },
+    {
+      "round": 20,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 1; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "retained_best": false,
+      "time": "2026-10-06 00:39:28.738456+08:00"
+    },
+    {
+      "round": 21,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 1; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "retained_best": false,
+      "time": "2026-10-06 00:40:30.670958+08:00"
+    },
+    {
+      "round": 22,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "Experiment 31 passed real Dev with zero numerical error and a **71.915% latency reduction**, improving the previous best of 71.405%. Peak allocation was 27.46 GiB.\n\nSaved the experiment and feedback, recorded the local wrapper failure and next decision in [research-notes.md](<candidate-workspace>/research-notes.md), and restored the new best to `method.py` and regenerated `program.json`.\n\nNext experiment: compute the cached text output projection only on text rows.",
+      "status": "ok",
+      "score": 0.7191493065987284,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-06 06:57:56.432721+08:00"
+    },
+    {
+      "round": 23,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "I’ll test the next direction from the notes: project only the cached text attention rows. I’ll run Dev in the foreground, save the actual feedback, and restore whichever valid method has the best measured reward.\n",
+      "status": "not_run",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "retained_best": false,
+      "time": "2026-10-06 07:47:57.239409+08:00"
+    },
+    {
+      "round": 24,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 124; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "retained_best": false,
+      "time": "2026-10-06 08:37:58.195997+08:00"
+    },
+    {
+      "round": 25,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 1; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "retained_best": false,
+      "time": "2026-10-06 09:26:44.544550+08:00"
+    },
+    {
+      "round": 26,
+      "policy_name": "Codex0.160.0 / gpt-6.1-sol/high native own-session research",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 1; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "retained_best": false,
+      "time": "2026-10-06 09:27:51.296332+08:00"
+    }
+  ]
+}

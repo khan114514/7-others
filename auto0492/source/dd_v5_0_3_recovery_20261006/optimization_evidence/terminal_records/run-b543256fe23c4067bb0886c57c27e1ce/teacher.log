@@ -1,0 +1,61 @@
+
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+runtime:python/lib/python3.12/site-packages/torch/nn/init.py:51: UserWarning: Specified kernel cache directory could not be created! This disables kernel caching. Specified directory is runtime:dd_runs/run-b543256fe23c4067bb0886c57c27e1ce/kernel-cache. This warning will appear only once per process. (Triggered internally at ../aten/src/ATen/native/cuda/jit_utils.cpp:1442.)
+  tensor.erfinv_()
+[init_weights] VAR with init_std=0.0180422
+
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+runtime:python/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+runtime:python/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+runtime:python_extras/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+runtime:attempt04/workspace/harbor_task/environment/vendor/var/models/dd.py:109: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=False):
+runtime:attempt04/workspace/harbor_task/environment/vendor/var/models/dd.py:302: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  concat_pos = self.L - torch.tensor(self.accum_token_length[1:])[split_t] - 1
+[init_weights] DD_Model with init_std=0.0180422
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: runtime:python_extras/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"teacher_pairs": 256, "elapsed_seconds": 40.505908727645874, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 512, "elapsed_seconds": 67.52547907829285, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 768, "elapsed_seconds": 94.59848761558533, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 1024, "elapsed_seconds": 121.63137865066528, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 1280, "elapsed_seconds": 148.64942598342896, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 1536, "elapsed_seconds": 175.59910416603088, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 1792, "elapsed_seconds": 202.62106323242188, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 2048, "elapsed_seconds": 229.65057730674744, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 2304, "elapsed_seconds": 256.66357040405273, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 2560, "elapsed_seconds": 283.7494375705719, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 2816, "elapsed_seconds": 310.7600665092468, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 3072, "elapsed_seconds": 337.7744023799896, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 3328, "elapsed_seconds": 364.8173816204071, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 3584, "elapsed_seconds": 391.80975341796875, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 3840, "elapsed_seconds": 418.81912779808044, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 4096, "elapsed_seconds": 445.86003398895264, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 4352, "elapsed_seconds": 472.91756939888, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 4608, "elapsed_seconds": 499.94925332069397, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 4864, "elapsed_seconds": 527.0024855136871, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 5120, "elapsed_seconds": 554.080685377121, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 5376, "elapsed_seconds": 581.1980085372925, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 5632, "elapsed_seconds": 608.198792219162, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 5888, "elapsed_seconds": 635.2155139446259, "peak_torch_allocated_mib": 5089.4912109375, "peak_torch_reserved_mib": 8814.0}
+{"teacher_pairs": 6144, "elapsed_seconds": 662.3704791069031, "peak_torch_allocated_mib": 5095.0068359375, "peak_torch_reserved_mib": 8816.0}
+{"teacher_pairs": 6400, "elapsed_seconds": 689.4522581100464, "peak_torch_allocated_mib": 5198.3818359375, "peak_torch_reserved_mib": 8898.0}
+{"teacher_pairs": 6656, "elapsed_seconds": 716.5712106227875, "peak_torch_allocated_mib": 5295.8974609375, "peak_torch_reserved_mib": 8898.0}
+{"teacher_pairs": 6912, "elapsed_seconds": 743.6708619594574, "peak_torch_allocated_mib": 5298.3193359375, "peak_torch_reserved_mib": 8898.0}
+{"teacher_pairs": 7168, "elapsed_seconds": 770.7701029777527, "peak_torch_allocated_mib": 5298.3193359375, "peak_torch_reserved_mib": 8898.0}
+{"teacher_pairs": 7424, "elapsed_seconds": 797.888897895813, "peak_torch_allocated_mib": 5338.0849609375, "peak_torch_reserved_mib": 8898.0}
+{"teacher_pairs": 7680, "elapsed_seconds": 825.0139787197113, "peak_torch_allocated_mib": 5342.7255859375, "peak_torch_reserved_mib": 8982.0}
+{"teacher_pairs": 7936, "elapsed_seconds": 852.086893081665, "peak_torch_allocated_mib": 5342.7255859375, "peak_torch_reserved_mib": 8982.0}
+{"teacher_pairs": 8192, "elapsed_seconds": 879.1733553409576, "peak_torch_allocated_mib": 5378.4599609375, "peak_torch_reserved_mib": 8982.0}
+{"teacher_generation_complete": true, "sample_count": 1024}

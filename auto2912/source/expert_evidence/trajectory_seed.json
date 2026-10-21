@@ -1,0 +1,1434 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "policy_name": "method-3eed3e6bf11b",
+      "method_summary": "源码方法描述：Calibrated forecasting: per-node linear scaling + shrunken per-node-horizon bias + anchor blending.；结构步骤：Step 1: Per-node linear scaling (target = slope * base + intercept) --- / Step 2: Per-node-horizon residual bias correction --- / Step 3: Anchor blending --- / Step 1: linear scaling / Step 2: bias correction / Step 3: anchor blending. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 48 条，模型消息 17 条；有效工作 1802.960578 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Isotonic alone overfits, but a 30/70 blend with bias correction shows promise. Let me try a global ridge regression approach—more principled than manual shrinkage.\n\nActually, let me first try a cleaner implementation of our best approach and then try a fundamentally different method (global ridge with structured features). 原控制器最终完整复评 MAE=15.218766332647808；保留为最佳。",
+      "status": "ok",
+      "score": 15.218766332647808,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-06 20:43:39",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0001/candidate/method.py",
+        "source_file_sha256": "4c9931bde2b442ece3f6764b9ba9d09b93b50226f8de7aa7230e049462852c78",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0001/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0001/time-accounting.json",
+        "completed_commands": 48,
+        "completed_model_messages": 17
+      }
+    },
+    {
+      "round": 2,
+      "policy_name": "method-unscored",
+      "method_summary": "源码方法描述：Shared-slope calibration: global base+anchor weights + node/horizon intercepts + per-node-horizon bias.；结构步骤：Step 1: Global regression: target = w_base * base + w_anchor * anchor + intercept --- / Step 2: Per-node intercept correction (shrunken, graph-smoothed) --- / Step 3: Per-horizon intercept correction --- / Step 4: Per-node-horizon bias correction (light, shrunken) ---. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 40 条，模型消息 27 条；有效工作 1802.167299 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：In-sample MAE 14.53 (better than v4's ~14.65). Let's see if this holds up on dev.\n 本轮真实最终复评失败，score 保留 null。",
+      "status": "failed",
+      "score": null,
+      "failure_reason": "Observed public evaluation failed; see original round evidence.",
+      "retained_best": false,
+      "time": "2026-10-06 21:13:42",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0002/candidate/method.py",
+        "source_file_sha256": "0297360a2068265a00734394a74e5d49046cec040c1bf1779fdb09bd300c2a8d",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0002/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0002/time-accounting.json",
+        "completed_commands": 40,
+        "completed_model_messages": 27
+      },
+      "original_status": "evaluation_error"
+    },
+    {
+      "round": 3,
+      "policy_name": "method-0c87900e709c",
+      "method_summary": "源码方法描述：Per-horizon slope+intercept + anchor blend + history correction + per-node graph bias (no nh bias).；结构步骤：Step 0: Conservative anchor blend / Step 1: Per-horizon slope + intercept / Step 2: Per-node bias / Step 3: History-based correction. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 48 条，模型消息 23 条；有效工作 1811.816337 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：v20 (without nh bias) is worse at 15.189 — confirming nh bias helps. Let me go back to v16 and try James-Stein empirical Bayes shrinkage for the per-node-horizon biases instead of fixed 0.3. 原控制器最终完整复评 MAE=15.18890587489985；保留为最佳。",
+      "status": "ok",
+      "score": 15.18890587489985,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-06 21:43:54",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0003/candidate/method.py",
+        "source_file_sha256": "025f47cc67d235b1158892eee34ed297898df1264d5c09b93c5cfbee5afab968",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0003/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0003/time-accounting.json",
+        "completed_commands": 48,
+        "completed_model_messages": 23
+      }
+    },
+    {
+      "round": 4,
+      "policy_name": "method-e871eb6e0670",
+      "method_summary": "源码方法描述：Anchor blend + per-horizon Ridge + per-node-horizon shrunken bias + history correction.；结构步骤：Step 1: Anchor blend / Step 2: Per-horizon Ridge regression (slope + intercept) / Step 3: Per-node-horizon shrunken bias correction / Step 4: History-based correction. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 28 条，模型消息 18 条；有效工作 1808.466341 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Clock features help only marginally with very high regularization. Let me build the full combined method with conservative per-node-horizon bias and test in time-grouped CV. 原控制器最终完整复评 MAE=15.379963992195869；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.379963992195869,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 22:14:03",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0004/candidate/method.py",
+        "source_file_sha256": "fcdce319315d20dc3ec449309cb47a6814ae47e5cf95e264be90ba9ce179b737",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0004/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0004/time-accounting.json",
+        "completed_commands": 28,
+        "completed_model_messages": 18
+      }
+    },
+    {
+      "round": 5,
+      "policy_name": "method-6892ce6eba8a",
+      "method_summary": "源码方法描述：Global per-horizon LAD with base+anchor+history + strong graph-smoothed biases.；结构步骤：Step 1: Global per-horizon LAD with base + anchor + last history / Step 2: Per-node residual bias (graph-smoothed, shrunken) / Step 3: Per-node-horizon bias (conservative). 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 35 条，模型消息 21 条；有效工作 1804.784650 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：15.253 MAE (score 0.356) — solid improvement. Let me try adding history to the LAD features and stronger node bias. 原控制器最终完整复评 MAE=15.248752110138405；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.248752110138405,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 22:44:08",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0005/candidate/method.py",
+        "source_file_sha256": "aaa6666b92a52025e9cd36cea80e1a46f53f5592a747401cb1fa6dde5cc1115f",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0005/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0005/time-accounting.json",
+        "completed_commands": 35,
+        "completed_model_messages": 21
+      }
+    },
+    {
+      "round": 6,
+      "policy_name": "method-fa1544b5444b",
+      "method_summary": "源码方法描述：Median-based bias calibration + graph-smoothed biases.；结构步骤：Step 1: Per-horizon median bias / Step 2: Per-node median bias (graph-smoothed, shrunken) / Step 3: Per-node-horizon median bias (shrunken, graph-smoothed). 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 41 条，模型消息 23 条；有效工作 1703.203946 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：The TOD bias effect is substantial (std ~1.8-2.7), comparable to global bias magnitude. And all 288 time slots are covered by training data. Let me implement proper TOD bias with heavy circular smoothing. 原控制器最终完整复评 MAE=15.200462398152931；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.200462398152931,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 23:14:12",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0006/candidate/method.py",
+        "source_file_sha256": "7933c0dc4d5abf94280f4a7d87d143bf5fffab72492829b5387fa99be4407550",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0006/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0006/time-accounting.json",
+        "completed_commands": 41,
+        "completed_model_messages": 23
+      }
+    },
+    {
+      "round": 7,
+      "policy_name": "method-dc8d9e8e9f7d",
+      "method_summary": "源码方法描述：Per-node-horizon optimal anchor blending + multi-stage bias correction + ridge residual model.；结构步骤：Step 1: Per-horizon optimal anchor blending (global) / Step 2: Per-node-horizon optimal anchor blending (shrunken to global) / Step 3: Per-horizon median bias / Step 4: Per-node median bias (graph-smoothed, shrunken) / Step 5: Per-node-horizon median bias (shrunken, graph-smoothed) / Step 6: Time-of-day (clock) bias correction / Step 7: History-based per-sample correction / Step 8: Pooled ridge regression for residual prediction. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 26 条，模型消息 15 条；有效工作 1440.989653 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：The v20 method (15.228) is worse than v19 (15.200) — the per-node anchor grid search overfits. Let me back off to more conservative improvements that are less prone to overfitting. 原控制器最终完整复评 MAE=15.227510543525016；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.227510543525016,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-06 23:42:11",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0007/candidate/method.py",
+        "source_file_sha256": "6184ca3d95a3bb27d1dbb0a9056d376fcc5f04fcf732cdd5865195317445fc1d",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0007/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0007/time-accounting.json",
+        "completed_commands": 26,
+        "completed_model_messages": 15
+      }
+    },
+    {
+      "round": 8,
+      "policy_name": "method-2cda5873cde7",
+      "method_summary": "源码方法描述：v23: strong-shrink PNA anchor + multi-stage bias + mult correction + light ridge residual.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 38 条，模型消息 18 条；有效工作 1810.283133 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Per-horizon multiplicative doesn't help (redundant with additive bias), but per-node multiplicative clearly helps. Let me try quantile regression instead of Ridge for the residual model — it should be more appropriate for the MAE objective. 原控制器最终完整复评 MAE=15.20350679461788；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.20350679461788,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 00:12:22",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0008/candidate/method.py",
+        "source_file_sha256": "04113e962c656b4972738026a7a9bb547fcac9f6ed6e1ee1e287ee71383cc21e",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0008/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0008/time-accounting.json",
+        "completed_commands": 38,
+        "completed_model_messages": 18
+      }
+    },
+    {
+      "round": 9,
+      "policy_name": "method-6ea8e58e2e88",
+      "method_summary": "源码方法描述：v23: strong-shrink PNA anchor + multi-stage bias + mult correction + light ridge residual.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 45 条，模型消息 20 条；有效工作 1813.475933 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Graph-regularized per-node bias improves CV by ~0.03 over fixed shrinkage. This is a genuine structural change using the graph. Let me implement v26 with this and test on dev. 原控制器最终完整复评 MAE=15.20350679461788；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.20350679461788,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 00:42:36",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0009/candidate/method.py",
+        "source_file_sha256": "04113e962c656b4972738026a7a9bb547fcac9f6ed6e1ee1e287ee71383cc21e",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0009/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0009/time-accounting.json",
+        "completed_commands": 45,
+        "completed_model_messages": 20
+      }
+    },
+    {
+      "round": 10,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 30 条，模型消息 21 条；有效工作 1526.054544 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：v25 is a small improvement: MAE 15.194 vs v23's 15.204. Now let me try graph-regularized per-node bias — using the sensor network graph to spatially smooth per-node corrections. 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:08:33",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0010/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0010/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0010/time-accounting.json",
+        "completed_commands": 30,
+        "completed_model_messages": 21
+      }
+    },
+    {
+      "round": 11,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:09:07",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0011/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0011/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0011/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 12,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:10:13",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0012/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0012/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0012/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 13,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:11:16",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0013/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0013/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0013/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 14,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:12:49",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0014/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0014/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0014/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 15,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:13:47",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0015/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0015/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0015/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 16,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:14:50",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0016/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0016/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0016/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 17,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:15:55",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0017/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0017/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0017/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 18,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:17:02",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0018/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0018/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0018/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 19,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:18:10",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0019/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0019/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0019/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 20,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:19:12",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0020/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0020/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0020/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 21,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:20:16",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0021/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0021/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0021/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 22,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 22 条，模型消息 10 条；有效工作 727.398650 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Best v26 variant: `sa=10, ss=0.5, ra=10, rs=0.2` → CV MAE = 14.300, improving on v25's 14.345. Small but consistent improvement. Let me now explore additional structural improvements.\nv26 shows a small but consistent CV improvement (14.30 vs 14.34). Let me explore more structural ideas — history-based multi-lag features and per-node multiplicative with horizon structure.\nNow let me explore additional structural improvements — richer history features and horizon-dependent patterns.\n 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:33:34",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0022/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0022/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0022/time-accounting.json",
+        "completed_commands": 22,
+        "completed_model_messages": 10
+      }
+    },
+    {
+      "round": 23,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:33:49",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0023/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0023/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0023/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 24,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:34:34",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0024/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0024/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0024/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 25,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:35:18",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0025/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0025/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0025/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 26,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:36:04",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0026/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0026/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0026/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 27,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:36:48",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0027/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0027/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0027/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 28,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:37:33",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0028/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0028/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0028/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 29,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:38:18",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0029/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0029/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0029/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 30,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:39:04",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0030/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0030/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0030/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 31,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:39:49",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0031/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0031/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0031/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 32,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:40:34",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0032/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0032/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0032/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 33,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:41:18",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0033/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0033/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0033/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 34,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:42:01",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0034/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0034/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0034/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 35,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:42:45",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0035/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0035/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0035/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 36,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:43:31",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0036/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0036/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0036/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 37,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:44:11",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0037/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0037/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0037/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 38,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:44:55",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0038/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0038/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0038/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 39,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:45:41",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0039/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0039/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0039/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 40,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:46:29",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0040/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0040/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0040/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 41,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:47:39",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0041/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0041/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0041/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 42,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:48:50",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0042/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0042/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0042/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 43,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:50:01",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0043/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0043/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0043/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 44,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:51:09",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0044/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0044/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0044/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 45,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 01:52:17",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0045/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0045/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0045/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 46,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 22 条，模型消息 9 条；有效工作 589.886386 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：The ridge model improvements are marginal in CV. Let me try more structural changes — specifically, a per-node ridge regression (fitting per-node rather than pooling all nodes) and exploring if the graph can help propagate bias information. Let me also try a different approach: quantile-based calibration and a gradient boosting-like approach with multiple additive correction levels.\n 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:02:58",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0046/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0046/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0046/time-accounting.json",
+        "completed_commands": 22,
+        "completed_model_messages": 9
+      }
+    },
+    {
+      "round": 47,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:03:28",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0047/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0047/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0047/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 48,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:04:28",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0048/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0048/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0048/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 49,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:05:33",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0049/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0049/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0049/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 50,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:06:37",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0050/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0050/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0050/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 51,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:07:36",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0051/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0051/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0051/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 52,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:08:35",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0052/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0052/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0052/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 53,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 18 条，模型消息 5 条；有效工作 421.731857 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Ridge predicting target directly is way off (it doesn't have good scale). The approach should predict residual and add it as a correction with shrinkage. Let me try the residual-prediction approach properly.\n 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:21:09",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0053/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0053/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0053/time-accounting.json",
+        "completed_commands": 18,
+        "completed_model_messages": 5
+      }
+    },
+    {
+      "round": 54,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:21:46",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0054/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0054/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0054/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 55,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 25 条，模型消息 8 条；有效工作 1632.110464 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：GBM is very slow. Let me kill this and try more efficient approaches.\n</think>\n 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:52:22",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0055/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0055/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0055/time-accounting.json",
+        "completed_commands": 25,
+        "completed_model_messages": 8
+      }
+    },
+    {
+      "round": 56,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 02:58:57",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0056/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0056/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0056/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 57,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:00:03",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0057/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0057/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0057/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 58,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:01:08",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0058/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0058/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0058/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 59,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:02:14",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0059/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0059/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0059/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 60,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:03:19",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0060/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0060/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0060/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 61,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:04:26",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0061/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0061/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0061/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 62,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:05:33",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0062/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0062/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0062/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 63,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:06:40",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0063/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0063/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0063/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 64,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:07:48",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0064/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0064/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0064/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 65,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:08:52",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0065/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0065/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0065/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 66,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:10:00",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0066/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0066/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0066/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 67,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 10 条，模型消息 3 条；有效工作 61.106423 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Good. 74 training samples, 12 horizons, 170 nodes. 148 dev samples. Let me first run the current method (v25) through the scorer to get the baseline, while I do analysis in parallel.\n\nLet me run the scorer first to get the current baseline MAE. 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:11:14",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0067/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0067/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0067/time-accounting.json",
+        "completed_commands": 10,
+        "completed_model_messages": 3
+      }
+    },
+    {
+      "round": 68,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 10 条，模型消息 3 条；有效工作 46.088945 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Let me first run the current method (v25) through the scorer to get a baseline, then I'll explore the data to understand what we're working with. 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:12:01",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0068/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0068/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0068/time-accounting.json",
+        "completed_commands": 10,
+        "completed_model_messages": 3
+      }
+    },
+    {
+      "round": 69,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 25 条，模型消息 9 条；有效工作 1809.927281 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Node-clock interactions don't help much. Let me try a more fundamental approach - using the per-sample base-anchor divergence more carefully, and also trying a different structural change: ensemble-based calibration with multiple candidate methods.\n</parameter>\n 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:42:12",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0069/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0069/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0069/time-accounting.json",
+        "completed_commands": 25,
+        "completed_model_messages": 9
+      }
+    },
+    {
+      "round": 70,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 0 条，模型消息 0 条；有效工作 0.000000 秒（直接沿用真实账本）。原始异常基础设施阻塞记录保留，本轮不计模型工作时间；控制器记录的现有候选复评分数不代表 CLI 正常完成。没有完成的模型消息可用于补写实验结论；不推断额外实验。 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 03:48:58",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0070/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0070/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0070/time-accounting.json",
+        "completed_commands": 0,
+        "completed_model_messages": 0
+      }
+    },
+    {
+      "round": 71,
+      "policy_name": "method-ba6950e3486c",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 19 条，模型消息 9 条；有效工作 1806.246831 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：TOD binning hurts in CV - it's overfitting. But ridge with sample-level features helps slightly for early horizons. Let me explore more promising directions - per-node regression with richer features, and also try temporal smoothing across horizons.\n\n</think>\n</think>\n</think>\n 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 04:19:28",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0071/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0071/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0071/time-accounting.json",
+        "completed_commands": 19,
+        "completed_model_messages": 9
+      }
+    },
+    {
+      "round": 72,
+      "policy_name": "method-74b089438960",
+      "method_summary": "源码方法描述：v25: v23 base + conservative per-sample bias correction via base-anchor diff.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending (strongly shrunken) ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (shrunken) ---- / Step 5: Per-node-horizon median bias (strongly shrunken) ---- / Step 6: Multiplicative per-node correction ---- / Step 6b: Per-sample bias correction via base-anchor diff ---- / Step 7: Ridge residual correction (per horizon, strongly regularized) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 37 条，模型消息 21 条；有效工作 1707.584463 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：efully at what we can reliably learn.\n\nLet me try a more conservative approach: remove the ridge step entirely (which might be overfitting), and instead focus on simpler, more robust corrections. Or try to find a simpler change that actually helps on dev.\n</think>\n</think>Let me take a step back. The CV and dev have different distributions (CV MAE 14.36 vs dev MAE 15.19). I need to be more careful. Let me try targeted, conservative changes and validate against the real scorer.\n</think>\n</think>\n 原控制器最终完整复评 MAE=15.19407581519973；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.19407581519973,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 04:49:37",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0072/candidate/method.py",
+        "source_file_sha256": "addc8ecd7799a1a0c296afb2b795b5dfead5005bc1c06ef00a83fca8116a8ccf",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0072/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0072/time-accounting.json",
+        "completed_commands": 37,
+        "completed_model_messages": 21
+      }
+    },
+    {
+      "round": 73,
+      "policy_name": "method-d29c26057300",
+      "method_summary": "源码方法描述：v26: v25 base + improved per-sample bias predictor + expanded ridge features + optimized pna_shrink.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias ---- / Step 5: Per-node-horizon median bias ---- / Step 6: Multiplicative per-node correction ---- / Step 7: Improved per-sample bias correction ---- / Step 8: Ridge correction with expanded features ----. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 24 条，模型消息 17 条；有效工作 1789.570693 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：E at h=6 is 15.316. Ridge residual MAE is 15.007. GBM residual MAE is 14.416. If residual prediction MAE is 14.4, that means corrected MAE = 14.4. That's a 0.9 MAE improvement at this horizon alone!\n\nBut hold on - I should compute the actual corrected MAE more carefully. Let me verify:\n</think>\n</think>GBM/RF show much better residual prediction than ridge. Let me verify this properly by computing actual corrected MAE in CV.\n</think>\n</think>\n</think>\n</think>\n</think>\n</think>\n</think>\n</think> 原控制器最终完整复评 MAE=15.18599653513021；保留为最佳。",
+      "status": "ok",
+      "score": 15.18599653513021,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-07 05:19:29",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0073/candidate/method.py",
+        "source_file_sha256": "6436cfbcd47577564126e589daabe9a3880aaec611c3453a9d5191d0529e8d5c",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0073/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0073/time-accounting.json",
+        "completed_commands": 24,
+        "completed_model_messages": 17
+      }
+    },
+    {
+      "round": 74,
+      "policy_name": "method-d29c26057300",
+      "method_summary": "源码方法描述：v26: v25 base + improved per-sample bias predictor + expanded ridge features + optimized pna_shrink.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias ---- / Step 5: Per-node-horizon median bias ---- / Step 6: Multiplicative per-node correction ---- / Step 7: Improved per-sample bias correction ---- / Step 8: Ridge correction with expanded features ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 27 条，模型消息 18 条；有效工作 1705.119645 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Excellent! The per-node TOD-aware ridge gives a meaningful CV improvement: **14.220 vs 14.273 baseline** — that's about 0.05 MAE improvement. Let me tune the parameters more and then implement this as a new method version.\n<br>Great find! Per-node TOD-aware ridge gives ~0.05 MAE CV improvement. Let me tune it more and also test with the per-node-horizon multiplicative correction combined.\n\n</think>\n</think>\n</think>\n</think>\n</think>\n</think>\n 原控制器最终完整复评 MAE=15.18599653513021；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.18599653513021,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 05:49:40",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0074/candidate/method.py",
+        "source_file_sha256": "6436cfbcd47577564126e589daabe9a3880aaec611c3453a9d5191d0529e8d5c",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0074/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0074/time-accounting.json",
+        "completed_commands": 27,
+        "completed_model_messages": 18
+      }
+    },
+    {
+      "round": 75,
+      "policy_name": "method-d29c26057300",
+      "method_summary": "源码方法描述：v26: v25 base + improved per-sample bias predictor + expanded ridge features + optimized pna_shrink.；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias ---- / Step 5: Per-node-horizon median bias ---- / Step 6: Multiplicative per-node correction ---- / Step 7: Improved per-sample bias correction ---- / Step 8: Ridge correction with expanded features ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 18 条，模型消息 6 条；有效工作 226.830945 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Excellent! Time-of-day bias is a huge opportunity — up to 0.58 MAE improvement at H11! And it's structural (24 bins is robust). Let me investigate this more deeply and also explore graph-based smoothing.\n</parameter>\n<parameter name=\"yield_time_ms\" string=\"false\">30000</parameter>\n</invoke>\n</seed:tool_call> 原控制器最终完整复评 MAE=15.18599653513021；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.18599653513021,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 05:53:28",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0075/candidate/method.py",
+        "source_file_sha256": "6436cfbcd47577564126e589daabe9a3880aaec611c3453a9d5191d0529e8d5c",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0075/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0075/time-accounting.json",
+        "completed_commands": 18,
+        "completed_model_messages": 6
+      }
+    },
+    {
+      "round": 76,
+      "policy_name": "method-9e56b05bd98e",
+      "method_summary": "源码方法描述：v28: Rich sample-level ridge correction + tuned parameters + expanded features. Key improvements over v26: - Richer sample-level features (39 features including hist step means, stats, interactions) - Lower sample_alpha (10 vs 100) for more expressive sample bias model - Tuned shrinkage (node_shrink=0.5, sample_shrink=0.4) - Expanded node-level ridge features (more harmonics, base*clock, hist*clock interactions) - Lower ridge_shrink (0.15) with higher alpha (1000) for regularization；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (tuned shrink) ---- / Step 5: Per-node-horizon median bias ---- / Step 6: Multiplicative per-node factor ---- / Step 7: Rich per-sample bias correction (ridge) ---- / Step 8: Pooled node-level ridge correction (expanded features) ----. 最终源码快照与前轮不同（或为首轮）；以原始源码哈希为准。本轮原生 CLI 已完成命令 25 条，模型消息 17 条；有效工作 1810.635249 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Clock-bin bias gives ~14.237 in CV (vs v28 baseline 14.279) — a 0.042 improvement. Two-stage sample correction doesn't help on top. Let me try more bin counts and also try the ridge-based clock correction to see which is better.\n<br>\n\nClock-bin bias is a solid improvement (~0.04 MAE in CV). Let me optimize the number of bins and test more configurations:\n\n</think>\n</think>\n</think>\n</think>\n 原控制器最终完整复评 MAE=15.165965823366738；保留为最佳。",
+      "status": "ok",
+      "score": 15.165965823366738,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-07 06:23:39",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0076/candidate/method.py",
+        "source_file_sha256": "262a2758fbe8be287dac25c7bd77802e68694bdfad9b97b5186d2725120b6106",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0076/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0076/time-accounting.json",
+        "completed_commands": 25,
+        "completed_model_messages": 17
+      }
+    },
+    {
+      "round": 77,
+      "policy_name": "method-9e56b05bd98e",
+      "method_summary": "源码方法描述：v28: Rich sample-level ridge correction + tuned parameters + expanded features. Key improvements over v26: - Richer sample-level features (39 features including hist step means, stats, interactions) - Lower sample_alpha (10 vs 100) for more expressive sample bias model - Tuned shrinkage (node_shrink=0.5, sample_shrink=0.4) - Expanded node-level ridge features (more harmonics, base*clock, hist*clock interactions) - Lower ridge_shrink (0.15) with higher alpha (1000) for regularization；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (tuned shrink) ---- / Step 5: Per-node-horizon median bias ---- / Step 6: Multiplicative per-node factor ---- / Step 7: Rich per-sample bias correction (ridge) ---- / Step 8: Pooled node-level ridge correction (expanded features) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 26 条，模型消息 3 条；有效工作 1808.033710 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：The 5-fold CV with pooled ridge is slow because of the 12x loop over horizons. Let me take a more practical approach — implement the best method we have based on the earlier experiments, evaluate it with the scorer, and then iterate more efficiently.\nBased on our CV experiments, the best configuration combines: per-horizon bias, shrunken per-node bias, per-node-horizon bias, sample-level ridge correction, and pooled node-level ridge. Let me implement this cleanly in `method.py` and evaluate.\n 原控制器最终完整复评 MAE=15.165965823366738；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.165965823366738,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 06:53:48",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0077/candidate/method.py",
+        "source_file_sha256": "262a2758fbe8be287dac25c7bd77802e68694bdfad9b97b5186d2725120b6106",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0077/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0077/time-accounting.json",
+        "completed_commands": 26,
+        "completed_model_messages": 3
+      }
+    },
+    {
+      "round": 78,
+      "policy_name": "method-9e56b05bd98e",
+      "method_summary": "源码方法描述：v28: Rich sample-level ridge correction + tuned parameters + expanded features. Key improvements over v26: - Richer sample-level features (39 features including hist step means, stats, interactions) - Lower sample_alpha (10 vs 100) for more expressive sample bias model - Tuned shrinkage (node_shrink=0.5, sample_shrink=0.4) - Expanded node-level ridge features (more harmonics, base*clock, hist*clock interactions) - Lower ridge_shrink (0.15) with higher alpha (1000) for regularization；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (tuned shrink) ---- / Step 5: Per-node-horizon median bias ---- / Step 6: Multiplicative per-node factor ---- / Step 7: Rich per-sample bias correction (ridge) ---- / Step 8: Pooled node-level ridge correction (expanded features) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 27 条，模型消息 15 条；有效工作 1807.807011 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：The mean is 13.90 vs 14.25 baseline, which is a 0.35 improvement! But fold 4 is suspiciously low (11.45) — likely that fold has easier samples. The improvement might not be reliable given high variance. Let me check more carefully with different hyperparameters and validate if GBRT is genuinely helpful or just overfitting.\n</think>\n</think>\n</think>\n 原控制器最终完整复评 MAE=15.165965823366738；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.165965823366738,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 07:23:57",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0078/candidate/method.py",
+        "source_file_sha256": "262a2758fbe8be287dac25c7bd77802e68694bdfad9b97b5186d2725120b6106",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0078/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0078/time-accounting.json",
+        "completed_commands": 27,
+        "completed_model_messages": 15
+      }
+    },
+    {
+      "round": 79,
+      "policy_name": "method-9e56b05bd98e",
+      "method_summary": "源码方法描述：v28: Rich sample-level ridge correction + tuned parameters + expanded features. Key improvements over v26: - Richer sample-level features (39 features including hist step means, stats, interactions) - Lower sample_alpha (10 vs 100) for more expressive sample bias model - Tuned shrinkage (node_shrink=0.5, sample_shrink=0.4) - Expanded node-level ridge features (more harmonics, base*clock, hist*clock interactions) - Lower ridge_shrink (0.15) with higher alpha (1000) for regularization；结构步骤：Step 1: Per-horizon optimal anchor blending ---- / Step 2: Per-node-horizon anchor blending ---- / Step 3: Per-horizon median bias ---- / Step 4: Per-node median bias (tuned shrink) ---- / Step 5: Per-node-horizon median bias ---- / Step 6: Multiplicative per-node factor ---- / Step 7: Rich per-sample bias correction (ridge) ---- / Step 8: Pooled node-level ridge correction (expanded features) ----. 最终源码与前轮相同；未宣称本轮提交新方法。本轮原生 CLI 已完成命令 23 条，模型消息 10 条；有效工作 698.090441 秒（直接沿用真实账本）。模型日志末条摘录（仅说明尝试，不能替代真实评分）：Still slow. The per-node-horizon anchor loop with 2040 iterations is the issue. Let me kill and simplify.\n 原控制器最终完整复评 MAE=15.165965823366738；未替换已有最佳。",
+      "status": "ok",
+      "score": 15.165965823366738,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-07 07:35:36",
+      "method_summary_evidence": {
+        "source": "expert_evidence/provenance/model_execution/seed/round_0079/candidate/method.py",
+        "source_file_sha256": "262a2758fbe8be287dac25c7bd77802e68694bdfad9b97b5186d2725120b6106",
+        "events": "expert_evidence/provenance/model_execution/seed/round_0079/events.jsonl",
+        "normal_work_ledger": "expert_evidence/provenance/model_execution/seed/round_0079/time-accounting.json",
+        "completed_commands": 23,
+        "completed_model_messages": 10
+      }
+    }
+  ],
+  "run_id": "auto2912-seed",
+  "duration_seconds": 36008.387278556824,
+  "initial_normal_model_work_seconds": 36.01586890220642,
+  "round_normal_model_work_seconds": 35972.37140965462,
+  "duration_basis": "Exact sum of original normal CLI preflight work receipt plus every own round ledger; failures retained, only evidenced abnormal blocks deducted. No setup, download, final frozen replay or stability time added.",
+  "duration_evidence_root": "expert_evidence/provenance/model_execution/seed",
+  "metadata_derivation": "Post-research editorial normalization only: evaluation_error maps to failed with original_status preserved; Seed descriptions quote own preserved source comments and actual completed CLI events. Original trajectories preserved under provenance/trajectory_metadata_repair. Scores, retention, timestamps and all clock values unchanged. Model quotations are unverified attempts, not new score evidence."
+}

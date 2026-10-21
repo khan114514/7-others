@@ -1,0 +1,61 @@
+{
+  "original_event_sha256": "976696b6b3b79b482a8f7a62edfd2c4f6f714ed48f8ef7af7b986f9b7121931a",
+  "original_receipt_sha256": "e8cd6ab4e36ea92db4c8c718dcb59f67c95d4a4cd323afc05fa6ecb8f43243b4",
+  "original_event_last_write_epoch": 1791567064.1220949,
+  "original_native_session_ids": [
+    "01a12188-e1ec-75c1-9992-dee7c9424cbf"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json && echo \"---\" && ls -la /workspace/solution/ && echo \"---\" && cat /workspace/solution/dev_result.json 2>/dev/null | head -20'",
+      "original_command_sha256": "49fb7519aaa6b8f3b30324815e9bb5fe2f5d79daa8fb342808cedad3c543c39b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "d4a52d9e1e5036c451ffa19493d19f84b11e35fd49d4349b24a097bdf2c1d596",
+      "output_characters": 950
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method.py && echo \"---\" && head -5 /workspace/solution/method.py'",
+      "original_command_sha256": "10002e41f155ad3b5ae5e17bfb2fc754c011f75c1a1ffbe7b8de6f0ee62eb66b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8820d0590232384fa84f55c85defce70ad5b425d26067db4c4865b4bef95980a",
+      "output_characters": 393
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md 2>/dev/null || echo \"No research notes yet\"'",
+      "original_command_sha256": "4d13009ddba57ff8c72ddeb83e548376f668355d35c21fdc87315b1eaa7c200d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b94a3db75dc6d1d87b9c49b51cb1857c29fed0216ac674a4d4763bb0d1cee629",
+      "output_characters": 22
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python3 << 'PYEOF'\nimport anndata as ad\nimport numpy as np\nfrom sklearn.preprocessing import MaxAbsScaler\n\ntrain = ad.read_h5ad('/workspace/public_assets/train.h5ad')\ndev_ctrl = ad.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\ndev_tgt = ad.read_h5ad('/workspace/public_assets/dev_targets.h5ad')\n\ntrain_X = train.X.toarray() if hasattr(train.X, 'toarray') else np.asarray(train.X)\ndev_ctrl_X = dev_ctrl.X.toarray() if hasattr(dev_ctrl.X, 'toarray') else np.asarray(dev_ctrl.X)\ndev_tgt_X = dev_tgt.X.toarray() if hasattr(dev_tgt.X, 'toarray') else np.asarray(dev_tgt.X)\n\nscaler = MaxAbsScaler()\nscaler.fit(train_X)\ntrain_scaled = scaler.transform(train_X)\ndev_ctrl_scaled = scaler.transform(dev_ctrl_X)\ndev_tgt_mean = dev_tgt_X.mean(axis=0)\n\ncell_types = sorted(train.obs['cell_type'].unique())\nctrl_means = {}\nstim_means = {}\nfor ct in cell_types:\n    mask = train.obs['cell_type'] == ct\n    ctrl = train_scaled[(mask.values) & (train.obs['condition'] == 'control').values]\n    stim = train_scaled[(mask.values) & (train.obs['condition'] == 'stimulated').values]\n    ctrl_means[ct] = ctrl.mean(axis=0)\n    stim_means[ct] = stim.mean(axis=0)\n\nctrl_mat = np.stack([ctrl_means[ct] for ct in cell_types])\nstim_mat = np.stack([stim_means[ct] for ct in cell_types])\ndiff_mat = stim_mat - ctrl_mat\nn_ct = len(cell_types)\n\ndef loo_orig(up_pow, dn_pow):\n    \\\"\\\"\\\"LOO-CV on original scale (matching the metric).\\\"\\\"\\\"\n    mses = []\n    for h in range(n_ct):\n        rem = [i for i in range(n_ct) if i \"'!= h]\n        ho = ctrl_mat[h]\n        corrs = [np.corrcoef(ho, ctrl_mat[r])[0,1] if np.isfinite(np.corrcoef(ho, ctrl_mat[r])[0,1]) else -1 for r in rem]\n        nidx = rem[int(np.argmax(corrs))]\n        r = np.clip(np.where(ctrl_mat[nidx] > 1e-8, ho / np.maximum(ctrl_mat[nidx], 1e-8), 1.0), 0.1, 10.0)\n        nd = diff_mat[nidx]\n        um = nd > 0\n        dm = nd < 0\n        sd = np.zeros_like(nd)\n        sd[um] = nd[um] * (r[um] ** up_pow)\n        sd[dm] = nd[dm] * (r[dm] ** dn_pow)\n        pred = np.clip(ho + sd, 0, 1)\n        po = scaler.inverse_transform(pred.reshape(1,-1)).flatten()\n        so = scaler.inverse_transform(stim_mat[h].reshape(1,-1)).flatten()\n        mses.append(np.mean((so - po)**2))\n    return np.mean(mses)\n\n# Uniform best\nbest_u = 1e9\nbu = 0\nfor p in np.arange(0.10, 0.40, 0.02):\n    m = loo_orig(p, p)\n    if m < best_u:\n        best_u = m\n        bu = p\nprint(f'\"'Uniform best LOO: pow={bu:.2f}, MSE={best_u:.8f}')\n\n# Sign-aware coarse scan\nbest_s = 1e9\nbsu = bsd = 0\nfor up in np.arange(0.0, 0.50, 0.05):\n    for dn in np.arange(0.0, 1.05, 0.05):\n        m = loo_orig(up, dn)\n        if m < best_s:\n            best_s = m\n            bsu = up\n            bsd = dn\nprint(f'Sign-aware best LOO: up={bsu:.2f}, dn={bsd:.2f}, MSE={best_s:.8f}')\nprint(f'LOO improvement: {(best_u-best_s)/best_u*100:.2f}%')\n\n# Dev evaluation\ndev_mean = dev_ctrl_scaled.mean(axis=0)\ncorrs = [np.corrcoef(dev_mean, ctrl_mat[i])[0,1] if np.isfinite(np.corrcoef(dev_mean, ctrl_mat[i])[0,1]) else -1 for i in range(n_ct)]\nnidx = int(np.argmax(corrs))\nprint(f'\\\\nDev nearest cell type: {cell_types[nidx]} (corr={max(corrs):.4f})')\n\nnd = diff_mat[nidx]\nr_dev = np.clip(np.where(ctrl_mat[nidx] > 1e-8, dev_mean / np.maximum(ctrl_mat[nidx], 1e-8), 1.0), 0.1, 10.0)\n\n# Uniform\npred_u = np.clip(dev_mean + nd * (r_dev ** bu), 0, 1)\npred_u_o = scaler.inverse_transform(pred_u.reshape(1,-1)).flatten()\nmse_u = np.mean((dev_tgt_mean - np.clip(pred_u_o, 0, None))**2)\nprint(f'Dev MSE (uniform pow={bu:.2f}): {mse_u:.8f}')\n\n# Sign-aware\num = nd > 0\ndm = nd < 0\nsd = np.zeros_like(nd)\nsd[um] = nd[um] * (r_dev[um] ** bsu)\nsd[dm] = nd[dm] * (r_dev[dm] ** bsd)\npred_s = np.clip(dev_mean + sd, 0, 1)\npred_s_o = scaler.inverse_transform(pred_s.reshape(1,-1)).flatten()\nmse_s = np.mean((dev_tgt_mean - np.clip(pred_s_o, 0, None))**2)\nprint(f'Dev MSE (sign-aware up={bsu:.2f}, dn={bsd:.2f}): {mse_s:.8f}')\nprint(f'Dev improvement: {(mse_u-mse_s)/mse_u*100:.2f}%')\n\n# Score computation\nB = 0.0036568199948745547  # from anchors.json\nscore_u = (B - mse_u) / B\nscore_s = (B - mse_s) / B\nprint(f'\\\\nScore (uniform): {score_u:.6f}')\nprint(f'Score (sign-aware): {score_s:.6f}')\nprint(f'Score improvement: {score_s - score_u:.6f}')\nPYEOF\n\"",
+      "original_command_sha256": "88a8ee98bace5353e4083ea4620d60fe00a6a53a39e8daefc3afc96b3dc5f940",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b7643c526869e0d31143dff3012a56abd7fb3785998ecbdfe593be1ddb6e3bc7",
+      "output_characters": 366
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 3354625,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 76492,
+        "reasoning_output_tokens": 2622
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

@@ -1,0 +1,2206 @@
+{
+  "installed_version": "0.23.0",
+  "actual_config_models": {
+    "harbor.models.task.config": {
+      "source_sha256": "d8c62a49acefb8cd6a0be4c4d48dc0f4f52f31f8a8a6728439aad04e1c62e9fb",
+      "schema": {
+        "$defs": {
+          "AgentConfig": {
+            "properties": {
+              "network_mode": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/NetworkMode"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Network access policy. [agent] and [verifier] use this only as an explicit phase override when set."
+              },
+              "allowed_hosts": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Hostnames, IP address literals/CIDR ranges, or leading wildcard patterns reachable when network_mode='allowlist'.",
+                "title": "Allowed Hosts"
+              },
+              "timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Timeout Sec"
+              },
+              "user": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Username or UID to run the agent as. None uses the environment's default USER (e.g., root).",
+                "title": "User"
+              }
+            },
+            "title": "AgentConfig",
+            "type": "object"
+          },
+          "ArtifactConfig": {
+            "properties": {
+              "source": {
+                "title": "Source",
+                "type": "string"
+              },
+              "destination": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Destination"
+              },
+              "exclude": {
+                "description": "Patterns to exclude when downloading a directory artifact (passed as tar --exclude flags).",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Exclude",
+                "type": "array"
+              },
+              "service": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Docker Compose service to collect this artifact from. None or 'main' targets the agent's container. Any other value requires a compose-capable environment provider and an absolute source path.",
+                "title": "Service"
+              }
+            },
+            "required": [
+              "source"
+            ],
+            "title": "ArtifactConfig",
+            "type": "object"
+          },
+          "Author": {
+            "description": "Author information for a package or dataset.",
+            "properties": {
+              "name": {
+                "description": "Author name",
+                "title": "Name",
+                "type": "string"
+              },
+              "email": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Author email address",
+                "title": "Email"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Author",
+            "type": "object"
+          },
+          "EnvironmentConfig": {
+            "properties": {
+              "network_mode": {
+                "$ref": "#/$defs/NetworkMode",
+                "default": "public",
+                "description": "Network access policy for this environment. Defaults to public."
+              },
+              "allowed_hosts": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Hostnames, IP address literals/CIDR ranges, or leading wildcard patterns reachable when network_mode='allowlist'.",
+                "title": "Allowed Hosts"
+              },
+              "build_timeout_sec": {
+                "default": 600.0,
+                "title": "Build Timeout Sec",
+                "type": "number"
+              },
+              "docker_image": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "A pre-built Docker image to use for the environment. When set, environment/Dockerfile is optional for supported environment types.",
+                "title": "Docker Image"
+              },
+              "os": {
+                "$ref": "#/$defs/TaskOS",
+                "default": "linux",
+                "description": "Target operating system for the task's container. Defaults to 'linux' for back-compat. Set to 'windows' to target Windows containers (requires Docker Desktop in Windows container mode on a Windows host)."
+              },
+              "cpus": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Cpus"
+              },
+              "memory_mb": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Memory Mb"
+              },
+              "storage_mb": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Storage Mb"
+              },
+              "gpus": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Gpus"
+              },
+              "gpu_types": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "List of acceptable GPU types (e.g., ['H100', 'A100', 'T4']). None means any GPU type is acceptable.",
+                "title": "Gpu Types"
+              },
+              "tpu": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/TpuSpec"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "TPU slice specification (type + topology). When set, the environment requests a TPU node matching this spec."
+              },
+              "mcp_servers": {
+                "items": {
+                  "$ref": "#/$defs/MCPServerConfig"
+                },
+                "title": "Mcp Servers",
+                "type": "array"
+              },
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Environment variables required for the task and resolved from the host at runtime. Supports ${VAR} and ${VAR:-default} template syntax.",
+                "title": "Env",
+                "type": "object"
+              },
+              "skills_dir": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Path to skills directory in the environment. Contents are copied to the agent's skills config directory.",
+                "title": "Skills Dir"
+              },
+              "healthcheck": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/HealthcheckConfig"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Healthcheck to run after environment start to verify readiness. Mirrors Docker HEALTHCHECK semantics."
+              },
+              "workdir": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Default working directory for command execution. Overrides the container's WORKDIR when set.",
+                "title": "Workdir"
+              },
+              "allow_internet": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Deprecated compatibility field. Use [environment].network_mode instead.",
+                "title": "Allow Internet"
+              }
+            },
+            "title": "EnvironmentConfig",
+            "type": "object"
+          },
+          "HealthcheckConfig": {
+            "description": "Healthcheck configuration mirroring Docker HEALTHCHECK options.\n\nRuns a command repeatedly after environment start to verify readiness.\nAll retries must pass before agent setup begins.",
+            "properties": {
+              "command": {
+                "description": "Shell command to run. Exit 0 means healthy.",
+                "title": "Command",
+                "type": "string"
+              },
+              "interval_sec": {
+                "default": 5.0,
+                "description": "Time in seconds between healthcheck attempts.",
+                "title": "Interval Sec",
+                "type": "number"
+              },
+              "timeout_sec": {
+                "default": 30.0,
+                "description": "Maximum time in seconds for a single healthcheck command to run.",
+                "title": "Timeout Sec",
+                "type": "number"
+              },
+              "start_period_sec": {
+                "default": 0.0,
+                "description": "Grace period in seconds after environment start during which failures do not count toward retries.",
+                "title": "Start Period Sec",
+                "type": "number"
+              },
+              "start_interval_sec": {
+                "default": 5.0,
+                "description": "Interval in seconds between checks during the start period.",
+                "title": "Start Interval Sec",
+                "type": "number"
+              },
+              "retries": {
+                "default": 3,
+                "description": "Number of consecutive failures before the healthcheck is considered failed.",
+                "title": "Retries",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "title": "HealthcheckConfig",
+            "type": "object"
+          },
+          "MCPServerConfig": {
+            "description": "Configuration for an MCP server available to the agent.",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "transport": {
+                "default": "sse",
+                "enum": [
+                  "stdio",
+                  "sse",
+                  "streamable-http"
+                ],
+                "title": "Transport",
+                "type": "string"
+              },
+              "url": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Url"
+              },
+              "command": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Command"
+              },
+              "args": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Args",
+                "type": "array"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "MCPServerConfig",
+            "type": "object"
+          },
+          "MultiStepRewardStrategy": {
+            "description": "Strategy for deriving a trial-level reward from per-step verifier results.",
+            "enum": [
+              "mean",
+              "final"
+            ],
+            "title": "MultiStepRewardStrategy",
+            "type": "string"
+          },
+          "NetworkMode": {
+            "description": "Network access policy for agent and verifier execution.",
+            "enum": [
+              "no-network",
+              "public",
+              "allowlist"
+            ],
+            "title": "NetworkMode",
+            "type": "string"
+          },
+          "PackageInfo": {
+            "description": "Package metadata for the [task] section of task.toml.\n\nThis section identifies the package in the registry with a unique name.",
+            "properties": {
+              "name": {
+                "description": "Package name in org/name format (e.g., 'harbor/hello-world')",
+                "title": "Name",
+                "type": "string"
+              },
+              "version": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Task package version. Usually semantic, but any non-empty string is accepted.",
+                "title": "Version"
+              },
+              "description": {
+                "default": "",
+                "description": "Human-readable description of the task",
+                "title": "Description",
+                "type": "string"
+              },
+              "authors": {
+                "description": "List of package authors",
+                "items": {
+                  "$ref": "#/$defs/Author"
+                },
+                "title": "Authors",
+                "type": "array"
+              },
+              "keywords": {
+                "description": "Keywords for search and categorization",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Keywords",
+                "type": "array"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "PackageInfo",
+            "type": "object"
+          },
+          "SolutionConfig": {
+            "properties": {
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Env",
+                "type": "object"
+              }
+            },
+            "title": "SolutionConfig",
+            "type": "object"
+          },
+          "StepConfig": {
+            "properties": {
+              "name": {
+                "description": "Unique, portable directory name under steps/.",
+                "title": "Name",
+                "type": "string"
+              },
+              "agent": {
+                "$ref": "#/$defs/AgentConfig"
+              },
+              "verifier": {
+                "$ref": "#/$defs/VerifierConfig"
+              },
+              "min_reward": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "additionalProperties": {
+                      "type": "number"
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "If set, abort remaining steps when this step's rewards do not meet the threshold(s). A float gates on the 'reward' key (1D convention); a dict gates on each declared key (aborts if any key is below its threshold or missing from the rewards dict). A missing verifier_result (verifier crash) or missing gated key is treated as -inf. Ignored when verification is globally disabled.",
+                "title": "Min Reward"
+              },
+              "healthcheck": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/HealthcheckConfig"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Optional per-step healthcheck run after this step's setup completes and before the agent runs. Mirrors the semantics of the top-level environment healthcheck; start_period_sec applies as a grace period after setup. Supplements rather than replaces the top-level healthcheck."
+              },
+              "artifacts": {
+                "description": "Artifacts to collect after this step's verification into steps/{name}/artifacts/. Appended to task-level and trial-level artifacts during this step's collection pass.",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "$ref": "#/$defs/ArtifactConfig"
+                    }
+                  ]
+                },
+                "title": "Artifacts",
+                "type": "array"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "StepConfig",
+            "type": "object"
+          },
+          "TaskOS": {
+            "description": "Target operating system for a task's container.",
+            "enum": [
+              "linux",
+              "windows"
+            ],
+            "title": "TaskOS",
+            "type": "string"
+          },
+          "TpuSpec": {
+            "description": "Specification for a TPU slice attached to an environment.\n\nThe (type, topology) pair fully determines the GKE node pool the pod\nlands on *and* the per-pod TPU chip count, so there is no separate\nuser-facing chip-count field \u2014 it is derived via chip_count.",
+            "properties": {
+              "type": {
+                "description": "TPU accelerator type. Accepts either a user-friendly alias (e.g., 'v6e', 'trillium', 'v4') or a canonical GKE label (e.g., 'tpu-v6e-slice', 'tpu7x').",
+                "minLength": 1,
+                "title": "Type",
+                "type": "string"
+              },
+              "topology": {
+                "description": "TPU topology as 'NxM' or 'NxMxK' (e.g., '2x4', '2x2x1').",
+                "title": "Topology",
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "topology"
+            ],
+            "title": "TpuSpec",
+            "type": "object"
+          },
+          "VerifierCollectConfig": {
+            "description": "A command run inside a compose service after the agent phase ends.\n\nCollect hooks let services snapshot runtime state (database contents,\nin-memory counters) into files before the environment is torn down, so\nthe files can be declared as artifacts and read by a separate verifier.\nHooks targeting the main service run before the main container is\nstopped; hooks targeting sidecars run after it is stopped.",
+            "properties": {
+              "command": {
+                "description": "Shell command to run in the service.",
+                "title": "Command",
+                "type": "string"
+              },
+              "service": {
+                "default": "main",
+                "description": "Compose service to run the command in. Defaults to main.",
+                "title": "Service",
+                "type": "string"
+              },
+              "timeout_sec": {
+                "default": 60.0,
+                "description": "Timeout in seconds for the collect command.",
+                "title": "Timeout Sec",
+                "type": "number"
+              },
+              "user": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Username or UID to run the command as. None uses the service container's default user.",
+                "title": "User"
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "title": "VerifierCollectConfig",
+            "type": "object"
+          },
+          "VerifierConfig": {
+            "properties": {
+              "network_mode": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/NetworkMode"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Network access policy. [agent] and [verifier] use this only as an explicit phase override when set."
+              },
+              "allowed_hosts": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Hostnames, IP address literals/CIDR ranges, or leading wildcard patterns reachable when network_mode='allowlist'.",
+                "title": "Allowed Hosts"
+              },
+              "timeout_sec": {
+                "default": 600.0,
+                "title": "Timeout Sec",
+                "type": "number"
+              },
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Env",
+                "type": "object"
+              },
+              "user": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Username or UID to run the verifier as. None uses the environment's default USER (e.g., root).",
+                "title": "User"
+              },
+              "environment_mode": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/VerifierEnvironmentMode"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Whether the verifier runs in the agent's environment ('shared') or in a dedicated container ('separate'). When omitted: defaults to 'separate' if a verifier 'environment' is set, otherwise 'shared'."
+              },
+              "environment": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/EnvironmentConfig"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Environment definition for the separate verifier container. Same schema as the top-level [environment] section. When set without an explicit environment_mode, implies environment_mode='separate'. When unset with environment_mode='separate', a fresh copy of the top-level [environment] is used. Conflicts with environment_mode='shared'."
+              },
+              "collect": {
+                "description": "Commands run in compose services after the agent phase ends and before artifact collection ([[verifier.collect]] blocks in task.toml). Use these to snapshot runtime state into files that artifact entries can then collect.",
+                "items": {
+                  "$ref": "#/$defs/VerifierCollectConfig"
+                },
+                "title": "Collect",
+                "type": "array"
+              }
+            },
+            "title": "VerifierConfig",
+            "type": "object"
+          },
+          "VerifierEnvironmentMode": {
+            "description": "Whether the verifier runs in the agent's environment or its own.",
+            "enum": [
+              "shared",
+              "separate"
+            ],
+            "title": "VerifierEnvironmentMode",
+            "type": "string"
+          }
+        },
+        "properties": {
+          "schema_version": {
+            "default": "1.4",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "task": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/PackageInfo"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Package information for the task, parsed from the [task] section of task.toml."
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "title": "Metadata",
+            "type": "object"
+          },
+          "verifier": {
+            "$ref": "#/$defs/VerifierConfig"
+          },
+          "agent": {
+            "$ref": "#/$defs/AgentConfig"
+          },
+          "environment": {
+            "$ref": "#/$defs/EnvironmentConfig"
+          },
+          "solution": {
+            "$ref": "#/$defs/SolutionConfig"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Source"
+          },
+          "multi_step_reward_strategy": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/MultiStepRewardStrategy"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "How to derive the trial-level reward from per-step verifier results in a multi-step task. 'mean' computes per-key means across steps (missing keys treated as 0; steps without a verifier_result excluded). 'final' uses the last step's verifier_result verbatim. Only applies to multi-step tasks; leave unset for single-step tasks. Defaults to 'mean' when unset on a multi-step task."
+          },
+          "steps": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/$defs/StepConfig"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Steps"
+          },
+          "artifacts": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/$defs/ArtifactConfig"
+                }
+              ]
+            },
+            "title": "Artifacts",
+            "type": "array"
+          }
+        },
+        "title": "TaskConfig",
+        "type": "object"
+      }
+    },
+    "harbor.models.trial.config": {
+      "source_sha256": "c95acedd896e7bab9f4007ed6373adc7e414ac2b63dfd188b7bbcae6ce5ac480",
+      "schema": {
+        "$defs": {
+          "AgentConfig": {
+            "properties": {
+              "name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Name"
+              },
+              "import_path": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Import Path"
+              },
+              "model_name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Model Name"
+              },
+              "n_concurrent": {
+                "anyOf": [
+                  {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Per-agent cap on concurrent agent.run() phases. Must not exceed the job's n_concurrent_trials and is usually useful only when lower. When omitted, agent execution is only limited by n_concurrent_trials.",
+                "title": "N Concurrent"
+              },
+              "concurrency_group": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Optional shared concurrency pool name for agent configs that should use the same n_concurrent limit.",
+                "title": "Concurrency Group"
+              },
+              "skills": {
+                "description": "Skill directories or source strings (git URLs, org/name[@ref] shorthand, or local paths). Job.create() / Trial.create() resolve any non-local entries to cached directories in-place.",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "format": "path",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "title": "Skills",
+                "type": "array"
+              },
+              "override_timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Timeout Sec"
+              },
+              "override_setup_timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Setup Timeout Sec"
+              },
+              "max_timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Max Timeout Sec"
+              },
+              "resume_trajectory": {
+                "default": false,
+                "description": "For multi-step tasks, resume the agent's native session from the previous step instead of starting a fresh conversation on each step. Requires an agent with native resume support (capabilities.resume); the trial fails fast otherwise. No effect on single-step tasks.",
+                "title": "Resume Trajectory",
+                "type": "boolean"
+              },
+              "load_trajectory": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Path to a trajectory to load as the agent's session before the first step, which then resumes it instead of starting fresh. A .jsonl file is the agent's native session format (lossless, same agent only; capabilities.load_native_trajectory); a .json file is an ATIF trajectory converted to the agent's native format (portable across supported agents; capabilities.load_atif_trajectory). The trial fails fast if the agent lacks the needed support. Composes with resume_trajectory.",
+                "title": "Load Trajectory"
+              },
+              "extra_allowed_hosts": {
+                "description": "Run-specific hostnames or IP addresses merged into the effective agent phase allowlist during agent.run() only.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Extra Allowed Hosts",
+                "type": "array"
+              },
+              "include_logs": {
+                "description": "Glob patterns of agent log files to download, relative to the agent logs directory. When set, only matching files are kept.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Include Logs",
+                "type": "array"
+              },
+              "exclude_logs": {
+                "description": "Glob patterns of agent log files to skip when downloading. Applied after include_logs, so exclude wins on overlap.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Exclude Logs",
+                "type": "array"
+              },
+              "kwargs": {
+                "additionalProperties": true,
+                "title": "Kwargs",
+                "type": "object"
+              },
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Env",
+                "type": "object"
+              },
+              "mcp_servers": {
+                "items": {
+                  "$ref": "#/$defs/MCPServerConfig"
+                },
+                "title": "Mcp Servers",
+                "type": "array"
+              }
+            },
+            "title": "AgentConfig",
+            "type": "object"
+          },
+          "ArtifactConfig": {
+            "properties": {
+              "source": {
+                "title": "Source",
+                "type": "string"
+              },
+              "destination": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Destination"
+              },
+              "exclude": {
+                "description": "Patterns to exclude when downloading a directory artifact (passed as tar --exclude flags).",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Exclude",
+                "type": "array"
+              },
+              "service": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Docker Compose service to collect this artifact from. None or 'main' targets the agent's container. Any other value requires a compose-capable environment provider and an absolute source path.",
+                "title": "Service"
+              }
+            },
+            "required": [
+              "source"
+            ],
+            "title": "ArtifactConfig",
+            "type": "object"
+          },
+          "BridgeConfig": {
+            "properties": {
+              "kind": {
+                "$ref": "#/$defs/BridgeKind"
+              },
+              "prompt_path": {
+                "anyOf": [
+                  {
+                    "format": "path",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Prompt Path"
+              },
+              "kwargs": {
+                "additionalProperties": true,
+                "title": "Kwargs",
+                "type": "object"
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "title": "BridgeConfig",
+            "type": "object"
+          },
+          "BridgeKind": {
+            "enum": [
+              "acp"
+            ],
+            "title": "BridgeKind",
+            "type": "string"
+          },
+          "EnvironmentConfig": {
+            "properties": {
+              "type": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/EnvironmentType"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "import_path": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Import Path"
+              },
+              "force_build": {
+                "default": false,
+                "title": "Force Build",
+                "type": "boolean"
+              },
+              "delete": {
+                "default": true,
+                "title": "Delete",
+                "type": "boolean"
+              },
+              "cpu_enforcement_policy": {
+                "$ref": "#/$defs/ResourceMode",
+                "default": "auto"
+              },
+              "memory_enforcement_policy": {
+                "$ref": "#/$defs/ResourceMode",
+                "default": "auto"
+              },
+              "override_cpus": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Cpus"
+              },
+              "override_memory_mb": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Memory Mb"
+              },
+              "override_storage_mb": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Storage Mb"
+              },
+              "override_gpus": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Gpus"
+              },
+              "override_tpu": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/TpuSpec"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "suppress_override_warnings": {
+                "default": false,
+                "description": "Deprecated; has no effect.",
+                "title": "Suppress Override Warnings",
+                "type": "boolean"
+              },
+              "mounts": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "$ref": "#/$defs/ServiceVolumeConfig"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Mounts"
+              },
+              "extra_docker_compose": {
+                "items": {
+                  "format": "path",
+                  "type": "string"
+                },
+                "title": "Extra Docker Compose",
+                "type": "array"
+              },
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Env",
+                "type": "object"
+              },
+              "kwargs": {
+                "additionalProperties": true,
+                "title": "Kwargs",
+                "type": "object"
+              },
+              "extra_allowed_hosts": {
+                "description": "Run-specific hostnames or IP addresses merged into the [environment] network baseline at agent env start.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Extra Allowed Hosts",
+                "type": "array"
+              }
+            },
+            "title": "EnvironmentConfig",
+            "type": "object"
+          },
+          "EnvironmentType": {
+            "enum": [
+              "docker",
+              "podman",
+              "daytona",
+              "e2b",
+              "modal",
+              "runloop",
+              "langsmith",
+              "ec2",
+              "gke",
+              "ack",
+              "openshift",
+              "novita",
+              "apple-container",
+              "singularity",
+              "islo",
+              "tensorlake",
+              "cwsandbox",
+              "wandb",
+              "use-computer",
+              "cua-cloud",
+              "blaxel",
+              "opensandbox",
+              "beam",
+              "skypilot",
+              "hf-sandbox",
+              "hyperbrowser",
+              "vercel",
+              "runta",
+              "kata"
+            ],
+            "title": "EnvironmentType",
+            "type": "string"
+          },
+          "MCPServerConfig": {
+            "description": "Configuration for an MCP server available to the agent.",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "transport": {
+                "default": "sse",
+                "enum": [
+                  "stdio",
+                  "sse",
+                  "streamable-http"
+                ],
+                "title": "Transport",
+                "type": "string"
+              },
+              "url": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Url"
+              },
+              "command": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Command"
+              },
+              "args": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Args",
+                "type": "array"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "MCPServerConfig",
+            "type": "object"
+          },
+          "ResourceMode": {
+            "enum": [
+              "auto",
+              "limit",
+              "request",
+              "guarantee",
+              "ignore"
+            ],
+            "title": "ResourceMode",
+            "type": "string"
+          },
+          "ServiceVolumeBind": {
+            "properties": {
+              "create_host_path": {
+                "const": false,
+                "title": "Create Host Path",
+                "type": "boolean"
+              },
+              "selinux": {
+                "enum": [
+                  "z",
+                  "Z"
+                ],
+                "title": "Selinux",
+                "type": "string"
+              }
+            },
+            "title": "ServiceVolumeBind",
+            "type": "object"
+          },
+          "ServiceVolumeConfig": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "bind",
+                  "volume",
+                  "image"
+                ],
+                "title": "Type",
+                "type": "string"
+              },
+              "source": {
+                "title": "Source",
+                "type": "string"
+              },
+              "target": {
+                "title": "Target",
+                "type": "string"
+              },
+              "read_only": {
+                "const": true,
+                "title": "Read Only",
+                "type": "boolean"
+              },
+              "bind": {
+                "$ref": "#/$defs/ServiceVolumeBind"
+              },
+              "volume": {
+                "$ref": "#/$defs/ServiceVolumeVolume"
+              },
+              "image": {
+                "$ref": "#/$defs/ServiceVolumeImage"
+              }
+            },
+            "required": [
+              "type",
+              "source",
+              "target"
+            ],
+            "title": "ServiceVolumeConfig",
+            "type": "object"
+          },
+          "ServiceVolumeImage": {
+            "properties": {
+              "subpath": {
+                "title": "Subpath",
+                "type": "string"
+              }
+            },
+            "title": "ServiceVolumeImage",
+            "type": "object"
+          },
+          "ServiceVolumeVolume": {
+            "properties": {
+              "subpath": {
+                "title": "Subpath",
+                "type": "string"
+              }
+            },
+            "title": "ServiceVolumeVolume",
+            "type": "object"
+          },
+          "SourceTrialConfig": {
+            "description": "A source trial this trial derives from.\n\n``action`` names the derivation and must be stated explicitly; only\n``regrade`` exists today. A ``hub`` source records only the hub trial\nUUID (the bytes are downloaded or read from the local cache); a\n``local`` source records the trial directory path plus its UUID when\nknown.",
+            "properties": {
+              "action": {
+                "const": "regrade",
+                "title": "Action",
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "local",
+                  "hub"
+                ],
+                "title": "Type",
+                "type": "string"
+              },
+              "trial_id": {
+                "anyOf": [
+                  {
+                    "format": "uuid",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Trial Id"
+              },
+              "path": {
+                "anyOf": [
+                  {
+                    "format": "path",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Path"
+              }
+            },
+            "required": [
+              "action",
+              "type"
+            ],
+            "title": "SourceTrialConfig",
+            "type": "object"
+          },
+          "TaskConfig": {
+            "properties": {
+              "path": {
+                "anyOf": [
+                  {
+                    "format": "path",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Path"
+              },
+              "git_url": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Git Url"
+              },
+              "git_commit_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Git Commit Id"
+              },
+              "name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Name"
+              },
+              "ref": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Ref"
+              },
+              "overwrite": {
+                "default": false,
+                "title": "Overwrite",
+                "type": "boolean"
+              },
+              "download_dir": {
+                "anyOf": [
+                  {
+                    "format": "path",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Download Dir"
+              },
+              "source": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Source"
+              }
+            },
+            "title": "TaskConfig",
+            "type": "object"
+          },
+          "TpuSpec": {
+            "description": "Specification for a TPU slice attached to an environment.\n\nThe (type, topology) pair fully determines the GKE node pool the pod\nlands on *and* the per-pod TPU chip count, so there is no separate\nuser-facing chip-count field \u2014 it is derived via chip_count.",
+            "properties": {
+              "type": {
+                "description": "TPU accelerator type. Accepts either a user-friendly alias (e.g., 'v6e', 'trillium', 'v4') or a canonical GKE label (e.g., 'tpu-v6e-slice', 'tpu7x').",
+                "minLength": 1,
+                "title": "Type",
+                "type": "string"
+              },
+              "topology": {
+                "description": "TPU topology as 'NxM' or 'NxMxK' (e.g., '2x4', '2x2x1').",
+                "title": "Topology",
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "topology"
+            ],
+            "title": "TpuSpec",
+            "type": "object"
+          },
+          "UserAgentConfig": {
+            "properties": {
+              "name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Name"
+              },
+              "import_path": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Import Path"
+              },
+              "model_name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Model Name"
+              },
+              "n_concurrent": {
+                "anyOf": [
+                  {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Per-agent cap on concurrent agent.run() phases. Must not exceed the job's n_concurrent_trials and is usually useful only when lower. When omitted, agent execution is only limited by n_concurrent_trials.",
+                "title": "N Concurrent"
+              },
+              "concurrency_group": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Optional shared concurrency pool name for agent configs that should use the same n_concurrent limit.",
+                "title": "Concurrency Group"
+              },
+              "skills": {
+                "description": "Skill directories or source strings (git URLs, org/name[@ref] shorthand, or local paths). Job.create() / Trial.create() resolve any non-local entries to cached directories in-place.",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "format": "path",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "title": "Skills",
+                "type": "array"
+              },
+              "override_timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Timeout Sec"
+              },
+              "override_setup_timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Setup Timeout Sec"
+              },
+              "max_timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Max Timeout Sec"
+              },
+              "resume_trajectory": {
+                "default": false,
+                "description": "For multi-step tasks, resume the agent's native session from the previous step instead of starting a fresh conversation on each step. Requires an agent with native resume support (capabilities.resume); the trial fails fast otherwise. No effect on single-step tasks.",
+                "title": "Resume Trajectory",
+                "type": "boolean"
+              },
+              "load_trajectory": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Path to a trajectory to load as the agent's session before the first step, which then resumes it instead of starting fresh. A .jsonl file is the agent's native session format (lossless, same agent only; capabilities.load_native_trajectory); a .json file is an ATIF trajectory converted to the agent's native format (portable across supported agents; capabilities.load_atif_trajectory). The trial fails fast if the agent lacks the needed support. Composes with resume_trajectory.",
+                "title": "Load Trajectory"
+              },
+              "extra_allowed_hosts": {
+                "description": "Run-specific hostnames or IP addresses merged into the effective agent phase allowlist during agent.run() only.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Extra Allowed Hosts",
+                "type": "array"
+              },
+              "include_logs": {
+                "description": "Glob patterns of agent log files to download, relative to the agent logs directory. When set, only matching files are kept.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Include Logs",
+                "type": "array"
+              },
+              "exclude_logs": {
+                "description": "Glob patterns of agent log files to skip when downloading. Applied after include_logs, so exclude wins on overlap.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Exclude Logs",
+                "type": "array"
+              },
+              "kwargs": {
+                "additionalProperties": true,
+                "title": "Kwargs",
+                "type": "object"
+              },
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Env",
+                "type": "object"
+              },
+              "mcp_servers": {
+                "items": {
+                  "$ref": "#/$defs/MCPServerConfig"
+                },
+                "title": "Mcp Servers",
+                "type": "array"
+              },
+              "user_persona_path": {
+                "anyOf": [
+                  {
+                    "format": "path",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "User Persona Path"
+              },
+              "user_prompt_template_path": {
+                "anyOf": [
+                  {
+                    "format": "path",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "User Prompt Template Path"
+              },
+              "bridge": {
+                "$ref": "#/$defs/BridgeConfig"
+              }
+            },
+            "required": [
+              "bridge"
+            ],
+            "title": "UserAgentConfig",
+            "type": "object"
+          },
+          "VerifierConfig": {
+            "properties": {
+              "override_timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Override Timeout Sec"
+              },
+              "max_timeout_sec": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Max Timeout Sec"
+              },
+              "include_logs": {
+                "description": "Glob patterns of verifier log files to download, relative to the verifier logs directory. When set, only matching files are kept; the reward file is always downloaded.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Include Logs",
+                "type": "array"
+              },
+              "exclude_logs": {
+                "description": "Glob patterns of verifier log files to skip when downloading. Applied after include_logs, so exclude wins on overlap.",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Exclude Logs",
+                "type": "array"
+              },
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Env",
+                "type": "object"
+              },
+              "import_path": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Import Path"
+              },
+              "kwargs": {
+                "additionalProperties": true,
+                "title": "Kwargs",
+                "type": "object"
+              },
+              "disable": {
+                "default": false,
+                "title": "Disable",
+                "type": "boolean"
+              }
+            },
+            "title": "VerifierConfig",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "task": {
+            "$ref": "#/$defs/TaskConfig"
+          },
+          "trial_name": {
+            "default": "",
+            "title": "Trial Name",
+            "type": "string"
+          },
+          "trials_dir": {
+            "default": "trials",
+            "format": "path",
+            "title": "Trials Dir",
+            "type": "string"
+          },
+          "install_only": {
+            "default": false,
+            "description": "Only run agent setup/install, then exit (skips agent run + verification).",
+            "title": "Install Only",
+            "type": "boolean"
+          },
+          "timeout_multiplier": {
+            "default": 1.0,
+            "title": "Timeout Multiplier",
+            "type": "number"
+          },
+          "agent_timeout_multiplier": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Agent Timeout Multiplier"
+          },
+          "verifier_timeout_multiplier": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Verifier Timeout Multiplier"
+          },
+          "agent_setup_timeout_multiplier": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Agent Setup Timeout Multiplier"
+          },
+          "environment_build_timeout_multiplier": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Environment Build Timeout Multiplier"
+          },
+          "agent": {
+            "$ref": "#/$defs/AgentConfig"
+          },
+          "user_agent": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/UserAgentConfig"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional simulated-user agent that communicates with the primary agent through its configured bridge."
+          },
+          "environment": {
+            "$ref": "#/$defs/EnvironmentConfig"
+          },
+          "verifier": {
+            "$ref": "#/$defs/VerifierConfig"
+          },
+          "artifacts": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/$defs/ArtifactConfig"
+                }
+              ]
+            },
+            "title": "Artifacts",
+            "type": "array"
+          },
+          "extra_instruction_paths": {
+            "description": "Paths to extra instruction files appended to the task instruction. File contents are appended before ``extra_instructions``.",
+            "items": {
+              "format": "path",
+              "type": "string"
+            },
+            "title": "Extra Instruction Paths",
+            "type": "array"
+          },
+          "extra_instructions": {
+            "description": "Inline extra instructions appended to the task instruction. Appended after any ``extra_instruction_paths`` contents.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Extra Instructions",
+            "type": "array"
+          },
+          "job_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Job Id"
+          },
+          "source_trial": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/SourceTrialConfig"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Source trial this trial derives from. When set with action='regrade', the trial skips the agent phase: it seeds its agent logs and artifacts from the source trial, then re-runs verification against them in a separate verifier environment. The source trial is never modified."
+          }
+        },
+        "required": [
+          "task"
+        ],
+        "title": "TrialConfig",
+        "type": "object"
+      }
+    }
+  },
+  "parsed_task": {
+    "schema_version": "1.0",
+    "task": null,
+    "metadata": {
+      "name": "heima-speculative-decoding",
+      "category": "multimodal-inference",
+      "training": "NOT_APPLICABLE"
+    },
+    "verifier": {
+      "network_mode": "no-network",
+      "allowed_hosts": null,
+      "timeout_sec": 10800.0,
+      "env": {},
+      "user": "root",
+      "environment_mode": "separate",
+      "environment": null,
+      "collect": []
+    },
+    "agent": {
+      "network_mode": "no-network",
+      "allowed_hosts": null,
+      "timeout_sec": 1800.0,
+      "user": "1000:1000"
+    },
+    "environment": {
+      "network_mode": "no-network",
+      "allowed_hosts": null,
+      "build_timeout_sec": 600.0,
+      "docker_image": null,
+      "os": "linux",
+      "cpus": 2,
+      "memory_mb": 3072,
+      "storage_mb": 512,
+      "gpus": 0,
+      "gpu_types": null,
+      "tpu": null,
+      "mcp_servers": [],
+      "env": {},
+      "skills_dir": null,
+      "healthcheck": null,
+      "workdir": "/workspace/solution"
+    },
+    "solution": {
+      "env": {}
+    },
+    "source": null,
+    "multi_step_reward_strategy": null,
+    "steps": null,
+    "artifacts": [
+      "/workspace/solution"
+    ]
+  },
+  "actual_trial_config_constructor": {
+    "task": {
+      "path": "/workspace/harbor_task",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "harbor_task__NqDmNRx",
+    "trials_dir": "trials",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": "nop",
+      "import_path": null,
+      "model_name": null,
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {},
+      "mcp_servers": []
+    },
+    "user_agent": null,
+    "environment": {
+      "type": null,
+      "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+      "force_build": true,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {
+        "role": "gpt"
+      },
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "extra_instructions": [],
+    "job_id": null,
+    "source_trial": null
+  },
+  "custom_provider": "heima_harbor_environment:HeimaDockerEnvironment",
+  "actual_NoWall_override": "Current runner NoWallPrivateTrial._compute_verifier_timeout_sec returns None; the original source is delivered",
+  "candidate_source_imported": false,
+  "model_calls": 0,
+  "new_GPU_jobs": 0
+}

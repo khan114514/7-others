@@ -1,0 +1,22 @@
+{
+  "status": "CPU_DOCKER_BOUNDARY_PASS",
+  "does_not_establish_nop": true,
+  "checks": {
+    "formal_health": {
+      "status": "OK",
+      "mode": "restricted-dd-gateway"
+    },
+    "public_socket_absent": true,
+    "gpu_device_absent": true,
+    "ssh_key_absent": true,
+    "read_only_tests": true
+  },
+  "image_id": "sha256:3294304d018c9a1de78f29192a7336e0865c8ee556890ea90721c0c923ff8cdd",
+  "network_mode": "none",
+  "read_only_rootfs": true,
+  "cap_drop": [
+    "ALL"
+  ],
+  "memory_bytes": 2147483648,
+  "nano_cpus": 2000000000
+}

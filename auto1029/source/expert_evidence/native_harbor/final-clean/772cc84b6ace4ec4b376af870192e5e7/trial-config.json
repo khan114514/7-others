@@ -1,0 +1,25 @@
+{
+  "task": {
+    "path": "${SOURCE_PROJECT}/private/portable-public-staging/final-portable-task"
+  },
+  "trial_name": "heima-clean-final-e7dea707bb1e",
+  "trials_dir": "${SOURCE_PROJECT}/private/final-backend-host-proof/clean-final-native/e7dea707bb1e4191a1ce7fdf93844c79",
+  "agent": {
+    "import_path": "frozen_method_install_agent:FrozenMethodInstallAgent",
+    "kwargs": {
+      "selection_folder": "${SOURCE_PROJECT}/private/final-method-selection/239684420c584448be6899280328d9cc",
+      "request_sha256": "dc988fe0eaf0584c344674bae6e5943bb42d83446dd3d8620f05ca9db66034f3",
+      "policy_sha256": "ddbdac98e3e0230f4d95603b7c9edc6f2adc11caa4a4cbf4d580291aa603cccb"
+    }
+  },
+  "environment": {
+    "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+    "force_build": true,
+    "kwargs": {
+      "role": "seed"
+    }
+  },
+  "verifier": {
+    "override_timeout_sec": 10800.0
+  }
+}

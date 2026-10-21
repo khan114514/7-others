@@ -1,0 +1,55 @@
+{
+  "policy": "user-normal-work-clock-20261006",
+  "elapsed_seconds": 1557.2515861988068,
+  "effective_seconds": 1526.0545439720154,
+  "excluded_seconds": 31.197042226791382,
+  "excluded_intervals": [
+    [
+      1791306471.116627,
+      1791306502.3136692
+    ]
+  ],
+  "exclusion_evidence": [
+    {
+      "start_epoch": 1791306471.116627,
+      "end_epoch": 1791306475.0277529,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-c5e5bf969c4041a5a50f19a885863408-route.json"
+    },
+    {
+      "start_epoch": 1791306475.0277529,
+      "end_epoch": 1791306479.878986,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-758712181a7642308031aac89caa689c-route.json"
+    },
+    {
+      "start_epoch": 1791306479.878986,
+      "end_epoch": 1791306484.121409,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-4404b97c363e402f8b9d4f0569500e44-route.json"
+    },
+    {
+      "start_epoch": 1791306484.121409,
+      "end_epoch": 1791306489.4997492,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-f418ec4eabd740b3aaa05d31a42e5404-route.json"
+    },
+    {
+      "start_epoch": 1791306489.4997492,
+      "end_epoch": 1791306498.298251,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-143fe2a197b249468af5b7a88860d274-route.json"
+    },
+    {
+      "start_epoch": 1791306498.298251,
+      "end_epoch": 1791306502.3136692,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-153423b837d7420c8741cb6dd27e543d-route.json"
+    }
+  ],
+  "score_success_used_for_time": false,
+  "role": "seed",
+  "round": 10,
+  "cli_exit_code": 1,
+  "actual_model_completion_observed": true
+}

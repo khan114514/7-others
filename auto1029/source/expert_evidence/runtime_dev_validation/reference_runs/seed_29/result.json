@@ -1,0 +1,152 @@
+{
+  "schema_version": "autoresearch-nontraining-run.v2",
+  "status": "COMPLETE",
+  "role": "reference",
+  "seed": 29,
+  "task_type": "inference_only",
+  "seed_kind": "evaluation_seed",
+  "training": "NOT_APPLICABLE",
+  "method": {
+    "source": "optimization_evidence/reference_runs/method.py",
+    "sha256": "783fef80fab98cb400a61d7eedacfbf4f233705df8c2ebe850f274f22c4a4623",
+    "fixed_dependencies": {
+      "run_policy_score_v2.py": "58c99176e1e3fa7bb382d571e0e4aca69a259df7c93ede5691eabc3e76bbec44",
+      "policy_decoder_v1.py": "8c96eec8bb692fad4652899a8def08aba8419f95ec190919b96aaabe465a33ab",
+      "isolated_policy.py": "231011e1d174d8eddede425fcbc83cff6b0b55636df9ca6526742b6228cd27bf",
+      "policy_jail_launcher.py": "a1c49bc522649d49732005a17a80b52f3fe6e995e65a2e70bd9bdf0664b7a910",
+      "policy_jail_runner.py": "15ccd140d97bea9d220d083198be9bd9f879d7f8d9014d60e89957c731e4e6a0",
+      "mcq_metrics.py": "a4be3984afa308aa86f8e05331f4a790545e7f1ea2ef8701def0fc15bcbd7a5b"
+    }
+  },
+  "dependencies": {
+    "run_policy_score_v2.py": "58c99176e1e3fa7bb382d571e0e4aca69a259df7c93ede5691eabc3e76bbec44",
+    "policy_decoder_v1.py": "8c96eec8bb692fad4652899a8def08aba8419f95ec190919b96aaabe465a33ab",
+    "isolated_policy.py": "231011e1d174d8eddede425fcbc83cff6b0b55636df9ca6526742b6228cd27bf",
+    "policy_jail_launcher.py": "a1c49bc522649d49732005a17a80b52f3fe6e995e65a2e70bd9bdf0664b7a910",
+    "policy_jail_runner.py": "15ccd140d97bea9d220d083198be9bd9f879d7f8d9014d60e89957c731e4e6a0",
+    "mcq_metrics.py": "a4be3984afa308aa86f8e05331f4a790545e7f1ea2ef8701def0fc15bcbd7a5b"
+  },
+  "protocol": {
+    "version": 2,
+    "frozen_before_final_scorer_runs": true,
+    "interface": "open Python draft(state) through per-run confined IPC",
+    "training": "NOT_APPLICABLE",
+    "formal_seeds": [
+      17,
+      29,
+      43,
+      71,
+      101
+    ],
+    "formal_dev_samples_per_seed": 96,
+    "split_manifest_sha256": "171be75692fec52adb55a2d839a5a201ee16e4f415fd12e621258306a934bf40",
+    "metric": "mean per-question latency ratio to a fresh counterbalanced ordinary AR calibration",
+    "direction": "minimize",
+    "U": 0.0,
+    "U_justification": "Zero is the mathematical lower bound of a positive latency ratio; no reliable attainable ceiling estimate is available before method research",
+    "maximum_final_output_tokens": 128,
+    "maximum_total_sampled_tokens": 256,
+    "maximum_target_forward_calls": 256,
+    "maximum_draft_tokens": 32,
+    "maximum_replays": 1,
+    "guard_log_score_margin": 0.25,
+    "temperature": 0.6,
+    "top_k": 50,
+    "precision": "BF16; no reduced BF16 GEMM reduction; no TF32; automatic SDPA; no reduced math attention",
+    "public_state": [
+      "question",
+      "generated_token_ids",
+      "decoded_text",
+      "remaining_tokens",
+      "maximum_draft_tokens"
+    ],
+    "text_proposal_behavior": "Tokenizer encodes text; verify the first at most min(32,remaining_tokens) IDs",
+    "maximum_policy_request_seconds": 0.5,
+    "candidate_startup": "included amortized over the evaluated questions",
+    "quality_gates": {
+      "minimum_token_agreement": 0.99,
+      "minimum_answer_agreement": 0.99,
+      "maximum_accuracy_drop": 0.01,
+      "minimum_parsed_answer_rate": 0.9
+    },
+    "formal_anchor_claim": false,
+    "formal_model_optimization_gate": "Validated anchors, full isolation and actual Harbor run required",
+    "minimum_effective_seconds_each": 36000,
+    "no_seven_hour_exception": true,
+    "baseline": "independent ordinary AR policy, separate from same-batch calibration",
+    "anchor_directory_version": 2,
+    "continuous_score_clipped": false,
+    "invalid_quality_score": -1,
+    "change_reason": "Native ordinary-AR repeat had apparent 14.8% speed gain against historical wall latency; same-batch paired calibration prevents GPU speed drift from becoming a method improvement"
+  },
+  "protocol_sha256": "71ef938d17f91099d9ff2f7f0abb2e9b4aa05dd0e7e0ada06ccc6ca472544429",
+  "data_sha256": "7286fc3126b46434a4019fab3fd82a61e219a546acbe8fd15b0b41aab878e6eb",
+  "execution": {
+    "recorded_command_with_deployment_paths_normalized": [
+      "${HEIMA_PYTHON}",
+      "${DEPLOYMENT_ROOT}/deployment/private/run_policy_score_v2.py",
+      "--mode",
+      "anchors",
+      "--split",
+      "dev",
+      "--seeds",
+      "17,29,43,71,101",
+      "--output",
+      "${DEPLOYMENT_ROOT}/deployment/private/fresh-policy-anchors-v2-dev-3edae0cd"
+    ],
+    "path_normalization": "Only deployment prefixes are replaced by environment references; original private receipt is retained",
+    "started_epoch": 1791435454.1982367,
+    "completed_epoch": 1791439065.9817266,
+    "gpu_started_epoch": 1791435454.2928104,
+    "exit_code": 0,
+    "process_elapsed_seconds": 3611.7834899425507,
+    "seed_elapsed_seconds": null,
+    "seed_time_gap": "Per-seed boundaries were not recorded; only the actual shared-process boundaries are claimed",
+    "shared_process": true,
+    "model_research_seconds": 0,
+    "run_log_scope": "Actual complete shared-process JSONL stdout; deployment prefix metadata normalized; original retained",
+    "peak_gpu_memory_bytes": null,
+    "peak_memory_gap": "Not recorded by this run; no estimate substituted"
+  },
+  "metrics": {
+    "samples": 96,
+    "mean_latency_seconds": 1.2947124010291493,
+    "accuracy": 0.4166666666666667,
+    "parsed_answer_rate": 1,
+    "forward_calls": 1512,
+    "generated_tokens": 4109,
+    "total_sampled_tokens": 4488,
+    "guard_replays": 11,
+    "policy_calls": 891,
+    "policy_seconds": 0.2308550365269184,
+    "latency_ratio": 0.406408699415344,
+    "primary": {
+      "name": "paired_latency_ratio",
+      "direction": "minimize",
+      "value": 0.406408699415344
+    }
+  },
+  "quality_gate": {
+    "pass": true,
+    "token_agreement_fraction": 1,
+    "answer_agreement_fraction": 1
+  },
+  "artifacts": {
+    "run_log": "optimization_evidence/reference_runs/seed_29/run.log",
+    "run_log_sha256": "1544a5a03d4d469d3e8e8b04cb2943fa92959bba8ed32349c14687a9878ceba5",
+    "per_sample": "optimization_evidence/reference_runs/seed_29/per-sample.jsonl",
+    "per_sample_sha256": "f0023f5bb6eae79de4e9acec82c9340936396e56cc11bb04c74381a3d71ca259"
+  },
+  "model_reload": "NOT_APPLICABLE: frozen inference weights, no training checkpoint created",
+  "native_harbor_claim": false,
+  "official_platform_hidden_claim": false,
+  "actual_current_runtime_provenance": {
+    "collector_original_manifest_sha256": "09bf9039bc13b95f04483dc0ef44550c1f7d6388869747a7abe744aee69bfd2d",
+    "original_pair_sha256": "f0023f5bb6eae79de4e9acec82c9340936396e56cc11bb04c74381a3d71ca259",
+    "actual_shared_process_execution_sha256": "40b4b242bfa05763c931d286d01ce38e22bdda90b111ed99424765ebaf24ad99",
+    "actual_shared_process_stdout_sha256": "1544a5a03d4d469d3e8e8b04cb2943fa92959bba8ed32349c14687a9878ceba5",
+    "source_scope": "Actual deployed 119-source verified backend; same frozen Dev protocol and weights",
+    "shared_three_role_raw_pairs": true,
+    "historical_score_reassigned": false
+  }
+}

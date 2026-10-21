@@ -1,0 +1,37 @@
+{
+  "scope": "LIVE_COMPLETED_TRAINING_SNAPSHOT_NOT_TERMINAL_RUN",
+  "captured_at": "2026-10-04T14:44:29.643041+00:00",
+  "run_id": "run-28023296fd1e4df5b8c0cc2592665c0b",
+  "quality_acceptance": "NOT_READY",
+  "full_fid": null,
+  "training_complete": true,
+  "updates": 256,
+  "seen_pairs": 4096,
+  "terminal_reason": "teacher_reuse_limit",
+  "time_scale_histogram": [
+    2072,
+    0,
+    0,
+    0,
+    0,
+    400,
+    415,
+    363,
+    429,
+    417
+  ],
+  "samples_with_all_55_inference_logits_directly_supervised": 2072,
+  "checkpoint_sha256_from_native_record": "762d969c040cc484e0936ca796382050350d209dd2377eb3c9291ce30520d1ba",
+  "model_not_yet_backed_up_or_independently_reloaded": true,
+  "same_fixed_training_settings_as_late_half_control": true,
+  "excluded_provenance_fields": [
+    "deadline_unix",
+    "method",
+    "method_sha256",
+    "pair_manifest_sha256",
+    "start_unix"
+  ],
+  "native_teacher_seconds": 3023.671238183975,
+  "native_training_stage_seconds": 1128.2511825561523,
+  "loss_curve_claim_limit": "Training losses have different time-prefix exposure; they are not FID quality evidence."
+}

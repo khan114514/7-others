@@ -1,0 +1,28 @@
+{
+  "status": "PASS_TARGETED_INFRASTRUCTURE_CONTROL_CHECKS",
+  "tests": [
+    {
+      "case": "Verified archive resume reaches pending reclamation, no retransfer",
+      "passed": true
+    },
+    {
+      "case": "Changed durable archive blocks any reclamation",
+      "passed": true
+    },
+    {
+      "case": "result.json selected with terminal SUCCESS",
+      "passed": true
+    },
+    {
+      "case": "failure.json selected with terminal FAILED",
+      "passed": true
+    },
+    {
+      "case": "Missing terminal evidence blocks archive",
+      "passed": true
+    }
+  ],
+  "candidate_method_not_executed": true,
+  "controller_source_sha256": "5d38de73358498057aa031b27093ebacde148e5162fcb3c21e865ca6b72ab594",
+  "new_module_applies_on_next_safe_resume_only": true
+}

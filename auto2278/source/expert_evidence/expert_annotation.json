@@ -1,0 +1,29 @@
+{
+  "task_id": null,
+  "local_task_name": "autoresearch/exact-retrieval-kernel",
+  "task_type": "S1",
+  "research_direction": "exact attention inference algorithms",
+  "optimization_surface": "arbitrary pure CPU tensor implementation of a fixed norm-preserving multihead operator",
+  "score_contract": {
+    "metric": "relative_process_cpu_time",
+    "direction": "minimize",
+    "split": "dev",
+    "protocol": "attention-exact-cpu-v2",
+    "baseline": {
+      "raw_value": 1.0676509840106392,
+      "normalized_score": 0.0
+    },
+    "reference": {
+      "raw_value": 0.49891220898508665,
+      "normalized_score": 0.5327010264057276
+    },
+    "upper_bound": {
+      "raw_value": 0.0,
+      "source": "metric_ceiling"
+    }
+  },
+  "isolation": {
+    "reference_visible_to_agent": false,
+    "hidden_assets_visible_to_agent": false
+  }
+}

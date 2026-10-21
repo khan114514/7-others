@@ -1,0 +1,333 @@
+{
+  "schema": "local-v4-independent-review-consensus/1",
+  "task": "auto0783",
+  "review_completed": true,
+  "core_decision": "NOT_READY",
+  "artifact_sha256": "c97e90c1e23768b61b992fa0b03b0894a4a7d425b33bafe077160ff911aa2e3c",
+  "independent_reviews": [
+    {
+      "reviewer": "a",
+      "configured_model": "gpt-6.1-sol",
+      "files": {
+        "report.json": "20511f08f571b724570943b9c85f176c04ac2928fa675f03b7b727320345fe23",
+        "report.md": "824e527597606b8e304c5de2eb0638cf9d4c5023e87dbf27fd0432d101b58c81",
+        "report.txt": "824e527597606b8e304c5de2eb0638cf9d4c5023e87dbf27fd0432d101b58c81",
+        "return_to_expert.txt": "a7d3681c107abce2b4700c231fd72892c4f897b00b24c8a9ab381de049164edf"
+      },
+      "dispatch_receipt_sha256": "933e88dbb777b26d7e12f2b9fe55f82feaf5443891ea042bd34d6301e1bc9493"
+    },
+    {
+      "reviewer": "b",
+      "configured_model": "gpt-6-astra",
+      "files": {
+        "report.json": "9c4a1994ac0dae1e648fa31af010c2388dd5614d5c2ddec790cf4a3d9fbec69c",
+        "report.md": "eee4aac1caa3dd5bbfbf134765656d3c1c9391f7501e95c9e9b5aebcf1464ef2",
+        "report.txt": "eee4aac1caa3dd5bbfbf134765656d3c1c9391f7501e95c9e9b5aebcf1464ef2",
+        "return_to_expert.txt": "c5d7685085dcad8dd86aba7f904d62ac5897c977207b0c23948e73bfe6de43cf"
+      },
+      "dispatch_receipt_sha256": "292040dcac797eb7bfc9f3a753cf02d543b228326bf17bdbc50000c0f6ac59d4"
+    }
+  ],
+  "checks": [
+    {
+      "id": "G01",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "G02",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "G03",
+      "status": "manual",
+      "independent_statuses": [
+        "manual",
+        "manual"
+      ]
+    },
+    {
+      "id": "QA01",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA02",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA03",
+      "status": "manual",
+      "independent_statuses": [
+        "manual",
+        "manual"
+      ]
+    },
+    {
+      "id": "QA04",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA05",
+      "status": "fail",
+      "independent_statuses": [
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "QA06",
+      "status": "fail",
+      "independent_statuses": [
+        "pass",
+        "fail"
+      ]
+    },
+    {
+      "id": "QA07",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA08",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA09",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA10",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA11",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA12",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA13",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA14",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA15",
+      "status": "fail",
+      "independent_statuses": [
+        "manual",
+        "fail"
+      ]
+    },
+    {
+      "id": "QA16",
+      "status": "manual",
+      "independent_statuses": [
+        "manual",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA17",
+      "status": "fail",
+      "independent_statuses": [
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "QA18",
+      "status": "fail",
+      "independent_statuses": [
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "QA19",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA20",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "QA21",
+      "status": "nonblocking_pending",
+      "independent_statuses": [
+        "nonblocking_pending",
+        "nonblocking_pending"
+      ]
+    },
+    {
+      "id": "H01",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "H02",
+      "status": "fail",
+      "independent_statuses": [
+        "pass",
+        "fail"
+      ]
+    },
+    {
+      "id": "H03",
+      "status": "fail",
+      "independent_statuses": [
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "H04",
+      "status": "fail",
+      "independent_statuses": [
+        "pass",
+        "fail"
+      ]
+    },
+    {
+      "id": "H05",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "H06",
+      "status": "pass",
+      "independent_statuses": [
+        "pass",
+        "pass"
+      ]
+    }
+  ],
+  "confirmed_failure_ids": [
+    "QA05",
+    "QA06",
+    "QA15",
+    "QA17",
+    "QA18",
+    "H02",
+    "H03",
+    "H04"
+  ],
+  "core_or_scope_pending_ids": [
+    "G03",
+    "QA03",
+    "QA16"
+  ],
+  "reported_differences": [
+    {
+      "id": "QA06",
+      "independent_statuses": [
+        "pass",
+        "fail"
+      ],
+      "resolution": "Both original judgments retained. A core failure or unresolved core evidence gap remains NOT_READY; no majority vote or PASS upgrade."
+    },
+    {
+      "id": "QA15",
+      "independent_statuses": [
+        "manual",
+        "fail"
+      ],
+      "resolution": "Both original judgments retained. A core failure or unresolved core evidence gap remains NOT_READY; no majority vote or PASS upgrade."
+    },
+    {
+      "id": "QA16",
+      "independent_statuses": [
+        "manual",
+        "pass"
+      ],
+      "resolution": "Both original judgments retained. A core failure or unresolved core evidence gap remains NOT_READY; no majority vote or PASS upgrade."
+    },
+    {
+      "id": "H02",
+      "independent_statuses": [
+        "pass",
+        "fail"
+      ],
+      "resolution": "Both original judgments retained. A core failure or unresolved core evidence gap remains NOT_READY; no majority vote or PASS upgrade."
+    },
+    {
+      "id": "H04",
+      "independent_statuses": [
+        "pass",
+        "fail"
+      ],
+      "resolution": "Both original judgments retained. A core failure or unresolved core evidence gap remains NOT_READY; no majority vote or PASS upgrade."
+    }
+  ],
+  "official_0_3_10_executed": false,
+  "new_dynamic_task_execution": false,
+  "publication_purpose": "Source and evidence handoff for review and repair; not a claim of platform acceptance."
+}

@@ -1,0 +1,71 @@
+def union_seconds(intervals):
+    merged = []
+    for start, end in sorted(intervals):
+        if end <= start:
+            continue
+        if merged and start <= merged[-1][1]:
+            merged[-1][1] = max(end, merged[-1][1])
+        else:
+            merged.append([start, end])
+    return sum(end - start for start, end in merged)
+
+def subtract_intervals(included, excluded):
+    result = []
+    for start, end in included:
+        pieces = [(start, end)]
+        for lo, hi in sorted(excluded):
+            next_pieces = []
+            for a, b in pieces:
+                if hi <= a or lo >= b:
+                    next_pieces.append((a, b))
+                else:
+                    if a < lo: next_pieces.append((a, lo))
+                    if hi < b: next_pieces.append((hi, b))
+            pieces = next_pieces
+        result.extend(pieces)
+    return result
+
+def classify(start, end, events, observed, routes):
+    elapsed = end - start
+    completed = any(event.get('type') == 'turn.completed' for event in events)
+    # A relay journal can outlive a CLI process. Later responses cannot
+    # establish research activity for an earlier failed interval.
+    relevant_routes = [r for r in routes if start <= r['started_epoch'] < end]
+    successful_routes = [r for r in relevant_routes if r.get('model_response_completed')
+                         and r['completed_epoch'] <= end]
+    completed_items = [r for r in observed if start <= r['observed_epoch'] <= end
+                       and r['event'].get('type') == 'item.completed'
+                       and r['event'].get('item', {}).get('type') in
+                       {'command_execution', 'agent_message', 'reasoning', 'todo_list'}]
+    # A completed research turn is eligible even if all its experiments fail,
+    # no code changes, or its result is analysis only.
+    normal = completed or bool(successful_routes) or bool(completed_items)
+    failed = []
+    ordered_routes = sorted(relevant_routes, key=lambda r: r['started_epoch'])
+    for index, r in enumerate(ordered_routes):
+        if not r.get('model_response_completed') and (r.get('status') == 'ERROR' or r.get('http_status', 200) >= 400):
+            # Include the CLI's retry/backoff following a failed request, up to
+            # the next request. A configuration-warning item is not research.
+            retry_end = ordered_routes[index + 1]['started_epoch'] if index + 1 < len(ordered_routes) else end
+            failed.append((max(start, r['started_epoch']), min(end, max(r['completed_epoch'], retry_end))))
+    failure_seconds = union_seconds(failed)
+    if completed:
+        known_end = end
+    elif normal:
+        known_end = min(end, max(
+            [start] + [r['observed_epoch'] for r in completed_items]
+            + [r['completed_epoch'] for r in successful_routes]))
+    else:
+        known_end = start
+    excluded_known = union_seconds([(a, min(b, known_end)) for a, b in failed])
+    credited = max(0.0, known_end - start - excluded_known)
+    pending = max(0.0, elapsed - credited - failure_seconds)
+    included = subtract_intervals([(start, known_end)], failed)
+    return {'effective_seconds': credited, 'included_intervals': included,
+            'infrastructure_failure_seconds': failure_seconds,
+            'pending_activity_audit_seconds': 0.0 if completed else pending,
+            'excluded_seconds': elapsed - credited,
+            'accounting_status': 'COUNTED_NORMAL_RESEARCH' if completed else
+                                 'PARTIAL_NORMAL_WORK_PRESERVED_PENDING_AUDIT' if normal else
+                                 'INFRASTRUCTURE_FAILURE_NO_OBSERVED_RESEARCH',
+            'artifact_validity_used_for_time': False}

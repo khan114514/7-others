@@ -1,0 +1,53 @@
+{
+    "id": "2d656b0f-1888-4dfd-8772-c0454142dbff",
+    "started_at": "2026-10-07T19:02:52.095705",
+    "updated_at": "2026-10-07T11:16:41.909786Z",
+    "finished_at": null,
+    "n_total_trials": 2,
+    "stats": {
+        "n_completed_trials": 2,
+        "n_errored_trials": 2,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 2,
+        "n_retries": 0,
+        "evals": {
+            "memory-codex__doubao-seed-2-1-turbo-260628__adhoc": {
+                "n_trials": 0,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {},
+                "exception_stats": {
+                    "CancelledError": [
+                        "harbor_task__d9XHobK"
+                    ]
+                }
+            },
+            "memory-codex__gpt-6.1-sol__adhoc": {
+                "n_trials": 0,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {},
+                "exception_stats": {
+                    "CancelledError": [
+                        "harbor_task__baCKwKC"
+                    ]
+                }
+            }
+        },
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null
+    }
+}

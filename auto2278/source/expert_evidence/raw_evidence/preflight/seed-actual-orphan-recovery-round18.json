@@ -1,0 +1,84 @@
+{
+  "checked_unix": 1791414134.3833642,
+  "type": "actual orphan native markup recovery via same-model procedural feedback",
+  "round": 18,
+  "campaign": "asd-research-1791409298",
+  "audit_evidence": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/coding-plan.audit.jsonl",
+  "event_evidence": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/round_00018.events.jsonl",
+  "recovered_requests": [
+    [
+      {
+        "request_id": "b65facaeea6948b1b20eb77a4a35fc0e",
+        "started_unix": 1791414019.2717729,
+        "billing_mode": "coding_plan",
+        "endpoint": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+        "model_requested": "doubao-seed-2-1-turbo-260628",
+        "reasoning_effort": "high",
+        "upstream_credential_in_actor": false,
+        "attempt": 0,
+        "ended_unix": 1791414035.4968908,
+        "protocol_feedback_applied": false,
+        "requested_max_tokens": 16384,
+        "status": "failed",
+        "http_status": 200,
+        "model_returned": "doubao-seed-2-1-turbo-260628",
+        "usage": {
+          "completion_tokens": 100,
+          "prompt_tokens": 66606,
+          "total_tokens": 66706,
+          "prompt_tokens_details": {
+            "cached_tokens": 65336
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1
+          }
+        },
+        "finish_reason": "stop",
+        "assistant_text_characters": 430,
+        "structured_tool_calls": 0,
+        "error_type": "ValueError",
+        "failure_reason": "Orphan native tool closing tags cannot be treated as a completed assistant response.",
+        "error_kind": "model_output_protocol",
+        "private_original_response": "<TASK_ROOT>/campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/private_wire_failures/b65facaeea6948b1b20eb77a4a35fc0e_0.json"
+      },
+      {
+        "request_id": "b65facaeea6948b1b20eb77a4a35fc0e",
+        "started_unix": 1791414035.499872,
+        "billing_mode": "coding_plan",
+        "endpoint": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+        "model_requested": "doubao-seed-2-1-turbo-260628",
+        "reasoning_effort": "high",
+        "upstream_credential_in_actor": false,
+        "attempt": 1,
+        "ended_unix": 1791414066.4923992,
+        "protocol_feedback_applied": true,
+        "requested_max_tokens": 16384,
+        "status": "completed",
+        "http_status": 200,
+        "model_returned": "doubao-seed-2-1-turbo-260628",
+        "usage": {
+          "completion_tokens": 1200,
+          "prompt_tokens": 66831,
+          "total_tokens": 68031,
+          "prompt_tokens_details": {
+            "cached_tokens": 59192
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1128
+          }
+        },
+        "finish_reason": "tool_calls",
+        "assistant_text_characters": 169,
+        "structured_tool_calls": 1,
+        "emitted_function_calls": 1
+      }
+    ]
+  ],
+  "same_selected_model_and_effort": true,
+  "coding_plan_only": true,
+  "upstream_credential_in_actor": false,
+  "controller_supplied_code_or_inferred_commands": false,
+  "original_failure_content_preserved_privately": true,
+  "original_records_modified": false,
+  "method_cycle_claimed": false
+}

@@ -1,0 +1,40 @@
+{
+  "status": "STOCK_HARBOR_CPU_HANDOFF_VERIFIED_REAL_NOP_PENDING",
+  "epoch": 1791168475.32636,
+  "root_cause": "docker cp exits0 but sees empty live tmpfs; file cp also fails. Live exec sees correct Starter; normal Harbor host-mounted convention sees exact same SHA.",
+  "fix": "Use stock Harbor mounted /logs/artifacts with pre-collection source-only snapshot and explicit re-materialization in separate Verifier. No Harbor code patch.",
+  "task_version": "5.0.2-candidate",
+  "protected_manifest_unchanged": "2fa5d65fbef7bc5b47b9d54ebba3e4120bfc065b9914f3bad4ddf402bc30f0b0",
+  "original_failure_retained": true,
+  "files": [
+    {
+      "tree": "local",
+      "file": "task.toml",
+      "original_sha256": "4717abffff34ff6cdaecd3b7b987a7ce1e733e9316be61d85e7a80da3c79eb21",
+      "current_sha256": "bef22de3b0e19b6fe999fde1fde202496610ec7c9f54244ed9de655d5d0db45c"
+    },
+    {
+      "tree": "local",
+      "file": "tests/test.sh",
+      "original_sha256": "9013f27991ff08ae06104218779a46c1cbb12830d564f66978d53635c8808e29",
+      "current_sha256": "500b511cbd9311f62def5830e9bf86aa87602cdaa0368ec65dfb963a3f11ea85"
+    },
+    {
+      "tree": "delivery",
+      "file": "task.toml",
+      "original_sha256": "4717abffff34ff6cdaecd3b7b987a7ce1e733e9316be61d85e7a80da3c79eb21",
+      "current_sha256": "bef22de3b0e19b6fe999fde1fde202496610ec7c9f54244ed9de655d5d0db45c"
+    },
+    {
+      "tree": "delivery",
+      "file": "tests/test.sh",
+      "original_sha256": "9013f27991ff08ae06104218779a46c1cbb12830d564f66978d53635c8808e29",
+      "current_sha256": "500b511cbd9311f62def5830e9bf86aa87602cdaa0368ec65dfb963a3f11ea85"
+    }
+  ],
+  "cpu_native_trial_sha256": "e415b8e491be9a5ba1f260ad19fe59403717ee77bad01801eeb6afd5738460d5",
+  "cpu_verifier_receipt_sha256": "e056d4a92804556d9864a1ffabd77f4e6a0c1a0ee82739e522157f92be4a65c2",
+  "cpu_native_diagnostic_only": true,
+  "expected_diagnostic_missing_reward_preserved": true,
+  "verification_epoch": 1791168947.1151848
+}

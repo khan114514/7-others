@@ -1,0 +1,210 @@
+{
+  "lane": "seed",
+  "model": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "status": "FORMAL_RESEARCH_FAILED",
+  "preflight_only": false,
+  "effective_research_seconds": 34836.15197724063,
+  "preparation_time_reused": false,
+  "rounds": [
+    {
+      "index": 1,
+      "started_epoch": 1791778482.327939,
+      "completed_epoch": 1791778537.9476511,
+      "elapsed_seconds": 55.61905629199464,
+      "native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+      "exit_code": 0,
+      "native_turn_closed": true,
+      "successful_command_count": 6,
+      "completed_command_count": 6,
+      "method_sha256": "f8da2cc1ce5d64e05dd9fa2ad449ceb0347e7e74651b8ff70ab7a4a676190e3f",
+      "artifact_transfer": {
+        "bytes": 7732,
+        "sha256": "f8da2cc1ce5d64e05dd9fa2ad449ceb0347e7e74651b8ff70ab7a4a676190e3f"
+      },
+      "effective_research_seconds": 46.3218782619806,
+      "excluded_queue_seconds": 0,
+      "excluded_provider_failure_and_backoff_seconds": 9.297178030014038,
+      "total_union_excluded_seconds": 9.297178030014038,
+      "method_ast_changed": true,
+      "actual_evaluations": []
+    },
+    {
+      "index": 2,
+      "started_epoch": 1791778541.220114,
+      "completed_epoch": 1791781366.022283,
+      "elapsed_seconds": 2824.7537655830383,
+      "native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+      "exit_code": 0,
+      "native_turn_closed": true,
+      "successful_command_count": 32,
+      "completed_command_count": 36,
+      "method_sha256": "42eb80eed8c5cfaf757a5a6f26a530ae5db4ea9b65a2c260fca54e4698e85648",
+      "artifact_transfer": {
+        "bytes": 8016,
+        "sha256": "42eb80eed8c5cfaf757a5a6f26a530ae5db4ea9b65a2c260fca54e4698e85648"
+      },
+      "effective_research_seconds": 370.67835235595703,
+      "excluded_queue_seconds": 2147.6369473934174,
+      "excluded_provider_failure_and_backoff_seconds": 306.43846583366394,
+      "total_union_excluded_seconds": 2454.0754132270813,
+      "method_ast_changed": true,
+      "actual_evaluations": [
+        "d06ef213f5fb4dba9321e38fa3deacff"
+      ]
+    },
+    {
+      "index": 3,
+      "started_epoch": 1791781369.68578,
+      "completed_epoch": 1791781395.682998,
+      "elapsed_seconds": 25.996858708036598,
+      "native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+      "exit_code": 0,
+      "native_turn_closed": true,
+      "successful_command_count": 1,
+      "completed_command_count": 2,
+      "method_sha256": "42eb80eed8c5cfaf757a5a6f26a530ae5db4ea9b65a2c260fca54e4698e85648",
+      "artifact_transfer": {
+        "bytes": 8016,
+        "sha256": "42eb80eed8c5cfaf757a5a6f26a530ae5db4ea9b65a2c260fca54e4698e85648"
+      },
+      "effective_research_seconds": 25.996858708036598,
+      "excluded_queue_seconds": 0,
+      "excluded_provider_failure_and_backoff_seconds": 0,
+      "total_union_excluded_seconds": 0,
+      "method_ast_changed": false,
+      "actual_evaluations": []
+    },
+    {
+      "index": 4,
+      "started_epoch": 1791781399.191942,
+      "completed_epoch": 1791781729.1667352,
+      "elapsed_seconds": 329.9734644999844,
+      "native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+      "exit_code": 0,
+      "native_turn_closed": true,
+      "successful_command_count": 0,
+      "completed_command_count": 0,
+      "method_sha256": "42eb80eed8c5cfaf757a5a6f26a530ae5db4ea9b65a2c260fca54e4698e85648",
+      "artifact_transfer": {
+        "bytes": 8016,
+        "sha256": "42eb80eed8c5cfaf757a5a6f26a530ae5db4ea9b65a2c260fca54e4698e85648"
+      },
+      "effective_research_seconds": 0
+    }
+  ],
+  "container_stability_seconds": 45282.599873180094,
+  "stability_passed": true,
+  "environment_binding": {
+    "environment_id": "484ddf5205d14862a4bf16bf88a3838e",
+    "physical_role": "seed",
+    "session_id": "save-clock-deficit-seed-6939aad68252__env",
+    "container_id": "7a192d0e42bcafee8bd6af963b8f4d86852b428481e7578960f5d0b64fdb5575",
+    "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+    "queue_volume": "save-harbor-q-484ddf5205d14862a4bf16bf88a3838e",
+    "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+    "Agent_uses_private_verifier_log_shadow": true,
+    "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+    "declared_remote_gpus": 1,
+    "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+    "portable_runtime_sources": {
+      "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+      "seed_transport.py": "0011fc0e49aefb6f8e3a7e08f39ac2f7f092aa91cbe902c4f3363aafe1af6afa",
+      "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+      "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+      "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+      "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+      "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+      "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+    },
+    "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+    "author_oracle": false,
+    "native_container_GPU": false,
+    "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+    "trusted_read_only_cli_runtime": {
+      "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+      "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+      "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+      "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+      "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+    }
+  },
+  "best_valid_dev": {
+    "score": 0.5648473436563913,
+    "raw_metric": 0.001591274934540084,
+    "method_sha256": "2dea1252c57e8c2c6d3ff4382c8074509b6e0c3d76d326be452efc7b37ef8042",
+    "source": "<TASK_ROOT>/private/gpu-hold-attached-recovery/d1355a370df8413baebda53e6aa9dd47/seed-research-evidence/recovered-own-evidence/method.py",
+    "evaluation_run_id": "d0daf2ea99aa4084ba94fe0e615f3123"
+  },
+  "same_owned_relay_dir": "<TASK_ROOT>/private/native-end-deficit-recovery/6939aad68252443ba2dd093ae43aa8ec/seed/hybrid-harbor-runtime/484ddf5205d14862a4bf16bf88a3838e/relay",
+  "prior_state_source": "<TASK_ROOT>/private/gpu-hold-attached-recovery/8ceb7de628474e478a37182c37f3101a/seed-research-evidence/status.json",
+  "prior_effective_research_seconds": 34393.15488791466,
+  "native_session_lossless_resume": true,
+  "restored_actual_native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+  "previous_observed_12h_container_stability_proofs": [
+    {
+      "status_source": "<TASK_ROOT>/private/track-recovery-attached/4bf1320b1f0846af9607ca2dac841c43/seed-research-evidence/status.json",
+      "seconds": 43213.8560234278,
+      "environment_binding": {
+        "environment_id": "0fd2a9167d4e4b548d7bbd86fb226769",
+        "physical_role": "seed",
+        "session_id": "save-user-balance-seed-8f17436f163c__env",
+        "container_id": "bc38873a7e5b219ab22a6195c1984b1ed394f9f18f4c47fe21402e4c6250f7f5",
+        "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+        "queue_volume": "save-harbor-q-0fd2a9167d4e4b548d7bbd86fb226769",
+        "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+        "Agent_uses_private_verifier_log_shadow": true,
+        "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+        "declared_remote_gpus": 1,
+        "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+        "portable_runtime_sources": {
+          "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+          "seed_transport.py": "7725c1226401c45f3d9a5002fa40d30f60cbdf01cb4b7458ff95dd88046253e8",
+          "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+          "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+          "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+          "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+          "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+          "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+          "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+        },
+        "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+        "author_oracle": false,
+        "native_container_GPU": false,
+        "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+        "trusted_read_only_cli_runtime": {
+          "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+          "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+          "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+          "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+          "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+        }
+      }
+    }
+  ],
+  "environment_restarted": false,
+  "same_physical_container_started_at": "2026-10-11T16:33:37.062381259Z",
+  "original_GPU_hold_preserved": true,
+  "retained_unscored_candidate_sha256": "2dea1252c57e8c2c6d3ff4382c8074509b6e0c3d76d326be452efc7b37ef8042",
+  "bounded_continuation_limits": {
+    "maximum_native_turns": 24,
+    "maximum_wall_seconds": 10800,
+    "automatic_retry_after_failed_native_turn": false
+  },
+  "trusted_controller_sources_at_attachment": {
+    "save_gpu_hold_attached_recovery.py": "23c3a97d82cd95f1ce76cf711d073b8dcdb098789b168192cc547582f48aeb95",
+    "save_attached_recovery.py": "065af38c77fc9d03fd323d664243b7725159ce22cb58c0f5f2cd5dcad63b0778",
+    "audit_research_clock.py": "9526cf3e78d38a7cd29f1a233085d84187c690569d691ec8694df96b442849db",
+    "portable_runtime_v4/seed_transport.py": "bc2972071a7f61e2b5c4cfaf5ee42855304f178ede045b59847dc0d351a2c494",
+    "portable_runtime_v4/model_relay.py": "847b3440d01710f33e9fa01e763a541c4e94f71255ec39301c1c3d488c30e3bc"
+  },
+  "physical_container_creation_binding_preserved": true,
+  "started_epoch": 1791778480.937948,
+  "research_time_policy": "User 2026-10-10: normal actual development; exclude downloads, actual transport/queue stalls and idle stability waits; no AST-change or command-count prerequisite",
+  "independently_verified_effective_seconds": 34819.99003076553,
+  "failure_type": "ValueError",
+  "failure_reason": "One attached native turn failed; preserve and diagnose without automatic retries"
+}

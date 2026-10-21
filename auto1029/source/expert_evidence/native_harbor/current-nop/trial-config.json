@@ -1,0 +1,17 @@
+{
+  "task": {
+    "path": "${CURRENT_TASK}"
+  },
+  "trial_name": "heima-portable-reproduction-9c362e7b4e06",
+  "trials_dir": "${CURRENT_NATIVE_RUN}",
+  "agent": {
+    "name": "nop"
+  },
+  "environment": {
+    "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+    "force_build": true,
+    "kwargs": {
+      "role": "gpt"
+    }
+  }
+}

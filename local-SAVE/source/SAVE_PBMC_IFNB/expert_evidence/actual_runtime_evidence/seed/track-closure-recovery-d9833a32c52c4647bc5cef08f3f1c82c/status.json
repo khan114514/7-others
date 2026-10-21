@@ -1,0 +1,112 @@
+{
+  "lane": "seed",
+  "model": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "status": "FORMAL_RESEARCH_COMPLETE",
+  "started_epoch": 1791730263.855102,
+  "rounds": [],
+  "prior_state_source": "<TASK_ROOT>/private/track-recovery-attached/4bf1320b1f0846af9607ca2dac841c43/seed-research-evidence/status.json",
+  "prior_effective_research_seconds": 36113.69209766388,
+  "effective_research_seconds": 36113.69209766388,
+  "research_credit_from_this_segment_seconds": 0,
+  "best_valid_dev": {
+    "score": 0.5604382503275445,
+    "raw_metric": 0.0016073981951842792,
+    "method_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+    "source": "<TASK_ROOT>/private/track-recovery-balance/8f17436f163c4025a1ebf72c700f0efd/seed-research-evidence/experiments/evaluation-88db00e3838743089ac788264fd4b864/method.py",
+    "evaluation_run_id": "f42be27c85964d2b84b1a19a065c9135"
+  },
+  "container_stability_seconds": 109.82736437499989,
+  "stability_passed": false,
+  "previous_observed_12h_container_stability_proofs": [
+    {
+      "status_source": "<TASK_ROOT>/private/track-recovery-attached/4bf1320b1f0846af9607ca2dac841c43/seed-research-evidence/status.json",
+      "seconds": 43213.8560234278,
+      "environment_binding": {
+        "environment_id": "0fd2a9167d4e4b548d7bbd86fb226769",
+        "physical_role": "seed",
+        "session_id": "save-user-balance-seed-8f17436f163c__env",
+        "container_id": "bc38873a7e5b219ab22a6195c1984b1ed394f9f18f4c47fe21402e4c6250f7f5",
+        "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+        "queue_volume": "save-harbor-q-0fd2a9167d4e4b548d7bbd86fb226769",
+        "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+        "Agent_uses_private_verifier_log_shadow": true,
+        "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+        "declared_remote_gpus": 1,
+        "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+        "portable_runtime_sources": {
+          "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+          "seed_transport.py": "7725c1226401c45f3d9a5002fa40d30f60cbdf01cb4b7458ff95dd88046253e8",
+          "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+          "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+          "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+          "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+          "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+          "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+          "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+        },
+        "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+        "author_oracle": false,
+        "native_container_GPU": false,
+        "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+        "trusted_read_only_cli_runtime": {
+          "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+          "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+          "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+          "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+          "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+        }
+      }
+    }
+  ],
+  "qualified_stability_passed": true,
+  "qualified_stability_basis": "Actual previous owned physical container observed healthy for 43213.856 seconds; new validation container measured separately",
+  "closure_only_no_model_calls": true,
+  "physical_container_rebuilt_after_controller_shutdown_failure": true,
+  "own_native_history_preserved_at": "<TASK_ROOT>/private/track-recovery-attached/4bf1320b1f0846af9607ca2dac841c43/seed-research-evidence/round_0002/own-native-history",
+  "previous_actual_native_session_id": "01a1249f-7656-7ca1-8889-a4c3070059a8",
+  "new_native_session_started": false,
+  "preparation_time_reused": false,
+  "preflight_only": false,
+  "environment_binding": {
+    "environment_id": "4c5f2bcfb1814e36ad451b6f96883eb6",
+    "physical_role": "seed",
+    "session_id": "save-fixed-sha-closure-d9833a32c52c__env",
+    "container_id": "9887d573a15356d0bed08ae47625f3695e98d62d6a72ed39ef3ca89e2c9c2e68",
+    "image_id": "sha256:030938d1a78446342c8ad77c813df6d36f8422a48ab7bdc16a3da7bbc368ebbc",
+    "queue_volume": "save-harbor-q-4c5f2bcfb1814e36ad451b6f96883eb6",
+    "content_addressed_image_name": "<ACTOR_IMAGE>--204315779eb392c1",
+    "Agent_uses_private_verifier_log_shadow": true,
+    "adapter_sha256": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+    "declared_remote_gpus": 1,
+    "relay_sha256": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+    "portable_runtime_sources": {
+      "model_relay.py": "86d61824c8a3c4f90c7524c00d9e98084deb6c840312d9b8d52785a1b39aa4c6",
+      "seed_transport.py": "7725c1226401c45f3d9a5002fa40d30f60cbdf01cb4b7458ff95dd88046253e8",
+      "deployment.py": "c48ecca6c9be182f5c4450e975eeb5a37126f798b9c7afd003618fc145ad8134",
+      "classification_relay.py": "f7f4a01ee2b2e31d467aa2f2ae8bc99e8127e606a5c93424c7c992034f9f4dbe",
+      "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role_transport.py": "9af66c7b258bc7328eb243419518f9e8fd02e61e260bb3def7d89454cacaf790",
+      "bounded_artifact_io.py": "ffb6361f76ab9abcb6d1a4717bea92acf7c86dd206ca2c4cc2fd380c7c123b2d",
+      "model_transport.py": "f7ffec327dedc2c722c0c6ca9d9b370278ca3b9b07c80f471893afdde440f35a",
+      "environment.py": "a408aa3147c1602c07fd4f0fe1e4aa5983a5fc2121e14e7eccfdfa62830809d6",
+      "ark_adapter.py": "34f353ebce111088a839d0017dd21f84825d621ff6987df9dbe6770f0e402d07"
+    },
+    "broker_source_sha256": "3daae2bd802a16926b68428e7a97b78c98e9f58f33c8e1c31bba6696da404e36",
+    "author_oracle": false,
+    "native_container_GPU": false,
+    "remote_trusted_GPU": "A100 through chroot/seccomp Python executor",
+    "trusted_read_only_cli_runtime": {
+      "queue_client.py": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+      "codex": "50b06603bdcdac39b714f5c3e68583c002b8ad8779ebfdaaf4932ff016b379c0",
+      "rg": "e36d0eb52e70696bdf1781392722e05a21bb91d3b7b762ef5ec20e5df2ec687b",
+      "codex-code-mode-host": "7e0004bd8b37936753981729365c448bdc67f0173d9bc6453e40e3ad28774b6c",
+      "local_model_proxy.py": "d0eaf36a92ebcadcbcb692dd1c800d3b712f720d9455b4c16248f7cbae662963"
+    }
+  },
+  "same_owned_relay_dir": "<TASK_ROOT>/private/track-closure-recovery/d9833a32c52c4647bc5cef08f3f1c82c/seed/hybrid-harbor-runtime/4c5f2bcfb1814e36ad451b6f96883eb6/relay",
+  "completed_epoch": 1791730378.449099,
+  "final_method_sha256": "f66fa308d347b54c0946c6680b6590a889145f14badb983a8b6e6991c23d44a9",
+  "fixed_sha_dev_result_sha256": "d1e1d93e1b5c60ef08ca751cdf2d356dbed06b536b9f64758a019446aa937e7b"
+}

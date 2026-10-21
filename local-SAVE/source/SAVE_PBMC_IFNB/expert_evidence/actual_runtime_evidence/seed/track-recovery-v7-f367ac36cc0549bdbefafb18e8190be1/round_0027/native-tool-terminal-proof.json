@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "f144bf5d481513113d394eb443d00da499e474c4f3aa1bde6cd06739bcdc2438",
+  "original_receipt_sha256": "2c672abacaa9255a548a19bdef7adcc060ef1720f17cdc23d0a8f707bf03fe9b",
+  "original_event_last_write_epoch": 1791676081.9019954,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "56a4bbc1dd8fdf34da66184e4173045973f97b5a3358b34ff45763932432f37d",
+      "output_characters": 6102
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json | python3 -m json.tool'",
+      "original_command_sha256": "ff7e5195e48272c93e5238a92aaeb7de0b75458382d8aece7b60098032a6ec0a",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5ccb1d764e952fc21612ff5ba2332c267296f7e0b112eeca10156cecc5e34e76",
+      "output_characters": 3575
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 27728433,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 816169,
+        "reasoning_output_tokens": 98703
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

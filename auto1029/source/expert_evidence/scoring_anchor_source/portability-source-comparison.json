@@ -1,0 +1,50 @@
+{
+  "scope": "Predeclared calibration remains from its original measured deployment; later current-deployment paired validation is additional evidence.",
+  "sources": {
+    "isolated_policy.py": {
+      "measured_sha256": "7511c7f7cdceb322823151e873d080d4c7ea693d112e273b021ae199e43362c8",
+      "current_sha256": "231011e1d174d8eddede425fcbc83cff6b0b55636df9ca6526742b6228cd27bf",
+      "exact_expected_portability_delta_verified": true,
+      "delta": "Only configured private root, jail interpreter and corresponding argv; no decoding, sampling, method, limit or wall-budget change",
+      "measured_copy": "expert_evidence/scoring_anchor_source/measured/isolated_policy.py.source.txt",
+      "current_copy": "workspace/backend/isolated_policy.py"
+    },
+    "policy_jail_launcher.py": {
+      "measured_sha256": "43452b6680d8fec2a818cae3ea0ca32a3991512235bee7f9b2f569bb72eb9e9c",
+      "current_sha256": "a1c49bc522649d49732005a17a80b52f3fe6e995e65a2e70bd9bdf0664b7a910",
+      "exact_expected_portability_delta_verified": true,
+      "delta": "Only configured private root, jail interpreter and corresponding argv; no decoding, sampling, method, limit or wall-budget change",
+      "measured_copy": "expert_evidence/scoring_anchor_source/measured/policy_jail_launcher.py.source.txt",
+      "current_copy": "workspace/backend/policy_jail_launcher.py"
+    },
+    "run_policy_score_v2.py": {
+      "measured_sha256": "58c99176e1e3fa7bb382d571e0e4aca69a259df7c93ede5691eabc3e76bbec44",
+      "current_sha256": "58c99176e1e3fa7bb382d571e0e4aca69a259df7c93ede5691eabc3e76bbec44",
+      "byte_identical": true,
+      "current_copy": "workspace/backend/run_policy_score_v2.py"
+    },
+    "policy_decoder_v1.py": {
+      "measured_sha256": "8c96eec8bb692fad4652899a8def08aba8419f95ec190919b96aaabe465a33ab",
+      "current_sha256": "8c96eec8bb692fad4652899a8def08aba8419f95ec190919b96aaabe465a33ab",
+      "byte_identical": true,
+      "current_copy": "workspace/backend/policy_decoder_v1.py"
+    },
+    "policy_jail_runner.py": {
+      "measured_sha256": "15ccd140d97bea9d220d083198be9bd9f879d7f8d9014d60e89957c731e4e6a0",
+      "current_sha256": "15ccd140d97bea9d220d083198be9bd9f879d7f8d9014d60e89957c731e4e6a0",
+      "byte_identical": true,
+      "current_copy": "workspace/backend/policy_jail_runner.py"
+    },
+    "mcq_metrics.py": {
+      "measured_sha256": "a4be3984afa308aa86f8e05331f4a790545e7f1ea2ef8701def0fc15bcbd7a5b",
+      "current_sha256": "a4be3984afa308aa86f8e05331f4a790545e7f1ea2ef8701def0fc15bcbd7a5b",
+      "byte_identical": true,
+      "current_copy": "workspace/backend/mcq_metrics.py"
+    }
+  },
+  "deployment_validation": "expert_evidence/runtime_dev_validation/comparison_summary.json",
+  "decoder_and_sampler_byte_identical": true,
+  "budget_unchanged": true,
+  "historical_hashes_reassigned": false,
+  "candidate_code_imported": false
+}

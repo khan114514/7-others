@@ -1,0 +1,31 @@
+{
+  "round": "round-01",
+  "policy_name": "max_disagree_early_scale",
+  "method_summary": "Hard-example proposal selection (max LPIPS disagreement per class group) paired with early-scale-biased time sampling (power law t=U^2.5). 256 samples x 4 proposals = 1024 generated, 256 selected. Uniform weighting.",
+  "status": "PREPARED_NOT_EVALUATED",
+  "score": null,
+  "failure_reason": null,
+  "retained_best": false,
+  "time": "2026-10-05T11:29:41.900046+00:00",
+  "causal_hypothesis": {
+    "proposal_selection": "Among multiple teacher proposals per class, samples with maximum LPIPS distance from the initialized student provide the strongest gradient signal. These hard examples expose the student's largest gaps relative to the teacher distribution, maximizing information per training sample under limited sample budget.",
+    "time_distribution": "Biasing FM time samples toward early scales (small t, high noise/unknown tokens) improves one-step generation quality because the inference task \u2014 predicting all tokens from scratch \u2014 most closely resembles training at low t where more tokens must be predicted from less context.",
+    "rationale": "The published DD baseline already achieves reasonable quality. With only 256 training pairs, we need maximum information density per sample. Hard-example selection within proposals + early-scale time focus both increase the effective learning signal per gradient step."
+  },
+  "next_step_decision_rule": {
+    "if_improved": "If FID improves vs baseline, scale up to 1024 samples with same strategy and/or add custom weighting (e.g., difficulty-weighted).",
+    "if_degraded": "If FID degrades, the hard-example selection may be too noisy. Switch to median-selection or soft weighting via proposal_multiplier + custom weights.",
+    "if_same": "If FID is comparable, test with larger sample count or combine with a second algorithmic change (e.g., custom weighting by token diversity)."
+  },
+  "configuration": {
+    "num_samples": 256,
+    "proposal_multiplier": 4,
+    "total_proposals": 1024,
+    "reuse": 1,
+    "filter_rule": "student_agreement_per_label",
+    "weighting": "uniform",
+    "time_sampler": "power_law_alpha_2.5",
+    "selection_strategy": "max_lpips_disagreement"
+  },
+  "source_sha256": "68aa9fc111a91b406def6a313574dac0956b2d7bfa99417772a561f0a61fdd8c"
+}

@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/venv/lib/python3.12/site-packages/harbor/trial/trial.py", line 415, in run
+    await self._prepare()
+  File "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/venv/lib/python3.12/site-packages/harbor/trial/trial.py", line 453, in _prepare
+    await self._setup_agent_environment()
+  File "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/venv/lib/python3.12/site-packages/harbor/trial/trial.py", line 1542, in _setup_agent_environment
+    await self._start_agent_environment()
+  File "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/venv/lib/python3.12/site-packages/harbor/trial/trial.py", line 1548, in _start_agent_environment
+    await asyncio.wait_for(
+  File "<AUTHOR_HOME>/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/venv/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 981, in start
+    await self._run_docker_compose_command(["build"])
+  File "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/venv/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 704, in _run_docker_compose_command
+    raise RuntimeError(
+RuntimeError: Docker compose command failed for environment distilled-decoding-1. Command: docker compose --project-name dd-mac-native-nop-5-0-3-20261006__env --project-directory <AUTHOR_RECOVERY_ROOT>/window_recovery_20261006/native-nop-current-version/task/environment -f /private/tmp/tmpkj6cvsur/dd-mac-native-nop-5-0-3-20261006__env-docker-compose-resources.json -f <AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml -f <AUTHOR_RECOVERY_ROOT>/window_recovery_20261006/native-nop-current-version/task/environment/docker-compose.yaml -f /private/tmp/tmp9qkmzzf1/docker-compose-environment.json -f /private/tmp/tmpu6qs7iaz/docker-compose-mounts.json build. Return code: 1. Stdout:  Image dd-mac-native-nop-5-0-3-20261006__env-main Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 772B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.10kB 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/ubuntu:22.04
+#3 ...
+
+#4 [auth] library/node:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [auth] library/ubuntu:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#6 [internal] load metadata for docker.io/library/node:22.16.0-bookworm-slim
+#6 ERROR: failed to authorize: failed to fetch oauth token: Post "https://auth.docker.io/token": dial tcp 202.160.130.117:443: connect: connection refused
+
+#3 [internal] load metadata for docker.io/library/ubuntu:22.04
+#3 ERROR: failed to authorize: failed to fetch oauth token: Post "https://auth.docker.io/token": dial tcp 202.160.130.117:443: connect: connection refused
+------
+ > [internal] load metadata for docker.io/library/node:22.16.0-bookworm-slim:
+------
+------
+ > [internal] load metadata for docker.io/library/ubuntu:22.04:
+------
+Dockerfile:1
+
+--------------------
+
+   1 | >>> FROM node:22.16.0-bookworm-slim AS node_runtime
+
+   2 |     FROM ubuntu:22.04
+
+   3 |     ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 DD_RUNTIME_SOCKET=/run/dd/public.sock
+
+--------------------
+
+failed to solve: failed to fetch oauth token: Post "https://auth.docker.io/token": dial tcp 202.160.130.117:443: connect: connection refused
+
+. Stderr: None. 

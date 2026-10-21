@@ -1,0 +1,20 @@
+{
+  "task": {
+    "path": "${SOURCE_PROJECT}/private/portable-public-staging/final-portable-task"
+  },
+  "trial_name": "heima-final-portable-nop-b728e47be795",
+  "trials_dir": "${SOURCE_PROJECT}/private/final-backend-host-proof/full-native-nop/b728e47be7954325be3252a5f28c3330",
+  "agent": {
+    "name": "nop"
+  },
+  "environment": {
+    "import_path": "heima_harbor_environment:HeimaDockerEnvironment",
+    "force_build": true,
+    "kwargs": {
+      "role": "gpt"
+    }
+  },
+  "verifier": {
+    "override_timeout_sec": 10800.0
+  }
+}

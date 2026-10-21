@@ -1,0 +1,59 @@
+{
+  "status": "ACTUAL_CURRENT_PUBLIC_MODEL_METHOD_SCORE_DECISION_LOOP_COMPLETED",
+  "track": "codex",
+  "round": 1,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "xhigh",
+  "source_sha256": "8f92177304433b7abab9b0413a9eb6717e3d874db18fe49d0461662bea47ede7",
+  "job_id": "254978704e1647bf9cdc77e53ebb2004",
+  "result": {
+    "job_id": "254978704e1647bf9cdc77e53ebb2004",
+    "scope": "dd-final-track-gpt-calibration",
+    "status": "SUCCESS",
+    "returncode": 0,
+    "finished_unix": 1791260501.3885992,
+    "method_sha256": "8f92177304433b7abab9b0413a9eb6717e3d874db18fe49d0461662bea47ede7",
+    "run_id": "run-3e11093a2a674cc6851b84c767ea3083",
+    "protocol": "dd-selfproto-v1.3",
+    "kind": "CALIBRATION",
+    "metric": 9.730977102619079,
+    "sample_count": 50000,
+    "checkpoint_sha256": "9d54f47971460f95e56412b75646f299fc609cd27b30bd32b9c46919561f3523",
+    "sample_manifest_sha256": "58262673fada28ee084f2d8b5c42d06bdd298936d01cb17d03d6b65b5d1d27fa",
+    "teacher_and_training_seconds": 328.97527551651,
+    "teacher_seed": 1001,
+    "training_seed": 2001,
+    "evaluation_seed": 0,
+    "frozen_manifest_sha256": "b366ba329b015bbae3f6d2027d9004c3aea71f6116b3d84e1fab0927af0b0924"
+  },
+  "archive": {
+    "status": "ALL_ORIGINAL_RUN_FILE_BYTES_ARCHIVED_AND_VERIFIED",
+    "run_id": "run-3e11093a2a674cc6851b84c767ea3083",
+    "observed_utc": "2026-10-06T04:29:56.747379+00:00",
+    "archive_sha256": "9707a4a0dc47820144a5ddfa3046189f3c61b512fe798bcdb3465e6c90f1356c",
+    "archive_bytes": 4866877440,
+    "verified_files": 103,
+    "large_files": [
+      {
+        "path": "training/checkpoint.pth",
+        "bytes": 2625476398,
+        "sha256": "9d54f47971460f95e56412b75646f299fc609cd27b30bd32b9c46919561f3523",
+        "local_archive_member": "run-3e11093a2a674cc6851b84c767ea3083/training/checkpoint.pth"
+      },
+      {
+        "path": "training/training_state.pth.exactzip",
+        "bytes": 2179571613,
+        "sha256": "e748ca4b102ae5151440529ec554c340374256af0901f64bb27309606c4d1461",
+        "local_archive_member": "run-3e11093a2a674cc6851b84c767ea3083/training/training_state.pth.exactzip"
+      }
+    ]
+  },
+  "cli_receipts": [
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/codex/06-prepare-r01-proxy-completion/receipt.json",
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/codex/r01-launch-public-socket-fixed/receipt.json",
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/codex/r01-review/receipt.json"
+  ],
+  "protocol": "dd-selfproto-v1.3",
+  "not_native_harbor_atif": true,
+  "qa_pass_claimed": false
+}

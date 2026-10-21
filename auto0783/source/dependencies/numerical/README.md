@@ -1,0 +1,18 @@
+# Trusted numerical deployment
+
+This helper copies the already frozen six worker/evaluator Python files, the independent CPU audit, the baseline graph and public/hidden inputs into a separate trusted numerical root. It checks every full SHA256 and byte count before and after copying. It does not import or execute them. Selected method builders do not enter this root. The numerical worker accepts only a bounded data graph, never candidate Python or shell.
+
+Materialize the Task's declared hidden inputs first. Then run:
+
+```sh
+python dependencies/numerical/materialize_numerical_runtime.py --manifest dependencies/numerical/runtime-files.json --task Task --destination trusted-worker
+python dependencies/numerical/materialize_numerical_runtime.py --manifest dependencies/numerical/runtime-files.json --destination trusted-worker --verify-only
+```
+
+An existing destination is never overwritten. Verification permits the worker's numerical-workers evidence directory, but the six direct Python modules must remain the exact declared set. Configure Python 3.12.13 and install the pinned dependencies in dependencies/checkpoint/requirements-worker.txt on the assigned single visible A100 host. Materialize or verify the public checkpoint shards with the checkpoint helper. The trusted loopback public tensor server uses port 19195 and serves only the declared 677 public decoder tensor ordinals. The Task's numerical worker loads those into a persistent CPU parent and creates a short-lived CUDA child only after obtaining all pre-existing shared scheduler locks. It releases the locks only after child exit and observed idle GPU memory. A held foreign lock is a wait condition; do not remove it or kill the owning job.
+
+The trusted controller lives in Runtime/numerical_controller.py. Its configuration is external to the package and has exactly these fields: schema (bifrost-trusted-controller/1), ssh_target (configured SSH alias), python (absolute pinned remote interpreter path), remote_root (absolute materialized worker root), gpu_uuid (assigned identity), locks (at least two distinct absolute existing shared scheduler lock paths), state_directory (absolute trusted local evidence directory). Credentials, candidate paths and arbitrary extra commands are not configuration fields. Its default invocation with --config only describes the proposed command and starts no worker or GPU. The explicit --start-new-worker option is only for a clean authorized backend deployment. A local controller flock prevents another controller from starting in the same state root. For an existing campaign, attach the current live controller status to the Harbor adapter and reuse its worker; do not start another parent or tensor server.
+
+A running controller writes numerical-controller-latest.json for the adapter's numerical_status setting. The trusted worker's source and checkpoint binding, all original run identities, raw stage timings and final latent tensors must be saved from its numerical-workers evidence tree. Execute the unchanged independent-audit/recompute_numerical_result.py only against the original completed job directory to recompute its evidence without a model or CUDA job. Failed or incomplete jobs retain their original status and are never assigned a prior score.
+
+Materialization and describe-only receipts are not a live backend or native optimization validation. New source-bound isolation, native NOP, repaired native Oracle, both selected-method full GPU results with independent CPU audits, the continuous container proof, complete ZIP privacy and two-model QA must close before final delivery. The current release candidate remains incomplete.

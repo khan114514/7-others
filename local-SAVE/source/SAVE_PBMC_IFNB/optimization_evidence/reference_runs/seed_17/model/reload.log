@@ -1,0 +1,33 @@
+is_reshape_first: True
+is_enc_cond: True
+enc_dropout: 0.2, dec_dropout: 0.0
+encoder params: 19.91M
+decoder params: 17.58M
+total params: 38.02M
+initialze model weight with seed 17
+{
+  "mode": "reload",
+  "seed": 17,
+  "inference_seed": 10017,
+  "method_sha256": "e1b3d5100b1ef56d5a72b4b44364199d82fbde63863e9953387a77a937336f12",
+  "train_sha256": "da00e9ca331ca15b895c4321e9309b6c200abe859cb9d3f9cf2d9ac2e631a50f",
+  "controls_sha256": "a03c6929cfb35e7b64d03978ca018135165f9d136da284bd69cc9938cadfe3c2",
+  "checkpoint_sha256": "37e90be4cbc8806d44b6e93b0878c0804bb3a41428bf7a799d4453d7899faad7",
+  "checkpoint_bytes": 152124106,
+  "prediction_sha256": "2f379f828ec1a80420d353fb10456b582be704b3e7eeba6e23b4663aefde7573",
+  "train_shape": [
+    21336,
+    2000
+  ],
+  "control_shape": [
+    811,
+    2000
+  ],
+  "training_seconds": 0.0,
+  "elapsed_seconds": 4.056548158638179,
+  "pid": 279657,
+  "gpu": "NVIDIA A100-PCIE-40GB",
+  "peak_cuda_allocated_bytes": 623257600,
+  "torch": "2.5.1+cu124",
+  "cuda": "12.4"
+}

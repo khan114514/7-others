@@ -1,0 +1,120 @@
+{
+  "id": "c2b4fee1-0fed-4713-85b4-601b0fbc6c1c",
+  "task_name": "local-research/bifrost-patch-latent-decoder",
+  "trial_name": "release-oracle-bbb85cb67100",
+  "trial_uri": "file://<author-home>/Documents/ChatGPT/New%20project/bifrost1_20261005/private/tool-policy-home-template-source-repair/1792023397043232000/runtime-state-validation/native-validations/bbb85cb671004296b05e77b20af17068/release-oracle-bbb85cb67100",
+  "task_id": {
+    "path": "Task"
+  },
+  "source": null,
+  "task_checksum": "4d61e360b333277676e36d5e083039feae39cac42325fd8dbec63962936d78a8",
+  "config": {
+    "task": {
+      "path": "Task",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "release-oracle-bbb85cb67100",
+    "trials_dir": "<trusted-runtime-state>/native-validations/bbb85cb671004296b05e77b20af17068",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": "oracle",
+      "import_path": null,
+      "model_name": null,
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {},
+      "mcp_servers": []
+    },
+    "user_agent": null,
+    "environment": {
+      "type": null,
+      "import_path": "oracle_exec_environment:OracleExecDockerEnvironment",
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {
+        "lane": "gpt",
+        "numerical_status": "<private-evidence-root>/tool-policy-current-compute-recovery/1791995473439438000/numerical-controller-state/numerical-controller-latest.json",
+        "runtime_root": "<trusted-runtime-state>",
+        "author_oracle": true
+      },
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "extra_instructions": [],
+    "job_id": null,
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "oracle",
+    "version": "1.0.0",
+    "model_info": null
+  },
+  "agent_result": {
+    "n_input_tokens": null,
+    "n_cache_tokens": null,
+    "n_output_tokens": null,
+    "cost_usd": null,
+    "model_usage": null,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.422766800733905
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-10-15T01:30:07.741923Z",
+  "finished_at": "2026-10-15T02:01:43.802645Z",
+  "environment_setup": {
+    "started_at": "2026-10-15T01:30:07.811391Z",
+    "finished_at": "2026-10-15T01:30:09.518134Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-10-15T01:30:09.518239Z",
+    "finished_at": "2026-10-15T01:30:09.518345Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-10-15T01:30:09.518482Z",
+    "finished_at": "2026-10-15T01:30:09.897434Z"
+  },
+  "verifier": {
+    "started_at": "2026-10-15T01:30:14.402236Z",
+    "finished_at": "2026-10-15T02:01:43.802293Z"
+  },
+  "step_results": null
+}

@@ -1,0 +1,8 @@
+{
+  "workers": 8,
+  "started_utc": "2026-10-06T02:13:51.850809+00:00",
+  "finished_utc": "2026-10-06T02:13:57.693752+00:00",
+  "exit_code": 1,
+  "stdout": "{\"workers\": 8, \"prefetch_factor\": 2, \"batch_size\": 256, \"float32_batch_bytes\": 201326592, \"prefetch_tensor_bytes\": 3221225472, \"shm_before\": {\"total\": 8589934592, \"free\": 3170119680}, \"cpu_only\": true}\n",
+  "stderr_tail": "ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).\n\u0000Traceback (most recent call last):\n  File \"<TRUSTED_DD_DEPLOYMENT>/trajectory_repair_preflight_20261005/dataloader_probe_20261006.py\", line 43, in <module>\n    main()\n  File \"<TRUSTED_DD_DEPLOYMENT>/trajectory_repair_preflight_20261005/dataloader_probe_20261006.py\", line 34, in main\n    time.sleep(15)  # Permit exactly the configured queue to prefetch.\n    ^^^^^^^^^^^^^^\n  File \"<TRUSTED_DD_DEPLOYMENT>/venv/lib/python3.12/site-packages/torch/utils/data/_utils/signal_handling.py\", line 73, in handler\n    _error_if_any_worker_fails()\nRuntimeError: DataLoader worker (pid 645860) is killed by signal: Bus error. It is possible that dataloader's workers are out of shared memory. Please try to raise your shared memory limit.\n"
+}

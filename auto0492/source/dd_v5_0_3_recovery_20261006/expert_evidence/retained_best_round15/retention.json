@@ -1,0 +1,140 @@
+{
+  "recorded_at": "2026-10-05T00:56:05.171158+08:00",
+  "selection": "HISTORICAL_BEST_MODEL_PRESERVED_CURRENT_PORTED_METHOD_RETRAIN_HAS_SMALLER_IMPROVEMENT",
+  "historical_protocol": "dd-selfproto-v1.1",
+  "fid_50k": 9.497105760787463,
+  "baseline_same_seed_fid": 9.663262058820692,
+  "improvement": 0.16615629803322918,
+  "relative_improvement_percent": 1.719463852080474,
+  "saved_weight_repeat_fid": 9.497105760787463,
+  "original_50000_png_manifests_equal": true,
+  "independent_training_seed_stability_proven": false,
+  "original_method_sha256": "543276a0430b112684fd6d93d7c882cb9eb960f03df9adcbf228022e1fda9db5",
+  "checkpoint_sha256": "8169830c70c5ab735a38afc4afe6c03afd4e587e99bc8976189f2de7b70d3753",
+  "current_interface_method_sha256": "5d975efde10be3d07a561ed16654ceb09b26636a11c34270acf005579049ee39",
+  "current_interface_changes": [
+    "Current MethodSpec/TeacherConfig interface and protocol declaration",
+    "CPU method RPC supplied RNG rather than historical direct CUDA call"
+  ],
+  "core_policy": "256 fresh selected teacher pairs; 8 proposals per label; LPIPS agreement minimum; uniform weights; one pass; Uniform(.5,1) training time",
+  "current_protocol_fid": 9.656579371679868,
+  "official_qa_pass_claimed": false,
+  "files": [
+    {
+      "file": "candidate/method.py",
+      "original_sha256": "543276a0430b112684fd6d93d7c882cb9eb960f03df9adcbf228022e1fda9db5",
+      "delivered_sha256": "069024e37e2e9bca44943251a112ef7f63c79c7578d8c4248af3705b911bc1ff"
+    },
+    {
+      "file": "candidate/result.json",
+      "original_sha256": "ed9e098521fe611dd23c09a4027bc9b66bc7394c730747525711a24f3bf94a8c",
+      "delivered_sha256": "7088d2dc02b3425afb2d39d71a1e53d7dd6b5bcd519c016203f6705bd2e79470"
+    },
+    {
+      "file": "candidate/review.json",
+      "original_sha256": "e91b1963174a520050356afb17bbfcd7f25a58d384ece0d621e5e4e3e455eb65",
+      "delivered_sha256": "e91b1963174a520050356afb17bbfcd7f25a58d384ece0d621e5e4e3e455eb65"
+    },
+    {
+      "file": "candidate/fid.txt",
+      "original_sha256": "3d95dbad8c4e4babd57dc4e35154c2fcd3cb5277c2797bceff594c481d11b322",
+      "delivered_sha256": "3d95dbad8c4e4babd57dc4e35154c2fcd3cb5277c2797bceff594c481d11b322"
+    },
+    {
+      "file": "candidate/sample_manifest.jsonl",
+      "original_sha256": "9c80d17c8e963b6995da1834b0770c8225f684429c85828640f5d7d7455d903a",
+      "delivered_sha256": "9c80d17c8e963b6995da1834b0770c8225f684429c85828640f5d7d7455d903a"
+    },
+    {
+      "file": "candidate/budget.json",
+      "original_sha256": "2389cd2234fb98ff0d981ab331c11576fa2d32848e40363bc6a53a3144ae1333",
+      "delivered_sha256": "2389cd2234fb98ff0d981ab331c11576fa2d32848e40363bc6a53a3144ae1333"
+    },
+    {
+      "file": "candidate/student_training_execution.json",
+      "original_sha256": "55dd18ec4c653a7a3c95ee74ce1528ebb3ea1242b33a070a3bab3162750821d1",
+      "delivered_sha256": "3a5a858ca8406de0abe6143cb782a612dcb3e02366549d0c197e080555153a35"
+    },
+    {
+      "file": "candidate/teacher_generation_execution.json",
+      "original_sha256": "88bd38450d338f939e173416f831a858b825e9c05f6ca9e4d9ce5b2c22f17a74",
+      "delivered_sha256": "bb5d06f5045571b2f39617fc45019bfee2c76ba12ca69420871745c69f851069"
+    },
+    {
+      "file": "candidate/ram_png_storage.json",
+      "original_sha256": "edf1b91685845f974f1bdf47f1efc518ccd07bf56d51fe89f859cb69da9a93d4",
+      "delivered_sha256": "edf1b91685845f974f1bdf47f1efc518ccd07bf56d51fe89f859cb69da9a93d4"
+    },
+    {
+      "file": "candidate/sample_grid.jpg",
+      "original_sha256": "2de1a0a85620046e8ea6575ee665902d227ed5eb65413c0eddf3c36ff132d192",
+      "delivered_sha256": "2de1a0a85620046e8ea6575ee665902d227ed5eb65413c0eddf3c36ff132d192"
+    },
+    {
+      "file": "candidate/teacher_filter_analysis.json",
+      "original_sha256": "7a9c7492980a137f45cad5c3033595e58768d0f4c0ad7763132903183810da83",
+      "delivered_sha256": "7a9c7492980a137f45cad5c3033595e58768d0f4c0ad7763132903183810da83"
+    },
+    {
+      "file": "saved_weight_validation/result.json",
+      "original_sha256": "b897ad49e7cced91d8cc1726ece20f46e955dcc7e797e3c0cb605e2b7b31e29c",
+      "delivered_sha256": "b897ad49e7cced91d8cc1726ece20f46e955dcc7e797e3c0cb605e2b7b31e29c"
+    },
+    {
+      "file": "saved_weight_validation/review.json",
+      "original_sha256": "0d21c8f76221c5478c630033c83c06f6d56d185b1b20a3db0e67eb090e637313",
+      "delivered_sha256": "0d21c8f76221c5478c630033c83c06f6d56d185b1b20a3db0e67eb090e637313"
+    },
+    {
+      "file": "saved_weight_validation/fid.txt",
+      "original_sha256": "3d95dbad8c4e4babd57dc4e35154c2fcd3cb5277c2797bceff594c481d11b322",
+      "delivered_sha256": "3d95dbad8c4e4babd57dc4e35154c2fcd3cb5277c2797bceff594c481d11b322"
+    },
+    {
+      "file": "saved_weight_validation/sample_manifest.jsonl",
+      "original_sha256": "9c80d17c8e963b6995da1834b0770c8225f684429c85828640f5d7d7455d903a",
+      "delivered_sha256": "9c80d17c8e963b6995da1834b0770c8225f684429c85828640f5d7d7455d903a"
+    },
+    {
+      "file": "saved_weight_validation/ram_png_storage.json",
+      "original_sha256": "c8f517a365c2b605b81f9fc7ea021f768143563d852e668e9c6df324939d80b5",
+      "delivered_sha256": "c8f517a365c2b605b81f9fc7ea021f768143563d852e668e9c6df324939d80b5"
+    },
+    {
+      "file": "saved_weight_validation/sample_grid.jpg",
+      "original_sha256": "2de1a0a85620046e8ea6575ee665902d227ed5eb65413c0eddf3c36ff132d192",
+      "delivered_sha256": "2de1a0a85620046e8ea6575ee665902d227ed5eb65413c0eddf3c36ff132d192"
+    }
+  ],
+  "current_protocol_saved_model_confirmation": {
+    "status": "SUCCESS_ACTUAL_FULL_EVALUATION",
+    "training_performed": false,
+    "protocol": "dd-selfproto-v1.3",
+    "evaluation_seed": 0,
+    "sample_count": 50000,
+    "fid": 9.497105760787463,
+    "run_id": "run-78ee67b989c54fc7baf78a72d0c6d240",
+    "sample_manifest_sha256": "9c80d17c8e963b6995da1834b0770c8225f684429c85828640f5d7d7455d903a",
+    "original_historical_whole_manifest_identical": true,
+    "evidence": "optimization_evidence/terminal_records/run-78ee67b989c54fc7baf78a72d0c6d240/result.json",
+    "is_new_training_reference": false,
+    "is_current_qa_certificate": false
+  },
+  "portable_ema_backup": {
+    "status": "ACTUAL_EXPORT_CPU_RELOAD_AND_DURABLE_HASH_PASS",
+    "bytes": 1312736238,
+    "sha256": "48d1b46cbb9897612e5c0996fe4a967fc89ce27a08613c271502eb2f6438c646",
+    "original_full_checkpoint_sha256": "8169830c70c5ab735a38afc4afe6c03afd4e587e99bc8976189f2de7b70d3753",
+    "ema_tensor_manifest_sha256": "e553b9e899c7813883ac5213198bd28cde8b0b5c789c4de6032bf44709d8db37",
+    "all_240_official_inference_tensors_byte_identical": true,
+    "full_training_archive_preserved": true,
+    "model_asset_currently_private_author_backup": false,
+    "formal_fid_repeat_not_claimed_by_export": true,
+    "model_asset_delivery_path": "expert_evidence/model_assets/retained_best_round15/ema_inference_checkpoint.pth",
+    "actual_delivery_full_sha_verified": true
+  },
+  "previous_current_retraining_checkpoint_sha256": "7237c509dc71ecbcf8590b930ab0253dc9bf0dd493c89ae9a00d0b27d46a8202",
+  "current_retraining_checkpoint_sha256": "0705cab2761652d088380eaf3347df89c47b1a223e653ffd6565f8e205659356",
+  "selected_current_reference_source": "workspace/reference/method.py",
+  "selected_current_reference_public_fid_50k": 9.511905516911611
+}

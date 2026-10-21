@@ -1,0 +1,34 @@
+{
+  "original_event_sha256": "7106437ca2f69b1caa19f12d678711380e7e6c1bb56b9abff88f79228121e213",
+  "original_receipt_sha256": "aa5b229a47de36b5c7999bccd5ec74a42ab370dbc76e4b5cfb34f5a694c3abb4",
+  "original_event_last_write_epoch": 1791782552.2024643,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc \"cat /workspace/solution/dev_result.json | python3 -c \\\"import sys,json; d=json.load(sys.stdin); print('status:', d.get('status')); print('raw_metric:', d.get('raw_metric')); print('score:', d.get('score')); print('elapsed:', d.get('elapsed_seconds')); print('method_sha256:', d.get('method_sha256'))\\\"\"",
+      "original_command_sha256": "3a5951d4554d25c10aefab91a72ad548622a8dd781261d396ef8370edca63caa",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "32331b3503c96c700f5d4caffd1fa68e79a789bf29ee90f946c832c625dce7c1",
+      "output_characters": 184
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 45586455,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1067958,
+        "reasoning_output_tokens": 145319
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

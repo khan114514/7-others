@@ -1,0 +1,25 @@
+{
+  "observed_iso": "2026-10-07T03:11:30.814674+08:00",
+  "failed_runtime": "forecast-research-seed-c6112f5b__env",
+  "broker_error_evidence": "harbor-runtime/forecast-research-seed-c6112f5b__env/routes/broker-stderr.log",
+  "observed_exception": "OSError errno28 No space left on device",
+  "actual_tmpfs_measurement": {
+    "file_count": 32978,
+    "file_content_bytes": 10715136,
+    "allocated_bytes": 134217728,
+    "available_bytes": 0
+  },
+  "cause": "360-second Actor request expiry abandoned stream; late per-event response files had no host broker lifetime or garbage collection, accumulating until the128MiB queue filled and broker incoming thread exited",
+  "repair": [
+    "Host broker per-request deadlines matching existing Actor client timeouts",
+    "Discard expired nonce response files and ignore subsequent late frames",
+    "Handle queue overload for that nonce without killing broker",
+    "Batch identical Chat-to-Responses SSE events into bounded chunks",
+    "Include pending request boundaries in normal-work time exclusion calculations"
+  ],
+  "synthetic_transport_test_evidence": "seed-queue-repair-tests.json",
+  "actual_recovery_evidence": "seed-queue-repair-verified.json",
+  "frozen_actor_build_context_modified": false,
+  "reference_hidden_credentials_added_to_actor": false,
+  "clock_correction_evidence": "seed-late-receipt-clock-reconciliation.json"
+}

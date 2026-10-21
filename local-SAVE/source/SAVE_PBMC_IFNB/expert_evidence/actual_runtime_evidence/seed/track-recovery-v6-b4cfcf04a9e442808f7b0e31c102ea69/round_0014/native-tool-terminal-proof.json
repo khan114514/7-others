@@ -1,0 +1,52 @@
+{
+  "original_event_sha256": "7477852fb91e99677c39f926f55e8d4e4b2a11a4c24fc6270a087fb7bb48ee7f",
+  "original_receipt_sha256": "7efc57830c55db0c59aa85c18588082d7f326b51f72cb5ebf02c14a7c632ad65",
+  "original_event_last_write_epoch": 1791626280.833995,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md 2>/dev/null | head -100'",
+      "original_command_sha256": "af981068ee277b4f8c5cd092b1145231262253f3217aee76c0321f0db83a9249",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "cff97f1a0e36f9d856670efdc31c8438cc9405107cfebad18aec60109972243c",
+      "output_characters": 4908
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "bc8e3908fbdc48c2e9bc258f85390873dfbb4bcea102b91dfc2a7e82da7579ee",
+      "output_characters": 1594
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'cat /workspace/solution/own-continuation-notes.md 2>/dev/null | head -50'",
+      "original_command_sha256": "8d2377e59cb134d6e20ca70c1f2fc38e5fd9139895759d6881ced64965a6c2ad",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "3cffd2729c7b06d19d95dd3471e23f379a5e9e2d738437bf4616bf98b999558c",
+      "output_characters": 4168
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 7371520,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 331227,
+        "reasoning_output_tokens": 27102
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

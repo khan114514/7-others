@@ -1,0 +1,104 @@
+{
+  "schema_version": "autoresearch-comparison-summary.v2",
+  "status": "COMPLETE",
+  "metric": {
+    "name": "dev_mean_expression_mse",
+    "direction": "minimize"
+  },
+  "protocol": "pbmc-context-v1",
+  "seeds": [
+    17,
+    29,
+    43,
+    71,
+    97
+  ],
+  "paired_results": {
+    "17": {
+      "baseline": 0.003521345965315171,
+      "baseline_result": "optimization_evidence/baseline_runs/seed_17/result.json",
+      "baseline_result_sha256": "66befece36befa22ae1355a7d9cb99f3ef44a5aa970060c74c632bde60d9d454",
+      "baseline_checkpoint_sha256": "37e90be4cbc8806d44b6e93b0878c0804bb3a41428bf7a799d4453d7899faad7",
+      "reference": 0.0025195494768602486,
+      "reference_result": "optimization_evidence/reference_runs/seed_17/result.json",
+      "reference_result_sha256": "809efe764ca6ea6de7faa4392a0724111612b173f9245116e15e0768d7202922",
+      "reference_checkpoint_sha256": "37e90be4cbc8806d44b6e93b0878c0804bb3a41428bf7a799d4453d7899faad7",
+      "paired_improvement": 0.0010017964884549225
+    },
+    "29": {
+      "baseline": 0.0033021915259081455,
+      "baseline_result": "optimization_evidence/baseline_runs/seed_29/result.json",
+      "baseline_result_sha256": "87e0602e1bffc13bf177524946213a0e7469b0cd1fb381af1ac916aeb80a4bde",
+      "baseline_checkpoint_sha256": "580d903678e6f7652f1450ee5c87d4a5915d9efac049306291a26bd72a24aa92",
+      "reference": 0.002588580169771265,
+      "reference_result": "optimization_evidence/reference_runs/seed_29/result.json",
+      "reference_result_sha256": "0428a258d2e248b9a7e74a87cecbf5f235ca7ddbdf1ff313519ec527df43bc01",
+      "reference_checkpoint_sha256": "580d903678e6f7652f1450ee5c87d4a5915d9efac049306291a26bd72a24aa92",
+      "paired_improvement": 0.0007136113561368807
+    },
+    "43": {
+      "baseline": 0.0037422385312627805,
+      "baseline_result": "optimization_evidence/baseline_runs/seed_43/result.json",
+      "baseline_result_sha256": "5c8ea27c3a10725548a0bb59f1fb725f5debf27c167da9bd883a35e6c57f084d",
+      "baseline_checkpoint_sha256": "3df9c00964a8abe0b1cc759bc44e20ea7c3dbe370dddb211081ed410d05ad381",
+      "reference": 0.002632300182344638,
+      "reference_result": "optimization_evidence/reference_runs/seed_43/result.json",
+      "reference_result_sha256": "26f69e92362a3050b6a63c77e2a9a183ea5bfb9d87db484f776581a22c3e9771",
+      "reference_checkpoint_sha256": "3df9c00964a8abe0b1cc759bc44e20ea7c3dbe370dddb211081ed410d05ad381",
+      "paired_improvement": 0.0011099383489181426
+    },
+    "71": {
+      "baseline": 0.003958055914797509,
+      "baseline_result": "optimization_evidence/baseline_runs/seed_71/result.json",
+      "baseline_result_sha256": "38ec9e4135c07cf8ff9403a883c426756ac7afbf24686896456372dff246dbc0",
+      "baseline_checkpoint_sha256": "4ebee1d993884dc6bfdba18832a7968a82d4532a20586a7f86431b39f4f3a58f",
+      "reference": 0.0026512386258838146,
+      "reference_result": "optimization_evidence/reference_runs/seed_71/result.json",
+      "reference_result_sha256": "16530c85b3d0a3b4f234a51f7fe59d71eb7042ffdeba60486e9dd26b1bade7af",
+      "reference_checkpoint_sha256": "4ebee1d993884dc6bfdba18832a7968a82d4532a20586a7f86431b39f4f3a58f",
+      "paired_improvement": 0.0013068172889136942
+    },
+    "97": {
+      "baseline": 0.0037602680370891666,
+      "baseline_result": "optimization_evidence/baseline_runs/seed_97/result.json",
+      "baseline_result_sha256": "ff838c853cb9a185ecd28c42b25693843ae7d737d435b2c0b2b3e1da0ce83f23",
+      "baseline_checkpoint_sha256": "3c4278b0959eef89e660024e53f799e88e19c8bd33cdf10b2c8d4bd4ef7f16b8",
+      "reference": 0.0027709962089949437,
+      "reference_result": "optimization_evidence/reference_runs/seed_97/result.json",
+      "reference_result_sha256": "48aee3a5fef569939ad386ec1a56fa55606aa720b2a4efbd9d3e994561e11577",
+      "reference_checkpoint_sha256": "3c4278b0959eef89e660024e53f799e88e19c8bd33cdf10b2c8d4bd4ef7f16b8",
+      "paired_improvement": 0.0009892718280942229
+    }
+  },
+  "statistics": {
+    "paired_run_count": 5,
+    "baseline_mean": 0.0036568199948745547,
+    "baseline_sample_std": 0.00025142367973954213,
+    "reference_mean": 0.002632532932770982,
+    "reference_sample_std": 9.249208435740258e-05,
+    "mean_paired_improvement": 0.0010242870621035727,
+    "relative_improvement": 0.28010322179905667,
+    "baseline_sigma_multiple": 4.0739482580346635,
+    "reference_normalized_score": 0.28010322179905667
+  },
+  "upper_bound": {
+    "raw": 0.0,
+    "source": "metric_ceiling"
+  },
+  "significance_rule": {
+    "required_baseline_sigma_multiple": 3.0,
+    "passed": true
+  },
+  "reference_range_passed": true,
+  "G03_passed": true,
+  "predeclared_expansion_required": false,
+  "five_seed_expansion_completed": true,
+  "evidence_strength": "acceptable_with_platform_review",
+  "validity": {
+    "same_protocol": true,
+    "same_seed_set": true,
+    "all_quality_gates_passed": true,
+    "all_checkpoints_reload_and_rescore_passed": true
+  },
+  "scope": "Expert formal public Dev evidence; no official platform Hidden or model trajectory claim"
+}

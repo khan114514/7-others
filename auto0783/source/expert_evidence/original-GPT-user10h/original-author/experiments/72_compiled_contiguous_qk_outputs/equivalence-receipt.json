@@ -1,0 +1,12 @@
+{
+  "base": "experiments/53_compiled_image_rotary/method.py",
+  "base_canonical_sha256": "0950ec46626c36eb33a6490c84f1c1c963a4727c4c647708ae6a144322227196",
+  "candidate_canonical_sha256": "e2038771f8e21dc6f81759f594986d2508a04b567263d12d9293df930859145a",
+  "changed_existing_nodes": [
+    "image_query",
+    "image_key"
+  ],
+  "unchanged_other_nodes": 105,
+  "argument": "Original Q/K slices copied with single-input concat. Tensor values and all arithmetic nodes are unchanged; output stride and compiler boundary change. Numerical Dev qualification remains required.",
+  "hypothesis_scope": "Historical eager 41 score-copy observation plus source-derived batch gap; selected compiled method has no supplied kernel profile."
+}

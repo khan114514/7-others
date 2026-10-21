@@ -1,0 +1,61 @@
+{
+  "original_event_sha256": "6630f7502237b28472fbbb973ab813ee5116da8c4446cd14ea846c3320bce0ed",
+  "original_receipt_sha256": "d008432776fbeb3ae24a07c5ab7a20e5003e639c834cc2975fbd56dbdbcf3264",
+  "original_event_last_write_epoch": 1791794977.9397955,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'head -120 /tests/grader.py'",
+      "original_command_sha256": "11fc448981682cdf3405bf01906815aaec175bedc037fcb5d98b425226ed2f40",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "aa412adc490632dfb43502970452c73007ca6d496ba135426c8278ebb760a4a1",
+      "output_characters": 2087
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'cat /tests/train_eval.py'",
+      "original_command_sha256": "2adf83d22f3ea9380f6f724784a467f3a53d2bfe797575ba6509a32daadf0570",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c461a7252e5fe8f35d332c557d7d074df42d6c5fda565d32dba28f2f53d2157b",
+      "output_characters": 4272
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /tests/metrics.py'",
+      "original_command_sha256": "8873094dd2aaaa8906ac3d0cfb0758f689b3412e41c689524d3936a9041dee57",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "28c0232a184bfe36dfaaba35fa54d6f02b37a1629f76eaefbe448dacb41098cd",
+      "output_characters": 1487
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'head -200 /tests/isolated_executor.py'",
+      "original_command_sha256": "c84ef2ddad635e92e4ddb45966e4a634fae484f0faf8fdc92493eded516ad897",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "24f78f79a3ea55283e273e20a8472de93f56dfa6ff93768ed7dedd5ce5a60cc5",
+      "output_characters": 3150
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 48740940,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1088209,
+        "reasoning_output_tokens": 148958
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

@@ -1,0 +1,78 @@
+{
+  "checked_unix": 1791437080.1126468,
+  "track": "seed",
+  "round": 29,
+  "type": "independent completed method cycle",
+  "agent_model": "doubao-seed-2-1-turbo-260628",
+  "candidate_sha256": "b4b8eca451f1a62874a425e05acc2fcff52107e15f49845e9639dbf65f4c6cc4",
+  "candidate_source": "campaigns/asd-research-1791425440/harbor_task__2XajarE/agent/private_candidate_sources/round_00029.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.4384672232062127,
+      "score": 0.5893159564569433,
+      "quality_gates_passed": true,
+      "method_sha256": "b4b8eca451f1a62874a425e05acc2fcff52107e15f49845e9639dbf65f4c6cc4",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791433829.499649,
+      "end_unix": 1791434098.8657608
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.47891176514895006,
+    "score": 0.5514341556171153,
+    "quality_gates_passed": true,
+    "method_sha256": "b4b8eca451f1a62874a425e05acc2fcff52107e15f49845e9639dbf65f4c6cc4",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791436374.0718205,
+    "end_unix": 1791436606.1643136
+  },
+  "model_final_decision": {
+    "policy_name": "observed-candidate-29",
+    "method_summary": "Improved from 0.461 to 0.4385 relative CPU time. Core optimizations: reshaped matmul replaces einsum for q/k/v projections; output computed as p_mix@v instead of (p_mix@x)@wv^T, which trades B*H*L^2*D + B*L*C*H*D for B*H*L^2*C + B*H*L*C*D — much cheaper when D<<C; norms computed via Gram matrix G=xx^T with (pG*p).sum(-1) instead of direct p@x + norm, saving B*H*L^2*C vs B*H*L^3 when C>L; direct 4D softmax replaces view+2D+view pattern; aggressive in-place elementwise ops (mul_, add_, sqrt_, clamp_, div_) cut allocations. All quality gates pass.",
+    "next_direction": "Try fused q+k weight projection to reduce weight-matrix memory reads from 3x to 1x, though torch.cat overhead may negate gains for smaller cases. Also worth exploring: pre-expanded G in BH-batched form for bmm, and reordering p@G calls to maximize cache reuse of the small L×L Gram matrix."
+  },
+  "original_controller_decision": {
+    "round": 29,
+    "policy_name": "observed-candidate-29",
+    "method_summary": "Improved from 0.461 to 0.4385 relative CPU time. Core optimizations: reshaped matmul replaces einsum for q/k/v projections; output computed as p_mix@v instead of (p_mix@x)@wv^T, which trades B*H*L^2*D + B*L*C*H*D for B*H*L^2*C + B*H*L*C*D — much cheaper when D<<C; norms computed via Gram matrix G=xx^T with (pG*p).sum(-1) instead of direct p@x + norm, saving B*H*L^2*C vs B*H*L^3 when C>L; direct 4D softmax replaces view+2D+view pattern; aggressive in-place elementwise ops (mul_, add_, sqrt_, clamp_, div_) cut allocations. All quality gates pass.",
+    "status": "ok",
+    "score": 0.47891176514895006,
+    "failure_reason": null,
+    "retained_best": false,
+    "time": "2026-10-08 13:16:46"
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791425751.5616367,
+    "ended_unix": 1791436370.9937248,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "session": {
+    "round": 29,
+    "start_unix": 1791425751.287696,
+    "end_unix": 1791436606.771888,
+    "observed_seconds": 7330.588475624798,
+    "effective_seconds": 7330.588475624798,
+    "model_seconds": 7094.9539425408,
+    "model_completed": true,
+    "successful_command_tools": 75,
+    "semantic_method_changed": true,
+    "exit_code": 0,
+    "genuine_method_cycle": true,
+    "model_transport_failed": true,
+    "method_sha256": "b4b8eca451f1a62874a425e05acc2fcff52107e15f49845e9639dbf65f4c6cc4",
+    "public_result": "round_00029.grader.log",
+    "events": "round_00029.events.jsonl",
+    "next_direction": "Try fused q+k weight projection to reduce weight-matrix memory reads from 3x to 1x, though torch.cat overhead may negate gains for smaller cases. Also worth exploring: pre-expanded G in BH-batched form for bmm, and reordering p@G calls to maximize cache reuse of the small L×L Gram matrix."
+  },
+  "original_events": "campaigns/asd-research-1791425440/harbor_task__2XajarE/agent/round_00029.events.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor and host measurements may differ; unique final best requires clean repeat comparison.",
+  "own_resume_evidence": "campaigns/asd-research-1791425440/harbor_task__2XajarE/agent/resume-provenance.json"
+}

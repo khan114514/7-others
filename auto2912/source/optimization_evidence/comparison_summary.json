@@ -1,0 +1,44 @@
+{
+  "task_id": "auto2912",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "metric": "mae",
+  "direction": "minimize",
+  "paired_results": {
+    "17": {
+      "baseline": 15.421857156583444,
+      "reference": 15.094631864779133,
+      "improvement": 0.3272252918043108
+    },
+    "29": {
+      "baseline": 15.421857156583444,
+      "reference": 15.100112152134592,
+      "improvement": 0.3217450044488519
+    },
+    "43": {
+      "baseline": 15.421857156583444,
+      "reference": 15.09311989424863,
+      "improvement": 0.3287372623348137
+    }
+  },
+  "baseline_mean": 15.421857156583444,
+  "baseline_sample_std": 0.0,
+  "reference_mean": 15.095954637054119,
+  "reference_sample_std": 0.0036790233017135383,
+  "mean_improvement": 0.3259025195293255,
+  "baseline_sigma_multiple": null,
+  "deterministic_identity_baseline": true,
+  "normalized_reference": 0.6885200792963072,
+  "upper_estimate": 14.948519443814908,
+  "all_quality_gates_pass": true,
+  "G01": "executable fit/predict methods; learned conditional residual model plus fixed mixture",
+  "G02": "same frozen sufficiently trained original predictor, public calibration corpus and complete scoring protocol",
+  "G03": "passed",
+  "protocol_sha256": "660f81aca3854dac6323b0ce2cae1804cb14a23f07ad9d62d8e895a1b41f688c",
+  "shared_pretrained_neural_checkpoint": true,
+  "independent_neural_training_replicates": false,
+  "baseline_frozen_protocol_recheck": "expert_evidence/provenance/baseline-frozen-protocol-recheck.json"
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "event_id": "item_84",
+    "original_command": "/bin/sh -lc \"sed -n '1,220p' experiments/79_image_only_rotary_frequency/method.py\"",
+    "actual_exit_code": 2,
+    "actual_output": "sed: can't read experiments/79_image_only_rotary_frequency/method.py: No such file or directory\n",
+    "classification": "local read/search failure or no-match; not Dev quality/infrastructure failure"
+  },
+  {
+    "event_id": "item_102",
+    "original_command": "/bin/sh -lc 'cat experiments/43_flat_image_output_projection/method.py'",
+    "actual_exit_code": 1,
+    "actual_output": "cat: experiments/43_flat_image_output_projection/method.py: No such file or directory\n",
+    "classification": "local read/search failure or no-match; not Dev quality/infrastructure failure"
+  },
+  {
+    "event_id": "item_120",
+    "original_command": "/bin/sh -lc \"rg --files experiments | rg '/([1-9]|[12][0-9]|30)_[\"'^/]+/(method.py|dev-result.json)$'\"'\"",
+    "actual_exit_code": 1,
+    "actual_output": "",
+    "classification": "local read/search failure or no-match; not Dev quality/infrastructure failure"
+  },
+  {
+    "event_id": "item_132",
+    "original_command": "/bin/sh -lc \"python - <<'PY'\nimport json\nfrom pathlib import Path\np=json.loads(Path('own-previous-Dev-evidence.json').read_text())['evaluations']\nfor key in ['ac8b563db5de40b493e916eb37d8edd0','041db57fc739428d8562c8b45cefa44f','47589f8e2b534022aad3fa2742948ff7']:\n x=p[key];print(key,json.dumps(x,indent=2)[:2500])\nPY\"",
+    "actual_exit_code": 1,
+    "actual_output": "Traceback (most recent call last):\n  File \"<stdin>\", line 5, in <module>\nac8b563db5de40b493e916eb37d8edd0 {\n  \"artifact_sha256\": \"12b3e2fcd7a80ab8b462ad1332de106160abde862be2870d88c4b2316dae0b8c\",\n  \"execution_status\": \"COMPLETED\",\n  \"quality_pass\": true,\n  \"reward\": 0.6918306189674902,\n  \"result_sha256\": \"ea8733f2f5682c576d5a4858d75070bfae5608858a590059de52ee2204a3ff2b\",\n  \"profile\": \"dev\",\n  \"captured_builder_available\": true\n}\nKeyError: '041db57fc739428d8562c8b45cefa44f'\n",
+    "classification": "local read/search failure or no-match; not Dev quality/infrastructure failure"
+  }
+]

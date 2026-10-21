@@ -1,0 +1,46 @@
+[dist initialize] env variable "RANK" is not set, use cuda:0 as the device
+[10-04 15:33:20] (or/var/utils/arg_util.py, line 190)=> [tf32] [precis] torch.get_float32_matmul_precision(): high
+[10-04 15:33:20] (or/var/utils/arg_util.py, line 191)=> [tf32] [ conv ] torch.backends.cudnn.allow_tf32: True
+[10-04 15:33:20] (or/var/utils/arg_util.py, line 192)=> [tf32] [matmul] torch.backends.cuda.matmul.allow_tf32: True
+[10-04 15:33:20] (vendor/var/models/var.py, line  98)=> 
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+runtime:python/lib/python3.12/site-packages/torch/nn/init.py:51: UserWarning: Specified kernel cache directory could not be created! This disables kernel caching. Specified directory is runtime:initial_smoke/run-0dc76358dcdd4d0cafaa5746a29aff47/kernel-cache. This warning will appear only once per process. (Triggered internally at ../aten/src/ATen/native/cuda/jit_utils.cpp:1442.)
+  tensor.erfinv_()
+runtime:initial_deployment/workspace/harbor_task/environment/vendor/var/sample.py:62: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  vae.load_state_dict(torch.load(args.vae_ckpt, map_location='cpu'), strict=True)
+runtime:initial_deployment/workspace/harbor_task/environment/vendor/var/sample.py:63: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dd_state_dict = torch.load(args.ckpt_path, map_location='cpu')
+runtime:initial_deployment/workspace/harbor_task/environment/vendor/var/models/dd.py:109: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=False):
+runtime:initial_deployment/workspace/harbor_task/environment/vendor/var/models/dd.py:302: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  concat_pos = self.L - torch.tensor(self.accum_token_length[1:])[split_t] - 1
+[10-04 15:33:20] (vendor/var/models/var.py, line 340)=> [init_weights] DD_Model with init_std=0.0180422
+[10-04 15:33:23] (ent/vendor/var/sample.py, line  66)=> Missing keys for EMA: ['lvl_1L', 'attn_bias_for_masking', 'blocks.0.attn.zero_k_bias', 'blocks.1.attn.zero_k_bias', 'blocks.2.attn.zero_k_bias', 'blocks.3.attn.zero_k_bias', 'blocks.4.attn.zero_k_bias', 'blocks.5.attn.zero_k_bias', 'blocks.6.attn.zero_k_bias', 'blocks.7.attn.zero_k_bias', 'blocks.8.attn.zero_k_bias', 'blocks.9.attn.zero_k_bias', 'blocks.10.attn.zero_k_bias', 'blocks.11.attn.zero_k_bias', 'blocks.12.attn.zero_k_bias', 'blocks.13.attn.zero_k_bias', 'blocks.14.attn.zero_k_bias', 'blocks.15.attn.zero_k_bias']
+[10-04 15:33:23] (ent/vendor/var/sample.py, line  67)=> Unexpected keys for EMA: []
+[10-04 15:33:24] (/engine/ram_png_entry.py, line  86)=> {"ram_png_count": 1, "ram_png_bytes": 124160, "finite_decoded_batch_checks": 1, "peak_torch_allocated_mib": 7209.39453125, "peak_torch_reserved_mib": 10792.0}
+runtime:initial_deployment/workspace/harbor_task/environment/vendor/var/evaluation/fid_score.py:281: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  act = torch.load(os.path.join(load_act, "statistic.pth"))
+[10-04 15:33:24] (ent/vendor/var/sample.py, line 113)=> generate 8 images
+[10-04 15:33:25] (ent/vendor/var/sample.py, line 113)=> generate 16 images
+[10-04 15:33:25] (ent/vendor/var/sample.py, line 113)=> generate 24 images
+[10-04 15:33:26] (ent/vendor/var/sample.py, line 113)=> generate 32 images
+[10-04 15:33:26] (ent/vendor/var/sample.py, line 113)=> generate 40 images
+[10-04 15:33:27] (ent/vendor/var/sample.py, line 113)=> generate 48 images
+[10-04 15:33:28] (ent/vendor/var/sample.py, line 113)=> generate 56 images
+[10-04 15:33:28] (ent/vendor/var/sample.py, line 113)=> generate 64 images
+[10-04 15:33:29] (/evaluation/fid_score.py, line 316)=> ['assets:dd/fid_stats', None]
+[10-04 15:33:29] (/evaluation/fid_score.py, line 317)=> None
+[10-04 15:33:29] (/evaluation/fid_score.py, line 318)=> 0
+[10-04 15:33:29] (/evaluation/fid_score.py, line 126)=> Warning: batch size is bigger than the data size. Setting batch size to data size
+  0%|          | 0/1 [00:00<?, ?it/s]100%|##########| 1/1 [00:01<00:00,  1.15s/it]100%|##########| 1/1 [00:01<00:00,  1.26s/it]
+[10-04 15:33:35] (/evaluation/fid_score.py, line 316)=> ['assets:dd/fid_stats', None]
+[10-04 15:33:35] (/evaluation/fid_score.py, line 317)=> None
+[10-04 15:33:35] (/evaluation/fid_score.py, line 318)=> 0
+[10-04 15:33:36] (/evaluation/fid_score.py, line 126)=> Warning: batch size is bigger than the data size. Setting batch size to data size
+  0%|          | 0/1 [00:00<?, ?it/s]100%|##########| 1/1 [00:01<00:00,  1.07s/it]100%|##########| 1/1 [00:01<00:00,  1.18s/it]
+[10-04 15:33:41] (ent/vendor/var/sample.py, line 126)=> fid: 217.272810556903
+[10-04 15:33:41] (/engine/ram_png_entry.py, line 136)=> {"finished_unix": 1791099221.9934611, "ram_png_count": 64, "peak_torch_allocated_mib": 7302.72265625, "peak_torch_reserved_mib": 11774.0}

@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "ec8d7f65699e7ada322e33e122e332ee14b82eca6ccb785eacbcbb6e362e936a",
+  "original_receipt_sha256": "6f82908c7486aa71bd54b4a7fce4232942a30d4e1d2f2e7d0a55ea8cff0f8195",
+  "original_event_last_write_epoch": 1791794934.7261262,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method_v67_best.py /workspace/solution/method_v69_test.py /workspace/solution/method_v68_test.py /workspace/starter/method.py 2>/dev/null'",
+      "original_command_sha256": "5087be25ddc2d8d7915f05dbf0262209126f3b8aa3c97f35556b8422c0d50f03",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "421c98f1e56dcf7b23b08a21510bf4a13cf3bc9ecc4842e83beb329d38d49f43",
+      "output_characters": 410
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'wc -c /workspace/solution/method.py; diff /workspace/solution/method.py /workspace/solution/method_v67_best.py | head -5'",
+      "original_command_sha256": "ea1bf6c307b7c3e78f5c1640acd360806f84be5dc4b816db0ed6bb49c51298d8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4b0b4612129d442c78aee78ad1cf6f15c313878db23015a8dbe15b362a56e342",
+      "output_characters": 35
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 48550728,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1087983,
+        "reasoning_output_tokens": 148954
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

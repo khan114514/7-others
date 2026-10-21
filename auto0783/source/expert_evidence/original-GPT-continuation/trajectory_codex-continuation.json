@@ -1,0 +1,94 @@
+{
+  "rounds": [
+    {
+      "round": 27,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Completed two real Dev experiments:\n\n- Text-only output projection passed but didn’t beat the prior best.\n- Text-query attention passed with zero error and **72.003% latency reduction**, the highest valid reward. Peak allocation: **30.65 GiB**.\n\nSaved both experiments and feedback, updated [research-notes.md](<candidate-workspace>/research-notes.md), and restored experiment 33 to `method.py` and regenerated `program.json`.\n\nNext: test cached attention restricted to text keys and queries.",
+      "status": "ok",
+      "score": 0.7200322242279751,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 00:18:43.800516+08:00"
+    },
+    {
+      "round": 28,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Completed two Dev experiments; both passed with zero numerical error.\n\nThe fused text Q/K/V method achieved the best valid reward: **72.068% latency reduction**, with **27.59 GiB** peak allocation. Saved both methods and feedback, recorded the non-improving attempt in [research-notes.md](<candidate-workspace>/research-notes.md), and restored the best builder and regenerated `program.json`.\n\nNext direction: combine image Q/K rotary computation.",
+      "status": "ok",
+      "score": 0.720682603655369,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 00:24:17.628515+08:00"
+    },
+    {
+      "round": 29,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Completed two real Dev experiments; both passed with zero numerical error.\n\nThe best achieved **72.598% latency reduction** with **27.66 GiB** peak allocation by combining image Q/K rotary and caching the sine sign flip.\n\nSaved both experiments and feedback, updated [research-notes.md](<candidate-workspace>/research-notes.md), and restored the best `method.py` and regenerated `program.json`.\n\nNext: test image MLP multiplication orientation.",
+      "status": "ok",
+      "score": 0.7259837561812724,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 00:30:03.429232+08:00"
+    },
+    {
+      "round": 30,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Tested two MLP orientation variants through real Dev. Both preserved predictions exactly, but neither improved the best reward.\n\nSaved both attempts and feedback in [research-notes.md](<candidate-workspace>/research-notes.md). Restored experiment 37 to `method.py` and regenerated `program.json`: **72.598% latency reduction**, **27.66 GiB** peak allocation.\n\nNext: test attention score multiplication orientation.",
+      "status": "ok",
+      "score": 0.71892863627774,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 00:35:55.190576+08:00"
+    },
+    {
+      "round": 31,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Completed two real Dev experiments. Reversing the score product was slower; reversing the probability/value product passed with zero error and achieved the new best: **72.874% latency reduction**, **27.66 GiB** peak allocation.\n\nPreserved both methods and feedback, updated [research-notes.md](<candidate-workspace>/research-notes.md), and restored the best `method.py` and regenerated `program.json`.\n\nNext: use the winning attention layout directly in the image output projection.",
+      "status": "ok",
+      "score": 0.7287394620596103,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 00:40:21.451916+08:00"
+    },
+    {
+      "round": 32,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Tested two output-projection variants through real Dev. Both preserved predictions exactly, but neither improved the best reward. Saved both attempts and feedback in [research-notes.md](<candidate-workspace>/research-notes.md).\n\nRestored experiment 41 to `method.py` and regenerated `program.json`: **72.874% latency reduction**, **27.66 GiB** peak allocation.\n\nNext: test grouped probability/value computation without replicating values.",
+      "status": "ok",
+      "score": 0.7226169381070205,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 00:45:24.888678+08:00"
+    },
+    {
+      "round": 33,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Tested two grouped value-product variants through real Dev. Both preserved predictions exactly; neither exceeded the best reward.\n\nSaved both attempts and feedback, and updated [research-notes.md](<candidate-workspace>/research-notes.md). Restored experiment 41 to `method.py` and regenerated `program.json`: **72.874% latency reduction**, **27.66 GiB** peak allocation.\n\nNext: test grouping only the score product to avoid key replication.",
+      "status": "ok",
+      "score": 0.7283955073387481,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 00:50:09.994754+08:00"
+    },
+    {
+      "round": 34,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Tested score-only and combined KV grouping through real Dev. Both preserved predictions exactly; neither beat the best reward. Saved both attempts and feedback in [research-notes.md](<candidate-workspace>/research-notes.md).\n\nRestored experiment 41 to `method.py` and regenerated `program.json`: **72.874% latency reduction**, **27.66 GiB** peak allocation.\n\nNext: test image attention in two 128-query blocks.",
+      "status": "ok",
+      "score": 0.7269055575525073,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 00:55:42.367032+08:00"
+    },
+    {
+      "round": 35,
+      "policy_name": "Native Codex / gpt-6.1-sol/high original own-session continuation",
+      "method_summary": "Query tiling passed real Dev with zero error, but its **72.028%** reduction did not beat the best. Preserved the experiment and feedback.\n\nRestored experiment 41 to `method.py` and regenerated `program.json`: **72.874% latency reduction**, **27.66 GiB** peak allocation.\n\nRecorded the evidence-based stopping decision in [research-exhausted.json](<candidate-workspace>/research-exhausted.json) and [research-notes.md](<candidate-workspace>/research-notes.md). This is not a claim of global optimality.",
+      "status": "ok",
+      "score": 0.7202815261270124,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 01:01:07.836308+08:00"
+    }
+  ]
+}

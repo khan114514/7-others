@@ -1,0 +1,18 @@
+{
+    "task": {
+        "path": "<TASK_ROOT>/private/native_task_v7"
+    },
+    "trial_name": "save-portable-nop-58a2983c6d51",
+    "trials_dir": "<TASK_ROOT>/private/portable-runtime-nop/58a2983c6d51448b857ee41bd2add96b",
+    "agent": {
+        "name": "nop"
+    },
+    "environment": {
+        "import_path": "portable_runtime.environment:SaveHybridDockerEnvironment",
+        "kwargs": {
+            "lane": "gpt",
+            "numerical_status": "<TASK_ROOT>/private/no_numerical_controller.json",
+            "runtime_root": "<TASK_ROOT>/private/portable-runtime-nop/58a2983c6d51448b857ee41bd2add96b"
+        }
+    }
+}

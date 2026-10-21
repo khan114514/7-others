@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "current_Task_source_manifest_SHA256": "2abb0bb70731458dbf320b26be53b0f219a1f3807838d73201219e83333f386e",
+  "referenced_source_byte_SHA256": {
+    "Task/instruction.md": "135031ffb8cfd64f42cfea2793dfb77f32da229ae8bc648481f763ca18477282",
+    "Task/task.toml": "17f1afdf9549daabced1bdcb3780cca3cb8f01e29ad14993dbf932f3eabd8f75",
+    "Task/environment/public_eval/tensor_dag.py": "8f6dc1fdcfaca46e0f802afb22691aeda9bc38f3854d38cf9b36e1d589e77aec",
+    "Task/environment/public_eval/bounded_graph_compiler.py": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619",
+    "Task/environment/public_eval/full_decoder_evaluator.py": "19b2e7c22893d378ec542eb3a2e25b67b1aa3a7171818f618074feefc7cf57ad",
+    "Task/tests/prepare_hidden.py": "6db0b0c15acb2df7c581fd31bf4aa84937bcb74c7e7eac63a40f76fd1c829a90",
+    "Task/tests/hidden-chunks/manifest.json": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+    "Task/tests/Dockerfile": "64edd366ace50c40a6026b0a544f3e23f93b49d390e86a07e27a7fc8a21990ec",
+    "Runtime/frozen_artifact_agent.py": "6c67b6716ddec42ccf1f1a3fcbf4b147c0de01e6a0ab25d25d0d02dc85d0ebc0",
+    "Runtime/hybrid_harbor_environment.py": "f5242e4eb6ceac0b9d62d8c12b1f4e4106bc0798aae42a57b412138ad25a43fc",
+    "expert_evidence/current-harbor-call-source-facts.json": "09106bc9ea027e65cfe615101a32ac1b4d8654fc4c4a2b02f28ba39ae427c087",
+    "expert_evidence/current-harbor-artifact-byte-map.json": "8dff81cc8c123f032fba4a1158207b7d262c9bb9ef307b4361c906741ad6ab95",
+    "expert_evidence/current-existing-image-and-NOP-source-readback.json": "e27e2dbb95b54baff9c51b0458f8c71df89f25d53eff8633d9d6afaa724d7c11",
+    "expert_evidence/release-full-validation/nop/README.md": "aaceb60ea80f0f515f9f372004891ff680a5ab1c4a8f37d1d2a3dec977e8ea5d"
+  },
+  "latency_measurement_noise": {
+    "baseline_mean_ms": 58432.48055013021,
+    "reference_mean_ms": 33729.16768900553,
+    "baseline_sample_sd_ms": 180.57194646667463,
+    "absolute_improvement_ms": 24703.31286112468,
+    "delta_divided_by_three_sample_sigma": 45.60197628425407,
+    "raw_stage_count": 4608,
+    "paired_repetitions": 18,
+    "source": "optimization_evidence/comparison_summary.json",
+    "measurement_is_decoder_latency_not_training_variance": true
+  },
+  "weight_access_surface": {
+    "source": "Task/environment/public_eval/tensor_dag.py",
+    "candidate_artifact_is_validated_JSON_nodes_not_executed_builder_code": true,
+    "operation_and_attribute_catalogs_are_worker_owned": true,
+    "graph_references_known_weights_by_w_name_not_filesystem_or_network": true,
+    "full_worker_weight_and_checkpoint_binding_sources": [
+      "dependencies/checkpoint/public-checkpoint-assets.json",
+      "Task/environment/public_eval/public-tensor-manifest.json",
+      "optimization_evidence/comparison_summary.json"
+    ]
+  },
+  "hidden_materialization_sources": [
+    "Task/tests/hidden-chunks/manifest.json",
+    "Task/tests/prepare_hidden.py",
+    "Task/tests/Dockerfile",
+    "Task/tests/grade.py"
+  ],
+  "existing_current_Harbor_NOP": {
+    "actual_installed_Harbor": {
+      "actual_installed_Harbor_version": "0.23.0",
+      "trusted_modules": {
+        "EnvironmentFactory": {
+          "module": "harbor.environments.factory",
+          "source_SHA256": "24f1719e3bd2b49da9061d14b4cbd2ca12325d7bb82b0d8552b2300ee96cadcb"
+        },
+        "Trial": {
+          "module": "harbor.trial.trial",
+          "source_SHA256": "757f34424e35ea6e924484bff9ae75464e94acd5dec3d769bc65a9518ada79a8"
+        },
+        "TrialConfig": {
+          "module": "harbor.models.trial.config",
+          "source_SHA256": "c95acedd896e7bab9f4007ed6373adc7e414ac2b63dfd188b7bbcae6ce5ac480"
+        },
+        "DockerEnvironment": {
+          "module": "harbor.environments.docker.docker",
+          "source_SHA256": "8757d3fbc19e58c7ccd14c9b613a0d00dccd1b514375fa0e546ff41ca963a15e"
+        }
+      }
+    },
+    "adapter_literal_base_classes": [
+      "DockerEnvironment"
+    ],
+    "adapter_source_SHA256": "f5242e4eb6ceac0b9d62d8c12b1f4e4106bc0798aae42a57b412138ad25a43fc",
+    "native_launcher_literal_Trial_TrialConfig_calls": [
+      {
+        "function": "TrialConfig",
+        "line": 48
+      },
+      {
+        "function": "Trial.create",
+        "line": 63
+      },
+      {
+        "function": "Trial.create",
+        "line": 52
+      }
+    ],
+    "current_NOP_config_environment_import_path": "hybrid_harbor_environment:HybridDockerEnvironment",
+    "current_NOP_binding_image_ids": {
+      "gpt": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+      "seed": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+      "verifier": "sha256:87a10eba1f24611d3a06a65c34bd91e500b577861cf0134907bae81a6e2260e5"
+    },
+    "current_NOP_original_trial_id": "7f58b9e5-1896-4280-902e-bb2ba89a7e92",
+    "current_NOP_full_numeric_run_id": "dc02ea50528e4ce1b31adfc1bc2f1ff1",
+    "current_NOP_reward_original": -0.000337629593978607
+  },
+  "current_Harbor_trial_evidence_directories": [
+    "expert_evidence/release-full-validation/nop/",
+    "expert_evidence/release-full-validation/oracle/",
+    "expert_evidence/release-full-validation/gpt-selected/",
+    "expert_evidence/release-full-validation/seed-selected/"
+  ],
+  "custom_adapter_is_not_claimed_as_external_platform_acceptance": true,
+  "source_bound_independent_best_method_validation": [
+    "expert_evidence/release-full-validation/gpt-selected/trial_task_binding.json",
+    "expert_evidence/release-full-validation/seed-selected/trial_task_binding.json"
+  ],
+  "fixed_standard_or_formal_QA_reports_modified": false,
+  "Root_formal_QA_or_PASS_authored": false,
+  "historical_before_current_source": {
+    "schema_version": 1,
+    "current_Task_source_manifest_SHA256": "3a3ace0b39903c462b577012b9908abc6a9ff3023db8b2bff3205ba536ecafe3",
+    "referenced_source_byte_SHA256": {
+      "Task/instruction.md": "15dfec86582ecd58e6b7175c82d76e4aaa75585bfb528ae69c9292e4a3c797b0",
+      "Task/task.toml": "17f1afdf9549daabced1bdcb3780cca3cb8f01e29ad14993dbf932f3eabd8f75",
+      "Task/environment/public_eval/tensor_dag.py": "8f6dc1fdcfaca46e0f802afb22691aeda9bc38f3854d38cf9b36e1d589e77aec",
+      "Task/environment/public_eval/bounded_graph_compiler.py": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619",
+      "Task/environment/public_eval/full_decoder_evaluator.py": "19b2e7c22893d378ec542eb3a2e25b67b1aa3a7171818f618074feefc7cf57ad",
+      "Task/tests/prepare_hidden.py": "6db0b0c15acb2df7c581fd31bf4aa84937bcb74c7e7eac63a40f76fd1c829a90",
+      "Task/tests/hidden-chunks/manifest.json": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+      "Task/tests/Dockerfile": "64edd366ace50c40a6026b0a544f3e23f93b49d390e86a07e27a7fc8a21990ec",
+      "Runtime/frozen_artifact_agent.py": "6c67b6716ddec42ccf1f1a3fcbf4b147c0de01e6a0ab25d25d0d02dc85d0ebc0",
+      "Runtime/hybrid_harbor_environment.py": "f5242e4eb6ceac0b9d62d8c12b1f4e4106bc0798aae42a57b412138ad25a43fc",
+      "expert_evidence/current-harbor-call-source-facts.json": "a93c6847b30446e3816d2ee5c00c3b369604e8bb334daf7900b1e859c77416b9",
+      "expert_evidence/current-harbor-artifact-byte-map.json": "b6011a31e55164f4b12631b19ba25a12251937795fb77dae33d1287b2a704d7c",
+      "expert_evidence/current-existing-image-and-NOP-source-readback.json": "bd6af1db23ab2787b9d0065c9adb16e311a53459eaa564fec743bf1fe09517d8",
+      "expert_evidence/release-full-validation/nop/README.md": "aaceb60ea80f0f515f9f372004891ff680a5ab1c4a8f37d1d2a3dec977e8ea5d"
+    },
+    "latency_measurement_noise": {
+      "baseline_mean_ms": 56199.19290669759,
+      "reference_mean_ms": 32533.794821421307,
+      "baseline_sample_sd_ms": 53.92741435571389,
+      "absolute_improvement_ms": 23665.398085276287,
+      "delta_divided_by_three_sample_sigma": 146.27932977449723,
+      "raw_stage_count": 4608,
+      "paired_repetitions": 18,
+      "source": "optimization_evidence/comparison_summary.json",
+      "measurement_is_decoder_latency_not_training_variance": true
+    },
+    "weight_access_surface": {
+      "source": "Task/environment/public_eval/tensor_dag.py",
+      "candidate_artifact_is_validated_JSON_nodes_not_executed_builder_code": true,
+      "operation_and_attribute_catalogs_are_worker_owned": true,
+      "graph_references_known_weights_by_w_name_not_filesystem_or_network": true,
+      "full_worker_weight_and_checkpoint_binding_sources": [
+        "dependencies/checkpoint/public-checkpoint-assets.json",
+        "Task/environment/public_eval/public-tensor-manifest.json",
+        "optimization_evidence/comparison_summary.json"
+      ]
+    },
+    "hidden_materialization_sources": [
+      "Task/tests/hidden-chunks/manifest.json",
+      "Task/tests/prepare_hidden.py",
+      "Task/tests/Dockerfile",
+      "Task/tests/grade.py"
+    ],
+    "existing_current_Harbor_NOP": {
+      "actual_installed_Harbor": {
+        "actual_installed_Harbor_version": "0.23.0",
+        "trusted_modules": {
+          "EnvironmentFactory": {
+            "module": "harbor.environments.factory",
+            "source_SHA256": "24f1719e3bd2b49da9061d14b4cbd2ca12325d7bb82b0d8552b2300ee96cadcb"
+          },
+          "Trial": {
+            "module": "harbor.trial.trial",
+            "source_SHA256": "757f34424e35ea6e924484bff9ae75464e94acd5dec3d769bc65a9518ada79a8"
+          },
+          "TrialConfig": {
+            "module": "harbor.models.trial.config",
+            "source_SHA256": "c95acedd896e7bab9f4007ed6373adc7e414ac2b63dfd188b7bbcae6ce5ac480"
+          },
+          "DockerEnvironment": {
+            "module": "harbor.environments.docker.docker",
+            "source_SHA256": "8757d3fbc19e58c7ccd14c9b613a0d00dccd1b514375fa0e546ff41ca963a15e"
+          }
+        }
+      },
+      "adapter_literal_base_classes": [
+        "DockerEnvironment"
+      ],
+      "adapter_source_SHA256": "f5242e4eb6ceac0b9d62d8c12b1f4e4106bc0798aae42a57b412138ad25a43fc",
+      "native_launcher_literal_Trial_TrialConfig_calls": [
+        {
+          "function": "TrialConfig",
+          "line": 48
+        },
+        {
+          "function": "Trial.create",
+          "line": 63
+        },
+        {
+          "function": "Trial.create",
+          "line": 52
+        }
+      ],
+      "current_NOP_config_environment_import_path": "hybrid_harbor_environment:HybridDockerEnvironment",
+      "current_NOP_binding_image_ids": {
+        "gpt": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+        "seed": "sha256:88dc91d5bc86d1e025130030b2313ae6b6824cc6750c2aaa8e90bec5dff68681",
+        "verifier": "sha256:87a10eba1f24611d3a06a65c34bd91e500b577861cf0134907bae81a6e2260e5"
+      },
+      "current_NOP_original_trial_id": "53f5da79-05c6-4509-a761-6e673cccd7c5",
+      "current_NOP_full_numeric_run_id": "0ebb71472a0946da9b64a5569354828c",
+      "current_NOP_reward_original": -4.409510198580376e-05
+    },
+    "current_Harbor_trial_evidence_directories": [
+      "expert_evidence/release-full-validation/nop/",
+      "expert_evidence/release-full-validation/oracle/",
+      "expert_evidence/release-full-validation/gpt-selected/",
+      "expert_evidence/release-full-validation/seed-selected/"
+    ],
+    "custom_adapter_is_not_claimed_as_external_platform_acceptance": true,
+    "source_bound_independent_best_method_validation": [
+      "expert_evidence/release-full-validation/gpt-selected/trial_task_binding.json",
+      "expert_evidence/release-full-validation/seed-selected/trial_task_binding.json"
+    ],
+    "fixed_standard_or_formal_QA_reports_modified": false,
+    "Root_formal_QA_or_PASS_authored": false
+  }
+}

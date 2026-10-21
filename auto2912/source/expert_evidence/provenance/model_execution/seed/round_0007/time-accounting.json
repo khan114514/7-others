@@ -1,0 +1,51 @@
+{
+  "policy": "user-normal-work-clock-20261006",
+  "elapsed_seconds": 1679.0010628700256,
+  "effective_seconds": 1440.9896531105042,
+  "excluded_seconds": 238.01140975952148,
+  "excluded_intervals": [
+    [
+      1791299724.429905,
+      1791299724.6305192
+    ],
+    [
+      1791300108.262144,
+      1791300223.646643
+    ],
+    [
+      1791301196.728974,
+      1791301319.1552708
+    ]
+  ],
+  "exclusion_evidence": [
+    {
+      "start_epoch": 1791299724.429905,
+      "end_epoch": 1791299724.6305192,
+      "reason": "Observed transport failure after last normal progress; normal preceding reasoning retained",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-092b676fba7e4952a718e783f46e6633-route.json"
+    },
+    {
+      "start_epoch": 1791300108.262144,
+      "end_epoch": 1791300223.646643,
+      "reason": "Observed transport failure after last normal progress; normal preceding reasoning retained",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-1b39d0f2fee844cab118c7e4f630cd94-route.json"
+    },
+    {
+      "start_epoch": 1791301196.728974,
+      "end_epoch": 1791301312.604751,
+      "reason": "Observed transport failure after last normal progress; normal preceding reasoning retained",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-185b33fa952f43869b6e9dd0c67603b0-route.json"
+    },
+    {
+      "start_epoch": 1791301312.604751,
+      "end_epoch": 1791301319.1552708,
+      "reason": "Observed upstream HTTP failure and its retry/backoff",
+      "evidence": "harbor-runtime/forecast-research-seed-fccbcf45__env/routes/seed-14fe95c4167b44eb969b7aeb0cd1a11f-route.json"
+    }
+  ],
+  "score_success_used_for_time": false,
+  "role": "seed",
+  "round": 7,
+  "cli_exit_code": 1,
+  "actual_model_completion_observed": true
+}

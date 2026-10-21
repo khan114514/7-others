@@ -1,0 +1,3 @@
+[2026-10-03 16:59:26 CST] 运行方磁盘应急清理：rivermind-data 余量跌至 1.3G（98%）。删除：seed round05_curriculum/teacher（4.1G，已闭环失败轮次的教师样本，FID 167.92 已入轨迹）；codex round03/training/checkpoint.pth.tmp（2.0G，7.5h 前磁盘满事故的残留临时文件）。未触碰任何进行中的 round06 与正在压缩的 exactzip.tmp。证据哈希不受影响。
+[2026-10-03 20:58:29 CST] 运行方终止 seed round07 训练（PID 155876）：该候选启动于 17:20 收尾信号之后，违反「不得启动新候选」约定；且磁盘 98%、硬截止 21:30 均不允许其完成（预计 23:30+）。记为运行方中断，非方法失败。
+2026-10-04T05:17:19.518609+00:00 ROUND13_EVIDENCE_CLOSURE: actual recovered FID and full original 50000-image manifest collected; PNGs already removed by source runner; extra FID verification not completed; seed42 and scorer debug-line changes recorded.

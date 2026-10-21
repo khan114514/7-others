@@ -1,0 +1,24 @@
+{
+    "task": {
+        "path": "<TASK_SOURCE_ROOT>/workspace/harbor_task"
+    },
+    "trial_name": "forecast-research-gpt-3319d8bc",
+    "trials_dir": "<TASK_SOURCE_ROOT>/private/native-harbor/research/gpt-24ea796424e94cd496f529c38c499ffc",
+    "agent": {
+        "import_path": "research_agent:ForecastResearchAgent",
+        "override_timeout_sec": 108000.0,
+        "kwargs": {
+            "role": "gpt"
+        }
+    },
+    "environment": {
+        "import_path": "forecast_harbor_environment:ForecastDockerEnvironment",
+        "kwargs": {
+            "role": "gpt",
+            "enable_models": true
+        }
+    },
+    "verifier": {
+        "override_timeout_sec": 1800.0
+    }
+}

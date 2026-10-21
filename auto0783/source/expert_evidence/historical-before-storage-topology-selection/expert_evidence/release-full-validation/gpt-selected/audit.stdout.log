@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "run_id": "b8d59a4f9ff54c6ab59b02409eff6e77",
+  "is_formal_protocol": true,
+  "raw_stages": 4608,
+  "repetitions": 18,
+  "per_seed": [
+    {
+      "sampling_seed": 101,
+      "case_count": 2,
+      "baseline_ms": 58117.58848571777,
+      "candidate_ms": 14984.792570114136
+    },
+    {
+      "sampling_seed": 202,
+      "case_count": 2,
+      "baseline_ms": 58239.90174865723,
+      "candidate_ms": 15017.865215301514
+    },
+    {
+      "sampling_seed": 303,
+      "case_count": 2,
+      "baseline_ms": 58308.02894592285,
+      "candidate_ms": 15020.031480789185
+    }
+  ],
+  "baseline_mean_ms": 58221.83972676595,
+  "candidate_mean_ms": 15007.563088734945,
+  "baseline_sample_sd_ms": 96.49647504899434,
+  "all_repetition_baseline_sample_sd_ms": 178.11043675566992,
+  "latency_improvement_ms": 43214.276638031006,
+  "predeclared_noise_3sigma_pass": true,
+  "additional_all_repetition_noise_3sigma_pass": true,
+  "quality_pass": true,
+  "reward": 0.7422348184261237,
+  "latent_checks": [
+    {
+      "case": 0,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "aedafe07798a1c68118b3b6f7178653056d8bef759049fe514afe49a77149c14"
+    },
+    {
+      "case": 1,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "024722b2d328b92d2fe3d9d8c313a8f7618897930882c1e125d4021e4c33521a"
+    },
+    {
+      "case": 2,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "ed4e97998c37dc96d158b3c3424d336de56e81a7878a34d257818646ad9efc2b"
+    },
+    {
+      "case": 3,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "fb0c2a2bd6d24083deb8d7a77d37aa522ecab39e70035ab7b63adeec69582948"
+    },
+    {
+      "case": 4,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "d6f168c7886b62ddf5f4fd853f8eef267d2cc118c2129b9d3a6f3ed4e3cd3165"
+    },
+    {
+      "case": 5,
+      "relative_rmse": 0.0,
+      "scaled_max_abs": 0.0,
+      "file_sha256": "92522f2fe9a4d9b0dd0ce33cd9c959425cde77183f174a414a40ed45c3a6aa9c"
+    }
+  ],
+  "result_sha256": "e7cec59ec79607db33e5b8366c1afeab83713b8d95a9b19698b0b54d3ceee86b",
+  "raw_stage_times_sha256": "6d5d6a4c1d511b06a286ea25bfb0df04a765b6830bfca37b5dddd344d7d34061",
+  "program_file_sha256": "cf4561442c3e636763ae1f35b82dc528a8e0ada389fff92d0327a0ec2fb76323",
+  "recompute_source_sha256": "cbc682a293258a68e65bfeeb8a1f2e41efeea8366c827b6ea5e25028fc6543c9",
+  "final_latent_metric_comparison": {
+    "relative_tolerance": 1e-06,
+    "absolute_tolerance": 1e-08,
+    "quality_threshold": 0.001,
+    "threshold_decision_must_match": true,
+    "persisted_zero_requires_exact_CPU_zero": true
+  },
+  "cuda_context_initialized": false,
+  "is_independent_method_rerun": false,
+  "formal_trajectory_effective_seconds": 0
+}

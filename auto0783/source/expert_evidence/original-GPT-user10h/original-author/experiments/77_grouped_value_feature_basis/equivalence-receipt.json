@@ -1,0 +1,30 @@
+{
+  "base": "experiments/53_compiled_image_rotary/method.py",
+  "candidate_canonical_sha256": "428fa9c359301014bd0997ce16d8155fde36945f08424fede4d8b5f70c825fbc",
+  "changed_existing_nodes": [
+    "image_attended_rows",
+    "image_attention_out",
+    "probability_transpose",
+    "value_transpose"
+  ],
+  "removed_nodes": [
+    "image_output_heads",
+    "image_output_rows",
+    "value_repeat"
+  ],
+  "added_nodes": [
+    "image_group_columns",
+    "output_weight_channel_first",
+    "output_weight_group_basis",
+    "output_weight_group_shape",
+    "probability_groups"
+  ],
+  "selected_rotary_and_MLP_regions_identical": true,
+  "feature_bijection_checked": 3584,
+  "paired_basis": "Original features (KV,H,D); new features (KV,D,H). W_new[j,(kv*128+d)*7+h]=W_old[j,(kv*7+h)*128+d]. Same coefficient paired with same activation.",
+  "real_arithmetic_equivalence": "Sum over the identical 3584 products in a bijective order; group value product preserves original 556-key dot product.",
+  "numerical_limit": "Projection reduction order changes; generic real-valued equality does not prove BF16 agreement. No precision or guard changes; actual Dev determines validity.",
+  "layout_argument": "Grouped reversed product B,KV,D,H*T can view as B,3584,T with the new basis; original KV,H,D row packing is not an affine view.",
+  "cache_argument": "Three 3584x3584 BF16 prefix graph nodes are conservatively counted, including two views. First weight permutation reconstruction remains timed.",
+  "distinct_from": "44 restores original feature order before projection and must repack; 42/43 use original ungrouped features and no paired column permutation."
+}

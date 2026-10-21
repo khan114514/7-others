@@ -1,0 +1,3 @@
+# Current GPT original same-container continuity
+
+The original driver and native Agent naturally finished after at least 43,200 monotonic seconds in this one actual container. Every original read probe, container ID, StartedAt, image ID, restart count and gap is retained. Privacy derivation changes only infrastructure path strings; all numbers, booleans and nulls remain identical. The selected method pair, real own-session native restore and current full GPU/CPU measurements are recorded separately. This stability interval provides zero research credit and does not repair missing effective-research-duration evidence. No older container interval is joined to it.

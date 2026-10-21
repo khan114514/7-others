@@ -1,0 +1,2 @@
+[2026-10-03 16:59:26 CST] 运行方磁盘应急清理：rivermind-data 余量跌至 1.3G（98%）。删除：seed round05_curriculum/teacher（4.1G，已闭环失败轮次的教师样本，FID 167.92 已入轨迹）；codex round03/training/checkpoint.pth.tmp（2.0G，7.5h 前磁盘满事故的残留临时文件）。未触碰任何进行中的 round06 与正在压缩的 exactzip.tmp。证据哈希不受影响。
+2026-10-04T04:09:03.840377+00:00 LOSSLESS_STORAGE_RELOCATION: rounds14/17 optimizer exactzip moved to runtime:historical_continuation/relocated_optimizer_states; original paths remain symlinks; SHA256 checked; no models/methods/metrics changed. receipt=runtime:historical_continuation/optimizer_relocation_receipt.json

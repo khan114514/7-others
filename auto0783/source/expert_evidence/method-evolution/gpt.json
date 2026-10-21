@@ -1,0 +1,375 @@
+{
+  "selected_identity": {
+    "artifact_sha256": "9bff4f03ff87966524d92d7e8a790b432befb945ff266419bb384392c445fee7",
+    "source_files": {
+      "method.py": "c60eb393a66d0e3ecc77c98a605d2668840bc9fe538149817589393854962ac9",
+      "program.json": "f8b408c4db242e3692f0dcea8f1d079936d272f1a670f47b04f3c5198f8e16bb"
+    }
+  },
+  "selected_method_source": "Trajectories/GPT/selected-method/method.py",
+  "native_method_docstring": "Cache text-only input RMS and compute cached MLP on text rows only.\n\nEmit an operator DAG. This builder executes only in the local candidate container;\nthe numerical worker accepts JSON, never imports this Python file.",
+  "static_graph_node_count": 95,
+  "static_operation_counts": {
+    "slice": 36,
+    "rms_norm": 4,
+    "concat": 11,
+    "linear": 6,
+    "attention_eager": 1,
+    "reshape": 10,
+    "transpose": 5,
+    "scale": 3,
+    "mul": 4,
+    "add": 7,
+    "repeat_heads": 2,
+    "matmul": 2,
+    "softmax": 1,
+    "cast": 1,
+    "mlp": 2
+  },
+  "explicit_prefix_lifetime_node_count": 49,
+  "static_graph_summary_is_not_correctness_or_speed_proof": true,
+  "trajectory_source": "expert_evidence/trajectory_codex.json",
+  "recorded_round_count": 26,
+  "native_status_counts": {
+    "FAILED_PRESERVED": 7,
+    "COMPLETED_NATIVE_TURN_SCORED": 10,
+    "CLOSED_NATIVE_TURN_UNSCORED": 7,
+    "UNFINISHED_NATIVE_ATTEMPT_PRESERVED": 2
+  },
+  "selected_artifact_original_Dev_results": [
+    {
+      "source": "expert_evidence/GPT/original-dev-results/453a46373819498b81ad683487872e94.json",
+      "run_id": "453a46373819498b81ad683487872e94",
+      "reward": 0.7191493065987284,
+      "quality_pass": true,
+      "execution_status": "COMPLETED",
+      "completed_epoch": 1791240936.9669347
+    }
+  ],
+  "selected_artifact_authored_messages": [
+    {
+      "packaged_round": 22,
+      "original_round": 1,
+      "original_campaign_id": "c2331a9cebb34bd4a68c7a2ccad661bf",
+      "native_status": "COMPLETED_NATIVE_TURN_SCORED",
+      "authored_message": "Experiment 31 passed real Dev with zero numerical error and a **71.915% latency reduction**, improving the previous best of 71.405%. Peak allocation was 27.46 GiB.\n\nSaved the experiment and feedback, recorded the local wrapper failure and next decision in [research-notes.md](<candidate-workspace>/research-notes.md), and restored the new best to `method.py` and regenerated `program.json`.\n\nNext experiment: compute the cached text output projection only on text rows.",
+      "score_scope": "public Dev only; never a fresh release full score"
+    }
+  ],
+  "original_invalid_or_failed_Dev_results": [
+    {
+      "source": "expert_evidence/GPT/original-dev-results/11e2f322ced741b0ae6da305f21c74ab.json",
+      "run_id": "11e2f322ced741b0ae6da305f21c74ab",
+      "artifact_sha256": "78aee6a6aaa83f7e170464ced82053986c2caeb12bce2308ff0d5d5131ec07a6",
+      "execution_status": "COMPLETED",
+      "quality_pass": false,
+      "reward": 0.0
+    },
+    {
+      "source": "expert_evidence/GPT/original-dev-results/294489a0738b458e961b7b7921fb8469.json",
+      "run_id": "294489a0738b458e961b7b7921fb8469",
+      "artifact_sha256": "2fadd1fb7be4759d79263ce6fabbb2dde282528abbcbce8f530a4e269ab35ac9",
+      "execution_status": "COMPLETED",
+      "quality_pass": false,
+      "reward": 0.0
+    },
+    {
+      "source": "expert_evidence/GPT/original-dev-results/eaf9e7e5892f497d8bc3a25b130ffd64.json",
+      "run_id": "eaf9e7e5892f497d8bc3a25b130ffd64",
+      "artifact_sha256": "e9618cebdc4dd972239dc43acfbab8b915e658797b8357e4b06e29129660a439",
+      "execution_status": "COMPLETED",
+      "quality_pass": false,
+      "reward": 0.0
+    }
+  ],
+  "all_recorded_rounds": [
+    {
+      "round": 1,
+      "original_round": 1,
+      "original_campaign_id": "0bcabeee663b4f54ad6645133ca5069a",
+      "status": "FAILED_PRESERVED",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 124; successful tools 24. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "method_summary": "The partitioned graph reduced Dev latency by 44.1%, but failed prediction and rollout quality checks, so I’ve kept it as a failed attempt. The masks also show fully masked padding rows: their states depend on images, but valid queries cannot attend to them. Next I’ll preserve the original GEMM shapes and cache text-branch results, testing whether that preserves predictions.\n",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    },
+    {
+      "round": 2,
+      "original_round": 2,
+      "original_campaign_id": "0bcabeee663b4f54ad6645133ca5069a",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.42561423751816974,
+      "failure_reason": null,
+      "method_summary": "Restored and regenerated the best valid Dev method in `method.py` and `program.json`.\n\nText caching plus normalization factoring achieved **42.56% lower paired latency**, with zero measured prediction and final-latent error on all Dev cases. Peak allocation was 25.80 GiB.\n\nPartitioning and SDPA failed quality checks; their builders, artifacts and feedback are preserved. [research-notes.md](<candidate-workspace>/research-notes.md) records the outcomes and next experiment decision. Formal evaluation remains untested.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/2024425498ce4198846d90acce3d5c69.json",
+      "artifact_sha256": "b7c003ae40ec3edae8b2d8fbf040a36e105376ec084ac958ad40a26b5c49faf7"
+    },
+    {
+      "round": 3,
+      "original_round": 3,
+      "original_campaign_id": "0bcabeee663b4f54ad6645133ca5069a",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.5841020123398395,
+      "failure_reason": null,
+      "method_summary": "Tested image-row partitioning for the MLP and attention output projection. Both passed real Dev with zero measured prediction and final-latent error.\n\nBest paired latency reduction improved from **42.56% to 58.41%**. Restored its saved builder and regenerated `method.py` and `program.json`.\n\nArtifacts, feedback, prior failures and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules are unchanged; formal evaluation remains untested.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/45c9276a48ee4bb2bfbdc07b91c1eeca.json",
+      "artifact_sha256": "69d74279dd7c6cd6ae6732ced0374d1bc96b5f0ed05eaf23e451c64aecc629c8"
+    },
+    {
+      "round": 4,
+      "original_round": 4,
+      "original_campaign_id": "0bcabeee663b4f54ad6645133ca5069a",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.629550704336135,
+      "failure_reason": null,
+      "method_summary": "Tested two new candidates. The biased V partition failed quality; image-query-only eager attention passed with zero measured Dev error.\n\nBest paired latency reduction improved to **62.96%**, with 26.01 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nSaved both experiments and feedback, and recorded the next decision in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/81b4e4716962426a8ce9a8212874fd54.json",
+      "artifact_sha256": "cf7e9df3c04ca43775dd0ad008c3e110cfa11873cf50ce5af29adc11eddbd1ad"
+    },
+    {
+      "round": 5,
+      "original_round": 5,
+      "original_campaign_id": "0bcabeee663b4f54ad6645133ca5069a",
+      "status": "CLOSED_NATIVE_TURN_UNSCORED",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "method_summary": "Tested broadcast and folded grouped-query attention on real Dev. Both produced zero measured error, but neither improved latency.\n\nRestored the best valid builder and regenerated `method.py` and `program.json`: **62.96% paired latency reduction**.\n\nSaved both experiments and feedback. [research-notes.md](<candidate-workspace>/research-notes.md) records the outcomes and next decision. Evaluator rules remain unchanged.",
+      "original_dev_evidence": null,
+      "artifact_sha256": "cf7e9df3c04ca43775dd0ad008c3e110cfa11873cf50ce5af29adc11eddbd1ad"
+    },
+    {
+      "round": 6,
+      "original_round": 6,
+      "original_campaign_id": "0bcabeee663b4f54ad6645133ca5069a",
+      "status": "UNFINISHED_NATIVE_ATTEMPT_PRESERVED",
+      "score": null,
+      "failure_reason": "Original status snapshot has no closed native end or exit record; no completion or duration is fabricated.",
+      "method_summary": "I’ll test branch-specific RMS normalization from the notes, keeping every biased Q/K/V projection at its original shape. Dev feedback will determine whether caching the text normalization and computing only image normalization each stage preserves predictions.\n",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    },
+    {
+      "round": 7,
+      "original_round": 1,
+      "original_campaign_id": "cd03c7e9eed3404fb3a4679d93006687",
+      "status": "UNFINISHED_NATIVE_ATTEMPT_PRESERVED",
+      "score": null,
+      "failure_reason": "Original status snapshot has no closed native end or exit record; no completion or duration is fabricated.",
+      "method_summary": "No final authored message recorded; original native status RUNNING.",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    },
+    {
+      "round": 8,
+      "original_round": 1,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.6357107763151084,
+      "failure_reason": null,
+      "method_summary": "Tested input and post-attention RMS partitioning on real Dev. Both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction is now **63.57%**, with 26.10 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nArtifacts, feedback, prior failures and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/47589f8e2b534022aad3fa2742948ff7.json",
+      "artifact_sha256": "426b41b7fd4a7257a2dc6070b76a67934452d7869eaed0f11e7a209ca4f138fb"
+    },
+    {
+      "round": 9,
+      "original_round": 2,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.6757495329495194,
+      "failure_reason": null,
+      "method_summary": "Completed two new Dev experiments; both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction improved to **67.57%**, with 26.55 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nSaved artifacts and feedback, and recorded the layout uncertainty and next experiment in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/9f1f9c056ddc4a88a0d5fa5c032490f8.json",
+      "artifact_sha256": "1d258071d714d362ce2c7ae8a1b65759efd88bef1f13c765a86e4b5e8f800338"
+    },
+    {
+      "round": 10,
+      "original_round": 3,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.6801897811257087,
+      "failure_reason": null,
+      "method_summary": "Completed three experiments, including a graph rejection preserved with its feedback.\n\nBest valid Dev latency reduction is now **68.02%**, with zero measured prediction and final-latent error. Restored its builder and regenerated `method.py` and `program.json`.\n\nArtifacts, outcomes and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/6393c61a4a644186b7dfe2ddbc4c64f0.json",
+      "artifact_sha256": "575c9dda891d69f5855a94fec526f7c38ab60eb547d6982f086df47fd62ee5c1"
+    },
+    {
+      "round": 11,
+      "original_round": 4,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.6884415149347335,
+      "failure_reason": null,
+      "method_summary": "Completed two new Dev experiments; both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction is now **68.84%**, with 26.77 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nSaved artifacts, feedback and the next decision in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/f73157dc2d0c4af7ab88bb52a2ad4bc9.json",
+      "artifact_sha256": "2ca95f15e211c90cc2c4ab9bad62da70011257447e02477380177f036a18326e"
+    },
+    {
+      "round": 12,
+      "original_round": 5,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.6974404451135936,
+      "failure_reason": null,
+      "method_summary": "Tested fused vision K/V and Q/K/V projections on real Dev. Both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction is now **69.74%**, with 27.65 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nArtifacts, feedback, prior failures and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/56798ab55cc14b4e8c605e0146ab2246.json",
+      "artifact_sha256": "604864653caac5d4f1114e7aaf64ba2cadca5c3a16921fb2385b83e37b944f0a"
+    },
+    {
+      "round": 13,
+      "original_round": 6,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.7132044104257124,
+      "failure_reason": null,
+      "method_summary": "Completed two new Dev experiments; both passed with zero measured prediction and final-latent error.\n\nBest paired latency reduction improved to **71.32%**, with 27.85 GiB peak allocation. Restored its builder and regenerated `method.py` and `program.json`.\n\nSaved artifacts, feedback and the next decision in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/e8a101f32bf840c282237897070c526c.json",
+      "artifact_sha256": "2190317af2803af4f5411ae8f515ba537aa25f293b5b390e24cedc6cb81c3100"
+    },
+    {
+      "round": 14,
+      "original_round": 7,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "CLOSED_NATIVE_TURN_UNSCORED",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "method_summary": "Completed two foreground Dev experiments. Both passed with zero measured error, but neither improved latency over the saved best.\n\nRestored and regenerated `method.py` and `program.json` with the **71.32% paired latency reduction** method.\n\nSaved both experiments and feedback, and recorded the next decision in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": null,
+      "artifact_sha256": "2190317af2803af4f5411ae8f515ba537aa25f293b5b390e24cedc6cb81c3100"
+    },
+    {
+      "round": 15,
+      "original_round": 8,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "CLOSED_NATIVE_TURN_UNSCORED",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "method_summary": "Fused text Q/K/V passed Dev with zero measured error but did not improve latency. The text-row follow-up received a trusted-controller error, so its numerical outcome remains unknown; the actual error is preserved.\n\nRestored and regenerated the best valid method: **71.32% paired latency reduction**.\n\nArtifacts, feedback and the next decision are recorded in [research-notes.md](<candidate-workspace>/research-notes.md). Evaluator rules remain unchanged.",
+      "original_dev_evidence": null,
+      "artifact_sha256": "2190317af2803af4f5411ae8f515ba537aa25f293b5b390e24cedc6cb81c3100"
+    },
+    {
+      "round": 16,
+      "original_round": 9,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "CLOSED_NATIVE_TURN_UNSCORED",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "method_summary": "Implemented a text-only MLP candidate and retried the unresolved text-row projection. Both foreground Dev attempts returned “Trusted numerical controller is unavailable or changed”; numerical outcomes remain unknown.\n\nPreserved both artifacts and actual errors. Restored and regenerated the best validated method: **71.32% paired latency reduction**.\n\n[research-notes.md](<candidate-workspace>/research-notes.md) records the failures and next decision. Evaluator rules remain unchanged.",
+      "original_dev_evidence": null,
+      "artifact_sha256": "2190317af2803af4f5411ae8f515ba537aa25f293b5b390e24cedc6cb81c3100"
+    },
+    {
+      "round": 17,
+      "original_round": 10,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "CLOSED_NATIVE_TURN_UNSCORED",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "method_summary": "Implemented text-only input RMS caching and retried the unresolved text-only MLP candidate. Both foreground Dev attempts returned “Trusted numerical controller is unavailable or changed,” so their numerical outcomes remain unknown.\n\nPreserved artifacts and actual errors, then restored and regenerated the best validated method: **71.32% paired latency reduction**.\n\n[research-notes.md](<candidate-workspace>/research-notes.md) records the outcomes and next decision. Evaluator rules remain unchanged.",
+      "original_dev_evidence": null,
+      "artifact_sha256": "2190317af2803af4f5411ae8f515ba537aa25f293b5b390e24cedc6cb81c3100"
+    },
+    {
+      "round": 18,
+      "original_round": 11,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "CLOSED_NATIVE_TURN_UNSCORED",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "method_summary": "The latest notice requires a foreground evaluation and its actual result. I’ll test the proposed cache-lifetime refinement: keep the text RMS result cached, but stop retaining its input view as a separate prefix entry.\n",
+      "original_dev_evidence": null,
+      "artifact_sha256": "589d8aee0438612fc3248e38226f63b037fa2d504cbe34a34e456f66caeedc9f"
+    },
+    {
+      "round": 19,
+      "original_round": 12,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "FAILED_PRESERVED",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 124; successful tools 2. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "method_summary": "Experiment 30 is a distinct lifetime variant of 29 and has been generated and structurally checked (97 nodes). Its foreground Dev request is running; I’ll use the returned status or preserve the exact controller error, then update the research record and restore the highest validated artifact.\n",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    },
+    {
+      "round": 20,
+      "original_round": 13,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "FAILED_PRESERVED",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 1; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    },
+    {
+      "round": 21,
+      "original_round": 14,
+      "original_campaign_id": "420bd9baf93c486c81e0fe51d15bb2b9",
+      "status": "FAILED_PRESERVED",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 1; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    },
+    {
+      "round": 22,
+      "original_round": 1,
+      "original_campaign_id": "c2331a9cebb34bd4a68c7a2ccad661bf",
+      "status": "COMPLETED_NATIVE_TURN_SCORED",
+      "score": 0.7191493065987284,
+      "failure_reason": null,
+      "method_summary": "Experiment 31 passed real Dev with zero numerical error and a **71.915% latency reduction**, improving the previous best of 71.405%. Peak allocation was 27.46 GiB.\n\nSaved the experiment and feedback, recorded the local wrapper failure and next decision in [research-notes.md](<candidate-workspace>/research-notes.md), and restored the new best to `method.py` and regenerated `program.json`.\n\nNext experiment: compute the cached text output projection only on text rows.",
+      "original_dev_evidence": "expert_evidence/GPT/original-dev-results/453a46373819498b81ad683487872e94.json",
+      "artifact_sha256": "9bff4f03ff87966524d92d7e8a790b432befb945ff266419bb384392c445fee7"
+    },
+    {
+      "round": 23,
+      "original_round": 2,
+      "original_campaign_id": "c2331a9cebb34bd4a68c7a2ccad661bf",
+      "status": "CLOSED_NATIVE_TURN_UNSCORED",
+      "score": null,
+      "failure_reason": "No matching new completed valid Dev for the final captured artifact inside this turn; original closure is retained without an invented score.",
+      "method_summary": "I’ll test the next direction from the notes: project only the cached text attention rows. I’ll run Dev in the foreground, save the actual feedback, and restore whichever valid method has the best measured reward.\n",
+      "original_dev_evidence": null,
+      "artifact_sha256": "5e219e9cfd7db1e066239f50a3e68e44beae166e6fb1e62abcaf9a4fa12740d6"
+    },
+    {
+      "round": 24,
+      "original_round": 3,
+      "original_campaign_id": "c2331a9cebb34bd4a68c7a2ccad661bf",
+      "status": "FAILED_PRESERVED",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 124; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    },
+    {
+      "round": 25,
+      "original_round": 4,
+      "original_campaign_id": "c2331a9cebb34bd4a68c7a2ccad661bf",
+      "status": "FAILED_PRESERVED",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 1; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    },
+    {
+      "round": 26,
+      "original_round": 5,
+      "original_campaign_id": "c2331a9cebb34bd4a68c7a2ccad661bf",
+      "status": "FAILED_PRESERVED",
+      "score": null,
+      "failure_reason": "Original native turn FAILED_PRESERVED_AND_EXCLUDED; exit 1; successful tools 0. Preserve mixed-work and blocking intervals separately; no new score is invented.",
+      "method_summary": "No final authored message recorded; original native status FAILED_PRESERVED_AND_EXCLUDED.",
+      "original_dev_evidence": null,
+      "artifact_sha256": null
+    }
+  ],
+  "current_portable_release_full_score": null,
+  "current_portable_release_validation_status": "PENDING"
+}

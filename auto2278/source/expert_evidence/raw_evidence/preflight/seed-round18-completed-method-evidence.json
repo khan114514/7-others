@@ -1,0 +1,51 @@
+{
+  "checked_unix": 1791416484.830293,
+  "track": "seed",
+  "round": 18,
+  "type": "independent completed method cycle",
+  "own_resume_evidence": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/resume-provenance.json",
+  "method_change": "same exact attention with F.scaled_dot_product_attention alpha1 fast path, narrow projected values, exact Gram norms",
+  "candidate_sha256": "d94ad72eb096d0d8c27cf8d7f4373c5ed8ea0529afb872f35c6e57d49073cb2a",
+  "candidate_source": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/private_candidate_sources/round_00018.py",
+  "actual_actor_full_evaluation": [
+    {
+      "status": "ok",
+      "raw_value": 0.45345375771822144,
+      "score": 0.575279033589405,
+      "quality_gates_passed": true,
+      "method_sha256": "d94ad72eb096d0d8c27cf8d7f4373c5ed8ea0529afb872f35c6e57d49073cb2a",
+      "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+      "start_unix": 1791415294.2737541,
+      "end_unix": 1791415455.8279977
+    }
+  ],
+  "actual_host_full_evaluation": {
+    "status": "ok",
+    "raw_value": 0.5035061641049132,
+    "score": 0.5283981641514641,
+    "quality_gates_passed": true,
+    "method_sha256": "d94ad72eb096d0d8c27cf8d7f4373c5ed8ea0529afb872f35c6e57d49073cb2a",
+    "protocol_sha256": "e22d4f05e7e41efb171a5d6cd6ca3c1e3ca1ae76acaf33ef04aacccde9944d59",
+    "start_unix": 1791416187.99906,
+    "end_unix": 1791416387.419288
+  },
+  "model_final_decision": {
+    "policy_name": "sdpa-fastpath-gram-norm",
+    "method_summary": "V-space projection kernel with 2D-view softmax, Gram-matrix norm computation, and F.scaled_dot_product_attention for the alpha=1.0 fast path. Non-alpha path computes q,k,v via 2D matmul, logits with transposed matmul, p0 and p1 softmaxes, p_mix via lerp, and ratio from Gram-matrix derived norms of p1 and p_mix against x. Raw CPU-time ratio improved from 0.4550 to 0.4535 (~0.3% better) and all 5 seeds pass numerical gates.",
+    "next_direction": "Future work could explore size-adaptive projection strategies (e.g. F.linear for larger C), fusing the ratio multiply with the final p_mix@v output, or investigating whether torch.compile (if allowed on CPU) yields further BLAS-level gains on the projection matmuls."
+  },
+  "original_supervision": {
+    "type": "controller.turn_supervision",
+    "started_unix": 1791412215.9301305,
+    "ended_unix": 1791416185.8573315,
+    "timed_out": false,
+    "exit_code": 0,
+    "remaining_processes": [],
+    "process_cleanup_verified": true
+  },
+  "original_events": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/round_00018.events.jsonl",
+  "model_and_billing_audit": "campaigns/asd-research-1791409298/harbor_task__rwoVqpw/agent/coding-plan.audit.jsonl",
+  "genuine_method_cycle": true,
+  "candidate_retained_as_best": false,
+  "performance_caveat": "Actor raw0.4534537577 slightly lower than prior0.4550455595, host actual raw0.5035061641 slower. Controller retained its prior best checkpoint; no confirmed improvement or final unique best claim."
+}

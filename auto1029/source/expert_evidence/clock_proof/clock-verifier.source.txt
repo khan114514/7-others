@@ -1,0 +1,177 @@
+"""Read-only verification of clock field projections; does not load task code."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+
+def union_seconds(intervals):
+    merged = []
+    for start, end in sorted(intervals):
+        if end <= start:
+            continue
+        if merged and start <= merged[-1][1]:
+            merged[-1][1] = max(end, merged[-1][1])
+        else:
+            merged.append([start, end])
+    return sum(end - start for start, end in merged)
+
+def subtract_intervals(included, excluded):
+    result = []
+    for start, end in included:
+        pieces = [(start, end)]
+        for lo, hi in sorted(excluded):
+            next_pieces = []
+            for a, b in pieces:
+                if hi <= a or lo >= b:
+                    next_pieces.append((a, b))
+                else:
+                    if a < lo: next_pieces.append((a, lo))
+                    if hi < b: next_pieces.append((hi, b))
+            pieces = next_pieces
+        result.extend(pieces)
+    return result
+
+def classify(start, end, events, observed, routes):
+    elapsed = end - start
+    completed = any(event.get('type') == 'turn.completed' for event in events)
+    # A relay journal can outlive a CLI process. Later responses cannot
+    # establish research activity for an earlier failed interval.
+    relevant_routes = [r for r in routes if start <= r['started_epoch'] < end]
+    successful_routes = [r for r in relevant_routes if r.get('model_response_completed')
+                         and r['completed_epoch'] <= end]
+    completed_items = [r for r in observed if start <= r['observed_epoch'] <= end
+                       and r['event'].get('type') == 'item.completed'
+                       and r['event'].get('item', {}).get('type') in
+                       {'command_execution', 'agent_message', 'reasoning', 'todo_list'}]
+    # A completed research turn is eligible even if all its experiments fail,
+    # no code changes, or its result is analysis only.
+    normal = completed or bool(successful_routes) or bool(completed_items)
+    failed = []
+    ordered_routes = sorted(relevant_routes, key=lambda r: r['started_epoch'])
+    for index, r in enumerate(ordered_routes):
+        if not r.get('model_response_completed') and (r.get('status') == 'ERROR' or r.get('http_status', 200) >= 400):
+            # Include the CLI's retry/backoff following a failed request, up to
+            # the next request. A configuration-warning item is not research.
+            retry_end = ordered_routes[index + 1]['started_epoch'] if index + 1 < len(ordered_routes) else end
+            failed.append((max(start, r['started_epoch']), min(end, max(r['completed_epoch'], retry_end))))
+    failure_seconds = union_seconds(failed)
+    if completed:
+        known_end = end
+    elif normal:
+        known_end = min(end, max(
+            [start] + [r['observed_epoch'] for r in completed_items]
+            + [r['completed_epoch'] for r in successful_routes]))
+    else:
+        known_end = start
+    excluded_known = union_seconds([(a, min(b, known_end)) for a, b in failed])
+    credited = max(0.0, known_end - start - excluded_known)
+    pending = max(0.0, elapsed - credited - failure_seconds)
+    included = subtract_intervals([(start, known_end)], failed)
+    return {'effective_seconds': credited, 'included_intervals': included,
+            'infrastructure_failure_seconds': failure_seconds,
+            'pending_activity_audit_seconds': 0.0 if completed else pending,
+            'excluded_seconds': elapsed - credited,
+            'accounting_status': 'COUNTED_NORMAL_RESEARCH' if completed else
+                                 'PARTIAL_NORMAL_WORK_PRESERVED_PENDING_AUDIT' if normal else
+                                 'INFRASTRUCTURE_FAILURE_NO_OBSERVED_RESEARCH',
+            'artifact_validity_used_for_time': False}
+
+
+def intersect(left, right):
+    return [(max(a, c), min(b, d)) for a, b in left for c, d in right if min(b, d) > max(a, c)]
+
+
+def gpu_intervals(journals, observed, cli_start, cli_end):
+    jobs, submitted = {}, {}
+    for journal in journals:
+        for value in journal['clock_rows']:
+            job = value['result']['job_id']
+            submitted[job] = min(submitted.get(job, float('inf')), value['local_request_start_epoch'])
+            if job not in jobs or value['local_request_end_epoch'] > jobs[job]['local_request_end_epoch']:
+                jobs[job] = value
+    starts, windows = {}, []
+    for value in observed:
+        if not value['evaluation_wait_command']:
+            continue
+        event, item = value['event'], value['event'].get('item', {})
+        if event['type'] == 'item.started':
+            starts[item['id']] = value['observed_epoch']
+        elif event['type'] == 'item.completed':
+            windows.append((starts.pop(item['id'], cli_start), value['observed_epoch']))
+    windows.extend((a, cli_end) for a in starts.values())
+    active, queues = [], []
+    for job, row in jobs.items():
+        value = row['result']
+        offset, uncertainty = row['clock_offset_estimate_seconds'], row['transport_uncertainty_seconds']
+        if 'gpu_started_epoch' in value:
+            gpu_start = value['gpu_started_epoch'] + offset
+            if 'completed_epoch' in value:
+                lo, hi = max(cli_start, gpu_start + uncertainty), value['completed_epoch'] + offset - uncertainty
+                if hi > lo:
+                    active.append((lo, hi))
+            queue_end = gpu_start
+        else:
+            queue_end = cli_end
+        for a, b in windows:
+            lo, hi = max(a, submitted[job]), min(b, queue_end)
+            if hi > lo:
+                queues.append((lo, hi))
+    return active, queues
+
+
+def verify(path):
+    data = json.loads(path.read_text())
+    assert data['original_execution_only'] is True and data['later_recovered_completion_credit'] == 0
+    summary = {'phase': 'ORIGINAL_CLOCK_PROJECTION_ARITHMETIC_VERIFIED_NOT_QA_VERDICT',
+               'projections_sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'roles': {}}
+    for role, track in data['roles'].items():
+        accumulated, details = [], []
+        for row in track['intervals']:
+            if row.get('missing_original_journal'):
+                assert row['credited_seconds'] == 0 and not row['included_intervals']
+                details.append({'run_id': row['run_id'], 'credited_seconds': 0, 'missing_journal_excluded': True})
+                continue
+            timing, observed = row['CLI_timing'], row['observed_events']
+            routes = [v['clock_status_fields'] for v in row['provider_routes']]
+            expected_model = 'gpt-6.1-sol' if role == 'gpt' else 'doubao-seed-2-1-turbo-260628'
+            assert all(v['role'] == role and v['model_requested'] == expected_model and v['reasoning_effort'] == 'high' for v in routes)
+            classified = classify(timing['started_epoch'], timing['completed_epoch'],
+                                  [v['event'] for v in observed], observed, routes)
+            included = classified['included_intervals']
+            queues = []
+            if row['native']:
+                gpu, queues = gpu_intervals(row['GPU_journals'], observed, timing['started_epoch'], timing['completed_epoch'])
+                included = subtract_intervals(included, queues) + (gpu if classified['effective_seconds'] > 0 else [])
+                included = subtract_intervals(included, row['failed_API_command_intervals'])
+            if row.get('closed_clock_comparison'):
+                included = intersect(included, row['closed_clock_comparison']['included_interval_cap'])
+            if row['original_included_interval_cap']:
+                included = intersect(included, row['original_included_interval_cap'])
+            included = intersect(included, [row['bounds']])
+            seconds = union_seconds(included)
+            assert abs(seconds - row['credited_seconds']) < .001, (row['run_id'], seconds, row['credited_seconds'])
+            assert abs(seconds - union_seconds(row['included_intervals'])) < .001
+            assert seconds <= row['historical_declared_seconds'] + .001
+            assert abs(row['bounds'][1] - row['bounds'][0] - seconds - row['excluded_seconds_in_outer_bounds']) < .001
+            accumulated.extend(included)
+            details.append({'run_id': row['run_id'], 'credited_seconds': seconds,
+                'included_intervals': included,
+                'excluded_intervals': subtract_intervals([row['bounds']], included),
+                'provider_failure_or_backoff_seconds': classified['infrastructure_failure_seconds'],
+                'unresolved_CLI_tail_seconds': classified['pending_activity_audit_seconds'],
+                'queue_wait_seconds': union_seconds(queues),
+                'later_recovered_GPU_completion_seconds_credited': 0})
+        total = union_seconds(accumulated)
+        assert abs(total - track['conservative_effective_seconds']) < .001
+        assert total <= track['historical_declared_seconds'] and total >= 36000
+        summary['roles'][role] = {'conservative_effective_seconds': total,
+             'conservative_hours': total / 3600, 'arithmetic_ge_36000': True,
+             'included_intervals_union': accumulated, 'per_interval': details}
+    return summary
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('projection', type=Path)
+    args = parser.parse_args()
+    print(json.dumps(verify(args.projection), ensure_ascii=False, indent=2))

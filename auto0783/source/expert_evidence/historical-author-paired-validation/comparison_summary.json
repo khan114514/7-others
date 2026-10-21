@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "HISTORICAL_ORIGINAL_PAIRED_RAW_TIMING_REAGGREGATION_AND_LATENT_FILE_SHA_PASS",
+  "run_id": "4422bffce5f543e79fe298b20611b70c",
+  "scope": "Original author comparison; not current portable release validation or expert search credit.",
+  "source_binding_sha256": "4d251b8bf006bc5008d385b58666323659baeeaa17b418d8bfc83bd47c753977",
+  "current_release_binding_PASS": false,
+  "task_type": "non-training pretrained 28-layer decoder inference",
+  "training": "NOT_APPLICABLE",
+  "per_seed": [
+    {
+      "sampling_seed": 101,
+      "case_count": 2,
+      "baseline_ms": 57449.34196472168,
+      "candidate_ms": 33144.66298675537
+    },
+    {
+      "sampling_seed": 202,
+      "case_count": 2,
+      "baseline_ms": 57583.270919799805,
+      "candidate_ms": 33200.15977859497
+    },
+    {
+      "sampling_seed": 303,
+      "case_count": 2,
+      "baseline_ms": 57590.32265472412,
+      "candidate_ms": 33209.011169433594
+    }
+  ],
+  "baseline_mean_ms": 57540.97851308187,
+  "reference_mean_ms": 33184.61131159464,
+  "baseline_sample_sd_ms": 79.4378655798834,
+  "reaggregated_baseline_sample_sd_ms": 79.43786557988338,
+  "sd_reaggregation_absolute_difference_ms": 1.4210854715202004e-14,
+  "reward": 0.42328733071422897,
+  "paired_improvement_ms": 24356.367201487228,
+  "noise_3sigma_pass": true,
+  "original_independent_CPU_audit": "numerical-evidence/independent-recompute.json",
+  "stage_rows": 4608,
+  "repetitions": 18,
+  "latent_file_SHA_matches": 6,
+  "quality_pass_from_original_CPU_audit": true,
+  "GPU_stdout_not_available": true,
+  "new_GPU_CPU_latent_recomputation_performed": false,
+  "raw_numeric_bool_null_fields_unchanged": true,
+  "formal_research_time_credit": 0
+}

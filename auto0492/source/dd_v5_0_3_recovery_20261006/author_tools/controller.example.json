@@ -1,0 +1,18 @@
+{
+  "ssh_key_file": "/opt/dd/control/restricted_worker_key",
+  "known_hosts_file": "/opt/dd/control/known_hosts",
+  "ssh_port": 22,
+  "ssh_target": "gpu-runtime",
+  "socket_listeners": [
+    {
+      "socket_file": "/opt/dd/control/sockets/track/public.sock",
+      "scope": "track-public",
+      "mode": "calibration"
+    },
+    {
+      "socket_file": "/opt/dd/control/sockets/track/formal.sock",
+      "scope": "track-formal",
+      "mode": "formal"
+    }
+  ]
+}

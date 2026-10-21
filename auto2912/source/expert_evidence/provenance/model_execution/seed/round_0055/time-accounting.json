@@ -1,0 +1,29 @@
+{
+  "policy": "user-normal-work-clock-20261006",
+  "elapsed_seconds": 1809.7813713550568,
+  "effective_seconds": 1632.110464334488,
+  "excluded_seconds": 177.67090702056885,
+  "excluded_intervals": [
+    [
+      1791311920.687134,
+      1791312098.358041
+    ]
+  ],
+  "exclusion_evidence": [
+    {
+      "start_epoch": 1791311920.687134,
+      "end_epoch": 1791312098.358041,
+      "reason": "Observed first stream interruption only until actual retry start; later real normal streaming retained",
+      "evidence": "harbor-runtime/forecast-research-seed-c6112f5b__env/routes/seed-c5c1ab1d9c474171b3a9b57d8f1e7ab9-route.json"
+    }
+  ],
+  "score_success_used_for_time": false,
+  "role": "seed",
+  "round": 55,
+  "cli_exit_code": 143,
+  "actual_model_completion_observed": true,
+  "started_epoch": 1791310932.7739258,
+  "completed_epoch": 1791312742.5552971,
+  "cli_end_epoch": 1791312732.927736,
+  "late_receipt_reconciliation_evidence": "seed-late-receipt-clock-reconciliation.json"
+}

@@ -1,0 +1,667 @@
+{
+  "status": "COLLECTED_RESEARCH_FINALIZED_RELEASE_PENDING",
+  "score_semantics": "normalized Public/Dev evaluator score, maximize; original seconds in protected_reports",
+  "rounds": [
+    {
+      "round": 1,
+      "policy_name": "000_baseline",
+      "method_summary": "运行共同 canonical 初始方法，建立完整 Public/Dev 对照；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": -0.37463374328318144,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 20:27:31"
+    },
+    {
+      "round": 2,
+      "policy_name": "001_cross_only",
+      "method_summary": "只计算实际使用的跨域标签几何，消除同域类对的冗余求解；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": -0.0061206209469174,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 20:33:55"
+    },
+    {
+      "round": 3,
+      "policy_name": "009_gibbs_early",
+      "method_summary": "在粗温度阶段提前使用 Gibbs 核矩阵向量运算，减少对数域变换；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.4792228641581371,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 20:41:00"
+    },
+    {
+      "round": 4,
+      "policy_name": "015_sparse_8_later",
+      "method_summary": "以八邻接稀疏图执行较晚双势变换，检验图选择开销与保真度；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.41672057372136356,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 20:47:58"
+    },
+    {
+      "round": 5,
+      "policy_name": "023_coupling_3",
+      "method_summary": "复用指数核及初始核，将样本 coupling 内层更新固定为三次；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.503310747054841,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 20:54:57"
+    },
+    {
+      "round": 6,
+      "policy_name": "030_torch_geometry",
+      "method_summary": "用双线程 Torch 共享特征几何，比较 NumPy 和单线程路径；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.599194486237406,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 21:02:43"
+    },
+    {
+      "round": 7,
+      "policy_name": "043_shared_exponential_all",
+      "method_summary": "将共享指数变换同时用于类与点求解，检验组合效果；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": -0.06343294605753307,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 21:28:18"
+    },
+    {
+      "round": 8,
+      "policy_name": "075_scalar_outer",
+      "method_summary": "把少量 batch 的外层传输改为标量形式并核对边缘残差；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.6214290475624421,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 21:39:54"
+    },
+    {
+      "round": 9,
+      "policy_name": "079_numpy_coupling",
+      "method_summary": "将点、类及 coupling 共享归约移到 NumPy，验证局部加速；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.5560590116068239,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 21:54:54"
+    },
+    {
+      "round": 10,
+      "policy_name": "086_recurrent_torch_kernel",
+      "method_summary": "用 Torch 指数核递推减少每个温度阶段重新计算指数；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.7921641100128568,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 22:05:44"
+    },
+    {
+      "round": 11,
+      "policy_name": "113_remove_redundant_reductions",
+      "method_summary": "复用初始核并删除重复点级归约，检验局部计时优势；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.7104037163100325,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 22:23:28"
+    },
+    {
+      "round": 12,
+      "policy_name": "123_flush_reciprocal_relative_check",
+      "method_summary": "结合倒数归一化、相对质量残差检查及去规格化浮点设置；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8495482990735561,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 22:34:47"
+    },
+    {
+      "round": 13,
+      "policy_name": "125_numpy_coupling_reductions",
+      "method_summary": "在已验证双势路径上单独改用 NumPy coupling 归约；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.841121228068361,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 22:45:57"
+    },
+    {
+      "round": 14,
+      "policy_name": "136_all_torch_reductions",
+      "method_summary": "将相关归约统一到 Torch，比较统一张量与混合框架路径；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8588763515055424,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 23:00:03"
+    },
+    {
+      "round": 15,
+      "policy_name": "145_inplace_matrix_scaling",
+      "method_summary": "以原位矩阵缩放复用缓冲，减少指数核更新的临时分配；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8687743708868532,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 23:08:33"
+    },
+    {
+      "round": 16,
+      "policy_name": "162_precomputed_norm_geometry",
+      "method_summary": "预计算特征平方范数并复用几何，避免每对 batch 重算；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8755994146299784,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 23:17:26"
+    },
+    {
+      "round": 17,
+      "policy_name": "165_addmm_baddbmm_geometry",
+      "method_summary": "用 addmm/baddbmm 融合点与类几何，对照广播构造；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8619749345688746,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 23:23:17"
+    },
+    {
+      "round": 18,
+      "policy_name": "162_precomputed_norm_geometry",
+      "method_summary": "重复完整评测此前的预计算范数方法，观察计时波动；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.892041964594227,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 23:29:05"
+    },
+    {
+      "round": 19,
+      "policy_name": "190_fuse_direct_both",
+      "method_summary": "融合类与点的直接变换，检验独立调整能否叠加；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8808035164351224,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 23:38:38"
+    },
+    {
+      "round": 20,
+      "policy_name": "224_mean_initial",
+      "method_summary": "用解析均值构造初始双势，减少完整初始核计算；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8845469021202808,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-09 23:46:43"
+    },
+    {
+      "round": 21,
+      "policy_name": "241_numpy_label_take",
+      "method_summary": "用连续 np.take 获取标签几何，隔离索引方式成本；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9042152790990676,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-09 23:53:12"
+    },
+    {
+      "round": 22,
+      "policy_name": "265_mean_skip3_linear_column",
+      "method_summary": "组合均值初始化、三个粗阶段跳过与线性化 coupling 列更新；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9112964935233014,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 00:02:50"
+    },
+    {
+      "round": 23,
+      "policy_name": "264_mean_hard16_linear_column",
+      "method_summary": "控制较早进入硬变换的阶段，保留线性化列更新作消融；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9062783716492805,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 00:06:51"
+    },
+    {
+      "round": 24,
+      "policy_name": "265_mean_skip3_linear_column",
+      "method_summary": "重复完整评测均值初始化和粗阶段跳过组合；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9039505326807684,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 00:14:19"
+    },
+    {
+      "round": 25,
+      "policy_name": "303_combo_hard64_late2_skip2_last0",
+      "method_summary": "组合硬变换、后期与粗阶段省略及最终更新控制；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9027388682813114,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 00:27:58"
+    },
+    {
+      "round": 26,
+      "policy_name": "344_global_coupling_308_combo_hard256_late2_skip2_last1",
+      "method_summary": "在已验证有限退火路径上复用全局 coupling，减少重复构造；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9073832139786109,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 00:41:30"
+    },
+    {
+      "round": 27,
+      "policy_name": "359_row_energy_353_absolute_mass_344_global_coupling_308_combo_hard256_late2_skip2_last1_linear0",
+      "method_summary": "用精确行能量收缩和绝对质量检查替代部分稠密运算；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.904990550887868,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 00:49:28"
+    },
+    {
+      "round": 28,
+      "policy_name": "367_simplified_359_row_energy_353_absolute_mass_344_global_coupling_308_combo_hard256_late2_skip2_last1_linear0",
+      "method_summary": "删除均值初始化后不可达的完整初始核分支和冗余 setup；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9138704147966757,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 00:55:49"
+    },
+    {
+      "round": 29,
+      "policy_name": "367_simplified_359_row_energy_353_absolute_mass_344_global_coupling_308_combo_hard256_late2_skip2_last1_linear0",
+      "method_summary": "重复完整评测上述简化路径，观察当前计时表现；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9143250004375346,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 01:02:01"
+    },
+    {
+      "round": 30,
+      "policy_name": "391_episode7_class_late3_extrap0.25",
+      "method_summary": "省略类双势末段三个细化步骤并作向量外推；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9233726196196587,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 01:17:39"
+    },
+    {
+      "round": 31,
+      "policy_name": "403_episode7_extrap0.15",
+      "method_summary": "控制类双势末段外推系数，对照保真度和完整计时；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.911446444577696,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 01:23:56"
+    },
+    {
+      "round": 32,
+      "policy_name": "426_episode7_gonly_schedule_numpy",
+      "method_summary": "只调整参照侧退火更新并试用 NumPy 路径；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9242854071040261,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 01:36:20"
+    },
+    {
+      "round": 33,
+      "policy_name": "432_episode7_schedule_bounds",
+      "method_summary": "显式计算退火阶段边界，减少重复分支和尺度运算；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.924392250394403,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 01:41:31"
+    },
+    {
+      "round": 34,
+      "policy_name": "434_episode7_bounds_activebranch",
+      "method_summary": "在阶段边界方案增加活动分支，检验局部优势；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8980354533250584,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 01:48:16"
+    },
+    {
+      "round": 35,
+      "policy_name": "440_episode7_bounds_gonly0.2",
+      "method_summary": "在边界方案中只外推参照侧双势，作两侧外推的对照；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.827694089519422,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 01:57:57"
+    },
+    {
+      "round": 36,
+      "policy_name": "449_episode7_bounds_hard512",
+      "method_summary": "改变进入硬变换的阶段，检验更激进近似；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8226346653308747,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 02:06:52"
+    },
+    {
+      "round": 37,
+      "policy_name": "432_episode7_schedule_bounds",
+      "method_summary": "重复完整评测已保留的退火边界方案，记录计时噪声；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8788303709977997,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 02:19:45"
+    },
+    {
+      "round": 38,
+      "policy_name": "460_episode8_shared_initial_gauge",
+      "method_summary": "Combine shared analytic means with equivalent point cost gauge；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9208638928722934,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 02:29:41"
+    },
+    {
+      "round": 39,
+      "policy_name": "473_episode8_virtual_combine_point_last_logcolumn",
+      "method_summary": "Combine one virtual class step with independently valid point change；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.913252040316948,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 02:38:19"
+    },
+    {
+      "round": 40,
+      "policy_name": "490_episode8_mean_first_combine_shared_point_logcolumn",
+      "method_summary": "Combine validated first class-cumulant approximation with exact point optimizations；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9231414623566688,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 02:43:08"
+    },
+    {
+      "round": 41,
+      "policy_name": "491_episode8_mean_first_combine_point_foldcol",
+      "method_summary": "Combine validated first class-cumulant approximation with exact point optimizations；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9093420206320797,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 02:48:32"
+    },
+    {
+      "round": 42,
+      "policy_name": "432_episode7_schedule_bounds",
+      "method_summary": "重复完整评测已保留的退火边界方案，记录计时噪声；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9052785640857877,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 02:55:18"
+    },
+    {
+      "round": 43,
+      "policy_name": "515_episode9_class_column_major",
+      "method_summary": "Transpose each physical class cost/kernel matrix, retaining same logical row and column operations；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9232037592590603,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 03:05:12"
+    },
+    {
+      "round": 44,
+      "policy_name": "547_episode9_class_column_shared_vector_zero",
+      "method_summary": "Shared point means/final cancellation and exact class layout/schedule/zero-shift savings, using original class mean initialization；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9259919445534647,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 03:18:41"
+    },
+    {
+      "round": 45,
+      "policy_name": "554_episode9_shared_coupling_cancel_gemm_columns",
+      "method_summary": "Control exact-cancellation kernel dispatch using gemm rather than GEMV; preserve arithmetic expression and all supports；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9278975463772868,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 03:30:42"
+    },
+    {
+      "round": 46,
+      "policy_name": "564_episode9_coupling_lowrank_cost_energy_label_fields",
+      "method_summary": "Exact22-columnGEMMcontainsalreadyweightedlabelcosts; avoidsmallpost-response10-waydotproduct；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8821821845358105,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 03:40:00"
+    },
+    {
+      "round": 47,
+      "policy_name": "554_episode9_shared_coupling_cancel_gemm_columns",
+      "method_summary": "Control exact-cancellation kernel dispatch using gemm rather than GEMV; preserve arithmetic expression and all supports；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9293211204698644,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 03:46:16"
+    },
+    {
+      "round": 48,
+      "policy_name": "571_episode10_point_gemm_columns",
+      "method_summary": "Replace point marginal sums by GEMM against two-dimensional all-ones columns; isolate row/column physical reduction kernels without changing objectives；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9287306757100462,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 03:52:30"
+    },
+    {
+      "round": 49,
+      "policy_name": "591_episode10_point_gemm_columns_class_tile20",
+      "method_summary": "Combine exact point GEMM column marginals with independently optimized class tiling or label-bias cost allocation. Measure combined effects instead of assuming additivity；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.926780346483382,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 03:59:11"
+    },
+    {
+      "round": 50,
+      "policy_name": "627_episode10_augmented_full_cost_contiguous_pairs",
+      "method_summary": "One full augmented cost GEMM over supplied arrays; copy each original pair to contiguous storage before dual solve. Isolate dispatch and slicing cost from referencebatch setup；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9273748395459205,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 04:07:17"
+    },
+    {
+      "round": 51,
+      "policy_name": "620_episode10_class_and_point_augmented_geometry",
+      "method_summary": "Construct exact class feature squared distances in a single12dimensional homogeneous BMM, eliminating dense negation/radialnormbroadcasts; isolate class then combine point optimizations；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9063570080003455,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 04:14:41"
+    },
+    {
+      "round": 52,
+      "policy_name": "642_episode10_full_augmented_class_factor_initialization",
+      "method_summary": "Reuse12dimensionalclassgeometryfactors for empirical row/columncostmeans via maskedbatchfactoraveragesandBMM; isolateclassinitializationfrompointfactorinitialization；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9261358472811869,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 04:18:10"
+    },
+    {
+      "round": 53,
+      "policy_name": "554_episode9_shared_coupling_cancel_gemm_columns",
+      "method_summary": "Control exact-cancellation kernel dispatch using gemm rather than GEMV; preserve arithmetic expression and all supports；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9296686898577253,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 04:24:27"
+    },
+    {
+      "round": 54,
+      "policy_name": "651_episode11_class_persistent_fold_final_delta",
+      "method_summary": "Fold final class half-step and reference extrapolation into one final reduced-cost shift；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.8867982411585742,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 04:32:34"
+    },
+    {
+      "round": 55,
+      "policy_name": "656_episode11_point_recurrence_residual_increments",
+      "method_summary": "Update point potentials by their log-marginal increments, skipping redundant readdition and cancellation；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9294001905738614,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 04:39:09"
+    },
+    {
+      "round": 56,
+      "policy_name": "671_episode11_point_gemm_columns_point_recurrence_residual_increments",
+      "method_summary": "Combine persistent class residual/increment mechanism with exact point column GEMM reductions from episode10; isolate dispatch interactions；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9309127606035076,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 04:46:48"
+    },
+    {
+      "round": 57,
+      "policy_name": "686_episode11_class_unique_centered_point_increments_gemm",
+      "method_summary": "Combine unique centered class geometry with exact point residual increments and column GEMM reductions；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9141488613887206,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 04:56:03"
+    },
+    {
+      "round": 58,
+      "policy_name": "671_episode11_point_gemm_columns_point_recurrence_residual_increments",
+      "method_summary": "Combine persistent class residual/increment mechanism with exact point column GEMM reductions from episode10; isolate dispatch interactions；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9323487639717866,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 05:03:07"
+    },
+    {
+      "round": 59,
+      "policy_name": "693_episode12_class_implicit_row_factor",
+      "method_summary": "Implicit one-sided class scaling tests whether a weighted batched product outweighs a saved dense multiplication; full empirical geometry and annealing preserved；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9191483270806219,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 05:11:16"
+    },
+    {
+      "round": 60,
+      "policy_name": "705_episode12_full_cost_control_current_recipe",
+      "method_summary": "Exact full augmented cost construction with the currently retained class and point recipe, controlling cost dataflow before grouped coupling；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9298672373207972,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 05:20:40"
+    },
+    {
+      "round": 61,
+      "policy_name": "722_episode12_class_hard_all_shifts_tile25",
+      "method_summary": "Include entry residual construction in each complete hard suffix cache block, eliminating the last full-matrix initialization traversal；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9307629878814414,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 05:30:01"
+    },
+    {
+      "round": 62,
+      "policy_name": "736_episode12_full_cost_point_terminal_hard_inplace",
+      "method_summary": "Combine full augmented cost construction with allocation-free final hard point transforms, preserving finite annealing and calibration；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9355238795621499,
+      "failure_reason": null,
+      "retained_best": true,
+      "time": "2026-10-10 05:34:21"
+    },
+    {
+      "round": 63,
+      "policy_name": "743_episode12_full_cost_cache_terminal_inplace",
+      "method_summary": "Combine complete class hard cache blocks, full augmented point costs and disposable terminal in-place point transforms; preserve all supports；完整 Public/Dev 的270次质量记录全部有效。该次受保护测量未刷新轨迹中已观察的有效最佳分数。",
+      "status": "ok",
+      "score": 0.9307743605804656,
+      "failure_reason": null,
+      "retained_best": false,
+      "time": "2026-10-10 05:38:52"
+    },
+    {
+      "round": 64,
+      "policy_name": "native_uncollected_episode_13",
+      "method_summary": "第13轮Native日志保留30次已完成工具及真实502/turn.failed；未形成已收集轮次，时长贡献为零。本行time为最后实际API回执时间，不是完成时间。",
+      "status": "runtime_error",
+      "score": null,
+      "failure_reason": "Native实际502 Trusted transport unavailable，五次重连后turn.failed；没有完整episode ledger或新评分，整轮未计时。",
+      "retained_best": false,
+      "time": "2026-10-10 05:45:04"
+    }
+  ],
+  "time_semantics": "Actual protected measurement completion represented in Asia/Shanghai (UTC+08:00), YYYY-MM-DD HH:mm:ss; no inferred or padded time.",
+  "local_screening_scope": "Formal scored rounds appear here; unscored local methods and numerical/import failures are additionally preserved in local_screening_indexes and native sessions. Local timing and quality are not formal scores.",
+  "uncollected_failure_evidence": "expert_evidence/native_records/codex/native_cli/episode_0013/codex.jsonl",
+  "run_id": "sava_codex_logical_track",
+  "duration_seconds": 33583.012909626006,
+  "effective_seconds": 31751.36391291509,
+  "duration_semantics": "Collected Native episode wall durations within this same-model logical track, with own-work continuations. No offline gaps, other model, stability uptime or uncollected episode added. Effective time separately deducts actual failed requests, setup, repetition, and abandoned no-output waits.",
+  "time_accounting_evidence": "expert_evidence/time_accounting/gpt.json",
+  "native_records": "expert_evidence/native_records/codex",
+  "formal_report_count": 63,
+  "status_normalization_provenance": {
+    "original_published_trajectory_sha256": "9168504b10b59df9ffe36a29d9720d361bab2350a9b616e3c1c825fb70452b30",
+    "scope": "Status vocabulary only. Original native records are unchanged. Every original label is retained below; scores, reasons, best flags, timestamps, round count and effective time are unchanged. Each round still has exactly eight fields.",
+    "changes": [
+      {
+        "round": 64,
+        "original_status": "NATIVE_UNCOLLECTED_FAILURE",
+        "published_status": "runtime_error"
+      }
+    ]
+  }
+}

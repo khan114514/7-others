@@ -1,0 +1,63 @@
+{
+  "state": "REAL_NATIVE_RUNNING",
+  "activated_at": "2026-10-10T14:34:05.976900+00:00",
+  "exact_model": "doubao-seed-2-1-turbo-260628",
+  "effort": "high",
+  "controller_session_id": 32236,
+  "bridge_session_id": 76075,
+  "trial": "harbor_task__WvnYz4N",
+  "container": "harbor_task__wvnyz4n__env-main-1",
+  "actual_image_id": "sha256:8d4a6ec3dce8eec2d1a144225d8a9609ed18250edc375ebe17eb175e7dcdd9b8",
+  "final_base_image_id": "sha256:e023560824f59aca7df8ee55168b9c4286d05072802cf5b8588f4f21f2a8761f",
+  "all_16_rootfs_layers_equal": true,
+  "image_config_equal_except_compose_labels": true,
+  "runtime_gate_before_first_request": {
+    "status": "PASS",
+    "actual_root_service": [
+      {
+        "pid": 8,
+        "uid": 0,
+        "capeff": "00000000000000e0"
+      }
+    ],
+    "actual_actor": {
+      "uid": 1000,
+      "capeff": "0000000000000000"
+    },
+    "public_runtime_hashes": {
+      "/opt/public_eval/evaluator.py": "568324a18288c100866872bdc5c81bef1f16d916be61cc717ed5e5f3361f1d37",
+      "/opt/public_eval/dev_client.py": "13c6c6aff3084309f206ca3095b2ce59ca0298ed056b13c27f7b04dd90cf07fa",
+      "/opt/public_eval/dev_service.py": "203b77f7b6d591ad1865c15217febf76cee4f31a333a92ee2cefe6b12f61f59d",
+      "/opt/public_eval/entrypoint.py": "9575afb99a23cd9b03517fd8ea052029db70718d67244d301e95a44d4da0520c",
+      "/opt/public_eval/candidate_worker.py": "c1dc965dd1b690a589e902cbe01576df0c9cb436d71b24b44dd0f698f73dd916"
+    },
+    "counts_as_research": false
+  },
+  "private_view_audit": "actual_view",
+  "only_model_internal_network": "sava-harbor-model-db8c4adfddf4",
+  "resource_limits": {
+    "cpu_nanos": 2000000000,
+    "memory_bytes": 2147483648
+  },
+  "mounts": [
+    {
+      "type": "bind",
+      "destination": "/logs/agent"
+    },
+    {
+      "type": "bind",
+      "destination": "/logs/artifacts"
+    },
+    {
+      "type": "bind",
+      "destination": "/logs/verifier"
+    }
+  ],
+  "own_files": 68,
+  "fresh_route_probe": "fresh_route_probe.json",
+  "min_effective_seconds_to_7h": 3971.853170450693,
+  "quota_or_budget_completion_not_claimed": true,
+  "previous_v4_completed_with_real_transport_exception": true,
+  "previous_model_job_not_running": true,
+  "counts_as_research": false
+}

@@ -1,0 +1,163 @@
+{
+  "phase": "ACTUAL_SECONDARY_GENERIC_PRIVATE_SOURCE_ENTRY_AND_INJECTED_CORPUS_ISOLATION_PASS_FULL_GPU_NATIVE_PENDING",
+  "checks": [
+    {
+      "case": "actual_injected_private_rows_inaccessible_in_verified_policy_jail",
+      "passed": true
+    },
+    {
+      "case": "exact-private-source-preflight-gpt",
+      "passed": true
+    },
+    {
+      "case": "exact-private-source-preflight-seed",
+      "passed": true
+    },
+    {
+      "case": "candidate-split-override-refused",
+      "passed": true
+    },
+    {
+      "case": "partial-formal-seeds-refused",
+      "passed": true
+    },
+    {
+      "case": "empty-method-notes-refused",
+      "passed": true
+    },
+    {
+      "case": "no-private-job-created-gpt",
+      "passed": true
+    },
+    {
+      "case": "no-private-job-created-seed",
+      "passed": true
+    }
+  ],
+  "actual_executions": [
+    {
+      "case": "exact-private-source-preflight-gpt",
+      "argv": [
+        "/opt/conda/bin/python3.12",
+        "-S",
+        "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py",
+        "--role",
+        "gpt",
+        "--preflight-only"
+      ],
+      "started_epoch": 1791371930.1849425,
+      "completed_epoch": 1791371930.2298794,
+      "exit_code": 0,
+      "stdout": "{\"phase\": \"PRIVATE_VERIFIER_SOURCE_DATA_PREFLIGHT_ONLY\", \"policy_sha256\": \"4f65c25a30a897d3cd90324dc394237611fb7c0aa933d7005a1d36da8ef5c49d\", \"candidate_imported_by_host\": false, \"gpu_jobs\": 0, \"model_calls\": 0}\n",
+      "stderr": "",
+      "source_data_only": true
+    },
+    {
+      "case": "exact-private-source-preflight-seed",
+      "argv": [
+        "/opt/conda/bin/python3.12",
+        "-S",
+        "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py",
+        "--role",
+        "seed",
+        "--preflight-only"
+      ],
+      "started_epoch": 1791371930.2299519,
+      "completed_epoch": 1791371930.273882,
+      "exit_code": 0,
+      "stdout": "{\"phase\": \"PRIVATE_VERIFIER_SOURCE_DATA_PREFLIGHT_ONLY\", \"policy_sha256\": \"4f65c25a30a897d3cd90324dc394237611fb7c0aa933d7005a1d36da8ef5c49d\", \"candidate_imported_by_host\": false, \"gpu_jobs\": 0, \"model_calls\": 0}\n",
+      "stderr": "",
+      "source_data_only": true
+    },
+    {
+      "case": "candidate-split-override-refused",
+      "argv": [
+        "/opt/conda/bin/python3.12",
+        "-S",
+        "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py",
+        "--role",
+        "gpt",
+        "--preflight-only"
+      ],
+      "started_epoch": 1791371930.273976,
+      "completed_epoch": 1791371930.3160176,
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 113, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 85, in main\n    request=validate_submission(args.role,payload)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 11, in validate_submission\n    raise ValueError('Only fixed private submission fields allowed')\nValueError: Only fixed private submission fields allowed\n",
+      "source_data_only": true
+    },
+    {
+      "case": "partial-formal-seeds-refused",
+      "argv": [
+        "/opt/conda/bin/python3.12",
+        "-S",
+        "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py",
+        "--role",
+        "seed",
+        "--preflight-only"
+      ],
+      "started_epoch": 1791371930.3160708,
+      "completed_epoch": 1791371930.3600202,
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 113, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 85, in main\n    request=validate_submission(args.role,payload)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 13, in validate_submission\n    raise ValueError('Fresh owned job and all five formal seeds required')\nValueError: Fresh owned job and all five formal seeds required\n",
+      "source_data_only": true
+    },
+    {
+      "case": "empty-method-notes-refused",
+      "argv": [
+        "/opt/conda/bin/python3.12",
+        "-S",
+        "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py",
+        "--role",
+        "gpt",
+        "--preflight-only"
+      ],
+      "started_epoch": 1791371930.3600843,
+      "completed_epoch": 1791371930.4031188,
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 113, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 85, in main\n    request=validate_submission(args.role,payload)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py\", line 24, in validate_submission\n    raise ValueError('Bounded nonempty method metadata required')\nValueError: Bounded nonempty method metadata required\n",
+      "source_data_only": true
+    },
+    {
+      "case": "no-private-job-created-gpt",
+      "argv": [
+        "/opt/conda/bin/python3.12",
+        "-S",
+        "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py",
+        "--role",
+        "gpt"
+      ],
+      "started_epoch": 1791371930.403187,
+      "completed_epoch": 1791371930.445639,
+      "exit_code": 0,
+      "stdout": "{\"active\": null, \"role\": \"gpt\", \"remote_observed_epoch\": 1791371930.4394953}\n",
+      "stderr": "",
+      "source_data_only": true
+    },
+    {
+      "case": "no-private-job-created-seed",
+      "argv": [
+        "/opt/conda/bin/python3.12",
+        "-S",
+        "${DEPLOYMENT_HOME}/heima-private-portable-install-a8b46a8ead494a0fb1d75d590971c110/deployment/private/private_verifier_service.py",
+        "--role",
+        "seed"
+      ],
+      "started_epoch": 1791371930.445725,
+      "completed_epoch": 1791371930.489832,
+      "exit_code": 0,
+      "stdout": "{\"active\": null, \"role\": \"seed\", \"remote_observed_epoch\": 1791371930.4832122}\n",
+      "stderr": "",
+      "source_data_only": true
+    }
+  ],
+  "private_rows": 1380,
+  "candidate_imported_by_host": false,
+  "gpu_jobs": 0,
+  "model_requests": 0,
+  "root_research_credit": 0,
+  "installed_source_manifest_sha256": "ee2780a3af9491f669e52c875a4565b4ecd2281b2558a46e4d8f5e9f511100c4",
+  "recorded_epoch": 1791371930.490329
+}

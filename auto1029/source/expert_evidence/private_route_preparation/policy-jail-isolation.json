@@ -1,0 +1,57 @@
+{
+  "phase": "ACTUAL_PORTABLE_POLICY_ISOLATION_PASS",
+  "checks": [
+    {
+      "name": "dropped_uid_gid_groups",
+      "passed": true
+    },
+    {
+      "name": "host_marker_unreadable",
+      "passed": true
+    },
+    {
+      "name": "no_host_proc",
+      "passed": true
+    },
+    {
+      "name": "no_torch_site_packages",
+      "passed": true
+    },
+    {
+      "name": "no_network_socket",
+      "passed": true
+    },
+    {
+      "name": "no_process_fork",
+      "passed": true
+    },
+    {
+      "name": "no_parent_signals",
+      "passed": true
+    },
+    {
+      "name": "readonly_tmp",
+      "passed": true
+    },
+    {
+      "name": "proposal_length_enforced",
+      "passed": true
+    },
+    {
+      "name": "request_timeout_enforced",
+      "passed": true
+    }
+  ],
+  "rpc_count": 200,
+  "mean_rpc_seconds": 3.1953537836670874e-05,
+  "gpu_used": false,
+  "model_research_seconds": 0,
+  "candidate_imported_by_host": false,
+  "source_hashes": {
+    "isolated_policy.py": "231011e1d174d8eddede425fcbc83cff6b0b55636df9ca6526742b6228cd27bf",
+    "policy_jail_launcher.py": "a1c49bc522649d49732005a17a80b52f3fe6e995e65a2e70bd9bdf0664b7a910",
+    "policy_jail_runner.py": "15ccd140d97bea9d220d083198be9bd9f879d7f8d9014d60e89957c731e4e6a0",
+    "deployment_paths.py": "a4e2a0a7eeb810b5bc37b5c95ad3ed49d03f2d55f8c4dced9416e1a3bb69ec27"
+  },
+  "completed_epoch": 1791371795.9582667
+}

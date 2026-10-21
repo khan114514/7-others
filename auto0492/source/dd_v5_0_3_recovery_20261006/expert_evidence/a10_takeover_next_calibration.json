@@ -1,0 +1,84 @@
+{
+  "created_at": "2026-10-04T11:37:52.088145+00:00",
+  "status": "QUEUED_AFTER_EXISTING_B_REPETITIONS",
+  "owner": "A10 takeover chat",
+  "hypothesis": "The previous teacher4096 pilot trained only k5..9 (recorded histogram [0,0,0,0,0,846,835,791,778,846]), whereas frozen inference uses t_list=0. A point-mass/late-prefix mixture covers inference while retaining late-stage supervision. This is a hypothesis, not an established cause or a passing result.",
+  "method_sha256": "4a18a366aa5972f498b578166f0c3b5710845275a0e4a95a2dcd0f513b61303f",
+  "teacher_samples": 4096,
+  "proposal_multiplier": 8,
+  "reuse": 1,
+  "time_distribution": "0.5*delta(t=0) + 0.5*Uniform(0.5,1)",
+  "training_seed": 2001,
+  "teacher_seed": 1001,
+  "evaluation_seed": 0,
+  "sample_count": 50000,
+  "budget_seconds": 14400,
+  "frozen_runtime": "runtime:author_job/workspace/harbor_task",
+  "dependency": "Wait for existing guard04 validation_driver PID256622 to finish all B seed0/1/2 successfully; then own small smoke and full clean calibration. Failed validation halts this queue.",
+  "upper_bound": null,
+  "rules": [
+    "No anchor changes or weaker Baseline.",
+    "Preserve failed and inconclusive candidates.",
+    "Do not count expert calibration or queue wait as formal model research.",
+    "Successful execution alone does not show quality improvement."
+  ],
+  "launch": {
+    "pid": 261909,
+    "started_epoch": 1791113847.6375067,
+    "root": "runtime:author_job/dd-inference-aligned-pilot",
+    "method_sha256": "4a18a366aa5972f498b578166f0c3b5710845275a0e4a95a2dcd0f513b61303f",
+    "program": "runtime:author_job/dd-inference-aligned-pilot/pilot_queue.py",
+    "scope": "New declared expert calibration queued after existing baseline repeats; no formal model time credit or anchor change"
+  },
+  "guarded_cpu_probe": {
+    "status": "PASS",
+    "scope": "Real frozen guarded method worker CPU-only contract and RNG propagation; no GPU/model/formal time credit",
+    "method_sha256": "4a18a366aa5972f498b578166f0c3b5710845275a0e4a95a2dcd0f513b61303f",
+    "atom_zero_count": 121,
+    "late_count": 135,
+    "sample_count": 256,
+    "deterministic_with_identical_seed": true,
+    "parent_rng_advanced": true,
+    "guard": {
+      "landlock_abi": 1,
+      "filesystem_enforced": true,
+      "network_denied": true,
+      "unix_sockets_denied": true,
+      "cross_process_signals_denied": true,
+      "new_processes_denied": true,
+      "device_creation_denied": true,
+      "gpu_devices_denied": true,
+      "system_private_files_denied": true
+    },
+    "epoch": 1791113885.622933
+  },
+  "local_source": "author-private:home/Documents/ChatGPT/New project/a10_takeover_20261004/dd-inference-aligned-pilot/method.py",
+  "updated_at": "2026-10-04T11:41:18.148474+00:00",
+  "storage_recovery": {
+    "old_failed_run": "run-d824955fa1fb4627a11eeb25816fd4b9",
+    "failure_backup_verified": true,
+    "bulk_offloads_backed_and_hashed": true,
+    "active_resume": {
+      "pid": 267560,
+      "program": "runtime:author_job/dd-inference-aligned-pilot/pilot_queue_storage_resume.py",
+      "program_sha256": "45938f5b8398e97fcd7a24343f38ec5e2e57d800bde5e54f52afc89c693c151e",
+      "output_directory": "runtime:author_job/dd-inference-aligned-pilot/resume-20261004T131814629123",
+      "status_file": "runtime:author_job/dd-inference-aligned-pilot/resume-20261004T131814629123/status.json",
+      "started_epoch": 1791119894.6296272,
+      "method_sha256": "4a18a366aa5972f498b578166f0c3b5710845275a0e4a95a2dcd0f513b61303f",
+      "smoke_method_sha256": "f172a9ee23f2a7410ace9b63e4ff049a164dbda129f4df55dec420af008e8213",
+      "reason": "Native disk-full failure preserved and hashed locally; original candidate/trainer/seeds/budget unchanged; fresh smoke then storage-gated calibration",
+      "failed_native_run": "run-d824955fa1fb4627a11eeb25816fd4b9",
+      "formal_effective_seconds": 0
+    },
+    "coordinator": {
+      "pid": 62082,
+      "script": "author-private:home/Documents/ChatGPT/New project/a10_takeover_20261004/finish_dd_smoke_storage.py",
+      "script_sha256": "5a5f15d6ef2ecbe12579c42739dd33f5d0eacb17e9811b095a97ce2ce79a0db1",
+      "owner_pid": 267560,
+      "started_epoch": 1791120409.9641669,
+      "scope": "Wait for own fresh successful smoke; complete hash-verified raw backup, then targeted offload and allow original native calibration queue to continue"
+    },
+    "quality_not_accepted": true
+  }
+}

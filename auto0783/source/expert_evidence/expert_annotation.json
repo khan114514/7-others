@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "task_scope": "Published pretrained 28-layer decoder only. No whole-paper FLUX rendering or image-quality reproduction claim.",
+  "source_trajectory_files": [
+    "expert_evidence/trajectory_codex.json",
+    "expert_evidence/trajectory_seed.json"
+  ],
+  "current_selected_methods": {
+    "GPT": "Trajectories/GPT/selected-method",
+    "Seed": "Trajectories/Seed/selected-method"
+  },
+  "interpretation": "Author final messages and recorded graph statistics describe method evolution; scores are only original own Dev records in the same native turn. Unmatched scores remain null, failed turns remain failed and missing closure metadata remains unfinished. Final selected graph markers do not invent earlier historical best decisions. Original reported clocks, closed-turn clocks, preparation and blocked waits remain distinct. No static copy/probe is claimed as optimization or full native validation.",
+  "final_release_status": "NOT_READY; repaired full GPU/CPU and actual durable evidence closed; new complete ZIP privacy/durable and two fresh independent same-ZIP QA reports/consensus pending. Canonical GPT research duration remains NOT_VERIFIED.",
+  "research_scope_or_duration_not_silently_changed": true,
+  "current_method_descriptions": {
+    "GPT": {
+      "author_module_docstring": "Experiment 115: complete post-softmax cast/value/output projection/residual execution partition.\n\nEmit an operator DAG. This builder executes only in the local candidate container;\nthe numerical worker accepts JSON, never imports this Python file.",
+      "method_sha256": "28c4f480b01e84eeb992e56285eb419199182281f756174bf4129e87e6a63bf7",
+      "program_sha256": "aa97efaefa4bc23e6df5eba3f7051a0131463b1710c6855c8c8692c84ae15f85",
+      "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "layer_body_node_count": 107,
+      "prefix_lifetime_node_count": 67,
+      "operations": {
+        "slice": 44,
+        "rms_norm": 4,
+        "concat": 12,
+        "reshape": 12,
+        "linear": 4,
+        "attention_eager": 1,
+        "scale": 3,
+        "transpose": 8,
+        "mul": 4,
+        "add": 7,
+        "repeat_heads": 2,
+        "matmul": 2,
+        "softmax": 1,
+        "cast": 1,
+        "mlp": 2
+      },
+      "compile_regions": [
+        {
+          "id": "image_post_softmax_output_compiled",
+          "nodes": [
+            "image_prob",
+            "v",
+            "value_shape",
+            "value_heads",
+            "value_repeat",
+            "value_transpose",
+            "probability_transpose",
+            "channel_query_output",
+            "image_output_heads",
+            "image_output_rows",
+            "image_attended_rows",
+            "image_attention_out",
+            "image_residual_rows"
+          ]
+        },
+        {
+          "id": "image_pre_softmax_compiled",
+          "nodes": [
+            "image_qkv",
+            "image_v",
+            "image_qk",
+            "image_qk_shape",
+            "image_qk_heads",
+            "image_qk_rotary_first",
+            "image_qk_rotary_second",
+            "image_qk_rotary_half",
+            "image_qk_rotary_direct",
+            "image_qk_rotary_rotated",
+            "image_qk_rotary",
+            "image_query",
+            "image_key",
+            "key_rotary",
+            "key_repeat",
+            "key_transpose",
+            "image_scores",
+            "image_scaled",
+            "image_masked"
+          ]
+        },
+        {
+          "id": "image_mlp_compiled",
+          "nodes": [
+            "image_mlp"
+          ]
+        },
+        {
+          "id": "frequency_prefix_compiled",
+          "nodes": [
+            "cos_axis_0",
+            "cos_axis_shape_0",
+            "cos_axis_1",
+            "cos_axis_shape_1",
+            "cos_axis_2",
+            "cos_axis_shape_2",
+            "cos_section_0",
+            "cos_section_1",
+            "cos_section_2",
+            "cos_section_3",
+            "cos_section_4",
+            "cos_section_5",
+            "cos_layout",
+            "sin_axis_0",
+            "sin_axis_shape_0",
+            "sin_axis_1",
+            "sin_axis_shape_1",
+            "sin_axis_2",
+            "sin_axis_shape_2",
+            "sin_section_0",
+            "sin_section_1",
+            "sin_section_2",
+            "sin_section_3",
+            "sin_section_4",
+            "sin_section_5",
+            "sin_layout",
+            "image_cos",
+            "image_sin",
+            "image_sin_first",
+            "image_sin_negative",
+            "image_sin_second",
+            "image_signed_sin"
+          ]
+        }
+      ],
+      "explanation_source": "Exact selected original author module docstring and literal JSON graph; no candidate execution",
+      "method_evolution_path": "expert_evidence/method-evolution/gpt.json",
+      "original_author_current_research_notes": "expert_evidence/original-GPT-storage-topology/original-author/research-notes.md",
+      "original_author_current_research_status": "expert_evidence/original-GPT-storage-topology/original-author/research-status.json"
+    },
+    "Seed": {
+      "author_module_docstring": "Experiment 91: Use `mlp` op on flattened 2D image input.\n\nBuilding on exp89 (71.63% speedup, BEST).\n\nIdea: Replace manual 5-node MLP (gate+up+silu+mul+down) with single `mlp` op.\nSaves 4 per-stage nodes → less Python interpreter overhead.\n\nThe `mlp` op internally does: F.linear(F.silu(F.linear(x, gate_w)) * F.linear(x, up_w), down_w)\nSame computation, fewer graph nodes.\n\nExp76 found \"mlp op matches manual flattened speed\" within noise.\nTest with our current optimized setup to confirm.",
+      "method_sha256": "0da5c4cb0fd76c3dd01b58aa2e1341888c68216091893476cf76c335dc74d012",
+      "program_sha256": "20ce4ff0464588ae073753476c3a851e501972e62a6b8d3adf174989e8fabd16",
+      "layer_body_node_count": 65,
+      "prefix_lifetime_node_count": 23,
+      "operations": {
+        "slice": 15,
+        "rms_norm": 4,
+        "concat": 7,
+        "linear": 4,
+        "reshape": 13,
+        "attention_eager": 1,
+        "add": 5,
+        "transpose": 5,
+        "rotary": 2,
+        "repeat_heads": 2,
+        "matmul": 2,
+        "scale": 1,
+        "softmax": 1,
+        "cast": 1,
+        "mlp": 2
+      },
+      "explanation_source": "Static author source and original method-evolution evidence; no host candidate execution",
+      "method_evolution_path": "expert_evidence/method-evolution/seed.json"
+    }
+  },
+  "current_full_comparison": "expert_evidence/current-release-comparison.json",
+  "closed_current_release_evidence": {
+    "nop": "expert_evidence/release-full-validation/nop",
+    "oracle": "expert_evidence/release-full-validation/oracle",
+    "gpt-selected": "expert_evidence/release-full-validation/gpt-selected",
+    "seed-selected": "expert_evidence/release-full-validation/seed-selected"
+  },
+  "author_claims_and_static_graph_counts_are_distinct_from_measured_full_results": true,
+  "current_GPT_12h_evidence": "expert_evidence/current-gpt-continuity/index.json",
+  "historical_pre_compiler_description_metadata": {
+    "GPT": {
+      "author_module_docstring": "Cache text-only input RMS and compute cached MLP on text rows only.\n\nEmit an operator DAG. This builder executes only in the local candidate container;\nthe numerical worker accepts JSON, never imports this Python file.",
+      "method_sha256": "c60eb393a66d0e3ecc77c98a605d2668840bc9fe538149817589393854962ac9",
+      "program_sha256": "f8b408c4db242e3692f0dcea8f1d079936d272f1a670f47b04f3c5198f8e16bb",
+      "layer_body_node_count": 95,
+      "prefix_lifetime_node_count": 49,
+      "operations": {
+        "slice": 36,
+        "rms_norm": 4,
+        "concat": 11,
+        "linear": 6,
+        "attention_eager": 1,
+        "reshape": 10,
+        "transpose": 5,
+        "scale": 3,
+        "mul": 4,
+        "add": 7,
+        "repeat_heads": 2,
+        "matmul": 2,
+        "softmax": 1,
+        "cast": 1,
+        "mlp": 2
+      },
+      "explanation_source": "Static author source and original method-evolution evidence; no host candidate execution",
+      "method_evolution_path": "expert_evidence/method-evolution/gpt.json"
+    },
+    "source_annotation_sha256": "87f869f7b4a76aa4b6290376fe69b4a134bf6e5c1622ac25a662388b62b64cad",
+    "status": "Prior description metadata preserved; not the current selected method"
+  },
+  "latest_direct_user_research_clock_policy": "expert_evidence/latest-user-research-clock-policy.json",
+  "historical_before_storage115_literal_method_description": {
+    "author_module_docstring": "Experiment 53: compile pointwise image rotary alongside image MLP.\n\nEmit an operator DAG. This builder executes only in the local candidate container;\nthe numerical worker accepts JSON, never imports this Python file.",
+    "method_sha256": "cb0d48a4c063372e73d25b718e31694ed07707bb40f8577ce6c92f340dfb4477",
+    "program_sha256": "d394289b5c1b985c0344ce88fa90140a37808ddb4ef5041917f7fb04e87f1d0e",
+    "artifact_sha256": "0950ec46626c36eb33a6490c84f1c1c963a4727c4c647708ae6a144322227196",
+    "layer_body_node_count": 107,
+    "prefix_lifetime_node_count": 67,
+    "operations": {
+      "slice": 44,
+      "rms_norm": 4,
+      "concat": 12,
+      "reshape": 12,
+      "linear": 4,
+      "attention_eager": 1,
+      "transpose": 8,
+      "scale": 3,
+      "mul": 4,
+      "add": 7,
+      "repeat_heads": 2,
+      "matmul": 2,
+      "softmax": 1,
+      "cast": 1,
+      "mlp": 2
+    },
+    "compile_regions": [
+      {
+        "id": "image_rotary_compiled",
+        "nodes": [
+          "image_qk_rotary_first",
+          "image_qk_rotary_second",
+          "image_qk_rotary_half",
+          "image_qk_rotary_direct",
+          "image_qk_rotary_rotated",
+          "image_qk_rotary"
+        ]
+      },
+      {
+        "id": "image_mlp_compiled",
+        "nodes": [
+          "image_mlp"
+        ]
+      }
+    ],
+    "explanation_source": "Exact original author module docstring and static selected JSON graph; no candidate execution",
+    "method_evolution_path": "expert_evidence/method-evolution/gpt.json",
+    "original_author_current_research_notes": "expert_evidence/original-compiler-interface/GPT/original-author/research-notes.md"
+  }
+}

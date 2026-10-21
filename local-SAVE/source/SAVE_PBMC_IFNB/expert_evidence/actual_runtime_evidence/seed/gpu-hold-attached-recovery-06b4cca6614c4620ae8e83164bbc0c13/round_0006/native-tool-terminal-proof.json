@@ -1,0 +1,43 @@
+{
+  "original_event_sha256": "b72789b27be6e35ee750ddb427576bf79575bac0185dae659f9593c9d84e68f9",
+  "original_receipt_sha256": "0bf276aef57627720bc3df59022ee76d4a656c723aa8f29901936d59469d671d",
+  "original_event_last_write_epoch": 1791783408.006823,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'for i in 1 2 3 4 5 6; do\n  sleep 30\n  if [ -f /workspace/solution/dev_result.json ]; then\n    sha=$(python3 -c \"import json; print(json.load(open('\"'/workspace/solution/dev_result.json')).get('method_sha256',''))\\\" 2>/dev/null)\n    status=\"'$(python3 -c \"import json; print(json.load(open('\"'/workspace/solution/dev_result.json')).get('status',''))\\\" 2>/dev/null)\n    mse=\"'$(python3 -c \"import json; print(json.load(open('\"'/workspace/solution/dev_result.json')).get('raw_metric',''))\\\" 2>/dev/null)\n    echo \\\"check \"'$i: status=$status mse=$mse sha=$sha\"\n  fi\ndone\necho \"DONE\"'",
+      "original_command_sha256": "4e4707af105b124d14419e6331fc53f38489fce3949e736f9da694011413c164",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "77dfde6002536e0dfc9dbc5733ace4afbb90e06dd26ad9166b8411f648996b00",
+      "output_characters": 725
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -5'",
+      "original_command_sha256": "5b2bf75c4fc799ca051c87838a79795684b2e85c4199b8659cbe067bd1136420",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e9f65c8e8e7319db7e3e780ddcd0b9de602b0fb11bcc1411d871a2e5e8e5188f",
+      "output_characters": 424
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 46180856,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1070184,
+        "reasoning_output_tokens": 145473
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

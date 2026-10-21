@@ -1,0 +1,23 @@
+runtime:attempt03/workspace/harbor_task/environment/engine/framework/vendor/dpm_solver_pytorch.py:53: SyntaxWarning: invalid escape sequence '\h'
+  The `alphas_cumprod` is the \hat{alpha_n} arrays in the notations of DDPM. Specifically, DDPMs assume that
+
+[constructor]  ==== flash_if_available=True (0/16), fused_if_available=True (fusing_add_ln=0/16, fusing_mlp=0/16) ==== 
+    [VAR config ] embed_dim=1024, num_heads=16, depth=16, mlp_ratio=4.0
+    [drop ratios ] drop_rate=0.0, attn_drop_rate=0.0, drop_path_rate=0.0666667 (tensor([0.0000, 0.0044, 0.0089, 0.0133, 0.0178, 0.0222, 0.0267, 0.0311, 0.0356,
+        0.0400, 0.0444, 0.0489, 0.0533, 0.0578, 0.0622, 0.0667]))
+
+runtime:python/lib/python3.12/site-packages/torch/nn/init.py:51: UserWarning: Specified kernel cache directory could not be created! This disables kernel caching. Specified directory is runtime:dd_runs/run-bec89613394d49018d80e070d5a91c4a/kernel-cache. This warning will appear only once per process. (Triggered internally at ../aten/src/ATen/native/cuda/jit_utils.cpp:1442.)
+  tensor.erfinv_()
+runtime:python/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+runtime:python/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+runtime:python_extras/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+runtime:attempt03/workspace/harbor_task/environment/vendor/var/models/dd.py:109: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=False):
+[init_weights] DD_Model with init_std=0.0180422
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: runtime:python_extras/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"update": 1, "seen_pairs": 16, "stream_epoch": 0, "ce_loss": 4.136413961648941, "lpips_loss": 0.25752766989171505, "grad_norm": 2.0303869247436523, "elapsed_seconds": 13.01462459564209, "time_scale_histogram": [0, 0, 0, 0, 0, 5, 5, 2, 3, 1], "peak_torch_allocated_mib": 6334.72265625, "peak_torch_reserved_mib": 6488.0}
+{"student_training_complete": true, "updates": 1, "seen_pairs": 16, "terminal_reason": "teacher_reuse_limit", "elapsed_seconds": 257.2020676136017, "method_sha256": "4982f172e4e8933e62a1dc8d1cc6e44e5bd1916db8dbe35ba0f95a9759af7e56", "checkpoint_sha256": "6797e40273b25495705e51c1c10144bab0281c315672a1207bafb23e9fd6861d", "time_scale_histogram": [0, 0, 0, 0, 0, 5, 5, 2, 3, 1], "peak_torch_allocated_mib": 6334.72265625, "peak_torch_reserved_mib": 6488.0}

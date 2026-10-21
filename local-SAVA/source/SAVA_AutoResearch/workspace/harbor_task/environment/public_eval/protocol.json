@@ -1,0 +1,56 @@
+{
+  "id": "hierarchical-valuation-cpu-v1",
+  "status": "PREREGISTERED_BEFORE_FORMAL_RUNS",
+  "task_type": "non-training numerical inference",
+  "formal_dev_seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "case_types": [
+    "uniform_labels",
+    "asymmetric_labels",
+    "gaussian_008",
+    "gaussian_016",
+    "gaussian_024",
+    "mixed"
+  ],
+  "corruption_fraction": 0.3,
+  "dev_count": 3000,
+  "reference_count": 2000,
+  "hidden_count": 5000,
+  "source_split": "CIFAR10 test only; no candidate or reference from CIFAR10 train",
+  "partition_rule": "existing reference + first 1000 of predeclared shuffled Dev form new reference; remaining Dev stays Dev; Hidden unchanged",
+  "fixed_representation": "official checkpoint logits, no further training or representation change",
+  "quality_gates": {
+    "max_case_normalized_rmse": 0.01,
+    "min_case_spearman": 0.999,
+    "min_case_top_quartile_overlap": 0.98,
+    "finite_values": true
+  },
+  "primary_metric": {
+    "name": "mean_case_method_seconds",
+    "direction": "minimize",
+    "aggregation": "median of 9 independent fresh method invocations per case; mean of six cases per seed; arithmetic mean over all five seeds"
+  },
+  "timing_scope": "method invocation including all label geometry, couplings, potentials and aggregation; excludes common feature extraction, input deserialization and dependency import; process and end-to-end wall times separately logged",
+  "score": {
+    "formula": "(B - x) / (B - U)",
+    "B": 0.5214946210980997,
+    "U": 0.0,
+    "upper_bound_source": "metric_ceiling: nonnegative elapsed method time has mathematical infimum zero; not derived from R; no clipping"
+  },
+  "significance_rule": "R positive improvement >=3 times Baseline n-1 sample standard deviation across all formal seeds; R score in [.15,.8]",
+  "resources": {
+    "cpus": 2,
+    "memory_mb": 2048,
+    "gpus": 0,
+    "candidate_case_timeout_sec": 60,
+    "total_public_eval_timeout_sec": 7200,
+    "submission_bytes": 1048576
+  },
+  "baseline_method_sha256": "92b12caf57128aac8eb7ca32c0e9e3d6f0fb45ec479b78a8243c093922bc5993",
+  "solve_sha256": "bca6ef61c3a1bc0ded2aa6b2da4734b62072846def679d12a2d7ae669fc88bd1"
+}

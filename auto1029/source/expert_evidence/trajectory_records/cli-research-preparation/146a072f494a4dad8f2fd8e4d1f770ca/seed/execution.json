@@ -1,0 +1,70 @@
+{
+  "role": "seed",
+  "runtime": "actual native Harbor0.23.0 + Linux Codex0.160.0",
+  "model_requested": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "formal_trajectory_started": true,
+  "formal_scored_round": true,
+  "score": -0.1336201933416732,
+  "model_turn_completed": true,
+  "cli_exit_code": 0,
+  "provider_response_identity_verified": true,
+  "same_prompt_sha256": "ea64cf7c2c8fe728be3e10fbc649821237b738431c8afe817773cc5dbbf91883",
+  "same_instruction_sha256": "687fa50c36287eb4aa48971c73e0944f57b858b583b2096945fbc0c64a6d5530",
+  "trusted_runtime_source_manifest": {
+    "heima_harbor_environment.py": "91138b261a85272d38650c1eb177ae1ee24d1ef3933fc3f24f902f949982cd32",
+    "cli_provider_relay.py": "1fc5a67e02e154c0f77e3d7e5fa3e4e65fdd41c1aa34f692b894119f7488dddd",
+    "native_codex_agent.py": "1633a932c88082e1ed5bc1de27e43f63b09aae09f3aa58cdf1ca9ff1146cad4e",
+    "evaluator_bridge.py": "a7190fbf83c3021e3ce6abc40a537748ce2961e80fbd90282fd8358cf5174ad4",
+    "run_formal_cli_turn.py": "0bbfd9ef65bea21cb6270ea25d3672cbd237fac19fdebfc54267223e66f2d445",
+    "native_round_activity_guard.py": "e6b9a66d9d4541a59439e24c53d389731ed1d350ea8bac3a5a12108a36dfda2a"
+  },
+  "trusted_runtime_unchanged": true,
+  "exported_method_matches_verified_handoff": true,
+  "served_model_identifiers": [
+    "doubao-seed-2-1-turbo-260628"
+  ],
+  "effective_research_seconds": 4821.158865690231,
+  "time_accounting": {
+    "included_intervals": [
+      [
+        1791228481.762929,
+        1791230185.736276
+      ],
+      [
+        1791232666.4888887,
+        1791235783.6744075
+      ]
+    ],
+    "gpu_jobs": [
+      {
+        "job_id": "2ff8c5be613a4f22a3a4594196ce79a1",
+        "phase": "COMPLETE",
+        "local_submit_epoch": 1791230201.623329,
+        "clock_offset_estimate_seconds": 64.94614505767822,
+        "transport_uncertainty_seconds": 0.2604750394821167
+      }
+    ],
+    "queue_intervals_excluded": [],
+    "classification": {
+      "effective_seconds": 1703.9733469486237,
+      "included_intervals": [
+        [
+          1791228481.762929,
+          1791230185.736276
+        ]
+      ],
+      "infrastructure_failure_seconds": 0,
+      "pending_activity_audit_seconds": 0.0,
+      "excluded_seconds": 0.0,
+      "accounting_status": "COUNTED_NORMAL_RESEARCH",
+      "artifact_validity_used_for_time": false
+    },
+    "gpu_time_overlapping_cli_not_double_counted": true,
+    "gpu_experiment_attributed_to_genuine_cli_work": true
+  },
+  "method_sha256": "771c92d712940d715c01ccdeee977152c9de3a9701be8afd843feaed9736be66",
+  "status": "NATIVE_SCORED_RESEARCH_ROUND",
+  "native_trial_result": "${LOCAL_OPERATOR_HOME}/Documents/ChatGPT/New project/heima_20261005/private/cli-research-preparation/146a072f494a4dad8f2fd8e4d1f770ca/native-returned-result.json",
+  "failure": null
+}

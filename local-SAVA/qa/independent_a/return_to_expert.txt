@@ -1,0 +1,30 @@
+SAVA 当前V4静态复核结论：NOT READY。研究优化面、Baseline合理性、Reference正式提升通过；请只修复下列已定位部署/约束问题，保留真实历史证据与有效数值，不为放宽项重跑。
+
+1. environment/ 直属存在 docker-compose.yaml，内容对 main service 设置 capability/seccomp；当前任务文件绑定亦包含该文件。
+位置：workspace/harbor_task/environment/docker-compose.yaml:1-8；expert_evidence/runtime_repairs/current_binding.json#task_files_sha256。
+影响：当前V4明确禁止 environment/ 和 tests/ 直属四种 Compose 文件，正式部署应每sandbox单容器且不依赖Compose。既有本地NOP成功不能豁免当前部署规则。
+最小修改：删除任务context内的Compose文件；用平台认可的单容器部署参数落实服务所需UID、能力和超时清理。不要直接去掉CAP_KILL而使既有killpg退化。
+验收材料：完整重打包；无四种禁用文件的成员清单；平台可识别的单容器部署配置、Actor降权/冻结面与超时清理记录。
+
+2. 根task.toml及environment/task.toml包含两处storage_mb和network_mode="no-network"；题面第33行承诺禁网和仅模型传输白名单。
+位置：workspace/harbor_task/task.toml:15-19；workspace/harbor_task/task.toml:33-37；workspace/harbor_task/environment/task.toml:15-19；workspace/harbor_task/instruction.md:33。
+影响：当前内场不声明storage_mb、禁网或网络白名单。将本地Docker网络隔离作为平台核心前提不符合本批部署合同；不是换卡待补。
+最小修改：两份配置同步删除不受支持的磁盘/网络限制字段；题面按平台实际联网与默认工具策略改写，保留候选接口内的文件/网络API禁令和可信评分边界，不以基础设施禁网作为正确性前提。
+验收材料：同步后的题面和配置；目标平台可识别资源配置及真实网络条件说明；允许联网环境中的公开Dev与独立Verifier隔离验收材料。
+
+3. 顶层artifacts除/workspace/solution外还包含/opt/public_eval/results；已有NOP artifacts manifest对该目录记录status=ok。该目录由公开评分服务保存报告和历史method快照。
+位置：workspace/harbor_task/task.toml:2；workspace/harbor_task/environment/public_eval/dev_service.py:21-25；expert_evidence/harbor_nop/current/artifacts/manifest.json。
+影响：当前移交合同仅传最终候选代码及必要模型/配置。公开历史结果目录不是评分候选必需产物，扩大移交面且把历史报告/方法快照带入独立Verifier。未发现它已篡改本次reward的证据。
+最小修改：artifacts仅保留/workspace/solution；公开历史报告留在专家/Agent日志归档，不作为Verifier候选移交。同步两份TOML和任何调用覆盖。
+验收材料：新完整包配置与移交manifest，证明仅最终method.py、冻结solve.sh进入Verifier所需候选路径；Verifier重新计算并原子写reward。
+
+4. invoke在select就绪后调用阻塞readline；候选仅输出无换行片段时可停在readline而不再检查60s deadline。公开dev_client有7200s等待上限，但dev_service/evaluator没有可信整轮截止与清理；客户端退出不终止后台评测。
+位置：workspace/harbor_task/tests/evaluator.py:47-49；workspace/harbor_task/tests/evaluator.py:56-68；workspace/harbor_task/environment/public_eval/evaluator.py:47-68；workspace/harbor_task/environment/public_eval/dev_client.py:12-15；workspace/harbor_task/environment/public_eval/dev_service.py:23。
+影响：题面承诺单调用/初始化60s及完整评测7200s。现成正常sleep超时探针只覆盖带完整行的分支，不能补足阻塞管道和整轮超时。此为静态可定位的实现缺口，不声称本次实际触发挂死。
+最小修改：使用带剩余deadline的非阻塞/分块管道读取，处理无换行、输出上限、EOF与清理；在可信父侧为整个Dev评价设置独立截止时间，超时杀掉进程组并等待回收，服务返回TIMEOUT且可接受下一请求。
+验收材料：受隔离环境中的无换行import输出、无换行call输出和多个单调用均未超时但整轮超时三类负测；有限时返回、无残留worker及下一次Dev成功记录；同步公开/私有evaluator。
+
+非阻断待补：run_summary.task_binding缺官方四项指纹；取得真实发布脚本后补版本/SHA及结果。CPU任务无换卡成绩、耗时、重算要求；已有NOP无需为凑材料重跑。这些不单独阻断。
+工具缺口：真实官方0.3.10及独立格式/GPU/指纹工具未获得/未运行；后续保存真实工具输出，不将本报告称为官方通过。
+交付：重交包含三职责目录的完整ZIP，保留既有540次原始材料及历史版本；按实际影响做目标环境验收，不修改历史分数或补造记录。
+边界：本报告是独立本地V4静态内容复核，不是本次Docker/Verifier/训练/模型实跑，也不代表平台或发布隐私扫描通过。

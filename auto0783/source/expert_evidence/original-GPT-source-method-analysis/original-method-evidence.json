@@ -1,0 +1,2009 @@
+{
+  "current_gpu_experiments_108_to_115": [
+    {
+      "artifact_sha256": "2da4ecea7b2ca82dd7c672bca484f08c86badc5af150f56b5161a983ad655524",
+      "baseline_mean_ms": 6905.765182495117,
+      "candidate_mean_ms": 1851.416239420573,
+      "canonical_sha256": "2da4ecea7b2ca82dd7c672bca484f08c86badc5af150f56b5161a983ad655524",
+      "console_capture_note": null,
+      "execution_status": "COMPLETED",
+      "experiment": "108_isolated_v_compiled_qk",
+      "foreground_exit_code": 0,
+      "method_change": "Isolate V projection against a compiled Q/K path.",
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29575910912,
+      "quality_pass": false,
+      "reward": -1.0,
+      "run_id": "af36fb95b28941838bfedb9c822f4e93"
+    },
+    {
+      "artifact_sha256": "d5b9a87326b6a65b2c62869b984de4e04175494cbd4b5356c161df7b086e2438",
+      "baseline_mean_ms": 6917.560323079427,
+      "candidate_mean_ms": 1860.625409444173,
+      "canonical_sha256": "d5b9a87326b6a65b2c62869b984de4e04175494cbd4b5356c161df7b086e2438",
+      "console_capture_note": "109console tool-truncated; full evaluator JSON preserved",
+      "execution_status": "COMPLETED",
+      "experiment": "109_packed_compiled_qkv",
+      "foreground_exit_code": 0,
+      "method_change": "Pack QKV projections and compile the packed projection path.",
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29693445632,
+      "quality_pass": true,
+      "reward": 0.7310286687003699,
+      "run_id": "c8061fcc697d45c6bd289129521391e9"
+    },
+    {
+      "artifact_sha256": "a7c66b88bb6f11803621db159ed569ed5d82716e0d6fa9948dca0bd8c21d872d",
+      "baseline_mean_ms": 6923.715225219727,
+      "candidate_mean_ms": 1849.256280263265,
+      "canonical_sha256": "a7c66b88bb6f11803621db159ed569ed5d82716e0d6fa9948dca0bd8c21d872d",
+      "console_capture_note": null,
+      "execution_status": "COMPLETED",
+      "experiment": "110_compiled_key_score_composition",
+      "foreground_exit_code": 0,
+      "method_change": "Compile key composition through score preparation while keeping eager softmax.",
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29697115648,
+      "quality_pass": true,
+      "reward": 0.7329098294615983,
+      "run_id": "809cbe77816544d4b406ee5b80ec77df"
+    },
+    {
+      "artifact_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df",
+      "baseline_mean_ms": 6901.40158589681,
+      "candidate_mean_ms": 1916.3651339213054,
+      "canonical_sha256": "83030ac33ba6ba2849ea7c3a9aaf070e136b32437bc7ae6bbc3ecc1a1378f6df",
+      "console_capture_note": null,
+      "execution_status": "COMPLETED",
+      "experiment": "111_compiled_packed_value_contraction",
+      "foreground_exit_code": 0,
+      "method_change": "Compile packed V construction through the original reversed value contraction.",
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29692024320,
+      "quality_pass": true,
+      "reward": 0.7223223268390225,
+      "run_id": "ffea805fe34b4385af5b1d2bf11804ec"
+    },
+    {
+      "artifact_sha256": "a0cd0fe9d47bdbf332fb21a6c81ce19725ce3417167cf2e4bec02ab2283e064d",
+      "baseline_mean_ms": 6927.787012736003,
+      "candidate_mean_ms": 1827.4204991658528,
+      "canonical_sha256": "a0cd0fe9d47bdbf332fb21a6c81ce19725ce3417167cf2e4bec02ab2283e064d",
+      "console_capture_note": null,
+      "execution_status": "COMPLETED",
+      "experiment": "112_compiled_pre_softmax_partition",
+      "foreground_exit_code": 0,
+      "method_change": "Compile the full pre-softmax projection/rotary/score partition, retaining eager FP32 softmax.",
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29697435136,
+      "quality_pass": true,
+      "reward": 0.7362187238426451,
+      "run_id": "b0371b39559f424d8b59d71711ae7669"
+    },
+    {
+      "artifact_sha256": "51bb6cd234a228102bf52b6d5093e2cf442de649bc0703c83ebe73bd29b27500",
+      "baseline_mean_ms": 6920.140121459961,
+      "candidate_mean_ms": 1892.032512664795,
+      "canonical_sha256": "51bb6cd234a228102bf52b6d5093e2cf442de649bc0703c83ebe73bd29b27500",
+      "console_capture_note": null,
+      "execution_status": "COMPLETED",
+      "experiment": "113_compiled_post_softmax_partition",
+      "foreground_exit_code": 0,
+      "method_change": "Compile BF16 probability cast/value preparation/contraction/row restoration, keeping output projection eager.",
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29696278528,
+      "quality_pass": true,
+      "reward": 0.7265904332200679,
+      "run_id": "449cb834cfb741998c7e8ccd44fba70d"
+    },
+    {
+      "artifact_sha256": "37ca0a9ddf4da8eecf2ce78f450f2e15627f8ecec17d0b8520916f1bad2f81af",
+      "baseline_mean_ms": 6918.536229451497,
+      "candidate_mean_ms": 1915.7357266743977,
+      "canonical_sha256": "37ca0a9ddf4da8eecf2ce78f450f2e15627f8ecec17d0b8520916f1bad2f81af",
+      "console_capture_note": null,
+      "execution_status": "COMPLETED",
+      "experiment": "114_compiled_down_only_columns",
+      "foreground_exit_code": 0,
+      "method_change": "Compile only the feature-leading down contraction with original gate/up layout.",
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29697435136,
+      "quality_pass": true,
+      "reward": 0.7231010053081304,
+      "run_id": "1e68372e99d54d0bbed4e4dc7526c785"
+    },
+    {
+      "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "baseline_mean_ms": 6923.771565755208,
+      "candidate_mean_ms": 1804.2555707295735,
+      "canonical_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "console_capture_note": "115clienthandle/exit/console unavailable at steering; actual complete worker JSON preserved",
+      "execution_status": "COMPLETED",
+      "experiment": "115_compiled_complete_post_softmax",
+      "foreground_exit_code": null,
+      "method_change": "Extend the post-softmax compiled partition through original output projection and residual.",
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29701087232,
+      "quality_pass": true,
+      "reward": 0.7394114531950514,
+      "run_id": "68cd3ef41d364183a1c4a57ed27a7227"
+    }
+  ],
+  "feedback_window_audit": {
+    "adjacent_artifact_repeats": 0,
+    "current_raw_result_files_hash_matched": 38,
+    "current_recovered_summary_and_builder_receipt_matched_but_raw_result_absent": 6,
+    "original_binding_hash_treatment": "Preserved per window, but raw binding objects were not restored. Not equated with the differently named worker source_binding_sha256 field.",
+    "source_only_rows_without_matching_restored_builder_or_result": 4,
+    "unique_current_artifact_count": 48,
+    "wall_windows_used_as_research_credit": false,
+    "window_count": 48,
+    "windows": [
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "b7c003ae40ec3edae8b2d8fbf040a36e105376ec084ac958ad40a26b5c49faf7",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Source-window record only; its referenced local artifact/result was not restored.",
+          "disposition": "source_only_unresolved",
+          "experiment_or_recovered_name": null,
+          "feedback_call_record_index": 149,
+          "feedback_output_record_index": 152,
+          "method_change": "No matching builder/program or Dev result is present in the restored local history.",
+          "numerical_run_id": "2024425498ce4198846d90acce3d5c69",
+          "original_binding_sha256": "869fd52c79af60c2a894a4a0272bd00182d6dae804966e4c8e6dc5822a90f7c0",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "17ad3ef5c459400dd93bc0af1d9ec308f090e2877a29b01f877e75ccc5bc37b8",
+          "reward": null
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          137
+        ],
+        "native_turn_id": "01a10bd2-fb00-7492-8304-15fab050131d",
+        "previous_feedback": {
+          "artifact_sha256": "2fadd1fb7be4759d79263ce6fabbb2dde282528abbcbce8f530a4e269ab35ac9",
+          "crosscheck": "Previous payload not independently restored.",
+          "experiment_or_recovered_name": null,
+          "numerical_run_id": "294489a0738b458e961b7b7921fb8469",
+          "quality_pass_if_restored": null,
+          "reward_if_restored": null
+        },
+        "window_index_zero_based": 0
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "69d74279dd7c6cd6ae6732ced0374d1bc96b5f0ed05eaf23e451c64aecc629c8",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Source-window record only; its referenced local artifact/result was not restored.",
+          "disposition": "source_only_unresolved",
+          "experiment_or_recovered_name": null,
+          "feedback_call_record_index": 224,
+          "feedback_output_record_index": 227,
+          "method_change": "No matching builder/program or Dev result is present in the restored local history.",
+          "numerical_run_id": "45c9276a48ee4bb2bfbdc07b91c1eeca",
+          "original_binding_sha256": "5c60cf55f1d71a1fbb85e0d91444948755ecf6679609e1b50e6a606cd56c9a66",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "f0a0b4a0e5b35ba4a593d528deed86f09e2536b038a5e7dd9bfb2f100df19284",
+          "reward": null
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          213
+        ],
+        "native_turn_id": "01a10bdc-04b9-77d0-b245-c52d0e292b7e",
+        "previous_feedback": {
+          "artifact_sha256": "c2e5eb213d8bcefbd626c6d3535660feca8dc632f4e48adc48644bcbe3822ef7",
+          "crosscheck": "Previous payload not independently restored.",
+          "experiment_or_recovered_name": null,
+          "numerical_run_id": "1387b85436d349b6b65c96b509cf9f55",
+          "quality_pass_if_restored": null,
+          "reward_if_restored": null
+        },
+        "window_index_zero_based": 1
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "cf7e9df3c04ca43775dd0ad008c3e110cfa11873cf50ce5af29adc11eddbd1ad",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Source-window record only; its referenced local artifact/result was not restored.",
+          "disposition": "source_only_unresolved",
+          "experiment_or_recovered_name": null,
+          "feedback_call_record_index": 299,
+          "feedback_output_record_index": 302,
+          "method_change": "No matching builder/program or Dev result is present in the restored local history.",
+          "numerical_run_id": "81b4e4716962426a8ce9a8212874fd54",
+          "original_binding_sha256": "3e5314e42d7000574f8b17adfb4b9f0641c506dc85dd0ec7ec596f6aa518426c",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "3fd059e7313ff88efd443eb09494541c58967013e647d9c7d82884670ad18ec1",
+          "reward": null
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          287
+        ],
+        "native_turn_id": "01a10be1-1790-7891-b01b-b138dbdb46c0",
+        "previous_feedback": {
+          "artifact_sha256": "78aee6a6aaa83f7e170464ced82053986c2caeb12bce2308ff0d5d5131ec07a6",
+          "crosscheck": "Previous payload not independently restored.",
+          "experiment_or_recovered_name": null,
+          "numerical_run_id": "11e2f322ced741b0ae6da305f21c74ab",
+          "quality_pass_if_restored": null,
+          "reward_if_restored": null
+        },
+        "window_index_zero_based": 2
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "3fa8ebc1bc1886e8d8794b8b24f7a58942ad8696c6d5a91d67b80d1f4e9843cc",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Source-window record only; its referenced local artifact/result was not restored.",
+          "disposition": "source_only_unresolved",
+          "experiment_or_recovered_name": null,
+          "feedback_call_record_index": 371,
+          "feedback_output_record_index": 374,
+          "method_change": "No matching builder/program or Dev result is present in the restored local history.",
+          "numerical_run_id": "418139aadf41432ba3670b08218688a8",
+          "original_binding_sha256": "4a40973510a2b471f7c9c30902cc71e418b1caee5aad2b10390e5ec4e37f1a15",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "0b4a2ad6ee4d2059c9a898e6080aedb819c89382ff54cdee630f15f8ceccd813",
+          "reward": null
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          360
+        ],
+        "native_turn_id": "01a10be6-6985-7dc2-aeda-1c897aa4cafd",
+        "previous_feedback": {
+          "artifact_sha256": "99310cf7d4d8c2eeafe9b1858f81bac73259bb1667d0fc04e5744c8e53811ef2",
+          "crosscheck": "Previous payload not independently restored.",
+          "experiment_or_recovered_name": null,
+          "numerical_run_id": "47def6571dff43f2b35d781aa43a7140",
+          "quality_pass_if_restored": null,
+          "reward_if_restored": null
+        },
+        "window_index_zero_based": 3
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "1d258071d714d362ce2c7ae8a1b65759efd88bef1f13c765a86e4b5e8f800338",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Artifact/result hashes match own-previous-Dev-evidence.json and the recovered builder/program receipt; raw result JSON is not restored.",
+          "disposition": "quality_valid_method_and_score_restored_selection_status_unverified",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-9f1f9c056ddc4a88a0d5fa5c032490f8",
+          "feedback_call_record_index": 592,
+          "feedback_output_record_index": 595,
+          "method_change": "Full-shape normalized text/image concat followed by separate mixed text/vision projections; cached full eager attention, with text rows selected after projection.",
+          "numerical_run_id": "9f1f9c056ddc4a88a0d5fa5c032490f8",
+          "original_binding_sha256": "1ca7236c7e54f8e490b6fa491ae62bb58ef8fe108911bd279cf9e5dbcc618d8c",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "75d51aef45ea06b20e6bdbcbc1cef9e76841da8763638c7fb68c98c4ebcd451d",
+          "reward": 0.6757495329495194
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          583
+        ],
+        "native_turn_id": "01a10c36-758a-7950-a835-0d6ea1a06932",
+        "previous_feedback": {
+          "artifact_sha256": "ed77c465194865412aa955c6e1b512be13e7f28e412a6391f5196858ffc77350",
+          "crosscheck": "Previous artifact matched own-previous-Dev-evidence.json.",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-29fd1474ee37447eb5cd789efb3dbdbc",
+          "numerical_run_id": "29fd1474ee37447eb5cd789efb3dbdbc",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.6410254456696353
+        },
+        "window_index_zero_based": 4
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "575c9dda891d69f5855a94fec526f7c38ab60eb547d6982f086df47fd62ee5c1",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Artifact/result hashes match own-previous-Dev-evidence.json and the recovered builder/program receipt; raw result JSON is not restored.",
+          "disposition": "quality_valid_method_and_score_restored_selection_status_unverified",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-6393c61a4a644186b7dfe2ddbc4c64f0",
+          "feedback_call_record_index": 678,
+          "feedback_output_record_index": 680,
+          "method_change": "Slice text/image projection output rows before recombination while retaining eager attention and original projection input geometry.",
+          "numerical_run_id": "6393c61a4a644186b7dfe2ddbc4c64f0",
+          "original_binding_sha256": "3c46179fbd39900e177e272e85a81216e045a48c8c4df3b44d1967ab2b75f23c",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "9c110e89f87c6249f12d4eacfb095c79c501cc356d4f8eaa7b3b62c71f10de4a",
+          "reward": 0.6801897811257087
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          647,
+          666
+        ],
+        "native_turn_id": "01a10c3a-bc1d-7c33-a5ca-1d6f069fe7f3",
+        "previous_feedback": {
+          "artifact_sha256": "e141e4ce213d39d9293b4096b395683cd573572f2651fcb85280e3f72162df8f",
+          "crosscheck": "Previous artifact matched own-previous-Dev-evidence.json.",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-5136dc41460a450195590019363bf521",
+          "numerical_run_id": "5136dc41460a450195590019363bf521",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.6730796246545039
+        },
+        "window_index_zero_based": 5
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "2ca95f15e211c90cc2c4ab9bad62da70011257447e02477380177f036a18326e",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Artifact/result hashes match own-previous-Dev-evidence.json and the recovered builder/program receipt; raw result JSON is not restored.",
+          "disposition": "quality_valid_method_and_score_restored_selection_status_unverified",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-f73157dc2d0c4af7ab88bb52a2ad4bc9",
+          "feedback_call_record_index": 745,
+          "feedback_output_record_index": 747,
+          "method_change": "Materialize and cache the multimodal rotary frequency layout as explicit axis/section slice, reshape, and concat nodes.",
+          "numerical_run_id": "f73157dc2d0c4af7ab88bb52a2ad4bc9",
+          "original_binding_sha256": "18d7fdc42ccf3c1f811ad917156fa83b04bc200e7a59120869ed548ced5b2fa7",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "86fa2f0929c50c6b2988f6b579af6d16e232da5112923f384d5f03cc5aa5c5a0",
+          "reward": 0.6884415149347335
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          732
+        ],
+        "native_turn_id": "01a10c3f-59e3-7830-8f06-f66cc9083c51",
+        "previous_feedback": {
+          "artifact_sha256": "9413679e371a555332cfb8bd2a1765f730a613040198c27f432b1632458f3c51",
+          "crosscheck": "Previous artifact matched own-previous-Dev-evidence.json.",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-6e7be26f188f400d9f97c4789c7fe174",
+          "numerical_run_id": "6e7be26f188f400d9f97c4789c7fe174",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.6870364856240948
+        },
+        "window_index_zero_based": 6
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "604864653caac5d4f1114e7aaf64ba2cadca5c3a16921fb2385b83e37b944f0a",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Artifact/result hashes match own-previous-Dev-evidence.json and the recovered builder/program receipt; raw result JSON is not restored.",
+          "disposition": "quality_valid_method_and_score_restored_selection_status_unverified",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-56798ab55cc14b4e8c605e0146ab2246",
+          "feedback_call_record_index": 813,
+          "feedback_output_record_index": 815,
+          "method_change": "Fuse the vision Q/K/V output width while retaining the original 556-row projection input geometry.",
+          "numerical_run_id": "56798ab55cc14b4e8c605e0146ab2246",
+          "original_binding_sha256": "122b69ec74420f769108bd82c465e07c18b6ff86495edb74c62fb78341109279",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "7d457c4ad79aaeccad37074496ec87627d6650cdfed00531de28e8f98aecd3b5",
+          "reward": 0.6974404451135936
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          803
+        ],
+        "native_turn_id": "01a10c43-ec15-7680-8073-94412cf03b2e",
+        "previous_feedback": {
+          "artifact_sha256": "12b3e2fcd7a80ab8b462ad1332de106160abde862be2870d88c4b2316dae0b8c",
+          "crosscheck": "Previous artifact matched own-previous-Dev-evidence.json.",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-ac8b563db5de40b493e916eb37d8edd0",
+          "numerical_run_id": "ac8b563db5de40b493e916eb37d8edd0",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.6918306189674902
+        },
+        "window_index_zero_based": 7
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "2190317af2803af4f5411ae8f515ba537aa25f293b5b390e24cedc6cb81c3100",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Artifact/result hashes match own-previous-Dev-evidence.json and the recovered builder/program receipt; raw result JSON is not restored.",
+          "disposition": "quality_valid_method_and_score_restored_selection_status_unverified",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-e8a101f32bf840c282237897070c526c",
+          "feedback_call_record_index": 895,
+          "feedback_output_record_index": 897,
+          "method_change": "Partition vision projection output rows while retaining the text projection dimensions.",
+          "numerical_run_id": "e8a101f32bf840c282237897070c526c",
+          "original_binding_sha256": "4b1cb6196cda6948fd44d7478542140bf4d489ac1611879dd4502723b3e5f37d",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "69edc82fb743ddd4bc80b4e08dcecb6d0b8e220222ee89c40a9e820c4a3c9933",
+          "reward": 0.7132044104257124
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          885
+        ],
+        "native_turn_id": "01a10c48-49dc-7a23-8589-cd2612ea3556",
+        "previous_feedback": {
+          "artifact_sha256": "cb999284783e8bdee9a3939b4928e40d51988638458aa2f010fd45c21743f2d8",
+          "crosscheck": "Previous artifact matched own-previous-Dev-evidence.json.",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-312f7d36b9824009b98c92dec10277f4",
+          "numerical_run_id": "312f7d36b9824009b98c92dec10277f4",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.707862004097232
+        },
+        "window_index_zero_based": 8
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "e7cf2a8b6ad4998de620ef1ab764f41a9d596c87db8a1984f2c7f6546bd247dc",
+          "baseline_mean_ms": null,
+          "candidate_mean_ms": null,
+          "crosscheck": "Artifact/result hashes match own-previous-Dev-evidence.json and the recovered builder/program receipt; raw result JSON is not restored.",
+          "disposition": "quality_valid_method_and_score_restored_selection_status_unverified",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-e04cb90d99bf43c3bc7a8bb10fd42244",
+          "feedback_call_record_index": 970,
+          "feedback_output_record_index": 972,
+          "method_change": "Build static text K/V head repetitions separately from changing image K/V repetitions and cache the text repetitions.",
+          "numerical_run_id": "e04cb90d99bf43c3bc7a8bb10fd42244",
+          "original_binding_sha256": "07008a1190a7e43b11ddd52e553acb5bbdf4861d11f65ff0f640df9994101b75",
+          "quality_pass": true,
+          "raw_result_json_available": false,
+          "result_sha256": "ce02e2e9ceb2e7b22875fcecef2364b9b904eab28116354e3b4e41c811539929",
+          "reward": 0.7123545199483625
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          960
+        ],
+        "native_turn_id": "01a10c4d-86ba-7b93-b110-c4a41c904ab1",
+        "previous_feedback": {
+          "artifact_sha256": "523319061b76f9be9728ef114199b412bfc11530d45772953f961c9ebd1edd5a",
+          "crosscheck": "Previous artifact matched own-previous-Dev-evidence.json.",
+          "experiment_or_recovered_name": "recovered-own-artifacts/dev-c98add60a99d4f8babf6b975b172c653",
+          "numerical_run_id": "c98add60a99d4f8babf6b975b172c653",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7113633334844123
+        },
+        "window_index_zero_based": 9
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "36f9688eff8cf0243f158e8c62a55e5eb07a30113092561640566f0524f56d22",
+          "baseline_mean_ms": 7134.268391927083,
+          "candidate_mean_ms": 1997.3652534484863,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/33_text_query_attention",
+          "feedback_call_record_index": 1519,
+          "feedback_output_record_index": 1521,
+          "method_change": "Share key/value construction and cache text-query attention.",
+          "numerical_run_id": "d91901df120c4ca1a9a12e72455add2a",
+          "original_binding_sha256": "76acebff83510cfe29bd1f07ecdd41180c6727dc3129f0e47e07cb93adc5bf39",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "af95c818fe489b98ca31a4940b6392e1913fbb457d5c00e808624f40ce427b8a",
+          "reward": 0.7200322242279751
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          1499
+        ],
+        "native_turn_id": "01a11c4a-c538-7563-9a23-dcb3b439bc59",
+        "previous_feedback": {
+          "artifact_sha256": "5e219e9cfd7db1e066239f50a3e68e44beae166e6fb1e62abcaf9a4fa12740d6",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "32_text_output_rows",
+          "numerical_run_id": "c26ed9e1397e4d1f83c8a3eae67378f5",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7172066322535714
+        },
+        "window_index_zero_based": 10
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "0a36d1ca66595eee9e54bcb50235cfa4cacb1ac18fbd54842d2643a445580972",
+          "baseline_mean_ms": 7160.943623860677,
+          "candidate_mean_ms": 2000.1761283874512,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/35_fused_text_rows",
+          "feedback_call_record_index": 1598,
+          "feedback_output_record_index": 1600,
+          "method_change": "Fuse cached text Q/K/V over contiguous text rows.",
+          "numerical_run_id": "396b7a0d7ab34642a724fde6501ba63c",
+          "original_binding_sha256": "248a0ccb59b5b1eeda94fc9ad78a3b6c9af19ed5c4f285077d84c72c30ffe470",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "fd5447c78927fb3d6f319b79df170481953c9b78b86d6e67ddcc1e9f786a9bc3",
+          "reward": 0.720682603655369
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          1582
+        ],
+        "native_turn_id": "01a11c4f-5808-7521-9f9c-8035d52a5d3e",
+        "previous_feedback": {
+          "artifact_sha256": "47f604c6e3ceb57f4bf43f2f6c6183d63b980249b8d91f8586a940baf3377932",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "34_text_only_eager_attention",
+          "numerical_run_id": "6bb64651743c431ab84218e03bc6e6f1",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7198335591297519
+        },
+        "window_index_zero_based": 11
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "3bc9032f84ce9c3bc2849a65aa8d53814d73529df1c229895bbe38d88ce32964",
+          "baseline_mean_ms": 7129.296920776367,
+          "candidate_mean_ms": 1953.5431632995605,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/37_preflipped_image_sine",
+          "feedback_call_record_index": 1694,
+          "feedback_output_record_index": 1696,
+          "method_change": "Preflip the fixed image sine layout.",
+          "numerical_run_id": "1978e082db844255889717b166e280c0",
+          "original_binding_sha256": "dd53b35837d00bef216e6f56ac363aa25a78a5b253d8c270a86ac00abefb6c1b",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "f6474ccf80ac96e1a4fcc7ece32fe9dc87ef308c3b61745ea6e0124c758765ff",
+          "reward": 0.7259837561812724
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          1678
+        ],
+        "native_turn_id": "01a11c54-7002-7993-8c36-21cf889ef4fb",
+        "previous_feedback": {
+          "artifact_sha256": "32ee2f3326b2e38a744d9df56e36e82e21dbb214d1c109e9db85ca4fb803d220",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "36_joint_image_qk_rotary",
+          "numerical_run_id": "813740f627824017b21517bda19ffe76",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7238510791583728
+        },
+        "window_index_zero_based": 12
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "227ab1478a5fbc25545e8fcbcb70d6c16682852a7b8dac72927b5aff127d59ac",
+          "baseline_mean_ms": 7129.010869344075,
+          "candidate_mean_ms": 2003.7608070373535,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/39_weight_left_image_down",
+          "feedback_call_record_index": 1785,
+          "feedback_output_record_index": 1787,
+          "method_change": "Change only the image MLP down-projection orientation.",
+          "numerical_run_id": "fd27abe92b3b4e5b9e4a43a681bddb23",
+          "original_binding_sha256": "6ea0efd8566ca0e1c682ee3fc9c7c0d1ef49b85bccc895138e5f86de0864c56b",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "230c9865a7fa960e8d4ee8f29ba3ed5460360b4954abcc86ff2795c2bb49053d",
+          "reward": 0.71892863627774
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          1769
+        ],
+        "native_turn_id": "01a11c59-b6d0-7bd3-9e05-627b6dcd66a1",
+        "previous_feedback": {
+          "artifact_sha256": "b0e4bb9023ea887764fd1a290672b09c5cb7d203040dca4cd0a71d553f8edb94",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "38_weight_left_image_mlp",
+          "numerical_run_id": "bb5df5957541443f83dab4226755b925",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7191365535891342
+        },
+        "window_index_zero_based": 13
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "6a9a696f1debd902737f957e9ed31430d827c7cffc1181b353412e0d9133b723",
+          "baseline_mean_ms": 7134.07145690918,
+          "candidate_mean_ms": 1935.192061106364,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/41_reversed_value_product",
+          "feedback_call_record_index": 1861,
+          "feedback_output_record_index": 1863,
+          "method_change": "Reverse only the image attention probability/value product.",
+          "numerical_run_id": "229037d94d904550a49edd62f61e57ab",
+          "original_binding_sha256": "796d9bab83d536a75277735fd5bcc305c32857466bd0f54e8515d261874d3737",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "91a0205595e73ce4be5d719ae1f86883b49b84e64817a50922f265d50487e798",
+          "reward": 0.7287394620596103
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          1845
+        ],
+        "native_turn_id": "01a11c5f-14c5-79b2-9fc0-9fa853f6a1e9",
+        "previous_feedback": {
+          "artifact_sha256": "2b6b27c65f1ba12d251d35fc0fdc0f70cb68c5a11c8ff552e723545880a39a38",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "40_reversed_score_product",
+          "numerical_run_id": "1a14d8b6c9984d918477772be9361579",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7087043588017636
+        },
+        "window_index_zero_based": 14
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "4b05b8121970537bcea5d1221bbe2c9d7dfd4b6dbac7ef82b5f0870b60cb3b98",
+          "baseline_mean_ms": 7147.597142537435,
+          "candidate_mean_ms": 1982.6223805745442,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/43_single_matrix_output_projection",
+          "feedback_call_record_index": 1941,
+          "feedback_output_record_index": 1943,
+          "method_change": "Use one combined-batch image output projection.",
+          "numerical_run_id": "772e56d6629340da924dfb7dce8050fd",
+          "original_binding_sha256": "e62bacfd0af391bd5ba76a8e424408a23de925de3e0e85f09714af67cd6c185e",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "d5a653a4ee935f62d3c9c6b4eb835bc9a1b17952a804f62d17958bc7da3caa9a",
+          "reward": 0.7226169381070205
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          1925
+        ],
+        "native_turn_id": "01a11c63-2508-7873-b5d9-34201ddb9261",
+        "previous_feedback": {
+          "artifact_sha256": "7a929a73852398b80cf05d7d3fb9e834a3037e2677a767c5298addfd9e5fdc74",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "42_direct_channel_output_projection",
+          "numerical_run_id": "30f88bd3d1784e0a8669b68ac1bf4420",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7217970460659884
+        },
+        "window_index_zero_based": 15
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "707eedfa9bf3374a74b498cc119b36b38f90790e75184b06aab1493f84ac973b",
+          "baseline_mean_ms": 7142.368586222331,
+          "candidate_mean_ms": 1939.8993962605794,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/45_grouped_probability_left_product",
+          "feedback_call_record_index": 2023,
+          "feedback_output_record_index": 2025,
+          "method_change": "Group the probability-left output product by KV head.",
+          "numerical_run_id": "2d1255df8ae2410ab5a1cf2bfdae63cf",
+          "original_binding_sha256": "eb234433d8b39f39111e6fe581ebfab00108b8a38ee99d9e78c4130017382971",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "dfadfbf9841fb98799e81bdf40e4fccc9eba7aeced29bb88a00236e260bbc999",
+          "reward": 0.7283955073387481
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          2007
+        ],
+        "native_turn_id": "01a11c67-c62e-7f50-8181-221b54c37ca3",
+        "previous_feedback": {
+          "artifact_sha256": "d899ae7245c3bca4b65b43c2fd29d48bbf23c96294a6443f2c554d0b43601c87",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "44_grouped_value_product",
+          "numerical_run_id": "788953c95b764b1dabf93e9c6833022e",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7245160629401872
+        },
+        "window_index_zero_based": 16
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "31b7f829a1a1fcde03edea320d33a2e7680d7c7b5f51d70290ada357593585a1",
+          "baseline_mean_ms": 7145.844380696614,
+          "candidate_mean_ms": 1951.4903869628906,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/47_grouped_both_products",
+          "feedback_call_record_index": 2103,
+          "feedback_output_record_index": 2105,
+          "method_change": "Group both attention contractions and retain grouped softmax layout.",
+          "numerical_run_id": "e126e34116404aaa96d3ad01848f7ff6",
+          "original_binding_sha256": "92aaebedc83e46f3e761d59691cb6c0366b4f945a60d36bd4d3a4f6c34ad753f",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "404490c4aa5516f74faba7343f5f7d4510eeba42b98fee4255494b1f6d1f06fd",
+          "reward": 0.7269055575525073
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          2087
+        ],
+        "native_turn_id": "01a11c6c-1ffa-7a61-86d5-b106efe8ec03",
+        "previous_feedback": {
+          "artifact_sha256": "0eeff2bb646847ee2e031326cd2df908ebb553a9868cafa79e60ad8abeaf7919",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "46_grouped_score_product",
+          "numerical_run_id": "01ec19ca53bc44c2b11e477761cda101",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7229790101010181
+        },
+        "window_index_zero_based": 17
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "b0b245a4cf15c8bd279481e15f918f1116eba440c8395c81e3d90a418d83fb01",
+          "baseline_mean_ms": 7139.9482014973955,
+          "candidate_mean_ms": 1819.4319343566895,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "hard_gate_invalid",
+          "experiment_or_recovered_name": "experiments/52_compiled_image_rms",
+          "feedback_call_record_index": 2601,
+          "feedback_output_record_index": 2603,
+          "method_change": "Compile both image RMS norms.",
+          "numerical_run_id": "a1811e4adc9d47bfb185cf8a5dbdbe0b",
+          "original_binding_sha256": "778cdd6151933b2ccd1425cc7c5e934d563f1f69115b58e37f99db690ee18669",
+          "quality_pass": false,
+          "raw_result_json_available": true,
+          "result_sha256": "506013ed7431609836550c6dbf1adf1f78d636e538e85c00c82f2b50ee7d69d5",
+          "reward": -1.0
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          2583
+        ],
+        "native_turn_id": "01a11ff8-d39c-7872-a061-6f69b36cafa1",
+        "previous_feedback": {
+          "artifact_sha256": "4d659434f717108367fddf1899f63502c9e01d0e03d1709dad197d6725b1d259",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "51_compiled_image_mlp",
+          "numerical_run_id": "3815884c05cb4f49b2a38ce6b663ecfb",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7312524164231079
+        },
+        "window_index_zero_based": 18
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "0950ec46626c36eb33a6490c84f1c1c963a4727c4c647708ae6a144322227196",
+          "baseline_mean_ms": 7150.591303507487,
+          "candidate_mean_ms": 1892.2977180480957,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_historical_selection",
+          "experiment_or_recovered_name": "experiments/53_compiled_image_rotary",
+          "feedback_call_record_index": 2633,
+          "feedback_output_record_index": 2635,
+          "method_change": "Compile the changing image Q/K rotary pointwise composition.",
+          "numerical_run_id": "524ce442da9a4ac8823fd28bb1337869",
+          "original_binding_sha256": "c2b49271b8fba2dafc45810c8ce53d2fc7678dbbe5955b570c7cf32baced3612",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "5b28e7fd220f25d533410ce754381dc1bca727c5dccadb44faa465d683185430",
+          "reward": 0.735364861767461
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          2607,
+          2617
+        ],
+        "native_turn_id": "01a11ff8-d39c-7872-a061-6f69b36cafa1",
+        "previous_feedback": {
+          "artifact_sha256": "b0b245a4cf15c8bd279481e15f918f1116eba440c8395c81e3d90a418d83fb01",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "52_compiled_image_rms",
+          "numerical_run_id": "a1811e4adc9d47bfb185cf8a5dbdbe0b",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 19
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "030ffd52b82d7ba67176f9534c3d1b0eab3c4074675e118fbb682476fbb1c257",
+          "baseline_mean_ms": 7137.437021891276,
+          "candidate_mean_ms": 1832.1168988545735,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "hard_gate_invalid",
+          "experiment_or_recovered_name": "experiments/55_compiled_softmax_cast",
+          "feedback_call_record_index": 2710,
+          "feedback_output_record_index": 2712,
+          "method_change": "Compile softmax with BF16 probability output.",
+          "numerical_run_id": "f7a9a0473294442bbc79e0cc9d98f6bd",
+          "original_binding_sha256": "4850b27818d993d0516e5508078bc852f06117bddca8c8f24cea76fcded8e348",
+          "quality_pass": false,
+          "raw_result_json_available": true,
+          "result_sha256": "858e35b96dac76de9279aac9f6503b2ef5d4da12e3528f6de4431ed1e20dfcb8",
+          "reward": -1.0
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          2693
+        ],
+        "native_turn_id": "01a11fff-cf90-7531-9bc1-c23e0ba56151",
+        "previous_feedback": {
+          "artifact_sha256": "ab01211eb0e15c77f551e0d7bc96730387f1d264f31e03606c95c043a6bcfe2f",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "54_compiled_score_pointwise",
+          "numerical_run_id": "8e490bd75b694f57aa6c04a2ab80041b",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7347301029952736
+        },
+        "window_index_zero_based": 20
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "e7a8626ce8268abe59be949cc3acd774b2685c86ef4ed80222c24e649b657de2",
+          "baseline_mean_ms": 7135.118662516276,
+          "candidate_mean_ms": 1907.3382352193196,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/56_compiled_mlp_residual_pack",
+          "feedback_call_record_index": 2735,
+          "feedback_output_record_index": 2737,
+          "method_change": "Extend the image MLP compiled region through residual and output packing.",
+          "numerical_run_id": "5019da3c33014b8dbb9410d2d257cb82",
+          "original_binding_sha256": "cbba8156da6d2f77a44de64d4a042a9c34683a7552e2fe4489c1448d101c5156",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "b3af1a20dc036d641fc6962a17cb66b7ac99eaf229ec2cc8ac7e951dc06547f3",
+          "reward": 0.7326830392829549
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          2718
+        ],
+        "native_turn_id": "01a11fff-cf90-7531-9bc1-c23e0ba56151",
+        "previous_feedback": {
+          "artifact_sha256": "030ffd52b82d7ba67176f9534c3d1b0eab3c4074675e118fbb682476fbb1c257",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "55_compiled_softmax_cast",
+          "numerical_run_id": "f7a9a0473294442bbc79e0cc9d98f6bd",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 21
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "fffc36b59c6b63ed3fb8c175a028ebc615643b606a9c7573eba1067d96d413e5",
+          "baseline_mean_ms": 7134.444900512695,
+          "candidate_mean_ms": 1900.1405487060547,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/58_compiled_projection_rotary",
+          "feedback_call_record_index": 2812,
+          "feedback_output_record_index": 2814,
+          "method_change": "Compile image Q/K/V projection through joint Q/K rotary.",
+          "numerical_run_id": "d2ce038885654b669feafe0d0dc38d95",
+          "original_binding_sha256": "4f35ab4bcd992a72cb64d68707205c774ae54717d755c466aef68847c3ed1d3d",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "1c797f31a9f3098fcdbee8dee420e5f1105c79475a295ed38a2fa0d0a317a8ab",
+          "reward": 0.733666658695548
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          2795
+        ],
+        "native_turn_id": "01a12006-e714-7621-a2de-f8c58509b3f0",
+        "previous_feedback": {
+          "artifact_sha256": "67f6e060f924c8b8e4ac94d1c1650aaa4f8ebad746ba29e81187a7a4c27c400f",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "57_compiled_attention_output",
+          "numerical_run_id": "0deeb83ff33f4af09f5ac4e6985ff109",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7279391707431508
+        },
+        "window_index_zero_based": 22
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "a24bef16b52a4eedfc0b68de865b285b88c66887c33c11a8108e9555be2270d6",
+          "baseline_mean_ms": 7144.466766357422,
+          "candidate_mean_ms": 1908.4277725219727,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/59_compiled_prefix_text_mlp",
+          "feedback_call_record_index": 2835,
+          "feedback_output_record_index": 2837,
+          "method_change": "Compile the cached text MLP.",
+          "numerical_run_id": "cb4b508f9ded4034a680774988a42c2a",
+          "original_binding_sha256": "1643a611682287c67773ec0ace65f15164c3c5a0c89663f5f6393a12d073bffc",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "c9f273ceacb76f011f88f57f5270a0cd8af179ecc81a32dc992cb42b6a8d4072",
+          "reward": 0.7328803065459598
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          2820
+        ],
+        "native_turn_id": "01a12006-e714-7621-a2de-f8c58509b3f0",
+        "previous_feedback": {
+          "artifact_sha256": "fffc36b59c6b63ed3fb8c175a028ebc615643b606a9c7573eba1067d96d413e5",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "58_compiled_projection_rotary",
+          "numerical_run_id": "d2ce038885654b669feafe0d0dc38d95",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.733666658695548
+        },
+        "window_index_zero_based": 23
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "f38806ea0173693772a858a556dde370459b1db5b38984c7a242080a28027aaf",
+          "baseline_mean_ms": 7132.048350016276,
+          "candidate_mean_ms": 1875.9976984659831,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "hard_gate_invalid",
+          "experiment_or_recovered_name": "experiments/64_compiled_fp32_rms_eager_rounding",
+          "feedback_call_record_index": 3196,
+          "feedback_output_record_index": 3198,
+          "method_change": "Compile FP32-only RMS with eager conversion/weighting boundaries.",
+          "numerical_run_id": "13c0d27569e34dec9f2afa9cb7d642fb",
+          "original_binding_sha256": "91ea2f8a073a296941c73fc02d7a0f8f71198be638e90504a377ba86e2c877a9",
+          "quality_pass": false,
+          "raw_result_json_available": true,
+          "result_sha256": "530f75ac9305300f3aa23bb473a5739bef41f3d7063e9de679c841f0b164f476",
+          "reward": -1.0
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          3178
+        ],
+        "native_turn_id": "01a12876-a768-7772-99e3-655ecbf1c4d5",
+        "previous_feedback": {
+          "artifact_sha256": "297342704df0d913e1ae02ad4c1634f493185ccb387b327ef0d1c1b155b7c098",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "63_compiled_unit_rms",
+          "numerical_run_id": "8e627f779abc48ec882d119f57d3b029",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 24
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "70a679791a643636d8b264a4f07eeac5735f1c0895a722c9b2e658cd968ca5ae",
+          "baseline_mean_ms": 7145.343663533528,
+          "candidate_mean_ms": 1917.1099344889324,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "hard_gate_invalid",
+          "experiment_or_recovered_name": "experiments/65_compiled_fp32_softmax_eager_rounding",
+          "feedback_call_record_index": 3243,
+          "feedback_output_record_index": 3245,
+          "method_change": "Compile FP32-only softmax with eager input/output conversion boundaries.",
+          "numerical_run_id": "0932198d41b44a4badf865908c6e8256",
+          "original_binding_sha256": "00e4be4ed2e71e83ce4df2676f0045090973b7d50a746912086f0d5817181a9e",
+          "quality_pass": false,
+          "raw_result_json_available": true,
+          "result_sha256": "f378d71156b1cadb68592fbffafa25e16d5aa40235c226237ad689d0f1dca35a",
+          "reward": -1.0
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          3210
+        ],
+        "native_turn_id": "01a12876-a768-7772-99e3-655ecbf1c4d5",
+        "previous_feedback": {
+          "artifact_sha256": "f38806ea0173693772a858a556dde370459b1db5b38984c7a242080a28027aaf",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "64_compiled_fp32_rms_eager_rounding",
+          "numerical_run_id": "13c0d27569e34dec9f2afa9cb7d642fb",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 25
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "76acb6a6184ea56d0d8b41cedd3068372289e6580e374250b649103c3b9845da",
+          "baseline_mean_ms": 7154.0322825113935,
+          "candidate_mean_ms": 1855.4289538065593,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "hard_gate_invalid",
+          "experiment_or_recovered_name": "experiments/67_compiled_post_rms_only",
+          "feedback_call_record_index": 3335,
+          "feedback_output_record_index": 3337,
+          "method_change": "Compile only image post-attention RMS.",
+          "numerical_run_id": "e84a9884fd6043d6879c2c9f84e1d48a",
+          "original_binding_sha256": "d2c3b6d326a63f5d3e65aadeb45e75a1988c3ce666d1ae9077d734bdeb32006b",
+          "quality_pass": false,
+          "raw_result_json_available": true,
+          "result_sha256": "00a9c5f1332b9d98c76a8649ab710380956be4b4b7ca1bccd3791e321d613ceb",
+          "reward": -1.0
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          3310
+        ],
+        "native_turn_id": "01a12884-e100-76e1-b735-c83cfeb246ac",
+        "previous_feedback": {
+          "artifact_sha256": "e4ec6f2c59a47ec3f95eb14a15003c8d0b9c1ab091a5e7d5568e152b820ce945",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "66_compiled_input_rms_only",
+          "numerical_run_id": "88c06677019b4929b1ccb7b009da96a4",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 26
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "fca521b588efca191e9e25cbc17fe33bff75c6ee272c973eb5377e51518f4952",
+          "baseline_mean_ms": 7128.538482666016,
+          "candidate_mean_ms": 1909.252779642741,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/68_compiled_projection_residual",
+          "feedback_call_record_index": 3372,
+          "feedback_output_record_index": 3374,
+          "method_change": "Compile image attention output projection with its residual consumer.",
+          "numerical_run_id": "a0ac53a222b64139894a8236d13bf8fe",
+          "original_binding_sha256": "1d4ba04a9c9cd2057bbbf6b56d1389204fdd3173e3b0bb5ba22d77d41a291f59",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "4533f7bc1fd320c508f0fd0054d12c157bbe45fee149b591eead4b3c7562a738",
+          "reward": 0.7321677109150295
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          3343
+        ],
+        "native_turn_id": "01a12884-e100-76e1-b735-c83cfeb246ac",
+        "previous_feedback": {
+          "artifact_sha256": "76acb6a6184ea56d0d8b41cedd3068372289e6580e374250b649103c3b9845da",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "67_compiled_post_rms_only",
+          "numerical_run_id": "e84a9884fd6043d6879c2c9f84e1d48a",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 27
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "927866ec4138edb7dd4ad4893afe1874e3ec664df457d86dc521706f95ed627d",
+          "baseline_mean_ms": 7132.803716023763,
+          "candidate_mean_ms": 1889.263957977295,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/70_atomic_compiled_text_key_rotary",
+          "feedback_call_record_index": 3499,
+          "feedback_output_record_index": 3501,
+          "method_change": "Compile the original atomic cached text-key rotary operation.",
+          "numerical_run_id": "a80cebaa75c74298b6e1c17daeb9d9d7",
+          "original_binding_sha256": "30db33d66f6ed48ff5b2257a33f4c057312de7bec4cfa4253d55f8a7810e97af",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "a665224a8d7f77a39748ac29c3f3e79d02f7db2bb1334b8121d30ce31d6b1127",
+          "reward": 0.7351302470677715
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          3469
+        ],
+        "native_turn_id": "01a1288e-e2f2-70f0-8aaf-19589a518df2",
+        "previous_feedback": {
+          "artifact_sha256": "31cdfdecd70826085c10f9f50773848e9852c36b0f0db1e599f700984d43dcc5",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "69_compiled_prefix_text_attention",
+          "numerical_run_id": "b3e02e038b8f400d9f73c88ee95cee56",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 28
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "5eec7aacdf6d7bb6d42a7f77512bc22aab08e538a965d68f9d4fadaca323e0ae",
+          "baseline_mean_ms": 7134.923110961914,
+          "candidate_mean_ms": 1902.3240572611492,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/71_atomic_raw_axis_rotary",
+          "feedback_call_record_index": 3562,
+          "feedback_output_record_index": 3564,
+          "method_change": "Use raw-axis text/image rotary with obsolete helpers removed.",
+          "numerical_run_id": "0b3ece6441ed45389d928a13332d07a2",
+          "original_binding_sha256": "d4031aaa2a4eac04ace63c00fa205531303497fdba9ef63c9f5372b544af4fdb",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "4590ca259de3e62e2e2ed7761d4f6d7aadb9fe768f83295c95560860dba49d41",
+          "reward": 0.7333784782714102
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          3490,
+          3507
+        ],
+        "native_turn_id": "01a1288e-e2f2-70f0-8aaf-19589a518df2",
+        "previous_feedback": {
+          "artifact_sha256": "927866ec4138edb7dd4ad4893afe1874e3ec664df457d86dc521706f95ed627d",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "70_atomic_compiled_text_key_rotary",
+          "numerical_run_id": "a80cebaa75c74298b6e1c17daeb9d9d7",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7351302470677715
+        },
+        "window_index_zero_based": 29
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "54c851bbf8add36f84af29eb530ac123bbdd6238eeda018ed9c15b9dd5af4ffb",
+          "baseline_mean_ms": 7130.892964680989,
+          "candidate_mean_ms": 1890.8368275960286,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/73_compiled_score_epilogue",
+          "feedback_call_record_index": 3734,
+          "feedback_output_record_index": 3736,
+          "method_change": "Compile original score GEMM with scaling/mask epilogue.",
+          "numerical_run_id": "fcc0505c1dae448380a8fcf2d0156ee2",
+          "original_binding_sha256": "9941eeb63531d7f07212cdcf8a2074ba53be73b33e5ca6bafbff57eee658a246",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "892de4076e0bcf9dfa38a90e0c8456152c2fef6921daf14f0bc16201ecdc53db",
+          "reward": 0.7348387029561005
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          3699
+        ],
+        "native_turn_id": "01a1289a-d170-7903-b918-ebff316aa257",
+        "previous_feedback": {
+          "artifact_sha256": "e2038771f8e21dc6f81759f594986d2508a04b567263d12d9293df930859145a",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "72_compiled_contiguous_qk_outputs",
+          "numerical_run_id": "6a7dd41349f34720afeb625a9b8e2e24",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7312654732165896
+        },
+        "window_index_zero_based": 30
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "6fd7608224a4990421f3cad5ddb892bebf0a198604095647e7ab59d6ef7c494c",
+          "baseline_mean_ms": 7135.1169840494795,
+          "candidate_mean_ms": 1942.1600379943848,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/74_transpose_before_value_repeat",
+          "feedback_call_record_index": 3862,
+          "feedback_output_record_index": 3864,
+          "method_change": "Transpose values before repeated-head materialization.",
+          "numerical_run_id": "0c5e12374c89496cbfa1bdd7eaf2c9a9",
+          "original_binding_sha256": "f860b56ff61ef97949cabdd5b49e187260ba68d1405724feaaeb0cd4b58e30db",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "fd1838cb8a9a4518f7eb2aaf5fcfce8ea7f2701ee0033a80db4cf32b6d80ded7",
+          "reward": 0.7278026355649004
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          3829
+        ],
+        "native_turn_id": "01a1289a-d170-7903-b918-ebff316aa257",
+        "previous_feedback": {
+          "artifact_sha256": "54c851bbf8add36f84af29eb530ac123bbdd6238eeda018ed9c15b9dd5af4ffb",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "73_compiled_score_epilogue",
+          "numerical_run_id": "fcc0505c1dae448380a8fcf2d0156ee2",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7348387029561005
+        },
+        "window_index_zero_based": 31
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "b45adf8625a82685788cbfe32a384c3118c86522e5e34ae9583a5fc30da6f9a1",
+          "baseline_mean_ms": 7145.001968383789,
+          "candidate_mean_ms": 1940.7172266642253,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/76_compiled_layer_tail",
+          "feedback_call_record_index": 4010,
+          "feedback_output_record_index": 4012,
+          "method_change": "Compile the separated final residual/concat tail.",
+          "numerical_run_id": "37626817b12a45e493413c393a9631de",
+          "original_binding_sha256": "e1aeece230f29c2a893a50909acc17e28d1bd7a380b15a617afdad759f50d4b2",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "175e8523c0beac38a80bd288e141b39258054a5d4a8ec64526a3912a03aad43b",
+          "reward": 0.7283811487733965
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          3977
+        ],
+        "native_turn_id": "01a128ae-18b4-7093-9980-ef4b677f7111",
+        "previous_feedback": {
+          "artifact_sha256": "bbbfb9762b45a0c3eedf71d7709459d7de3f00dfd7dfffed1f77cbf17393685a",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "75_compiled_value_materialization",
+          "numerical_run_id": "306b4d5d2e32486bae4bf2b39a78b847",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7349365334487045
+        },
+        "window_index_zero_based": 32
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "428fa9c359301014bd0997ce16d8155fde36945f08424fede4d8b5f70c825fbc",
+          "baseline_mean_ms": 7127.140670776367,
+          "candidate_mean_ms": 1901.0228932698567,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "hard_gate_invalid",
+          "experiment_or_recovered_name": "experiments/77_grouped_value_feature_basis",
+          "feedback_call_record_index": 4059,
+          "feedback_output_record_index": 4061,
+          "method_change": "Use grouped value contraction with a paired projection feature basis.",
+          "numerical_run_id": "b60247a35bfa4f6dbb7c0f49ee38e18d",
+          "original_binding_sha256": "74db3d8026a4a7378faa4afb4ce9e6fef30aaf41a91b217b210cdb91dab81188",
+          "quality_pass": false,
+          "raw_result_json_available": true,
+          "result_sha256": "f47620dceebe30ec1d88b41e719d5b7e03c87de6650e37c3edb59a57f67aa73d",
+          "reward": -1.0
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          4026
+        ],
+        "native_turn_id": "01a128ae-18b4-7093-9980-ef4b677f7111",
+        "previous_feedback": {
+          "artifact_sha256": "b45adf8625a82685788cbfe32a384c3118c86522e5e34ae9583a5fc30da6f9a1",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "76_compiled_layer_tail",
+          "numerical_run_id": "37626817b12a45e493413c393a9631de",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7283811487733965
+        },
+        "window_index_zero_based": 33
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "34107b61b1e7b728cd059433fb310ca381983f5cf4ea52d9a2497fb9f555fd3e",
+          "baseline_mean_ms": 7130.548904418945,
+          "candidate_mean_ms": 1902.689618428548,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/79_image_only_packed_frequency",
+          "feedback_call_record_index": 4245,
+          "feedback_output_record_index": 4247,
+          "method_change": "Use image-only packed rotary frequency cache.",
+          "numerical_run_id": "7b7b060b16c544658ad9458e7c85c8b6",
+          "original_binding_sha256": "74f512952529865620a62f5363995e9d276d9b3b09cbd981f9c9a9a031a331b1",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "ac990d1a8294a07a6db3d1df915a0e08676223ec42974ab8fa99bc87a9d6114f",
+          "reward": 0.7331636534672089
+        },
+        "intermediate_mutation_count": 3,
+        "intermediate_mutation_record_indices": [
+          4182,
+          4211,
+          4222
+        ],
+        "native_turn_id": "01a128ba-6182-7e93-9f41-e0af929f0263",
+        "previous_feedback": {
+          "artifact_sha256": "7b614935d9c7b647b401501adec386d2018c753a9c5cbf9d70746fbbe47f4e3d",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "78_isolated_projection_feature_basis",
+          "numerical_run_id": "df46fc42863840aba9744b039eba3e19",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 34
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "28ae6668145f64880dc5863e82aa5ea90cec5a572e8e679dad49b3838f305201",
+          "baseline_mean_ms": 7130.119842529297,
+          "candidate_mean_ms": 1968.0494956970215,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/80_compiled_feature_leading_mlp",
+          "feedback_call_record_index": 4329,
+          "feedback_output_record_index": 4331,
+          "method_change": "Use a feature-leading compiled image MLP.",
+          "numerical_run_id": "3d2a37611ff749f0852d98f3d616a751",
+          "original_binding_sha256": "22afb8475b2e802dc96f5e6f874a4c3a6df76c494c70690e395472dddc6de578",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "a0038321e5550ee96374f022279727b712ec0d0f38fd9081c159f4759567b60c",
+          "reward": 0.7239808671997178
+        },
+        "intermediate_mutation_count": 3,
+        "intermediate_mutation_record_indices": [
+          4253,
+          4272,
+          4290
+        ],
+        "native_turn_id": "01a128ba-6182-7e93-9f41-e0af929f0263",
+        "previous_feedback": {
+          "artifact_sha256": "34107b61b1e7b728cd059433fb310ca381983f5cf4ea52d9a2497fb9f555fd3e",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "79_image_only_packed_frequency",
+          "numerical_run_id": "7b7b060b16c544658ad9458e7c85c8b6",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7331636534672089
+        },
+        "window_index_zero_based": 35
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "11c0e9bfe4c90b29fe47268e6d81bb74d664814827e46f85d9d10895f7d0b127",
+          "baseline_mean_ms": 7140.530527750651,
+          "candidate_mean_ms": 1909.7774136861165,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/82_isolated_text_projection_packing",
+          "feedback_call_record_index": 4474,
+          "feedback_output_record_index": 4476,
+          "method_change": "Isolate independent text Q/K/V output packing.",
+          "numerical_run_id": "95ec0fca545e449db6285b4d22478b5e",
+          "original_binding_sha256": "c0a34a54b13fab45f52fa0a10210794188a8d1ff7cadb9892ff5988b5917b039",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "63e928ccc2b78f22c3ba6e6f88d3fbbdb8779b871d81b3076dcd918ab956be58",
+          "reward": 0.7325440446947129
+        },
+        "intermediate_mutation_count": 1,
+        "intermediate_mutation_record_indices": [
+          4450
+        ],
+        "native_turn_id": "01a128cf-4d8c-7f00-aeda-abb2c7e83548",
+        "previous_feedback": {
+          "artifact_sha256": "a641be2a80c91014ea9ded0e24347533c4d1c493dcc7cbc4acaf7761141b6e4b",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "81_separate_cached_text_projections",
+          "numerical_run_id": "8092b39858fd4ae08b4216886d869d73",
+          "quality_pass_if_restored": false,
+          "reward_if_restored": -1.0
+        },
+        "window_index_zero_based": 36
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "dcb138800ed96131c7e8dda354a38e213f3aad450eb2343eb999f91d25dcb415",
+          "baseline_mean_ms": 7137.822748819987,
+          "candidate_mean_ms": 1900.5218200683594,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/83_separate_published_shape_text_projections",
+          "feedback_call_record_index": 4513,
+          "feedback_output_record_index": 4515,
+          "method_change": "Use separate text projections with full published row geometry.",
+          "numerical_run_id": "58097bb3f3194ff586440f66c063bfba",
+          "original_binding_sha256": "b5cc09de559f56bc8abf29704dcb745efd6746271f91e49891fa20fbce2baca7",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "7671e40f1d9bb2b073c1fc1ef52c16e6d601039480e12e176315dd2274eda2a3",
+          "reward": 0.7337392805974973
+        },
+        "intermediate_mutation_count": 3,
+        "intermediate_mutation_record_indices": [
+          4464,
+          4484,
+          4495
+        ],
+        "native_turn_id": "01a128cf-4d8c-7f00-aeda-abb2c7e83548",
+        "previous_feedback": {
+          "artifact_sha256": "11c0e9bfe4c90b29fe47268e6d81bb74d664814827e46f85d9d10895f7d0b127",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "82_isolated_text_projection_packing",
+          "numerical_run_id": "95ec0fca545e449db6285b4d22478b5e",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7325440446947129
+        },
+        "window_index_zero_based": 37
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "9f917beee4f679902502559c3e16363e51eadc5547c88ddde54f102be81614dc",
+          "baseline_mean_ms": 7127.353337605794,
+          "candidate_mean_ms": 1893.10054397583,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/88_joint_eager_text_qk_rotary",
+          "feedback_call_record_index": 4932,
+          "feedback_output_record_index": 4936,
+          "method_change": "Use joint eager cached text Q/K rotary with contiguous query copy.",
+          "numerical_run_id": "8f5f393a7e4849e4aa4406181a9e87fa",
+          "original_binding_sha256": "103df82c783d9f812fbc62b210a42d35108600bb328fa13a6f8ee3c265b5a7a5",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "d2ac8b040483c920f4d9dc07c6163893f871e4c7d9ff536e29110ef153b8c5bb",
+          "reward": 0.7343894073572398
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          4889,
+          4905
+        ],
+        "native_turn_id": "01a128fe-97a7-7f42-85e3-bc0b34a023af",
+        "previous_feedback": {
+          "artifact_sha256": "0c0c0d2678a8768bf3b8d59240c0dcfac7be00c985510daa6255eaed1438e043",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "87_shared_cached_text_key_attention",
+          "numerical_run_id": "911181147b8649aea7112b42be6affde",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7328100037485688
+        },
+        "window_index_zero_based": 38
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "ceae5fe339a4937d2315f3f0596eb7490f5904b2757c3f9a72d1633faf48074b",
+          "baseline_mean_ms": 7134.331207275391,
+          "candidate_mean_ms": 1908.606293996175,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/89_compiled_joint_text_qk_rotary",
+          "feedback_call_record_index": 4977,
+          "feedback_output_record_index": 4979,
+          "method_change": "Compile the single joint cached text-Q/K rotary boundary.",
+          "numerical_run_id": "88f1cc2d77544a07bc4796aacf96037c",
+          "original_binding_sha256": "fdaa5b8f6269a56144a7216966a595aa0c8e87ce09e03507cfd6a7b4072cfa8d",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "818d2f681f46539dc4d5473d7809f02f8eb8cf2510a012fdabf2e2a613628f0d",
+          "reward": 0.7324757936595611
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          4932,
+          4940
+        ],
+        "native_turn_id": "01a128fe-97a7-7f42-85e3-bc0b34a023af",
+        "previous_feedback": {
+          "artifact_sha256": "9f917beee4f679902502559c3e16363e51eadc5547c88ddde54f102be81614dc",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "88_joint_eager_text_qk_rotary",
+          "numerical_run_id": "8f5f393a7e4849e4aa4406181a9e87fa",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7343894073572398
+        },
+        "window_index_zero_based": 39
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "8dbdf0569a7ba4fcad1870a3417e7f9859c2baa48f4f866cb036a50b07e9588e",
+          "baseline_mean_ms": 7119.3350830078125,
+          "candidate_mean_ms": 1896.4428749084473,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/91_prerotated_query_without_copy",
+          "feedback_call_record_index": 5162,
+          "feedback_output_record_index": 5164,
+          "method_change": "Feed native text attention pre-rotated Q/K without query copy.",
+          "numerical_run_id": "8e8ee0fe47154845bb93e733a359ff4b",
+          "original_binding_sha256": "5fce28f2925b085b1ce72a384ffd4ddaa11389d04e4f0aae79bcc34730dd8a5e",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "353806472e1acb1163aa5e5594286d82ceb29dd031bb7dcd2f5dc6dd21ab3701",
+          "reward": 0.7336207872228387
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          5085,
+          5130
+        ],
+        "native_turn_id": "01a12913-ab44-7df3-b12e-8c95bf99b6a0",
+        "previous_feedback": {
+          "artifact_sha256": "67808f85891141cba6791defc7874ae2708986c03d36e4c2af8b1c6333a917ae",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "90_prerotated_opaque_text_attention",
+          "numerical_run_id": "7037118226ee440abd5ca3efc3316002",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7330136798963537
+        },
+        "window_index_zero_based": 40
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "af03288c6b82837916e59442084e78f47a8284f3d0b463605928950de61e3246",
+          "baseline_mean_ms": 7129.366546630859,
+          "candidate_mean_ms": 1901.7147789001465,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/92_compact_identity_frequencies",
+          "feedback_call_record_index": 5225,
+          "feedback_output_record_index": 5228,
+          "method_change": "Use compact singleton identity frequencies for native attention.",
+          "numerical_run_id": "9e4895a19ec84d7c80e7d3618d9f3bae",
+          "original_binding_sha256": "b5a8c71ba8662ff71d6a94c195d449a895df7d72bf4f46657f09487cbb519262",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "16f4deab14ba990c98fda0b932a932b70533d02ae2f6bb0a0739ffd5cb9eaba9",
+          "reward": 0.7332561362273
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          5176,
+          5184
+        ],
+        "native_turn_id": "01a12913-ab44-7df3-b12e-8c95bf99b6a0",
+        "previous_feedback": {
+          "artifact_sha256": "8dbdf0569a7ba4fcad1870a3417e7f9859c2baa48f4f866cb036a50b07e9588e",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "91_prerotated_query_without_copy",
+          "numerical_run_id": "8e8ee0fe47154845bb93e733a359ff4b",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7336207872228387
+        },
+        "window_index_zero_based": 41
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "8ea899c665d62f528cc6436d6926cc135835d8289e763b6d3b6d567d2151beec",
+          "baseline_mean_ms": 7113.367568969727,
+          "candidate_mean_ms": 2046.8814557393391,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/94_compiled_partial_gate_up_fusion",
+          "feedback_call_record_index": 5382,
+          "feedback_output_record_index": 5385,
+          "method_change": "Partially fuse gate/up with original fused-N geometry.",
+          "numerical_run_id": "c59f93357e66445389900bf4341a5dfe",
+          "original_binding_sha256": "0e2a1728237c72e7d94fd9bb5aecc551ca447ad0a98779f8f02129ca83c99ef4",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "64f396d57df0dfb109dcf156267dc2646c5b805eeb9918cd57624b30e17fcb77",
+          "reward": 0.7122486029446385
+        },
+        "intermediate_mutation_count": 3,
+        "intermediate_mutation_record_indices": [
+          5341,
+          5352,
+          5362
+        ],
+        "native_turn_id": "01a12921-091b-78c1-98f4-9dc2351438a5",
+        "previous_feedback": {
+          "artifact_sha256": "50d9fb7daea4828c884394928bbd5ace4523b654acd971b0cad3d3d180ea33f0",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "93_broadcast_image_query_mask",
+          "numerical_run_id": "c7e652e68f804e74a3e0c7899603ff3e",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7336311022606835
+        },
+        "window_index_zero_based": 42
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "f16a461070cd7ccee19e448dc4d3f83b2ed5e21efbba77b3bce8565669c09895",
+          "baseline_mean_ms": 7128.1271565755205,
+          "candidate_mean_ms": 2272.8792775472007,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/95_compiled_two_block_gate_up",
+          "feedback_call_record_index": 5429,
+          "feedback_output_record_index": 5432,
+          "method_change": "Use two original-shape paired gate/up blocks with internal stage packing.",
+          "numerical_run_id": "214f14da56954b498f4739e112ca8c8c",
+          "original_binding_sha256": "d6b319f1d594c98d9e15fdd159d935c58a938fdba1ceb230dcacbf021612bb22",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "2c7ec793bb1e190ca982306565fa10a8d5a16d615c9bb970385b4764ed31e62b",
+          "reward": 0.6811393473178259
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          5403,
+          5411
+        ],
+        "native_turn_id": "01a12921-091b-78c1-98f4-9dc2351438a5",
+        "previous_feedback": {
+          "artifact_sha256": "8ea899c665d62f528cc6436d6926cc135835d8289e763b6d3b6d567d2151beec",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "94_compiled_partial_gate_up_fusion",
+          "numerical_run_id": "c59f93357e66445389900bf4341a5dfe",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7122486029446385
+        },
+        "window_index_zero_based": 43
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "6b7a98d3d1f880306da4729bdfb528b010a5566433eca33a07754e93d610a913",
+          "baseline_mean_ms": 7258.009587605794,
+          "candidate_mean_ms": 1895.3342272440593,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_historical_selection",
+          "experiment_or_recovered_name": "experiments/97_compiled_frequency_prefix",
+          "feedback_call_record_index": 5570,
+          "feedback_output_record_index": 5574,
+          "method_change": "Compile the intact natural frequency-prefix producer chain.",
+          "numerical_run_id": "5dbe1253c2f64c4ca563d0882e97e9e1",
+          "original_binding_sha256": "a1ca309b7debcfcd03f93c8df60293ffb5ce37d228b8121a7d5ddaac2101b7f3",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "a5a7ae14605c343c71abe1b88ce8c768bd5fe8d67e2f1726a08a4eb6553da675",
+          "reward": 0.7388630857582987
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          5520,
+          5532
+        ],
+        "native_turn_id": "01a1292e-c69b-72f0-acee-cb64ce5fb98f",
+        "previous_feedback": {
+          "artifact_sha256": "28a3c0d6ea42871571801acb520737e23bb142a4a3bb73d45c6f43018bfd79da",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "96_compiled_prefix_text_qkv",
+          "numerical_run_id": "bb0f7bb1425049768f0a563ab54e29ac",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7326608131347342
+        },
+        "window_index_zero_based": 44
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "554cce7be1ae3328838da73a53568392d8312c5332bc862c0aa63559d7fbcf8a",
+          "baseline_mean_ms": 7135.797587076823,
+          "candidate_mean_ms": 1925.373607635498,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/98_compiled_grouped_value_output",
+          "feedback_call_record_index": 5671,
+          "feedback_output_record_index": 5674,
+          "method_change": "Compile grouped value contraction with canonical packing/output projection.",
+          "numerical_run_id": "bb66e4ee85254b74af31365b12878724",
+          "original_binding_sha256": "8e03612af0f8da68da0caa22faba00468ff65d6dc4c079fe3a88838312991691",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "c01edad24ff63652120ca975705dc22cbbe8a16aeeb7a56d1a16481d71dc6650",
+          "reward": 0.7301810226340477
+        },
+        "intermediate_mutation_count": 4,
+        "intermediate_mutation_record_indices": [
+          5542,
+          5598,
+          5624,
+          5634
+        ],
+        "native_turn_id": "01a1292e-c69b-72f0-acee-cb64ce5fb98f",
+        "previous_feedback": {
+          "artifact_sha256": "6b7a98d3d1f880306da4729bdfb528b010a5566433eca33a07754e93d610a913",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "97_compiled_frequency_prefix",
+          "numerical_run_id": "5dbe1253c2f64c4ca563d0882e97e9e1",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7388630857582987
+        },
+        "window_index_zero_based": 45
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "a31d4c97a76cd6577dc05acc454075881770abd438abf7783ca8c81177c43a3d",
+          "baseline_mean_ms": 7132.927322387695,
+          "candidate_mean_ms": 1931.6285413106282,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/100_compiled_value_columns_producer",
+          "feedback_call_record_index": 5841,
+          "feedback_output_record_index": 5844,
+          "method_change": "Compile branchwise value columns before eager contraction.",
+          "numerical_run_id": "15eb0d4f96354984bd8ed68385486d6b",
+          "original_binding_sha256": "663fa463df7aa83beae6d75d34454dce33b00a55f2c51d1fa276c5f4dd7848b8",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "7a9727faaa7d19c9ba246b5744cff317776756726e87c9696a68b82424896728",
+          "reward": 0.7291955386608329
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          5792,
+          5802
+        ],
+        "native_turn_id": "01a1293f-1970-7751-9143-8e4a1ecacf46",
+        "previous_feedback": {
+          "artifact_sha256": "c244df417096809938e4445e8d107e0b1105bc692625f99b8ac20cfa5e18109b",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "99_compiled_grouped_score",
+          "numerical_run_id": "d9e46cf31f0a4cbbafa1491dddc9e63b",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7273063960400888
+        },
+        "window_index_zero_based": 46
+      },
+      {
+        "current_artifact_differs_from_previous": true,
+        "current_feedback": {
+          "artifact_sha256": "ec850c1d7672e992547dd9e0313a8bae05923df6a64d7c6a9c6c10e4878b5678",
+          "baseline_mean_ms": 7139.2051188151045,
+          "candidate_mean_ms": 1934.8804270426433,
+          "crosscheck": "Exact artifact_sha256 and raw dev-result.json SHA256 matched; quality flag also matched.",
+          "disposition": "quality_valid_nonselected_in_later_own_ranking",
+          "experiment_or_recovered_name": "experiments/101_compiled_column_projection_residual",
+          "feedback_call_record_index": 5893,
+          "feedback_output_record_index": 5899,
+          "method_change": "Compile original-basis column output projection with residual.",
+          "numerical_run_id": "623f5721429f4861bc17d2fe4fde0af4",
+          "original_binding_sha256": "9a410feb43ffebb463604654b76a935c467c21fd4fb6a221d512430757f4aa18",
+          "quality_pass": true,
+          "raw_result_json_available": true,
+          "result_sha256": "b27ddb5634c5b96875451e4d00f665e276e2153c2220c6ed6c0242f0b32f45f9",
+          "reward": 0.7289781712612039
+        },
+        "intermediate_mutation_count": 2,
+        "intermediate_mutation_record_indices": [
+          5858,
+          5866
+        ],
+        "native_turn_id": "01a1293f-1970-7751-9143-8e4a1ecacf46",
+        "previous_feedback": {
+          "artifact_sha256": "a31d4c97a76cd6577dc05acc454075881770abd438abf7783ca8c81177c43a3d",
+          "crosscheck": "Previous artifact SHA matched saved Dev result artifact_sha256.",
+          "experiment_or_recovered_name": "100_compiled_value_columns_producer",
+          "numerical_run_id": "15eb0d4f96354984bd8ed68385486d6b",
+          "quality_pass_if_restored": true,
+          "reward_if_restored": 0.7291955386608329
+        },
+        "window_index_zero_based": 47
+      }
+    ]
+  },
+  "future_source_supported_questions": [
+    {
+      "evidence": "Current region returns image_v; feedback has only whole-decoder peak allocation, not region storage/stride attribution.",
+      "question": "Does the observable image_v output from image_pre_softmax_compiled retain a larger backing QKV allocation across the compiled boundary?",
+      "status": "unmeasured, requires future trusted diagnostic; no improvement claimed."
+    },
+    {
+      "evidence": "The 32-node prefix region returns/caches every member; prefix accounting includes all 67 prefix nodes and 3,871,096,320 bytes over 28 layers.",
+      "question": "Can a new data-only frequency producer retain only final reusable layouts without retaining all helper-node outputs, while the required helper work and fixed cache/reset semantics remain compliant?",
+      "status": "unmeasured method question; not an experiment or result."
+    }
+  ],
+  "historical_eager_profile_scope": {
+    "experiment49_followup": {
+      "candidate_mean_ms": 2503.3639195760093,
+      "disposition": "valid but worse; not evidence about compiled 115",
+      "experiment": "49_batch_partition_image_mlp",
+      "peak_allocation_improved": false,
+      "quality_pass": true,
+      "reward": 0.6479712186197056
+    },
+    "kernel_profile": {
+      "all_part_hashes_verified": true,
+      "scope": "Same experiment-41 diagnostic, first and next forward; profiler-relative events, not current compiled-method profile."
+    },
+    "operator_profile": {
+      "decision": "Reject partitioned MLP and stop finer row splits without new kernel-level evidence. Restore experiment 41.",
+      "forwards": 2,
+      "instrumentation_overhead_caution": true,
+      "public_cases": 1
+    },
+    "profiled_experiment": "41_reversed_value_product",
+    "stage_profile": {
+      "mean_first_stage_ms": 125.56117248535156,
+      "mean_later_stage_median_ms": 58.30314636230469,
+      "new_gpu_evaluations": 0,
+      "public_cases": 3,
+      "stages": 96
+    }
+  },
+  "schema": "original-method-evidence/v1",
+  "scope": "Retrospective source and artifact audit only; no candidate code execution, GPU evaluation, network access, score extrapolation, or QA verdict.",
+  "selected_current_method": {
+    "artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+    "compile_regions": [
+      {
+        "boundary_outputs": [
+          "cos_axis_0",
+          "cos_axis_shape_0",
+          "cos_axis_1",
+          "cos_axis_shape_1",
+          "cos_axis_2",
+          "cos_axis_shape_2",
+          "cos_section_0",
+          "cos_section_1",
+          "cos_section_2",
+          "cos_section_3",
+          "cos_section_4",
+          "cos_section_5",
+          "cos_layout",
+          "sin_axis_0",
+          "sin_axis_shape_0",
+          "sin_axis_1",
+          "sin_axis_shape_1",
+          "sin_axis_2",
+          "sin_axis_shape_2",
+          "sin_section_0",
+          "sin_section_1",
+          "sin_section_2",
+          "sin_section_3",
+          "sin_section_4",
+          "sin_section_5",
+          "sin_layout",
+          "image_cos",
+          "image_sin",
+          "image_sin_first",
+          "image_sin_negative",
+          "image_sin_second",
+          "image_signed_sin"
+        ],
+        "external_inputs": [
+          "cos",
+          "sin"
+        ],
+        "id": "frequency_prefix_compiled",
+        "lifetime": "prefix",
+        "node_count": 32,
+        "node_start_zero_based": 21,
+        "node_stop_exclusive": 53
+      },
+      {
+        "boundary_outputs": [
+          "image_v",
+          "image_masked"
+        ],
+        "external_inputs": [
+          "image_input_norm",
+          "vision_qkv_weight",
+          "vision_qkv_bias",
+          "image_cos",
+          "image_signed_sin",
+          "text_key_rotary",
+          "image_attention_mask"
+        ],
+        "id": "image_pre_softmax_compiled",
+        "lifetime": "stage",
+        "node_count": 19,
+        "node_start_zero_based": 65,
+        "node_stop_exclusive": 84
+      },
+      {
+        "boundary_outputs": [
+          "image_residual_rows"
+        ],
+        "external_inputs": [
+          "image_prob_fp32",
+          "text_v_rows",
+          "image_v",
+          "w:self_attn.vision_branch_o_proj.weight",
+          "image_input_rows"
+        ],
+        "id": "image_post_softmax_output_compiled",
+        "lifetime": "stage",
+        "node_count": 13,
+        "node_start_zero_based": 85,
+        "node_stop_exclusive": 98
+      },
+      {
+        "boundary_outputs": [
+          "image_mlp"
+        ],
+        "external_inputs": [
+          "image_post_norm",
+          "w:vision_branch_mlp.gate_proj.weight",
+          "w:vision_branch_mlp.up_proj.weight",
+          "w:vision_branch_mlp.down_proj.weight"
+        ],
+        "id": "image_mlp_compiled",
+        "lifetime": "stage",
+        "node_count": 1,
+        "node_start_zero_based": 103,
+        "node_stop_exclusive": 104
+      }
+    ],
+    "dev_feedback": {
+      "all_disclosed_stage_final_source_errors_zero": true,
+      "baseline_mean_ms": 6923.771565755208,
+      "candidate_mean_ms": 1804.2555707295735,
+      "client_terminal_exit_and_console_tail": "unavailable; not reconstructed",
+      "compiled_region_count": 4,
+      "compiled_variant_count": 4,
+      "execution_status": "COMPLETED",
+      "final_withheld_256_stage_protocol_run": false,
+      "layers": 28,
+      "noise_3sigma_pass": true,
+      "peak_cuda_allocated_bytes": 29701087232,
+      "public_cases": 3,
+      "quality_pass": true,
+      "reward": 0.7394114531950514,
+      "run_id": "68cd3ef41d364183a1c4a57ed27a7227",
+      "steps": 32,
+      "worker_child_exit_code": 0
+    },
+    "experiment": "115_compiled_complete_post_softmax",
+    "layer_output": "output",
+    "node_count": 107,
+    "prefix_liveness": {
+      "cache_values_reset_after_warmup_and_between_rollouts": true,
+      "compiled_kernel_or_stride_profile_available": false,
+      "declared_all_layer_prefix_bytes": 3871096320,
+      "frequency_region_nodes_all_cached": true,
+      "physical_storage_aliasing_measured": false,
+      "prefix_node_count": 67,
+      "retained_prefix_limit_bytes": 7516192768
+    },
+    "program_schema": "bifrost-tensor-dag/2",
+    "read_only_restoration_check": {
+      "root_method_matches_saved_115_builder_byte_for_byte": true,
+      "root_program_canonical_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "root_program_matches_saved_115_program_byte_for_byte": true,
+      "selected_builder_sha256": "28c4f480b01e84eeb992e56285eb419199182281f756174bf4129e87e6a63bf7",
+      "selected_feedback_artifact_sha256": "845b8cbe96e3221b7615294d09a320b6d87223c3502886f1ea502b04fa20be5e",
+      "selected_program_file_sha256": "aa97efaefa4bc23e6df5eba3f7051a0131463b1710c6855c8c8692c84ae15f85"
+    }
+  },
+  "source_citations": {
+    "feedback_windows": "expert_evidence/original-source-method-loops/gpt-actual-method-feedback-windows.json",
+    "own_history_files": [
+      "research-notes.md",
+      "own-previous-Dev-evidence.json",
+      "research-resume-current-gpu/completed-interval.json",
+      "research-status.json",
+      "research-exhausted.json"
+    ],
+    "public_source_files": [
+      "operator-catalog.md",
+      "bounded_graph_compiler.py",
+      "tensor_dag.py",
+      "published/baseline_ops.py",
+      "full_decoder_evaluator.py"
+    ]
+  },
+  "stopping_judgment_preserved": {
+    "cross_candidate_paired_gain_established": false,
+    "formal_QA_or_PASS_claimed": false,
+    "global_optimum_or_universal_exhaustion_established": false,
+    "prior_record": "research-exhausted.json",
+    "round14_export_gap_preserved": true,
+    "status": "interim_bounded_research_boundary_not_global_exhaustion",
+    "withheld_final_protocol_unmeasured": true
+  }
+}

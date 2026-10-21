@@ -1,0 +1,19 @@
+services:
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs:
+      - /tmp:rw,mode=1777,size=256m
+      - /root:rw,mode=700,size=256m
+      - /workspace/solution:rw,size=4m
+      - /workspace/agent-output:rw,size=128m
+      - /installed-agent:rw,size=256m
+    volumes:
+      - type: bind
+        source: ${DD_SOCKET_ROOT:?Set DD_SOCKET_ROOT to this track's trusted sockets}/public.sock
+        target: /run/dd/public.sock
+        read_only: true

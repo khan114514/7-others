@@ -1,0 +1,283 @@
+{
+  "schema": "bifrost-current-source-copy-inventory/1",
+  "Task_manifest_SHA256": "2abb0bb70731458dbf320b26be53b0f219a1f3807838d73201219e83333f386e",
+  "Task_file_count": 48,
+  "contexts": [
+    {
+      "role": "agent",
+      "build_context": "Task/environment",
+      "Dockerfile_SHA256": "9ec360b1fe53f90f6ddec958221492778da68927372f3c2ae0ad2fe08c506404",
+      "dockerignore_SHA256": "2af42ea9d21a1ebb1301a81acdad908470a5b83ef51e3e0c8317bfa1131b1fb3",
+      "literal_dockerignore_lines": [
+        "__pycache__",
+        "**/__pycache__",
+        "*.pyc",
+        "**/*.pyc",
+        ".DS_Store"
+      ],
+      "actual_present_cache_or_pyc_or_DSStore_files": [],
+      "COPY_source_file_inventory": [
+        {
+          "line": 3,
+          "literal_sources": [
+            "tools/"
+          ],
+          "literal_destination": "/opt/bifrost/public-cli/",
+          "actual_source_files": [
+            {
+              "member": "Task/environment/tools/install_cli.py",
+              "SHA256": "8ffe204e2a5cd047cbd0076c756929139f6d8a4cd0566cb07ae5561060560e9e",
+              "bytes": 1359
+            },
+            {
+              "member": "Task/environment/tools/manifest.json",
+              "SHA256": "3607ccf746f3352eb7bd8e42ce2aa35c7c5a0b0544f07ceb481a3c88789c87e7",
+              "bytes": 1825
+            },
+            {
+              "member": "Task/environment/tools/public-cli.part-01.bin",
+              "SHA256": "7e76501d5bf63e7f0f1bfc112337896470e6e9d74c6f6e8b4eba204fee5ae018",
+              "bytes": 16777216
+            },
+            {
+              "member": "Task/environment/tools/public-cli.part-02.bin",
+              "SHA256": "c1eab888cc8304440903b3ad5090081df8798ea072dc3bb6304bea9de7a55d2b",
+              "bytes": 16777216
+            },
+            {
+              "member": "Task/environment/tools/public-cli.part-03.bin",
+              "SHA256": "96790e72cea07a1e191e31ee0fb2c228d97a8a539c4b3918ed5eb229c9acc8f4",
+              "bytes": 16777216
+            },
+            {
+              "member": "Task/environment/tools/public-cli.part-04.bin",
+              "SHA256": "4aba080da9392e8c7249dc7f42eed624a8b1405448468c8df3a2d19456703fbf",
+              "bytes": 16777216
+            },
+            {
+              "member": "Task/environment/tools/public-cli.part-05.bin",
+              "SHA256": "002cf47aeb3068cd929c6fae8f5e0090f27e29a19178da2a62748c0d691db2e5",
+              "bytes": 7695500
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "literal_sources": [
+            "runtime/"
+          ],
+          "literal_destination": "/opt/bifrost/",
+          "actual_source_files": [
+            {
+              "member": "Task/environment/runtime/entrypoint.py",
+              "SHA256": "877e82cabce08cd6ad0f781f920bc9e3dd56320e302b960724b9fae4ba05f8f8",
+              "bytes": 1377
+            },
+            {
+              "member": "Task/environment/runtime/local_model_proxy.py",
+              "SHA256": "805291feda27f046f62a03aee741dfeaa7185bf7ae92985cd6047d282f4b7549",
+              "bytes": 1877
+            },
+            {
+              "member": "Task/environment/runtime/queue_client.py",
+              "SHA256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+              "bytes": 2413
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "literal_sources": [
+            "public_eval/"
+          ],
+          "literal_destination": "/opt/bifrost/public_eval/",
+          "actual_source_files": [
+            {
+              "member": "Task/environment/public_eval/LICENSE-APACHE-2.0.txt",
+              "SHA256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+              "bytes": 11358
+            },
+            {
+              "member": "Task/environment/public_eval/NOTICE.md",
+              "SHA256": "6e66cb74fe9ad28810e251a70d95331e9e19570b1bcffb7a2f3b9a75e02b8a68",
+              "bytes": 422
+            },
+            {
+              "member": "Task/environment/public_eval/baseline-program.json",
+              "SHA256": "d28ad4def04e7f2bab9d0f91c35f46971994d8c023d676c426de72a584230cb9",
+              "bytes": 2526
+            },
+            {
+              "member": "Task/environment/public_eval/bounded_graph_compiler.py",
+              "SHA256": "2bc8d56a65d153e7a50c49bc9280e8f682d6fbcec71dd638f41ad1875ff7c619",
+              "bytes": 6508
+            },
+            {
+              "member": "Task/environment/public_eval/data/full-scout-inputs.safetensors",
+              "SHA256": "7092cd74a4902f6f846f9b4a7f396eab9db450f576dc69b3903df7effc4a1307",
+              "bytes": 20456432
+            },
+            {
+              "member": "Task/environment/public_eval/data/provenance.json",
+              "SHA256": "ea24da88438c9cb935b0ade2385b8a0084e25ccd97c8dd459e3295e377982c27",
+              "bytes": 875
+            },
+            {
+              "member": "Task/environment/public_eval/evaluate.py",
+              "SHA256": "89b5090e976d8c324bf4c6a49090539c42a48c5b0597ead9137a3882dc43857e",
+              "bytes": 1583
+            },
+            {
+              "member": "Task/environment/public_eval/full_decoder_evaluator.py",
+              "SHA256": "19b2e7c22893d378ec542eb3a2e25b67b1aa3a7171818f618074feefc7cf57ad",
+              "bytes": 17709
+            },
+            {
+              "member": "Task/environment/public_eval/operator-catalog.md",
+              "SHA256": "a700a400bda8816ae1a64717387ef65ee0fbda31ec3d4721e2e7ba955f40a5af",
+              "bytes": 4481
+            },
+            {
+              "member": "Task/environment/public_eval/protocol/benchmark.json",
+              "SHA256": "f2fffa4cf44cc472b305faf64b0867cc521884bc9d3f298a582f101d37946b5c",
+              "bytes": 6072
+            },
+            {
+              "member": "Task/environment/public_eval/public-tensor-manifest.json",
+              "SHA256": "61d7fabc0298197c99c63317cfc906360d3dfd06e78741cdf4ac728ecf5d94fe",
+              "bytes": 250991
+            },
+            {
+              "member": "Task/environment/public_eval/published/baseline_ops.py",
+              "SHA256": "a5a237c37cafd1f9a0a7fe6396ff8364685e8e53e111a93c0fb4ac05b657c19a",
+              "bytes": 21561
+            },
+            {
+              "member": "Task/environment/public_eval/published/configuration_qwen2_5_vl.py",
+              "SHA256": "98a550f509e4c1965d0338381ea8733affa5ff5c1b731a87c04e4995be840381",
+              "bytes": 12956
+            },
+            {
+              "member": "Task/environment/public_eval/tensor_dag.py",
+              "SHA256": "8f6dc1fdcfaca46e0f802afb22691aeda9bc38f3854d38cf9b36e1d589e77aec",
+              "bytes": 13794
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "literal_sources": [
+            "starter/"
+          ],
+          "literal_destination": "/opt/bifrost/starter/",
+          "actual_source_files": [
+            {
+              "member": "Task/environment/starter/method.py",
+              "SHA256": "07053b2dd5ac52bf587c88ed0d2bfd86f735e4d17ae1bec5679beee864d930e9",
+              "bytes": 2408
+            }
+          ]
+        }
+      ],
+      "actual_current_materialization_member": "expert_evidence/current-48-source-materialization.json",
+      "is_new_build_or_execution": false
+    },
+    {
+      "role": "verifier",
+      "build_context": "Task/tests",
+      "Dockerfile_SHA256": "64edd366ace50c40a6026b0a544f3e23f93b49d390e86a07e27a7fc8a21990ec",
+      "dockerignore_SHA256": "2af42ea9d21a1ebb1301a81acdad908470a5b83ef51e3e0c8317bfa1131b1fb3",
+      "literal_dockerignore_lines": [
+        "__pycache__",
+        "**/__pycache__",
+        "*.pyc",
+        "**/*.pyc",
+        ".DS_Store"
+      ],
+      "actual_present_cache_or_pyc_or_DSStore_files": [],
+      "COPY_source_file_inventory": [
+        {
+          "line": 3,
+          "literal_sources": [
+            "queue_client.py"
+          ],
+          "literal_destination": "/opt/bifrost/queue_client.py",
+          "actual_source_files": [
+            {
+              "member": "Task/tests/queue_client.py",
+              "SHA256": "5141136940973171285ee3dd050a43959ce839bb1a0d963ad7281b333364e662",
+              "bytes": 2413
+            }
+          ]
+        },
+        {
+          "line": 4,
+          "literal_sources": [
+            "grade.py",
+            "test.sh"
+          ],
+          "literal_destination": "/tests/",
+          "actual_source_files": [
+            {
+              "member": "Task/tests/grade.py",
+              "SHA256": "5ca912ee0fab3efb0937835c010496c4b6b31848c59964fb86a53b068146df86",
+              "bytes": 3167
+            },
+            {
+              "member": "Task/tests/test.sh",
+              "SHA256": "433555f3d6245512446f9da4bd60eeef53d26945ea81c2d90d99081d178c3dd9",
+              "bytes": 172
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "literal_sources": [
+            "hidden-chunks/"
+          ],
+          "literal_destination": "/tests/hidden-chunks/",
+          "actual_source_files": [
+            {
+              "member": "Task/tests/hidden-chunks/hidden-input.part-01.bin",
+              "SHA256": "c1241c3236610188fc2a1f937f3e0dc0aef4aa879f8dbb98cb06ce7ad211e3be",
+              "bytes": 16777216
+            },
+            {
+              "member": "Task/tests/hidden-chunks/hidden-input.part-02.bin",
+              "SHA256": "42d3c0c3288f911c5c1c7517b297d9b50f31fe0cb348182fdf6a4264f96dfd52",
+              "bytes": 16777216
+            },
+            {
+              "member": "Task/tests/hidden-chunks/hidden-input.part-03.bin",
+              "SHA256": "b53c4a34fedadf4ee0cd9d4c92551c6d322f0dd7f29d6e380679d2f696e3ed0e",
+              "bytes": 7358440
+            },
+            {
+              "member": "Task/tests/hidden-chunks/manifest.json",
+              "SHA256": "39ce6d44453f1998ac43425a4b52d2eaf7a0a4063e841b4a328f5943b48743d1",
+              "bytes": 930
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "literal_sources": [
+            "prepare_hidden.py"
+          ],
+          "literal_destination": "/tests/prepare_hidden.py",
+          "actual_source_files": [
+            {
+              "member": "Task/tests/prepare_hidden.py",
+              "SHA256": "6db0b0c15acb2df7c581fd31bf4aa84937bcb74c7e7eac63a40f76fd1c829a90",
+              "bytes": 800
+            }
+          ]
+        }
+      ],
+      "actual_current_materialization_member": "expert_evidence/current-48-source-materialization.json",
+      "is_new_build_or_execution": false
+    }
+  ],
+  "clarification": "Literal byte and member inventory. No Docker build was repeated; no independent Harbor verdict or manual_resolution is authored here.",
+  "is_QA_verdict": false
+}

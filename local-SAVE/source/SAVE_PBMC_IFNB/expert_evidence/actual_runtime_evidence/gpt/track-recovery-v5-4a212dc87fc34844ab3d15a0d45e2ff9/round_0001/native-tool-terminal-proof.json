@@ -1,0 +1,205 @@
+{
+  "original_event_sha256": "c7fd9beabb1b71558a9b32a1cec396cfc80ba978113fa4e6a87f1301882ceac4",
+  "original_receipt_sha256": "1007a56bc87ff19978feedad2b7113167145e15ea0e9c79f35d3f1618ed15419",
+  "original_event_last_write_epoch": 1791599560.4575803,
+  "original_native_session_ids": [
+    "01a12103-abe0-7ec0-b92f-6231dde78c2d"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'pwd; ls -la /workspace/solution; sha256sum /workspace/solution/method.py; wc -c /workspace/solution/method.py; tail -100 /workspace/solution/research-notes.md'",
+      "original_command_sha256": "b56bbab3ee915f46d09e20b7adf57e47209a01411997ccc2d1da7e3caeb478f0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "60daa376f3183197a7ea27edb0a5f0f73293340b3e00f4f9d3b494b4873f72ab",
+      "output_characters": 575
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json'",
+      "original_command_sha256": "da448aa6592171e0e2d14934d6d0d3019c06bf38d9b66c40f7248d7363259a78",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ab5f01fb3bec7c76bfcfc1095a9e73f4326b2a11889de4528529b5e8e3fcb8eb",
+      "output_characters": 611
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'command -v rg; ls -la /workspace; ls -la /tests'",
+      "original_command_sha256": "75ced3efc367c5a250122238ce9505e8cd4dfe030f73d4f3b223fa3355c2f240",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "659af0e3da863b7bb585c450e51085e09942caa95019a8aa28a96794cabe6998",
+      "output_characters": 1012
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc \"sed -n '1,280p' /workspace/solution/method.py\"",
+      "original_command_sha256": "8374535422efb06a12024d6bffa9b25a0f3f2b2182de57d0cb9aba7c6c6fd2d3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5156687fe20cc4c8dc0fea0cb13f1f105b985d4f4c5fc7fa6914ec7f2308bbc8",
+      "output_characters": 12678
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc \"sed -n '280,625p' /workspace/solution/method.py\"",
+      "original_command_sha256": "9c1d27931736119d9032eb35790818359f3b191a446ee7141ff5b39ace90e86e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "31522787996da175e22735b7c7b2d876cd65bb6184da1ef74c57b2be53283f7a",
+      "output_characters": 14907
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc \"find /workspace -maxdepth 2 -type f -name '*restor*' -o -name '*session*' -o -name '*history*'; cat /tests/protocol.json /tests/anchors.json /tests/solve.sh /workspace/public_assets/manifest.json\"",
+      "original_command_sha256": "8508c94f2fba54f6be76ab0a2ffeaccc3c79f9c6f231cd38de4852dc9c899f24",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b28c6d22fb38e7e04ae9bacf0a4158ba7919223095315434407a89db578b0f4a",
+      "output_characters": 1167
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cat /tests/metrics.py /tests/grader.py'",
+      "original_command_sha256": "97497b957187765e3f0dafa9e49178875589e7bd358b088104a69526c5a3e2a8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b644d396da899d65cc905bc92617942c3ae562db1cc278bb74e24e5aae97b95c",
+      "output_characters": 3574
+    },
+    {
+      "id": "item_10",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4",
+      "output_characters": 27522
+    },
+    {
+      "id": "item_12",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport hashlib,json,stat,ast\np=Path('/workspace/solution/method.py');raw=p.read_bytes();feedback=Path('/workspace/solution/recovered-own-dev.json');f=json.loads(feedback.read_text())\nassert hashlib.sha256(raw).hexdigest()==f['method_sha256']=='4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4'\nassert f['status']=='COMPLETE' and f['all_seeds_complete'] and f['quality_gates_passed'] and f['independent_fresh_reload_verified']\nassert stat.S_ISREG(p.stat().st_mode) and not p.is_symlink() and len(raw)<=1024**2\nast.parse(raw)\nmatched=[];missing=[];mismatch=[]\nfor name,expected in json.loads(Path('/tests/frozen_assets.json').read_text()).items():\n    path=Path(name) if name.startswith('/') else Path('/workspace')/name\n    if not path.exists():missing.append(str(path));continue\n    actual=hashlib.sha256(path.read_bytes()).hexdigest()\n    if actual==expected:matched.append(str(path))\n    else:mismatch.append({'path':str(path),'actual':actual,'expected':expected})\nassert not mismatch\nprint(json.dumps({'restored_source_sha256':hashlib.sha256(raw).hexdigest(),'restored_source_bytes':len(raw),'recovered_feedback':f,'recovered_feedback_file_sha256':hashlib.sha256(feedback.read_bytes()).hexdigest(),'protected_hashes_matched':len(matched),'missing_manifest_paths':missing,'protected_hash_mismatches':mismatch,'actual_lossless_same_session_manifest_found':False,'prior_notes_exist':Path('/workspace/solution/research-notes.md').exists(),'fixed_entry_target':str(Path('/workspace/solution/solve.sh').resolve())},indent=2))\nPY\"",
+      "original_command_sha256": "60e9e776f3428640cec19df857a5f7390c89b36351b9a78e9e370a2caa9700b7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "9928780f517a710c36ee8c364fc6af677c229144e57ec2abde850103e2f855ce",
+      "output_characters": 2103
+    },
+    {
+      "id": "item_15",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "bf1da322e5bc6a1d86be0b95ee114010827fb182627034ca487951bf9eb3dd1e",
+      "output_characters": 28903
+    },
+    {
+      "id": "item_16",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nfrom types import ModuleType\nimport hashlib,json,ast,math\nimport numpy as np\nfrom scipy.special import digamma\np=Path('/workspace/solution/method.py');raw=p.read_bytes();tree=ast.parse(raw)\nnotes=Path('/workspace/solution/research-notes.md').read_text()\npart=notes.split('### Preserved prior native Session 37 worse source\\\\n',1)[1]\nold=(part.split('\"'```python'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0]+'\\\\n').encode()\nassert hashlib.sha256(old).hexdigest()=='6022b4bd5aa2425e76956633c5acaa31682756e59474674137a5f20519cbedee'\nm=ModuleType('session38_candidate');exec(compile(raw,str(p),'exec'),m.__dict__)\nprobs=np.array([0.,1e-6,.001,.1,.5,.9,.999,1.-1e-6,1.])\nerrors=[]\nfor n in [0,1,2,3,10,100]:\n    actual=m._binomial_expected_logit(n,probs)\n    k=np.arange(n+1);values=digamma(k+.5)-digamma(n-k+.5)\n    reference=np.array([sum(math.comb(n,int(i))*float(prob)**int(i)*(1-float(prob))**(n-int(i))*float(value) for i,value in zip(k,values)) for prob in probs])\n    error=float(np.max(np.abs(actual-reference)))\n    assert error<1e-12\n    assert np.max(np.abs(actual+m._binomial_expected_logit(n,1-probs)))<1e-10\n    errors.append({'count':n,'direct_combinatorial_max_error':error,'means':actual.tolist()})\n# Exercise two chunk boundaries as well as high count/sparse probabilities.\nwide=np.linspace(1e-7,1-1e-7,513)\nexpected=m._binomial_expected_logit(1177,wide)\nassert expected.shape==wide.shape and np.isfinite(expected).all()\nassert np.max(np.abs(expected[:256]-m._binomial_expected_logit(1177,wide[:256])))<1e-12\nassert np.max(np.abs(expected[256:512]-m._binomial_expected_logit(1177,wide[256:512])))<1e-12\nassert np.max(np.abs(expected[512:]-m._binomial_expected_logit(1177,wide[512:])))<1e-12\ncalls={n.name for n in tree.body if isinstance(n,ast.FunctionDef)}\nassert {'build_model','train_model','predict'}<=calls\nassert len(raw)<=1024**2\nprint(json.dumps({'candidate_sha256':hashlib.sha256(raw).hexdigest(),'candidate_bytes':len(raw),'syntax_and_callables_pass':True,'prior37_source_exact_reconstruction_verified':True,'null_helper_checks':errors,'wide_probability_genes':len(wide),'high_count':1177,'wide_max_reflection_error':float(np.max(np.abs(expected+expected[::-1]))),'chunk_boundaries_pass':True},indent=2))\nPY\"",
+      "original_command_sha256": "223dab110bb68f4527e5ba3a835258a7a4e5a68dd441cb3e675975024f62c4bd",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2b6c3c76a881a229a2249f56ec82d075dae0a6d28fc995546cadd6b950044b62",
+      "output_characters": 2375
+    },
+    {
+      "id": "item_21",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport ast,hashlib,json\np=Path('/workspace/solution/method.py');raw=p.read_bytes();notes=Path('/workspace/solution/research-notes.md').read_text()\npart=notes.split('### Session 38 exact Binomial-null-centered candidate source\\\\n',1)[1]\narchived=(part.split('\"'```python'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0]+'\\\\n').encode()\nassert raw==archived and hashlib.sha256(raw).hexdigest()=='bf1da322e5bc6a1d86be0b95ee114010827fb182627034ca487951bf9eb3dd1e'\nast.parse(raw)\nprint(json.dumps({'exact_source_archive_bound':True,'candidate_sha256':hashlib.sha256(raw).hexdigest(),'candidate_bytes':len(raw),'recovered_feedback_unchanged':hashlib.sha256(Path('/workspace/solution/recovered-own-dev.json').read_bytes()).hexdigest()=='ab5f01fb3bec7c76bfcfc1095a9e73f4326b2a11889de4528529b5e8e3fcb8eb'}))\nPY\"",
+      "original_command_sha256": "64832d03796ad48ffb0db48526b9e37e3475748524babc28d95390b9d36ac39b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2c6e1ac1e20f9b326667fa906dc28911f1e55fba8388ea484cca85904238b3a3",
+      "output_characters": 189
+    },
+    {
+      "id": "item_19",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nfrom types import ModuleType\nfrom io import BytesIO\nimport hashlib,json,time,sys\nimport numpy as np\nimport scanpy as sc\nimport torch\nfrom scipy.special import digamma,polygamma\nfrom scipy.stats import binom\nfrom sklearn.preprocessing import MaxAbsScaler\nsys.path.insert(0,'/tests')\nfrom metrics import expression_mean_metrics\nstart=time.perf_counter();torch.set_num_threads(4)\np=Path('/workspace/solution/method.py');source=p.read_text();m=ModuleType('session38_candidate');exec(compile(source,str(p),'exec'),m.__dict__)\nfeedback=json.loads(Path('/workspace/solution/recovered-own-dev.json').read_text())\n# Best outer values available in own visible prior native history; not refitted.\ncached_outer={'B cells':0.00500645053105738,'CD14+ Monocytes':0.015899479032032655,'CD4 T cells':0.002372456444478789,'Dendritic cells':0.011070298107416724,'FCGR3A+ Monocytes':0.006718569668214178,'Megakaryocytes':0.006711195099494079}\ntrain=sc.read_h5ad('/workspace/public_assets/train.h5ad');controls=sc.read_h5ad('/workspace/public_assets/dev_controls.h5ad')\nassert list(train.var_names)==list(controls.var_names)\nscaler=MaxAbsScaler();train.X=scaler.fit_transform(train.X);controls.X=scaler.transform(controls.X)\ncontexts=sorted(set(train.obs['cell_type'].astype(str)));cond=np.asarray(train.obs['condition'].astype(str));ct=np.asarray(train.obs['cell_type'].astype(str));di=np.asarray(train.obs['replicate'].astype(str))\nruns=[];predictions={};main=None\nfor held in [None]+contexts:\n    t0=time.perf_counter();fit=train if held is None else train[ct\"'!=held].copy();query=controls if held is None else train[(ct==held)&(cond=='\"'control')].copy()\n    wrapper=m.build_model(fit,torch.device('cpu'),17);m.train_model(wrapper,17)\n    pred=np.asarray(m.predict(wrapper,query,scaler,10017));assert pred.shape==query.shape and np.isfinite(pred).all() and pred.min()>=0\n    predictions[held]=pred.copy()\n    buf=BytesIO();torch.save(wrapper.model.state_dict(),buf);nbytes=buf.tell();buf.seek(0)\n    restored=m.build_model(fit,torch.device('cpu'),17);restored.model.load_state_dict(torch.load(buf,weights_only=True,map_location='cpu'),strict=True);restored.is_trained=True\n    again=np.asarray(m.predict(restored,query,scaler,10017));error=float(np.max(np.abs(again-pred)));assert error<=1e-7 and nbytes<=256*1024**2\n    row={'held_context':held,'fit_prediction_and_reload_seconds':time.perf_counter()-t0,'shape':list(pred.shape),'minimum':float(pred.min()),'maximum':float(pred.max()),'global_coefficients':wrapper.model.transfer_coefficients.tolist(),'local_adjustments':wrapper.model.local_transfer_adjustments.tolist(),'max_abs_equal_context_adjustment_mean':float(wrapper.model.local_transfer_adjustments.mean(0).abs().max()),'checkpoint_bytes':nbytes,'reload_max_abs_difference':error}\n    if held is None:\n        main=wrapper\n        perm=np.random.default_rng(38).permutation(query.shape[0]);shuffled=m.predict(wrapper,query[perm].copy(),scaler,10017)\n        pe=float(np.max(np.abs(shuffled-pred[perm])));assert pe<=1e-7\n        absent=query.copy();absent.obs=absent.obs.drop(columns=['replicate']);unknown=query.copy();unknown.obs['replicate']='unknown_session38'\n        fe=float(np.max(np.abs(m.predict(wrapper,absent,scaler,10017)-m.predict(wrapper,unknown,scaler,10017))));assert fe<=1e-7\n        se=float(np.max(np.abs(m.predict(wrapper,query,scaler,99876)-pred)));assert se==0\n        row.update(cell_permutation_max_abs_difference=pe,unknown_vs_absent_donor_max_abs_difference=fe,inference_seed_max_abs_difference=se)\n    else:\n        target=train[(ct==held)&(cond=='stimulated')].X\n        if hasattr(target,'toarray'):target=target.toarray()\n        target=np.asarray(target,dtype=np.float64)*scaler.scale_\n        row['metrics']=expression_mean_metrics(target,pred);row['own_native_cached_best_mse']=cached_outer[held];row['mse_improvement_vs_cached_best']=cached_outer[held]-row['metrics']['mse']\n    runs.append(row)\n# Formula reconstruction from input training cells, using full scipy PMF matrices independently of chunk helper.\nx=train.X.toarray() if hasattr(train.X,'toarray') else np.asarray(train.X);x=np.asarray(x,dtype=np.float64)\nerrors={'delta':0.,'beta_binomial_null_centered':0.,'positive_intensity':0.};statistics=[];max_mass_error=0.\nfor i,context in enumerate(main.contexts):\n    cm=(ct==context)&(cond=='control');sm=(ct==context)&(cond=='stimulated')\n    c=x[cm].mean(0);s=x[sm].mean(0);cf=(x[cm]>0).mean(0);sf=(x[sm]>0).mean(0);vc=x[cm].var(0);vs=x[sm].var(0)\n    p0c=((x[cm]>0).sum(0)+.5)/(cm.sum()+1.);p0s=((x[sm]>0).sum(0)+.5)/(sm.sum()+1.)\n    counts=[];dc=[];ds=[];dcf=[];dsf=[];null_effects=[]\n    for donor in main.donors:\n        a=cm&(di==donor);b=sm&(di==donor);nc=int(a.sum());ns=int(b.sum());counts.append([nc,ns])\n        if nc>0 and ns>0:\n            dc.append(x[a].mean(0));ds.append(x[b].mean(0));dcf.append((x[a]>0).mean(0));dsf.append((x[b]>0).mean(0))\n            expected=[]\n            for n,prob in [(nc,p0c),(ns,p0s)]:\n                k=np.arange(n+1,dtype=np.float64)[:,None];pmf=binom.pmf(k,n,prob[None,:]);mass=pmf.sum(0);max_mass_error=max(max_mass_error,float(np.max(np.abs(mass-1))))\n                expected.append((pmf*(digamma(k+.5)-digamma(n-k+.5))).sum(0)/mass)\n            null_effects.append(expected[1]-expected[0])\n        else:\n            dc.append(c);ds.append(s);dcf.append(cf);dsf.append(sf);null_effects.append(np.zeros(x.shape[1]))\n    counts=np.asarray(counts,dtype=np.float64);valid=(counts>0).all(1);counts=np.maximum(counts,1.)\n    weights=valid/(1/counts[:,0]+1/counts[:,1]);weights/=weights.sum();den=max(1-(weights**2).sum(),1e-12);w=weights[:,None]\n    dc,ds,dcf,dsf=map(np.asarray,[dc,ds,dcf,dsf]);nc=counts[:,0,None];ns=counts[:,1,None]\n    pc=np.clip(dcf,m.HURDLE_PRIOR,1-m.HURDLE_PRIOR);ps=np.clip(dsf,m.HURDLE_PRIOR,1-m.HURDLE_PRIOR)\n    effects=np.log(ps)-np.log1p(-ps)-np.log(pc)+np.log1p(-pc);noise=1/(nc*pc*(1-pc))+1/(ns*ps*(1-ps))\n    between=lambda e:(w*(e-(w*e).sum(0))**2).sum(0)/den\n    delta=np.maximum(between(effects)-(w*noise).sum(0),0)+(w*w*noise).sum(0)\n    kc=np.maximum(np.round(nc*dcf),0);ks=np.maximum(np.round(ns*dsf),0)\n    be=digamma(ks+.5)-digamma(ns-ks+.5)-digamma(kc+.5)+digamma(nc-kc+.5);be[~valid]=0.\n    ne=np.asarray(null_effects);centered=be-ne\n    bn=polygamma(1,kc+.5)+polygamma(1,nc-kc+.5)+polygamma(1,ks+.5)+polygamma(1,ns-ks+.5)\n    avg=(w*bn).sum(0);pooled=(w*w*bn).sum(0)\n    beta=np.maximum(between(centered)-avg,0)+pooled;original=np.maximum(between(be)-avg,0)+pooled\n    def cv2(mean,rate,var):\n        pm=mean/np.maximum(rate,1e-12);second=(var+mean**2)/np.maximum(rate,1e-12)\n        return np.where(mean>0,np.maximum(second-pm**2,0)/np.maximum(pm**2,1e-12),1.)\n    ie=np.log((ds+m.HURDLE_PRIOR/m.TRAIN_EXPRESSION_SCALE)/(dsf+m.HURDLE_PRIOR))-np.log((dc+m.HURDLE_PRIOR/m.TRAIN_EXPRESSION_SCALE)/(dcf+m.HURDLE_PRIOR))\n    inoise=cv2(c,cf,vc)/np.maximum(nc*dcf,1)+cv2(s,sf,vs)/np.maximum(ns*dsf,1)\n    intensity=np.maximum(between(ie)-(w*inoise).sum(0),0)+(w*w*inoise).sum(0)\n    for key,expected,saved in [('delta',delta,main.model.detection_uncertainty[i]),('beta_binomial_null_centered',beta,main.model.beta_detection_uncertainty[i]),('positive_intensity',intensity,main.model.positive_intensity_uncertainty[i])]:\n        errors[key]=max(errors[key],float(np.max(np.abs(expected-saved.numpy()))))\n    statistics.append({'context':context,'counts':counts.tolist(),'valid_donors':int(valid.sum()),'original_biological_positive_genes':int(np.sum(between(be)>avg)),'centered_biological_positive_genes':int(np.sum(between(centered)>avg)),'uncertainty_increases':int(np.sum(beta>original+1e-12)),'uncertainty_decreases':int(np.sum(beta<original-1e-12)),'max_uncertainty_absolute_change':float(np.max(np.abs(beta-original))),'max_abs_null_expected_effect':float(np.max(np.abs(ne)))})\nassert all(error<1e-8 for error in errors.values()) and max_mass_error<1e-10\n# Predictions and diagnostic gates fixed before separate external assessor reads Dev targets.\ntargets=sc.read_h5ad('/workspace/public_assets/dev_targets.h5ad');assert list(targets.var_names)==list(train.var_names)\ny=targets.X.toarray() if hasattr(targets.X,'toarray') else np.asarray(targets.X)\ndev=expression_mean_metrics(y,predictions[None]);xc=controls.X.toarray() if hasattr(controls.X,'toarray') else np.asarray(controls.X);f=(xc>0).mean(0);r=y.astype(np.float64).mean(0)-predictions[None].astype(np.float64).mean(0)\n# These cached group values come from my own preceding visible native best diagnostic.\ncached_groups=[.00025029374085288247,.00381618489872462,.032358390576360786,.03794828235432787]\ngroups=[]\nfor idx,(low,high) in enumerate([(0.,.05),(.05,.2),(.2,.5),(.5,1.01)]):\n    mask=(f>=low)&(f<high);loss=float(np.mean(r[mask]**2));groups.append({'input_detection_range':[low,high],'genes':int(mask.sum()),'mse':loss,'own_native_cached_best_mse':cached_groups[idx],'full_mse_regression_contribution':float((loss-cached_groups[idx])*mask.sum()/2000)})\nouter_mean=float(np.mean([row['metrics']['mse'] for row in runs if row['held_context'] is not None]))\nprint(json.dumps({'scope':'EXPLORATORY_CPU_BINOMIAL_NULL_CENTERING_NOT_FORMAL','candidate_sha256':hashlib.sha256(source.encode()).hexdigest(),'seed':17,'common_full_training_scaler':True,'runs':runs,'uncertainty_formula_validation':{'maximum_absolute_errors':errors,'tolerance':1e-8,'maximum_pmf_mass_error':max_mass_error,'context_changes':statistics},'all_predictions_fixed_before_dev_target_read':True,'dev_metrics':dev,'recovered_best_mse':feedback['raw_metric'],'dev_mse_improvement_vs_recovered_best':feedback['raw_metric']-dev['mse'],'dev_detection_groups':groups,'excluded_equal_context_mean_mse':outer_mean,'own_native_cached_best_excluded_mean_mse':float(np.mean(list(cached_outer.values()))),'elapsed_seconds':time.perf_counter()-start,'candidate_model_or_artifact_failures':[]},indent=2))\nPY\"",
+      "original_command_sha256": "46eb24ddf193713b597229b6006440553507e01757337703b0d1595dfeab727d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "51c38e95754931f4690835f19b607771b695e0a1393980cfbf1400be729a0468",
+      "output_characters": 19949
+    },
+    {
+      "id": "item_25",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport json,time\nimport numpy as np\nimport scanpy as sc\nfrom sklearn.preprocessing import MaxAbsScaler\nstart=time.perf_counter();train=sc.read_h5ad('/workspace/public_assets/train.h5ad');scaler=MaxAbsScaler();x=scaler.fit_transform(train.X);x=x.toarray() if hasattr(x,'toarray') else np.asarray(x);x=np.asarray(x,dtype=np.float64)\nct=np.asarray(train.obs['cell_type'].astype(str));cond=np.asarray(train.obs['condition'].astype(str));donors=np.asarray(train.obs['replicate'].astype(str));summaries=[]\nfor context in sorted(set(ct)):\n    c=(ct==context)&(cond=='control');s=(ct==context)&(cond=='stimulated')\n    vc=x[c].var(0);vs=x[s].var(0);response=x[s].mean(0)-x[c].mean(0)\n    data=[];weights=[]\n    for donor in sorted(set(donors)):\n        nc=int((c&(donors==donor)).sum());ns=int((s&(donors==donor)).sum())\n        if nc==0 or ns==0:continue\n        var=vc/nc+vs/ns;confidence=np.maximum(.1,1/(1+var/(.1/5)**2));confidence/=confidence.mean()\n        data.append(confidence);weights.append(1/(1/nc+1/ns))\n    weights=np.asarray(weights);weights/=weights.sum();conf=np.asarray(data)\n    weighted=(weights[:,None]*conf).sum(0)\n    floor_hits=[]\n    for donor in sorted(set(donors)):\n        nc=int((c&(donors==donor)).sum());ns=int((s&(donors==donor)).sum())\n        if nc and ns:floor_hits.append(float(np.mean(1/(1+(vc/nc+vs/ns)/(.1/5)**2)<=.1)))\n    p=float(np.quantile(np.abs(response),.95));strong=np.abs(response)>=p\n    summaries.append({'context':context,'valid_donor_examples':len(data),'confidence_min':float(conf.min()),'confidence_median':float(np.median(conf)),'confidence_max':float(conf.max()),'max_abs_query_mean_minus_one':float(np.max(np.abs(conf.mean(1)-1))),'average_floor_hit_gene_fraction':float(np.mean(floor_hits)),'weighted_confidence_mean_strong_response_top5percent':float(weighted[strong].mean()),'weighted_confidence_mean_other_genes':float(weighted[~strong].mean()),'pooled_response_squared_mean_unweighted':float(np.mean(response**2)),'pooled_response_squared_mean_with_existing_confidence':float(np.mean(response**2*weighted))})\nprint(json.dumps({'scope':'TRAINING_ONLY_EXISTING_CONFIDENCE_GLOBAL_OBJECTIVE_FEASIBILITY_NO_FIT_NO_DEV_TARGETS','proposed_change':'Use existing normalized sampling confidence in global pseudo-transfer squared-error objective as already done locally; no confidence formula or inference change','context_summaries':summaries,'elapsed_seconds':time.perf_counter()-start,'fit_count':0,'dev_target_reads':0,'method_edits':0},indent=2))\nPY\"",
+      "original_command_sha256": "bbc235728bf82d1ae7ebcfee1a949ad675f302b11b117c0d049666e12f251d4b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "88414d860789edb632cf038ebcb0b2737c74b08dcf5c6f6d5714d2c23435be6d",
+      "output_characters": 4202
+    },
+    {
+      "id": "item_30",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport hashlib,json\np=Path('/workspace/solution/method.py');notes=Path('/workspace/solution/research-notes.md').read_text()\npart=notes.split('### Session 38 exact Binomial-null-centered candidate source\\\\n',1)[1]\narchived=(part.split('\"'```python'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0]+'\\\\n').encode()\nassert p.read_bytes()==archived\nassert hashlib.sha256(p.read_bytes()).hexdigest()=='bf1da322e5bc6a1d86be0b95ee114010827fb182627034ca487951bf9eb3dd1e'\nassert hashlib.sha256(Path('/workspace/solution/recovered-own-dev.json').read_bytes()).hexdigest()=='ab5f01fb3bec7c76bfcfc1095a9e73f4326b2a11889de4528529b5e8e3fcb8eb'\nprint(json.dumps({'source_frozen_and_archive_bound':True,'recovered_feedback_unchanged':True,'formal_feedback_file_exists':Path('/workspace/solution/dev_result.json').exists(),'restoration_claim':'partial only; no same-session lossless manifest available'}))\nPY\"",
+      "original_command_sha256": "b4f850b98a373ea3a47fe6802231900e5e4d87afe6b948a63c071e5da65a4153",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "18c5a96d9d9dcd00a968efd063db3a6b621fb0f133848b816ec0ab2850458d14",
+      "output_characters": 200
+    },
+    {
+      "id": "item_24",
+      "command": "/bin/sh -lc 'bash /workspace/solution/solve.sh'",
+      "original_command_sha256": "62ded559d79c208b11661e48f22268a92f7942c98f5e4d1d92420389a817423f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ad2047a1fea04573e6ba9f96cec01db7fa142ba1cca2f5b1cbde736fc69783ea",
+      "output_characters": 3104
+    },
+    {
+      "id": "item_37",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport hashlib,json,numpy as np\np=Path('/workspace/solution/method.py');fpath=Path('/workspace/solution/dev_result.json');f=json.loads(fpath.read_text());best=json.loads(Path('/workspace/solution/recovered-own-dev.json').read_text());protocol=json.loads(Path('/tests/protocol.json').read_text());anchor=json.loads(Path('/tests/anchors.json').read_text())['dev']\nnotes=Path('/workspace/solution/research-notes.md').read_text();part=notes.split('### Session 38 exact Binomial-null-centered candidate source\\\\n',1)[1];candidate=(part.split('\"'```python'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0]+'\\\\n').encode()\nassert p.read_bytes()==candidate\nassert f['method_sha256']==hashlib.sha256(candidate).hexdigest()=='bf1da322e5bc6a1d86be0b95ee114010827fb182627034ca487951bf9eb3dd1e'\nassert f['status']=='COMPLETE' and f['all_seeds_complete'] and f['quality_gates_passed'] and f['independent_fresh_reload_verified']\nassert f['seeds']==protocol['seeds']==[r['seed'] for r in f['rows']]\nfresh={r['fresh_child_pid'] for r in f['rows']};reload={r['reload_child_pid'] for r in f['rows']}\nassert len(fresh)==len(reload)==5 and not fresh&reload\nassert max(r['reload_max_abs_difference'] for r in f['rows'])==0\nlosses=[r['metrics']['mse'] for r in f['rows']]\nassert np.isfinite(losses).all() and float(np.mean(losses))==f['raw_metric']\nassert abs(f['score']-(anchor['baseline']-f['raw_metric'])/(anchor['baseline']-anchor['upper_bound']))<1e-14\nassert f['elapsed_seconds']<=3600 and f['raw_metric']>best['raw_metric']\nprint(json.dumps({'formal':f,'checks':{'source_archive_and_feedback_bound':True,'formal_seeds_and_mean_verified':True,'score_from_anchor_verified':True,'distinct_fresh_and_reload_children':True,'reload_max_absolute_difference':0.,'formal_seed_sample_standard_deviation':float(np.std(losses,ddof=1)),'formal_elapsed_seconds':f['elapsed_seconds'],'peak_rss_bytes':max(r['actual_peak_rss_bytes'] for r in f['rows']),'candidate_regression':f['raw_metric']-best['raw_metric'],'candidate_regression_percent':100*(f['raw_metric']-best['raw_metric'])/best['raw_metric'],'feedback_file_sha256':hashlib.sha256(fpath.read_bytes()).hexdigest(),'recovered_feedback_unchanged':hashlib.sha256(Path('/workspace/solution/recovered-own-dev.json').read_bytes()).hexdigest()=='ab5f01fb3bec7c76bfcfc1095a9e73f4326b2a11889de4528529b5e8e3fcb8eb'}},indent=2))\nPY\"",
+      "original_command_sha256": "4e67da19f65fe0cf1eef0358a92e83460a3c924cdce2c275aebeb19e428e56a3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a6ab4f4e73cadf5465c0d75352d2886cafa21b06347d9d8f21ff4a96b955344a",
+      "output_characters": 3935
+    },
+    {
+      "id": "item_39",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method.py /workspace/solution/dev_result.json /workspace/solution/recovered-own-dev.json'",
+      "original_command_sha256": "60a6c7d7927e252f92d60bf0aa2b26a9749907b09407fe34d69980b9451e3c32",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "3ec61d73c2884fba46927429676f7b8735c76fad45d4bf24bf8c8d9153bb5513",
+      "output_characters": 307
+    },
+    {
+      "id": "item_40",
+      "command": "/bin/sh -lc \"/opt/runtime/bin/python -B - <<'PY'\nfrom pathlib import Path\nimport ast,hashlib,json,stat\np=Path('/workspace/solution/method.py');raw=p.read_bytes();notes=Path('/workspace/solution/research-notes.md').read_text()\ndef archived_source(heading):\n    part=notes.split(heading+'\\\\n',1)[1]\n    return (part.split('\"'```python'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0]+'\\\\n').encode()\nbest=archived_source('### Exact restored best source');candidate=archived_source('### Session 38 exact Binomial-null-centered candidate source');previous=archived_source('### Preserved prior native Session 37 worse source')\nassert raw==best and hashlib.sha256(raw).hexdigest()=='4812709c5eade22a9fc14d0b4fdd9947142e395ec3c89d4f1f5d4062bf1937b4'\nassert hashlib.sha256(candidate).hexdigest()=='bf1da322e5bc6a1d86be0b95ee114010827fb182627034ca487951bf9eb3dd1e'\nassert hashlib.sha256(previous).hexdigest()=='6022b4bd5aa2425e76956633c5acaa31682756e59474674137a5f20519cbedee'\nassert stat.S_ISREG(p.stat().st_mode) and not p.is_symlink() and len(raw)<=1024**2\ncalls=sorted(n.name for n in ast.parse(raw).body if isinstance(n,ast.FunctionDef) and n.name in ['build_model','train_model','predict']);assert calls==['build_model','predict','train_model']\nmatched=[];missing=[];mismatches=[]\nfor name,expected in json.loads(Path('/tests/frozen_assets.json').read_text()).items():\n    path=Path(name) if name.startswith('/') else Path('/workspace')/name\n    if not path.exists():missing.append(str(path));continue\n    actual=hashlib.sha256(path.read_bytes()).hexdigest()\n    if actual==expected:matched.append(str(path))\n    else:mismatches.append({'path':str(path),'actual':actual,'expected':expected})\nassert len(matched)==27 and len(missing)==20 and not mismatches\nfpath=Path('/workspace/solution/dev_result.json');f=json.loads(fpath.read_text());bpath=Path('/workspace/solution/recovered-own-dev.json');b=json.loads(bpath.read_text())\npart=notes.split('### Session 38 actual complete formal Dev feedback and rejection\\\\n',1)[1];saved=json.loads(part.split('\"'```json'\"\\\\n',1)[1].split('\\\\n\"'```'\"',1)[0]);assert f==saved\nassert hashlib.sha256(fpath.read_bytes()).hexdigest()=='4c6d0ce8855f8dcf1949bf62ec30f30eaa9a464a7ac227f5f1994f1f8f48f2f7'\nassert hashlib.sha256(bpath.read_bytes()).hexdigest()=='ab5f01fb3bec7c76bfcfc1095a9e73f4326b2a11889de4528529b5e8e3fcb8eb'\nprint(json.dumps({'scope':'SESSION38_REJECTION_EXACT_OWN_BEST_RESTORATION_AND_INTEGRITY','rejected_source_sha256':hashlib.sha256(candidate).hexdigest(),'rejected_source_bytes':len(candidate),'rejected_mse':f['raw_metric'],'rejected_score':f['score'],'rejected_run_id':f['run_id'],'rejected_all_seeds_complete':f['all_seeds_complete'],'rejected_all_gates_passed':f['quality_gates_passed'],'rejected_independent_reload_verified':f['independent_fresh_reload_verified'],'rejected_maximum_reload_difference':max(r['reload_max_abs_difference'] for r in f['rows']),'retained_source_sha256':hashlib.sha256(raw).hexdigest(),'retained_source_bytes':len(raw),'retained_mse':b['raw_metric'],'retained_score':b['score'],'exact_best_bytes_restored':True,'retained_prior_valid_complete_formal_evidence':'supplied recovered-own-dev.json','unchanged_best_refit_or_rerun':False,'feedback_file_sha256':hashlib.sha256(fpath.read_bytes()).hexdigest(),'feedback_matches_rejected_archive':True,'recovered_feedback_unchanged':True,'preserved_prior_native37_source_hash_verified':True,'required_callables':calls,'protected_hashes_matched':len(matched),'missing_manifest_paths':missing,'protected_hash_mismatches':mismatches,'fixed_entry_target':str(Path('/workspace/solution/solve.sh').resolve()),'actual_same_session_lossless_restoration_manifest_available':False,'lossless_resume_claimed':False,'failed_no_tool_or_protocol_turns_research_credit':0,'candidate_model_or_artifact_failures':[],'inspection_failures':['initial read of absent prior research-notes.md failed; recovery gap documented']},indent=2))\nPY\"",
+      "original_command_sha256": "1eaaca6b3e68b5dad760b1e51c3d877ec8a5db0b7de012ef818e28db73e8f944",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a2bdc63ad6c7da81b37946a52eef29ade59f9b2a78943ea37889d931f1782430",
+      "output_characters": 2660
+    },
+    {
+      "id": "item_42",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method.py /workspace/solution/dev_result.json /workspace/solution/recovered-own-dev.json; tail -n 3 /workspace/solution/research-notes.md'",
+      "original_command_sha256": "512689c6565a0c0f7514ff66d7a06992f89e3e4cc523e911991e0f9a9b271e40",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e2213280487fb23c5656fbb1a415d0f0255abc2659b5ac66046c68b1096602f5",
+      "output_characters": 1427
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 133375766,
+        "cached_input_tokens": 114426452,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 756851,
+        "reasoning_output_tokens": 275423
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

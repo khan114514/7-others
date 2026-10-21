@@ -1,0 +1,86 @@
+{
+  "round": "round-02",
+  "policy_name": "min_disagree_uniform_time",
+  "actual_fid": 9.784449511236346,
+  "baseline_fid": 9.663262058820692,
+  "delta_vs_baseline": 0.12118745243565374,
+  "delta_vs_round01": -0.3421871168513924,
+  "normalized_score": null,
+  "sample_count": 50000,
+  "protocol": "dd-selfproto-v1.3",
+
+  "status": "SUCCESS",
+  "failure_category": null,
+  "failure_reason": null,
+
+  "method_summary": "Easy-example proposal selection (min LPIPS disagreement per class group) paired with uniform time sampling. 256 samples x 4 proposals = 1024 generated, 256 selected. Uniform weighting. Joint two-factor flip vs round-01.",
+
+  "causal_hypothesis_holds": "partial",
+  "causal_hypothesis_verdict": "The joint hypothesis (min-LPIPS + uniform time beats max-LPIPS + early-scale bias) holds directionally: round-02 FID 9.784 improves on round-01 FID 10.127 by 0.34, confirming the opposite joint is less harmful. However, it still underperforms the no-training baseline (9.663) by 0.12 FID, so the strategy does not produce net-positive training at 256 samples. The causal claim of 'this joint configuration works' is rejected — it merely does less damage than round-01's configuration. Because both factors (selection direction + time distribution) changed simultaneously, individual factor contributions cannot be isolated from this single comparison.",
+
+  "hypothesis_breakdown": {
+    "joint_min_lpips_plus_uniform_beats_round01": {
+      "holds": true,
+      "reasoning": "Round-02 FID 9.784 < round-01 FID 10.127, delta -0.34. The opposite joint configuration is clearly better than the round-01 configuration, which was actively harmful (+0.46 vs baseline)."
+    },
+    "joint_min_lpips_plus_uniform_beats_baseline": {
+      "holds": false,
+      "reasoning": "Round-02 FID 9.784 > baseline FID 9.663, delta +0.12. Even the less-harmful configuration still degrades quality relative to the initialized student. 256 samples with this strategy is insufficient to produce a net improvement over no training at all."
+    },
+    "selection_direction_min_vs_max": {
+      "holds": "indeterminate",
+      "reasoning": "Both selection direction and time distribution changed between rounds. We cannot determine whether min-LPIPS selection alone is better than max-LPIPS, nor can we quantify its contribution. At least one of the two factors helped, but which one (or both) is unknown."
+    },
+    "time_distribution_uniform_vs_early_bias": {
+      "holds": "indeterminate",
+      "reasoning": "Same confounding as above. Uniform time may be better than early-scale bias, but this cannot be confirmed without a single-factor isolation run."
+    }
+  },
+
+  "retained_best": false,
+  "retention_reason": "Not retained as best known result. Round-02 FID 9.784 is worse than the no-training baseline FID 9.663 by +0.12. Among method rounds only, round-02 is the best so far (beating round-01's 10.127), but it does not surpass the baseline anchor. The baseline (zero training) remains the current best.",
+
+  "current_best_round": "baseline (num_samples=0)",
+  "current_best_fid": 9.663262058820692,
+
+  "evidence_paths": {
+    "evaluation_result": "agent-output/round-02/evaluation/result.json",
+    "evaluation_log": "agent-output/round-02/evaluation/evaluation-client.log",
+    "invocation_receipt": "agent-output/round-02/evaluation/invocation.json",
+    "client_launch": "agent-output/round-02/evaluation/client-launch.json",
+    "method_source": "agent-output/round-02/method.py",
+    "plan": "agent-output/round-02/plan.json",
+    "anchors": "environment/anchors.json"
+  },
+  "evidence_chain": "Backend accepted job 6507ee6f... and returned SUCCESS with sample_count=50000, metric=9.7844, returncode=0. method_sha256 6e770e3a... matches round-02 plan source_sha256. frozen_manifest_sha256 b366ba32... matches the frozen protocol manifest. Evaluation is complete and trusted.",
+
+  "next_round_algorithm_change": {
+    "round": "round-03",
+    "decision_rule_matched": "if_improved_vs_r01_not_baseline",
+    "policy_name": "min_disagree_uniform_time_1024",
+    "change_description": "Scale sample count from 256 to 1024 while keeping min-LPIPS easy-example selection + uniform time sampling constant. Proposal multiplier stays at 4 (4096 proposals generated, 1024 selected). All other hyperparameters unchanged.",
+    "rationale": "Round-02 showed the strategy is directionally better than round-01 but still below baseline at 256 samples. The most likely limiting factor is sample count — 256 training pairs may simply be too few for any selection strategy to overcome the noise floor and produce net-positive distillation. Scaling to 1024 samples tests whether this strategy yields positive returns with more data. If 1024 samples with this strategy beats baseline, the strategy is valid and just needed more data. If it still doesn't beat baseline, the selection strategy itself may be fundamentally weak and should be replaced (e.g., no selection at all, or random selection, or curriculum-based approaches).",
+    "why_scale_instead_of_isolation": "Single-factor isolation (e.g., max-LPIPS + uniform) would clarify which factor mattered, but neither factor individually is likely to beat baseline at 256 samples since the best joint at 256 samples still underperforms. Sample count is the dominant bottleneck. Scaling first gives the highest information per GPU budget: we learn whether the strategy can work at all with more data, which is more actionable than decomposing two failing strategies.",
+    "configuration": {
+      "num_samples": 1024,
+      "proposal_multiplier": 4,
+      "total_proposals": 4096,
+      "filter_rule": "student_agreement_per_label",
+      "selection_strategy": "min_lpips_disagreement",
+      "time_sampler": "uniform",
+      "weighting": "uniform",
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "top_k": 900,
+      "top_p": 0.95
+    },
+    "fallback_if_still_below_baseline": "If 1024 samples with min-LPIPS + uniform still underperforms baseline, abandon proposal selection entirely and test: (a) no selection — use all teacher proposals directly (1024 unique samples, no filtering), or (b) random selection as a null hypothesis to confirm whether LPIPS-based selection has any value at all."
+  },
+
+  "method_sha256": "6e770e3ad3b38700f56b337ade61a6be69350879d4c47f26f31d9d3a1bdef208",
+  "checkpoint_sha256": "c5df56d6e26c9e29640637a16edf29afc9f47bb302e2249a05cc918eb8a343e7",
+  "teacher_and_training_seconds": 404.82467770576477,
+  "evaluation_finished_utc": "2026-10-06T05:25:28.395279+00:00"
+}

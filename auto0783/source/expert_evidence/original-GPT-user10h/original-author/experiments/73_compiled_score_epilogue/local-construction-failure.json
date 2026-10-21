@@ -1,0 +1,9 @@
+{
+  "phase": "local equivalence receipt construction",
+  "exit_code": 1,
+  "exception": "NameError: name 'MAX_REGIONS' is not defined",
+  "cause": "Extracted the public region validator function through AST but omitted its module constants.",
+  "correction": "Extract the original assignment nodes as well as validate_regions, matching existing local shape diagnostic. Numerical evaluator and compiler are unchanged.",
+  "candidate_program_changed_by_correction": false,
+  "classification": "local diagnostic tooling failure; not a public Dev failure"
+}

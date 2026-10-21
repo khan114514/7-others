@@ -1,0 +1,29 @@
+{
+  "kernel_attacks": {
+    "frozen_write": "DENIED",
+    "frozen_trainer_read": "DENIED",
+    "other_run_read": "DENIED",
+    "system_private_canary_read": "DENIED",
+    "network": "DENIED",
+    "unix_socket_creation": "DENIED",
+    "parent_signal_zero": "DENIED",
+    "new_process": "DENIED",
+    "device_creation": "DENIED",
+    "gpu_device": "DENIED"
+  },
+  "timeout_process_killed": true,
+  "legitimate_cpu_tensor_rpcs_passed": true,
+  "frozen_code_preserved": true,
+  "frozen_manifest_sha256": "d69fa87bc503cf12a33f32a718c313557a88e579d2fa8678f2f50bdaeb99b7a4",
+  "guard": {
+    "landlock_abi": 1,
+    "filesystem_enforced": true,
+    "network_denied": true,
+    "unix_sockets_denied": true,
+    "cross_process_signals_denied": true,
+    "new_processes_denied": true,
+    "device_creation_denied": true,
+    "gpu_devices_denied": true,
+    "system_private_files_denied": true
+  }
+}

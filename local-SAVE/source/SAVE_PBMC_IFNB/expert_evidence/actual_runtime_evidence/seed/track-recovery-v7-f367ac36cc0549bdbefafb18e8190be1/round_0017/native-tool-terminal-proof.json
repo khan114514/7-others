@@ -1,0 +1,637 @@
+{
+  "original_event_sha256": "27793c222932a149adecabbf66cfba2b96f8d7c68aa14769e02bfecfa98f21c9",
+  "original_receipt_sha256": "37b3fe23f72d9ccbb17abc82ac88e7adff6b5d9344b2774d8419daea04c81b63",
+  "original_event_last_write_epoch": 1791671058.3589773,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /tests/anchors.json /tests/protocol.json'",
+      "original_command_sha256": "d66a60c4dbc99904dcd2d02b1061ee38b8962e769e768070b41fee7c2545f51e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "acdbf5e4358852c6b46216ab0fa276476313582644984701540d4927f9ea6c4c",
+      "output_characters": 525
+    },
+    {
+      "id": "item_7",
+      "command": "/bin/sh -lc 'head -100 /tests/train_eval.py'",
+      "original_command_sha256": "cff6e613b751bf9d6f68eaa5dbf5b82862f58d663a4e383da3accded1cdc2ba3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c461a7252e5fe8f35d332c557d7d074df42d6c5fda565d32dba28f2f53d2157b",
+      "output_characters": 4272
+    },
+    {
+      "id": "item_9",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v22_target_quantile.py /workspace/solution/method_v20_best_archive.py && cp /workspace/solution/method_v22_target_quantile.py /workspace/solution/method.py'",
+      "original_command_sha256": "f3da802fbb9dd389c69302a01eb6e016d814095ce6a40505d7b5ecb724bea809",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_11",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -30'",
+      "original_command_sha256": "72ad6b9a4e73d8ad0d8e5351280a7a598678c38ccd8e36174b3576af6a127842",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "53654c2e3dfb167c4de462bb5d1f761a9c882d61d279507cc1c8db5b66c29971",
+      "output_characters": 1083
+    },
+    {
+      "id": "item_13",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v20_best.py /workspace/solution/method.py'",
+      "original_command_sha256": "bfb86cd6b98577f0c85d20758b8c993cf2f76eb7af8519afcd247d7e6deb1e79",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_15",
+      "command": "/bin/sh -lc 'cat /workspace/solution/sweep_v20.py | head -80'",
+      "original_command_sha256": "34e8314776b3424c776ab4686633c46a388e6cf4882aba1cb4c5d31bd084c6dc",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5785ccf801a7dbac95407082078872fcb4348aae3174fc7cd9aa4c17c1a22305",
+      "output_characters": 2831
+    },
+    {
+      "id": "item_17",
+      "command": "/bin/sh -lc 'cat /workspace/solution/quick_dev_eval.py | head -60'",
+      "original_command_sha256": "c66428b170162ddbab23a11a4d48fd2da0e66577b05a1891183b8371d3016b23",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2908c89de64f67a0d58715619b87a67c5c63f93fb3fde6a82be46fb4c2b248c3",
+      "output_characters": 2481
+    },
+    {
+      "id": "item_18",
+      "command": "/bin/sh -lc 'cat /workspace/solution/quick_dev_eval.py'",
+      "original_command_sha256": "e3477b95118db090c2011435233d4c6d2de301e819d740327dcc5f946bb1967f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "15dc4e9a029e284788bc9136556ae305c55f51e890cd6be8c0285dd0217f6712",
+      "output_characters": 10831
+    },
+    {
+      "id": "item_20",
+      "command": "/bin/sh -lc 'cd /workspace/solution && python quick_dev_eval.py 2>&1'",
+      "original_command_sha256": "a178cc969984069cfe7415ec42de75e8147be881eba6bdb6b6d3159e0605675f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "0bd457dc333bc7be25d9213dcaf1aa3678199a09f48fe17c07ae5b9c908dc28b",
+      "output_characters": 171
+    },
+    {
+      "id": "item_21",
+      "command": "/bin/sh -lc 'which python3 && python3 -c \"import numpy; print(numpy.__version__)\" 2>&1 || pip install numpy scanpy scikit-learn 2>&1 | tail -5'",
+      "original_command_sha256": "b1e82b572305cec0fb6cc75d77a30cbe95c25a65cf9dccea99d4d8fd43d78b4c",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "23202e739229d08ae7d8f945091157a98856334c7131f4c5c9955160cb552487",
+      "output_characters": 1229
+    },
+    {
+      "id": "item_23",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v20_best.py /workspace/solution/method_v24_strong_shrink.py'",
+      "original_command_sha256": "e6e553d40f3b0ded2ffea46a29f829613fd53c2d20b93ff3249b3b50d74bb8fe",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_24",
+      "command": "/bin/sh -lc \"cat > /tmp/patch_v24.py << 'PYEOF'\nimport re\n\nwith open('/workspace/solution/method_v24_strong_shrink.py', 'r') as f:\n    content = f.read()\n\n# Change docstring\ncontent = content.replace(\n    '\\\"\\\"\\\"Method v20: v8 ensemble + weighted consistency shrinkage on up-regulated diffs.\\\\n\\\\nDev MSE = 0.002480, Score = 0.3219\\\\nLOO MSE = 0.008155\\\\n\\\"\\\"\\\"',\n    '\\\"\\\"\\\"Method v24: v20 + stronger up_shrink + lower temp + gene-dependent down_pow.\\\\n\\\\nChanges from v20:\\\\n- TEMPERATURE = 0.05 (more focused on most similar cell type)\\\\n- UP_SHRINK_STRENGTH = 1.0 (stronger consistency shrinkage)\\\\n- BASE_UP_POW = 0.70\\\\n- SLOPE_UP_POW = -0.50\\\\n- Gene-dependent down_pow (base=1.0, slope=-0.3)\\\\n\\\\nRationale: CD4 LOO shows big gains from these params;\\\\nCD8 T cells (dev context) are closely related to CD4 T cells.\\\\n\\\"\\\"\\\"'\n)\n\n# Change TEMPERATURE\ncontent = content.replace('TEMPERATURE = 0.07', 'TEMPERATURE = 0.05')\n\n# Change BASE_UP_POW\ncontent = content.replace('BASE_UP_POW = 0.75', 'BASE_UP_POW = 0.70')\n\n# Change SLOPE_UP_POW\ncontent = content.replace('SLOPE_UP_POW = -0.60', 'SLOPE_UP_POW = -0.50')\n\n# Change UP_SHRINK_STRENGTH\ncontent = content.replace('UP_SHRINK_STRENGTH = 0.5', 'UP_SHRINK_STRENGTH = 1.0')\n\n# Add BASE_DOWN_POW and SLOPE_DOWN_POW after DOWN_POW\ncontent = content.replace(\n    'DOWN_POW = 0.77\\\\nRATIO_CLIP_MAX = 60.0',\n    'DOWN_POW = 0.77\\\\nBASE_DOWN_POW = 1.0\\\\nSLOPE_DOWN_POW = -0.3\\\\nRATIO_CLIP_MAX = 60.0'\n)\n\n# Replace the down-scaling section to use gene-dependent down_pow\nold_down = '''    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** DOWN_POW)'''\n\nnew_down = '''    down_pow_gene = BASE_DOWN_POW + SLOPE_DOWN_POW * quantile\n    down_pow_gene = np.clip(down_pow_gene, 0.0, 2.0)\n\n    up_mask = ref_diff > 0\n    down_mask = ref_diff < 0\n\n    scaled_diff = np.zeros_like(ref_diff)\n    scaled_diff[up_mask] = ref_diff[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff[down_mask] * (ratio[down_mask] ** down_pow_gene[down_mask])'''\n\ncontent = content.replace(old_down, new_down)\n\nwith open('/workspace/solution/method_v24_strong_shrink.py', 'w') as f:\n    f.write(content)\n\nprint(\\\"Done\\\")\nPYEOF\npython3 /tmp/patch_v24.py\"",
+      "original_command_sha256": "40ebf7432ac6e97ffa18b0bbfca7cb953d093e41da7540e99e4b2694b72bb588",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "eff2906dc8f6d10da753f78c53bbb4c2fc0a1b4bc925c1ec535b5f42902a240a",
+      "output_characters": 5
+    },
+    {
+      "id": "item_25",
+      "command": "/bin/sh -lc 'head -30 /workspace/solution/method_v24_strong_shrink.py'",
+      "original_command_sha256": "bb4004b132266c3faddade518bd9b54ec58a60842ca5d556b59e42b083977de3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "dbfe34a1191ffb3ce4dd7a0e71508a6e13fe7ee85c4942f772022cbf9f3aaed3",
+      "output_characters": 739
+    },
+    {
+      "id": "item_26",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v24_strong_shrink.py /workspace/solution/method.py'",
+      "original_command_sha256": "55a87d21ae31c3f286fb1249195bf51c98517c47b7e8689b6057e1e98c2f83c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_27",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -20'",
+      "original_command_sha256": "5ff02ac6a1a531cc6daa97b69676b6d4a11053c8fe189e41eed55f4855d4674b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "29adba674da5a84e7e2f78e27f816066c9be329a0ba3b1f54ba7044c533b121c",
+      "output_characters": 719
+    },
+    {
+      "id": "item_29",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v20_best.py /workspace/solution/method.py'",
+      "original_command_sha256": "bfb86cd6b98577f0c85d20758b8c993cf2f76eb7af8519afcd247d7e6deb1e79",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_31",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method_v25_fold.py << 'PYEOF'\n\\\"\\\"\\\"Method v25: Multiplicative fold-change model instead of additive shift.\n\nKey idea: stimulation response is better modeled as fold change (multiplicative)\nrather than additive diff. Reference fold changes are weighted by cell-type\nsimilarity, then applied to target control expression with gene-dependent\nmoderation (less extreme folding for high-expression genes).\n\nChanges from v20:\n- Use stim/ctrl fold ratios instead of stim - ctrl diffs\n- Apply fold \"'^ power moderation instead of diff * ratio''^power scaling\n\"\"\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\n\nTEMPERATURE = 0.07\nBASE_UP_FOLD_POW = 0.5\nSLOPE_UP_FOLD_POW = -0.3\nDOWN_FOLD_POW = 0.5\nFOLD_CLIP_MIN = 0.01\nFOLD_CLIP_MAX = 100.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('\"'ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('fold_changes', torch.zeros(n_cell_types, n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        fold_changes = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            with np.errstate(divide='ignore', invalid='ignore'):\n                fc = np.where(ctrl_mean > 1e-8, stim_mean / np.maximum(ctrl_mean, 1e-8), 1.0)\n                fc = np.clip(fc, FOLD_CLIP_MIN, FOLD_CLIP_MAX)\n            fold_changes[i] = fc.astype(np.float32)\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.fold_changes = torch.from_numpy(fold_changes).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    fold_changes_np = model.model.fold_changes.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    n_ct = ctrl_means_np.shape[0]\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / TEMPERATURE\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_fold = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_fold += weights[i] * fold_changes_np[i]\n\n    w = weights.reshape(-1, 1)\n    log_fc = np.log(np.maximum(fold_changes_np, 1e-10))\n    wmean_logfc = (w * log_fc).sum(axis=0)\n    wvar_logfc = (w * (log_fc - wmean_logfc.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd_logfc = np.sqrt(np.maximum(wvar_logfc, 0))\n    w_mean_abs_logfc = (w * np.abs(log_fc)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs_logfc > 1e-10, wstd_logfc / np.maximum(w_mean_abs_logfc, 1e-10), 0)\n\n    log_ref_fold = np.log(np.maximum(ref_fold, 1e-10))\n    shrink = np.ones_like(w_ratio)\n    up_mask_fold = ref_fold > 1.0\n    down_mask_fold = ref_fold < 1.0\n    shrink[up_mask_fold] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_fold])\n    shrink[down_mask_fold] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_fold])\n    log_ref_fold = log_ref_fold * shrink\n    ref_fold = np.exp(log_ref_fold)\n    ref_fold = np.clip(ref_fold, FOLD_CLIP_MIN, FOLD_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_fold_pow = BASE_UP_FOLD_POW + SLOPE_UP_FOLD_POW * quantile\n    up_fold_pow = np.clip(up_fold_pow, 0.0, 1.0)\n\n    up_mask = ref_fold > 1.0\n    down_mask = ref_fold < 1.0\n\n    moderated_fold = np.ones_like(ref_fold)\n    moderated_fold[up_mask] = ref_fold[up_mask] ** up_fold_pow[up_mask]\n    moderated_fold[down_mask] = ref_fold[down_mask] ** DOWN_FOLD_POW\n\n    pred_mean_scaled = target_ctrl_mean * moderated_fold\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(pred_mean_scaled.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nPYEOF\necho \\\"v25 created\\\"\"",
+      "original_command_sha256": "b3ac71b8bef77f570084685ae0025abd6a4684b2425a607ac5f2d715fd48bc3f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "d8ce0e3309093fb5a891a6d2f28dbcbb4bdd99673d152d395ed23c0261b0227a",
+      "output_characters": 12
+    },
+    {
+      "id": "item_35",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a6f819dc037eaab5bf09fd53f7e71786e23c5f775fc579b4a4a9555615ab7e56",
+      "output_characters": 2626
+    },
+    {
+      "id": "item_36",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json 2>/dev/null || echo \"No recovered dev file\"'",
+      "original_command_sha256": "c57387d96eee2136bd90e7442005bc16219edda82979e021aacbb80482ad0c24",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ea61a0ffafd78ee7f72f08ec534ee89a610523791b03a6da9eec85c088551fce",
+      "output_characters": 613
+    },
+    {
+      "id": "item_37",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json 2>/dev/null || echo \"No dev result file\"'",
+      "original_command_sha256": "c0d58c591b6025c30af4b4aa1ee26524008ff78bb556358dcd55f404313afc20",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "1a55eb458622ac999afc39e652b280e6b4a26f08e66cfe572234fab9abcb5e75",
+      "output_characters": 3096
+    },
+    {
+      "id": "item_40",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4ec872b0a2ce359b55308d9540682d9a250f8a90f4032d87af0d8976ac1a2dde",
+      "output_characters": 5181
+    },
+    {
+      "id": "item_41",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method_v25_fold.py'",
+      "original_command_sha256": "cbf51e3e53f091134bb14980af41a281529cd02e208769f065f1914dabd2ec83",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "79152b93d8e04c66577eaebbbd13594c9e42ef88efd58cd5794ccf21468d2b29",
+      "output_characters": 5866
+    },
+    {
+      "id": "item_42",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md'",
+      "original_command_sha256": "efd671e59f5c8de5dda39f72671e3a2e4597a0f03af3ed277868f73124dbb9c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8ede65cfb6949687d0a8f84f50122cd9f404f9a45f8ef39408f8fb0bc95a0c93",
+      "output_characters": 1479
+    },
+    {
+      "id": "item_46",
+      "command": "/bin/sh -lc 'cat /tests/anchors.json'",
+      "original_command_sha256": "ebdcdae17a6f12d7a859aac00045eaa0a16417514d78df4d224afad9e0a0a12e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "f834ef9e3cdd621f8b9b10b4c52eba1622a077c07d5ac75404a295c6fcc55625",
+      "output_characters": 385
+    },
+    {
+      "id": "item_45",
+      "command": "/bin/sh -lc 'cat /tests/protocol.json'",
+      "original_command_sha256": "c436fcc4c5cd9dcbae44e828d43ffa11f94d2e77c4e829b952d1e51f4b416d70",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e9812224869edef4dff8493af0a39e27911935e55d2637cf40859ba7552d803c",
+      "output_characters": 140
+    },
+    {
+      "id": "item_47",
+      "command": "/bin/sh -lc 'cd /workspace/solution && for f in method*.py; do echo -n \"$f: \"; sha256sum \"$f\" | cut -d'\"' ' -f1; done\"",
+      "original_command_sha256": "c081b7192073141cbca05741314fc767eb049c39d9894a6ae0d2cbeac4ea69ba",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "db7fe297d25c0b80745d3a3fb661ae84ba4f6c385bb6413cc854aa4cc2da4af1",
+      "output_characters": 1145
+    },
+    {
+      "id": "item_51",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method_v20_best_archive.py /workspace/solution/method_v20_best.py'",
+      "original_command_sha256": "153eceb7b5fdc9497336c7ded9254b04260a5d9d1c55b3955468589dd3658d15",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "71b7b188fe7d34713607923a512e59d61a4e75160c47d63f531de84177c3a93f",
+      "output_characters": 887
+    },
+    {
+      "id": "item_50",
+      "command": "/bin/sh -lc 'cat /workspace/solution/sweep_v20.py | head -100'",
+      "original_command_sha256": "31f7135a836ef329bac2ef3d2f0bdf3fbc84db0e6b2d90f6d44bdb1409c8fdc5",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2dc8dc000da3ea3dd74d5c8295d1872ad465ea350af73214233a610e2420c66d",
+      "output_characters": 3709
+    },
+    {
+      "id": "item_53",
+      "command": "/bin/sh -lc 'cat /workspace/solution/quick_dev_eval.py'",
+      "original_command_sha256": "e3477b95118db090c2011435233d4c6d2de301e819d740327dcc5f946bb1967f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "15dc4e9a029e284788bc9136556ae305c55f51e890cd6be8c0285dd0217f6712",
+      "output_characters": 10831
+    },
+    {
+      "id": "item_55",
+      "command": "/bin/sh -lc 'cd /workspace/solution && python quick_dev_eval.py 2>&1'",
+      "original_command_sha256": "a178cc969984069cfe7415ec42de75e8147be881eba6bdb6b6d3159e0605675f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "0bd457dc333bc7be25d9213dcaf1aa3678199a09f48fe17c07ae5b9c908dc28b",
+      "output_characters": 171
+    },
+    {
+      "id": "item_57",
+      "command": "/bin/sh -lc 'ls /workspace/starter/ 2>/dev/null && ls /tests/ 2>/dev/null'",
+      "original_command_sha256": "06c6caef505be45dc1f77893fbe6b29bc19672ae127a87bb82877f5ad7e79d8e",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "c215ef313af8ec01bb3bb90f613bce631af2856985c8a6c8a040485005d864a0",
+      "output_characters": 195
+    },
+    {
+      "id": "item_58",
+      "command": "/bin/sh -lc 'which python3 && python3 --version && pip3 list 2>/dev/null | head -20 || echo \"no pip\"'",
+      "original_command_sha256": "307d5c2cd4948c5078e6d312c241cb38010262d30892e8a7428b4e92dbbd7b43",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b71a4023bf3949883f53551ca7993bea5dff70f0d04ced372e2d235156c91ffc",
+      "output_characters": 146
+    },
+    {
+      "id": "item_60",
+      "command": "/bin/sh -lc 'cat /workspace/starter/method.py'",
+      "original_command_sha256": "7d20530540c1931e58bb0ba64de83b678b9db1b46f111000bda0b58b5f82f309",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "07f88c819d54ea4589d6f792d32dad9c045a1c8245c18ce3834daa8aab339a43",
+      "output_characters": 1659
+    },
+    {
+      "id": "item_61",
+      "command": "/bin/sh -lc 'cat /tests/solve.sh'",
+      "original_command_sha256": "6c9eb8460249fdff35ea8cfd83a95f2e08ddba56f939fb4f72985fbb4f616f85",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "870c4f51c5eb761053102c805fe0f157232c7bdab128585d5ce4a367426f26f5",
+      "output_characters": 172
+    },
+    {
+      "id": "item_63",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v25_fold.py /workspace/solution/method.py && sha256sum /workspace/solution/method.py'",
+      "original_command_sha256": "1e234a9c0f98bd348df95654c27f94e13e038827b6c21363f6c95e7fa20e3c23",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "483239f96249c34a2b60c95b8d1230196bbb0640b0a35cc801c36903143711d5",
+      "output_characters": 96
+    },
+    {
+      "id": "item_64",
+      "command": "/bin/sh -lc 'bash /workspace/solution/solve.sh 2>&1'",
+      "original_command_sha256": "09da24862318a3d8a1fb872ec020d50f9d209aaba41c0315e8a2cd5b83080451",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "a77e5538d179a675514eeafe1acb6acac5f9cdd02bd701596a253fa4af9917ee",
+      "output_characters": 3103
+    },
+    {
+      "id": "item_68",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v20_best.py /workspace/solution/method.py && sha256sum /workspace/solution/method.py'",
+      "original_command_sha256": "eb271496a717f1b8548ce2b2d5d498dfe991ca78a1260e75518e3ffa28a76da8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b80ca20c2e6e6f0facadcb0560e87389b5a8e927dab93c40312fce0ec0dbee89",
+      "output_characters": 96
+    },
+    {
+      "id": "item_67",
+      "command": "/bin/sh -lc 'cat /workspace/solution/sweep_down_pow3.py'",
+      "original_command_sha256": "81ad1cd17fc3373d6d460229bbd738fa74093abf6e9fa026cfb44fb9e537e012",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b346fe73dec5b9315119369b14ba9dd51a8684bee728eb38a392d1ac64181506",
+      "output_characters": 6907
+    },
+    {
+      "id": "item_72",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "7b9d34116cc7d3befe87beaaa97a58bf8f0a9c179d9eeca5c1b988140ba359db",
+      "output_characters": 2626
+    },
+    {
+      "id": "item_76",
+      "command": "/bin/sh -lc 'cat /workspace/solution/recovered-own-dev.json'",
+      "original_command_sha256": "da448aa6592171e0e2d14934d6d0d3019c06bf38d9b66c40f7248d7363259a78",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ea61a0ffafd78ee7f72f08ec534ee89a610523791b03a6da9eec85c088551fce",
+      "output_characters": 613
+    },
+    {
+      "id": "item_75",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md'",
+      "original_command_sha256": "efd671e59f5c8de5dda39f72671e3a2e4597a0f03af3ed277868f73124dbb9c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8ede65cfb6949687d0a8f84f50122cd9f404f9a45f8ef39408f8fb0bc95a0c93",
+      "output_characters": 1479
+    },
+    {
+      "id": "item_74",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json'",
+      "original_command_sha256": "de1a6fdaf38b4e51f4ed564afdf19e55e3ac083e5f4b47d146a903197242d28f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "abfcb72877825afc2c7577250c65b4d6d3c7b24d5f3f936bebe50b6337fa9e48",
+      "output_characters": 3102
+    },
+    {
+      "id": "item_80",
+      "command": "/bin/sh -lc 'sha256sum /workspace/solution/method.py /workspace/solution/method_v20_best.py /workspace/solution/method_v25_fold.py'",
+      "original_command_sha256": "67ac348c187c464b2ff0b99fc91b42798c854fc4bb2f746e8ce1cd9e663c89c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "7f3cc12fe7accb21e05a7a02fa24139a00de2f7344319b65db16ee82e8044ef2",
+      "output_characters": 306
+    },
+    {
+      "id": "item_79",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method.py'",
+      "original_command_sha256": "1085540ed95323f15101c9f5d58c4c06c1c61a48698343c5a5ff649fbd94c4a7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4ec872b0a2ce359b55308d9540682d9a250f8a90f4032d87af0d8976ac1a2dde",
+      "output_characters": 5181
+    },
+    {
+      "id": "item_83",
+      "command": "/bin/sh -lc 'cat /workspace/solution/test_per_gene_reg.py'",
+      "original_command_sha256": "594a09707cb13fa337b9a106404236df2f197a56cf9b0321005d5309c3b607c6",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5a210df054a8e5c903405d2dfbc52517b1d8adfe9bbbe5b39becd199d06ff24b",
+      "output_characters": 5335
+    },
+    {
+      "id": "item_84",
+      "command": "/bin/sh -lc 'cat /workspace/solution/test_per_gene_ridge.py'",
+      "original_command_sha256": "de4e3066f7ad3635b8f3d67573da0f1de3d5e22afa5c04f7ab2707835fcf0ff0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "bbc53e1ded6e5018b8a09685a101e6a17cee3ae10e97e5ab46d7e80548a81fe0",
+      "output_characters": 9091
+    },
+    {
+      "id": "item_87",
+      "command": "/bin/sh -lc 'cat /workspace/solution/sweep_ridge.py | head -100'",
+      "original_command_sha256": "9febe2e16aa2bc3823b796f9cddce95714709f1b4d6689d642f9efe364fe16b3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "0eaa1436a37b149fb19c2df9df5b9e85d05d0d9233d835e349f3573b7f77ef82",
+      "output_characters": 4578
+    },
+    {
+      "id": "item_88",
+      "command": "/bin/sh -lc 'cd /workspace/solution && for f in method*.py; do echo \"$(sha256sum \"$f\")  $f\"; done'",
+      "original_command_sha256": "6e7c12bd2ab6fe9048d8c8ec136eccde17480b53a3cb336569813b25e8b79ab0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "17815746f0f8e4416ea6807fa01ce0814efce042d5d403db3850d7e618b09977",
+      "output_characters": 1445
+    },
+    {
+      "id": "item_90",
+      "command": "/bin/sh -lc 'diff /workspace/solution/method_v20_best_archive.py /workspace/solution/method_v20_best.py'",
+      "original_command_sha256": "153eceb7b5fdc9497336c7ded9254b04260a5d9d1c55b3955468589dd3658d15",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "71b7b188fe7d34713607923a512e59d61a4e75160c47d63f531de84177c3a93f",
+      "output_characters": 887
+    },
+    {
+      "id": "item_92",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -20'",
+      "original_command_sha256": "5ff02ac6a1a531cc6daa97b69676b6d4a11053c8fe189e41eed55f4855d4674b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "12197a784eb500b5b0d45d06edbc93800ccc5d66b18f17c01a0792fef6be339c",
+      "output_characters": 721
+    },
+    {
+      "id": "item_95",
+      "command": "/bin/sh -lc 'cd /workspace/solution && python3 sweep_ridge.py 2>&1 | tail -40'",
+      "original_command_sha256": "40f7b0be552dfab2e4a89cca5dd1dd2ae898e239049ada45318bf6dff2cdd737",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "61e8ccfc7d99d56b4b1bcaabf72c28c9ccc12eedb575ce3d7721023ce42f0603",
+      "output_characters": 168
+    },
+    {
+      "id": "item_97",
+      "command": "/bin/sh -lc 'tail -100 /workspace/solution/sweep_ridge.py'",
+      "original_command_sha256": "3b16be3e245e4dfb85752257a229c2d374ef5c14c2cd4b72530bcd51185aca23",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "10a98b19645972c3f43e9bcaf76f7f39cde7ecb55f1dd4638bccd758f408072a",
+      "output_characters": 4667
+    },
+    {
+      "id": "item_99",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method.py /workspace/solution/method_v26_ensemble.py'",
+      "original_command_sha256": "2a251d0cd69a5ac1ce4d375d8a3d91bec1db65d3b978fa2e076ff803017e3b75",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_101",
+      "command": "/bin/sh -lc \"cat > /workspace/solution/method.py << 'PYEOF'\n\\\"\\\"\\\"Method v26: v20 + per-gene ridge regression ensemble.\n\nCombines v20's weighted ratio-scaling with per-gene linear ridge\nregression of stim_diff on ctrl_mean across training cell types.\nRidge coefficients are shrunk toward the global (cross-gene) slope.\n\\\"\\\"\\\"\nimport random\nimport numpy as np\nimport torch\nimport torch.nn as nn\n\nTEMPERATURE = 0.07\nBASE_UP_POW = 0.75\nSLOPE_UP_POW = -0.60\nDOWN_POW = 0.77\nRATIO_CLIP_MAX = 60.0\nUP_SHRINK_STRENGTH = 0.5\nDOWN_SHRINK_STRENGTH = 0.0\n\nRIDGE_LAMBDA = 0.5\nALPHA_SHRINK = 0.5\nBETA_SHRINK = 0.5\nENSEMBLE_W_RIDGE = 0.3\n\n\ndef set_seed(seed):\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n\n\nclass ShiftModel(nn.Module):\n    def __init__(self, n_genes, n_cell_types):\n        super().__init__()\n        self.n_genes = n_genes\n        self.n_cell_types = n_cell_types\n        self.register_buffer('ctrl_means', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('stim_diffs', torch.zeros(n_cell_types, n_genes))\n        self.register_buffer('ridge_alpha', torch.zeros(n_genes))\n        self.register_buffer('ridge_beta', torch.zeros(n_genes))\n\n    def forward(self, x):\n        return x\n\n\nclass ShiftWrapper:\n    def __init__(self, adata, device, seed):\n        self.adata = adata\n        self.device = device\n        self.seed = seed\n        self.is_trained = False\n        self.cell_types = sorted(adata.obs['cell_type'].unique())\n        self.n_genes = adata.shape[1]\n        self.model = ShiftModel(self.n_genes, len(self.cell_types))\n\n    def train(self, **kwargs):\n        adata = self.adata\n        n_ct = len(self.cell_types)\n        ctrl_means = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n        stim_diffs = np.zeros((n_ct, self.n_genes), dtype=np.float32)\n\n        for i, ct in enumerate(self.cell_types):\n            mask_ct = adata.obs['cell_type'] == ct\n            ctrl_mask = mask_ct & (adata.obs['condition'] == 'control')\n            stim_mask = mask_ct & (adata.obs['condition'] == 'stimulated')\n            if hasattr(adata.X, 'toarray'):\n                ctrl_mean = np.asarray(adata[ctrl_mask].X.mean(axis=0)).flatten()\n                stim_mean = np.asarray(adata[stim_mask].X.mean(axis=0)).flatten()\n            else:\n                ctrl_mean = adata[ctrl_mask].X.mean(axis=0)\n                stim_mean = adata[stim_mask].X.mean(axis=0)\n            ctrl_means[i] = ctrl_mean.astype(np.float32)\n            stim_diffs[i] = (stim_mean - ctrl_mean).astype(np.float32)\n\n        # Per-gene ridge regression with empirical Bayes shrinkage\n        # stim_diff[ct, g] = alpha_g + beta_g * ctrl_mean[ct, g]\n        w = np.ones(n_ct, dtype=np.float64) / n_ct\n        w_col = w.reshape(-1, 1)\n\n        all_x = ctrl_means.astype(np.float64).flatten()\n        all_y = stim_diffs.astype(np.float64).flatten()\n        all_w = np.tile(w, self.n_genes)\n\n        gx_mean = (all_w * all_x).sum() / all_w.sum()\n        gy_mean = (all_w * all_y).sum() / all_w.sum()\n        gxy = (all_w * (all_x - gx_mean) * (all_y - gy_mean)).sum()\n        gxx = (all_w * (all_x - gx_mean) ** 2).sum()\n        global_beta = gxy / (gxx + 1e-10)\n        global_alpha = gy_mean - global_beta * gx_mean\n\n        x_mean = (w_col * ctrl_means.astype(np.float64)).sum(axis=0)\n        y_mean = (w_col * stim_diffs.astype(np.float64)).sum(axis=0)\n        x_dm = ctrl_means.astype(np.float64) - x_mean[np.newaxis, :]\n        y_dm = stim_diffs.astype(np.float64) - y_mean[np.newaxis, :]\n\n        xy_sum = (w_col * x_dm * y_dm).sum(axis=0)\n        xx_sum = (w_col * x_dm ** 2).sum(axis=0)\n\n        beta_ridge = xy_sum / (xx_sum + RIDGE_LAMBDA)\n        alpha_ridge = y_mean - beta_ridge * x_mean\n\n        beta = (1 - BETA_SHRINK) * beta_ridge + BETA_SHRINK * global_beta\n        alpha = (1 - ALPHA_SHRINK) * alpha_ridge + ALPHA_SHRINK * global_alpha\n\n        self.model.ctrl_means = torch.from_numpy(ctrl_means).to(self.device)\n        self.model.stim_diffs = torch.from_numpy(stim_diffs).to(self.device)\n        self.model.ridge_alpha = torch.from_numpy(alpha.astype(np.float32)).to(self.device)\n        self.model.ridge_beta = torch.from_numpy(beta.astype(np.float32)).to(self.device)\n        self.is_trained = True\n\n\ndef build_model(train, device, seed):\n    return ShiftWrapper(adata=train, device=device, seed=seed)\n\n\ndef train_model(model, seed):\n    model.train()\n\n\ndef predict(model, controls, scaler, inference_seed):\n    set_seed(inference_seed)\n\n    ctrl_means_np = model.model.ctrl_means.cpu().numpy()\n    stim_diffs_np = model.model.stim_diffs.cpu().numpy()\n    ridge_alpha = model.model.ridge_alpha.cpu().numpy()\n    ridge_beta = model.model.ridge_beta.cpu().numpy()\n\n    if hasattr(controls.X, 'toarray'):\n        target_ctrl_mean = np.asarray(controls.X.mean(axis=0)).flatten()\n    else:\n        target_ctrl_mean = controls.X.mean(axis=0)\n\n    n_ct = ctrl_means_np.shape[0]\n    corrs = np.zeros(n_ct, dtype=np.float64)\n    for i in range(n_ct):\n        c = np.corrcoef(target_ctrl_mean, ctrl_means_np[i])[0, 1]\n        corrs[i] = c if np.isfinite(c) else -1.0\n\n    logits = corrs / TEMPERATURE\n    logits -= logits.max()\n    weights = np.exp(logits)\n    weights /= weights.sum()\n\n    # --- v20-style weighted ratio-scaling ---\n    ref_ctrl = np.zeros_like(target_ctrl_mean)\n    ref_diff = np.zeros_like(target_ctrl_mean)\n    for i in range(n_ct):\n        ref_ctrl += weights[i] * ctrl_means_np[i]\n        ref_diff += weights[i] * stim_diffs_np[i]\n\n    # consistency shrinkage\n    w = weights.reshape(-1, 1)\n    wmean = (w * stim_diffs_np).sum(axis=0)\n    wvar = (w * (stim_diffs_np - wmean.reshape(1, -1)) ** 2).sum(axis=0)\n    wstd = np.sqrt(np.maximum(wvar, 0))\n    w_mean_abs = (w * np.abs(stim_diffs_np)).sum(axis=0)\n    w_ratio = np.where(w_mean_abs > 1e-10, wstd / np.maximum(w_mean_abs, 1e-10), 0)\n\n    shrink = np.ones_like(w_ratio)\n    up_mask_diff = ref_diff > 0\n    down_mask_diff = ref_diff < 0\n    shrink[up_mask_diff] = 1.0 / (1.0 + UP_SHRINK_STRENGTH * w_ratio[up_mask_diff])\n    shrink[down_mask_diff] = 1.0 / (1.0 + DOWN_SHRINK_STRENGTH * w_ratio[down_mask_diff])\n    ref_diff_shrunk = ref_diff * shrink\n\n    # ratio scaling\n    ratio = np.where(\n        ref_ctrl > 1e-8,\n        target_ctrl_mean / np.maximum(ref_ctrl, 1e-8),\n        1.0\n    )\n    ratio = np.clip(ratio, 1.0 / RATIO_CLIP_MAX, RATIO_CLIP_MAX)\n\n    sorted_vals = np.sort(ref_ctrl)\n    ranks = np.searchsorted(sorted_vals, ref_ctrl)\n    n_genes = len(ref_ctrl)\n    quantile = ranks / (n_genes - 1)\n\n    up_pow_gene = BASE_UP_POW + SLOPE_UP_POW * quantile\n    up_pow_gene = np.clip(up_pow_gene, 0.0, 1.0)\n\n    up_mask = ref_diff_shrunk > 0\n    down_mask = ref_diff_shrunk < 0\n\n    scaled_diff = np.zeros_like(ref_diff_shrunk)\n    scaled_diff[up_mask] = ref_diff_shrunk[up_mask] * (ratio[up_mask] ** up_pow_gene[up_mask])\n    scaled_diff[down_mask] = ref_diff_shrunk[down_mask] * (ratio[down_mask] ** DOWN_POW)\n\n    pred_v20_scaled = target_ctrl_mean + scaled_diff\n    pred_v20_scaled = np.clip(pred_v20_scaled, 0, 1)\n\n    # --- Ridge regression prediction ---\n    ridge_diff = ridge_alpha + ridge_beta * target_ctrl_mean\n    pred_ridge_scaled = target_ctrl_mean + ridge_diff\n    pred_ridge_scaled = np.clip(pred_ridge_scaled, 0, 1)\n\n    # --- Ensemble ---\n    pred_mean_scaled = (1 - ENSEMBLE_W_RIDGE) * pred_v20_scaled + ENSEMBLE_W_RIDGE * pred_ridge_scaled\n    pred_mean_scaled = np.clip(pred_mean_scaled, 0, 1)\n\n    n_cells = controls.shape[0]\n    pred_scaled = np.tile(pred_mean_scaled.reshape(1, -1), (n_cells, 1))\n    pred_unscaled = scaler.inverse_transform(pred_scaled)\n    pred_unscaled = np.clip(pred_unscaled, 0, None)\n\n    return pred_unscaled.astype(np.float64)\nPYEOF\necho \\\"Done writing method.py\\\"\nsha256sum /workspace/solution/method.py\"",
+      "original_command_sha256": "31e2ded7fab804ba48d8e9275fd2bffbb0d10ff6d41f9832acf7186fefa76eb7",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e88285b62b7247183e81cbcaf72fc9bb499bf3b4d1a16490b09ecaac48b3e4e9",
+      "output_characters": 119
+    },
+    {
+      "id": "item_103",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh 2>&1 | tail -30'",
+      "original_command_sha256": "72ad6b9a4e73d8ad0d8e5351280a7a598678c38ccd8e36174b3576af6a127842",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "17ea00fb4919fe4b07b03959b04b15151ed5774d335563990b3fce394e3778f0",
+      "output_characters": 1084
+    },
+    {
+      "id": "item_107",
+      "command": "/bin/sh -lc 'ls -la /workspace/solution/'",
+      "original_command_sha256": "eec10c297d8b57397876c54f89c94435e044a09cfbfd672ad1ddc4ebcc188b39",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "87c47bbc1f483a4c34cc89b1fa3b6fef2047921d26932a2c22510371695419b6",
+      "output_characters": 2701
+    },
+    {
+      "id": "item_108",
+      "command": "/bin/sh -lc 'cat /workspace/solution/dev_result.json'",
+      "original_command_sha256": "de1a6fdaf38b4e51f4ed564afdf19e55e3ac083e5f4b47d146a903197242d28f",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ab9fcd1f67114fc88dec7e4358205ef48d5bfdcb42f1915ec7b04fb7eb1b5888",
+      "output_characters": 3106
+    },
+    {
+      "id": "item_109",
+      "command": "/bin/sh -lc 'cat /workspace/solution/research-notes.md'",
+      "original_command_sha256": "efd671e59f5c8de5dda39f72671e3a2e4597a0f03af3ed277868f73124dbb9c3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "8ede65cfb6949687d0a8f84f50122cd9f404f9a45f8ef39408f8fb0bc95a0c93",
+      "output_characters": 1479
+    },
+    {
+      "id": "item_112",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method_v20_best.py'",
+      "original_command_sha256": "9e5bbbcdbfbad096421d72f4d86304ab8b99d29088bbe2fef6cf1781503a2909",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4ec872b0a2ce359b55308d9540682d9a250f8a90f4032d87af0d8976ac1a2dde",
+      "output_characters": 5181
+    },
+    {
+      "id": "item_114",
+      "command": "/bin/sh -lc 'wc -l /workspace/solution/method.py && head -5 /workspace/solution/method.py'",
+      "original_command_sha256": "ed59bd8942d26e33de792f9aa0ef07a07d12b3126b605d3ea27a16abb20f9e17",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "6d289ebc83dc841bac4e52f2477d70edc3020cb626ca993714032e2c77093639",
+      "output_characters": 290
+    },
+    {
+      "id": "item_116",
+      "command": "/bin/sh -lc 'cp /workspace/solution/method_v20_best.py /workspace/solution/method.py'",
+      "original_command_sha256": "bfb86cd6b98577f0c85d20758b8c993cf2f76eb7af8519afcd247d7e6deb1e79",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_characters": 0
+    },
+    {
+      "id": "item_118",
+      "command": "/bin/sh -lc 'cat /workspace/solution/method_v26_ensemble.py'",
+      "original_command_sha256": "2bf403c8cf5d44daecc1dc858d37daf0beb4751c4ad39817674a38289dfe006b",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "4ec872b0a2ce359b55308d9540682d9a250f8a90f4032d87af0d8976ac1a2dde",
+      "output_characters": 5181
+    },
+    {
+      "id": "item_120",
+      "command": "/bin/sh -lc 'head -20 /workspace/solution/method.py && echo \"---\" && diff /workspace/solution/method.py /workspace/solution/method_v20_best.py | head -20'",
+      "original_command_sha256": "edf579753f5985df63f10a32608a04ad112f541b9ee7665baa4bc02dcf15e366",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "50e8f0e6a44878c8b5470136e9060693c23e08fad02d4937f823b9be9679d933",
+      "output_characters": 386
+    },
+    {
+      "id": "item_122",
+      "command": "/bin/sh -lc 'cat /tests/anchors.json 2>/dev/null; echo \"---\"; cat /tests/protocol.json 2>/dev/null'",
+      "original_command_sha256": "e1ff44876dbff6c2177322ef160f92e45360ae85ceb8262e7b792fa415f2e4a8",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "ff1cf0c23eacce16adbedf1b5df59a0367f9fc5a3faf3591deaf8948adb3ecee",
+      "output_characters": 529
+    },
+    {
+      "id": "item_124",
+      "command": "/bin/sh -lc 'cat /workspace/solution/sweep_down_pow3.py | head -80'",
+      "original_command_sha256": "641bb3c35b968e53be9f00fd5c28bdea36e16a7b8dd41614973ec6f084cdf5a5",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "edc7c4b990de7bba23d17adcfa4479662c57d16cf1461aac3158536d2cf626b3",
+      "output_characters": 2763
+    },
+    {
+      "id": "item_125",
+      "command": "/bin/sh -lc 'cat /workspace/solution/sweep_down_pow3.py | tail -80'",
+      "original_command_sha256": "266340999f481e8c2be90468fafd78901b96b3f2294152d804a1a661862ae88d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "9fe347f58fe94c6af916d64e687697efaaeffc502037a904aad73f72d6df952c",
+      "output_characters": 3576
+    },
+    {
+      "id": "item_127",
+      "command": "/bin/sh -lc 'ls /workspace/solution/*.py | head -30 && echo \"---\" && cat /workspace/solution/quick_dev_eval.py | head -50'",
+      "original_command_sha256": "c59029caf877a88ffdd679e4bd931cca23e097074a6721ccfa992b27d80ebb4d",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "2d9de6bc5114e04e16fb98f83995c42f079e15a4ca8d2768d69fd0b143b9089b",
+      "output_characters": 3243
+    },
+    {
+      "id": "item_129",
+      "command": "/bin/sh -lc 'cd /workspace/solution && python quick_dev_eval.py 2>&1 | head -50'",
+      "original_command_sha256": "b10764bce2a0cd4ed1712ad46b3e327b805d5f0dafb731128334233018d0a630",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "0bd457dc333bc7be25d9213dcaf1aa3678199a09f48fe17c07ae5b9c908dc28b",
+      "output_characters": 171
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 21630721,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 685301,
+        "reasoning_output_tokens": 79855
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

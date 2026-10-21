@@ -1,0 +1,85 @@
+{
+  "recorded_at": "2026-10-04T01:53:03.858544+08:00",
+  "round": 10,
+  "attempt": 2,
+  "protocol_version": "dd-selfproto-v1.1",
+  "runner_pid": 181194,
+  "original_failed_execution": {
+    "stage": "evaluation",
+    "command": [
+      "historical-resources/venvs/dd1/bin/python",
+      "-B",
+      "-u",
+      "historical-codex-workspace/official_entry.py",
+      "--ckpt_path",
+      "historical-codex-models/round10/training/checkpoint.pth",
+      "--vae_ckpt",
+      "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+      "--sample_dir",
+      "historical-codex-models/round10/evaluation",
+      "--sample_num",
+      "50000",
+      "--t_list",
+      "0",
+      "--loss_split_t",
+      "5",
+      "--depth",
+      "16",
+      "--bs",
+      "8",
+      "--seed",
+      "0",
+      "--fid_statistic",
+      "historical-resources/models/dd1/fid_stats",
+      "--local_out_dir_path",
+      "historical-codex-models/round10/official_runtime"
+    ],
+    "cwd": "historical-resources/autoresearch_tasks/repos/distilled_decoding/VAR",
+    "started_at": "2026-10-04T00:08:43.520517+08:00",
+    "finished_at": "2026-10-04T01:01:55.377480+08:00",
+    "exit_code": -11,
+    "deadline_unix": null,
+    "pid": 171597,
+    "elapsed_seconds": 3191.8568531442434,
+    "termination": null,
+    "peak_observed_gpu_mib": null
+  },
+  "original_failed_execution_sha256": "3434809dcd2392cf8df1837f262390627af58fda0eb517ba02258c42ca0229ec",
+  "checkpoint_sha256": "a8a886db5bfc1bb2daaf10ba01f1bddc9e37f49316a048264033fa63210934c9",
+  "sample_count": 50000,
+  "scorer_sha256": "bce8e2205defd99b4e6b9f3e31bb35c6ab4946aed445ce0179cf2db595382ad4",
+  "entry_sha256": "f86acf3da29e8f8041570246b8c7e32454f5ce0b52e41ad7af2ab5202e5db5af",
+  "original_failed_process_confirmed_absent": true,
+  "decision": "Retry FID only on original complete images; no new training or sampling.",
+  "protected_before": [
+    {
+      "path": "historical-resources/models/dd1/VAR-DD/var-d16.pth",
+      "expected": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "actual": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth",
+      "expected": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+      "actual": "7c3ec27ae28a3f87055e83211ea8cc8558bd1985d7b51742d074fb4c2fcf186c",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/fid_stats/statistic.pth",
+      "expected": "a9a689ae306a6e76b1485cbd4448dc82db4b119e177dddb68e0d54d33fc9f7c8",
+      "actual": "a9a689ae306a6e76b1485cbd4448dc82db4b119e177dddb68e0d54d33fc9f7c8",
+      "matches": true
+    },
+    {
+      "path": "historical-resources/models/dd1/VAR-teacher/var_d16.pth",
+      "expected": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+      "actual": "4f6151aad91c94e03e224dd7358d8389fa05301c0c291279566998efb54b0ecb",
+      "matches": true
+    }
+  ],
+  "previous_failed_recovery": "historical-codex-workspace/agent-output/rounds/round10/fid_recovery_execution.json",
+  "previous_failed_recovery_sha256": "8835f76da5ed3b41eac445ebd4e4550275cbfa51cb54a6db26e3be90df181bbb",
+  "environment_change": "Do not inherit LD_PRELOAD; explicit local runtime environment, same scorer, images, batch and numerical flags.",
+  "finished_at": "2026-10-04T01:55:04.854705+08:00",
+  "result_sha256": "9f5cdbcff87a8bd11c24e7dc0c066ba5957e7c09b4db82ead63451fb2ca9f043"
+}

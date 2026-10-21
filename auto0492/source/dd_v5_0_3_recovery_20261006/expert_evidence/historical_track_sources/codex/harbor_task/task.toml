@@ -1,0 +1,31 @@
+[task]
+id = "dd-distilled-decoding-1"
+title = "Distilled Decoding 1: 教师样本与流匹配时间采样优化"
+protocol_version = "dd-selfproto-v1.1"
+protocol_note = "无官方 harbor 任务包；运行方依据论文 arXiv:2412.17153 与优化面描述自建。官方训练代码未发布，训练部分为自行重实现。v1.1（2026-10-03 12:30 CST）：放行官方 DD 权重暖启动（须披露+归因），教师样本复用须计费，FID 后允许删采样原图。变更明细见 environment/PROTOCOL_CHANGELOG.md 与 instruction.md 第 0 节。"
+
+[metric]
+name = "FID-50k"
+direction = "lower"
+primary = true
+definition = "ImageNet-256，50,000 样本，官方 statistic.pth，官方 sample.py 调用链（t_list 0, loss_split_t 5, depth 16）"
+baseline_anchor = 9.94
+baseline_note = "论文公布 VAR-DD-d16 单步 FID；阶段一须以官方权重实测复现值为本轨道正式 Baseline"
+
+[budget]
+type = "gpu_wallclock_hours"
+limit = 4.0
+scope = "每个候选：教师样本生成 + 流匹配训练的总 GPU 墙钟；不含 50k 评测"
+device = "A100-40GB（与另一轨道共享，单进程显存 ≤20GB）"
+
+[surface]
+optimizable = ["teacher_sample_strategy", "fm_time_sampling"]
+fixed = ["vae", "official_dd_checkpoint_baseline_and_v1.1_warmstart_init", "teacher_checkpoint_role", "depth=16", "resolution=256", "one_step_protocol", "fid_protocol", "seed_set"]
+
+[assets.readonly]
+repo = "historical-resources/autoresearch_tasks/repos/distilled_decoding"
+dd_ckpt = "historical-resources/models/dd1/VAR-DD/var-d16.pth"
+vae_ckpt = "historical-resources/models/dd1/VAR/vae_ch160v4096z32.pth"
+teacher_ckpt = "historical-resources/models/dd1/VAR-teacher/var_d16.pth"
+fid_statistic = "historical-resources/models/dd1/fid_stats/statistic.pth"
+venv = "historical-resources/venvs/dd1/bin/python"

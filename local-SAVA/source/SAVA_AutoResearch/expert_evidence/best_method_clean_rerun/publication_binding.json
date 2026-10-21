@@ -1,0 +1,26 @@
+{
+  "state": "EXACT_SELECTED_SOURCE_CLEAN_STOCK_IPC_PASS",
+  "scope": "Only author host-relative submission path prefixes migrated to package-root-relative paths in command receipts. All numerical measurements, timestamps, identity/capabilities, source and selection hashes unchanged. Original private execution and startup failure retained.",
+  "records": [
+    {
+      "member": "execution.json",
+      "original_sha256": "827a4c7d46f8554af8e8943f47106ec318b4919a743692372075107f2924d07b",
+      "published_sha256": "3ab2f10bd3baac8a463b6b5339f5c06a8f6f719e7bfa5d3972e1a936bb9d60b1",
+      "only_path_representation_changed": true
+    },
+    {
+      "member": "measurement.json",
+      "original_sha256": "df1ef32f46842b73debcdda80da54e6c7a0b550d305b733814e42dc72d5b32ec",
+      "published_sha256": "df1ef32f46842b73debcdda80da54e6c7a0b550d305b733814e42dc72d5b32ec",
+      "only_path_representation_changed": false
+    },
+    {
+      "member": "run.log",
+      "original_sha256": "25d0b5e49c880e4e6e3097ef936ff7c3137ce8f18397fb1f6fe05cbab5ffddb8",
+      "published_sha256": "25d0b5e49c880e4e6e3097ef936ff7c3137ce8f18397fb1f6fe05cbab5ffddb8",
+      "only_path_representation_changed": false
+    }
+  ],
+  "failed_startup_attempt_preserved_privately": "global_best_clean_stock_ipc_005",
+  "failure_reason": "Author launcher attempted chown without CAP_CHOWN; no scoring began. Corrected by Actor copying into its already owned starter source; final image/capabilities unchanged."
+}

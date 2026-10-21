@@ -1,0 +1,59 @@
+{
+  "protocol": "dd-selfproto-v1.3",
+  "reimplementation": true,
+  "method": {
+    "name": "author_antithetic_late256",
+    "protocol_version": "dd-selfproto-v1.3",
+    "initialization": "warmstart_official_dd_ema",
+    "teacher": {
+      "num_samples": 256,
+      "teacher_steps": 10,
+      "guidance": 2.0,
+      "filter_rule": "student_agreement_per_label",
+      "weighting": "uniform",
+      "reuse": 1,
+      "top_k": 900,
+      "top_p": 0.95,
+      "ode_nfe": 32,
+      "ode_grid": "logSNR",
+      "proposal_multiplier": 8
+    },
+    "time_sampler_note": "Antithetic U(0.5,1) within adjacent pairs; supplied CPU RNG draws advance normally.",
+    "train_notes": "Released DD EMA initialization; 256 selected genuine teacher pairs, eight proposals per label, one training pass."
+  },
+  "method_sha256": "db76d55ff88defbc4519819775fe0871a89aa7ed90098905d1b377afcef8c136",
+  "pair_manifest_sha256": "ec7f484ccdd9c3a7435afa4ab5770a181be64e11f702d6a790c59a413860aefa",
+  "seed": 2001,
+  "batch_size": 2,
+  "accumulation": 8,
+  "lr": 0.0001,
+  "betas": [
+    0.9,
+    0.95
+  ],
+  "weight_decay": 0.05,
+  "clip_grad_norm": 1.0,
+  "ema_decay": 0.99,
+  "embedding_loss": "LPIPS-alex-v0.1 on decoded continuous-head suffix and teacher prefix",
+  "classification_loss": "CE averaged over generated tokens of all scales",
+  "loss_weights": {
+    "embedding": 1.0,
+    "classification": 0.1
+  },
+  "precision": "bf16 autocast with fp32 weights",
+  "architecture": "released DD depth16, 256px",
+  "initialization": {
+    "source": "warmstart_official_dd_ema",
+    "checkpoint_asset": "VAR-DD/var-d16.pth",
+    "checkpoint_sha256": "64eb55454198273ad09db7e9c31641abb181e8aae1574206869049a0c926228c",
+    "parameter_key_count": 240,
+    "parameter_values_verified_exact": true,
+    "matches_baseline_initialization": true
+  },
+  "loss_split_t_eval": 5,
+  "training_prefix_mapping": "floor(method_t*10), clamped to0..9",
+  "deadline_unix": 1791155833.4719021,
+  "start_unix": 1791141649.9857442,
+  "teacher_reuse_maximum_passes": 1,
+  "teacher_reuse_note": "Each pass visits every pair once; stop earlier when the GPU budget ends."
+}

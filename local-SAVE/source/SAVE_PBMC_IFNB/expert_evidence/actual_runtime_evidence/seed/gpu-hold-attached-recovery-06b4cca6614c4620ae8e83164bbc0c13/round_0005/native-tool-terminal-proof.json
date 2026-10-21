@@ -1,0 +1,70 @@
+{
+  "original_event_sha256": "3a078dedd090f781bf4b62d4ba6c8dbcde69f0dc61f8cc6930f188950dbb4bb5",
+  "original_receipt_sha256": "f5f89b60594da75bd6512cf578d4e64f908c79a5e50475d5bb5bfc6d1ebfc38b",
+  "original_event_last_write_epoch": 1791782713.3564656,
+  "original_native_session_ids": [
+    "01a1249f-7656-7ca1-8889-a4c3070059a8"
+  ],
+  "completed_commands": [
+    {
+      "id": "item_3",
+      "command": "/bin/sh -lc 'ps aux | grep solve.sh | grep -v grep; echo \"---\"; cat /tmp/solve_v69.log 2>/dev/null | tail -20'",
+      "original_command_sha256": "bb53c3d9fc6e556f3171b08754a37229b52a43955cc0a51cb911acb5a485d2c0",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "5949a743a85261dbfe7bec4b3f722ace1ac486c85303d8b7b27e3653d5e3d33f",
+      "output_characters": 30
+    },
+    {
+      "id": "item_4",
+      "command": "/bin/sh -lc 'ls -la /tmp/solve_v69.log; wc -l /tmp/solve_v69.log; cat /tmp/solve_v69.log'",
+      "original_command_sha256": "139097e47ec207f7ed6007cb252193458d627a53e35bd2d8f30ded87f2f94088",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "b818ac773468c6b8935affe6431103394bb56d4b81089bad341998bd1cf0833a",
+      "output_characters": 88
+    },
+    {
+      "id": "item_5",
+      "command": "/bin/sh -lc 'cat /tests/solve.sh'",
+      "original_command_sha256": "6c9eb8460249fdff35ea8cfd83a95f2e08ddba56f939fb4f72985fbb4f616f85",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "870c4f51c5eb761053102c805fe0f157232c7bdab128585d5ce4a367426f26f5",
+      "output_characters": 172
+    },
+    {
+      "id": "item_6",
+      "command": "/bin/sh -lc 'head -50 /tests/grader.py'",
+      "original_command_sha256": "7885c1d7b1e825a4fb2ca6297a97d906bed56aa21c352215bdc3915ed5846afb",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 0,
+      "output_sha256": "aa412adc490632dfb43502970452c73007ca6d496ba135426c8278ebb760a4a1",
+      "output_characters": 2087
+    },
+    {
+      "id": "item_8",
+      "command": "/bin/sh -lc 'cd /workspace/solution && bash solve.sh'",
+      "original_command_sha256": "bfb0f4dbe5602c9a06946da57633297305f24b853a502af58271b94156bbc3a3",
+      "command_email_identifiers_redacted": true,
+      "exit_code": 1,
+      "output_sha256": "8643d50234ae33a072f443136372db53fffa1d70cc598b9360f3222409e32957",
+      "output_characters": 542
+    }
+  ],
+  "terminal_events": [
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 45916931,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1068969,
+        "reasoning_output_tokens": 145466
+      }
+    }
+  ],
+  "reasoning_and_assistant_message_content_not_exported": true,
+  "no_per_command_timestamps_in_original_event_format": true,
+  "original_raw_evidence_retained_privately": true
+}

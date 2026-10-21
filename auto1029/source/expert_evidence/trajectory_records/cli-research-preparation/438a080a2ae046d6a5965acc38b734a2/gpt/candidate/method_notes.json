@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "entrypoint": "method.py:draft(state)",
+  "algorithm": {
+    "name": "Question-independent verified structural drafting, cap8",
+    "retained_source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "interface": "Stateless dict/object state; integer ID list bounded by min(8,32,remaining_tokens,maximum_draft_tokens); malformed or divergent state abstains.",
+    "strategy": "Exact36-ID opening history match; free semantic body; closing completion after two committed closing IDs. Trusted target verifies all proposals. No imports or dynamic local loads.",
+    "provenance": "Own invariant markup observations0..11; no question/label/answer mapping."
+  },
+  "selection": {
+    "decision": "Retain exact own highest actually full-scored cap8 method; source unchanged. No new optimization.",
+    "incumbent_evidence": "own_verified_incumbent_summary.json",
+    "own_verified_incumbent_score": 0.5769221579490044,
+    "attribution": "Prior own verified complete protocol evidence, not a new release score."
+  },
+  "runtime": {
+    "dependency_closure": [
+      "method.py"
+    ],
+    "source_bytes": 2037,
+    "source_sha256": "cc1078d269e0aaa99e712fbe95d2fd15d115f2edc8bf6d65c4f4e29c81a5453c",
+    "gpu_source_envelope_sha256": "50cf3ed389d14a18d7e93a44006c3aeffe5fe10a6b9ce5d129ca53bddd90e4a8",
+    "dependency_validation": "No imports or dynamic local loading; isolated import adds zero modules. 2232 local interface checks pass; local checks are not target gates."
+  },
+  "preservation": {
+    "historical_python_archive": "own_history_export_recovery.json:archive.base64",
+    "archive_bytes": 173053,
+    "archive_sha256": "02a993cc965ebd91afc26f39180805c71d0a808171905bc84a400b4dd7165151",
+    "original_member_hashes": "gpu_live_research/runtime_history_v1_manifest.json",
+    "historical_members": "64 exact original members, including63 historical Python paths, verified against original size/hash/CRC; kept as data.",
+    "simulation_archive": "gpu_live_research/own_simulation_history_archive.json",
+    "incoming_checkpoint": "gpu_live_research/release_checkpoint_incoming_archive.json",
+    "incoming_archive_bytes": 187426,
+    "incoming_archive_sha256": "8997b18ca13a6fa7518628624cab7f4e4ada8a63b433a9e52eecc7c6d6bcc28e",
+    "new_development_tool": "release_checkpoint_audit.txt",
+    "roundtrips": "15 encoded archive/source-string records validated; failed/slower evidence preserved; no loose source removed this turn. Recovery provenance and earlier unavailable bytes remain documented.",
+    "export_validation": "gpu_live_research/release_checkpoint_final_validation.json; actual frozen exporter, per-file1MiB/aggregate5MiB with reserve, no omissions."
+  },
+  "evaluation": {
+    "required_new_release_evaluation": "BLOCKED: existing owned status requests rejected before feedback; no duplicate submitted while lane status unknown.",
+    "new_score": null,
+    "new_quality_gates": null,
+    "saved_release_ticket": "24a7390adcc34aefb2b91a9503ab9064",
+    "saved_unfinished_cap16_ticket": "dcc3eed56d11410989414dacc4a639d1",
+    "actual_feedback": "Trusted evaluator rejected all three status requests: Evaluator request rejected; check your own job ticket and public submission contract.",
+    "receipts": [
+      "gpu_live_research/release_checkpoint_saved_full_status.json",
+      "gpu_live_research/release_checkpoint_cap16_status.json",
+      "gpu_live_research/release_checkpoint_incumbent_status.json"
+    ],
+    "previous_exact_envelope_full_evidence": {
+      "artifact": "last_verified_score.json",
+      "job_id": "17db7db9b6e646e29f10b61a38a3c18f",
+      "score": 0.573920285974177,
+      "latency_ratio": 0.4261381272788273,
+      "all_five_quality_gates_pass": true,
+      "attribution": "Existing own complete fixed-five-seed evidence only; not a new evaluation this turn."
+    },
+    "independent_final_verifier_score": null
+  },
+  "research": {
+    "journal": "research_journal.md",
+    "release_hypothesis": "Exact cleaned incumbent retains target quality and latency; only actual full development feedback can resolve release requirement.",
+    "decision": "Keep incumbent unchanged. No exploratory experiment; status queries and release validation only.",
+    "next_action": "After external evaluator access/lane recovery, first query saved release24a7390adcc34aefb2b91a9503ab9064 and unfinished cap16dcc3eed56d11410989414dacc4a639d1. Once no job remains unfinished, obtain one actual full96-question five-seed evaluation of exact cleaned cap8 envelope; record real gates/score.",
+    "simulations": "Authored response streams and CPU schedules are simulations, never target outputs or scores.",
+    "acceptance_limit": "Per-proposal acceptance unavailable; aggregates cannot establish acceptance fraction."
+  },
+  "campaign": {
+    "status": "FINAL_RELEASE_ONLY; duration complete according to user-reported trusted closed ledger",
+    "duration_authority": "Trusted external CLI ledger alone. No hour estimate inferred; provider/queue/stall/recovery time excluded."
+  }
+}

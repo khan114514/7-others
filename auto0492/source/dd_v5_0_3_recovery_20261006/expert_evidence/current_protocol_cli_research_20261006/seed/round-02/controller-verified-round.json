@@ -1,0 +1,61 @@
+{
+  "status": "ACTUAL_CURRENT_PUBLIC_MODEL_METHOD_SCORE_DECISION_LOOP_COMPLETED",
+  "track": "seed",
+  "round": 2,
+  "model": "doubao-seed-2-1-turbo-260628",
+  "reasoning_effort": "high",
+  "source_sha256": "6e770e3ad3b38700f56b337ade61a6be69350879d4c47f26f31d9d3a1bdef208",
+  "job_id": "6507ee6fc047461c93b9bde1c88dad34",
+  "result": {
+    "job_id": "6507ee6fc047461c93b9bde1c88dad34",
+    "scope": "dd-final-track-seed-calibration",
+    "status": "SUCCESS",
+    "returncode": 0,
+    "finished_unix": 1791264328.3952794,
+    "method_sha256": "6e770e3ad3b38700f56b337ade61a6be69350879d4c47f26f31d9d3a1bdef208",
+    "run_id": "run-e6a16e6650af4f32a5836d4723fd7861",
+    "protocol": "dd-selfproto-v1.3",
+    "kind": "CALIBRATION",
+    "metric": 9.784449511236346,
+    "sample_count": 50000,
+    "checkpoint_sha256": "c5df56d6e26c9e29640637a16edf29afc9f47bb302e2249a05cc918eb8a343e7",
+    "sample_manifest_sha256": "2ee626d41c3b1671b96eabe89904ac656662bcd7f7818cf8acbd9c7c611705db",
+    "teacher_and_training_seconds": 404.82467770576477,
+    "teacher_seed": 1001,
+    "training_seed": 2001,
+    "evaluation_seed": 0,
+    "frozen_manifest_sha256": "b366ba329b015bbae3f6d2027d9004c3aea71f6116b3d84e1fab0927af0b0924"
+  },
+  "archive": {
+    "status": "ALL_ORIGINAL_RUN_FILE_BYTES_ARCHIVED_AND_VERIFIED",
+    "run_id": "run-e6a16e6650af4f32a5836d4723fd7861",
+    "observed_utc": "2026-10-06T05:34:14.285461+00:00",
+    "archive_sha256": "b0b03056c41502c60384a71e50cc68d1f5e5bb4f6de78fe4899f8fb53f3fdd95",
+    "archive_bytes": 4926935040,
+    "verified_files": 103,
+    "large_files": [
+      {
+        "path": "training/checkpoint.pth",
+        "bytes": 2625476270,
+        "sha256": "c5df56d6e26c9e29640637a16edf29afc9f47bb302e2249a05cc918eb8a343e7",
+        "local_archive_member": "run-e6a16e6650af4f32a5836d4723fd7861/training/checkpoint.pth"
+      },
+      {
+        "path": "training/training_state.pth.exactzip",
+        "bytes": 2171792554,
+        "sha256": "ceba16f432327650d2cbba0f636edd702ce58550f34e2e5c00f7b1928cfe379b",
+        "local_archive_member": "run-e6a16e6650af4f32a5836d4723fd7861/training/training_state.pth.exactzip"
+      }
+    ]
+  },
+  "cli_receipts": [
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/seed/r02-prepare/receipt.json",
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/seed/r02-launch-public-socket-fixed/receipt.json",
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/seed/r02-review/receipt.json",
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/seed/r02-analysis-correction-20261006/receipt.json",
+    "<AUTHOR_RECOVERY_ROOT>/private_mac_dd_controller_20261005/trajectory_repair_preflight_20261005/cli-executions/seed/r02-best-artifact-final-analysis-correction-20261006/receipt.json"
+  ],
+  "protocol": "dd-selfproto-v1.3",
+  "not_native_harbor_atif": true,
+  "qa_pass_claimed": false
+}

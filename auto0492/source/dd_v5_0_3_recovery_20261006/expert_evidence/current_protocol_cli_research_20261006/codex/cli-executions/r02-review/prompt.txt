@@ -1,0 +1,2 @@
+读取你自己 round-02/plan.json、method.py、evaluation 的可信终态和 evaluation-client.log。必须用实际 shell 工具读取真实结果，不能引用另一个轨道或任何私有材料。根据你自己的完整公开结果判断因果假设是否成立、为什么保留或不保留、下一轮明确算法变化是什么。
+在该轮 analysis.json 写清方法、真实 FID 或 null、失败类别/原因、证据相对路径、当前最佳轮（仅在真实成功结果中比较，不改写历史）、下一步方向。在 agent-output/trajectory_current.json 按轮建立或追加八字段 round、policy_name、method_summary、status、score、failure_reason、retained_best、time；score 只采用该轮可信完整 50000 样本 metric，失败用 null，不自填奖励。time 用真实 UTC 回执时间，不能把排队或等待进程时长当有效研究；当前协议的新时间与历史任务时长要分开。所有原始计划、源码、成功/失败回执保持不变。此轮不要另启 GPU 作业，不要修改 solution/method.py，不要宣称 QA PASS。最后概述观察与下一步。

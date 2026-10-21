@@ -1,0 +1,13 @@
+当前完整源码ZIP按V4为NOT READY。方法空间、Baseline合理性及三次正式成对提升可以保留，不要削弱B或调整U修复。
+
+完整交付：tests/hidden_assets只有占位；run_eval.py:164要求manifest。environment/Dockerfile:15–17要求两个named contexts，TOML:28/tests Dockerfile:3只有本地镜像ID/tag。 提供可获取的不可变模型/工具资产入口及校验步骤，或平台认可预置镜像；补Hidden私有材料安全入口、版本/清单/注入操作，不向Agent暴露。 验收材料：接收方可定位所有named build contexts、私有manifest，验证大小/哈希并获得目标平台构建与准备回执；本机镜像ID不是获取入口。
+
+内场配置：task.toml:16,26,34保留no-network/storage_mb；platform_adapter/onedc_harbor.py:49–60依赖extra_docker_compose。 删除task.toml的storage_mb及平台禁网配置依赖，将extra_docker_compose改为当前内场支持的单sandbox单容器配置；保留worker最小权限。明确H20/L20，保留A10历史。 验收材料：更新TOML、镜像/资源/隔离说明、目标版本格式/schema检查和artifact移交链；不因换卡强制重做历史B/R。
+
+有效时长：time-accounting.json合格正式区间GPT5.14083963h、Seed5.2338039536h，扣除前已不足7h；自报14h不符当前口径。 按当前V4扣除构建/排队/故障/阻塞；隔离失效旧轨不得混入。保留暂停状态，另行授权后补真实迭代，不补造时间。 验收材料：两轨独立起止、扣除区间、方法→Public评分→决策；默认各≥10h，短非训练例外各≥7h且完整例外材料/最佳干净复验。
+
+轨迹格式：两canonical每轮18字段、编号缺口和sidecar路径未明确；需补expert_annotation基本标注、唯一最终方法路径。 保留原始sidecar，canonical每轮恰八字段；顺序round与原attempt建立映射，缺号不造实验；引用改包根路径，解释模型失败和控制器采纳差别。 验收材料：两份八字段rounds，顺序编号、原尝试映射、逐轮Public指标/质量门/method hash/最佳决策可回溯，摘要同步。
+
+非阻断后补：四项指纹、H20/L20换卡分数/耗时/锚点影响、NOP原始补充链路。历史NOP reward0且主要文件绑定一致；不因这些项强制新运行。真实官方工具验收另列待补。
+
+发布前确认源码README第64/99行capability-style入口的公开必要性，逐件严格隐私扫描；不在报告复写入口值。
