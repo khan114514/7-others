@@ -26,7 +26,7 @@
 
 ## 大文件下载与核对
 
-完整题包、数据、权重和图片在 [Release 附件](https://github.com/khan114514/7-others/releases/tag/review-2026-10-22)。每题 `source/` 提供直接浏览的源码、配置与文本证据，`source_manifest.json` 记录完整附件中的其余文件。附件逐个大小与哈希见 [release_assets.json](release_assets.json) 和 [SHA256SUMS.txt](SHA256SUMS.txt)。
+完整题包、数据、权重和图片在 [Release 附件](https://github.com/khan114514/7-others/releases/tag/review-2026-10-22)。每题 `source/` 提供直接浏览的源码、配置与文本证据，`source_manifest.json` 记录完整附件中的其余文件。附件逐个大小与哈希见 [release_assets.json](release_assets.json) 和 [SHA256SUMS.txt](SHA256SUMS.txt)。10个附件均已从GitHub远端核对大小及SHA256，[校验记录](release_verification.json)已保存。
 
 DD 超过单附件大小限制，按三个字节分卷发布。下载三个分卷后，在同一目录按顺序拼接：
 
